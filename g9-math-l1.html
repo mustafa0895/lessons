@@ -608,7 +608,8 @@ figure.photo figcaption.bi{margin:0}
 const VERSION="student";
 const CURR="MOE";
 document.documentElement.classList.remove("nojs");
-function zayed(m){
+function zayed(m,head){
+  head=head||"ghutra";
   m=m||"happy";
   const uid="z"+Math.random().toString(36).slice(2,7);
   const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
@@ -643,24 +644,31 @@ function zayed(m){
     wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
   const look=m==="think"?-3:m==="point"?3:0;
   const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
-  return `<svg viewBox="0 0 210 290" aria-label="Zayed the young scientist" role="img"><defs>
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
 <linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
 <radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
 <linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
 <linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
 <ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
-<path d="M80,236 v38 h18 v-38z M112,236 v38 h18 v-38z" fill="#33414F"/>
-<path d="M74,274 h28 q2,8 -4,9 h-26 q-4,-4 2,-9z M108,274 h28 q6,5 2,9 h-26 q-6,-1 -4,-9z" fill="#1F2A37"/>
-<path d="M60,166 q45,-22 90,0 l8,80 q-53,12 -106,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
-<path d="M88,160 l17,30 l17,-30z" fill="#2A9D8F"/><path d="M98,160 l7,12 l7,-12z" fill="#fff" opacity=".35"/>
-<path d="M86,160 l19,34 l-10,52 M124,160 l-19,34" stroke="#C9D3DD" stroke-width="2" fill="none"/>
-<path d="M86,160 l-6,22 l14,4z M124,160 l6,22 l-14,4z" fill="#fff" stroke="#C9D3DD" stroke-width="1.5"/>
-<rect x="122" y="200" width="20" height="18" rx="3" fill="#fff" stroke="#C9D3DD" stroke-width="1.5"/>
-<rect x="126" y="192" width="3" height="14" rx="1.5" fill="#C8553D"/><rect x="132" y="190" width="3" height="16" rx="1.5" fill="#2A9D8F"/><rect x="137" y="194" width="3" height="12" rx="1.5" fill="#E9B44C"/>
-<circle cx="105" cy="212" r="3" fill="#C9D3DD"/><circle cx="105" cy="230" r="3" fill="#C9D3DD"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
 ${arms}
 <path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
-<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
 <ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
 <ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
 <path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
@@ -670,6 +678,7 @@ ${arms}
 <rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
 <path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
 <path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
 <path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
 ${eye(84)}${eye(116)}
 <path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
