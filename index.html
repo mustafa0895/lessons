@@ -42,11 +42,19 @@ p.sub{margin:0 0 14px}
 .lesson .ar{display:block;font-size:13px;font-weight:600}
 .soon{color:var(--muted);font-size:14px;padding:4px 6px 8px}
 footer{margin-top:28px;text-align:center;color:var(--muted);font-size:12px}
+
+.arbtn{margin-left:auto;width:44px;height:44px;border-radius:14px;border:2px solid var(--line);background:#fff;font-weight:800;font-size:20px;color:var(--ink);flex:none}
+body.showar .arbtn{background:var(--teal);border-color:var(--teal);color:#fff}
+body:not(.showar) .ar{display:none!important}
+@media (hover:hover){
+ body:not(.showar) .tile:hover .ar,body:not(.showar) .lesson:hover .ar,body:not(.showar) .term>button:hover .ar,body:not(.showar) .unit:hover .ar,body:not(.showar) header:hover small{display:block!important}
+ body:not(.showar) .tile:hover,body:not(.showar) .lesson:hover{border-color:var(--teal)}
+}
 </style>
 </head>
 <body>
 <main>
-  <header><div class="logo">👨‍🔬</div><div><h1>Interactive Lessons</h1><small>الدروس التفاعلية</small></div></header>
+  <header><div class="logo">👨‍🔬</div><div><h1>Interactive Lessons</h1><small class="ar">الدروس التفاعلية</small></div><button class="arbtn" id="arBtn" aria-label="Show Arabic">ع</button></header>
   <div id="app"></div>
   <noscript>
     <h2>All lessons</h2>
@@ -57,7 +65,7 @@ footer{margin-top:28px;text-align:center;color:var(--muted);font-size:12px}
     <p><a href="g7-science-l1.html">Grade 7 Science · Rock and Fossil Records</a></p>
     <p><a href="math-volume-l2-7.html">Grade 7 Math · Solving Problems Involving Volume</a></p>
   </noscript>
-  <footer>Open lessons in Safari or Chrome<br><span dir="rtl">افتح الدروس في Safari أو Chrome</span></footer>
+  <footer>Open lessons in Safari or Chrome<br><span class="ar" dir="rtl">افتح الدروس في Safari أو Chrome</span></footer>
 </main>
 <script>
 /* ===== Add new lessons here =====
@@ -92,7 +100,7 @@ function render(){
   if(S){
     app.innerHTML=crumbs([["Home","#"],[G.en,"#"+g],[S.en]])+`<h2>${S.ic} ${S.en}</h2><p class="sub ar">${S.ar} · ${G.ar}</p>`+
       [1,2,3].map(t=>{const units=S.terms[t]||[];
-        return `<div class="term ${t===CUR?"open cur":""}"><button><span>${TERMS[t][0]}<span class="ar" style="display:block">${TERMS[t][1]}</span></span>${t===CUR?'<span class="now">Now · الحالي</span>':""}<i>›</i></button><div class="body">`+
+        return `<div class="term ${t===CUR?"open cur":""}"><button><span>${TERMS[t][0]}<span class="ar" style="display:block">${TERMS[t][1]}</span></span>${t===CUR?'<span class="now">Now<span class="ar" style="display:inline"> · الحالي</span></span>':""}<i>›</i></button><div class="body">`+
           (units.length?units.map(u=>`<div class="unit">${u.en}<span class="ar">${u.ar}</span></div>`+u.lessons.map(l=>`<a class="lesson" href="${l[0]}"><span class="num">${l[3]}</span><span><b>${l[1]}</b><span class="ar">${l[2]}</span></span></a>`).join("")).join("")
            :`<div class="soon">Coming soon · قريبًا</div>`)+`</div></div>`;}).join("");
     app.querySelectorAll(".term>button").forEach(b=>b.onclick=()=>b.parentNode.classList.toggle("open"));
@@ -105,6 +113,10 @@ function render(){
   }
   window.scrollTo(0,0);
 }
+const arBtn=document.getElementById("arBtn");
+function setAr(on){document.body.classList.toggle("showar",on);try{localStorage.setItem("lessonsAr",on?"1":"0")}catch(e){}}
+try{setAr(localStorage.getItem("lessonsAr")==="1")}catch(e){}
+arBtn.onclick=()=>setAr(!document.body.classList.contains("showar"));
 addEventListener("hashchange",render);render();
 </script>
 </body>
