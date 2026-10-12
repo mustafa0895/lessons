@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F1E8">
+<title>Numerical Expressions – Math G9 Lesson 1</title>
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(247,241,232,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#EADFCD;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#F9E3DC;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#FFF6E1;border:1px solid #F1D9A6;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #E9CFA0;background:#FFF8EA;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#fff;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #E2D5C0}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#E4F3F1;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#FBF3EA;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#E8F5F3}
+.opt.right{border-color:var(--teal);background:#E2F4F1}
+.opt.wrong{border-color:var(--terra);background:#FBE9E4}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#EADFCD;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#fff;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#E8F5F3;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#FBE9E4;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#fff;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#fff}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#E2D5C0}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #fff}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#fff;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#fff}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #fff;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#FFF6E1}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#E2F4F1;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#E2F4F1}
+.pieces button.no{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#E2D5C0}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#E2F4F1;border-left:5px solid var(--teal)}
+.feedback.no{background:#FBE9E4;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#fff;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#fff;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#FFF6E1;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#fff;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#E8F5F3}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#FFF6E1}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#fff;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#FBE9E4}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#FFF6E1;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#fff;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#E8F5F3}.sc.diff{border-color:var(--terra);background:#FBE9E4}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#E2F4F1}.rchips button.wrong{border-color:var(--terra);background:#FBE9E4}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#E8F5F3}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#E8F5F3}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#FBE9E4}
+.ml.done,.mr.done{border-color:var(--teal);background:#E2F4F1;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#E8F5F3}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#FCE8B2;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#FCE8B2;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#E2F4F1}
+.eline.bad{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Math · Unit 1 · Lesson 1<small id="curLabel">Numerical Expressions</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+
+<main id="screens">
+
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <div class="mhero" role="img" aria-label="Math symbols"><span style="left:8%;top:12%">( )</span><span style="left:62%;top:8%">÷</span><span style="left:34%;top:30%">4²</span><span style="left:78%;top:34%">×</span><span style="left:14%;top:46%">[ ]</span><span style="left:56%;top:44%">+ −</span></div>
+    <div class="herotxt"><span class="kicker light">Math · Grade 9 · Unit 1 · Lesson 1</span><h1>Numerical Expressions</h1><p class="ar">العبارات العددية</p></div>
+  </div>
+  <div class="nojsmsg"><b>📱 This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">📱 هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في متصفح Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="happy"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Hi! Today we turn words into math, then find the value step by step. Math has its own grammar rules. Let's learn them!</p><p class="ar">مرحبًا! اليوم سنحوّل الكلمات إلى رياضيات، ثم نوجد القيمة خطوة بخطوة. للرياضيات قواعد مثل قواعد اللغة. هيا نتعلّمها!</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ write a numerical expression from words<br>✔ use parentheses and the fraction bar to group<br>✔ evaluate expressions using the order of operations</p><p class="ar"><b>سأتعلّم اليوم أن:</b><br>✔ أكتب عبارة عددية من عبارة لفظية<br>✔ أستخدم الأقواس وخط الكسر للتجميع<br>✔ أوجد قيمة العبارات باستخدام ترتيب العمليات</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en">💡 <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic.</p><p class="ar">💡 <b>نصيحة:</b> اضغط زر <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمات.</p></div>
+</section>
+
+<section class="screen" data-title="Words into symbols">
+  <span class="kicker">Explore</span>
+  <h2>Math words and their symbols</h2>
+  <p class="hsub ar">كلمات الرياضيات ورموزها</p>
+  <div class="key bi"><p class="en">🔑 A <b class="term">numerical expression</b> uses numbers and operation symbols, like <span class="m">3 + 4 × 2</span>. A <b class="term">verbal expression</b> says the same thing in words.</p><p class="ar">🔑 <b>العبارة العددية</b> تتكوّن من أعداد ورموز عمليات، مثل <span class="m">3 + 4 × 2</span>. أمّا <b>العبارة اللفظية</b> فتقول الشيء نفسه بالكلمات.</p></div>
+  <div class="bi"><p class="en">Tap each word card to see its symbol and an example.</p><p class="ar">اضغط على كل بطاقة لترى رمزها ومثالًا عليها.</p></div>
+  <div class="wcards" id="wcards"></div>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Careful with "less than"! "3 less than 10" means <span class="m">10 − 3</span>, not <span class="m">3 − 10</span>. The order flips.</p><p class="ar">انتبه لعبارة "أقل من"! "3 أقل من 10" تعني <span class="m">10 − 3</span> وليس <span class="m">3 − 10</span>. الترتيب ينقلب.</p></div></div>
+</section>
+
+<section class="screen" data-title="Translate step by step">
+  <span class="kicker">Investigate</span>
+  <h2>From words to an expression</h2>
+  <p class="hsub ar">من الكلمات إلى عبارة عددية</p>
+  <div class="bi"><p class="en">Split the sentence into chunks. Translate one chunk at a time. Tap <b>Next chunk</b>.</p><p class="ar">قسّم الجملة إلى أجزاء، وترجم جزءًا واحدًا في كل مرة. اضغط <b>الجزء التالي</b>.</p></div>
+  <div class="ptabs needjs" id="trTabs"></div>
+  <div class="card needjs"><div class="phrase" id="trPhrase"></div><div class="expr" id="trExpr"></div></div>
+  <div class="msg bi needjs" id="trMsg"></div>
+  <div class="btnrow c needjs"><button class="btn sm" id="trNext">Next chunk ▶</button><button class="btn alt sm" id="trReset">↺ Start again</button></div>
+  <div class="nojsonly card"><div class="bi"><p class="en">five times three decreased by the quotient of twelve and four → <span class="m">5 × 3 − <span class="fr"><span>12</span><span>4</span></span></span><br>four times the sum of two and six → <span class="m">4(2 + 6)</span><br>the sum of twelve and six divided by the difference between five and two → <span class="m"><span class="fr"><span>12 + 6</span><span>5 − 2</span></span></span></p><p class="ar">الأمثلة نفسها مكتوبة بالرموز.</p></div></div>
+</section>
+
+<section class="screen" data-title="Grouping matters">
+  <span class="kicker">Explain</span>
+  <h2>Parentheses and the fraction bar</h2>
+  <p class="hsub ar">الأقواس وخط الكسر</p>
+  <div class="key bi"><p class="en">🔑 <b class="term">Grouping symbols</b> — parentheses ( ), brackets [ ] and the fraction bar — tell you which part to work out first.</p><p class="ar">🔑 <b>رموز التجميع</b>، وهي الأقواس ( ) والأقواس المعقوفة [ ] وخط الكسر، تخبرك بالجزء الذي تحسبه أولًا.</p></div>
+  <div class="card">
+    <div class="bi"><p class="en"><b>1.</b> "four times <u>the sum of</u> two and six"</p><p class="ar"><b>1.</b> "أربعة أمثال <u>مجموع</u> اثنين وستة"</p></div>
+    <div class="seg needjs" id="g1seg"><button data-v="0">Without ( )</button><button data-v="1">With ( )</button></div>
+    <div class="expr sm" id="g1"></div><div class="msg bi needjs" id="g1msg"></div>
+  </div>
+  <div class="card">
+    <div class="bi"><p class="en"><b>2.</b> "the sum of twelve and six <u>divided by</u> the difference between five and two"</p><p class="ar"><b>2.</b> "مجموع اثني عشر وستة <u>مقسومًا على</u> الفرق بين خمسة واثنين"</p></div>
+    <div class="seg needjs" id="g2seg"><button data-v="0">Only ÷</button><button data-v="1">Fraction bar</button></div>
+    <div class="expr sm" id="g2"></div><div class="msg bi needjs" id="g2msg"></div>
+  </div>
+  <div class="zrow"><div class="zav" data-zayed="think"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">The fraction bar is a hidden pair of parentheses: everything on top is one group, and everything below is another.</p><p class="ar">خط الكسر مثل أقواس مخفية: كل ما فوقه مجموعة واحدة، وكل ما تحته مجموعة أخرى.</p></div></div>
+</section>
+
+<section class="screen" data-title="Order of operations">
+  <span class="kicker">Explain</span>
+  <h2>The order of operations</h2>
+  <p class="hsub ar">ترتيب العمليات</p>
+  <div class="bi"><p class="en">To <b>evaluate</b> an expression means to find its value. Everyone must follow the same order, so everyone gets the same answer.</p><p class="ar"><b>إيجاد قيمة</b> العبارة يعني حساب ناتجها. يجب أن يتّبع الجميع الترتيب نفسه، حتى يحصل الجميع على الإجابة نفسها.</p></div>
+  <ol class="oops">
+    <li class="bi"><p class="en"><b>Grouping symbols</b> ( ), [ ], fraction bar</p><p class="ar"><b>رموز التجميع</b> ( ) و [ ] وخط الكسر</p></li>
+    <li class="bi"><p class="en"><b>Exponents</b> like 4² and 2³</p><p class="ar"><b>الأُسس</b> مثل 4² و 2³</p></li>
+    <li class="bi"><p class="en"><b>Multiply and divide</b>, from left to right</p><p class="ar"><b>الضرب والقسمة</b> من اليسار إلى اليمين</p></li>
+    <li class="bi"><p class="en"><b>Add and subtract</b>, from left to right</p><p class="ar"><b>الجمع والطرح</b> من اليسار إلى اليمين</p></li>
+  </ol>
+  <div class="bi"><p class="en">Watch it work. The yellow part is done next.</p><p class="ar">شاهد كيف يعمل. الجزء الأصفر هو الذي يُحسب الآن.</p></div>
+  <div class="solver needjs" data-s="0"></div>
+  <div class="nojsonly card"><p class="m">6² − 2³·3 + 5 = 36 − 8·3 + 5 = 36 − 24 + 5 = 12 + 5 = 17</p></div>
+</section>
+
+<section class="screen" data-title="Brackets inside brackets">
+  <span class="kicker">Investigate</span>
+  <h2>Work from the inside out</h2>
+  <p class="hsub ar">احسب من الداخل إلى الخارج</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Think of boxes inside boxes. To reach the gift, open the smallest box ( ) first, then the bigger box [ ].</p><p class="ar">تخيّل صناديق داخل صناديق. لتصل إلى الهدية، افتح الصندوق الأصغر ( ) أولًا، ثم الصندوق الأكبر [ ].</p></div></div>
+  <div class="solver needjs" data-s="1"></div>
+  <div class="nojsonly card"><p class="m">2 + 5[12 − (3² − 2×3)] = 2 + 5[12 − (9 − 6)] = 2 + 5[12 − 3] = 2 + 5·9 = 2 + 45 = 47</p></div>
+</section>
+
+<section class="screen" data-title="Find the mistake">
+  <span class="kicker">Practice</span>
+  <h2>Find the first mistake</h2>
+  <p class="hsub ar">اكتشف الخطأ الأول</p>
+  <div class="bi"><p class="en">A student solved each expression. Tap the <b>first line</b> that is wrong.</p><p class="ar">حلّ طالبٌ كل عبارة. اضغط على <b>أول سطر</b> فيه خطأ.</p></div>
+  <div class="ptabs needjs" id="erTabs"></div>
+  <div class="card needjs"><div class="expr sm" id="erQ"></div><div id="erLines"></div></div>
+  <div class="msg bi needjs" id="erMsg"></div>
+</section>
+
+<section class="screen" data-title="The garden">
+  <span class="kicker">Apply</span>
+  <h2>Expressions in real life</h2>
+  <p class="hsub ar">العبارات في الحياة اليومية</p>
+  <div class="bi"><p class="en">A rectangular garden is <b>4 m</b> wide. Its length is <b>two less than the square of its width</b>. Find its length and perimeter.</p><p class="ar">حديقة مستطيلة الشكل عرضها <b>4 m</b>، وطولها <b>أقل من مربّع عرضها باثنين</b>. أوجد طولها ومحيطها.</p></div>
+  <div class="card"><svg id="gSvg" viewBox="0 0 320 150" style="width:100%;height:auto"></svg><div class="expr sm" id="gExpr"></div></div>
+  <div class="steps needjs" id="gDots"></div>
+  <div class="msg bi needjs" id="gMsg"></div>
+  <div class="btnrow c needjs"><button class="btn sm" id="gNext">Next step ▶</button><button class="btn alt sm" id="gReset">↺</button></div>
+  <div class="nojsonly card"><p class="m">L = 4² − 2 = 14 m · P = 2(14 + 4) = 36 m</p></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Zayed's checklist</h2>
+  <p class="hsub ar">قائمة زايد</p>
+  <div class="key bi"><p class="en">✔ Translate words one chunk at a time.<br>✔ "the sum of… / the difference between…" after × or ÷ → use parentheses.<br>✔ A long "divided by" → use a fraction bar.<br>✔ Evaluate: grouping → exponents → × ÷ (left to right) → + − (left to right).<br>✔ Nested grouping: start with the innermost.</p><p class="ar">✔ ترجم الكلمات جزءًا بعد جزء.<br>✔ "مجموع… / الفرق بين…" بعد × أو ÷ ← استخدم الأقواس.<br>✔ القسمة على مجموعة كاملة ← استخدم خط الكسر.<br>✔ لإيجاد القيمة: التجميع ← الأُسس ← × ÷ (من اليسار إلى اليمين) ← + − (من اليسار إلى اليمين).<br>✔ عند وجود أقواس داخل أقواس: ابدأ بالأعمق.</p></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work! Now show me what you learned in the quiz.</p><p class="ar">عمل رائع! أرني الآن ما تعلّمته في الاختبار.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+</main>
+
+
+
+
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m){
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed the young scientist" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M80,236 v38 h18 v-38z M112,236 v38 h18 v-38z" fill="#33414F"/>
+<path d="M74,274 h28 q2,8 -4,9 h-26 q-4,-4 2,-9z M108,274 h28 q6,5 2,9 h-26 q-6,-1 -4,-9z" fill="#1F2A37"/>
+<path d="M60,166 q45,-22 90,0 l8,80 q-53,12 -106,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M88,160 l17,30 l17,-30z" fill="#2A9D8F"/><path d="M98,160 l7,12 l7,-12z" fill="#fff" opacity=".35"/>
+<path d="M86,160 l19,34 l-10,52 M124,160 l-19,34" stroke="#C9D3DD" stroke-width="2" fill="none"/>
+<path d="M86,160 l-6,22 l14,4z M124,160 l6,22 l-14,4z" fill="#fff" stroke="#C9D3DD" stroke-width="1.5"/>
+<rect x="122" y="200" width="20" height="18" rx="3" fill="#fff" stroke="#C9D3DD" stroke-width="1.5"/>
+<rect x="126" y="192" width="3" height="14" rx="1.5" fill="#C8553D"/><rect x="132" y="190" width="3" height="16" rx="1.5" fill="#2A9D8F"/><rect x="137" y="194" width="3" height="12" rx="1.5" fill="#E9B44C"/>
+<circle cx="105" cy="212" r="3" fill="#C9D3DD"/><circle cx="105" cy="230" r="3" fill="#C9D3DD"/>
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="math9_1_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"UAE MOE · Grade 9"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+/* ---------- word cards ---------- */
+const WC=[["sum","المجموع","+","the sum of 3 and 4 → "+M("3 + 4"),"مجموع 3 و 4 ← "+M("3 + 4")],
+ ["difference","الفرق","−","the difference between 9 and 2 → "+M("9 − 2"),"الفرق بين 9 و 2 ← "+M("9 − 2")],
+ ["product","حاصل الضرب","× or ·","the product of 6 and 5 → "+M("6 × 5")+" or "+M("6·5"),"حاصل ضرب 6 و 5 ← "+M("6 × 5")+" أو "+M("6·5")],
+ ["quotient","ناتج القسمة","÷ or —","the quotient of 8 and 2 → "+M("8 ÷ 2")+" or "+M(F(8,2)),"ناتج قسمة 8 على 2 ← "+M("8 ÷ 2")+" أو "+M(F(8,2))],
+ ["times","مرّات / أمثال","×","four times six → "+M("4 × 6"),"أربعة أمثال ستة ← "+M("4 × 6")],
+ ["increased by / more than","زائد / أكثر من","+","5 increased by 3 → "+M("5 + 3"),"5 زائد 3 ← "+M("5 + 3")],
+ ["decreased by / less than","ناقص / أقل من","−","3 less than 10 → "+M("10 − 3")+" (order flips!)","3 أقل من 10 ← "+M("10 − 3")+" (الترتيب ينقلب!)"],
+ ["the square of","مربّع","x²","the square of 5 → "+M("5²"),"مربّع 5 ← "+M("5²")]];
+$("#wcards").innerHTML=WC.map((w,i)=>`<button class="wc" data-i="${i}"><b>${w[0]}</b><span class="ar">${w[1]}</span><span class="sym">${w[2]}</span><span class="wex">${w[3]}<span class="ar">${w[4]}</span></span></button>`).join("");
+$$("#wcards .wc").forEach(b=>b.onclick=()=>b.classList.toggle("open"));
+
+/* ---------- translator ---------- */
+const TR=[
+ {c:["five times three"," decreased by ","the quotient of twelve and four"],s:[
+   [0,"5 × 3","“five times three” → "+M("5 × 3"),"“خمسة أمثال ثلاثة” ← "+M("5 × 3")],
+   [1,"5 × 3 −","“decreased by” → subtract "+M("−"),"“ناقص” ← اطرح "+M("−")],
+   [2,"5 × 3 − "+F(12,4),"“the quotient of twelve and four” → "+M(F(12,4))+". Done!","“ناتج قسمة اثني عشر على أربعة” ← "+M(F(12,4))+". انتهينا!"]]},
+ {c:["four times"," the sum of two and six"],s:[
+   [0,"4 ×","“four times” → "+M("4 ×"),"“أربعة أمثال” ← "+M("4 ×")],
+   [1,"4(2 + 6)","“the sum of two and six” is ONE group, so put it in parentheses: "+M("4(2 + 6)"),"“مجموع اثنين وستة” مجموعة واحدة، لذا نضعها بين أقواس: "+M("4(2 + 6)")]]},
+ {c:["the sum of twelve and six"," divided by ","the difference between five and two"],s:[
+   [0,"12 + 6","“the sum of twelve and six” → "+M("12 + 6"),"“مجموع اثني عشر وستة” ← "+M("12 + 6")],
+   [1,F("12 + 6","&nbsp;?&nbsp;"),"“divided by” the whole sum → draw a fraction bar under it.","“مقسومًا على” المجموع كله ← نرسم خط كسر تحته."],
+   [2,F("12 + 6","5 − 2"),"“the difference between five and two” goes below → "+M(F("12 + 6","5 − 2")),"“الفرق بين خمسة واثنين” يوضع تحت الخط ← "+M(F("12 + 6","5 − 2"))]]}];
+let trP=0,trS=-1;const trDone=new Set();
+function trDraw(){const p=TR[trP];
+  $("#trTabs").innerHTML=TR.map((_,i)=>`<button class="${i===trP?"on":""} ${trDone.has(i)?"done":""}" data-i="${i}">${i+1}</button>`).join("");
+  $$("#trTabs button").forEach(b=>b.onclick=()=>{trP=+b.dataset.i;trS=-1;trDraw();});
+  const hi=trS>=0?p.s[trS][0]:-1;
+  $("#trPhrase").innerHTML=p.c.map((c,i)=>`<span class="${i===hi?"hl":i<hi?"donec":""}">${c}</span>`).join("");
+  $("#trExpr").innerHTML=trS>=0?M(p.s[trS][1]):'<span class="muted">?</span>';
+  const m=$("#trMsg");trS<0?setMsg(m,"Tap “Next chunk” to start.","اضغط “الجزء التالي” للبدء."):setMsg(m,p.s[trS][2],p.s[trS][3]);
+  const last=trS===p.s.length-1;if(last)trDone.add(trP);
+  $("#trNext").textContent=last?(trP<TR.length-1?"Next sentence ▶":"All done ✔"):"Next chunk ▶";}
+$("#trNext").onclick=()=>{const p=TR[trP];if(trS<p.s.length-1)trS++;else if(trP<TR.length-1){trP++;trS=-1;}trDraw();};
+$("#trReset").onclick=()=>{trS=-1;trDraw();};trDraw();
+
+/* ---------- grouping compare ---------- */
+const G=[
+ [["4 × 2 + 6 = 8 + 6 = <b>14</b>","This means “four times two, then add six”. Not what the words say!","هذه تعني “أربعة أمثال اثنين ثم أضف ستة”. ليست ما تقوله الكلمات!",1],
+  ["4(2 + 6) = 4 × 8 = <b>32</b>","✅ The parentheses keep “the sum of two and six” together, so we add first.","✅ الأقواس تُبقي “مجموع اثنين وستة” معًا، فنجمع أولًا.",0]],
+ [["12 + 6 ÷ 5 − 2 = 12 + 1.2 − 2 = <b>11.2</b>","Without grouping, only the 6 is divided by 5. Not what the words say!","من دون تجميع، يُقسَم العدد 6 وحده على 5. ليست ما تقوله الكلمات!",1],
+  [F("12 + 6","5 − 2")+" = "+F(18,3)+" = <b>6</b>","✅ The fraction bar groups the top and the bottom. Work each out first, then divide.","✅ خط الكسر يجمع البسط والمقام. احسب كلًّا منهما أولًا ثم اقسم.",0]]];
+function gDraw(n,v){$$(`#g${n+1}seg button`).forEach(b=>b.classList.toggle("on",+b.dataset.v===v));const g=G[n][v];
+  $(`#g${n+1}`).innerHTML=M(g[0]);setMsg($(`#g${n+1}msg`),g[1],g[2],g[3]);}
+[0,1].forEach(n=>{$$(`#g${n+1}seg button`).forEach(b=>b.onclick=()=>gDraw(n,+b.dataset.v));gDraw(n,0);});
+
+/* ---------- step solvers ---------- */
+const SV=[
+ [["<mark>6²</mark> − <mark>2³</mark>·3 + 5","No grouping symbols here. So exponents come first: 6² = 36 and 2³ = 8.","لا توجد رموز تجميع هنا، لذا نبدأ بالأُسس: 6² = 36 و 2³ = 8."],
+  ["36 − <mark>8·3</mark> + 5","Next, multiply: 8·3 = 24.","بعد ذلك نضرب: 8·3 = 24."],
+  ["<mark>36 − 24</mark> + 5","Add and subtract from left to right. Subtraction comes first here: 36 − 24 = 12.","نجمع ونطرح من اليسار إلى اليمين. الطرح يأتي أولًا هنا: 36 − 24 = 12."],
+  ["<mark>12 + 5</mark>","12 + 5 = 17.","12 + 5 = 17."],
+  ["<b>17</b>","🎉 Done! The value is 17.","🎉 انتهينا! القيمة هي 17."]],
+ [["2 + 5[12 − (<mark>3²</mark> − 2×3)]","Open the smallest box ( ) first. Inside it, exponent first: 3² = 9.","نفتح الصندوق الأصغر ( ) أولًا. داخله نبدأ بالأُس: 3² = 9."],
+  ["2 + 5[12 − (9 − <mark>2×3</mark>)]","Still inside ( ): multiply 2×3 = 6.","ما زلنا داخل ( ): نضرب 2×3 = 6."],
+  ["2 + 5[12 − <mark>(9 − 6)</mark>]","Subtract: 9 − 6 = 3. The small box is open!","نطرح: 9 − 6 = 3. فُتح الصندوق الصغير!"],
+  ["2 + 5<mark>[12 − 3]</mark>","Now the bigger box [ ]: 12 − 3 = 9.","الآن الصندوق الأكبر [ ]: 12 − 3 = 9."],
+  ["2 + <mark>5·9</mark>","Multiply before adding: 5·9 = 45.","نضرب قبل أن نجمع: 5·9 = 45."],
+  ["<mark>2 + 45</mark>","Add: 2 + 45 = 47.","نجمع: 2 + 45 = 47."],
+  ["<b>47</b>","🎉 Done! The value is 47.","🎉 انتهينا! القيمة هي 47."]]];
+$$(".solver").forEach(el=>{const S=SV[+el.dataset.s];let k=0;
+  el.innerHTML=`<div class="card"><div class="expr" data-r="e"></div><div class="hist" data-r="h"></div></div><div class="steps" data-r="d"></div><div class="msg bi" data-r="m"></div><div class="btnrow c"><button class="btn sm" data-r="n">Next step ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  function draw(){R("e").innerHTML=M(S[k][0]);R("h").innerHTML=S.slice(0,k).map(s=>`<div>${M("= "+s[0].replace(/<\/?mark>/g,""))}</div>`).join("").replace("= ","");
+    R("d").innerHTML=S.map((_,i)=>`<i class="${i===k?"on":""}"></i>`).join("");setMsg(R("m"),S[k][1],S[k][2]);R("n").disabled=k===S.length-1;}
+  R("n").onclick=()=>{if(k<S.length-1){k++;draw();}};R("r").onclick=()=>{k=0;draw();};draw();});
+
+/* ---------- find the mistake ---------- */
+const ER=[
+ {q:"5 + 3·(6 − 4)²",l:["5 + 3·(2)²","8·(2)²","8·4","32"],w:1,en:"They added 5 + 3 first. The exponent comes first, then multiplication, and addition comes last.",ar:"جمع 5 + 3 أولًا. الأُس يأتي أولًا، ثم الضرب، والجمع في النهاية.",fix:"5 + 3·4 = 5 + 12 = 17"},
+ {q:"18 − 6 ÷ 3 + 1",l:["12 ÷ 3 + 1","4 + 1","5"],w:0,en:"They subtracted 18 − 6 first. Division comes before subtraction.",ar:"طرح 18 − 6 أولًا. القسمة تأتي قبل الطرح.",fix:"18 − 2 + 1 = 16 + 1 = 17"},
+ {q:"2·3²",l:["6²","36"],w:0,en:"The exponent belongs only to the 3, so square 3 first.",ar:"الأُس يخصّ العدد 3 فقط، لذا نربّع 3 أولًا.",fix:"2·9 = 18"},
+ {q:"20 ÷ 4 × 5",l:["20 ÷ 20","1"],w:0,en:"They multiplied first. × and ÷ have the same rank, so work from left to right.",ar:"ضرب أولًا. للضرب والقسمة الأولوية نفسها، لذا نحسب من اليسار إلى اليمين.",fix:"5 × 5 = 25"}];
+let erP=0;const erDone=new Set();
+function erDraw(){const p=ER[erP];
+  $("#erTabs").innerHTML=ER.map((_,i)=>`<button class="${i===erP?"on":""} ${erDone.has(i)?"done":""}" data-i="${i}">${i+1}</button>`).join("");
+  $$("#erTabs button").forEach(b=>b.onclick=()=>{erP=+b.dataset.i;erDraw();});
+  $("#erQ").innerHTML=M(p.q);
+  $("#erLines").innerHTML=p.l.map((l,i)=>`<button class="eline" data-i="${i}">${M("= "+l)}</button>`).join("");
+  setMsg($("#erMsg"),"Check each line. Which is the first wrong step?","افحص كل سطر. ما أول خطوة خاطئة؟");
+  $$("#erLines .eline").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,m=$("#erMsg");
+    if(i===p.w){b.classList.add("bad");$$("#erLines .eline").forEach((x,j)=>{if(j<p.w)x.classList.add("good");if(j>p.w)x.classList.add("faded");});erDone.add(erP);
+      setMsg(m,`✅ Found it! ${p.en}<br>Correct: ${M(p.q+" = "+p.fix)}`,`✅ وجدته! ${p.ar}<br>الحل الصحيح: ${M(p.q+" = "+p.fix)}`);
+      $$("#erTabs button")[erP].classList.add("done");}
+    else if(i<p.w){b.classList.add("good");setMsg(m,"This line is correct. Look further down.","هذا السطر صحيح. ابحث في الأسطر التالية.",true);}
+    else setMsg(m,"There is a mistake before this line. Look higher up.","يوجد خطأ قبل هذا السطر. ابحث في الأعلى.",true);});}
+erDraw();
+
+/* ---------- garden ---------- */
+const GS=[
+ ["The width is 4 m. The length is still unknown.","العرض 4 m، والطول ما زال مجهولًا.","W = 4 m"],
+ ["“the square of its width” → 4². “two less than” → subtract 2 at the end.","“مربّع عرضها” ← 4². “أقل باثنين” ← نطرح 2 في النهاية.","L = 4² − 2"],
+ ["Evaluate: exponent first, 4² = 16, then 16 − 2 = 14. The length is 14 m.","نوجد القيمة: الأُس أولًا 4² = 16، ثم 16 − 2 = 14. الطول 14 m.","L = 16 − 2 = 14 m"],
+ ["Perimeter = 2 × (length + width) → 2(14 + 4).","المحيط = 2 × (الطول + العرض) ← 2(14 + 4).","P = 2(14 + 4)"],
+ ["Parentheses first: 14 + 4 = 18. Then 2 × 18 = 36. The perimeter is 36 m.","الأقواس أولًا: 14 + 4 = 18، ثم 2 × 18 = 36. المحيط 36 m.","P = 2 × 18 = 36 m"]];
+let gk=0;
+function gardenDraw(){const L=gk>=2,u=17,w=4*u,l=L?14*u:120,x=56,y=22;
+  $("#gSvg").innerHTML=`<rect x="${x}" y="${y}" width="${l}" height="${w}" rx="6" fill="#CDE8C5" stroke="${gk>=3?"#C8553D":"#2A9D8F"}" stroke-width="${gk>=3?4:2}" ${L?"":'stroke-dasharray="6 5"'}/>`+
+   `<text x="${x-8}" y="${y+w/2+5}" text-anchor="end" font-size="14" font-weight="700" fill="#1F2A37">4 m</text>`+
+   `<text x="${x+l/2}" y="${y+w+24}" text-anchor="middle" font-size="14" font-weight="700" fill="#1F2A37">${L?"14 m":gk===1?"4² − 2":"?"}</text>`+
+   `<text x="${x+l/2}" y="${y+w/2+6}" text-anchor="middle" font-size="22">🌱🌷🌱</text>`;
+  $("#gExpr").innerHTML=M(GS[gk][2]);$("#gDots").innerHTML=GS.map((_,i)=>`<i class="${i===gk?"on":""}"></i>`).join("");
+  setMsg($("#gMsg"),GS[gk][0],GS[gk][1]);$("#gNext").disabled=gk===GS.length-1;}
+$("#gNext").onclick=()=>{if(gk<GS.length-1){gk++;gardenDraw();}};$("#gReset").onclick=()=>{gk=0;gardenDraw();};gardenDraw();
+
+/* ---------- quiz ---------- */
+const Q=[
+ {q:"For “the quotient of twenty and five”, which operation is used?",qa:"في عبارة “ناتج قسمة عشرين على خمسة”، ما العملية المستخدمة؟",o:[["addition","الجمع"],["subtraction","الطرح"],["multiplication","الضرب"],["division","القسمة"]],a:3,ex:["Quotient means the answer of a division.","ناتج القسمة هو نتيجة عملية القسمة."]},
+ {q:"Write a numerical expression: <i>six times five decreased by the quotient of ten and two</i>.",qa:"اكتب عبارة عددية: <i>ستة أمثال خمسة ناقص ناتج قسمة عشرة على اثنين</i>.",o:[[M("6 × 5 + "+F(10,2)),""],[M("6 × 5 − "+F(10,2)),""],[M("6 × (5 − 10) ÷ 2"),""],[M("6 · 5 − "+F(2,10)),""]],a:1,ex:["6 × 5, then “decreased by” → −, then 10 ÷ 2 as "+F(10,2)+".","6 × 5، ثم “ناقص” ← −، ثم 10 ÷ 2 تُكتب "+F(10,2)+"."]},
+ {q:"Write a numerical expression: <i>Eight minus twelve divided by four</i>.",qa:"اكتب عبارة عددية: <i>ثمانية ناقص اثني عشر مقسومًا على أربعة</i>.",o:[[M("(8 − 12) ÷ 4"),""],[M("8 + 12 ÷ 4"),""],[M("8 − "+F(12,4)),""],[M(F("8 − 12",4)),""]],a:2,ex:["Only twelve is divided by four, so no grouping is needed.","العدد اثنا عشر وحده يُقسَم على أربعة، لذا لا نحتاج إلى تجميع."]},
+ {q:"Which expression matches: <i>the sum of nine and three divided by the difference between seven and three</i>?",qa:"أيّ عبارة تطابق: <i>مجموع تسعة وثلاثة مقسومًا على الفرق بين سبعة وثلاثة</i>؟",o:[[M(F("9 + 3","7 − 3")),""],[M(F("9 − 3","7 + 3")),""],[M(F("9 + 3","3 − 7")),""],[M("9 + 3 ÷ 7 − 3"),""]],a:0,ex:["The sum goes on top and the difference (7 − 3) goes below the fraction bar.","المجموع فوق خط الكسر، والفرق (7 − 3) تحته."]},
+ {q:"In “three times the sum of two and eight”, what do you need to group the addition?",qa:"في عبارة “ثلاثة أمثال مجموع اثنين وثمانية”، ماذا تحتاج لتجميع الجمع؟",o:[["parentheses: "+M("3(2 + 8)"),"الأقواس"],["nothing: "+M("3 × 2 + 8"),"لا شيء"],["an exponent","أُس"],["subtraction","الطرح"]],a:0,ex:["“the sum of” is one group after “times”, so use parentheses.","“مجموع” مجموعة واحدة بعد “أمثال”، لذا نستخدم الأقواس."]},
+ {q:"Evaluate "+M("40 − 3(2 + 5)"),qa:"أوجد قيمة "+M("40 − 3(2 + 5)"),o:[["19",""],["259",""],["33",""],["47",""]],a:0,ex:[M("40 − 3·7 = 40 − 21 = 19"),M("40 − 3·7 = 40 − 21 = 19")]},
+ {q:"Evaluate "+M("7² − 2³·4 + 6"),qa:"أوجد قيمة "+M("7² − 2³·4 + 6"),o:[["11",""],["23",""],["170",""],["−31",""]],a:1,ex:[M("49 − 8·4 + 6 = 49 − 32 + 6 = 23"),M("49 − 8·4 + 6 = 49 − 32 + 6 = 23")]},
+ {q:"Evaluate "+M("2 + 3[15 − (2³ − 2×3)]"),qa:"أوجد قيمة "+M("2 + 3[15 − (2³ − 2×3)]"),o:[["65",""],["35",""],["41",""],["47",""]],a:2,ex:["Inside out: "+M("(8 − 6) = 2")+", "+M("[15 − 2] = 13")+", "+M("2 + 3·13 = 2 + 39 = 41"),"من الداخل للخارج: "+M("(8 − 6) = 2")+"، "+M("[15 − 2] = 13")+"، "+M("2 + 3·13 = 41")]},
+ {q:"A student evaluated "+M("6 + 2·(7 − 4)²")+" and got 72. What was the first error?",qa:"أوجد طالبٌ قيمة "+M("6 + 2·(7 − 4)²")+" فحصل على 72. ما الخطأ الأول؟",o:[["Subtracting 4 from 7 first","طرح 4 من 7 أولًا"],["Adding 6 and 2 before multiplying","جمع 6 و 2 قبل الضرب"],["Squaring 3 to get 9","تربيع 3 للحصول على 9"],["Multiplying 2 by 9","ضرب 2 في 9"]],a:1,ex:["Correct: "+M("6 + 2·9 = 6 + 18 = 24")+". Multiply before adding.","الصحيح: "+M("6 + 2·9 = 6 + 18 = 24")+". نضرب قبل أن نجمع."]},
+ {q:"A rectangle is 5 cm wide. Its length is three less than the square of its width. What is its perimeter?",qa:"مستطيل عرضه 5 cm، وطوله أقل من مربّع عرضه بثلاثة. ما محيطه؟",o:[["27 cm",""],["44 cm",""],["54 cm",""],["110 cm",""]],a:2,ex:["Length "+M("5² − 3 = 22")+". Perimeter "+M("2(22 + 5) = 54")+" cm.","الطول "+M("5² − 3 = 22")+". المحيط "+M("2(22 + 5) = 54")+" cm."]}];
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  $$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${ok?"✅ Correct!":"❌ Not quite."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${ok?"✅ إجابة صحيحة!":"❌ ليست صحيحة."} ${q.ex[1]}</div>`;
+    ans.push(ok?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Scientist";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You are an order-of-operations expert!","رائع! أنت خبير في ترتيب العمليات!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the step-by-step solvers, then retry.","محاولة جيدة! أعد تشغيل الحلول خطوة بخطوة ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Math · Grade 9 · Unit 1 · Lesson 1 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">📸 <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar">📸 <b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
