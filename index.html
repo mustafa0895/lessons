@@ -29,7 +29,7 @@ a{color:inherit;text-decoration:none}
 .ar{font-family:var(--body);font-weight:400}
 .ic,.tic,.aic{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .planet-canvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none;display:block;
-  background:radial-gradient(40% 32% at 50% 100%,rgba(242,184,109,.35) 0%,rgba(63,181,173,.18) 45%,transparent 75%),var(--bg)}
+  background:radial-gradient(70% 38% at 50% 100%,rgba(63,181,173,.28) 0%,rgba(36,83,91,.16) 45%,transparent 75%),radial-gradient(50% 40% at 85% 10%,rgba(124,194,189,.07),transparent 70%),var(--bg)}
 .page{position:relative;z-index:1}
 .gut{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 .section{max-width:var(--maxw);margin:0 auto;padding-block:clamp(72px,11vw,140px)}
@@ -317,10 +317,10 @@ if(THREE){try{start()}catch(e){console.warn(e)}}
 
 function start(){
 const small=Math.min(innerWidth,innerHeight)<700;
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'high-performance'});
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'});
 renderer.setPixelRatio(Math.min(devicePixelRatio,small?1.5:2));
 renderer.setSize(innerWidth,innerHeight,false);
-renderer.setClearColor(0x0c1620,1);
+renderer.setClearColor(0x000000,0);
 const scene=new THREE.Scene();
 const camera=new THREE.PerspectiveCamera(40,innerWidth/innerHeight,0.1,200);camera.position.set(0,0,8);
 const uT={value:0}, res={value:new THREE.Vector2(innerWidth,innerHeight)};
@@ -342,56 +342,6 @@ return 42.0*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));}
 float fbm(vec3 p){float a=.5,s=0.;for(int i=0;i<4;i++){s+=a*snoise(p);p*=2.03;a*=.5;}return s;}`;
 const VERT=`varying vec3 vObj;varying vec3 vN;varying vec3 vV;
 void main(){vObj=normalize(position);vN=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(position,1.0);vV=-mv.xyz;gl_Position=projectionMatrix*mv;}`;
-
-/* ---------- the system: sun (nucleus) + three atom-style orbits with planets ---------- */
-const world=new THREE.Group(); scene.add(world);
-const sys=new THREE.Group(); world.add(sys);
-const SUN_R=.72;
-const sun=new THREE.Mesh(new THREE.SphereGeometry(SUN_R,small?64:96,small?64:96),new THREE.ShaderMaterial({
- uniforms:{uTime:uT},vertexShader:VERT,
- fragmentShader:`precision highp float;uniform float uTime;varying vec3 vObj;varying vec3 vN;varying vec3 vV;${NOISE}
- void main(){vec3 p=normalize(vObj);float n=fbm(p*2.6+vec3(0.,uTime*.12,uTime*.08));float g=snoise(p*16.+uTime*.35);
- vec3 col=mix(vec3(1.,.55,.22),vec3(1.,.92,.68),smoothstep(-.35,.55,n+.25*g));
- float mu=max(dot(normalize(vN),normalize(vV)),0.);col*=.5+.5*pow(mu,.45);col+=vec3(1.,.8,.5)*pow(1.-mu,3.)*.6;
- gl_FragColor=vec4(col,1.);}`}));
-sys.add(sun);
-function glowSprite(color,size,power,intensity){
- const m=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
-  uniforms:{uC:{value:new THREE.Color(color)},uP:{value:power},uI:{value:intensity}},
-  vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-  fragmentShader:'uniform vec3 uC;uniform float uP;uniform float uI;varying vec2 vUv;void main(){float d=length(vUv-.5)*2.;float a=pow(clamp(1.-d,0.,1.),uP);gl_FragColor=vec4(uC*a*uI,a);}'}));
- m.scale.setScalar(size);m.renderOrder=-1;return m;}
-const glows=[glowSprite('#f2b86d',SUN_R*3.2,2.4,1.5),glowSprite('#3fb5ad',SUN_R*7.5,3.2,.8)];
-glows.forEach(g=>world.add(g));
-
-const light=new THREE.PointLight(0xfff0d8,6,0,0); sys.add(light);
-scene.add(new THREE.AmbientLight(0x9fd8d2,.18));
-
-const ORBITS=[
- {r:1.55,tilt:1.22,rotZ:0.0,speed:.62,size:.13,color:'#7cc2bd',phase:0.0},
- {r:2.15,tilt:1.22,rotZ:Math.PI/3,speed:.42,size:.19,color:'#e9c99a',phase:2.1,ring:true},
- {r:2.75,tilt:1.22,rotZ:2*Math.PI/3,speed:.3,size:.15,color:'#6fa8dc',phase:4.2,moon:true},
-];
-const TRAIL=56, planets=[];
-ORBITS.forEach(o=>{
- const g=new THREE.Group(); g.rotation.order='ZYX'; g.rotation.x=o.tilt; g.rotation.z=o.rotZ; sys.add(g);
- // orbit line
- const pts=[];for(let i=0;i<=160;i++){const a=i/160*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(a)*o.r,Math.sin(a)*o.r,0))}
- g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:0x7cc2bd,transparent:true,opacity:.28,blending:THREE.AdditiveBlending,depthWrite:false})));
- // planet
- const pl=new THREE.Mesh(new THREE.SphereGeometry(o.size,40,40),new THREE.MeshStandardMaterial({color:o.color,roughness:.75,metalness:0,emissive:new THREE.Color(o.color),emissiveIntensity:.08}));
- g.add(pl);
- if(o.ring){const rg=new THREE.Mesh(new THREE.RingGeometry(o.size*1.45,o.size*2.2,64),new THREE.MeshBasicMaterial({color:0xe9d6b0,side:THREE.DoubleSide,transparent:true,opacity:.55}));rg.rotation.x=1.1;pl.add(rg)}
- let moon=null;if(o.moon){moon=new THREE.Mesh(new THREE.SphereGeometry(.045,20,20),new THREE.MeshStandardMaterial({color:0xdfe8e6,roughness:1}));pl.add(moon)}
- // trail
- const tp=new Float32Array(TRAIL*3), ta=new Float32Array(TRAIL);for(let i=0;i<TRAIL;i++)ta[i]=Math.pow(1-i/TRAIL,1.6);
- const tg=new THREE.BufferGeometry();tg.setAttribute('position',new THREE.BufferAttribute(tp,3));tg.setAttribute('a',new THREE.BufferAttribute(ta,1));
- const tr=new THREE.Line(tg,new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,uniforms:{uC:{value:new THREE.Color(o.color)}},
-  vertexShader:'attribute float a;varying float vA;void main(){vA=a;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-  fragmentShader:'uniform vec3 uC;varying float vA;void main(){gl_FragColor=vec4(uC,vA*.9);}'}));
- tr.frustumCulled=false; g.add(tr);
- planets.push({o,pl,tp,tg,moon,angle:o.phase});
-});
 
 /* ---------- floating math shapes + symbols ---------- */
 const shapes=new THREE.Group(); scene.add(shapes);
@@ -429,33 +379,15 @@ const st=new THREE.Points(g,new THREE.ShaderMaterial({uniforms:{uTime:uT,uRes:re
  fragmentShader:'varying float vT;void main(){vec2 p=gl_PointCoord-.5;float l=length(p);if(l>.5)discard;gl_FragColor=vec4(vec3(.85,.95,.95),smoothstep(.5,0.,l)*vT);}'}));
 st.frustumCulled=false;scene.add(st);}
 
-/* ---------- scroll choreography ---------- */
-const SX=[{p:0,v:0},{p:.3,v:-3.0},{p:.62,v:3.1},{p:1,v:0}];
-const SY=[{p:0,v:-3.1},{p:.3,v:.35},{p:.62,v:.25},{p:1,v:.1}];
-const SS=[{p:0,v:1.55},{p:.3,v:.78},{p:.62,v:.72},{p:1,v:.95}];
-const sample=(st,p)=>{if(p<=st[0].p)return st[0].v;for(let i=0;i<st.length-1;i++){const a=st[i],b=st[i+1];if(p<=b.p){let t=(p-a.p)/(b.p-a.p);t=t*t*(3-2*t);return a.v+(b.v-a.v)*t}}return st[st.length-1].v};
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-let curP=0,cx=0,cy=SY[0].v,cs=SS[0].v,entry=reduce?1:0,last=performance.now(),t=0;
-const tmp=new THREE.Vector3();
+let curP=0,entry=reduce?1:0,last=performance.now(),t=0;
 function frame(now){
  const dt=Math.min(.05,(now-last)/1000);last=now;if(!reduce)t+=dt;uT.value=t;
  const max=document.documentElement.scrollHeight-innerHeight;const pt=clamp(max>0?scrollY/max:0,0,1);
  curP+=(pt-curP)*Math.min(1,dt*4.5);
- const side=clamp(innerWidth/1200,.45,1),k=Math.min(1,dt*3.2);
- cx+=(sample(SX,curP)*side-cx)*k;cy+=(sample(SY,curP)-cy)*k;cs+=(sample(SS,curP)-cs)*k;
- entry=Math.min(1,entry+dt/1.9);const e=1-Math.pow(1-entry,3);
- world.position.set(cx,cy+(1-e)*-5,0);world.scale.setScalar(cs*(.6+.4*e));
- sys.rotation.z=t*.04; sys.rotation.y=curP*.9; sys.rotation.x=-curP*.35;
- planets.forEach(P=>{
-  if(!reduce)P.angle+=dt*P.o.speed;
-  const a=P.angle,r=P.o.r;P.pl.position.set(Math.cos(a)*r,Math.sin(a)*r,0);P.pl.rotation.y+=dt*.6;
-  if(P.moon)P.moon.position.set(Math.cos(t*2.2)*.32,Math.sin(t*2.2)*.32*.4,Math.sin(t*2.2)*.32);
-  for(let i=0;i<TRAIL;i++){const b=a-i*.028;P.tp[i*3]=Math.cos(b)*r;P.tp[i*3+1]=Math.sin(b)*r;P.tp[i*3+2]=0}
-  P.tg.attributes.position.needsUpdate=true;
- });
- shapes.position.y=curP*3.2; shapes.rotation.y=Math.sin(t*.05)*.08;
+ entry=Math.min(1,entry+dt/1.6);const e=1-Math.pow(1-entry,3);
+ shapes.position.y=curP*3.2-(1-e)*1.5; shapes.rotation.y=Math.sin(t*.05)*.08;
  floaters.forEach(f=>{f.m.position.y=f.base+Math.sin(t*.5+f.ph)*.18;if(f.rs){f.m.rotation.x+=dt*f.rs.x;f.m.rotation.y+=dt*f.rs.y}});
- glows.forEach(g=>g.quaternion.copy(camera.quaternion));
  renderer.render(scene,camera);requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
