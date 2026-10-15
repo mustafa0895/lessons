@@ -443,6 +443,26 @@ figure.photo figcaption.bi{margin:0}
 .nojs .expr:empty,.nojs .hist:empty{display:none}
 
 
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:860px}
+  .navin{max-width:828px}
+  body{font-size:18px}
+  body.teacher{font-size:20px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  figure.photo .ph,.dayphoto{max-height:46vh}
+  .hero .ph{max-height:58vh}
+  .fig svg{max-height:60vh}
+}
+@media (min-width:1280px){
+  .app{max-width:980px}
+  .navin{max-width:948px}
+  body{font-size:19px}
+}
 </style>
 </head>
 <body class="student">
