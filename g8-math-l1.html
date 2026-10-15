@@ -1033,9 +1033,9 @@ function isoSVG(n,layers,t){
   return `<svg viewBox="0 0 400 300" style="width:100%;height:100%">${polys}</svg>`;}
 function cubeFormula(landed){
   const {n,mode}=window.CUBE,f=$("#cubeFormula");
-  if(mode==="sq"){f.innerHTML=M(`${n}${SUP(2)} = ${n}·${n} = <b>${fmt(n*n)}</b>`)+` <span class="muted">squares · مربعًا</span>`;return;}
+  if(mode==="sq"){f.innerHTML=M(`${n}${SUP(2)} = ${n} · ${n} = <b>${fmt(n*n)}</b>`)+` <span class="muted">squares · مربعًا</span>`;return;}
   const k=landed==null?n:landed;
-  f.innerHTML=M(`${n}${SUP(3)} = ${n}·${n}·${n} = `+(k<n?`${k} × ${n*n} = <b>${fmt(k*n*n)}</b>…`:`<b>${fmt(n*n*n)}</b>`))+` <span class="muted">cubes · مكعبًا</span>`;}
+  f.innerHTML=M(`${n}${SUP(3)} = ${n} · ${n} · ${n} = `+(k<n?`${k} × ${n*n} = <b>${fmt(k*n*n)}</b>…`:`<b>${fmt(n*n*n)}</b>`))+` <span class="muted">cubes · مكعبًا</span>`;}
 window.cubeLanded=k=>cubeFormula(k);
 function cubeUpdate(){
   const {n,mode}=window.CUBE;$("#cubeNLab").textContent=n;
