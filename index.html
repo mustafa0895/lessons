@@ -103,27 +103,6 @@ h2 em{font-style:italic;color:var(--teal)}
 .lesson:hover .open .aic{transform:translateX(4px)}
 .empty{text-align:center;color:var(--muted);padding:24px}
 
-
-/* notes library */
-.notes{gap:14px}
-.ntabs{display:flex;flex-wrap:wrap;gap:8px}
-.ntabs::-webkit-scrollbar{display:none}
-.ntab{flex:none;font:inherit;font-size:13.5px;color:var(--muted);background:rgba(0,0,0,.22);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
-.ntab[aria-selected="true"]{color:var(--teal-ink);background:linear-gradient(180deg,#9fe0d9,var(--teal));border-color:transparent}
-.ntab:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
-.nlist{display:flex;flex-direction:column;gap:10px}
-.file .meta{color:var(--muted-2);font-size:12px;display:block;margin-top:2px}
-.facts{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-.dlb{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:7px 12px;border-radius:999px;white-space:nowrap;transition:transform .15s,background .2s}
-.dlb svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.dlb.main{background:var(--teal);color:var(--teal-ink)}
-.dlb.ans{border:1px solid var(--line-strong);color:var(--teal)}
-.dlb:hover{transform:translateY(-1px)}
-.dlb:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
-.ncredit{margin:2px 2px 0;font-size:12.5px;color:var(--muted-2)}
-.pnotes{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px;padding:14px 18px;border-radius:14px;background:rgba(0,0,0,.22);border:1px solid var(--line-strong)}
-.pnotes b{font-weight:500}.pnotes small{color:var(--muted);display:block}
-@media (max-width:520px){.file{grid-template-columns:auto 1fr}.facts{grid-column:1/-1;justify-content:flex-start}}
 /* downloads + stats */
 .dl{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,72px);align-items:center}
 .dl-copy{display:flex;flex-direction:column;gap:14px}
@@ -236,7 +215,6 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
     </div>
     <div class="utabs" id="utabs" role="tablist" aria-label="Units"></div>
     <div class="lessons" id="lessonGrid"></div>
-    <div class="pnotes" id="pNotes" hidden></div>
     <div class="soonbox" id="soonBox" hidden><b>Lessons for this grade are on the way.</b><span dir="rtl" lang="ar">دروس الصف ده جاية قريب</span></div>
   </div>
 </section>
@@ -252,11 +230,11 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
       <span class="eyebrow" data-reveal>Study notes</span>
       <h2 data-reveal style="--rd:80ms">Print it, <em>revise it</em></h2>
       <p class="sub-ar" dir="rtl" lang="ar" data-reveal style="--rd:140ms">مذكرات تطبعها وتراجع منها</p>
-      <p data-reveal style="--rd:200ms">Revision booklets, lesson quizzes, mock exams and diagram sheets for the term, each with its answers. Pick your course and print.</p>
+      <p data-reveal style="--rd:200ms">Bilingual study notes that follow the same lessons you see on Alef, ready to print before a test.</p>
     </div>
-    <div class="files notes" data-reveal style="--rd:160ms">
-      <div class="ntabs" id="ntabs" role="tablist" aria-label="Courses"></div>
-      <div class="nlist" id="nlist"></div>
+    <div class="files" data-reveal style="--rd:160ms">
+      <div class="file"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><div><b>Grade 10 · Math notes</b><small dir="rtl" lang="ar">مذكرة الرياضيات · الصف العاشر</small></div><span class="soon">Coming soon</span></div>
+      <div class="file"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><div><b>Grade 10 · Science notes</b><small dir="rtl" lang="ar">مذكرة العلوم · الصف العاشر</small></div><span class="soon">Coming soon</span></div>
     </div>
   </div>
   <div class="stats">
@@ -316,33 +294,13 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
    {g:7,s:"math",unit:"Unit 2 · Volume",unitAr:"الوحدة 2 · الحجم",n:"Lesson 2-7",en:"Solving Problems Involving Volume",ar:"حل مسائل الحجم",f:"math-volume-l2-7.html"},
    {g:7,s:"science",unit:"Geologic Time",unitAr:"الزمن الجيولوجي",n:"Lesson 1",en:"Analyzing the Rock and Fossil Records",ar:"تحليل سجلات الصخور والأحافير",f:"g7-science-l1.html"}
   ];
-
-  /* study notes */
-  const NOTES=[
-   {k:"g9-math",g:9,s:"math",en:"Grade 9 Math",ar:"رياضيات · الصف التاسع",files:[["revision-booklet","Revision Booklet","ملزمة المراجعة",54,0],["lesson-quizzes","Lesson Quizzes","كويزات الدروس",18,1],["mock-exam","Mock Exam","امتحان تجريبي",4,1]]},
-   {k:"g9-science",g:9,s:"science",en:"Grade 9 Science",ar:"علوم · الصف التاسع",files:[["revision-booklet","Revision Booklet","ملزمة المراجعة",29,0],["lesson-quizzes","Lesson Quizzes","كويزات الدروس",7,1],["mock-exam","Mock Exam","امتحان تجريبي",5,1],["label-the-diagram","Label the Diagram","سمِّ أجزاء الرسم",9,1],["term-glossary","Term Glossary","قاموس المصطلحات",6,0]]},
-   {k:"g10-math",g:10,s:"math",en:"Grade 10 Math",ar:"رياضيات · الصف العاشر",files:[["revision-booklet","Revision Booklet","ملزمة المراجعة",43,0],["lesson-quizzes","Lesson Quizzes","كويزات الدروس",21,1],["mock-exam","Mock Exam","امتحان تجريبي",4,1]]},
-   {k:"g10-science",g:10,s:"science",en:"Grade 10 Science",ar:"علوم · الصف العاشر",files:[["revision-booklet","Revision Booklet","ملزمة المراجعة",25,0],["label-the-diagram","Label the Diagram","سمِّ أجزاء الرسم",9,1],["term-glossary","Term Glossary","قاموس المصطلحات",4,0]]}
-  ];
-  const DLI='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>';
-  const DOC='<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>';
-  const ntabs=document.getElementById('ntabs'),nlist=document.getElementById('nlist');
-  let nk=NOTES[0].k;
-  function renderNotes(){
-    ntabs.innerHTML=NOTES.map(c=>`<button class="ntab" type="button" role="tab" data-k="${c.k}" aria-selected="${c.k===nk}">${c.en}</button>`).join("");
-    ntabs.querySelectorAll('.ntab').forEach(b=>b.onclick=()=>{nk=b.dataset.k;renderNotes()});
-    const c=NOTES.find(x=>x.k===nk),base="notes/"+c.k+"/";
-    nlist.innerHTML=c.files.map(([f,en,ar,pg,ans])=>`<div class="file">${DOC}<div><b>${en}</b><small dir="rtl" lang="ar">${ar}</small><span class="meta">${c.en} · Term 1 · ${pg} ${pg===1?"page":"pages"}</span></div><div class="facts"><a class="dlb main" href="${base+f}.pdf" target="_blank" rel="noopener" download>${DLI}PDF</a>${ans?`<a class="dlb ans" href="${base+f}-answers.pdf" target="_blank" rel="noopener" download>Answers</a>`:""}</div></div>`).join("");
-  }
-  renderNotes();
-  window.__eurekaNotes=(g)=>{const c=NOTES.find(x=>x.g===g);if(!c)return;nk=c.k;renderNotes()};
   const SUBJ={all:["All","الكل"],math:["Math","رياضيات"],science:["Science","علوم"]};
   const ICO={science:'<path d="M9 3h6M10 3v6L5 18a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 14h9"/>',math:'<path d="M18 5V4H6l6 8-6 8h12v-1"/>'};
   const ARW='<svg class="aic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
   const esc=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;");
   const st={g:null,s:"all",u:null};
   const panel=document.getElementById('panel'),utabs=document.getElementById('utabs'),grid=document.getElementById('lessonGrid'),subj=document.getElementById('subj'),soon=document.getElementById('soonBox');
-  document.querySelectorAll('.gc').forEach(el=>{const n=LESSONS.filter(l=>l.g==el.dataset.count).length;const hasN=NOTES.some(c=>c.g==el.dataset.count);el.textContent=n?n+(n===1?" lesson":" lessons"):(hasN?"Notes":"Soon");if(!n&&!hasN)el.classList.add('none')});
+  document.querySelectorAll('.gc').forEach(el=>{const n=LESSONS.filter(l=>l.g==el.dataset.count).length;el.textContent=n?n+(n===1?" lesson":" lessons"):"Soon";if(!n)el.classList.add('none')});
   function card(l){return `<a class="lesson ${l.s} in" href="${BASE+l.f}"><div class="lesson-top"><span class="tag"><svg class="tic" viewBox="0 0 24 24" aria-hidden="true">${ICO[l.s]}</svg>${SUBJ[l.s][0]}</span><span class="grade">Grade ${l.g}</span></div><span class="lnum">${esc(l.n)}</span><h3>${esc(l.en)}</h3><p class="ar" dir="rtl" lang="ar">${l.ar}</p><span class="open">Open lesson ${ARW}</span></a>`}
   function render(scroll){
     document.querySelectorAll('.gbtn').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.g===st.g)));
@@ -350,9 +308,6 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
     panel.hidden=false;
     document.getElementById('pTitle').textContent='Grade '+st.g;
     document.getElementById('pAr').textContent='الصف '+AR[st.g-1];
-    const pn=document.getElementById('pNotes'),gn=NOTES.filter(c=>c.g===st.g);
-    pn.hidden=!gn.length;
-    if(gn.length){const n=gn.reduce((a,c)=>a+c.files.length+c.files.filter(f=>f[4]).length,0);pn.innerHTML=`<div><b>Printable notes for Grade ${st.g}</b><small>${n} PDFs · <span dir="rtl" lang="ar">مذكرات للطباعة</span></small></div><a class="dlb main" href="#downloads" id="pnGo">${DLI}See notes</a>`;document.getElementById('pnGo').onclick=()=>window.__eurekaNotes(st.g)}
     const inGrade=LESSONS.filter(l=>l.g===st.g);
     const subs=[...new Set(inGrade.map(l=>l.s))];
     if(st.s!=="all"&&!subs.includes(st.s))st.s="all";
