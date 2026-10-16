@@ -1,0 +1,1169 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F1E8">
+<title>Scientific Notation – Math G8 Lesson 10</title>
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(247,241,232,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#EADFCD;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#F9E3DC;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#FFF6E1;border:1px solid #F1D9A6;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #E9CFA0;background:#FFF8EA;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#fff;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #E2D5C0}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#E4F3F1;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#FBF3EA;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#E8F5F3}
+.opt.right{border-color:var(--teal);background:#E2F4F1}
+.opt.wrong{border-color:var(--terra);background:#FBE9E4}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#EADFCD;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#fff;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#E8F5F3;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#FBE9E4;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#fff;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#fff}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#E2D5C0}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #fff}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#fff;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#fff}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #fff;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#FFF6E1}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#E2F4F1;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#E2F4F1}
+.pieces button.no{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#E2D5C0}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#E2F4F1;border-left:5px solid var(--teal)}
+.feedback.no{background:#FBE9E4;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#fff;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#fff;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#FFF6E1;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#fff;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#E8F5F3}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#FFF6E1}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#fff;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#FBE9E4}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#FFF6E1;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#fff;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#E8F5F3}.sc.diff{border-color:var(--terra);background:#FBE9E4}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#E2F4F1}.rchips button.wrong{border-color:var(--terra);background:#FBE9E4}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#E8F5F3}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#E8F5F3}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#FBE9E4}
+.ml.done,.mr.done{border-color:var(--teal);background:#E2F4F1;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#E8F5F3}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#FCE8B2;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#FCE8B2;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#E2F4F1}
+.eline.bad{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#fff;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#FFFFFF 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#E2F4F1}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#FBE9E4}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#FFF3D6}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#FFF3D6;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#E2F4F1}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#FBE9E4}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#FFF3D6;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#E8F5F3}.mcard2.wrong{border-color:var(--terra);background:#FBE9E4}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+.ordrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;margin:10px 0;font-size:17px}
+.ordrow>span{min-width:64px;text-align:center;border:2px dashed var(--stone);border-radius:10px;padding:4px 8px;color:var(--muted)}
+.ordrow>span.in{border:2px solid var(--teal);background:#E2F4F1;color:var(--ink)}
+.ordrow b{color:var(--muted)}
+.odc{border:2px solid var(--line);background:#fff;border-radius:14px;padding:14px 8px;font-size:20px}
+.odc.done{border-color:var(--teal);background:#E2F4F1;opacity:.55}
+.odc.shake{animation:shake .4s;border-color:var(--terra)}
+#odCards{grid-template-columns:repeat(3,1fr)}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Math · Grade 8 · Scientific Notation<small id="curLabel">Scientific Notation</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <div class="mhero" role="img" aria-label="Scientific notation"><span style="left:6%;top:10%">4.5 × 10<sup>7</sup></span><span style="left:60%;top:7%">10<sup>−7</sup></span><span style="left:30%;top:28%">45,000,000</span><span style="left:70%;top:30%">4 mm</span><span style="left:8%;top:46%">0.0000005</span><span style="left:52%;top:46%">8 × 10<sup>3</sup></span></div>
+    <div class="herotxt"><span class="kicker light">Math · Grade 8 · Unit 1 · Lesson 10</span><h1>Scientific Notation</h1><p class="ar">الصيغة العلمية</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في متصفح Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="happy"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Scientists work with giant numbers like 45,000,000 and tiny ones like 0.0000005. Counting all those zeros is hard! Scientific notation is a short, clear way to write them.</p><p class="ar">يتعامل العلماء مع أعداد ضخمة مثل 45,000,000 وأعداد صغيرة جدًا مثل 0.0000005. عدّ كل هذه الأصفار صعب! الصيغة العلمية طريقة قصيرة وواضحة لكتابتها.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ write numbers in scientific notation<br>✔ write scientific notation in standard form<br>✔ choose the best unit for a measurement<br>✔ estimate and compare very large and very small numbers</p><p class="ar"><b>سأتعلّم اليوم أن:</b><br>✔ أكتب الأعداد بالصيغة العلمية<br>✔ أكتب الصيغة العلمية بالصيغة القياسية<br>✔ أختار أفضل وحدة للقياس<br>✔ أقدّر الأعداد الكبيرة جدًا والصغيرة جدًا وأقارن بينها</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic.</p><p class="ar"><b>نصيحة:</b> اضغط زر <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمات.</p></div>
+</section>
+
+<section class="screen" data-title="The hopping decimal point">
+  <span class="kicker">Explore</span>
+  <h2>The decimal point hops</h2>
+  <p class="hsub ar">العلامة العشرية تقفز</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A number in <b class="term">scientific notation</b> looks like <span class="m">a × 10<sup>n</sup></span>, where <span class="m">1 ≤ a &lt; 10</span> and <span class="m">n</span> is an integer. The usual way of writing a number, like 45,000,000, is called <b class="term">standard form</b>.</p><p class="ar">العدد بـ<b>الصيغة العلمية</b> يُكتب على الشكل <span class="m">a × 10<sup>n</sup></span>، حيث <span class="m">1 ≤ a &lt; 10</span> و<span class="m">n</span> عدد صحيح. والطريقة المعتادة لكتابة العدد، مثل 45,000,000، تُسمّى <b>الصيغة القياسية</b>.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="fig gp"><svg id="hpSvg" viewBox="0 0 640 230" role="img" aria-label="Place-value cells with a hopping decimal point"></svg></div>
+      <label class="sl needjs">Exponent n = <span id="hpLab">7</span><input type="range" id="hpE" min="-7" max="7" value="7"></label>
+    </div>
+    <div class="side">
+      <div class="expr" id="hpExpr"></div>
+      <div class="msg bi needjs" id="hpMsg"></div>
+    </div>
+  </div>
+  <div class="nojsonly card"><p class="m">4.5 × 10<sup>7</sup> = 45,000,000 · 4.5 × 10<sup>−7</sup> = 0.00000045</p></div>
+</section>
+
+<section class="screen" data-title="To standard form">
+  <span class="kicker">Explain</span>
+  <h2>From scientific notation to standard form</h2>
+  <p class="hsub ar">من الصيغة العلمية إلى الصيغة القياسية</p>
+  <div class="bi"><p class="en">Multiply by the power of 10. A positive exponent moves the decimal point to the <b>right</b>. A negative exponent moves it to the <b>left</b>.</p><p class="ar">نضرب في قوة العدد 10. الأُس الموجب يحرّك العلامة العشرية إلى <b>اليمين</b>، والأُس السالب يحرّكها إلى <b>اليسار</b>.</p></div>
+  <div class="mmachine needjs" data-set="std"></div>
+  <div class="nojsonly card"><p class="m">7 × 10<sup>−7</sup> = 7 × 1/10,000,000 = 0.0000007 · 1.26 × 10<sup>5</sup> = 126,000</p></div>
+</section>
+
+<section class="screen" data-title="To scientific notation">
+  <span class="kicker">Investigate</span>
+  <h2>From standard form to scientific notation</h2>
+  <p class="hsub ar">من الصيغة القياسية إلى الصيغة العلمية</p>
+  <div class="bench">
+    <div class="main">
+      <div class="bi"><p class="en">Move the decimal point until the number is <b>between 1 and 10</b>. Count the hops: that is the exponent. Tap <b>Show me</b>.</p><p class="ar">حرّك العلامة العشرية حتى يصبح العدد <b>بين 1 و 10</b>. عُدّ القفزات: عددها هو الأُس. اضغط <b>Show me</b>.</p></div>
+      <div class="ptabs needjs" id="tsTabs"></div>
+      <div class="fig gp"><svg id="tsSvg" viewBox="0 0 640 220" role="img" aria-label="Decimal point hopping into place"></svg></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="tsNext">Show me ▶</button><button class="btn alt sm" id="tsReset">↺ Start again</button></div>
+    </div>
+    <div class="side">
+      <div class="expr" id="tsExpr"></div>
+      <div class="msg bi needjs" id="tsMsg"></div>
+      <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> Large number → move <b>left</b> → positive exponent. Small number (less than 1) → move <b>right</b> → negative exponent.</p><p class="ar">عدد كبير ← نحرّك العلامة إلى <b>اليسار</b> ← أُس موجب. عدد صغير (أقل من 1) ← نحرّكها إلى <b>اليمين</b> ← أُس سالب.</p></div>
+    </div>
+  </div>
+  <div class="nojsonly card"><p class="m">45,000,000 = 4.5 × 10<sup>7</sup> · 0.0000005 = 5 × 10<sup>−7</sup></p></div>
+</section>
+
+<section class="screen" data-title="Powers of ten">
+  <span class="kicker">Explore</span>
+  <h2>A journey through the powers of ten</h2>
+  <p class="hsub ar">رحلة عبر قوى العدد 10</p>
+  <div class="bench">
+    <div class="main">
+      <div class="bi"><p class="en">Move the slider from the size of the Earth down to a wave of light. Every step on the line below is a power of 10.</p><p class="ar">حرّك المؤشر من حجم الأرض نزولًا حتى موجة الضوء. كل خطوة على الخط بالأسفل هي قوة من قوى العدد 10.</p></div>
+      <div class="fig scene"><svg id="ptScene" viewBox="0 0 640 300" role="img" aria-label="Objects from very big to very small"></svg></div>
+      <label class="sl needjs">Zoom <input type="range" id="ptK" min="0" max="6" value="0"></label>
+      <div class="rangelab needjs"><span>big · كبير</span><span>tiny · صغير جدًا</span></div>
+    </div>
+    <div class="side">
+      <div class="card flat chartcard needjs"><div class="muted">Size in metres (each step = ×10) · الحجم بالمتر</div><svg id="ptLine" viewBox="0 0 300 120" role="img" aria-label="Number line of powers of ten"></svg></div>
+      <div class="msg bi needjs" id="ptMsg"></div>
+    </div>
+  </div>
+  <div class="nojsonly card"><p class="m">Earth 1.3 × 10<sup>7</sup> m · ant 3.7 × 10<sup>−3</sup> m · plant cell 7.8 × 10<sup>−4</sup> m · light wave 5 × 10<sup>−7</sup> m</p></div>
+</section>
+
+<section class="screen" data-title="Choosing units">
+  <span class="kicker">Apply</span>
+  <h2>Choose the unit that is easiest to read</h2>
+  <p class="hsub ar">اختر الوحدة الأسهل في القراءة</p>
+  <div class="bench">
+    <div class="main">
+      <div class="fig gp"><svg id="ruSvg" viewBox="20 0 620 180" role="img" aria-label="A ruler showing 4 millimetres"></svg></div>
+      <div class="seg needjs" id="ruSeg"><button data-v="0" class="on">metres</button><button data-v="1">scientific</button><button data-v="2">millimetres</button></div>
+      <div class="msg bi needjs" id="ruMsg"></div>
+    </div>
+    <div class="side">
+      <div class="bi"><p class="en">Small things: this seed is <b>0.004 m</b> long. Switch between the three ways to write it. Which one is easiest to read?</p><p class="ar">الأشياء الصغيرة: طول هذه البذرة <b>0.004 m</b>. بدّل بين الطرق الثلاث لكتابته. أيّها الأسهل في القراءة؟</p></div>
+    </div>
+  </div>
+  <div class="bi"><p class="en">Big distances: the distance between two towns is <span class="m">4.5 × 10<sup>6</sup></span> cm. Which unit is better?</p><p class="ar">المسافات الكبيرة: المسافة بين مدينتين <span class="m">4.5 × 10<sup>6</sup></span> cm. ما الوحدة الأفضل؟</p></div>
+  <div class="mmachine needjs" data-set="unit"></div>
+  <div class="nojsonly card"><p class="m">0.004 m = 4 × 10<sup>−3</sup> m = 4 mm · 4.5 × 10<sup>6</sup> cm = 45,000 m = 45 km</p></div>
+</section>
+
+<section class="screen" data-title="Estimating">
+  <span class="kicker">Apply</span>
+  <h2>Estimate, then write it short</h2>
+  <p class="hsub ar">قدّر، ثم اكتبه باختصار</p>
+  <div class="bench">
+    <div class="main">
+      <div class="ptabs needjs" id="esTabs"></div>
+      <div class="fig gp"><svg id="esSvg" viewBox="0 0 640 200" role="img" aria-label="Rounding on a number line"></svg></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="esNext">Show me ▶</button><button class="btn alt sm" id="esReset">↺ Start again</button></div>
+    </div>
+    <div class="side">
+      <div class="card flat"><div class="bi"><p class="en"><b>Step 1:</b> Round the number.<br><b>Step 2:</b> Write it in scientific notation.</p><p class="ar"><b>الخطوة 1:</b> قرّب العدد.<br><b>الخطوة 2:</b> اكتبه بالصيغة العلمية.</p></div></div>
+      <div class="expr sm" id="esExpr"></div>
+      <div class="msg bi needjs" id="esMsg"></div>
+    </div>
+  </div>
+  <div class="nojsonly card"><p class="m">8,256 ≈ 8,000 = 8 × 10<sup>3</sup> pixels · 0.000782 ≈ 7.8 × 10<sup>−4</sup> m</p></div>
+</section>
+
+<section class="screen" data-title="Order them">
+  <span class="kicker">Practice</span>
+  <h2>From least to greatest</h2>
+  <p class="hsub ar">من الأصغر إلى الأكبر</p>
+  <div class="bi"><p class="en">Tap the numbers in order, from the <b>least</b> to the <b>greatest</b>. First compare the exponents. If the exponents are the same, compare the numbers in front.</p><p class="ar">اضغط على الأعداد بالترتيب من <b>الأصغر</b> إلى <b>الأكبر</b>. قارن الأُسس أولًا، وإذا تساوت الأُسس فقارن الأعداد التي في المقدمة.</p></div>
+  <div class="ordrow needjs" id="odPicked"></div>
+  <div class="mono needjs" id="odCards"></div>
+  <div class="msg bi needjs" id="odMsg"></div>
+  <div class="nojsonly card"><p class="m">5.21 × 10<sup>5</sup> &lt; 7.1 × 10<sup>5</sup> &lt; 2.1 × 10<sup>6</sup> &lt; 9.11 × 10<sup>6</sup> &lt; 1.2 × 10<sup>7</sup> &lt; 8.01 × 10<sup>7</sup></p></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work! Now show me what you learned in the quiz.</p><p class="ar">عمل رائع! أرني الآن ما تعلّمته في الاختبار.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+</main>
+
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="math8_10_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"UAE MOE · Grade 8"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹ =+,.]*[0-9A-Za-z()\[\]½²³⁴¹])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+const CF=t=>`<span class="cfc">${t}</span>`,VR=t=>`<span class="vrc">${t}</span>`;
+const MS=s=>String(s).replace(/-/g,"−");
+/* ---------- shared: digit cells with a hopping decimal point ---------- */
+function stdText(D,p){let ip=D.slice(0,p).replace(/^0+/,"")||"0",fp=D.slice(p).replace(/0+$/,"");ip=ip.replace(/\B(?=(\d{3})+(?!\d))/g,",");return fp?ip+"."+fp:ip;}
+function cells(sv,D,p,p0,hl,opt){
+  opt=opt||{};const w=48,n=D.length,tot=n*w,x0=320-tot/2,y=84;let s="";
+  for(let i=0;i<n;i++){const isHl=hl(i),x=x0+i*w;
+    s+=`<rect x="${x+3}" y="${y}" width="${w-6}" height="58" rx="10" fill="${isHl?"#E2F4F1":D[i]==="0"?"#FFF8E8":"#fff"}" stroke="${isHl?"#2A9D8F":"#D9CDB8"}" stroke-width="${isHl?2.5:1.5}"/><text x="${x+w/2}" y="${y+40}" text-anchor="middle" font-size="30" font-weight="800" fill="${isHl?"#1F7A6F":"#5B6675"}" font-family="Cambria Math,Cambria,serif">${D[i]}</text>`;}
+  const dir=p>p0?1:-1;
+  for(let j=p0;j!==p;j+=dir){const a=x0+j*w,b=x0+(j+dir)*w,m=(a+b)/2,k=Math.abs(j-p0)+1;
+    s+=`<path d="M${a},${y-4} Q${m},${y-46} ${b},${y-6}" fill="none" stroke="#C8553D" stroke-width="2.5" marker-end="url(#hpA)"/><text x="${m}" y="${y-36}" text-anchor="middle" font-size="16" font-weight="800" fill="#C8553D">${k}</text>`;}
+  if(p0!==p)s+=`<circle cx="${x0+p0*w}" cy="${y+50}" r="5" fill="none" stroke="#9AA5B1" stroke-width="2"/>`;
+  s+=`<circle cx="${x0+p*w}" cy="${y+50}" r="8" fill="#C8553D" class="${REDUCED?"":"pop"}"/>`;
+  if(opt.cap)s+=`<text x="320" y="${y+100}" text-anchor="middle" font-size="22" font-weight="800" fill="#1F2A37">${opt.cap}</text>`;
+  const L=Math.min(x0-30,320-240),Rr=Math.max(x0+tot+30,320+240);
+  sv.setAttribute("viewBox",`${L} 0 ${Rr-L} ${opt.h||210}`);
+  sv.innerHTML=`<defs><marker id="hpA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#C8553D"/></marker></defs>`+s;}
+
+/* ---------- 1. the hopping decimal point ---------- */
+let hpE=7;
+function hpDraw(){const e=hpE;let D,p,p0;
+  if(e>=0){D="45"+"0".repeat(Math.max(0,e-1));p=e+1;p0=1;}else{D="0".repeat(-e)+"45";p=1;p0=-e+1;}
+  const i4=D.indexOf("45");
+  cells($("#hpSvg"),D,p,p0,i=>i===i4||i===i4+1,{cap:stdText(D,p)});
+  $("#hpLab").textContent=MS(e);
+  $("#hpExpr").innerHTML=M(`4.5 × 10${SUP(MS(e))} = ${stdText(D,p)}`);
+  if(e>0)setMsg($("#hpMsg"),`Positive exponent ${e}: the decimal point hops <b>${e} place${e>1?"s":""} to the right</b>. Empty places fill with zeros. The number gets <b>bigger</b>.`,`أُس موجب ${e}: تقفز العلامة العشرية <b>${e} خانات إلى اليمين</b>، وتُملأ الخانات الفارغة بأصفار، فيصبح العدد <b>أكبر</b>.`);
+  else if(e===0)setMsg($("#hpMsg"),"Exponent 0: 10⁰ = 1, so the point doesn't move. 4.5 × 1 = 4.5.","الأُس 0: ‏10⁰ = 1، لذا لا تتحرك العلامة العشرية. ‏4.5 × 1 = 4.5.");
+  else setMsg($("#hpMsg"),`Negative exponent ${MS(e)}: the decimal point hops <b>${-e} place${e<-1?"s":""} to the left</b>. The number gets <b>smaller</b>, between 0 and 1.`,`أُس سالب ${MS(e)}: تقفز العلامة العشرية <b>${-e} خانات إلى اليسار</b>، فيصبح العدد <b>أصغر</b>، بين 0 و 1.`);}
+$("#hpE").oninput=ev=>{hpE=+ev.target.value;hpDraw();};hpDraw();
+
+/* ---------- 2. machines ---------- */
+const MM={
+ std:[{h:"Write in standard form · اكتب بالصيغة القياسية ",t:"7 × 10"+SUP("−7"),s:[
+   ["7 × 10"+SUP("−7"),"The exponent is negative, so the answer is a small number.","الأُس سالب، لذا الناتج عدد صغير."],
+   ["7 × "+F(1,"10"+SUP(7)),"Definition of negative exponents: 10⁻⁷ = 1/10⁷.","تعريف الأُس السالب: 10⁻⁷ = 1/10⁷."],
+   ["7 × "+F(1,"10,000,000"),"10⁷ is 1 followed by 7 zeros.","‏10⁷ هو العدد 1 وبعده 7 أصفار."],
+   ["7 ÷ 10,000,000","Multiplying by 1 over a number is the same as dividing by it.","الضرب في واحد على عدد يساوي القسمة على هذا العدد."],
+   ["<b>0.0000007</b>","Dividing by 10 seven times moves the decimal point 7 places to the left.","القسمة على 10 سبع مرات تحرّك العلامة العشرية 7 خانات إلى اليسار."]]},
+  {h:"Write in standard form · اكتب بالصيغة القياسية ",t:"1.26 × 10"+SUP(5),s:[
+   ["1.26 × 10"+SUP(5),"The exponent is positive, so the answer is a big number.","الأُس موجب، لذا الناتج عدد كبير."],
+   ["1.26 × 100,000","10⁵ is 1 followed by 5 zeros.","‏10⁵ هو العدد 1 وبعده 5 أصفار."],
+   ["<b>126,000</b>","Move the decimal point 5 places to the right and fill the empty places with zeros.","نحرّك العلامة العشرية 5 خانات إلى اليمين ونملأ الخانات الفارغة بأصفار."]]},
+  {h:"Write in standard form · اكتب بالصيغة القياسية ",t:"2.8 × 10"+SUP("−4"),s:[
+   ["2.8 × 10"+SUP("−4"),"Negative exponent: a small number.","أُس سالب: عدد صغير."],
+   ["2.8 ÷ 10,000","10⁻⁴ = 1/10⁴, so divide by 10,000.","‏10⁻⁴ = 1/10⁴، لذا نقسم على 10,000."],
+   ["<b>0.00028</b>","The decimal point hops 4 places to the left.","تقفز العلامة العشرية 4 خانات إلى اليسار."]]}],
+ unit:[{h:"Change the unit · غيّر الوحدة ",t:"4.5 × 10"+SUP(6)+" cm",s:[
+   ["4.5 × 10"+SUP(6)+" cm","Millions of centimetres are hard to imagine.","ملايين السنتيمترات يصعب تخيّلها."],
+   ["4,500,000 cm","Write it in standard form first.","نكتبها بالصيغة القياسية أولًا."],
+   ["45,000 m","100 cm = 1 m, so divide by 100.","‏100 cm = 1 m، لذا نقسم على 100."],
+   ["<b>45 km</b>","1,000 m = 1 km, so divide by 1,000. 45 km is easy to understand!","‏1,000 m = 1 km، لذا نقسم على 1,000. ‏45 km سهلة الفهم!"]]}]};
+
+/* ---------- 3. to scientific notation ---------- */
+const TS=[{D:"45000000",p:8},{D:"00000005",p:1},{D:"3700000",p:7},{D:"00028",p:1}];let tsP=0,tsC=8;
+function tsInit(){tsC=TS[tsP].p;tsDraw();}
+function tsDraw(){const t=TS[tsP],f=t.D.search(/[1-9]/),pt=f+1,k=t.p-tsC,done=tsC===pt;
+  $("#tsTabs").innerHTML=TS.map((_,i)=>`<button class="${i===tsP?"on":""}" data-i="${i}">${i+1}</button>`).join("");
+  $$("#tsTabs button").forEach(b=>b.onclick=()=>{tsP=+b.dataset.i;tsInit();});
+  const nz=t.D.replace(/0+$/,"").length;
+  cells($("#tsSvg"),t.D,tsC,t.p,i=>i>=f&&i<Math.max(nz,f+1),{cap:stdText(t.D,tsC)});
+  const mant=t.D.slice(f).replace(/0+$/,""),mtx=mant.length>1?mant[0]+"."+mant.slice(1):mant;
+  $("#tsExpr").innerHTML=M(stdText(t.D,t.p)+" = "+(done?`<b>${mtx} × 10${SUP(MS(t.p-pt))}</b>`:(k?`${stdText(t.D,tsC)} × 10${SUP(MS(k))}`:"?")));
+  $("#tsNext").disabled=done;
+  if(tsC===t.p)setMsg($("#tsMsg"),t.p>pt?"This number is big. The decimal point is at the end. Hop it to the left until the number is between 1 and 10.":"This number is less than 1. Hop the decimal point to the right until the number is between 1 and 10.",t.p>pt?"هذا عدد كبير، والعلامة العشرية في آخره. حرّكها إلى اليسار حتى يصبح العدد بين 1 و 10.":"هذا العدد أقل من 1. حرّك العلامة العشرية إلى اليمين حتى يصبح العدد بين 1 و 10.");
+  else if(!done)setMsg($("#tsMsg"),`${Math.abs(k)} hop${Math.abs(k)>1?"s":""}. ${stdText(t.D,tsC)} is not between 1 and 10 yet.`,`${Math.abs(k)} قفزة. العدد ${stdText(t.D,tsC)} ليس بين 1 و 10 بعد.`);
+  else setMsg($("#tsMsg"),`${Math.abs(k)} hops ${k>0?"to the left → exponent +":"to the right → exponent −"}${Math.abs(k)}. ${mtx} is between 1 and 10, so the answer is ${mtx} × 10${SUP(MS(k))}.`,`${Math.abs(k)} قفزات ${k>0?"إلى اليسار ← الأُس +":"إلى اليمين ← الأُس −"}${Math.abs(k)}. العدد ${mtx} بين 1 و 10، إذن الناتج ${mtx} × 10${SUP(MS(k))}.`);}
+$("#tsNext").onclick=()=>{const t=TS[tsP],pt=t.D.search(/[1-9]/)+1;if(tsC!==pt){tsC+=pt>tsC?1:-1;tsDraw();}};$("#tsReset").onclick=tsInit;tsInit();
+
+/* ---------- 4. powers of ten (living scene + log line) ---------- */
+function earth(){let s=`<rect width="640" height="300" fill="#0E1A2B"/>`;for(let i=0;i<40;i++)s+=`<circle cx="${(i*137)%640}" cy="${(i*71)%300}" r="${i%3?1:1.6}" fill="#fff" opacity=".7"/>`;
+  return s+`<defs><radialGradient id="eg" cx=".35" cy=".35" r=".75"><stop offset="0" stop-color="#7FC8F0"/><stop offset=".7" stop-color="#2A6FB0"/><stop offset="1" stop-color="#173E6B"/></radialGradient></defs><circle cx="320" cy="140" r="110" fill="url(#eg)"/><path d="M262,92 q30,-22 60,-6 q18,12 6,30 q-20,10 -34,30 q-12,18 -34,6 q-16,-12 -10,-30 q4,-18 12,-30z M352,150 q26,-10 42,10 q10,22 -8,40 q-18,14 -30,-4 q-12,-20 -4,-46z M300,196 q16,-4 22,8 q-4,14 -18,12z" fill="#5FA85A"/><circle cx="320" cy="140" r="110" fill="none" stroke="#BFE6FF" stroke-opacity=".5" stroke-width="3"/><path d="M200,264 H440" stroke="#E9B44C" stroke-width="3" marker-start="url(#ptA)" marker-end="url(#ptA)"/>`;}
+function road(){let s=`<rect width="640" height="300" fill="#CFE9F1"/><rect y="210" width="640" height="90" fill="#E9D9B4"/>`;
+  const sky=(x,h)=>{let b="";[[0,90],[22,130],[46,70],[64,110],[88,60]].forEach(([dx,hh])=>b+=`<rect x="${x+dx}" y="${210-hh*h}" width="20" height="${hh*h}" fill="#5B7A99" stroke="#3F5B78"/>`);return b;};
+  s+=sky(40,1)+sky(500,.9)+`<path d="M60,236 H580" stroke="#5B6675" stroke-width="16"/><path d="M60,236 H580" stroke="#fff" stroke-width="2" stroke-dasharray="14 12"/>`;
+  return s+`<text x="90" y="272" text-anchor="middle" font-size="18" font-weight="800" fill="#1F2A37">Abu Dhabi</text><text x="545" y="272" text-anchor="middle" font-size="18" font-weight="800" fill="#1F2A37">Dubai</text><path d="M140,190 H500" stroke="#C8553D" stroke-width="3" marker-start="url(#ptA)" marker-end="url(#ptA)"/>`;}
+function tower(){let s=`<defs><linearGradient id="tg" x1="0" x2="1"><stop offset="0" stop-color="#9FB3C8"/><stop offset=".5" stop-color="#E4EDF5"/><stop offset="1" stop-color="#8CA2B8"/></linearGradient></defs><rect width="640" height="300" fill="#D8EEF6"/><rect y="270" width="640" height="30" fill="#E9D9B4"/>`;
+  s+=`<path d="M300,270 L304,180 L310,120 L314,70 L318,30 L320,8 L322,30 L326,70 L330,120 L336,180 L340,270z" fill="url(#tg)" stroke="#6F8599"/><path d="M284,270 L292,220 L300,220 L300,270z M348,270 L356,236 L340,236 L340,270z" fill="#B7C6D4"/>`;
+  [[180,20],[210,32],[420,26],[450,18]].forEach(([x,h])=>s+=`<rect x="${x}" y="${270-h}" width="22" height="${h}" fill="#8CA2B8"/>`);
+  return s+`<path d="M372,270 V10" stroke="#C8553D" stroke-width="3" marker-start="url(#ptA)" marker-end="url(#ptA)"/>`;}
+function person(){return `<rect width="640" height="300" fill="#EAF6F8"/><rect y="260" width="640" height="40" fill="#B9DDA6"/><g transform="translate(250,14) scale(.86)">${zayed("happy").replace(/^<svg[^>]*>/,"").replace(/<\/svg>$/,"")}</g><path d="M450,262 V18" stroke="#C8553D" stroke-width="3" marker-start="url(#ptA)" marker-end="url(#ptA)"/>`;}
+function ant(){let s=`<rect width="640" height="300" fill="#F3EBDD"/><rect y="230" width="640" height="70" fill="#C9B48E"/>`;
+  s+=`<g stroke="#2E1F17" stroke-width="5" fill="none" stroke-linecap="round"><path d="M290,170 l-40,58 M310,172 l-10,60 M340,172 l30,58 M300,166 l-60,-10 M330,168 l50,-20"/><path d="M412,132 q30,-50 60,-56 M418,140 q40,-30 70,-20"/></g>`;
+  s+=`<ellipse cx="236" cy="170" rx="70" ry="48" fill="#3B2418"/><ellipse cx="330" cy="166" rx="40" ry="22" fill="#4A2D1E"/><circle cx="405" cy="150" r="34" fill="#3B2418"/><circle cx="418" cy="142" r="6" fill="#111"/><ellipse cx="226" cy="150" rx="26" ry="10" fill="#fff" opacity=".18"/>`;
+  return s+`<path d="M560,230 V102" stroke="#C8553D" stroke-width="3" marker-start="url(#ptA)" marker-end="url(#ptA)"/>`;}
+function cell(){let s=`<rect width="640" height="300" fill="#1F2A37"/><circle cx="320" cy="150" r="140" fill="#EAF7E4"/>`;
+  s+=`<rect x="210" y="70" width="220" height="160" rx="20" fill="#CDEBC0" stroke="#4E8F3A" stroke-width="6"/><rect x="226" y="86" width="188" height="128" rx="14" fill="#E6F6DE" stroke="#8CC47A" stroke-width="2"/><ellipse cx="330" cy="150" rx="56" ry="40" fill="#D9F1F7" stroke="#9CC9D6"/><circle cx="262" cy="118" r="20" fill="#9B6BB0"/><circle cx="258" cy="114" r="7" fill="#6E4485"/>`;
+  [[250,190],[300,104],[392,112],[396,196],[280,200],[360,206]].forEach(([x,y])=>s+=`<ellipse cx="${x}" cy="${y}" rx="14" ry="8" fill="#3E9B3A" transform="rotate(${x%40-20} ${x} ${y})"/>`);
+  return s+`<path d="M210,250 H430" stroke="#E9B44C" stroke-width="3" marker-start="url(#ptA)" marker-end="url(#ptA)"/>`;}
+function wave(){let d="M40,150";for(let x=40;x<=600;x+=4)d+=` L${x},${150-60*Math.sin((x-40)/280*2*Math.PI*2)}`;
+  return `<rect width="640" height="300" fill="#0E1A2B"/><path d="${d}" fill="none" stroke="#6BE38A" stroke-width="10" opacity=".25"/><path d="${d}" fill="none" stroke="#7CF29B" stroke-width="4"/><path d="M110,70 H250" stroke="#E9B44C" stroke-width="3" marker-start="url(#ptA)" marker-end="url(#ptA)"/>`;}
+const OBJ=[{e:7,v:"1.3 × 10"+SUP(7),std:"13,000,000",n:"Diameter of the Earth",a:"قطر الأرض",d:earth},
+ {e:5,v:"1.4 × 10"+SUP(5),std:"140,000",n:"Abu Dhabi to Dubai",a:"من أبوظبي إلى دبي",d:road},
+ {e:2,v:"8.3 × 10"+SUP(2),std:"830",n:"Height of Burj Khalifa",a:"ارتفاع برج خليفة",d:tower},
+ {e:0,v:"1.7 × 10"+SUP(0),std:"1.7",n:"Height of a person",a:"طول إنسان",d:person},
+ {e:-3,v:"3.7 × 10"+SUP("−3"),std:"0.0037",n:"Height of an ant",a:"ارتفاع نملة",d:ant},
+ {e:-4,v:"7.8 × 10"+SUP("−4"),std:"0.00078",n:"Width of a plant cell",a:"عرض خلية نباتية",d:cell},
+ {e:-7,v:"5 × 10"+SUP("−7"),std:"0.0000005",n:"A wave of green light",a:"موجة من الضوء الأخضر",d:wave}];
+let ptK=0;
+function ptDraw(){const o=OBJ[ptK],dark=[0,5,6].includes(ptK);
+  $("#ptScene").innerHTML=`<defs><marker id="ptA" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="${ptK===0||ptK===5?"#E9B44C":ptK===6?"#E9B44C":"#C8553D"}"/></marker></defs><g class="${REDUCED?"":"pop"}">${o.d()}</g><rect x="14" y="14" width="${Math.max(230,o.n.length*10+30)}" height="34" rx="10" fill="${dark?"rgba(255,255,255,.92)":"rgba(31,42,55,.88)"}"/><text x="28" y="37" font-size="18" font-weight="800" fill="${dark?"#1F2A37":"#fff"}">${o.n}</text>`;
+  let L=`<line x1="14" y1="60" x2="290" y2="60" stroke="#9AA5B1" stroke-width="2"/>`;
+  for(let e=-7;e<=7;e++){const x=20+(e+7)/14*264;L+=`<line x1="${x}" y1="${e%7===0?50:55}" x2="${x}" y2="${e%7===0?70:65}" stroke="#9AA5B1"/>`;if(e%7===0)L+=`<text x="${x}" y="88" text-anchor="middle" font-size="11" fill="#5B6675">10<tspan dy="-5" font-size="8">${MS(e)}</tspan></text>`;}
+  L+=`<text x="${20+7/14*264}" y="40" text-anchor="middle" font-size="10" fill="#5B6675">1 m</text>`;
+  OBJ.forEach((q,i)=>{const x=20+(q.e+7)/14*264;L+=`<circle cx="${x}" cy="60" r="${i===ptK?9:5}" fill="${i===ptK?"#C8553D":"#2A9D8F"}" stroke="#fff" stroke-width="2"/>`;});
+  const cx=20+(o.e+7)/14*264;L+=`<text x="${Math.min(250,Math.max(50,cx))}" y="110" text-anchor="middle" font-size="12" font-weight="800" fill="#C8553D">${o.v.replace(/<sup>/,'<tspan dy="-5" font-size="9">').replace(/<\/sup>/,'</tspan>')} m</text>`;
+  $("#ptLine").innerHTML=L;
+  setMsg($("#ptMsg"),`<b>${o.n}</b>: about ${o.v} m = ${o.std} m. `+(o.e>0?"Bigger than 1 m → positive exponent.":o.e===0?"About 1 m → exponent 0.":"Smaller than 1 m → negative exponent."),`<b>${o.a}</b>: حوالي ${o.v} m = ${o.std} m. `+(o.e>0?"أكبر من 1 m ← أُس موجب.":o.e===0?"حوالي 1 m ← الأُس 0.":"أصغر من 1 m ← أُس سالب."));}
+$("#ptK").oninput=ev=>{ptK=+ev.target.value;ptDraw();};ptDraw();
+
+/* ---------- 5. choosing units: the ruler ---------- */
+let ruV=0;
+function ruDraw(){const x0=60,u=52;let s=`<rect x="${x0-14}" y="98" width="${10*u+28}" height="70" rx="8" fill="#F6E7B8" stroke="#C29132" stroke-width="2"/>`;
+  for(let i=0;i<=10;i++){s+=`<line x1="${x0+i*u}" y1="98" x2="${x0+i*u}" y2="${i%5===0?138:124}" stroke="#1F2A37" stroke-width="${i%5===0?2.5:1.6}"/><text x="${x0+i*u}" y="160" text-anchor="middle" font-size="22" font-weight="700" fill="#1F2A37">${i}</text>`;}
+  s+=`<text x="${x0+10*u+16}" y="160" font-size="18" fill="#5B6675">mm</text>`;
+  s+=`<ellipse cx="${x0+2*u}" cy="74" rx="${2*u}" ry="18" fill="#C8A26A" stroke="#8C5A3C" stroke-width="2"/><path d="M${x0},92 V54 M${x0+4*u},92 V54" stroke="#C8553D" stroke-width="2" stroke-dasharray="4 3"/>`;
+  const lab=["0.004 m","4 × 10⁻³ m","4 mm"][ruV];
+  s+=`<path d="M${x0},40 H${x0+4*u}" stroke="#C8553D" stroke-width="3" marker-start="url(#ruA)" marker-end="url(#ruA)"/><rect x="${x0+2*u-90}" y="2" width="180" height="34" rx="10" fill="#fff" stroke="#C8553D"/><text x="${x0+2*u}" y="27" text-anchor="middle" font-size="22" font-weight="800" fill="#C8553D">${lab}</text>`;
+  $("#ruSvg").innerHTML=`<defs><marker id="ruA" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#C8553D"/></marker></defs>`+s;
+  $$("#ruSeg button").forEach(b=>b.classList.toggle("on",+b.dataset.v===ruV));
+  setMsg($("#ruMsg"),["0.004 m: correct, but it has many zeros and is hard to read.","4 × 10⁻³ m: shorter, and it is great for comparing with other numbers.","<b>4 mm</b>: the easiest to read and to imagine! For small things, millimetres are the best unit."][ruV],
+    ["‏0.004 m: صحيحة، لكن فيها أصفار كثيرة ويصعب قراءتها.","‏4 × 10⁻³ m: أقصر، وممتازة للمقارنة مع أعداد أخرى.","<b>4 mm</b>: الأسهل في القراءة والتخيّل! للأشياء الصغيرة، الملّيمتر هو أفضل وحدة."][ruV]);}
+$$("#ruSeg button").forEach(b=>b.onclick=()=>{ruV=+b.dataset.v;ruDraw();});ruDraw();
+
+/* ---------- 6. estimating on a number line ---------- */
+const ES=[{lo:8000,hi:9000,v:8256,tk:["8,000","8,500","9,000"],vl:"8,256",start:"8,256 pixels",res:"8 × 10"+SUP(3)+" pixels",place:"the nearest thousand",placeAr:"لأقرب ألف",
+   pre:"",preAr:""},
+  {lo:7.8,hi:7.9,v:7.82,tk:["7.8","7.85","7.9"],vl:"7.82",start:"0.000782 m",res:"7.8 × 10"+SUP("−4")+" m",place:"the nearest tenth",placeAr:"لأقرب عُشر",
+   pre:"0.000782 = 7.82 × 10⁻⁴. ",preAr:"‏0.000782 = 7.82 × 10⁻⁴. "},
+  {lo:2.4,hi:2.5,v:2.4891,tk:["2.4","2.45","2.5"],vl:"2.4891",start:"24,891,050 miles",res:"2.5 × 10"+SUP(7)+" miles",place:"the nearest tenth",placeAr:"لأقرب عُشر",
+   pre:"24,891,050 = 2.4891 × 10⁷. ",preAr:"‏24,891,050 = 2.4891 × 10⁷. "}];
+let esP=0,esK=0;
+function esDraw(){const t=ES[esP],X=v=>60+(v-t.lo)/(t.hi-t.lo)*520,mid=(t.lo+t.hi)/2,tgt=t.v<mid?t.lo:t.hi;
+  $("#esTabs").innerHTML=ES.map((_,i)=>`<button class="${i===esP?"on":""}" data-i="${i}">${i+1}</button>`).join("");
+  $$("#esTabs button").forEach(b=>b.onclick=()=>{esP=+b.dataset.i;esK=0;esDraw();});
+  let s=`<line x1="40" y1="110" x2="600" y2="110" stroke="#1F2A37" stroke-width="3"/>`;
+  [[t.lo,0],[mid,1],[t.hi,2]].forEach(([v,i])=>s+=`<line x1="${X(v)}" y1="${i===1?96:92}" x2="${X(v)}" y2="${i===1?124:128}" stroke="${i===1?"#9AA5B1":"#1F2A37"}" stroke-width="${i===1?2:3}" ${i===1?'stroke-dasharray="4 3"':""}/><text x="${X(v)}" y="152" text-anchor="middle" font-size="24" font-weight="${i===1?600:800}" fill="${i===1?"#5B6675":"#1F2A37"}">${t.tk[i]}</text>`);
+  if(esK>=1)s+=`<rect x="${Math.min(X(t.v),X(mid))}" y="104" width="${Math.abs(X(mid)-X(t.v))}" height="12" fill="#E9B44C" opacity=".5"/><text x="${X(mid)}" y="186" text-anchor="middle" font-size="18" font-weight="700" fill="#5B6675">middle · المنتصف</text>`;
+  const px=esK>=2?X(tgt):X(t.v);
+  s+=`<g style="transition:transform .7s ease;transform:translateX(${px}px)"><path d="M0,82 L-9,64 H9z" fill="#C8553D"/><rect x="-56" y="24" width="112" height="36" rx="10" fill="#C8553D"/><text x="0" y="49" text-anchor="middle" font-size="21" font-weight="800" fill="#fff">${esK>=2?t.tk[tgt===t.lo?0:2]:t.vl}</text></g>`;
+  $("#esSvg").innerHTML=s;
+  $("#esExpr").innerHTML=M(esK>=3?`${t.start} ≈ <b>${t.res}</b>`:t.start);
+  $("#esNext").disabled=esK>=3;
+  const m=$("#esMsg"),side=t.v<mid?["below","round down","أقل من","نقرّب إلى الأسفل"]:["above","round up","أكبر من","نقرّب إلى الأعلى"];
+  if(esK===0)setMsg(m,`${t.pre}Round to ${t.place}. Where is ${t.vl} on the number line?`,`${t.preAr}نقرّب ${t.placeAr}. أين يقع ${t.vl} على خط الأعداد؟`);
+  else if(esK===1)setMsg(m,`${t.vl} is ${side[0]} the middle ${t.tk[1]}, so we ${side[1]}.`,`العدد ${t.vl} ${side[2]} المنتصف ${t.tk[1]}، لذا ${side[3]}.`);
+  else if(esK===2)setMsg(m,`${t.vl} ≈ ${t.tk[tgt===t.lo?0:2]}.`,`‏${t.vl} ≈ ${t.tk[tgt===t.lo?0:2]}.`);
+  else setMsg(m,`Write it in scientific notation: <b>${t.res}</b>.`,`نكتبه بالصيغة العلمية: <b>${t.res}</b>.`);}
+$("#esNext").onclick=()=>{if(esK<3){esK++;esDraw();}};$("#esReset").onclick=()=>{esK=0;esDraw();};esDraw();
+
+/* ---------- 7. order them ---------- */
+const OD=[[8.01,7],[2.1,6],[5.21,5],[1.2,7],[9.11,6],[7.1,5]],ODs=[...OD].sort((a,b)=>a[0]*10**a[1]-b[0]*10**b[1]);let odN=0;
+const odTx=c=>`${c[0]} × 10${SUP(c[1])}`;
+$("#odCards").innerHTML=OD.map((c,i)=>`<button class="odc" data-i="${i}">${M(odTx(c))}</button>`).join("");
+function odPick(){$("#odPicked").innerHTML=ODs.map((c,i)=>`<span class="${i<odN?"in":""}">${i<odN?M(odTx(c)):"?"}</span>`).join(`<b>&lt;</b>`);}
+$$("#odCards .odc").forEach(b=>b.onclick=()=>{if(b.classList.contains("done"))return;const c=OD[+b.dataset.i],need=ODs[odN];
+  if(c===need){b.classList.add("done");odN++;odPick();
+    if(odN===ODs.length)setMsg($("#odMsg"),`${ICON.check} Perfect order! The exponent decides first: 10⁵ &lt; 10⁶ &lt; 10⁷. Inside the same exponent, the front number decides.`,`${ICON.check} ترتيب ممتاز! الأُس يحسم أولًا: 10⁵ &lt; 10⁶ &lt; 10⁷. ومع الأُس نفسه، يحسم العدد الذي في المقدمة.`);
+    else setMsg($("#odMsg"),"Correct! Find the next smallest.","صحيح! ابحث عن العدد الأصغر التالي.");}
+  else{b.classList.add("shake");setTimeout(()=>b.classList.remove("shake"),400);
+    if(c[1]>need[1])setMsg($("#odMsg"),`Look at the exponents first: 10${SUP(c[1])} is bigger than 10${SUP(need[1])}. There is a smaller number left.`,`انظر إلى الأُسس أولًا: 10${SUP(c[1])} أكبر من 10${SUP(need[1])}. ما زال هناك عدد أصغر.`,true);
+    else setMsg($("#odMsg"),`Same exponent 10${SUP(c[1])}, so compare the front numbers: ${need[0]} &lt; ${c[0]}.`,`الأُس نفسه 10${SUP(c[1])}، لذا نقارن الأعداد في المقدمة: ${need[0]} &lt; ${c[0]}.`,true);}});
+odPick();setMsg($("#odMsg"),"Which number is the smallest?","ما أصغر عدد؟");
+$$(".mmachine").forEach(el=>{const SET=MM[el.dataset.set];let p=0,k=0;
+  el.innerHTML=`<div class="bench"><div class="main"><div class="ptabs" data-r="t"></div><div class="card gp"><div class="muted center" data-r="q"></div><div class="expr" data-r="e"></div><div class="hist" data-r="h"></div></div><div class="steps" data-r="d"></div><div class="btnrow c"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div></div><div class="side"><div class="msg bi" data-r="m"></div></div></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  function draw(){const ex=SET[p],st=ex.s[k];
+    R("t").innerHTML=SET.map((_,i)=>`<button class="${i===p?"on":""}" data-i="${i}">${i+1}</button>`).join("");
+    R("t").querySelectorAll("button").forEach(b=>b.onclick=()=>{p=+b.dataset.i;k=0;draw();});
+    R("q").innerHTML=(ex.h||"Simplify · بسّط ")+M(ex.t);R("e").innerHTML=M((k?"= ":"")+st[0]);
+    R("h").innerHTML=ex.s.slice(0,k).map((s,i)=>`<div>${M((i?"= ":"")+s[0])}</div>`).join("");
+    R("d").innerHTML=ex.s.map((_,i)=>`<i class="${i===k?"on":""}"></i>`).join("");
+    setMsg(R("m"),st[1],st[2]);R("n").disabled=k===ex.s.length-1;}
+  R("n").onclick=()=>{if(k<SET[p].s.length-1){k++;draw();}};R("r").onclick=()=>{k=0;draw();};draw();});
+
+/* ---------- summary flip cards ---------- */
+const FL=[["a × 10"+SUP("n"),"Scientific notation","الصيغة العلمية","1 ≤ a < 10 and n is an integer. Example: 4.5 × 10⁷.","‏1 ≤ a < 10 و n عدد صحيح. مثال: 4.5 × 10⁷."],
+ ["10"+SUP(5)+" →","Positive exponent","أُس موجب","A big number: move the decimal point to the right. 1.26 × 10⁵ = 126,000.","عدد كبير: نحرّك العلامة العشرية إلى اليمين. ‏1.26 × 10⁵ = 126,000."],
+ ["← 10"+SUP("−7"),"Negative exponent","أُس سالب","A small number: move the decimal point to the left. 7 × 10⁻⁷ = 0.0000007.","عدد صغير: نحرّك العلامة العشرية إلى اليسار. ‏7 × 10⁻⁷ = 0.0000007."],
+ ["45,000,000","Count the hops","عُدّ القفزات","Hop until the number is between 1 and 10: 7 hops → 4.5 × 10⁷.","حرّك العلامة حتى يصبح العدد بين 1 و 10: ‏7 قفزات ← 4.5 × 10⁷."],
+ ["4 mm","Best unit","أفضل وحدة","Choose the unit that is easiest to read: 0.004 m = 4 mm.","اختر الوحدة الأسهل في القراءة: 0.004 m = 4 mm."],
+ ["8,256 ≈ 8 × 10"+SUP(3),"Estimate","التقدير","Round first, then write in scientific notation.","قرّب أولًا، ثم اكتب بالصيغة العلمية."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${M(f[0])}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+/* ---------- quiz ---------- */
+const SN=(a,e)=>M(a+" × 10"+SUP(e));
+const Q=[
+ {q:"Write "+SN("2.8","−4")+" in standard form.",qa:"اكتب "+SN("2.8","−4")+" بالصيغة القياسية.",o:[["28,000",""],["0.0028",""],["0.00028",""],["0.000028",""]],a:2,ex:["Negative exponent: move the decimal point 4 places to the left.","أُس سالب: نحرّك العلامة العشرية 4 خانات إلى اليسار."]},
+ {q:"Write "+SN("5.12","5")+" in standard form.",qa:"اكتب "+SN("5.12","5")+" بالصيغة القياسية.",o:[["0.0000512",""],["512,000",""],["51,200",""],["0.000512",""]],a:1,ex:["Move the decimal point 5 places to the right: 512,000.","نحرّك العلامة العشرية 5 خانات إلى اليمين: 512,000."]},
+ {q:"Which is the scientific notation for 3,700,000?",qa:"ما الصيغة العلمية للعدد 3,700,000؟",o:[[SN("3.7","6"),""],[SN("3.7","−6"),""],[SN("0.37","−5"),""],[SN("3.7","5"),""]],a:0,ex:["Hop the point 6 places to the left: 3.7 × 10⁶.","نحرّك العلامة 6 خانات إلى اليسار: 3.7 × 10⁶."]},
+ {q:"Write 0.00006 in scientific notation.",qa:"اكتب 0.00006 بالصيغة العلمية.",o:[[SN("6","5"),""],[SN("6","−5"),""],[SN("0.6","−4"),""],[SN("6","−4"),""]],a:1,ex:["Hop 5 places to the right to get 6, so the exponent is −5.","نحرّك العلامة 5 خانات إلى اليمين لنحصل على 6، إذن الأُس −5."]},
+ {q:"Which number is written correctly in scientific notation?",qa:"أيّ عدد مكتوب بالصيغة العلمية بشكل صحيح؟",o:[[SN("45","6"),""],[SN("0.45","8"),""],[SN("4.5","7"),""],[M("4.5 × 7"+SUP(10)),""]],a:2,ex:["The first number must be between 1 and 10, and the base must be 10.","يجب أن يكون العدد الأول بين 1 و 10، والأساس 10."]},
+ {q:"In 2021, 509,272,509 cases were recorded worldwide. Which is a good estimate?",qa:"في عام 2021 سُجّلت 509,272,509 حالة حول العالم. ما التقدير المناسب؟",o:[[SN(5,8),""],["50,000,000",""],[SN(5,"−8"),""],["600,000,000",""]],a:0,ex:["509,272,509 ≈ 500,000,000 = 5 × 10⁸.","‏509,272,509 ≈ 500,000,000 = 5 × 10⁸."]},
+ {q:"Which form is most appropriate to report the height of an ant?",qa:"ما الصيغة الأنسب لكتابة ارتفاع نملة؟",o:[["0.0037 m",""],["3.7 mm",""],[SN("3.7","−3")+" m",""],["0.0000037 km",""]],a:1,ex:["3.7 mm is the easiest to read and imagine.","‏3.7 mm هي الأسهل في القراءة والتخيّل."]},
+ {q:"A plant cell is 0.000782 m wide. Estimate in scientific notation to the nearest tenth.",qa:"عرض خلية نباتية 0.000782 m. قدّره بالصيغة العلمية لأقرب عُشر.",o:[[SN("7.8","4")+" m",""],[SN("7.8","−4")+" m",""],[SN("7.9","−4")+" m",""],[SN("78","−5")+" m",""]],a:1,ex:["0.000782 = 7.82 × 10⁻⁴ ≈ 7.8 × 10⁻⁴ m.","‏0.000782 = 7.82 × 10⁻⁴ ≈ 7.8 × 10⁻⁴ m."]},
+ {q:"A comet is 24,891,050 miles from Earth. Which is the best estimate?",qa:"يبعد مذنّب عن الأرض 24,891,050 ميلًا. ما أفضل تقدير؟",o:[[SN("2.5","8"),""],[SN("2.4","7"),""],[SN("2.5","7"),""],[SN("24.9","6"),""]],a:2,ex:["24,891,050 = 2.4891 × 10⁷ ≈ 2.5 × 10⁷ (8 in the hundredths place rounds up).","‏24,891,050 = 2.4891 × 10⁷ ≈ 2.5 × 10⁷."]},
+ {q:"The distance between two towns is "+SN("4.5","6")+" cm. Which unit is more appropriate?",qa:"المسافة بين مدينتين "+SN("4.5","6")+" cm. ما الوحدة الأنسب؟",o:[["4.5 km",""],["45 km",""],["450 m",""],[SN("4.5","9")+" mm",""]],a:1,ex:["4,500,000 cm = 45,000 m = 45 km.","‏4,500,000 cm = 45,000 m = 45 km."]}];
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  $$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${ok?ICON.check+" Correct!":ICON.cross+" Not quite."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${ok?"إجابة صحيحة!":"ليست صحيحة."} ${q.ex[1]}</div>`;
+    ans.push(ok?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Mathematician";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You are a scientific notation expert!","رائع! أنت خبير في الصيغة العلمية!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the Show me steps and the monomial machines, then retry.","محاولة جيدة! أعد مشاهدة الحلول خطوة بخطوة وماكينات وحيدات الحد، ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Math · Grade 8 · Unit 1 · Scientific Notation · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+
+</body>
+</html>
