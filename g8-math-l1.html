@@ -732,24 +732,6 @@ figure.photo figcaption.bi{margin:0}
   <div class="nojsonly card"><p class="m">a<sup>2</sup> + (b<sup>3</sup> − c), a = −3, b = 2, c = 5 → (−3)<sup>2</sup> + (2<sup>3</sup> − 5) = 9 + 3 = 12</p></div>
 </section>
 
-<section class="screen" data-title="Find the mistake">
-  <span class="kicker">Practice</span>
-  <h2>Power detective</h2>
-  <p class="hsub ar">محقق القوى</p>
-  <div class="bi"><p class="en">Each student made one mistake. Tap the <b>first line</b> that is wrong.</p><p class="ar">ارتكب كل طالب خطأً واحدًا. اضغط على <b>أول سطر</b> فيه خطأ.</p></div>
-  <div class="bench">
-    <div class="main">
-      <div class="ptabs needjs" id="erTabs"></div>
-      <div class="card needjs"><div class="expr sm" id="erQ"></div><div id="erLines"></div></div>
-    </div>
-    <div class="side">
-      <div class="msg bi needjs" id="erMsg"></div>
-      <div class="zrow"><div class="zav" data-zayed="think"></div>
-        <div class="bubble bi"><span class="who">Zayed</span><p class="en">The two most common mistakes: multiplying the base by the exponent, and losing the negative sign.</p><p class="ar">أشهر خطأين: ضرب الأساس في الأُس، وضياع الإشارة السالبة.</p></div></div>
-    </div>
-  </div>
-</section>
-
 <section class="screen" data-title="Summary">
   <span class="kicker">Remember</span>
   <h2>Tap to flip</h2>
@@ -1197,28 +1179,6 @@ function smDraw(){const p=SM[smP],L=p.f(smV);
   $("#smSteps").innerHTML=L.map((l,i)=>`<div class="sline" style="animation-delay:${REDUCED?0:i*60}ms"><span class="sn">${i?"=":""}</span>${M(l)}</div>`).join("");
   const t=p.tip(smV);setMsg($("#smMsg"),t[0],t[1]);}
 smInit();
-
-/* ---------- 9. find the mistake ---------- */
-const ER=[
- {q:"(−6)"+SUP(2),l:["(−6)·(−6)","−36"],w:1,en:"A negative times a negative is <b>positive</b>.",ar:"السالب في السالب يساوي <b>موجبًا</b>.",fix:"(−6)·(−6) = 36"},
- {q:"(−3)"+SUP(3)+" − 4",l:["−9 − 4","−13"],w:0,en:"They multiplied the base by the exponent: −3·3 = −9. But (−3)³ = (−3)(−3)(−3) = −27.",ar:"ضرب الأساس في الأُس: −3·3 = −9. لكن (−3)³ = (−3)(−3)(−3) = −27.",fix:"−27 − 4 = −31"},
- {q:"4"+SUP(2)+" − (−2)"+SUP(3),l:["16 − (−2)"+SUP(3),"16 − (−8)","16 − 8","8"],w:2,en:"Subtracting a negative is adding: 16 − (−8) = 16 + 8.",ar:"طرح عدد سالب يعني جمعه: 16 − (−8) = 16 + 8.",fix:"16 + 8 = 24"},
- {q:"(−3)"+SUP(3)+" + 4"+SUP(2),l:["−27 + 4"+SUP(2),"−27 + 8","−19"],w:1,en:"4² means 4·4 = 16, not 4·2 = 8.",ar:"‏4² تعني 4·4 = 16، وليس 4·2 = 8.",fix:"−27 + 16 = −11"},
- {q:"−5"+SUP(2),l:["(−5)·(−5)","25"],w:0,en:"There are no parentheses, so the base is only 5: −5² = −(5·5).",ar:"لا توجد أقواس، لذا الأساس هو 5 فقط: −5² = −(5·5).",fix:"−(5·5) = −25"}];
-let erP=0;const erDone=new Set();
-function erDraw(){const p=ER[erP];
-  $("#erTabs").innerHTML=ER.map((_,i)=>`<button class="${i===erP?"on":""} ${erDone.has(i)?"done":""}" data-i="${i}">${i+1}</button>`).join("");
-  $$("#erTabs button").forEach(b=>b.onclick=()=>{erP=+b.dataset.i;erDraw();});
-  $("#erQ").innerHTML=M(p.q);
-  $("#erLines").innerHTML=p.l.map((l,i)=>`<button class="eline" data-i="${i}">${M("= "+l)}</button>`).join("");
-  setMsg($("#erMsg"),"Check each line. Which is the first wrong step?","افحص كل سطر. ما أول خطوة خاطئة؟");
-  $$("#erLines .eline").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,m=$("#erMsg");
-    if(i===p.w){b.classList.add("bad");$$("#erLines .eline").forEach((x,j)=>{if(j<p.w)x.classList.add("good");if(j>p.w)x.classList.add("faded");});erDone.add(erP);
-      setMsg(m,`${ICON.check} Found it! ${p.en}<br>Correct: ${M(p.q+" = "+p.fix)}`,`${ICON.check} وجدته! ${p.ar}<br>الحل الصحيح: ${M(p.q+" = "+p.fix)}`);
-      $$("#erTabs button")[erP].classList.add("done");}
-    else if(i<p.w){b.classList.add("good");setMsg(m,"This line is correct. Look further down.","هذا السطر صحيح. ابحث في الأسطر التالية.",true);}
-    else setMsg(m,"There is a mistake before this line. Look higher up.","يوجد خطأ قبل هذا السطر. ابحث في الأعلى.",true);});}
-erDraw();
 
 /* ---------- 10. summary flip cards ---------- */
 const FL=[["3"+SUP(4),"Base & exponent","الأساس والأُس","Base = the factor that repeats (3). Exponent = how many times (4). 3⁴ = 3·3·3·3 = 81.","الأساس هو العامل المتكرر (3)، والأُس عدد مرات تكراره (4). ‏3⁴ = 81."],

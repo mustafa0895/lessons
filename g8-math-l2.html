@@ -708,24 +708,6 @@ figure.photo figcaption.bi{margin:0}
   <div class="nojsonly card"><p class="m">3x<sup>4</sup>·2x = (3·2)(x<sup>4</sup>·x<sup>1</sup>) = 6x<sup>5</sup></p></div>
 </section>
 
-<section class="screen" data-title="Find the mistake">
-  <span class="kicker">Practice</span>
-  <h2>Power detective</h2>
-  <p class="hsub ar">محقق القوى</p>
-  <div class="bi"><p class="en">Each student made one mistake. Tap the <b>first line</b> that is wrong.</p><p class="ar">ارتكب كل طالب خطأً واحدًا. اضغط على <b>أول سطر</b> فيه خطأ.</p></div>
-  <div class="bench">
-    <div class="main">
-      <div class="ptabs needjs" id="erTabs"></div>
-      <div class="card needjs"><div class="expr sm" id="erQ"></div><div id="erLines"></div></div>
-    </div>
-    <div class="side">
-      <div class="msg bi needjs" id="erMsg"></div>
-      <div class="zrow"><div class="zav" data-zayed="think"></div>
-        <div class="bubble bi"><span class="who">Zayed</span><p class="en">Watch out! The base never changes. We only <b>add</b> exponents when we multiply, and <b>subtract</b> them when we divide.</p><p class="ar">انتبه! الأساس لا يتغيّر أبدًا. نحن فقط <b>نجمع</b> الأُسس عند الضرب، و<b>نطرحها</b> عند القسمة.</p></div></div>
-    </div>
-  </div>
-</section>
-
 <section class="screen" data-title="Summary">
   <span class="kicker">Remember</span>
   <h2>Tap to flip</h2>
@@ -1096,29 +1078,6 @@ function fdDraw(){
     `<span class="muted">x = ${fdX}:</span> 6·${fdX}${SUP(5)} = 6·${fmt(fdX**5)} = <b>${fmt(A)}</b>`,`<span class="muted">check:</span> ${fmt(L)} · ${W} = <b>${fmt(L*W)}</b>`].map((l,i)=>`<div class="sline" style="animation-delay:${REDUCED?0:i*70}ms">${M(l)}</div>`).join("");
   setMsg($("#fdMsg"),`Both ways give ${fmt(A)} square units. So the area of the field is always <b>6x${SUP(5)}</b>.`,`الطريقتان تعطيان ${fmt(A)} وحدة مربعة. إذن مساحة الحقل دائمًا <b>6x${SUP(5)}</b>.`);}
 $("#fdX").oninput=e=>{fdX=+e.target.value;fdDraw();};fdDraw();
-
-/* ---------- 8. find the mistake ---------- */
-const ER=[
- {q:"3"+SUP(4)+" · 3"+SUP(2),l:["9"+SUP(6)],w:0,en:"They multiplied the bases: 3·3 = 9. The base stays 3!",ar:"ضرب الأساسين: 3·3 = 9. الأساس يبقى 3!",fix:"3"+SUP(6)+" = 729"},
- {q:"3"+SUP(4)+" · 3"+SUP(2),l:["3"+SUP(8)],w:0,en:"They multiplied the exponents: 4·2 = 8. When we multiply powers, we <b>add</b> the exponents.",ar:"ضرب الأُسّين: 4·2 = 8. عند ضرب القوى <b>نجمع</b> الأُسس.",fix:"3"+SUP(6)+" = 729"},
- {q:"x"+SUP(5)+" ÷ x"+SUP(2),l:["x"+SUP("2.5")],w:0,en:"They divided the exponents. When we divide powers, we <b>subtract</b>: 5 − 2 = 3.",ar:"قسم الأُسّين. عند قسمة القوى <b>نطرح</b>: 5 − 2 = 3.",fix:"x"+SUP(3)},
- {q:"−2x"+SUP(3)+" · 3x"+SUP(4),l:["(−2·3)(x"+SUP(3)+"·x"+SUP(4)+")","−6x"+SUP(12)],w:1,en:"x³·x⁴: add the exponents, 3 + 4 = 7, not 3·4 = 12.",ar:"‏x³·x⁴: نجمع الأُسس، 3 + 4 = 7، وليس 3·4 = 12.",fix:"−6x"+SUP(7)},
- {q:"10"+SUP(8)+" ÷ 10"+SUP(4),l:["1"+SUP(4)],w:0,en:"They divided the bases: 10 ÷ 10 = 1. Keep the base 10!",ar:"قسم الأساسين: 10 ÷ 10 = 1. أبقِ الأساس 10!",fix:"10"+SUP(4)},
- {q:"2"+SUP(3)+" · 5"+SUP(2),l:["10"+SUP(5)],w:0,en:"The bases are different (2 and 5), so the rule does not work. Find each power first.",ar:"الأساسان مختلفان (2 و 5)، لذا لا تعمل القاعدة. أوجد كل قوة أولًا.",fix:"8·25 = 200"}];
-let erP=0;const erDone=new Set();
-function erDraw(){const p=ER[erP];
-  $("#erTabs").innerHTML=ER.map((_,i)=>`<button class="${i===erP?"on":""} ${erDone.has(i)?"done":""}" data-i="${i}">${i+1}</button>`).join("");
-  $$("#erTabs button").forEach(b=>b.onclick=()=>{erP=+b.dataset.i;erDraw();});
-  $("#erQ").innerHTML=M(p.q);
-  $("#erLines").innerHTML=p.l.map((l,i)=>`<button class="eline" data-i="${i}">${M("= "+l)}</button>`).join("");
-  setMsg($("#erMsg"),"Check each line. Which is the first wrong step?","افحص كل سطر. ما أول خطوة خاطئة؟");
-  $$("#erLines .eline").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,m=$("#erMsg");
-    if(i===p.w){b.classList.add("bad");$$("#erLines .eline").forEach((x,j)=>{if(j<p.w)x.classList.add("good");if(j>p.w)x.classList.add("faded");});erDone.add(erP);
-      setMsg(m,`${ICON.check} Found it! ${p.en}<br>Correct: ${M(p.q+" = "+p.fix)}`,`${ICON.check} وجدته! ${p.ar}<br>الحل الصحيح: ${M(p.q+" = "+p.fix)}`);
-      $$("#erTabs button")[erP].classList.add("done");}
-    else if(i<p.w){b.classList.add("good");setMsg(m,"This line is correct. Look further down.","هذا السطر صحيح. ابحث في الأسطر التالية.",true);}
-    else setMsg(m,"There is a mistake before this line. Look higher up.","يوجد خطأ قبل هذا السطر. ابحث في الأعلى.",true);});}
-erDraw();
 
 /* ---------- summary flip cards ---------- */
 const FL=[[F("2a",5)+", 7, xy","Monomial","وحيدة الحد","A number, a variable, or a product of them. No + or − between different terms.","عدد، أو متغير، أو حاصل ضربهما، دون جمع أو طرح بين حدود مختلفة."],
