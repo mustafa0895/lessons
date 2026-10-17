@@ -90,6 +90,13 @@ h2 em{font-style:italic;color:var(--teal)}
 .lessons{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .lesson{--c:var(--teal);display:flex;flex-direction:column;gap:6px;padding:22px 24px;border-radius:var(--r);background:var(--glass-2);border:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:transform .25s ease,border-color .25s ease;min-width:0}
 .lesson.math{--c:var(--gold)}
+.lesson{position:relative;overflow:hidden;isolation:isolate}
+.lesson .lart{position:absolute;right:14px;bottom:10px;width:82px;height:82px;fill:none;stroke:var(--c);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.42;z-index:-1;transition:opacity .3s ease,transform .4s ease}
+.lesson h3,.lesson .ar{text-shadow:0 0 10px #101e29,0 0 3px #101e29}
+.lesson .lart text{fill:var(--c);stroke:none;font-family:var(--display)}
+.lesson .lart circle{fill:var(--c);stroke:none}
+.lesson:hover .lart{opacity:.75;transform:translateY(-3px) rotate(-2deg)}
+@media (prefers-reduced-motion:reduce){.lesson .lart{transition:none}}
 .lesson:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 55%,transparent)}
 .lesson-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
 .tag{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;color:var(--c);padding:5px 10px 5px 8px;border-radius:999px;background:color-mix(in srgb,var(--c) 12%,transparent);border:1px solid color-mix(in srgb,var(--c) 25%,transparent)}
@@ -436,7 +443,18 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
   const st={g:null,s:"all",u:null};
   const panel=document.getElementById('panel'),utabs=document.getElementById('utabs'),grid=document.getElementById('lessonGrid'),subj=document.getElementById('subj'),soon=document.getElementById('soonBox');
   document.querySelectorAll('.gc').forEach(el=>{const n=LESSONS.filter(l=>l.g==el.dataset.count).length;el.textContent=n?n+(n===1?" lesson":" lessons"):"Soon";if(!n){el.classList.add('none');el.closest('.gbtn').classList.add('empty')}});
-  function card(l){return `<a class="lesson ${l.s} in" href="${BASE+l.f}"><div class="lesson-top"><span class="tag"><svg class="tic" viewBox="0 0 24 24" aria-hidden="true">${ICO[l.s]}</svg>${SUBJ[l.s][0]}</span><span class="grade">Grade ${l.g}</span></div><span class="lnum">${esc(l.n)}</span><h3>${esc(l.en)}</h3><p class="ar" dir="rtl" lang="ar">${l.ar}</p><span class="open">Open lesson ${ARW}</span></a>`}
+  /* unit line art (keyed by words in the unit name; falls back to the subject) */
+  const ART=[
+   [/expon|scientific notation|power/i,'<path d="M14 84 C40 82 56 74 66 58 S80 22 86 12"/><circle cx="30" cy="81" r="2.6"/><circle cx="52" cy="72" r="2.6"/><circle cx="68" cy="54" r="2.6"/><circle cx="80" cy="28" r="2.6"/><text x="12" y="44" font-size="30" font-style="italic">a</text><text x="30" y="26" font-size="17" font-style="italic">n</text><path d="M10 92h80M10 92V8"/>'],
+   [/expression|operation|unit 1$/i,'<path d="M26 14 Q10 50 26 86M74 14 Q90 50 74 86"/><path d="M36 50h12M42 44v12"/><path d="M55 44l10 12M65 44l-10 12"/><circle cx="50" cy="28" r="2.6"/><path d="M44 72h12"/><circle cx="50" cy="66" r="2.2"/><circle cx="50" cy="78" r="2.2"/>'],
+   [/ecolog|biosphere|organism|biome/i,'<path d="M50 90V52"/><path d="M50 62 L36 48M50 58 L64 44M50 70 L60 62"/><path d="M16 44 C20 28 40 24 50 30 C60 22 82 26 86 42 C78 50 62 48 50 46 C38 50 22 50 16 44Z"/><path d="M8 90h84"/><path d="M70 84 C72 74 82 72 88 74 C86 82 78 86 70 84Z M70 84 L84 76"/>'],
+   [/change over time|rock|fossil/i,'<path d="M6 30 C26 24 46 34 66 28 S88 26 94 28"/><path d="M6 48 C26 42 46 52 66 46 S88 44 94 46"/><path d="M6 66 C26 60 46 70 66 64 S88 62 94 64"/><path d="M6 84 C26 78 46 88 66 82 S88 80 94 82"/><path d="M40 56 a4 4 0 1 1 4 4 a7 7 0 1 1 -8 -8 a10 10 0 1 1 12 12"/>'],
+   [/geologic|time/i,'<path d="M30 10h40M30 90h40"/><path d="M34 10 C34 34 50 40 50 50 C50 60 34 66 34 90M66 10 C66 34 50 40 50 50 C50 60 66 66 66 90"/><path d="M40 78h20M38 84h24"/><path d="M44 30h12"/><path d="M50 50v14"/>'],
+   [/volume|prism|area/i,'<path d="M50 12 L84 30 L84 70 L50 88 L16 70 L16 30Z"/><path d="M16 30 L50 48 L84 30M50 48V88"/><path d="M27 36v40M38 42v40M61 42v40M72 36v40" opacity=".55"/><path d="M16 50 L50 68 L84 50" opacity=".55"/>'],
+  ];
+  const ARTFB={science:'<path d="M40 12h20M43 12v24L22 80a6 6 0 0 0 5 8h46a6 6 0 0 0 5-8L57 36V12"/><path d="M30 64h40"/><circle cx="44" cy="74" r="3"/><circle cx="58" cy="70" r="2"/>',math:'<path d="M72 18H26l26 32-26 32h46"/>'};
+  const artFor=l=>{const hit=ART.find(([re])=>re.test(l.unit+' '+l.en));return `<svg class="lart" viewBox="0 0 100 100" aria-hidden="true">${hit?hit[1]:ARTFB[l.s]}</svg>`};
+  function card(l){return `<a class="lesson ${l.s} in" href="${BASE+l.f}">${artFor(l)}<div class="lesson-top"><span class="tag"><svg class="tic" viewBox="0 0 24 24" aria-hidden="true">${ICO[l.s]}</svg>${SUBJ[l.s][0]}</span><span class="grade">Grade ${l.g}</span></div><span class="lnum">${esc(l.n)}</span><h3>${esc(l.en)}</h3><p class="ar" dir="rtl" lang="ar">${l.ar}</p><span class="open">Open lesson ${ARW}</span></a>`}
   function render(scroll){
     document.querySelectorAll('.gbtn').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.g===st.g)));
     if(!st.g){panel.hidden=true;return}
