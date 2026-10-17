@@ -133,6 +133,18 @@ h2 em{font-style:italic;color:var(--teal)}
 .tst b{font-family:var(--display);font-weight:400;font-size:21px;color:var(--l-ink)}
 .tst span{font-size:13px;color:var(--l-muted)}
 .tpanel svg{display:block;width:100%;height:auto}
+.ecostage,.canstage{position:relative;aspect-ratio:1200/670;overflow:hidden;background:#d9c69a}
+.canstage{background:#c98a5a}
+.ecostage img,.canstage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ecostage .wet,.canstage .ov{opacity:0;transition:opacity .35s linear}
+.ecostage .dim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,52,64,.55),rgba(40,52,64,0) 55%);opacity:0;transition:opacity .35s linear;pointer-events:none}
+#ecoRainC{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.herd{position:absolute;inset:0;pointer-events:none}
+.herd img{position:absolute;inset:auto;height:auto;object-fit:contain;transform-origin:50% 100%;transition:opacity .6s ease,transform .6s ease;filter:drop-shadow(0 4px 3px rgba(40,30,10,.28))}
+.herd img.off{opacity:0;transform:translateY(6px) scale(.96)}
+.herd img.flip{scale:-1 1}
+.cantag{position:absolute;left:50%;top:5%;transform:translateX(-50%);background:rgba(255,255,255,.9);color:#0f2230;font-weight:600;font-size:clamp(12px,2.2vw,15px);padding:6px 14px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 18px -8px rgba(0,0,0,.4)}
+@media (prefers-reduced-motion:reduce){.ecostage .wet,.canstage .ov,.herd img,.ecostage .dim{transition:none}}
 #pri3d{display:block;width:100%;aspect-ratio:16/10;background:radial-gradient(120% 90% at 50% 0%,#e3f2f4,#fff);touch-action:none;cursor:grab}
 #pri3d:active{cursor:grabbing}
 .tctl{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;padding:14px 18px;border-top:1px solid var(--l-line)}
@@ -296,7 +308,13 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
       <!-- savanna -->
       <div class="tpanel" id="tp-eco" role="tabpanel" aria-labelledby="tt-eco">
         <div class="tst"><b>The savanna, live</b><span>Drag the rain. Watch the food chain.</span></div>
-        <svg id="ecoSvg" viewBox="0 0 640 300" role="img" aria-label="Savanna scene that changes with rainfall"></svg>
+        <div class="ecostage" id="ecoStage" role="img" aria-label="Savanna scene that changes with rainfall">
+          <img src="try/sav-dry.webp" alt="" width="1200" height="670" loading="lazy" decoding="async">
+          <img src="try/sav-wet.webp" alt="" width="1200" height="670" loading="lazy" decoding="async" class="wet" id="ecoWet">
+          <div class="dim" id="ecoDim"></div>
+          <div class="herd" id="ecoHerd"></div>
+          <canvas id="ecoRainC" aria-hidden="true"></canvas>
+        </div>
         <svg id="ecoChart" viewBox="0 0 640 170" role="img" aria-label="Grass, zebras and lions over the last 30 seasons"></svg>
         <div class="tctl"><label class="trange"><span>Rainfall · الأمطار</span><input id="ecoRain" type="range" min="0" max="100" value="55"></label><button class="tbtn ghost" type="button" id="ecoLions">Remove lions</button></div>
         <div class="tread" id="ecoRead"></div>
@@ -315,7 +333,12 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
       <!-- canyon -->
       <div class="tpanel" id="tp-can" role="tabpanel" aria-labelledby="tt-can" hidden>
         <div class="tst"><b>From a stream to a canyon</b><span>Drag forward in time.</span></div>
-        <svg id="canSvg" viewBox="0 0 640 330" role="img" aria-label="Rock layers cut by a river over millions of years"></svg>
+        <div class="canstage" id="canStage" role="img" aria-label="A river cutting a canyon over millions of years">
+          <img src="try/canyon-1.webp" alt="" width="1200" height="670" loading="lazy" decoding="async" id="can1">
+          <img src="try/canyon-2.webp" alt="" width="1200" height="670" loading="lazy" decoding="async" id="can2" class="ov">
+          <img src="try/canyon-3.webp" alt="" width="1200" height="670" loading="lazy" decoding="async" id="can3" class="ov">
+          <div class="cantag" id="canTag"></div>
+        </div>
         <div class="tctl"><label class="trange"><span>Time · الزمن</span><input id="canT" type="range" min="0" max="100" value="0"></label></div>
         <div class="tread" id="canRead"></div>
         <div class="tmsg"><p>Slow water + a very long time = a huge canyon.</p><p dir="rtl" lang="ar">ماء بطيء + وقت طويل جدًا = أخدود هائل.</p></div>
@@ -547,45 +570,18 @@ pick('eco');
 if('IntersectionObserver' in window){new IntersectionObserver(es=>{visible=es[0].isIntersecting;document.dispatchEvent(new Event('trytab'))},{rootMargin:'100px'}).observe(zone)}else visible=true;
 
 /* ---------- savanna ---------- */
-const sc=$('ecoSvg'),ch=$('ecoChart'),rd=$('ecoRead'),rain=$('ecoRain'),nl=$('ecoLions');
+const ch=$('ecoChart'),rd=$('ecoRead'),rain=$('ecoRain'),nl=$('ecoLions'),wet=$('ecoWet'),dim=$('ecoDim'),herd=$('ecoHerd'),rc=$('ecoRainC');
 let lions=true;
-const defs=el('defs',{},sc);
-const sky=el('linearGradient',{id:'tSky',x1:0,y1:0,x2:0,y2:1},defs),s1=el('stop',{offset:0},sky),s2=el('stop',{offset:1},sky);
-const gr=el('linearGradient',{id:'tGr',x1:0,y1:0,x2:0,y2:1},defs),g1=el('stop',{offset:0},gr),g2=el('stop',{offset:1},gr);
-el('rect',{width:640,height:300,fill:'url(#tSky)'},sc);
-const sunGlow=el('circle',{cx:520,cy:70,r:56,fill:'#F7C65A',opacity:.18},sc),sun=el('circle',{cx:520,cy:70,r:30,fill:'#F7C65A'},sc);
-const cloudG=el('g',{},sc);
-const cloud=(x,y,s)=>{const g=el('g',{transform:`translate(${x} ${y}) scale(${s})`},cloudG);[[0,0,26],[28,-12,32],[60,0,26],[30,8,28]].forEach(c=>el('circle',{cx:c[0],cy:c[1],r:c[2]},g));g._x=x;g._y=y;g._s=s;return g};
-const clouds=[cloud(70,70,1),cloud(260,52,1.25),cloud(430,82,.9),cloud(600,60,1.1)];
-const rainG=el('g',{stroke:'#9CC7E6','stroke-width':1.6,'stroke-linecap':'round'},sc);
-const drops=[];for(let i=0;i<90;i++)drops.push({x:Math.random()*640,y:Math.random()*300,v:5+Math.random()*4,e:el('line',{opacity:0},rainG)});
-el('path',{d:'M0 190 C120 170 220 186 330 176 S540 168 640 182 L640 300 L0 300Z',fill:'url(#tGr)'},sc);
-el('path',{d:'M0 210 C150 196 260 214 400 204 S580 198 640 210 L640 300 L0 300Z',fill:'url(#tGr)',opacity:.85},sc);
-const tree=(x,y,s)=>{const g=el('g',{transform:`translate(${x} ${y}) scale(${s})`},sc);el('path',{d:'M0 0 L-3 -46 M-3 -30 L-18 -50 M-2 -38 L14 -54',stroke:'#5B4232','stroke-width':4,fill:'none','stroke-linecap':'round'},g);return el('ellipse',{cx:-2,cy:-56,rx:44,ry:12},g)};
-const crowns=[tree(110,214,1.1),tree(470,206,.85),tree(590,216,.7)];
-const water=el('path',{fill:'#6FB3D8'},sc);
-const grassG=el('g',{},sc),blades=[];
-for(let i=0;i<180;i++){const x=Math.random()*640,base=232+Math.random()*64;blades.push({x,base,h:.6+Math.random()*.8,w:(Math.random()-.5)*6,e:el('path',{fill:'none','stroke-width':1.8,'stroke-linecap':'round'})})}
-blades.sort((a,b)=>a.base-b.base).forEach(b=>grassG.appendChild(b.e));
-const herdG=el('g',{},sc),lionG=el('g',{},sc);
-const zebra=(x,y)=>{const g=el('g',{transform:`translate(${x} ${y})`},herdG);el('ellipse',{cx:0,cy:-10,rx:11,ry:6,fill:'#F4F1EA',stroke:'#2B2B2B','stroke-width':1.2},g);for(let k=-7;k<=7;k+=4)el('line',{x1:k,y1:-15,x2:k+1,y2:-5,stroke:'#2B2B2B','stroke-width':1.6},g);el('path',{d:'M9 -13 L15 -22 L19 -20 L13 -10Z',fill:'#F4F1EA',stroke:'#2B2B2B','stroke-width':1.2},g);[-7,-3,4,8].forEach(k=>el('line',{x1:k,y1:-5,x2:k,y2:4,stroke:'#2B2B2B','stroke-width':1.6},g));return g};
-const lion=(x,y)=>{const g=el('g',{transform:`translate(${x} ${y})`},lionG);el('ellipse',{cx:0,cy:-10,rx:12,ry:6.5,fill:'#D9A35B'},g);el('circle',{cx:12,cy:-16,r:7,fill:'#8C5A2B'},g);el('circle',{cx:13,cy:-16,r:4.5,fill:'#D9A35B'},g);[-8,-4,5,9].forEach(k=>el('line',{x1:k,y1:-5,x2:k,y2:4,stroke:'#B5843F','stroke-width':2.2},g));el('path',{d:'M-12 -11 Q-20 -14 -19 -4',fill:'none',stroke:'#B5843F','stroke-width':1.6},g);return g};
-const Z=[],L=[];
-for(let i=0;i<14;i++){const z=zebra(160+((i*67)%420),262+((i*29)%30));z.style.transition='opacity .6s';Z.push(z)}
-for(let i=0;i<5;i++){const l=lion(80+i*118,286-((i*13)%14));l.style.transition='opacity .6s';L.push(l)}
+/* animals: [file, left %, bottom %, width %, flip] — back row first so front ones overlap them */
+const ZS=[['zebra-3',30,30,12,0],['zebra-2',58,31,12,1],['zebra-1',44,24,13,0],['zebra-3',72,23,13,0],['zebra-1',18,17,14,1],['zebra-2',52,13,15,0],['zebra-1',83,12,14,1]];
+const LS=[['lion-2',8,27,15,0],['lion-3',66,6,18,1],['lion-1',22,3,19,0],['lion-2',86,30,13,1]];
+const mk=([f,l,bt,w,fl])=>{const im=document.createElement('img');im.src='try/'+f+'.webp';im.alt='';im.loading='lazy';im.decoding='async';im.style.left=l+'%';im.style.bottom=bt+'%';im.style.width=w+'%';if(fl)im.classList.add('flip');im.classList.add('off');herd.appendChild(im);return im};
+const Z=ZS.map(mk),L=LS.map(mk);
+const scene=()=>{const t=+rain.value/100;wet.style.opacity=Math.min(1,Math.max(0,(t-.15)/.6)).toFixed(3);dim.style.opacity=Math.max(0,(t-.55)/.45*.8).toFixed(3)};
 const W=640,H=170,pad={l:40,r:16,t:14,b:26},hist={g:[],z:[],l:[]};
 let pop={g:60,z:40,l:12};
 const cg=el('g',{},ch);
 const lerpC=(a,b,t)=>{const pa=a.match(/\w\w/g).map(h=>parseInt(h,16)),pb=b.match(/\w\w/g).map(h=>parseInt(h,16));return '#'+pa.map((v,i)=>Math.round(v+(pb[i]-v)*t).toString(16).padStart(2,'0')).join('')};
-function scene(){const t=+rain.value/100;
-  s1.setAttribute('stop-color',lerpC('8EC9EA','5E6E7C',t));s2.setAttribute('stop-color',lerpC('F6E3B8','B9C6CC',t));
-  g1.setAttribute('stop-color',lerpC('D8B66A','6FA65A',Math.min(1,t*1.3)));g2.setAttribute('stop-color',lerpC('B58E4A','3F7D44',Math.min(1,t*1.3)));
-  sun.setAttribute('opacity',1-t*.85);sunGlow.setAttribute('opacity',.18*(1-t));
-  cloudG.setAttribute('fill',lerpC('FFFFFF','8A97A3',t));cloudG.setAttribute('opacity',.35+t*.6);
-  crowns.forEach(c=>c.setAttribute('fill',lerpC('8C8A4E','2F6B3C',t)));
-  const wl=6+t*26;water.setAttribute('d',`M250 246 q60 -${wl*.3} 140 0 q-70 ${wl*.55} -140 0Z`);water.setAttribute('opacity',t<.08?0:.85);
-  const gc=lerpC('C2A15A','3C8B3F',Math.min(1,t*1.4));
-  blades.forEach(b=>{const h=(6+t*26*b.h)*(pop.g/80+.25);b.e.setAttribute('d',`M${b.x} ${b.base} q${b.w*.4} ${-h*.6} ${b.w} ${-h}`);b.e.setAttribute('stroke',gc)})}
 function step(){const r=+rain.value/100;let gT=8+r*84,zT=gT*.62,lT=zT*.28;
   if(!lions){zT=Math.min(90,gT*1.05);gT=Math.max(6,gT-zT*.45);lT=0}
   pop.g+=(gT-pop.g)*.22;pop.z+=(zT-pop.z)*.176;pop.l+=(lT-pop.l)*.132;
@@ -603,8 +599,8 @@ function chart(){cg.innerHTML='';
     labs.push({y:e[1],x:e[0],c,n})});
   labs.sort((a,b)=>a.y-b.y);let prev=-99;labs.forEach(l=>{let ly=Math.max(l.y+5,prev+17);ly=Math.min(ly,H-pad.b-2);prev=ly;
     el('text',{x:l.x-10,y:ly,'text-anchor':'end','font-size':14,'font-weight':600,fill:l.c,stroke:'#fff','stroke-width':4,'paint-order':'stroke'},cg).textContent=l.n})}
-function animals(){const nz=Math.round(pop.z/90*Z.length*1.4),nlv=Math.round(pop.l/30*L.length*2);
-  Z.forEach((g,i)=>g.style.opacity=i<nz?1:0);L.forEach((g,i)=>g.style.opacity=lions&&i<nlv?1:0);
+function animals(){const nz=Math.max(0,Math.min(Z.length,Math.round(pop.z/55*Z.length))),nlv=Math.max(0,Math.min(L.length,Math.round(pop.l/16*L.length)));
+  Z.forEach((g,i)=>g.classList.toggle('off',i>=nz));L.forEach((g,i)=>g.classList.toggle('off',!lions||i>=nlv));
   rd.innerHTML=`Rain <b>${rain.value}%</b> · Grass <b>${Math.round(pop.g)}%</b> · Zebras <b>${Math.round(pop.z*4)}</b> · Lions <b>${Math.round(pop.l)}</b>`;
   const r=+rain.value,m=$('ecoMsg'),ma=$('ecoMsgAr');
   if(!lions){m.innerHTML='No lions: zebras multiply, then eat the grass down. A <b>living</b> factor changed everything.';ma.innerHTML='بلا أسود تتكاثر الحُمُر الوحشية، ثم تأكل العشب. عامل <b>حيّ</b> غيّر كل شيء.'}
@@ -614,10 +610,12 @@ function animals(){const nz=Math.round(pop.z/90*Z.length*1.4),nlv=Math.round(pop
 for(let i=0;i<30;i++)step();scene();chart();animals();
 rain.addEventListener('input',()=>{scene();animals()});
 nl.addEventListener('click',()=>{lions=!lions;if(lions)pop.l=Math.max(pop.l,6);nl.textContent=lions?'Remove lions':'Bring lions back';animals()});
-let raf=0,last=0,acc=0,timer=0;
+let raf=0,last=0,acc=0,timer=0;const cx=rc.getContext('2d'),drops=[];for(let i=0;i<140;i++)drops.push({x:Math.random(),y:Math.random(),v:.7+Math.random()*.6});
 function frame(n){const dt=Math.min(.05,(n-(last||n))/1000);last=n;const r=+rain.value/100,shown=Math.round(drops.length*Math.max(0,(r-.2)/.8));
-  drops.forEach((d,i)=>{if(i>=shown){d.e.setAttribute('opacity',0);return}d.y+=d.v*96*dt;d.x-=43*dt;if(d.y>300){d.y=-10;d.x=Math.random()*680}d.e.setAttribute('x1',d.x);d.e.setAttribute('y1',d.y);d.e.setAttribute('x2',d.x-3);d.e.setAttribute('y2',d.y+11);d.e.setAttribute('opacity',.7)});
-  clouds.forEach((c,i)=>{c._x+=(6+i*2)*dt;if(c._x>720)c._x=-80;c.setAttribute('transform',`translate(${c._x} ${c._y}) scale(${c._s})`)});
+  const W2=rc.clientWidth,H2=rc.clientHeight,dpr=Math.min(2,devicePixelRatio||1);if(rc.width!==Math.round(W2*dpr)){rc.width=Math.round(W2*dpr);rc.height=Math.round(H2*dpr)}
+  cx.setTransform(dpr,0,0,dpr,0,0);cx.clearRect(0,0,W2,H2);cx.strokeStyle='rgba(225,238,248,.6)';cx.lineWidth=1.3;cx.beginPath();
+  for(let i=0;i<shown;i++){const d=drops[i];d.y+=d.v*dt*1.1;d.x-=dt*.05;if(d.y>1){d.y=-.05;d.x=Math.random()*1.05}const x=d.x*W2,y=d.y*H2;cx.moveTo(x,y);cx.lineTo(x-2.5,y+H2*.04)}
+  cx.stroke();
   acc+=dt;if(acc>.7){acc=0;step();scene();chart();animals()}
   raf=requestAnimationFrame(frame)}
 function run(){const go=window.__try.on&&active==='eco';
@@ -626,35 +624,16 @@ function run(){const go=window.__try.on&&active==='eco';
 document.addEventListener('trytab',run);
 
 /* ---------- canyon ---------- */
-const cs=$('canSvg'),ct=$('canT'),cr=$('canRead');
-const cd=el('defs',{},cs);
-const csky=el('linearGradient',{id:'cSky',x1:0,y1:0,x2:0,y2:1},cd);el('stop',{offset:0,'stop-color':'#9fd3ea'},csky);el('stop',{offset:1,'stop-color':'#f4e3c3'},csky);
-const LAY=[['#8DB37A','#6f9a5e'],['#E3A869','#c98d50'],['#C8553D','#a8452f'],['#D9C2A0','#bfa47f'],['#9C6B4E','#7e523a'],['#5E4033','#4a3127']];
-LAY.forEach((c,i)=>{const g=el('linearGradient',{id:'cL'+i,x1:0,y1:0,x2:0,y2:1},cd);el('stop',{offset:0,'stop-color':c[0]},g);el('stop',{offset:1,'stop-color':c[1]},g)});
-const lam=el('pattern',{id:'cLam',width:24,height:6,patternUnits:'userSpaceOnUse'},cd);el('path',{d:'M0 3 h14',stroke:'rgba(0,0,0,.12)','stroke-width':1},lam);
-el('rect',{width:640,height:330,fill:'url(#cSky)'},cs);
-el('circle',{cx:540,cy:50,r:44,fill:'#F7C65A',opacity:.2},cs);el('circle',{cx:540,cy:50,r:22,fill:'#F7C65A'},cs);
-el('path',{d:'M0 92 q80 -26 160 -8 t180 -4 t160 -12 t140 8 V110 H0z',fill:'#B7CFC8',opacity:.75},cs);
-const top=104,hs=[30,34,36,34,40,52];let yy=top;
-const layerRects=hs.map((h,i)=>{const r=el('rect',{x:0,y:yy,width:640,height:h,fill:`url(#cL${i})`},cs);yy+=h;return r});
-el('rect',{x:0,y:top,width:640,height:330-top,fill:'url(#cLam)'},cs);
-const valley=el('polygon',{fill:'url(#cSky)'},cs);
-const shadow=el('polygon',{fill:'rgba(30,15,10,.18)'},cs);
-const river=el('path',{stroke:'#3B8EA5','stroke-width':5,'stroke-linecap':'round',fill:'none'},cs);
-const ytag=el('g',{},cs);const ybg=el('rect',{rx:8,fill:'rgba(255,255,255,.88)'},ytag);const ytx=el('text',{'font-size':15,'font-weight':600,fill:'#0f2230','text-anchor':'middle'},ytag);
-function canyon(){const t=+ct.value/100,d=10+t*196,tw=26+t*420,bw=10+t*44,cx=320,ft=top;
-  valley.setAttribute('points',`${cx-tw/2},${ft} ${cx-bw/2},${ft+d} ${cx+bw/2},${ft+d} ${cx+tw/2},${ft}`);
-  shadow.setAttribute('points',`${cx-tw/2},${ft} ${cx-bw/2},${ft+d} ${cx-bw/2+8},${ft+d} ${cx-tw/2+tw*.12},${ft}`);
-  river.setAttribute('d',`M${cx-bw/2+3},${ft+d} h${bw-6}`);
+const ct=$('canT'),cr=$('canRead'),c2=$('can2'),c3=$('can3'),tag=$('canTag'),cst=$('canStage');
+function canyon(){const t=+ct.value/100;
+  c2.style.opacity=Math.min(1,Math.max(0,(t-.15)/.3)).toFixed(3);c3.style.opacity=Math.min(1,Math.max(0,(t-.6)/.3)).toFixed(3);
   const yrs=t*5e6;let en,ar;
-  if(t<.03){en='Today: a small stream';ar='اليوم: جدول صغير'}
+  if(t<.03){en='Today: a small river';ar='اليوم: نهر صغير'}
   else{const n=yrs>=1e6?(yrs/1e6).toFixed(1)+' million':Math.round(yrs/1000).toLocaleString('en')+',000';const na=yrs>=1e6?(yrs/1e6).toFixed(1)+' مليون':Math.round(yrs/1000).toLocaleString('en')+' ألف';
     en=`After ${n} years: `+(t<.35?'a deeper valley':t<.8?'a big canyon':'a huge canyon!');ar=`بعد ${na} سنة: `+(t<.35?'وادٍ أعمق':t<.8?'أخدود كبير':'أخدود هائل!')}
-  const cut=hs.reduce((a,h,i)=>{const s=top+hs.slice(0,i).reduce((x,y)=>x+y,0);return a+(ft+d>s?1:0)},0);
-  cr.innerHTML=`Depth <b>${Math.round(t*1800)} m</b> · Rock layers cut <b>${Math.max(1,cut)} of 6</b>`;
-  ytx.textContent=en;ytx.setAttribute('x',320);ytx.setAttribute('y',36);
-  const w=Math.max(180,en.length*7.6);ybg.setAttribute('x',320-w/2);ybg.setAttribute('y',16);ybg.setAttribute('width',w);ybg.setAttribute('height',28);
-  cs.setAttribute('aria-label',en+' · '+ar)}
+  const layers=Math.min(6,1+Math.floor(t*6));
+  cr.innerHTML=`Depth <b>${Math.round(t*1800).toLocaleString('en')} m</b> · Rock layers cut <b>${layers} of 6</b>`;
+  tag.textContent=en;cst.setAttribute('aria-label',en+' · '+ar)}
 ct.addEventListener('input',canyon);canyon();
 })();
 </script>
