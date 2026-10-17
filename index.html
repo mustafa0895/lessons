@@ -730,7 +730,7 @@ const half=(()=>{const s=new THREE.Shape();s.moveTo(-.48,-.48);s.lineTo(.48,-.48
 const edgeMat=new THREE.LineBasicMaterial({color:0x1F5E57,transparent:true,opacity:.55});
 let base='rect',H=3,layers=[];
 function layer(i){const g=new THREE.Group(),mat=new THREE.MeshStandardMaterial({color:COLORS[i%3],roughness:.55,metalness:.05});
-  BASES[base].cells.forEach(([x,z,t])=>{const geo=t==='full'?cube:half,m=new THREE.Mesh(geo,mat);m.castShadow=true;m.receiveShadow=true;m.position.set(x,0,z);if(t==='half')m.rotation.y=Math.PI;m.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo),edgeMat));g.add(m)});
+  BASES[base].cells.forEach(([x,z,t])=>{const geo=t==='full'?cube:half,m=new THREE.Mesh(geo,mat);m.castShadow=true;m.receiveShadow=true;m.position.set(x,0,z);m.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo),edgeMat));g.add(m)});
   const c=BASES[base].cells,mx=Math.max(...c.map(v=>v[0])),mz=Math.max(...c.map(v=>v[1]));g.position.set(-mx/2,.48+i,-mz/2);g.userData.y=g.position.y;return g}
 function readout(){const B=area(base);rd.innerHTML=`B = <b>${B} units²</b> · h = <b>${H}</b> · V = ${B} × ${H} = <b>${B*H} units³</b>`}
 function rebuild(){layers.forEach(l=>root.remove(l));layers=[];for(let i=0;i<H;i++){const l=layer(i);root.add(l);layers.push(l)}readout();draw()}
