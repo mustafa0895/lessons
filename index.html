@@ -246,7 +246,7 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
   </div>
   <div class="stats">
     <div class="stat" data-reveal style="--rd:0ms"><b id="statLessons">17</b><span>Interactive lessons</span><span class="ar" lang="ar">دروس تفاعلية</span></div>
-    <div class="stat" data-reveal style="--rd:80ms"><b>2</b><span>Subjects</span><span class="ar" lang="ar">رياضيات وعلوم</span></div>
+    <div class="stat" data-reveal style="--rd:80ms"><b id="statSubjects">2</b><span>Subjects</span><span class="ar" lang="ar">رياضيات وعلوم</span></div>
     <div class="stat" data-reveal style="--rd:160ms"><b>12</b><span>Grades</span><span class="ar" lang="ar">من الصف الأول للثاني عشر</span></div>
     <div class="stat" data-reveal style="--rd:240ms"><b>2</b><span>Languages</span><span class="ar" lang="ar">إنجليزي وعربي</span></div>
   </div>
@@ -301,7 +301,7 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
    {g:7,s:"math",unit:"Unit 2 · Volume",unitAr:"الوحدة 2 · الحجم",n:"Lesson 2-7",en:"Solving Problems Involving Volume",ar:"حل مسائل الحجم",f:"math-volume-l2-7.html"},
    {g:7,s:"science",unit:"Geologic Time",unitAr:"الزمن الجيولوجي",n:"Lesson 1",en:"Analyzing the Rock and Fossil Records",ar:"تحليل سجلات الصخور والأحافير",f:"g7-science-l1.html"}
   ];
-  try{document.getElementById('statLessons').textContent=LESSONS.length}catch(e){}
+  try{document.getElementById('statLessons').textContent=LESSONS.length;document.getElementById('statSubjects').textContent=new Set(LESSONS.map(l=>l.s)).size}catch(e){}
   const SUBJ={all:["All","الكل"],math:["Math","رياضيات"],science:["Science","علوم"]};
   const ICO={science:'<path d="M9 3h6M10 3v6L5 18a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 14h9"/>',math:'<path d="M18 5V4H6l6 8-6 8h12v-1"/>'};
   const ARW='<svg class="aic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
