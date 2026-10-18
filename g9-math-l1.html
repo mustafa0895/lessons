@@ -574,15 +574,7 @@ figure.photo figcaption.bi{margin:0}
   <div class="nojsonly card"><p class="m">2 + 5[12 − (3² − 2×3)] = 2 + 5[12 − (9 − 6)] = 2 + 5[12 − 3] = 2 + 5·9 = 2 + 45 = 47</p></div>
 </section>
 
-<section class="screen" data-title="Find the mistake">
-  <span class="kicker">Practice</span>
-  <h2>Find the first mistake</h2>
-  <p class="hsub ar">اكتشف الخطأ الأول</p>
-  <div class="bi"><p class="en">A student solved each expression. Tap the <b>first line</b> that is wrong.</p><p class="ar">حلّ طالبٌ كل عبارة. اضغط على <b>أول سطر</b> فيه خطأ.</p></div>
-  <div class="ptabs needjs" id="erTabs"></div>
-  <div class="card needjs"><div class="expr sm" id="erQ"></div><div id="erLines"></div></div>
-  <div class="msg bi needjs" id="erMsg"></div>
-</section>
+
 
 <section class="screen" data-title="The garden">
   <span class="kicker">Apply</span>
@@ -841,27 +833,6 @@ $$(".solver").forEach(el=>{const S=SV[+el.dataset.s];let k=0;
   function draw(){R("e").innerHTML=M(S[k][0]);R("h").innerHTML=S.slice(0,k).map(s=>`<div>${M("= "+s[0].replace(/<\/?mark>/g,""))}</div>`).join("").replace("= ","");
     R("d").innerHTML=S.map((_,i)=>`<i class="${i===k?"on":""}"></i>`).join("");setMsg(R("m"),S[k][1],S[k][2]);R("n").disabled=k===S.length-1;}
   R("n").onclick=()=>{if(k<S.length-1){k++;draw();}};R("r").onclick=()=>{k=0;draw();};draw();});
-
-/* ---------- find the mistake ---------- */
-const ER=[
- {q:"5 + 3·(6 − 4)²",l:["5 + 3·(2)²","8·(2)²","8·4","32"],w:1,en:"They added 5 + 3 first. The exponent comes first, then multiplication, and addition comes last.",ar:"جمع 5 + 3 أولًا. الأُس يأتي أولًا، ثم الضرب، والجمع في النهاية.",fix:"5 + 3·4 = 5 + 12 = 17"},
- {q:"18 − 6 ÷ 3 + 1",l:["12 ÷ 3 + 1","4 + 1","5"],w:0,en:"They subtracted 18 − 6 first. Division comes before subtraction.",ar:"طرح 18 − 6 أولًا. القسمة تأتي قبل الطرح.",fix:"18 − 2 + 1 = 16 + 1 = 17"},
- {q:"2·3²",l:["6²","36"],w:0,en:"The exponent belongs only to the 3, so square 3 first.",ar:"الأُس يخصّ العدد 3 فقط، لذا نربّع 3 أولًا.",fix:"2·9 = 18"},
- {q:"20 ÷ 4 × 5",l:["20 ÷ 20","1"],w:0,en:"They multiplied first. × and ÷ have the same rank, so work from left to right.",ar:"ضرب أولًا. للضرب والقسمة الأولوية نفسها، لذا نحسب من اليسار إلى اليمين.",fix:"5 × 5 = 25"}];
-let erP=0;const erDone=new Set();
-function erDraw(){const p=ER[erP];
-  $("#erTabs").innerHTML=ER.map((_,i)=>`<button class="${i===erP?"on":""} ${erDone.has(i)?"done":""}" data-i="${i}">${i+1}</button>`).join("");
-  $$("#erTabs button").forEach(b=>b.onclick=()=>{erP=+b.dataset.i;erDraw();});
-  $("#erQ").innerHTML=M(p.q);
-  $("#erLines").innerHTML=p.l.map((l,i)=>`<button class="eline" data-i="${i}">${M("= "+l)}</button>`).join("");
-  setMsg($("#erMsg"),"Check each line. Which is the first wrong step?","افحص كل سطر. ما أول خطوة خاطئة؟");
-  $$("#erLines .eline").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,m=$("#erMsg");
-    if(i===p.w){b.classList.add("bad");$$("#erLines .eline").forEach((x,j)=>{if(j<p.w)x.classList.add("good");if(j>p.w)x.classList.add("faded");});erDone.add(erP);
-      setMsg(m,`✅ Found it! ${p.en}<br>Correct: ${M(p.q+" = "+p.fix)}`,`✅ وجدته! ${p.ar}<br>الحل الصحيح: ${M(p.q+" = "+p.fix)}`);
-      $$("#erTabs button")[erP].classList.add("done");}
-    else if(i<p.w){b.classList.add("good");setMsg(m,"This line is correct. Look further down.","هذا السطر صحيح. ابحث في الأسطر التالية.",true);}
-    else setMsg(m,"There is a mistake before this line. Look higher up.","يوجد خطأ قبل هذا السطر. ابحث في الأعلى.",true);});}
-erDraw();
 
 /* ---------- garden ---------- */
 const GS=[
