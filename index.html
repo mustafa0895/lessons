@@ -301,6 +301,23 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
 .utab[aria-selected="true"] b{color:var(--teal)}
 .utab:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
 @media (max-width:520px){.utab{flex:1 1 calc(50% - 5px);min-width:0;padding:10px 12px}.utab b{font-size:14px}}
+.pstep{display:flex;flex-direction:column;gap:10px}
+.pstep[hidden]{display:none}
+.plab{display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
+.plab span{letter-spacing:0;text-transform:none;font-size:14px}
+.pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.pcard{display:flex;align-items:center;gap:12px;font:inherit;text-align:left;color:var(--ink);background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:14px 16px;cursor:pointer;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:border-color .2s,background .2s,transform .2s}
+.pcard:hover{border-color:var(--teal)}
+.pcard:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.pcard[aria-pressed="true"]{border-color:var(--teal);background:color-mix(in srgb,var(--teal) 18%,transparent)}
+.pcard .pic{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--teal) 14%,transparent);color:var(--teal)}
+.pcard .pic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pcard .pt{display:flex;flex-direction:column;gap:1px;min-width:0}
+.pcard b{font-weight:500;font-size:16px}
+.pcard .pa{font-size:14px;color:var(--muted);white-space:nowrap}
+@media (max-width:520px){.pcard{padding:12px;gap:10px}.pcard .pic{width:36px;height:36px}.pcard b{font-size:15px}.pcard .pa{font-size:13px}}
+.pcard .pn{font-size:12px;color:var(--muted-2)}
+.pcard.empty .pn{color:var(--muted-2);font-style:italic}
 .soonbox{display:flex;flex-direction:column;gap:4px;align-items:center;text-align:center;padding:40px 20px;border-radius:var(--r);background:var(--glass);border:1px dashed var(--line-strong);color:var(--muted)}
 .soonbox b{color:var(--ink);font-weight:500}
 @media (max-width:720px){.grades{grid-template-columns:repeat(4,1fr)}}
@@ -345,8 +362,9 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
   <div class="panel" id="panel" hidden>
     <div class="panel-head">
       <div><h3 id="pTitle">Grade</h3><p class="ar" dir="rtl" lang="ar" id="pAr"></p></div>
-      <div class="fgroup" id="subj" role="group" aria-label="Subject"></div>
     </div>
+    <div class="pstep" id="currStep" hidden><span class="plab">1 · Choose your curriculum<span dir="rtl" lang="ar">اختار المنهج</span></span><div class="pcards" id="curr" role="group" aria-label="Curriculum"></div></div>
+    <div class="pstep" id="subjStep" hidden><span class="plab" id="subjLab">Choose your subject<span dir="rtl" lang="ar">اختار المادة</span></span><div class="pcards" id="subj" role="group" aria-label="Subject"></div></div>
     <div class="utabs" id="utabs" role="tablist" aria-label="Units"></div>
     <div class="lessons" id="lessonGrid"></div>
     <div class="soonbox" id="soonBox" hidden><b>Lessons for this grade are on the way.</b><span dir="rtl" lang="ar">دروس الصف ده جاية قريب</span></div>
@@ -542,17 +560,24 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
    {g:8,s:"science",unit:"Unit 1 · Change Over Time",unitAr:"الوحدة 1 · التغيّر عبر الزمن",n:"Lesson 4",en:"Filling the Gaps in the Rock Record",ar:"سدّ الفجوات في السجل الصخري",f:"g8-science-l4.html"},
    {g:8,s:"science",unit:"Unit 1 · Change Over Time",unitAr:"الوحدة 1 · التغيّر عبر الزمن",n:"Lesson 5",en:"Building Earth's Timeline",ar:"بناء الخط الزمني للأرض",f:"g8-science-l5.html"},
    {g:7,s:"math",unit:"Unit 2 · Volume",unitAr:"الوحدة 2 · الحجم",n:"Lesson 2-7",en:"Solving Problems Involving Volume",ar:"حل مسائل الحجم",f:"math-volume-l2-7.html"},
-   {g:7,s:"science",unit:"Geologic Time",unitAr:"الزمن الجيولوجي",n:"Lesson 1",en:"Analyzing the Rock and Fossil Records",ar:"تحليل سجلات الصخور والأحافير",f:"g7-science-l1.html"},
+   {g:7,s:"science",c:"moe",unit:"Unit 1 · Matter and Energy in Ecosystems",unitAr:"الوحدة 1 · المادة والطاقة في الأنظمة البيئية",n:"Lesson 1-1",en:"Photosynthesis and Cellular Respiration",ar:"البناء الضوئي والتنفس الخلوي",f:"g7-science-l2.html"},
+   {g:7,s:"science",c:"us",unit:"Geologic Time",unitAr:"الزمن الجيولوجي",n:"Lesson 1",en:"Analyzing the Rock and Fossil Records",ar:"تحليل سجلات الصخور والأحافير",f:"g7-science-l1.html"},
    {g:6,s:"science",unit:"Unit 1 · Energy in the Atmosphere",unitAr:"الوحدة 1 · الطاقة في الغلاف الجوي",n:"Lesson 1-1",en:"Particles in Motion",ar:"الجسيمات في حالة حركة",f:"g6-science-l1.html"},
    {g:6,s:"science",unit:"Unit 1 · Energy in the Atmosphere",unitAr:"الوحدة 1 · الطاقة في الغلاف الجوي",n:"Lesson 1-2",en:"States of Matter",ar:"حالات المادة",f:"g6-science-l2.html"},
   ];
   try{document.getElementById('statLessons').textContent=LESSONS.length;document.getElementById('statSubjects').textContent=new Set(LESSONS.map(l=>l.s)).size}catch(e){}
-  const SUBJ={all:["All","الكل"],math:["Math","رياضيات"],science:["Science","علوم"]};
+  const SUBJ={math:["Math","رياضيات"],science:["Science","علوم"]};
+  /* grades taught in two curricula: Grade → curriculum → subject → lessons */
+  const SPLIT=[7,9];
+  const CURR={moe:["UAE MOE","المنهج الحكومي","Ministry of Education"],us:["American","المنهج الأمريكي","American curriculum"]};
+  LESSONS.forEach(l=>{if(!l.c)l.c="moe"});
   const ICO={science:'<path d="M9 3h6M10 3v6L5 18a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 14h9"/>',math:'<path d="M18 5V4H6l6 8-6 8h12v-1"/>'};
   const ARW='<svg class="aic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
   const esc=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;");
-  const st={g:null,s:"all",u:null};
-  const panel=document.getElementById('panel'),utabs=document.getElementById('utabs'),grid=document.getElementById('lessonGrid'),subj=document.getElementById('subj'),soon=document.getElementById('soonBox');
+  const st={g:null,c:null,s:null,u:null};
+  const panel=document.getElementById('panel'),utabs=document.getElementById('utabs'),grid=document.getElementById('lessonGrid'),subj=document.getElementById('subj'),soon=document.getElementById('soonBox'),curr=document.getElementById('curr'),currStep=document.getElementById('currStep'),subjStep=document.getElementById('subjStep');
+  const PICO={moe:'<path d="M4 21h16M5 21V10M19 21V10M9 21v-6h6v6"/><path d="M3 10 12 4l9 6"/><circle cx="12" cy="8.5" r="1"/>',us:'<path d="M5 21V4"/><path d="M5 4h12l-2.5 4L17 12H5"/>'};
+  const nL=n=>n?n+(n===1?" lesson":" lessons"):"Soon · قريبًا";
   document.querySelectorAll('.gc').forEach(el=>{const n=LESSONS.filter(l=>l.g==el.dataset.count).length;el.textContent=n?n+(n===1?" lesson":" lessons"):"Soon";if(!n){el.classList.add('none');el.closest('.gbtn').classList.add('empty')}});
   /* unit line art (keyed by words in the unit name; falls back to the subject) */
   const ART=[
@@ -572,27 +597,42 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
     panel.hidden=false;
     document.getElementById('pTitle').textContent='Grade '+st.g;
     document.getElementById('pAr').textContent='الصف '+AR[st.g-1];
-    const inGrade=LESSONS.filter(l=>l.g===st.g);
-    const subs=[...new Set(inGrade.map(l=>l.s))];
-    if(st.s!=="all"&&!subs.includes(st.s))st.s="all";
-    subj.hidden=subs.length<2;
-    subj.innerHTML=["all",...subs].map(k=>`<button class="chip" type="button" data-s="${k}" aria-pressed="${st.s===k}">${SUBJ[k][0]} · <span lang="ar">${SUBJ[k][1]}</span></button>`).join("");
-    subj.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{st.s=b.dataset.s;render(false)});
-    const list=inGrade.filter(l=>st.s==="all"||l.s===st.s);
+    const split=SPLIT.includes(st.g);
+    let inGrade=LESSONS.filter(l=>l.g===st.g);
+    /* step 1: curriculum (split grades only) */
+    currStep.hidden=!split;
+    if(split){
+      curr.innerHTML=Object.keys(CURR).map(k=>{const n=inGrade.filter(l=>l.c===k).length;return `<button class="pcard${n?"":" empty"}" type="button" data-c="${k}" aria-pressed="${st.c===k}"><span class="pic"><svg viewBox="0 0 24 24" aria-hidden="true">${PICO[k]}</svg></span><span class="pt"><b>${CURR[k][0]}</b><span class="pa" dir="rtl" lang="ar">${CURR[k][1]}</span><span class="pn">${nL(n)}</span></span></button>`}).join("");
+      curr.querySelectorAll('.pcard').forEach(b=>b.onclick=()=>{st.c=b.dataset.c;st.s=null;st.u=null;render(false)});
+      if(!st.c){subjStep.hidden=true;utabs.hidden=true;grid.innerHTML="";soon.hidden=true;return}
+      inGrade=inGrade.filter(l=>l.c===st.c);
+    }
+    /* step 2: subject */
+    subjStep.hidden=false;
+    document.getElementById('subjLab').firstChild.textContent=(split?"2 · ":"")+"Choose your subject";
+    const subs=Object.keys(SUBJ);
+    const counts=Object.fromEntries(subs.map(k=>[k,inGrade.filter(l=>l.s===k).length]));
+    const withL=subs.filter(k=>counts[k]);
+    if(!st.s&&withL.length===1)st.s=withL[0];
+    subj.innerHTML=subs.map(k=>`<button class="pcard${counts[k]?"":" empty"}" type="button" data-s="${k}" aria-pressed="${st.s===k}"><span class="pic"><svg viewBox="0 0 24 24" aria-hidden="true">${ICO[k]}</svg></span><span class="pt"><b>${SUBJ[k][0]}</b><span class="pa" dir="rtl" lang="ar">${SUBJ[k][1]}</span><span class="pn">${nL(counts[k])}</span></span></button>`).join("");
+    subj.querySelectorAll('.pcard').forEach(b=>b.onclick=()=>{st.s=b.dataset.s;st.u=null;render(false)});
+    if(!st.s){utabs.hidden=true;grid.innerHTML="";soon.hidden=true;return}
+    /* step 3: units and lessons */
+    const list=inGrade.filter(l=>l.s===st.s);
     soon.hidden=list.length>0;
-    const units=[];list.forEach(l=>{const k=l.s+"|"+l.unit;if(!units.find(u=>u.k===k))units.push({k,s:l.s,en:l.unit,ar:l.unitAr,n:0});units.find(u=>u.k===k).n++});
+    const units=[];list.forEach(l=>{const k=l.unit;if(!units.find(u=>u.k===k))units.push({k,s:l.s,en:l.unit,ar:l.unitAr,n:0});units.find(u=>u.k===k).n++});
     if(!units.find(u=>u.k===st.u))st.u=units.length?units[0].k:null;
     utabs.hidden=!units.length;
-    utabs.innerHTML=units.map(u=>`<button class="utab" type="button" role="tab" data-u="${esc(u.k)}" aria-selected="${u.k===st.u}"><span class="us">${SUBJ[u.s][0]}</span><b>${esc(u.en)}</b><span class="ua" dir="rtl" lang="ar">${u.ar}</span><span class="uc">${u.n} ${u.n===1?"lesson":"lessons"}</span></button>`).join("");
+    utabs.innerHTML=units.map(u=>`<button class="utab" type="button" role="tab" data-u="${esc(u.k)}" aria-selected="${u.k===st.u}"><span class="us">${SUBJ[u.s][0]}${split?" · "+CURR[st.c][0]:""}</span><b>${esc(u.en)}</b><span class="ua" dir="rtl" lang="ar">${u.ar}</span><span class="uc">${u.n} ${u.n===1?"lesson":"lessons"}</span></button>`).join("");
     utabs.querySelectorAll('.utab').forEach(b=>b.onclick=()=>{st.u=b.dataset.u;render(false)});
-    grid.innerHTML=list.filter(l=>l.s+"|"+l.unit===st.u).map(card).join("");
+    grid.innerHTML=list.filter(l=>l.unit===st.u).map(card).join("");
     panel.style.animation='none';void panel.offsetWidth;panel.style.animation='';
     if(scroll)panel.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
   }
-  document.querySelectorAll('.gbtn').forEach(b=>b.addEventListener('click',()=>{const g=+b.dataset.g;st.g=st.g===g?null:g;st.s="all";render(!!st.g);try{history.replaceState(null,"",st.g?"#grade"+st.g:"#lessons")}catch(e){}}));
-  /* deep links: #grade9, or the old #9 and #9/science */
-  const h=location.hash.replace('#','');let m=h.match(/^grade(\d+)$/)||h.match(/^(\d+)(?:\/(\w+))?$/);
-  if(m&&+m[1]>=1&&+m[1]<=12){st.g=+m[1];if(m[2]&&SUBJ[m[2]])st.s=m[2];render(false);setTimeout(()=>document.getElementById('lessons').scrollIntoView(),60)}
+  document.querySelectorAll('.gbtn').forEach(b=>b.addEventListener('click',()=>{const g=+b.dataset.g;st.g=st.g===g?null:g;st.c=null;st.s=null;st.u=null;render(!!st.g);try{history.replaceState(null,"",st.g?"#grade"+st.g:"#lessons")}catch(e){}}));
+  /* deep links: #grade9, #grade7/moe/science, or the old #9 and #9/science */
+  const h=location.hash.replace('#','');let m=h.match(/^grade(\d+)(?:\/(moe|us))?(?:\/(\w+))?$/)||h.match(/^(\d+)()(?:\/(\w+))?$/);
+  if(m&&+m[1]>=1&&+m[1]<=12){st.g=+m[1];if(SPLIT.includes(st.g))st.c=m[2]||(m[3]?"moe":null);if(m[3]&&SUBJ[m[3]])st.s=m[3];render(false);setTimeout(()=>document.getElementById('lessons').scrollIntoView(),60)}
 })();
 </script>
 
