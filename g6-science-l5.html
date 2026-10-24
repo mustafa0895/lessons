@@ -1,0 +1,1704 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F1E8">
+<title>Water in the Atmosphere – Science G6 Lesson 2-1</title>
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(247,241,232,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#EADFCD;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#F9E3DC;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#FFF6E1;border:1px solid #F1D9A6;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #E9CFA0;background:#FFF8EA;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#fff;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #E2D5C0}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#E4F3F1;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#FBF3EA;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#E8F5F3}
+.opt.right{border-color:var(--teal);background:#E2F4F1}
+.opt.wrong{border-color:var(--terra);background:#FBE9E4}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#EADFCD;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#fff;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#E8F5F3;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#FBE9E4;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#fff;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#fff}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#E2D5C0}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #fff}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#fff;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#fff}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #fff;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#FFF6E1}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#E2F4F1;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#E2F4F1}
+.pieces button.no{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#E2D5C0}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#E2F4F1;border-left:5px solid var(--teal)}
+.feedback.no{background:#FBE9E4;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#fff;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#fff;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#FFF6E1;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#fff;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#E8F5F3}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#FFF6E1}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#fff;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#FBE9E4}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#FFF6E1;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#fff;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#E8F5F3}.sc.diff{border-color:var(--terra);background:#FBE9E4}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#E2F4F1}.rchips button.wrong{border-color:var(--terra);background:#FBE9E4}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#E8F5F3}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#E8F5F3}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#FBE9E4}
+.ml.done,.mr.done{border-color:var(--teal);background:#E2F4F1;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#E8F5F3}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#FCE8B2;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#FCE8B2;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#E2F4F1}
+.eline.bad{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#fff;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#FFFFFF 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#E2F4F1}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#FBE9E4}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#FFF3D6}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#FFF3D6;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#E2F4F1}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#FBE9E4}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#FFF3D6;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#E8F5F3}.mcard2.wrong{border-color:var(--terra);background:#FBE9E4}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #fff;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#E8F5F3}.idc.wrong{border-color:var(--terra);background:#FBE9E4}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#E8F5F3}.claim2.wrong{border-color:var(--terra);background:#FBE9E4}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#FFF6EA}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#E8F5F3}.ct.no{border-color:var(--terra);background:#FBE9E4}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#FFF6EA}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#EADFF0;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#EADFCD;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#FFF6E0;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#fff;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#E8F5F3}.wuq .wo button.wrong{border-color:var(--terra);background:#FBE9E4}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#fff;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#FBF6EC;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#FBE9E4}.pick button.right{border-color:var(--teal);background:#E8F5F3}
+.why{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#E8F5F3}.why .wb button.wrong{border-color:var(--terra);background:#FBE9E4}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#fff;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#ddd;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#fff;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#FFFDF7}
+.tchip.lost{border-color:var(--terra);background:#FBE9E4}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#FBEDEA}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#E8F5F3}.pickph.wrong{border-color:var(--terra);background:#FBE9E4}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#E8F5F3}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#FBF6EC}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#E8F5F3;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#FBF6EC;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#fff;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#FFE7A8;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#FBF6EC;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#fff}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#E8F5F3;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#fff;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#fff;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#E8F5F3;border-color:var(--teal)}.tile.g1{background:#FFF0E6;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#FBF6EC;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#fff;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#fff;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#fff;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#fff;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#F3ECE1}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#fff}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#F3ECE1}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#fff}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#E9E2D6;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+/* ---- lesson 2-1 additions ---- */
+.ctrl{margin:10px 0 4px}.ctrl label{display:block;font-weight:700;font-size:15px;margin-bottom:2px}
+.eqn{display:inline-block;margin-top:6px;padding:6px 10px;border-radius:10px;background:#fff;border:1px solid rgba(31,42,55,.12);font-family:ui-monospace,monospace;font-weight:700;font-size:14px;direction:ltr;unicode-bidi:isolate;max-width:100%;overflow-wrap:anywhere}
+.filmbox canvas{display:block;width:100%;border-radius:16px;background:#CFE6F1;box-shadow:0 10px 26px -14px rgba(31,42,55,.5)}
+.fctl{display:flex;align-items:center;gap:10px;margin:10px 0 4px}.fctl input{flex:1;min-width:0}.ftime{font:700 13px ui-monospace,monospace;min-width:62px;text-align:right}
+.filmbox .chips{margin:6px 0}
+#hlSvg .ray{stroke-dasharray:8 8;animation:raymove 1.2s linear infinite}
+@keyframes raymove{to{stroke-dashoffset:-16}}
+#ssSvg .zone{transition:opacity .3s}
+@media (prefers-reduced-motion:reduce){#hlSvg .ray{animation:none}}
+@media (min-width:1100px){.filmbox{max-width:900px;margin:0 auto}}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Science · Grade 6 · Unit 1<small id="curLabel">Water in the Atmosphere</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="The Sun heats the sea, water vapour rises, cools and forms a cloud with ice crystals">
+<defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F2A37"/><stop offset="1" stop-color="#2B3B4E"/></linearGradient>
+<pattern id="hg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+<linearGradient id="hs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3FA7C4"/><stop offset="1" stop-color="#1E6F8C"/></linearGradient>
+<radialGradient id="hsun" cx=".4" cy=".4" r=".7"><stop offset="0" stop-color="#FFF1C2"/><stop offset="1" stop-color="#E9B44C"/></radialGradient>
+<radialGradient id="hv" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#E8F7FC"/><stop offset="1" stop-color="#7FD3E6"/></radialGradient>
+<linearGradient id="hc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#C9D3DD"/></linearGradient></defs>
+<rect width="640" height="360" fill="url(#hb)"/><rect width="640" height="360" fill="url(#hg)"/>
+<circle cx="92" cy="70" r="58" fill="#E9B44C" fill-opacity=".18"/><circle cx="92" cy="70" r="32" fill="url(#hsun)"/>
+<path d="M0 205 Q80 196 160 205 T320 205 L320 230 L0 230Z" fill="url(#hs)"/>
+<path d="M320 205 Q420 196 640 208 L640 230 L320 230Z" fill="#C9A06A"/>
+<path d="M440 206 l18 -40 l14 22 l20 -44 l34 62Z" fill="#8C7A6B"/>
+<g stroke="#E9B44C" stroke-width="3" stroke-dasharray="6 7" fill="none" opacity=".8"><path d="M110 98 L150 190"/><path d="M124 92 L196 190"/></g>
+<g><circle cx="170" cy="172" r="7" fill="url(#hv)"/><circle cx="196" cy="140" r="8" fill="url(#hv)"/><circle cx="182" cy="110" r="9" fill="url(#hv)" opacity=".85"/><circle cx="214" cy="86" r="9" fill="url(#hv)" opacity=".7"/></g>
+<path d="M232 120 C250 80 280 60 320 52" fill="none" stroke="#C8553D" stroke-width="4" stroke-linecap="round"/>
+<path d="M316 44 L330 51 L316 60Z" fill="#C8553D"/>
+<g fill="url(#hc)"><circle cx="380" cy="70" r="30"/><circle cx="414" cy="56" r="36"/><circle cx="452" cy="70" r="30"/><rect x="380" y="70" width="72" height="30" rx="15"/></g>
+<g stroke="#7FD3E6" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M520 46 l0 30 M507 53.5 l26 15 M507 68.5 l26 -15"/><path d="M570 86 l0 22 M560.5 91.5 l19 11 M560.5 102.5 l19 -11"/></g>
+<g fill="none" stroke="#2A9D8F" stroke-width="2.5"><path d="M548 140 l12 -7 l12 7 l0 14 l-12 7 l-12 -7Z"/></g>
+<g fill="#7FD3E6"><circle cx="396" cy="114" r="3"/><circle cx="420" cy="122" r="3"/><circle cx="444" cy="112" r="3"/></g>
+</svg>
+    <div class="herotxt"><span class="kicker light">Science · Grade 6 · Unit 1 · Lesson 2-1</span><h1>Water in the Atmosphere</h1><p class="ar">الماء في الغلاف الجوي</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في متصفح Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="think"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">The air around you is full of water, but you cannot see it! How does water get up into the air, and how does it become clouds? The answer is <b>thermal energy</b>.</p><p class="ar">الهواء من حولك مليء بالماء، لكنك لا تراه! كيف يصعد الماء إلى الهواء، وكيف يصبح سحبًا؟ الجواب هو <b>الطاقة الحرارية</b>.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ name Earth's four subsystems<br>✔ explain how water enters the atmosphere: evaporation, transpiration, respiration<br>✔ explain condensation and crystallization<br>✔ say when thermal energy is absorbed and when it is released</p><p class="ar"><b>سأتعلّم اليوم أن:</b><br>✔ أسمّي أنظمة الأرض الأربعة<br>✔ أفسّر كيف يدخل الماء الغلاف الجوي: التبخر والنتح والتنفس<br>✔ أفسّر التكاثف والتبلور<br>✔ أحدّد متى تُمتص الطاقة الحرارية ومتى تنطلق</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic.</p><p class="ar"><b>نصيحة:</b> اضغط زر <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمات.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up</span>
+  <h2>Remember Module 1?</h2>
+  <p class="hsub ar">هل تتذكّر الوحدة الأولى؟</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Tap an answer, or tap "Show me".</p><p class="ar">مجرد تسخين، لا شيء يُحسب! اضغط على إجابة، أو اضغط «أرني».</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+</section>
+
+<section class="screen" data-title="Earth's subsystems">
+  <span class="kicker">Explore</span>
+  <h2>Earth's four subsystems</h2>
+  <p class="hsub ar">أنظمة الأرض الأربعة</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> Earth has four <b class="term">subsystems</b>: the <b>atmosphere</b> (air), the <b>hydrosphere</b> (water), the <b>geosphere</b> (solid Earth) and the <b>biosphere</b> (living things). Water moves between all four.</p><p class="ar">للأرض أربعة <b>أنظمة فرعية</b>: <b>الغلاف الجوي</b> (الهواء)، و<b>الغلاف المائي</b> (الماء)، و<b>الغلاف الصخري</b> (الأرض الصلبة)، و<b>الغلاف الحيوي</b> (الكائنات الحية). ينتقل الماء بينها جميعًا.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="ssSvg" viewBox="0 0 400 260" role="img" aria-label="A cut-away block of Earth showing air, sea, rock and living things"></svg></div>
+      <div class="seg wrap needjs" id="ssMode"><button data-v="0" class="on">Atmosphere</button><button data-v="1">Hydrosphere</button><button data-v="2">Geosphere</button><button data-v="3">Biosphere</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="ssMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Evaporation">
+  <span class="kicker">Virtual lab</span>
+  <h2>Evaporation: the upward journey</h2>
+  <p class="hsub ar">التبخر: رحلة الصعود</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Evaporation</b>: liquid water changes into an invisible gas, <b>water vapour</b>, at the surface. It needs thermal energy: evaporation <b>absorbs</b> energy.</p><p class="ar"><b>التبخر</b>: يتحوّل الماء السائل عند سطحه إلى غاز غير مرئي هو <b>بخار الماء</b>. يحتاج إلى طاقة حرارية: التبخر <b>يمتص</b> الطاقة.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="evC" style="aspect-ratio:16/10" role="img" aria-label="Water particles near the surface gain energy from the Sun and escape as vapour"></canvas></div>
+      <div class="seg needjs" id="evMode"><button data-v="0">Night</button><button data-v="1" class="on">Morning</button><button data-v="2">Noon sun</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="evMsg"></div>
+      <div class="why needjs" id="why1"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Transpiration">
+  <span class="kicker">Living scene</span>
+  <h2>Plants release water vapour</h2>
+  <p class="hsub ar">النباتات تطلق بخار الماء</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Transpiration</b>: plants release invisible water vapour into the air through tiny openings in their leaves. More water in the soil and warmer air mean more transpiration.</p><p class="ar"><b>النتح</b>: تطلق النباتات بخار ماء غير مرئي إلى الهواء من خلال فتحات صغيرة جدًا في أوراقها. كلما زاد الماء في التربة وزادت حرارة الهواء زاد النتح.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="trC" style="aspect-ratio:16/10" role="img" aria-label="A ghaf tree and a zoom on a leaf opening releasing water vapour"></canvas></div>
+      <div class="ctrl needjs"><label for="trR">Air temperature: <b id="trT">30°C</b></label><input type="range" id="trR" min="15" max="45" step="5" value="30"></div>
+      <div class="seg needjs" id="trMode"><button data-v="0">Dry soil</button><button data-v="1" class="on">Wet soil</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="trMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Cellular respiration">
+  <span class="kicker">Step by step</span>
+  <h2>Breathing out water vapour</h2>
+  <p class="hsub ar">إخراج بخار الماء مع الزفير</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Cellular respiration</b>: cells of animals and plants break down food with oxygen to get energy. Water vapour is a waste product.<br><span class="eqn">Food + Oxygen → Energy + CO₂ + Water vapour</span></p><p class="ar"><b>التنفس الخلوي</b>: تحلّل خلايا الحيوانات والنباتات الغذاء باستخدام الأكسجين لتحصل على الطاقة، وبخار الماء من فضلاته.<br><span class="eqn">Food + Oxygen → Energy + CO₂ + Water vapour</span></p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="rsC" style="aspect-ratio:16/10" role="img" aria-label="Food and oxygen enter a cell, energy is released, carbon dioxide and water vapour leave"></canvas></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="rsNext">Next step ▶</button><button class="btn alt sm" id="rsReset">↺ Start again</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="rsMsg"></div>
+      <div class="card bi"><p class="en"><b>Did you know?</b> When organisms decompose, the water in their bodies also returns to the environment.</p><p class="ar"><b>هل تعلم؟</b> عندما تتحلّل الكائنات الحية يعود الماء الموجود في أجسامها إلى البيئة أيضًا.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Pathways">
+  <span class="kicker">Sort it</span>
+  <h2>Three pathways to the atmosphere</h2>
+  <p class="hsub ar">ثلاثة طرق إلى الغلاف الجوي</p>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="pwSvg" viewBox="0 0 400 150" role="img" aria-label="Bar: about 90 percent of water vapour comes from evaporation, about 10 percent from living things"></svg></div>
+    </div>
+    <div class="side">
+      <div class="bi"><p class="en">About <b>90%</b> of the water vapour in the air comes from <b>evaporation</b> (oceans, lakes, rivers, soil). About <b>10%</b> comes from living things, mostly from transpiration. The numbers are rounded.</p><p class="ar">حوالي <b>90%</b> من بخار الماء في الهواء يأتي من <b>التبخر</b> (المحيطات والبحيرات والأنهار والتربة)، وحوالي <b>10%</b> من الكائنات الحية، وأغلبه من النتح. الأرقام تقريبية.</p></div>
+    </div>
+  </div>
+  <div class="bi"><p class="en"><b>Which pathway?</b> Choose for each card.</p><p class="ar"><b>أيّ طريق؟</b> اختر لكل بطاقة.</p></div>
+  <div class="idg needjs" id="pwCards"></div>
+</section>
+
+<section class="screen" data-title="Condensation">
+  <span class="kicker">Virtual lab</span>
+  <h2>Condensation: the downward journey</h2>
+  <p class="hsub ar">التكاثف: رحلة النزول</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Condensation</b>: water vapour cools and changes back into tiny liquid droplets, often on small dust particles. Condensation <b>releases</b> thermal energy. Millions of droplets together make a <b>cloud</b> or <b>fog</b>.</p><p class="ar"><b>التكاثف</b>: يبرد بخار الماء ويعود إلى قطرات سائلة صغيرة جدًا، غالبًا على ذرات غبار صغيرة. التكاثف <b>يُطلق</b> طاقة حرارية. ملايين القطرات معًا تكوّن <b>سحابة</b> أو <b>ضبابًا</b>.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="cdC" style="aspect-ratio:16/10" role="img" aria-label="A bubble of moist air rises and cools; at cloud level its vapour condenses on dust"></canvas></div>
+      <div class="ctrl needjs"><label for="cdR">Height: <b id="cdH">0 km</b></label><input type="range" id="cdR" min="0" max="30" step="1" value="0"></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="cdMsg"></div>
+      <div class="card bi"><p class="en"><b>Fog</b> is a cloud at ground level. On some winter mornings in Abu Dhabi, the air near the ground cools so much that its water vapour condenses into fog.</p><p class="ar"><b>الضباب</b> سحابة عند سطح الأرض. في بعض صباحات الشتاء في أبوظبي يبرد الهواء القريب من الأرض كثيرًا فيتكاثف بخار الماء فيه ويصبح ضبابًا.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Crystallization">
+  <span class="kicker">Virtual lab</span>
+  <h2>Extreme cooling: crystallization</h2>
+  <p class="hsub ar">التبريد الشديد: التبلور</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Crystallization</b>: liquid water turns into solid <b>ice crystals</b>. High in the sky, cloud droplets lose a lot of thermal energy and freeze. It also <b>releases</b> energy.</p><p class="ar"><b>التبلور</b>: يتحوّل الماء السائل إلى <b>بلورات ثلج</b> صلبة. في أعالي السماء تفقد قطرات السحابة كمية كبيرة من الطاقة الحرارية فتتجمّد. وهو أيضًا <b>يُطلق</b> الطاقة.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="crC" style="aspect-ratio:16/10" role="img" aria-label="Cloud droplets turning into six-sided ice crystals as the temperature drops"></canvas></div>
+      <div class="ctrl needjs"><label for="crR">Cloud temperature: <b id="crT">10°C</b></label><input type="range" id="crR" min="-30" max="10" step="5" value="10"></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="crMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Energy exchange">
+  <span class="kicker">Compare</span>
+  <h2>Absorbed or released?</h2>
+  <p class="hsub ar">تُمتص أم تنطلق؟</p>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="eeSvg" viewBox="0 0 400 200" role="img" aria-label="Energy arrows going into or out of water as it changes state"></svg></div>
+      <div class="seg wrap needjs" id="eeMode"><button data-v="0" class="on">Evaporation</button><button data-v="1">Condensation</button><button data-v="2">Crystallization</button></div>
+      <div class="msg bi needjs" id="eeMsg"></div>
+    </div>
+    <div class="side">
+      <div class="simfig"><svg id="dwSvg" viewBox="0 0 400 170" role="img" aria-label="Dew drops on a spider web in the morning"></svg></div>
+      <div class="bi"><p class="en"><b>Dew</b> on morning grass or a spider web: overnight, water vapour in the air loses energy on the cold surfaces and condenses right there.</p><p class="ar"><b>الندى</b> على العشب أو على شبكة العنكبوت في الصباح: خلال الليل يفقد بخار الماء في الهواء طاقته على الأسطح الباردة فيتكاثف عليها مباشرة.</p></div>
+      <div class="why needjs" id="why2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Solar halo">
+  <span class="kicker">Explore</span>
+  <h2>A ring around the Sun</h2>
+  <p class="hsub ar">حلقة حول الشمس</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A <b class="term">solar halo</b> is a ring of light around the Sun. It appears when high, thin <b>cirrus clouds</b> (about 6,000 m or higher) are made of millions of tiny six-sided ice crystals.</p><p class="ar"><b>الهالة الشمسية</b> حلقة من الضوء حول الشمس. تظهر عندما تتكوّن <b>السحب الريشية</b> العالية الرقيقة (على ارتفاع 6,000 m تقريبًا أو أكثر) من ملايين بلورات الثلج السداسية الصغيرة.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="hlSvg" viewBox="0 0 400 220" role="img" aria-label="The Sun with a ring of light, and a six-sided ice crystal bending a ray of light"></svg></div>
+      <div class="seg needjs" id="hlMode"><button data-v="0" class="on">Refraction</button><button data-v="1">Reflection</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="hlMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Qatra's journey">
+  <span class="kicker">Film</span>
+  <h2>Qatra's journey up into the sky</h2>
+  <p class="hsub ar">رحلة قطرة إلى السماء</p>
+  <div class="filmbox">
+    <canvas id="wfC" style="aspect-ratio:16/9" role="img" aria-label="Animated film: a water drop evaporates from the Arabian Gulf, rises, condenses into a cloud and becomes an ice crystal"></canvas>
+    <div class="fctl needjs"><button class="btn sm" id="wfBtn">▶ Play</button><input type="range" id="wfBar" min="0" max="10" value="0" aria-label="Film time"><span class="ftime" id="wfTime">0 s</span></div>
+    <div class="chips needjs" id="wfChips"></div>
+    <div class="msg bi" id="wfCap"></div>
+  </div>
+</section>
+
+<section class="screen" data-title="Jorge's model">
+  <span class="kicker">Apply</span>
+  <h2>Jorge's water cycle in a bag</h2>
+  <p class="hsub ar">دورة الماء في كيس جورج</p>
+  <div class="bi"><p class="en">Jorge half-filled a sealed plastic bag with water and taped it to a sunny window. After a few hours, water drops formed on the inside of the bag. Move the time slider.</p><p class="ar">ملأ جورج نصف كيس بلاستيكي محكم الإغلاق بالماء، وألصقه على نافذة مشمسة. بعد بضع ساعات تكوّنت قطرات ماء على الجهة الداخلية للكيس. حرّك شريط الوقت.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="jbC" style="aspect-ratio:16/10" role="img" aria-label="A sealed bag of water on a sunny window; vapour rises and drops form on the top of the bag"></canvas></div>
+      <div class="ctrl needjs"><label for="jbR">Time: <b id="jbT">0 h</b></label><input type="range" id="jbR" min="0" max="4" step="0.5" value="0"></div>
+      <div class="msg bi needjs" id="jbMsg"></div>
+    </div>
+    <div class="side">
+      <div class="fader" data-f="wc"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Practice</span>
+  <h2>Check yourself</h2>
+  <p class="hsub ar">تحقّق من نفسك</p>
+  <div class="idg needjs" id="ckCards"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work! Now the quiz. A wrong answer gives you a hint first.</p><p class="ar">عمل رائع! والآن الاختبار. الإجابة الخاطئة تعطيك تلميحًا أولًا.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+</main>
+
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="sci6_5_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"UAE MOE · Grade 6"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹ =+,./≠]*[0-9A-Za-z()\[\]½²³⁴¹])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}<small>${n[1]}</small></button>`).join("")}</div><div class="mwhy"></div></div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll("button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});}
+
+/* ---------- particle simulation engine ---------- */
+const RM=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const SIMS=[];const PUR=["#C9A6F2","#6A3FB0"],ORA=["#FFD08A","#E07A2E"],BLU=["#BFEAF5","#2A8FB0"];
+function sim(id,ar,draw){const c=document.getElementById(id),W=800,H=Math.round(W/ar);c.width=W;c.height=H;const s={c,ctx:c.getContext("2d"),W,H,draw,t:0};SIMS.push(s);return s;}
+function ball(g,x,y,r,col){const gr=g.createRadialGradient(x-r*.35,y-r*.35,r*.15,x,y,r);gr.addColorStop(0,col[0]);gr.addColorStop(1,col[1]);g.fillStyle=gr;g.beginPath();g.arc(x,y,r,0,7);g.fill();}
+function trail(g,p,k,col){const sp=Math.hypot(p.vx,p.vy);if(sp<1)return;const ux=p.vx/sp,uy=p.vy/sp;g.strokeStyle=col||"rgba(127,211,230,.75)";g.lineWidth=2.5;g.lineCap="round";for(let i=-1;i<=1;i++){const ox=-uy*i*p.r*.55,oy=ux*i*p.r*.55;g.beginPath();g.moveTo(p.x-ux*(p.r+3)+ox,p.y-uy*(p.r+3)+oy);g.lineTo(p.x-ux*(p.r+3+sp*k)+ox,p.y-uy*(p.r+3+sp*k)+oy);g.stroke();}}
+function mk(n,b,r,sp){return Array.from({length:n},()=>{const a=Math.random()*6.283;return {x:b.x+r+Math.random()*(b.w-2*r),y:b.y+r+Math.random()*(b.h-2*r),vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,r}});}
+function gasStep(ps,b,dt,sp){ps.forEach(p=>{const v=Math.hypot(p.vx,p.vy)||1;p.vx*=sp/v;p.vy*=sp/v;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<b.x+p.r){p.x=b.x+p.r;p.vx=Math.abs(p.vx)}if(p.x>b.x+b.w-p.r){p.x=b.x+b.w-p.r;p.vx=-Math.abs(p.vx)}if(p.y<b.y+p.r){p.y=b.y+p.r;p.vy=Math.abs(p.vy)}if(p.y>b.y+b.h-p.r){p.y=b.y+b.h-p.r;p.vy=-Math.abs(p.vy)}});}
+function liqStep(ps,b,dt,sp){ps.forEach(p=>{const a=Math.atan2(p.vy,p.vx)+(Math.random()-.5)*1.4;p.vx=Math.cos(a)*sp;p.vy=Math.sin(a)*sp;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<b.x+p.r){p.x=b.x+p.r;p.vx=Math.abs(p.vx)}if(p.x>b.x+b.w-p.r){p.x=b.x+b.w-p.r;p.vx=-Math.abs(p.vx)}if(p.y<b.y+p.r){p.y=b.y+p.r;p.vy=Math.abs(p.vy)}if(p.y>b.y+b.h-p.r){p.y=b.y+b.h-p.r;p.vy=-Math.abs(p.vy)}});}
+function bg(s,col){const g=s.ctx;g.fillStyle=col||"#0E1A26";g.fillRect(0,0,s.W,s.H);g.strokeStyle="rgba(255,255,255,.05)";g.lineWidth=1;for(let x=0;x<s.W;x+=32){g.beginPath();g.moveTo(x,0);g.lineTo(x,s.H);g.stroke();}for(let y=0;y<s.H;y+=32){g.beginPath();g.moveTo(0,y);g.lineTo(s.W,y);g.stroke();}}
+function label(g,t,x,y,col,size,al){g.font=`800 ${size||22}px ui-monospace,monospace`;g.fillStyle=col||"#fff";g.textAlign=al||"center";g.fillText(t,x,y);}
+function beaker(g,x,y,w,h,fill,lvl){g.save();g.fillStyle=fill;g.fillRect(x+4,y+h*(1-lvl),w-8,h*lvl-4);g.strokeStyle="rgba(255,255,255,.75)";g.lineWidth=4;g.beginPath();g.moveTo(x-8,y);g.lineTo(x,y);g.lineTo(x,y+h);g.lineTo(x+w,y+h);g.lineTo(x+w,y);g.lineTo(x+w+8,y);g.stroke();g.restore();}
+let last=0;function loop(ts){const dt=Math.min(.05,(ts-last)/1000||0);last=ts;SIMS.forEach(s=>{const scr=s.c.closest(".screen");if(scr&&scr.classList.contains("active")){s.t+=RM?0:dt;s.draw(s,RM?0:dt);}});requestAnimationFrame(loop);}
+function drawAll(){SIMS.forEach(s=>s.draw(s,0));}
+
+/* warm-up: Module 1 */
+const WU=[{q:"When particles gain thermal energy, they move…",qa:"عندما تكتسب الجسيمات طاقة حرارية فإنها تتحرك…",o:[["faster","أسرع"],["slower","أبطأ"],["not at all","لا تتحرك"]],a:0,w:["More thermal energy = more kinetic energy = faster particles.","طاقة حرارية أكبر = طاقة حركية أكبر = جسيمات أسرع."]},
+ {q:"When ice melts, thermal energy is…",qa:"عندما ينصهر الجليد، فإن الطاقة الحرارية…",o:[["released","تنطلق"],["added (absorbed)","تُضاف (تُمتص)"],["destroyed","تفنى"]],a:1,w:["Melting needs energy: the ice absorbs it.","الانصهار يحتاج إلى طاقة: الجليد يمتصها."]},
+ {q:"Energy from the Sun reaches Earth by…",qa:"تصل طاقة الشمس إلى الأرض عن طريق…",o:[["conduction","التوصيل"],["convection","الحمل"],["radiation","الإشعاع"]],a:2,w:["Radiation can travel through empty space.","الإشعاع يستطيع الانتقال عبر الفضاء الفارغ."]}];
+$("#wuBox").innerHTML=WU.map((x,i)=>`<div class="wuq" data-i="${i}"><div class="qq">${i+1}. ${x.q}<span class="ar">${x.qa}</span></div><div class="wo">${x.o.map((o,j)=>`<button data-j="${j}">${o[0]}</button>`).join("")}<button class="show" data-j="-1">Show me · أرني</button></div><div class="wa"><b>${x.o[x.a][0]}</b> ${x.w[0]}<span class="ar">${x.w[1]}</span></div></div>`).join("");
+$$("#wuBox .wuq").forEach(card=>{const x=WU[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const j=+b.dataset.j;card.querySelectorAll("button").forEach(y=>{if(+y.dataset.j===x.a)y.classList.add("right");});if(j>=0&&j!==x.a)b.classList.add("wrong");card.classList.add("done");});});
+
+const ICE=["#F2FCFF","#8FD3EA"];
+function hexIce(g,x,y,r,rot,a){g.save();g.translate(x,y);g.rotate(rot);g.globalAlpha=a==null?1:a;g.strokeStyle="#E8FBFF";g.lineWidth=Math.max(2,r*.16);g.lineCap="round";
+  for(let k=0;k<6;k++){const an=k*Math.PI/3;g.beginPath();g.moveTo(0,0);g.lineTo(Math.cos(an)*r,Math.sin(an)*r);g.stroke();const bx=Math.cos(an)*r*.6,by=Math.sin(an)*r*.6;g.beginPath();g.moveTo(bx,by);g.lineTo(bx+Math.cos(an+.7)*r*.3,by+Math.sin(an+.7)*r*.3);g.moveTo(bx,by);g.lineTo(bx+Math.cos(an-.7)*r*.3,by+Math.sin(an-.7)*r*.3);g.stroke();}
+  g.fillStyle="rgba(143,211,234,.55)";g.beginPath();for(let k=0;k<6;k++){const an=k*Math.PI/3+Math.PI/6;g[k?"lineTo":"moveTo"](Math.cos(an)*r*.32,Math.sin(an)*r*.32);}g.closePath();g.fill();g.restore();}
+function wig(g,x,y,len,ang,col,t){g.save();g.translate(x,y);g.rotate(ang);g.strokeStyle=col||"#E07A2E";g.lineWidth=4;g.lineCap="round";g.beginPath();for(let i=0;i<=len;i+=4){const yy=Math.sin(i*.25-(t||0)*8)*5;i?g.lineTo(i,yy):g.moveTo(i,yy);}g.stroke();g.fillStyle=col||"#E07A2E";g.beginPath();g.moveTo(len+10,0);g.lineTo(len-4,-8);g.lineTo(len-4,8);g.fill();g.restore();}
+function rr(g,x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath();}
+function segOn(id,fn){$$(`#${id} button`).forEach(b=>b.onclick=()=>{$$(`#${id} button`).forEach(x=>x.classList.toggle("on",x===b));fn(+b.dataset.v);});}
+
+/* 1. subsystems */
+const SS=[["<b>Atmosphere:</b> the layers of gases (air) around Earth. It holds invisible <b>water vapour</b> and visible <b>clouds</b>.","<b>الغلاف الجوي:</b> طبقات الغازات (الهواء) حول الأرض. يحمل <b>بخار الماء</b> غير المرئي و<b>السحب</b> المرئية."],
+ ["<b>Hydrosphere:</b> all the liquid and solid water on Earth: oceans, rivers, lakes and glaciers. Like the Arabian Gulf.","<b>الغلاف المائي:</b> كل الماء السائل والصلب على الأرض: المحيطات والأنهار والبحيرات والأنهار الجليدية، مثل الخليج العربي."],
+ ["<b>Geosphere:</b> the solid Earth: land, rocks, mountains and soil. Like the Hajar Mountains.","<b>الغلاف الصخري:</b> الأرض الصلبة: اليابسة والصخور والجبال والتربة، مثل جبال الحجر."],
+ ["<b>Biosphere:</b> all living things, plants and animals. They use water and return it to the air.","<b>الغلاف الحيوي:</b> كل الكائنات الحية من نباتات وحيوانات. تستخدم الماء وتعيده إلى الهواء."]];
+$("#ssSvg").innerHTML=`<defs><linearGradient id="ssk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FB6D6"/><stop offset="1" stop-color="#F6E7CB"/></linearGradient><linearGradient id="ssw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3FA7C4"/><stop offset="1" stop-color="#1E5F7C"/></linearGradient><linearGradient id="ssr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B98A5E"/><stop offset="1" stop-color="#6E4B32"/></linearGradient></defs>
+<g class="zone" data-z="0"><rect x="0" y="0" width="400" height="150" fill="url(#ssk)"/><circle cx="60" cy="45" r="22" fill="#FFE08A"/><g fill="#fff"><circle cx="250" cy="50" r="20"/><circle cx="275" cy="40" r="24"/><circle cx="300" cy="52" r="18"/></g><g fill="#fff" opacity=".7"><circle cx="120" cy="110" r="3"/><circle cx="135" cy="95" r="4"/><circle cx="128" cy="78" r="3"/></g></g>
+<g class="zone" data-z="1"><path d="M0 150 Q60 144 120 150 T220 150 L220 260 L0 260Z" fill="url(#ssw)"/><path d="M20 190 q20 -6 40 0 M80 220 q20 -6 40 0" stroke="#BFEAF5" stroke-width="3" fill="none"/></g>
+<g class="zone" data-z="2"><path d="M220 150 L250 150 L290 92 L320 128 L350 80 L400 140 L400 260 L220 260Z" fill="url(#ssr)"/><path d="M0 232 L220 226 L400 236 L400 260 L0 260Z" fill="#5A3E2B" opacity=".9"/></g>
+<g class="zone" data-z="3"><rect x="236" y="118" width="7" height="34" fill="#7A5232"/><ellipse cx="240" cy="112" rx="30" ry="15" fill="#4E9A5B"/><path d="M370 150 c-6 -10 -2 -18 8 -18 c10 0 12 10 6 18Z" fill="#3F8B4E"/><g fill="#fff" stroke="#5B4A3A" stroke-width="1.5"><ellipse cx="320" cy="146" rx="15" ry="7"/></g><path d="M306 142 l-7 -10 l3 -18 M306 142 l-3 -10 l6 -17" stroke="#5B4A3A" stroke-width="1.5" fill="none"/><path d="M160 60 l8 -5 l8 5 M180 72 l7 -4 l7 4" stroke="#1F2A37" stroke-width="2" fill="none"/></g>
+<rect id="ssHi" x="0" y="0" width="0" height="0" fill="none" stroke="#E9B44C" stroke-width="5" rx="10"/>
+<g font-family="system-ui,sans-serif" font-weight="800" font-size="15" fill="#1F2A37"><text x="10" y="138">air</text><text x="12" y="250" fill="#E8F7FC">sea</text><text x="350" y="252" fill="#F7F1E8">rock</text><text x="208" y="94">life</text></g>`;
+const SSB=[[2,2,396,146],[2,148,220,110],[220,78,178,180],[205,92,190,64]];
+function ssSet(v){const b=SSB[v];const h=$("#ssHi");["x","y","width","height"].forEach((k,i)=>h.setAttribute(k,b[i]));$$("#ssSvg .zone").forEach(z=>z.style.opacity=+z.dataset.z===v?1:.45);setMsg($("#ssMsg"),SS[v][0]+" <br><small>The four subsystems keep interacting: that is how water moves around Earth.</small>",SS[v][1]+" <br><small>تتفاعل الأنظمة الأربعة باستمرار، وهكذا ينتقل الماء حول الأرض.</small>");}
+segOn("ssMode",ssSet);ssSet(0);
+
+/* 2. evaporation */
+const EB={x:40,y:250,w:720,h:230};let evK=1,evL=mk(70,EB,13,80),evV=[],evN=0;
+sim("evC",16/10,(s,dt)=>{const g=s.ctx,W=s.W;const sky=g.createLinearGradient(0,0,0,250);const SK=[["#0E1A3A","#24324F"],["#9CC7E2","#F6E7CB"],["#5FB2E6","#DDF0FA"]][evK];sky.addColorStop(0,SK[0]);sky.addColorStop(1,SK[1]);g.fillStyle=sky;g.fillRect(0,0,W,250);
+  if(evK===0){g.fillStyle="#F2F5F8";g.beginPath();g.arc(110,70,28,0,7);g.fill();g.fillStyle=SK[0];g.beginPath();g.arc(122,62,26,0,7);g.fill();}
+  else{const sy=evK===2?60:110;g.fillStyle="rgba(255,224,138,.35)";g.beginPath();g.arc(110,sy,64,0,7);g.fill();g.fillStyle="#FFD45E";g.beginPath();g.arc(110,sy,34,0,7);g.fill();for(let k=0;k<(evK===2?4:2);k++)wig(g,150+k*30,sy+20+k*10,150,1.05-k*.12,"#E9B44C",s.t+k);}
+  const wg=g.createLinearGradient(0,250,0,480);wg.addColorStop(0,"#2E8FB0");wg.addColorStop(1,"#14445C");g.fillStyle=wg;g.fillRect(0,250,W,250);
+  const sp=[40,85,150][evK],rate=[.02,.35,1.6][evK];liqStep(evL,EB,dt,sp);
+  if(dt>0)evL.forEach(p=>{if(p.y<EB.y+26&&Math.random()<rate*dt){evV.push({x:p.x,y:p.y,vx:(Math.random()-.5)*60,vy:-(90+Math.random()*80),r:11});evN++;p.y=EB.y+EB.h-20;p.x=EB.x+20+Math.random()*(EB.w-40);}});
+  evV=evV.filter(v=>v.y>-20);evV.forEach(v=>{v.x+=v.vx*dt;v.y+=v.vy*dt;v.vx+=(Math.random()-.5)*40*dt;g.globalAlpha=Math.max(.15,Math.min(1,v.y/250));trail(g,v,.06,"rgba(255,255,255,.7)");ball(g,v.x,v.y,v.r,["#FFFFFF","#7FD3E6"]);g.globalAlpha=1;});
+  evL.forEach(p=>{trail(g,p,.05,"rgba(191,234,245,.5)");ball(g,p.x,p.y,p.r,BLU);});
+  g.strokeStyle="rgba(255,255,255,.6)";g.lineWidth=3;g.setLineDash([10,8]);g.beginPath();g.moveTo(0,250);g.lineTo(W,250);g.stroke();g.setLineDash([]);
+  g.fillStyle="rgba(15,30,45,.75)";rr(g,486,14,300,52,14);g.fill();label(g,"escaped: "+evN,636,50,"#FFE08A",28);
+  label(g,"liquid water",400,474,"#E8F7FC",28);label(g,"water vapour (gas)",560,150,evK===0?"#C9D3DD":"#1F2A37",26);});
+const EVM=[["<b>Night:</b> no sunshine, little thermal energy. The particles move slowly and almost none escape.","<b>الليل:</b> لا شمس وطاقة حرارية قليلة. الجسيمات تتحرك ببطء ولا يكاد أيّ منها يفلت."],
+ ["<b>Morning:</b> 1. Thermal energy is added. 2. Particles near the surface vibrate faster. 3. Some break free from each other. 4. They become invisible <b>water vapour</b> and rise.","<b>الصباح:</b> 1. تُضاف طاقة حرارية. 2. تهتز الجسيمات القريبة من السطح أسرع. 3. يتحرّر بعضها من بعض. 4. تصبح <b>بخار ماء</b> غير مرئي وترتفع."],
+ ["<b>Noon sun:</b> much more energy is absorbed, so many more particles escape. Puddles dry fastest at noon!","<b>شمس الظهيرة:</b> تُمتص طاقة أكبر بكثير فتفلت جسيمات أكثر بكثير. لهذا تجفّ البِرك أسرع وقت الظهيرة!"]];
+function evSet(v){evK=v;setMsg($("#evMsg"),EVM[v][0],EVM[v][1]);}
+segOn("evMode",v=>{evN=0;evV=[];evSet(v);});evSet(1);
+whyBox($("#why1"),"Why does a wet towel dry faster in the sun than in the shade?","لماذا تجفّ المنشفة المبللة في الشمس أسرع من الظل؟",[
+ ["The sun gives the water more thermal energy, so more particles escape as vapour.","الشمس تعطي الماء طاقة حرارية أكبر، فتفلت جسيمات أكثر على هيئة بخار.",1,"Evaporation absorbs energy: more energy, faster evaporation.","التبخر يمتص الطاقة: طاقة أكبر تعني تبخرًا أسرع."],
+ ["The water condenses faster in the sun.","الماء يتكاثف أسرع في الشمس.",0,"Condensation makes water appear, not disappear. Water leaves the towel by evaporation.","التكاثف يُظهر الماء ولا يُخفيه. الماء يغادر المنشفة بالتبخر."],
+ ["The shade releases thermal energy into the towel.","الظل يطلق طاقة حرارية إلى المنشفة.",0,"The shade gives less energy, not more.","الظل يعطي طاقة أقل، لا أكثر."]]);
+
+/* 3. transpiration */
+let trTemp=30,trWet=1,trP=[],trZ=[];
+sim("trC",16/10,(s,dt)=>{const g=s.ctx,W=s.W,H=s.H;const sk=g.createLinearGradient(0,0,0,H);sk.addColorStop(0,"#9CC7E2");sk.addColorStop(1,"#F6E7CB");g.fillStyle=sk;g.fillRect(0,0,W,H);
+  g.fillStyle=trWet?"#6E4B32":"#D9B98A";g.fillRect(0,400,W,100);if(trWet){g.fillStyle="rgba(79,166,200,.45)";for(let k=0;k<14;k++){g.beginPath();g.arc(30+k*28,440+(k%3)*14,6,0,7);g.fill();}}
+  g.strokeStyle="#7A5232";g.lineWidth=18;g.beginPath();g.moveTo(190,402);g.lineTo(196,250);g.stroke();g.lineWidth=7;g.beginPath();g.moveTo(194,300);g.lineTo(140,250);g.moveTo(196,280);g.lineTo(250,240);g.stroke();
+  const cg=g.createRadialGradient(170,200,10,200,215,120);cg.addColorStop(0,"#A6DE8F");cg.addColorStop(1,"#3F8B4E");g.fillStyle=cg;g.beginPath();g.ellipse(196,215,130,62,0,0,7);g.fill();
+  label(g,"ghaf tree",196,470,trWet?"#F7F1E8":"#5B4A3A",26);
+  const rate=(trTemp-10)/35*(trWet?1:.15)*14;
+  if(dt>0&&Math.random()<rate*dt)trP.push({x:100+Math.random()*190,y:200,ph:Math.random()*6});
+  trP=trP.filter(p=>p.y>10);trP.forEach(p=>{p.y-=55*dt;p.ph+=dt*2;const a=Math.max(0,Math.min(1,(p.y-10)/120));g.fillStyle=`rgba(255,255,255,${.85*a})`;g.beginPath();g.arc(p.x+Math.sin(p.ph)*8,p.y,7+(200-p.y)*.04,0,7);g.fill();});
+  const cx=600,cy=230,R=180;g.strokeStyle="#E9B44C";g.lineWidth=3;g.setLineDash([8,8]);g.beginPath();g.moveTo(300,200);g.lineTo(cx-R*.8,cy-R*.6);g.moveTo(300,232);g.lineTo(cx-R*.8,cy+R*.6);g.stroke();g.setLineDash([]);g.beginPath();g.arc(300,216,14,0,7);g.stroke();
+  g.save();g.beginPath();g.arc(cx,cy,R,0,7);g.fillStyle="#E9F5FB";g.fill();g.clip();
+  g.fillStyle="#5DAE5E";g.fillRect(cx-R,cy+20,2*R,R);g.fillStyle="#4C9A50";for(let k=-4;k<=4;k++){rr(g,cx+k*44-20,cy+40,40,26,10);g.fill();}
+  const open=trWet?(10+(trTemp-15)*.5):4;g.fillStyle="#2F7A3F";g.beginPath();g.ellipse(cx-open-18,cy+22,20,34,0,0,7);g.ellipse(cx+open+18,cy+22,20,34,0,0,7);g.fill();
+  if(dt>0&&Math.random()<rate*1.4*dt)trZ.push({x:cx+(Math.random()-.5)*open*1.2,y:cy+18,vx:(Math.random()-.5)*50,vy:-(70+Math.random()*50),r:11});
+  trZ=trZ.filter(p=>p.y>cy-R);trZ.forEach(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;ball(g,p.x,p.y,p.r,["#FFFFFF","#5FB8D6"]);});
+  g.restore();g.strokeStyle="#E9B44C";g.lineWidth=5;g.beginPath();g.arc(cx,cy,R,0,7);g.stroke();
+  label(g,"leaf opening",cx,cy+R-24,"#F7F1E8",24);label(g,"water vapour",cx,cy-R+50,"#1F2A37",24);});
+function trSet(){trTemp=+$("#trR").value;$("#trT").textContent=trTemp+"°C";const lvl=!trWet?"low":trTemp>=35?"high":trTemp>=25?"medium":"low";
+  setMsg($("#trMsg"),!trWet?`<b>Dry soil:</b> the plant closes its leaf openings to save water, so <b>very little</b> water vapour is released.`:`<b>Wet soil, ${trTemp}°C:</b> transpiration is <b>${lvl}</b>. The plant pulls water up from its roots and releases it as vapour from its leaves. Warmer air → more transpiration.`,
+   !trWet?`<b>تربة جافة:</b> يُغلق النبات فتحات أوراقه ليحافظ على الماء، فيطلق <b>القليل جدًا</b> من بخار الماء.`:`<b>تربة رطبة، ${trTemp}°C:</b> النتح <b>${{low:"قليل",medium:"متوسط",high:"كثير"}[lvl]}</b>. يسحب النبات الماء من جذوره ويطلقه بخارًا من أوراقه. هواء أدفأ ← نتح أكثر.`);}
+$("#trR").oninput=trSet;segOn("trMode",v=>{trWet=v;trSet();});trSet();
+
+/* 4. cellular respiration */
+let rsK=0,rsP=1;
+function glu(g,x,y,r){g.save();g.translate(x,y);const gr=g.createLinearGradient(-r,-r,r,r);gr.addColorStop(0,"#FFD08A");gr.addColorStop(1,"#E07A2E");g.fillStyle=gr;g.strokeStyle="#8C5A3C";g.lineWidth=4;g.beginPath();for(let k=0;k<6;k++){const a=k*Math.PI/3+Math.PI/6;g[k?"lineTo":"moveTo"](Math.cos(a)*r,Math.sin(a)*r);}g.closePath();g.fill();g.stroke();g.restore();}
+function o2(g,x,y){ball(g,x-14,y,18,["#FF9B8A","#C8553D"]);ball(g,x+14,y,18,["#FF9B8A","#C8553D"]);}
+function co2(g,x,y){ball(g,x-30,y,15,["#FF9B8A","#C8553D"]);ball(g,x+30,y,15,["#FF9B8A","#C8553D"]);ball(g,x,y,19,["#6B7785","#1F2A37"]);}
+function h2o(g,x,y){ball(g,x-20,y+14,12,["#FFFFFF","#B8C2CC"]);ball(g,x+20,y+14,12,["#FFFFFF","#B8C2CC"]);ball(g,x,y,19,["#FF9B8A","#C8553D"]);}
+function star(g,x,y,r){g.save();g.translate(x,y);g.fillStyle="#E9B44C";g.strokeStyle="#FFF1C2";g.lineWidth=4;g.beginPath();for(let k=0;k<10;k++){const a=k*Math.PI/5-Math.PI/2,rr2=k%2?r*.45:r;g[k?"lineTo":"moveTo"](Math.cos(a)*rr2,Math.sin(a)*rr2);}g.closePath();g.fill();g.stroke();g.restore();}
+const Lp=(a,b,p)=>a+(b-a)*p,E3=p=>p<0?0:p>1?1:p*p*(3-2*p);
+sim("rsC",16/10,(s,dt)=>{const g=s.ctx;bg(s,"#13202E");rsP=Math.min(1,rsP+(RM?1:dt*1.2));const p=E3(rsP);
+  const cg=g.createRadialGradient(400,250,30,400,250,170);cg.addColorStop(0,"rgba(42,157,143,.35)");cg.addColorStop(1,"rgba(42,157,143,.12)");g.fillStyle=cg;g.beginPath();g.ellipse(400,250,170,150,0,0,7);g.fill();g.strokeStyle="#2A9D8F";g.lineWidth=6;g.stroke();label(g,"cell",400,90,"#7FD3E6",26);
+  const inP=rsK===0?0:rsK===1?p:1;
+  if(rsK<=1||(rsK===2&&p<.5)){const a=rsK===2?1-p*2:1;g.globalAlpha=a;glu(g,Lp(110,360,inP),Lp(170,215,inP),40);o2(g,Lp(110,370,inP),Lp(350,300,inP));g.globalAlpha=1;
+    if(inP<.3){label(g,"food",110,240,"#FFD08A",26);label(g,"oxygen",110,400,"#FF9B8A",26);}}
+  if(rsK>=2){const sp=rsK===2?E3(p*1.4):1;star(g,400,250,20+sp*36+(RM?0:Math.sin(s.t*5)*3));label(g,"energy",400,340,"#FFE08A",26);}
+  if(rsK>=3){const op=rsK===3?p:1;co2(g,Lp(470,690,op),Lp(200,170,op));h2o(g,Lp(470,690,op),Lp(300,330,op));if(op>.7){label(g,"CO₂",690,230,"#C9D3DD",26);label(g,"water vapour",660,400,"#BFEAF5",26);}}
+  if(rsK>=4){for(let k=0;k<5;k++){const ph=((s.t*.5+k/5)%1);g.fillStyle=`rgba(255,255,255,${.6*(1-ph)})`;g.beginPath();g.arc(700+ph*70,110-ph*60+Math.sin(k)*10,10+ph*22,0,7);g.fill();}label(g,"breath on a cold day",560,480,"#F7F1E8",24);}});
+const RSM=[["Tap <b>Next step</b>. Cells need food and oxygen.","اضغط <b>Next step</b>. الخلايا تحتاج إلى الغذاء والأكسجين."],
+ ["<b>1.</b> Food (sugar) and oxygen enter the cell.","<b>1.</b> يدخل الغذاء (السكر) والأكسجين إلى الخلية."],
+ ["<b>2.</b> The cell breaks down the food with oxygen and <b>energy</b> is released for the organism to use.","<b>2.</b> تحلّل الخلية الغذاء بالأكسجين فتنطلق <b>طاقة</b> يستخدمها الكائن الحي."],
+ ["<b>3.</b> Waste products leave: carbon dioxide and <b>water vapour</b>. Animals breathe them out; plants release them too.","<b>3.</b> تخرج الفضلات: ثاني أكسيد الكربون و<b>بخار الماء</b>. تُخرجها الحيوانات مع الزفير، والنباتات تطلقها أيضًا."],
+ ["<b>4.</b> On a cold morning, an Arabian oryx's breath looks like a small cloud: the water vapour it breathes out condenses in the cold air.","<b>4.</b> في صباح بارد يبدو زفير المها العربي كسحابة صغيرة: بخار الماء الذي يخرجه يتكاثف في الهواء البارد."]];
+function rsSet(){setMsg($("#rsMsg"),RSM[rsK][0],RSM[rsK][1]);$("#rsNext").disabled=rsK>=4;}
+$("#rsNext").onclick=()=>{if(rsK<4){rsK++;rsP=0;rsSet();}};$("#rsReset").onclick=()=>{rsK=0;rsP=1;rsSet();};rsSet();
+
+/* 5. pathways */
+$("#pwSvg").innerHTML=`<defs><linearGradient id="pwa" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7FD3E6"/><stop offset="1" stop-color="#2A8FB0"/></linearGradient><linearGradient id="pwb" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7BC47F"/><stop offset="1" stop-color="#2A9D8F"/></linearGradient></defs>
+<g font-family="system-ui,sans-serif" font-weight="800"><text x="200" y="22" text-anchor="middle" font-size="15" fill="#1F2A37">Water vapour in the air · 100%</text>
+<rect x="10" y="36" width="342" height="54" rx="10" fill="url(#pwa)"/><rect x="352" y="36" width="38" height="54" rx="8" fill="url(#pwb)"/>
+<text x="181" y="70" text-anchor="middle" font-size="18" fill="#fff">Evaporation ≈ 90%</text><text x="371" y="70" text-anchor="middle" font-size="12" fill="#fff">≈10%</text>
+<text x="181" y="114" text-anchor="middle" font-size="13" fill="#2A6F8F">oceans, lakes, rivers, soil</text><path d="M371 96 L371 108 L340 124" stroke="#2A9D8F" stroke-width="2" fill="none"/><text x="236" y="140" text-anchor="middle" font-size="13" fill="#2A7A5F">living things (transpiration, respiration)</text></g>`;
+const PWO=[["Evaporation","التبخر"],["Transpiration","النتح"],["Respiration","التنفس"]];
+cardsQ($("#pwCards"),[
+ {t:["The Arabian Gulf on a hot afternoon","الخليج العربي في عصر يوم حار"],o:PWO,a:0,cls:"stack",w:["Liquid water at the surface turns into vapour.","الماء السائل عند السطح يتحوّل إلى بخار."],h:["No living thing is involved here.","لا يوجد كائن حي هنا."]},
+ {t:["Tiny openings in a date palm's leaves","فتحات صغيرة في أوراق نخلة"],o:PWO,a:1,cls:"stack",w:["Plants release vapour through their leaves.","النباتات تطلق البخار من أوراقها."],h:["Think about leaves.","فكّر في الأوراق."]},
+ {t:["A camel breathing out","جمل يُخرج زفيره"],o:PWO,a:2,cls:"stack",w:["Its cells break down food and make water vapour.","خلاياه تحلّل الغذاء وتُنتج بخار الماء."],h:["Breathing out comes from the cells' work.","الزفير ناتج عن عمل الخلايا."]},
+ {t:["Wet soil after rain drying in the sun","تربة مبللة بعد المطر تجفّ في الشمس"],o:PWO,a:0,cls:"stack",w:["Soil water evaporates, just like a lake.","ماء التربة يتبخر، تمامًا مثل البحيرة."],h:["Soil is not alive. Which physical change happens?","التربة ليست كائنًا حيًا. أيّ تغيّر فيزيائي يحدث؟"]}]);
+
+/* 6. condensation */
+const CDZ={x:420,y:40,w:360,h:420};const cdC={x:600,y:250,r:200};
+const cdDust=[[520,170],[680,180],[600,260],[520,340],[690,340]].map(d=>({x:d[0],y:d[1]}));
+let cdKm=0,cdP=mk(30,{x:cdC.x-150,y:cdC.y-150,w:300,h:300},10,150);cdP.forEach((p,i)=>{p.d=i%5;p.k=Math.random();p.ox=Math.cos(i*2.4)*14;p.oy=Math.sin(i*2.4)*14;});
+sim("cdC",16/10,(s,dt)=>{const g=s.ctx,W=s.W;const sk=g.createLinearGradient(0,0,0,500);sk.addColorStop(0,"#4F7FA6");sk.addColorStop(1,"#F6E7CB");g.fillStyle=sk;g.fillRect(0,0,W,500);
+  g.fillStyle="#C9A06A";g.fillRect(0,450,400,50);const yOf=km=>440-km*120;
+  g.strokeStyle="rgba(31,42,55,.6)";g.lineWidth=3;g.setLineDash([12,8]);g.beginPath();g.moveTo(20,yOf(2));g.lineTo(380,yOf(2));g.stroke();g.setLineDash([]);label(g,"cloud forms here",200,yOf(2)-12,"#1F2A37",22);
+  const f=Math.max(0,Math.min(1,(cdKm-1.9)/.8));const by=yOf(cdKm);
+  if(f>0){g.fillStyle=`rgba(255,255,255,${.9*f})`;[[-60,6,34],[-24,-14,40],[20,-4,40],[60,8,30],[0,16,36]].forEach(([dx,dy,r])=>{g.beginPath();g.arc(190+dx,by+dy,r,0,7);g.fill();});}
+  g.strokeStyle="#E9B44C";g.lineWidth=4;g.setLineDash([6,6]);g.beginPath();g.arc(190,by,30,0,7);g.stroke();g.setLineDash([]);
+  const T=Math.round(30-6.5*cdKm);g.fillStyle="rgba(15,30,45,.8)";rr(g,10,14,140,90,14);g.fill();label(g,cdKm.toFixed(1)+" km",80,52,"#FFE08A",28);label(g,T+"°C",80,92,T<20?"#7FD3E6":"#F6A58F",28);
+  g.strokeStyle="#E9B44C";g.lineWidth=3;g.setLineDash([8,8]);g.beginPath();g.moveTo(216,by-16);g.lineTo(cdC.x-cdC.r*.86,cdC.y-cdC.r*.5);g.moveTo(216,by+16);g.lineTo(cdC.x-cdC.r*.86,cdC.y+cdC.r*.5);g.stroke();g.setLineDash([]);
+  g.save();g.beginPath();g.arc(cdC.x,cdC.y,cdC.r,0,7);g.fillStyle="#0E1A26";g.fill();g.clip();
+  cdDust.forEach(d=>{g.fillStyle="#B98A5E";g.beginPath();g.arc(d.x,d.y,6,0,7);g.fill();});
+  const free=cdP.filter(p=>p.k>=f),stuck=cdP.filter(p=>p.k<f);gasStep(free,{x:cdC.x-170,y:cdC.y-170,w:340,h:340},dt,170-cdKm*30);
+  const cnt=[0,0,0,0,0];stuck.forEach(p=>{cnt[p.d]++;const d=cdDust[p.d];p.x+=(d.x+p.ox-p.x)*Math.min(1,dt*3);p.y+=(d.y+p.oy-p.y)*Math.min(1,dt*3);});
+  cdDust.forEach((d,i)=>{if(cnt[i]){g.fillStyle="rgba(79,166,200,.45)";g.beginPath();g.arc(d.x,d.y,16+cnt[i]*3,0,7);g.fill();if(!RM)wig(g,d.x+26+cnt[i]*3,d.y-10,34,-.5,"#E07A2E",s.t+i);}});
+  free.forEach(p=>{trail(g,p,.05,"rgba(255,255,255,.5)");ball(g,p.x,p.y,p.r,["#FFFFFF","#7FD3E6"]);});stuck.forEach(p=>ball(g,p.x,p.y,p.r,BLU));
+  g.restore();g.strokeStyle="#E9B44C";g.lineWidth=5;g.beginPath();g.arc(cdC.x,cdC.y,cdC.r,0,7);g.stroke();
+  label(g,f>0?"droplets on dust":"water vapour",cdC.x,cdC.y+cdC.r-28,"#F7F1E8",24);});
+function cdSet(){cdKm=+$("#cdR").value/10;$("#cdH").textContent=cdKm.toFixed(1)+" km";const T=Math.round(30-6.5*cdKm);
+  setMsg($("#cdMsg"),cdKm<1.9?`<b>1. Rising and cooling:</b> the moist air rises and gets cooler (${T}°C). The vapour is still an invisible gas. Keep lifting it!`:`<b>2. Energy lost:</b> the vapour loses thermal energy to the cold air. <b>3. Condensation:</b> it changes into tiny liquid droplets on dust particles. <b>4.</b> Millions of droplets block and reflect light: a <b>visible cloud</b>! The orange arrows show energy being <b>released</b>.`,
+   cdKm<1.9?`<b>1. الارتفاع والتبريد:</b> يرتفع الهواء الرطب ويبرد (${T}°C). ما زال البخار غازًا غير مرئي. استمر في رفعه!`:`<b>2. فقدان الطاقة:</b> يفقد البخار طاقته الحرارية للهواء البارد. <b>3. التكاثف:</b> يتحوّل إلى قطرات سائلة صغيرة على ذرات الغبار. <b>4.</b> ملايين القطرات تحجب الضوء وتعكسه: <b>سحابة مرئية</b>! الأسهم البرتقالية تعني أن الطاقة <b>تنطلق</b>.`);}
+$("#cdR").oninput=cdSet;cdSet();
+
+/* 7. crystallization */
+let crT=10;const crD=Array.from({length:16},(_,i)=>({x:250+(i%4)*150+Math.random()*40,y:90+Math.floor(i/4)*100+Math.random()*30,k:Math.random()*.9+.05,ph:Math.random()*6}));
+sim("crC",16/10,(s,dt)=>{const g=s.ctx;const sk=g.createLinearGradient(0,0,0,500);sk.addColorStop(0,"#2B4766");sk.addColorStop(1,"#6E93B5");g.fillStyle=sk;g.fillRect(0,0,800,500);
+  g.fillStyle="#fff";rr(g,50,50,60,330,30);g.fill();const hh=Lp(20,280,(crT+30)/40);g.fillStyle=crT<=0?"#2A8FB0":"#C8553D";g.fillRect(70,370-hh,20,hh);g.beginPath();g.arc(80,400,30,0,7);g.fill();
+  g.strokeStyle="#1F2A37";g.lineWidth=2;[10,0,-10,-20,-30].forEach(v=>{const y=370-Lp(20,280,(v+30)/40);g.beginPath();g.moveTo(50,y);g.lineTo(64,y);g.stroke();});label(g,crT+"°C",80,470,"#fff",30);
+  const f=Math.max(0,Math.min(1,(0-crT)/20));
+  crD.forEach((d,i)=>{const x=d.x+(RM?0:Math.sin(s.t*.8+d.ph)*10),y=d.y+(RM?0:Math.cos(s.t*.6+d.ph)*8);if(d.k<f){hexIce(g,x,y,30,s.t*.3+d.ph,1);if(!RM&&d.k>f-.15)wig(g,x+34,y-6,30,-.4,"#E07A2E",s.t);}else ball(g,x,y,16,BLU);});
+  g.fillStyle="rgba(15,30,45,.75)";rr(g,420,440,370,48,14);g.fill();label(g,f>=1?"all ice crystals":f>0?"freezing…":"liquid droplets",605,474,"#FFE08A",26);});
+function crSet(){crT=+$("#crR").value;$("#crT").textContent=crT+"°C";
+  setMsg($("#crMsg"),crT>0?`<b>${crT}°C:</b> the cloud is made of <b>liquid water droplets</b>. Lower the temperature, as if the cloud rises very high.`:crT>-20?`<b>${crT}°C:</b> the droplets lose a lot of thermal energy. More and more of them freeze into rigid, six-sided <b>ice crystals</b>. Energy is <b>released</b>.`:`<b>${crT}°C:</b> almost the whole cloud is now <b>ice crystals</b>. Clusters of them make high, thin clouds that look bright because they block and reflect light.`,
+   crT>0?`<b>${crT}°C:</b> تتكوّن السحابة من <b>قطرات ماء سائلة</b>. اخفض درجة الحرارة، كأن السحابة ترتفع عاليًا جدًا.`:crT>-20?`<b>${crT}°C:</b> تفقد القطرات كمية كبيرة من الطاقة الحرارية، فيتجمّد عدد متزايد منها إلى <b>بلورات ثلج</b> سداسية صلبة. تنطلق الطاقة.`:`<b>${crT}°C:</b> أصبحت السحابة كلها تقريبًا <b>بلورات ثلج</b>. تجمّعاتها تكوّن سحبًا عالية رقيقة تبدو لامعة لأنها تحجب الضوء وتعكسه.`);}
+$("#crR").oninput=crSet;crSet();
+
+/* 8. energy exchange */
+function dots(kind,x0,y0){let h="";if(kind==="g"){[[14,10],[60,18],[34,46],[78,58],[12,70],[50,84]].forEach(([x,y])=>h+=`<circle cx="${x0+x}" cy="${y0+y}" r="8" fill="#BFEAF5" stroke="#2A8FB0" stroke-width="2"/>`);}
+ else if(kind==="l"){[[12,40],[30,52],[50,44],[70,54],[20,70],[42,74],[64,76],[84,68],[86,44]].forEach(([x,y])=>h+=`<circle cx="${x0+x}" cy="${y0+y}" r="9" fill="#5FB8D6" stroke="#1E6F8C" stroke-width="2"/>`);}
+ else{for(let i=0;i<4;i++)for(let j=0;j<3;j++)h+=`<circle cx="${x0+14+i*22}" cy="${y0+36+j*22}" r="9" fill="#E8FBFF" stroke="#8FD3EA" stroke-width="2"/>`;}return h;}
+const EE=[{a:"l",b:"g",an:"liquid",bn:"gas",in:1,where:"at warmer surface levels",whar:"عند السطح الأدفأ",res:"invisible water vapour",rar:"بخار ماء غير مرئي"},{a:"g",b:"l",an:"gas",bn:"liquid",in:0,where:"as rising air cools higher up",whar:"عندما يبرد الهواء الصاعد في الأعلى",res:"visible clouds, fog, dew",rar:"سحب وضباب وندى مرئية"},{a:"l",b:"s",an:"liquid",bn:"solid",in:0,where:"where it is very cold, very high up",whar:"في البرد الشديد وعلى ارتفاع كبير",res:"ice crystals",rar:"بلورات ثلج"}];
+function eeSet(v){const e=EE[v];const box=(x,k,n)=>`<rect x="${x}" y="40" width="110" height="110" rx="14" fill="#fff" stroke="#9AA5B1" stroke-width="2"/>${dots(k,x+8,48)}<text x="${x+55}" y="172" text-anchor="middle" font-size="16" font-weight="800" fill="#1F2A37">${n}</text>`;
+  const arr=e.in?`<path d="M200 6 L200 34" stroke="#E07A2E" stroke-width="6"/><path d="M190 30 L200 46 L210 30Z" fill="#E07A2E"/><text x="214" y="22" font-size="14" font-weight="800" fill="#C8553D">energy IN</text>`:`<path d="M200 46 L200 16" stroke="#E07A2E" stroke-width="6"/><path d="M190 20 L200 4 L210 20Z" fill="#E07A2E"/><text x="214" y="22" font-size="14" font-weight="800" fill="#C8553D">energy OUT</text>`;
+  $("#eeSvg").innerHTML=`<g font-family="system-ui,sans-serif">${box(30,e.a,e.an)}${box(260,e.b,e.bn)}<path d="M150 95 L246 95" stroke="#1F2A37" stroke-width="5"/><path d="M240 85 L256 95 L240 105Z" fill="#1F2A37"/>${arr}<text x="200" y="128" text-anchor="middle" font-size="13" font-weight="800" fill="${e.in?"#C8553D":"#2A8FB0"}">${e.in?"absorbed":"released"}</text></g>`;
+  setMsg($("#eeMsg"),`<b>${["Evaporation","Condensation","Crystallization"][v]}</b> (${e.an} → ${e.bn}): energy is <b>${e.in?"ABSORBED (from the Sun)":"RELEASED (to the colder air)"}</b>. It happens ${e.where} and makes ${e.res}.`,`<b>${["التبخر","التكاثف","التبلور"][v]}</b>: الطاقة <b>${e.in?"تُمتص (من الشمس)":"تنطلق (إلى الهواء الأبرد)"}</b>. يحدث ${e.whar}، وينتج ${e.rar}.`);}
+segOn("eeMode",eeSet);eeSet(0);
+(()=>{let h=`<rect width="400" height="170" fill="#DCE8D6"/>`;const cx=200,cy=80;for(let k=0;k<10;k++){const a=k*Math.PI/5;h+=`<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(a)*170}" y2="${cy+Math.sin(a)*110}" stroke="#fff" stroke-width="1.5" opacity=".9"/>`;}
+ for(let r=14;r<120;r+=16){let d="";for(let k=0;k<=10;k++){const a=k*Math.PI/5;d+=(k?"L":"M")+(cx+Math.cos(a)*r*1.4).toFixed(1)+" "+(cy+Math.sin(a)*r*.9).toFixed(1);}h+=`<path d="${d}" fill="none" stroke="#fff" stroke-width="1.3" opacity=".85"/>`;
+  for(let k=0;k<10;k+=1){const a=k*Math.PI/5+.3;h+=`<circle cx="${(cx+Math.cos(a)*r*1.4).toFixed(1)}" cy="${(cy+Math.sin(a)*r*.9).toFixed(1)}" r="${(2.5+((k*r)%4)).toFixed(1)}" fill="#E8F7FC" stroke="#7FB6D6" stroke-width="1"/>`;}}
+ for(let x=0;x<400;x+=9)h+=`<path d="M${x} 170 q4 -30 ${(x%3)*3} -${34+(x%5)*4}" stroke="#5DAE5E" stroke-width="3" fill="none"/>`;
+ $("#dwSvg").innerHTML=h;})();
+whyBox($("#why2"),"Why does dew form at night and early morning, not at noon?","لماذا يتكوّن الندى في الليل والصباح الباكر وليس وقت الظهيرة؟",[
+ ["At night surfaces get cold, so water vapour touching them loses energy and condenses.","في الليل تبرد الأسطح، فيفقد بخار الماء الملامس لها طاقته ويتكاثف.",1,"Condensation needs energy to be lost, and cold surfaces take it away.","التكاثف يحتاج إلى فقدان الطاقة، والأسطح الباردة تأخذها."],
+ ["At night the Sun adds energy to the grass.","في الليل تضيف الشمس طاقة إلى العشب.",0,"There is no sunshine at night. Surfaces lose energy.","لا توجد شمس في الليل. الأسطح تفقد الطاقة."],
+ ["Dew falls from clouds like rain.","الندى يسقط من السحب مثل المطر.",0,"Dew forms right on the surface, from vapour in the air around it.","الندى يتكوّن على السطح نفسه من البخار في الهواء المحيط به."]]);
+
+/* 9. solar halo */
+function hlSet(v){const sky=`<rect width="400" height="220" fill="#7FB6D6"/><g stroke="#fff" stroke-opacity=".7" stroke-width="5" fill="none" stroke-linecap="round"><path d="M10 40 q40 -10 80 0 t80 0"/><path d="M40 180 q50 -12 100 0"/><path d="M0 120 q30 -8 60 0"/></g>
+  <circle cx="100" cy="110" r="72" fill="none" stroke="#fff" stroke-width="9" stroke-opacity=".55"/><circle cx="100" cy="110" r="66" fill="none" stroke="#E8A28C" stroke-width="3" stroke-opacity=".7"/><circle cx="100" cy="110" r="26" fill="#FFF7D6"/><circle cx="100" cy="110" r="40" fill="#FFF7D6" opacity=".35"/>
+  <text x="100" y="212" text-anchor="middle" font-size="14" font-weight="800" fill="#1F2A37">halo</text>`;
+ const hx=300,hy=105,R=56;let hex="";for(let k=0;k<6;k++){const a=k*Math.PI/3;hex+=(k?"L":"M")+(hx+Math.cos(a)*R).toFixed(1)+" "+(hy+Math.sin(a)*R).toFixed(1);}
+ const crystal=`<rect x="205" y="10" width="190" height="200" rx="16" fill="#0E1A26"/><path d="${hex}Z" fill="rgba(143,211,234,.35)" stroke="#E8FBFF" stroke-width="3"/>`;
+ const ray=v===0?`<path class="ray" d="M212 70 L252 88" stroke="#FFF7D6" stroke-width="5" fill="none"/><path class="ray" d="M252 88 L344 112" stroke="#FFF7D6" stroke-width="4" fill="none"/>${["#E8A28C","#FFE08A","#FFF7D6"].map((c,i)=>`<path class="ray" d="M344 112 L392 ${150+i*12}" stroke="${c}" stroke-width="4" fill="none"/>`).join("")}<text x="300" y="200" text-anchor="middle" font-size="14" font-weight="800" fill="#FFE08A">light bends</text>`
+  :`<path class="ray" d="M212 40 L268 58" stroke="#FFF7D6" stroke-width="5" fill="none"/><path class="ray" d="M268 58 L330 22" stroke="#FFF7D6" stroke-width="5" fill="none"/><g fill="#fff"><circle cx="268" cy="58" r="7"/></g><path d="M262 58 l12 0 M268 52 l0 12" stroke="#FFE08A" stroke-width="3"/><text x="300" y="200" text-anchor="middle" font-size="14" font-weight="800" fill="#FFE08A">light bounces</text>`;
+ $("#hlSvg").innerHTML=`<g font-family="system-ui,sans-serif">${sky}${crystal}${ray}</g>`;
+ setMsg($("#hlMsg"),v===0?"<b>Refraction:</b> sunlight passes <b>through</b> each six-sided ice crystal and changes direction (it bends). Millions of crystals bend light the same way, so we see a <b>ring</b> around the Sun. The ring is mostly white, with a faint reddish inner edge.":"<b>Reflection:</b> some light bounces <b>off</b> the outer faces of the crystals. This makes the high clouds glitter and sparkle.",
+  v===0?"<b>الانكسار:</b> يمرّ ضوء الشمس <b>عبر</b> كل بلورة ثلج سداسية فيتغيّر اتجاهه (ينحني). ملايين البلورات تحني الضوء بالطريقة نفسها، فنرى <b>حلقة</b> حول الشمس. الحلقة بيضاء في الغالب، وطرفها الداخلي يميل قليلًا إلى الأحمر.":"<b>الانعكاس:</b> بعض الضوء يرتدّ <b>عن</b> الأوجه الخارجية للبلورات، فتلمع السحب العالية وتتلألأ.");}
+segOn("hlMode",hlSet);hlSet(0);
+
+/* 10. Jorge's bag */
+let jbT=0;const jbV=Array.from({length:18},()=>({x:Math.random(),ph:Math.random()}));const jbD=Array.from({length:34},(_,i)=>({x:290+(i*37)%240,y:110+((i*53)%120),k:i/34}));
+sim("jbC",16/10,(s,dt)=>{const g=s.ctx;g.fillStyle="#F7F1E8";g.fillRect(0,0,800,500);g.fillStyle="#BFE0F2";g.fillRect(60,30,680,440);g.strokeStyle="#8C5A3C";g.lineWidth=14;g.strokeRect(60,30,680,440);g.beginPath();g.moveTo(400,30);g.lineTo(400,470);g.stroke();
+  g.fillStyle="rgba(255,224,138,.5)";g.beginPath();g.arc(140,100,60,0,7);g.fill();g.fillStyle="#FFD45E";g.beginPath();g.arc(140,100,32,0,7);g.fill();if(jbT>0)for(let k=0;k<3;k++)wig(g,180,130+k*30,90,.35,"#E9B44C",s.t+k);
+  g.fillStyle="rgba(240,248,252,.85)";g.strokeStyle="rgba(31,42,55,.55)";g.lineWidth=4;rr(g,270,90,280,360,26);g.fill();g.stroke();g.fillStyle="#3E6FA8";g.fillRect(270,90,280,12);
+  g.fillStyle="#9AA5B1";g.fillRect(300,74,40,22);g.fillRect(480,74,40,22);
+  const wg=g.createLinearGradient(0,280,0,450);wg.addColorStop(0,"rgba(63,167,196,.85)");wg.addColorStop(1,"rgba(30,111,140,.9)");g.fillStyle=wg;rr(g,274,270,272,176,22);g.fill();
+  const vn=Math.round(jbT/4*18);jbV.slice(0,vn).forEach(v=>{v.ph=(v.ph+dt*.25)%1;g.fillStyle=`rgba(255,255,255,${.75*(1-v.ph)})`;g.beginPath();g.arc(290+v.x*240,265-v.ph*140,6,0,7);g.fill();});
+  const dn=Math.max(0,(jbT-.8)/3.2);jbD.forEach(d=>{if(d.k<dn){const r=5+Math.min(7,(dn-d.k)*14);ball(g,d.x,d.y,r,["#FFFFFF","#5FB8D6"]);}});
+  label(g,jbT+" h",680,80,"#1F2A37",30);label(g,"water",410,420,"#E8F7FC",26);if(dn>0)label(g,"drops",620,160,"#1F2A37",26);});
+function jbSet(){jbT=+$("#jbR").value;$("#jbT").textContent=jbT+" h";
+  setMsg($("#jbMsg"),jbT===0?"The bag is sealed: no water can get in or out. Move the slider.":jbT<1?"The Sun warms the water. Particles at the surface gain energy and <b>evaporate</b>: invisible vapour fills the top of the bag.":"The vapour touches the plastic, which is cooler than the water. It loses energy and <b>condenses</b> into drops. Jorge's model shows <b>evaporation and condensation</b>.",
+   jbT===0?"الكيس محكم الإغلاق: لا يدخله الماء ولا يخرج منه. حرّك الشريط.":jbT<1?"تدفّئ الشمس الماء، فتكتسب الجسيمات عند السطح طاقة و<b>تتبخر</b>: بخار غير مرئي يملأ أعلى الكيس.":"يلامس البخار البلاستيك الأبرد من الماء، فيفقد طاقته و<b>يتكاثف</b> إلى قطرات. نموذج جورج يوضّح <b>التبخر والتكاثف</b>.");}
+$("#jbR").oninput=jbSet;jbSet();
+
+/* 11. check yourself */
+cardsQ($("#ckCards"),[
+ {t:["Which subsystem holds invisible water vapour?","أيّ نظام يحمل بخار الماء غير المرئي؟"],o:[["atmosphere","الغلاف الجوي"],["geosphere","الغلاف الصخري"],["hydrosphere","الغلاف المائي"]],a:0,w:["Water vapour and clouds are in the air.","بخار الماء والسحب في الهواء."],h:["Where is the air?","أين يوجد الهواء؟"]},
+ {t:["During evaporation, thermal energy is…","أثناء التبخر، الطاقة الحرارية…"],o:[["released","تنطلق"],["absorbed","تُمتص"],["not needed","غير مطلوبة"]],a:1,w:["The water takes energy from the Sun.","الماء يأخذ الطاقة من الشمس."],h:["Remember the noon sun.","تذكّر شمس الظهيرة."]},
+ {t:["Which process happens in tiny openings of leaves?","أيّ عملية تحدث في الفتحات الصغيرة للأوراق؟"],o:[["condensation","التكاثف"],["crystallization","التبلور"],["transpiration","النتح"]],a:2,w:["Plants release water vapour from their leaves.","النباتات تطلق بخار الماء من أوراقها."],h:["It is a plant process.","إنها عملية نباتية."]},
+ {t:["Clouds form when rising water vapour…","تتكوّن السحب عندما يقوم بخار الماء الصاعد بـ…"],o:[["gains energy and gets hotter","اكتساب الطاقة والسخونة"],["cools and condenses on dust","البرودة والتكاثف على الغبار"],["turns directly into rain","التحول مباشرة إلى مطر"]],a:1,cls:"stack",w:["Higher = cooler, so the vapour condenses.","أعلى = أبرد، فيتكاثف البخار."],h:["What happens to temperature as you go up?","ماذا يحدث لدرجة الحرارة كلما ارتفعنا؟"]},
+ {t:["Liquid droplets freezing into ice crystals is called…","تجمّد القطرات السائلة إلى بلورات ثلج يُسمّى…"],o:[["crystallization","التبلور"],["evaporation","التبخر"],["respiration","التنفس"]],a:0,w:["Liquid → solid crystals.","سائل ← بلورات صلبة."],h:["Think of the word 'crystal'.","فكّر في كلمة «بلورة»."]},
+ {t:["A solar halo is mostly caused by light…","تنتج الهالة الشمسية غالبًا عن…"],o:[["reflecting off the sea","انعكاس الضوء عن البحر"],["passing through raindrops","مرور الضوء عبر قطرات المطر"],["bending through ice crystals","انحناء الضوء عبر بلورات الثلج"]],a:2,cls:"stack",w:["Refraction in six-sided ice crystals in cirrus clouds.","الانكسار في بلورات الثلج السداسية في السحب الريشية."],h:["Halos appear in very high, very cold clouds.","تظهر الهالات في السحب العالية والباردة جدًا."]}]);
+
+const FD={
+ wc:[{q:"Jorge's bag on a sunny window.<span class=\"ar\">كيس جورج على نافذة مشمسة.</span>",words:true,txt:true,s:[["The Sun adds thermal energy to the water in the bag.","Cause","السبب: تضيف الشمس طاقة حرارية إلى الماء داخل الكيس."],["The water evaporates: liquid → water vapour (energy absorbed).","Step 1","الخطوة 1: يتبخر الماء: سائل ← بخار ماء (تُمتص الطاقة)."],["The vapour touches the cooler plastic and condenses into drops (energy released).","Step 2","الخطوة 2: يلامس البخار البلاستيك الأبرد فيتكاثف إلى قطرات (تنطلق الطاقة)."]],blank:0},
+  {q:"Dew on a spider web in the morning.<span class=\"ar\">الندى على شبكة عنكبوت في الصباح.</span>",words:true,txt:true,s:[["At night, the web and the grass cool down.","Cause","السبب: في الليل تبرد الشبكة والعشب."],["Water vapour in the air touches the cold surface and loses thermal energy.","Step 1","الخطوة 1: يلامس بخار الماء في الهواء السطح البارد فيفقد طاقة حرارية."],["The vapour condenses into dew drops on the web.","Step 2","الخطوة 2: يتكاثف البخار إلى قطرات ندى على الشبكة."]],blank:1,o:[["The vapour condenses into dew drops on the web.","The vapour evaporates into dew drops on the web.","The web absorbs energy and melts."]],h:[["Losing energy turns a gas back into a liquid.","فقدان الطاقة يعيد الغاز إلى سائل."]]},
+  {q:"A puddle in Abu Dhabi at noon.<span class=\"ar\">بركة ماء في أبوظبي وقت الظهيرة.</span>",words:true,txt:true,s:[["The Sun heats the puddle.","Cause","السبب: تسخّن الشمس البركة."],["The water evaporates and the vapour rises into the air.","Step 1","الخطوة 1: يتبخر الماء ويرتفع البخار في الهواء."],["High up, the vapour cools and condenses into a cloud.","Step 2","الخطوة 2: في الأعلى يبرد البخار ويتكاثف ليكوّن سحابة."]],blank:2,o:[["The water evaporates and the vapour rises into the air.","The water condenses and sinks into the soil.","The water crystallizes into ice."],["High up, the vapour cools and condenses into a cloud.","High up, the vapour gets hotter and disappears.","High up, the vapour becomes rain at once."]],h:[["Heat from the Sun is absorbed by the water.","حرارة الشمس يمتصها الماء."],["It is colder higher up.","الجو أبرد في الأعلى."]]}]};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+/* ---------- Motion film engine: film(canvasId, scenes, ui) ---------- */
+function film(id,SC,ui){const c=document.getElementById(id),W=800,H=450;c.width=W;c.height=H;const g=c.getContext("2d");
+  const T=SC.reduce((a,s)=>a+s.d,0);let t=0,play=false,last=0,cur=-1;const RMf=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+  const starts=[];SC.reduce((a,s)=>{starts.push(a);return a+s.d;},0);
+  ui.chips.innerHTML=SC.map((s,i)=>`<button data-i="${i}">${i+1} · ${s.chip}</button>`).join("");
+  ui.chips.querySelectorAll("button").forEach(b=>b.onclick=()=>{t=starts[+b.dataset.i]+.01;draw();});
+  ui.bar.max=T*10;ui.bar.oninput=()=>{t=ui.bar.value/10;draw();};
+  ui.btn.onclick=()=>{if(t>=T-.05)t=0;play=!play;last=0;ui.btn.textContent=play?"❚❚ Pause":"▶ Play";};
+  function draw(){let i=0;while(i<SC.length-1&&t>=starts[i+1])i++;const p=(t-starts[i])/SC[i].d;
+    g.clearRect(0,0,W,H);ui.world(g,t,i,p,W,H);
+    if(i!==cur){cur=i;ui.chips.querySelectorAll("button").forEach((b,k)=>b.classList.toggle("on",k===i));ui.cap(SC[i]);}
+    ui.bar.value=t*10;ui.time.textContent=Math.floor(t)+" / "+Math.round(T)+" s";}
+  function loop(ts){const dt=last?Math.min(.05,(ts-last)/1000):0;last=ts;const scr=c.closest(".screen");const vis=!scr||scr.classList.contains("active");
+    if(play&&vis){t+=RMf?0:dt;if(RMf){play=false;}if(t>=T){t=T-.001;play=false;ui.btn.textContent="↺ Replay";}draw();}requestAnimationFrame(loop);}
+  draw();requestAnimationFrame(loop);return {seek:v=>{t=v;draw();},T};}
+
+/* ---------- film: "Qatra's journey up into the sky" (Lesson 2-1) ---------- */
+const WSC=[
+ {d:6,chip:"The Gulf",t:"Meet Qatra",en:"Meet <b>Qatra</b>, a tiny drop of water in the Arabian Gulf near Abu Dhabi. Today she travels up into the atmosphere.",ar:"تعرّف على <b>قطرة</b>، قطرة ماء صغيرة في الخليج العربي قرب أبوظبي. اليوم ستسافر إلى أعلى في الغلاف الجوي."},
+ {d:8,chip:"Evaporation",t:"Evaporation",en:"<b>Evaporation:</b> the Sun heats the sea. Qatra <b>absorbs</b> thermal energy, breaks free and becomes invisible <b>water vapour</b>. She rises.",ar:"<b>التبخر:</b> تسخّن الشمس البحر، فـ<b>تمتص</b> قطرة الطاقة الحرارية وتتحرّر وتصبح <b>بخار ماء</b> غير مرئي، وترتفع."},
+ {d:7,chip:"Living things",t:"Transpiration + respiration",en:"Other vapour joins her: a ghaf tree releases it from its leaves (<b>transpiration</b>) and an oryx breathes it out (<b>respiration</b>). Together that is only about 10%.",ar:"ينضمّ إليها بخار آخر: شجرة غاف تطلقه من أوراقها (<b>النتح</b>)، ومها عربي يُخرجه مع زفيره (<b>التنفس</b>). مجموع ذلك حوالي 10% فقط."},
+ {d:8,chip:"Condensation",t:"Condensation",en:"<b>Condensation:</b> higher up the air is cooler. Qatra <b>releases</b> thermal energy and condenses on a speck of dust into a tiny droplet. Millions of droplets make a <b>cloud</b>.",ar:"<b>التكاثف:</b> في الأعلى يكون الهواء أبرد. <b>تُطلق</b> قطرة طاقتها الحرارية وتتكاثف على ذرة غبار لتصبح قطيرة صغيرة. ملايين القطيرات تكوّن <b>سحابة</b>."},
+ {d:8,chip:"Crystallization",t:"Crystallization",en:"<b>Crystallization:</b> the wind lifts her very high, where it is about −20°C. She loses even more energy and freezes into a six-sided <b>ice crystal</b> in a thin cirrus cloud.",ar:"<b>التبلور:</b> ترفعها الرياح عاليًا جدًا، حيث تبلغ الحرارة حوالي −20°C. تفقد طاقة أكثر وتتجمّد إلى <b>بلورة ثلج</b> سداسية في سحابة ريشية رقيقة."},
+ {d:7,chip:"Halo",t:"A solar halo",en:"Sunlight passes through Qatra and millions of other ice crystals and bends. People in Abu Dhabi look up and see a <b>ring around the Sun</b>!",ar:"يمرّ ضوء الشمس عبر قطرة وملايين بلورات الثلج الأخرى فينحني، فيرى الناس في أبوظبي <b>حلقة حول الشمس</b>!"}];
+const wE=p=>p<0?0:p>1?1:p*p*(3-2*p);const wL=(a,b,p)=>a+(b-a)*p;
+const wVap=Array.from({length:22},()=>({x:40+Math.random()*250,ph:Math.random(),w:Math.random()*6}));
+function qatra(g,x,y,s,mode){g.save();g.translate(x,y);g.scale(s,s);
+  g.fillStyle="rgba(255,255,255,.35)";g.beginPath();g.arc(0,2,30,0,7);g.fill();
+  if(mode==="gas"){g.globalAlpha=.9;g.fillStyle="#E8F7FC";g.beginPath();g.arc(-8,0,13,0,7);g.arc(8,-2,14,0,7);g.arc(0,8,12,0,7);g.fill();g.globalAlpha=1;}
+  else if(mode==="ice"){g.fillStyle="#E8FBFF";g.strokeStyle="#5FB8D6";g.lineWidth=3;g.beginPath();for(let k=0;k<6;k++){const a=k*Math.PI/3+Math.PI/6;g[k?"lineTo":"moveTo"](Math.cos(a)*22,Math.sin(a)*22+4);}g.closePath();g.fill();g.stroke();}
+  else{const gr=g.createRadialGradient(-6,-4,3,0,4,22);gr.addColorStop(0,"#D6F3FB");gr.addColorStop(1,"#2A8FB0");g.fillStyle=gr;g.beginPath();g.moveTo(0,-24);g.bezierCurveTo(14,-6,20,4,18,12);g.arc(0,10,18,0.1,Math.PI-0.1);g.bezierCurveTo(-20,4,-14,-6,0,-24);g.fill();}
+  g.fillStyle="#1F2A37";g.beginPath();g.arc(-6,6,2.6,0,7);g.arc(6,6,2.6,0,7);g.fill();g.strokeStyle="#1F2A37";g.lineWidth=2;g.beginPath();g.arc(0,11,5,.2,Math.PI-.2);g.stroke();
+  g.strokeStyle="#E9B44C";g.lineWidth=3;g.setLineDash([4,5]);g.beginPath();g.arc(0,4,30,0,7);g.stroke();g.setLineDash([]);g.restore();}
+function label2(g,txt,x,y,col,sz){g.font=`800 ${Math.round((sz||14)*1.45)}px system-ui,sans-serif`;g.fillStyle=col;g.textAlign="center";g.fillText(txt,x,y);}
+function rr2(g,x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath();}
+function wWorld(g,t,i,p,W,H){
+  let sk=g.createLinearGradient(0,0,0,H);sk.addColorStop(0,"#6FA6CC");sk.addColorStop(.6,"#CFE6F1");sk.addColorStop(1,"#F6E7CB");g.fillStyle=sk;g.fillRect(0,0,W,H);
+  /* sun (+halo) */
+  g.fillStyle=`rgba(255,224,138,${i===1?.4:.25})`;g.beginPath();g.arc(90,70,70,0,7);g.fill();g.fillStyle="#FFE08A";g.beginPath();g.arc(90,70,32,0,7);g.fill();
+  if(i===5){const a=wE(p*1.6);g.strokeStyle=`rgba(255,255,255,${.75*a})`;g.lineWidth=12;g.beginPath();g.arc(90,70,118,0,7);g.stroke();g.strokeStyle=`rgba(232,162,140,${.7*a})`;g.lineWidth=4;g.beginPath();g.arc(90,70,110,0,7);g.stroke();
+    for(let k=0;k<5;k++){g.strokeStyle=`rgba(255,247,214,${.6*a})`;g.lineWidth=2;g.beginPath();g.moveTo(110,80);g.lineTo(470+k*25,80+k*6);g.stroke();}}
+  if(i===1){g.strokeStyle="rgba(233,180,76,.8)";g.lineWidth=4;g.setLineDash([8,10]);g.lineDashOffset=-t*30;for(let k=0;k<4;k++){g.beginPath();g.moveTo(110+k*16,100);g.lineTo(80+k*70,330);g.stroke();}g.setLineDash([]);label2(g,"energy absorbed",170,316,"#C8553D",13);}
+  /* cirrus */
+  const ci=i===4?wE(p):i>4?1:0;if(ci>0){g.strokeStyle=`rgba(255,255,255,${.85*ci})`;g.lineCap="round";g.lineWidth=7;[[330,58],[430,40],[560,64],[620,34]].forEach(([x,y])=>{g.beginPath();g.moveTo(x,y);g.quadraticCurveTo(x+50,y-16,x+110,y-4);g.stroke();});label2(g,"cirrus (ice)",370,100,"#1F2A37",12);}
+  /* mountains, desert */
+  g.fillStyle="#8C7A6B";g.beginPath();g.moveTo(520,330);g.lineTo(610,170);g.lineTo(660,230);g.lineTo(720,150);g.lineTo(800,260);g.lineTo(800,330);g.fill();
+  g.fillStyle="#A89584";g.beginPath();g.moveTo(560,330);g.lineTo(640,220);g.lineTo(700,300);g.lineTo(760,240);g.lineTo(800,300);g.lineTo(800,330);g.fill();
+  g.fillStyle="#E8C98F";g.beginPath();g.moveTo(300,330);g.quadraticCurveTo(420,312,800,322);g.lineTo(800,H);g.lineTo(300,H);g.fill();
+  let se=g.createLinearGradient(0,330,0,H);se.addColorStop(0,"#3FA7C4");se.addColorStop(1,"#1E6F8C");g.fillStyle=se;g.beginPath();g.moveTo(0,334);for(let x=0;x<=330;x+=10)g.lineTo(x,334+Math.sin(x*.05+t*2)*3);g.lineTo(330,H);g.lineTo(0,H);g.fill();
+  label2(g,"Arabian Gulf",120,430,"#E8F7FC",15);
+  /* ghaf + oryx */
+  g.strokeStyle="#7A5232";g.lineWidth=8;g.beginPath();g.moveTo(420,326);g.lineTo(424,270);g.stroke();const cg=g.createRadialGradient(410,250,6,424,256,50);cg.addColorStop(0,"#9BD98A");cg.addColorStop(1,"#3F8B4E");g.fillStyle=cg;g.beginPath();g.ellipse(424,254,52,26,0,0,7);g.fill();
+  g.fillStyle="#fff";g.strokeStyle="#5B4A3A";g.lineWidth=2;g.beginPath();g.ellipse(500,312,22,10,0,0,7);g.fill();g.stroke();g.beginPath();g.moveTo(480,306);g.lineTo(470,292);g.stroke();g.beginPath();g.moveTo(470,292);g.lineTo(474,262);g.moveTo(474,292);g.lineTo(480,262);g.stroke();g.beginPath();[486,492,508,514].forEach(x=>{g.moveTo(x,320);g.lineTo(x,330);});g.stroke();
+  /* vapour */
+  const vapOn=i===1?wE(p*1.5):i===2?1:i===3?1-wE(p):0;
+  if(vapOn>0)wVap.forEach(v=>{const ph=(v.ph+t*.12)%1;const y=330-ph*220;g.fillStyle=`rgba(255,255,255,${.7*vapOn*(1-ph)})`;g.beginPath();g.arc(v.x+Math.sin(ph*8+v.w)*8,y,4+ph*5,0,7);g.fill();});
+  if(i===2){for(let k=0;k<6;k++){const ph=(t*.4+k/6)%1;g.fillStyle=`rgba(255,255,255,${.8*(1-ph)})`;g.beginPath();g.arc(400+k*10,240-ph*90,4+ph*4,0,7);g.fill();}
+    for(let k=0;k<3;k++){const ph=(t*.5+k/3)%1;g.fillStyle=`rgba(255,255,255,${.8*(1-ph)})`;g.beginPath();g.arc(470-ph*10,282-ph*50,3+ph*4,0,7);g.fill();}label2(g,"transpiration",424,206,"#2E6B39",13);label2(g,"respiration",510,252,"#5B4A3A",13);}
+  /* thermometer */
+  if(i===3||i===4){const temp=i===3?wL(30,15,wE(p)):wL(15,-20,wE(p));g.fillStyle="#fff";rr2(g,740,120,34,150,17);g.fill();g.fillStyle=temp<0?"#2A8FB0":"#C8553D";const hh=wL(8,128,(temp+22)/54);g.fillRect(751,250-hh,12,hh);g.beginPath();g.arc(757,258,12,0,7);g.fill();label2(g,Math.round(temp)+"°C",757,296,"#1F2A37",15);}
+  /* cumulus cloud */
+  const cA=i===3?wE(p):i>=4?1:0,cx=250,cy=170;
+  if(cA>0){g.save();g.globalAlpha=cA;g.fillStyle="#FFFFFF";[[-60,10,40],[-20,-14,48],[30,-4,44],[70,12,34],[0,18,40]].forEach(([dx,dy,r])=>{g.beginPath();g.arc(cx+dx,cy+dy,r,0,7);g.fill();});g.restore();if(i===3&&p>.5)label2(g,"energy released",cx,cy+80,"#C8553D",13);}
+  /* Qatra */
+  let qx,qy,m="liquid";
+  if(i===0){qx=150;qy=350+Math.sin(t*2)*4;}
+  else if(i===1){qx=wL(150,230,wE(p));qy=wL(350,200,wE(p));if(p>.25)m="gas";}
+  else if(i===2){qx=230+Math.sin(t)*6;qy=200+Math.sin(t*1.3)*6;m="gas";}
+  else if(i===3){qx=250;qy=wL(200,170,wE(p));if(p<.55)m="gas";}
+  else if(i===4){qx=wL(250,520,wE(p));qy=wL(170,62,wE(p));if(p>.6)m="ice";}
+  else{qx=520;qy=62+Math.sin(t*1.5)*3;m="ice";}
+  qatra(g,qx,qy,.85,m);
+  const T=WSC[i].t;g.font="800 30px system-ui,sans-serif";const tw=g.measureText(T).width+32;g.fillStyle="#1F2A37";rr2(g,W-tw-16,H-64,tw,50,25);g.fill();g.fillStyle="#FFE08A";g.textAlign="left";g.fillText(T,W-tw,H-29);}
+film("wfC",WSC,{chips:$("#wfChips"),bar:$("#wfBar"),btn:$("#wfBtn"),time:$("#wfTime"),world:wWorld,cap:s=>{setMsg($("#wfCap"),s.en,s.ar);}});
+
+requestAnimationFrame(loop);
+const FL=[["4","Earth's subsystems","أنظمة الأرض","Atmosphere, hydrosphere, geosphere, biosphere. Water moves between all four.","الغلاف الجوي والمائي والصخري والحيوي. ينتقل الماء بينها جميعًا."],
+ ["↑ 90%","Evaporation","التبخر","Liquid → water vapour at the surface. Energy is absorbed. About 90% of the vapour in the air.","سائل ← بخار ماء عند السطح. تُمتص الطاقة. حوالي 90% من البخار في الهواء."],
+ ["leaf ↑","Transpiration","النتح","Plants release water vapour through tiny openings in their leaves.","تطلق النباتات بخار الماء من فتحات صغيرة في أوراقها."],
+ ["CO₂ + H₂O","Cellular respiration","التنفس الخلوي","Food + oxygen → energy + CO₂ + water vapour.","غذاء + أكسجين ← طاقة + ثاني أكسيد الكربون + بخار ماء."],
+ ["gas → liquid","Condensation","التكاثف","Rising vapour cools and forms droplets on dust: clouds, fog, dew. Energy is released.","البخار الصاعد يبرد ويكوّن قطرات على الغبار: سحب وضباب وندى. تنطلق الطاقة."],
+ ["liquid → ice","Crystallization","التبلور","Droplets lose a lot of energy high up and freeze into ice crystals.","تفقد القطرات طاقة كبيرة في الأعلى وتتجمّد إلى بلورات ثلج."],
+ ["IN · OUT","Absorbed or released","تُمتص أو تنطلق","Evaporation absorbs energy. Condensation and crystallization release it.","التبخر يمتص الطاقة، والتكاثف والتبلور يطلقانها."],
+ ["◯","Solar halo","الهالة الشمسية","A ring around the Sun: light bends through ice crystals in high cirrus clouds.","حلقة حول الشمس: ينحني الضوء عبر بلورات الثلج في السحب الريشية العالية."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+const Q=[
+ {q:"Which process puts the most water vapour into the atmosphere (about 90%)?",qa:"أيّ عملية تضيف أكبر كمية من بخار الماء إلى الغلاف الجوي (حوالي 90%)؟",o:[["transpiration","النتح"],["cellular respiration","التنفس الخلوي"],["evaporation","التبخر"],["condensation","التكاثف"]],a:2,ex:["Evaporation from oceans, lakes, rivers and soil gives about 90%.","التبخر من المحيطات والبحيرات والأنهار والتربة يعطي حوالي 90%."],h:[["Most of Earth's surface is covered by oceans.","معظم سطح الأرض مغطّى بالمحيطات."],["Which process turns liquid water from the sea into vapour?","أيّ عملية تحوّل ماء البحر السائل إلى بخار؟"]]},
+ {q:"When water evaporates from the sea, what happens to thermal energy?",qa:"عندما يتبخر الماء من البحر، ماذا يحدث للطاقة الحرارية؟",o:[["It is released to the air.","تنطلق إلى الهواء."],["It is absorbed by the water.","يمتصها الماء."],["It is destroyed.","تفنى."],["Nothing, no energy is needed.","لا شيء، لا حاجة إلى طاقة."]],a:1,ex:["The water absorbs energy from the Sun so its particles can break free.","يمتص الماء طاقة الشمس لكي تتحرّر جسيماته."],h:[["Evaporation happens faster in the noon sun.","التبخر يحدث أسرع في شمس الظهيرة."],["Particles need extra energy to escape.","الجسيمات تحتاج طاقة إضافية لتفلت."]]},
+ {q:"A ghaf tree releases water vapour through tiny openings in its leaves. This is…",qa:"تطلق شجرة الغاف بخار الماء من فتحات صغيرة في أوراقها. هذا هو…",o:[["transpiration","النتح"],["condensation","التكاثف"],["crystallization","التبلور"],["precipitation","الهطول"]],a:0,ex:["Transpiration is how plants add water vapour to the air.","النتح هو الطريقة التي تضيف بها النباتات بخار الماء إلى الهواء."],h:[["It is a plant process.","إنها عملية نباتية."],["It starts with 'trans-'.","تبدأ بـ «trans-»."]]},
+ {q:"Hamad breathes on a cold mirror and it fogs up. Which processes happened, in order?",qa:"ينفخ حمد على مرآة باردة فيغطيها الضباب. أيّ العمليات حدثت بالترتيب؟",o:[["evaporation, then crystallization","التبخر ثم التبلور"],["transpiration, then evaporation","النتح ثم التبخر"],["condensation, then evaporation","التكاثف ثم التبخر"],["respiration, then condensation","التنفس ثم التكاثف"]],a:3,ex:["His cells make water vapour (respiration). On the cold mirror it condenses into tiny drops.","خلاياه تُنتج بخار الماء (التنفس)، وعلى المرآة الباردة يتكاثف إلى قطرات صغيرة."],h:[["Where does the vapour in his breath come from?","من أين يأتي البخار في زفيره؟"],["Then the vapour meets a cold surface and becomes liquid.","ثم يلامس البخار سطحًا باردًا ويصبح سائلًا."]]},
+ {q:"Why do clouds form high above the ground?",qa:"لماذا تتكوّن السحب عاليًا فوق سطح الأرض؟",o:[["The air is warmer high up.","الهواء أدفأ في الأعلى."],["Rising vapour cools, loses energy and condenses on dust.","البخار الصاعد يبرد ويفقد طاقته ويتكاثف على الغبار."],["Dust heats the water vapour.","الغبار يسخّن بخار الماء."],["The Sun is closer to the clouds.","الشمس أقرب إلى السحب."]],a:1,ex:["As altitude increases, temperature decreases, so vapour condenses.","كلما زاد الارتفاع قلّت درجة الحرارة، فيتكاثف البخار."],h:[["Is it warmer or colder on a mountain top?","هل قمة الجبل أدفأ أم أبرد؟"],["Condensation needs energy to be lost.","التكاثف يحتاج إلى فقدان الطاقة."]]},
+ {q:"Snowflakes form inside a very cold cloud. Which statement is correct?",qa:"تتكوّن رقائق الثلج داخل سحابة باردة جدًا. أيّ عبارة صحيحة؟",o:[["Solid → liquid, energy is absorbed.","صلب ← سائل، تُمتص الطاقة."],["Liquid → solid, energy is absorbed.","سائل ← صلب، تُمتص الطاقة."],["Liquid → solid, energy is released.","سائل ← صلب، تنطلق الطاقة."],["Solid → liquid, energy is released.","صلب ← سائل، تنطلق الطاقة."]],a:2,ex:["Crystallization: droplets freeze into ice and release energy.","التبلور: تتجمّد القطرات إلى ثلج وتطلق الطاقة."],h:[["Snow is solid. What was it before?","الثلج صلب. ماذا كان قبل ذلك؟"],["Freezing happens when energy leaves.","التجمّد يحدث عندما تخرج الطاقة."]]},
+ {q:"A ring of light appears around the Sun. It is caused by sunlight bending through…",qa:"تظهر حلقة من الضوء حول الشمس. سببها انحناء ضوء الشمس عبر…",o:[["ice crystals in high cirrus clouds","بلورات الثلج في السحب الريشية العالية"],["raindrops near the ground","قطرات المطر قرب الأرض"],["dust in the desert","الغبار في الصحراء"],["invisible water vapour","بخار الماء غير المرئي"]],a:0,ex:["Six-sided ice crystals refract light and make a solar halo.","بلورات الثلج السداسية تكسر الضوء وتكوّن الهالة الشمسية."],h:[["Halos appear in very high, very cold clouds.","تظهر الهالات في السحب العالية والباردة جدًا."],["What is a cloud made of at −20°C?","ممّ تتكوّن السحابة عند −20°C؟"]]},
+ {q:"Mariam covers a glass bowl of water with plastic wrap and leaves it in the sun. Later, drops form under the wrap. What does her model show?",qa:"تغطي مريم وعاءً زجاجيًا فيه ماء بغلاف بلاستيكي وتتركه في الشمس. لاحقًا تتكوّن قطرات تحت الغلاف. ماذا يوضّح نموذجها؟",o:[["transpiration and respiration","النتح والتنفس"],["condensation and crystallization","التكاثف والتبلور"],["respiration and evaporation","التنفس والتبخر"],["evaporation and condensation","التبخر والتكاثف"]],a:3,ex:["Water evaporates in the sun, then condenses on the cooler wrap.","يتبخر الماء في الشمس، ثم يتكاثف على الغلاف الأبرد."],h:[["There are no living things in the bowl.","لا توجد كائنات حية في الوعاء."],["First the water leaves the liquid, then it comes back as drops.","أولًا يغادر الماء السائل، ثم يعود قطرات."]]},
+ {q:"From Lesson 1-2: when liquid water freezes, its particles…",qa:"من الدرس 1-2: عندما يتجمّد الماء السائل، فإن جسيماته…",o:[["move faster and spread out","تتحرك أسرع وتتباعد"],["lose energy and lock into place","تفقد طاقة وتثبت في أماكنها"],["stop moving completely","تتوقف عن الحركة تمامًا"],["get bigger","تكبر"]],a:1,ex:["In a solid, particles only vibrate in fixed places.","في الصلب تهتز الجسيمات فقط في أماكن ثابتة."],h:[["Freezing removes energy.","التجمّد يزيل الطاقة."],["Solid particles still vibrate.","جسيمات الصلب ما زالت تهتز."]]},
+ {q:"From Lesson 1-3: thermal energy travels from the Sun to Earth by…",qa:"من الدرس 1-3: تنتقل الطاقة الحرارية من الشمس إلى الأرض عن طريق…",o:[["conduction","التوصيل"],["convection","الحمل"],["radiation","الإشعاع"],["insulation","العزل"]],a:2,ex:["Radiation does not need matter, so it crosses empty space.","الإشعاع لا يحتاج إلى مادة، فيعبر الفضاء الفارغ."],h:[["Space between the Sun and Earth is almost empty.","الفضاء بين الشمس والأرض شبه فارغ."],["Conduction and convection need matter.","التوصيل والحمل يحتاجان إلى مادة."]]}];
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${first?ICON.check+" Correct!":ok?ICON.check+" Yes, now you have it.":ICON.cross+" Here is the answer."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${first?"إجابة صحيحة!":ok?"نعم، الآن فهمتها.":"إليك الإجابة."} ${q.ex[1]}</div>`;
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Scientist";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You know how water travels through the atmosphere!","رائع! أنت تعرف كيف ينتقل الماء في الغلاف الجوي!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the virtual labs, then retry.","محاولة جيدة! أعد المعامل الافتراضية، ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Science · Grade 6 · Unit 1 · Lesson 2-1 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
