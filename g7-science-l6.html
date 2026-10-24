@@ -1,0 +1,1528 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F1E8">
+<title>Energy and States of Matter – Science G7 Lesson 1-1</title>
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(247,241,232,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#EADFCD;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#F9E3DC;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#FFF6E1;border:1px solid #F1D9A6;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #E9CFA0;background:#FFF8EA;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#fff;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #E2D5C0}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#E4F3F1;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#FBF3EA;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#E8F5F3}
+.opt.right{border-color:var(--teal);background:#E2F4F1}
+.opt.wrong{border-color:var(--terra);background:#FBE9E4}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#EADFCD;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#fff;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#E8F5F3;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#FBE9E4;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#fff;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#fff}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#E2D5C0}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #fff}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#fff;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#fff}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #fff;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#FFF6E1}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#E2F4F1;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#E2F4F1}
+.pieces button.no{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#E2D5C0}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#E2F4F1;border-left:5px solid var(--teal)}
+.feedback.no{background:#FBE9E4;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#fff;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#fff;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#FFF6E1;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#fff;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#E8F5F3}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#FFF6E1}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#fff;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#FBE9E4}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#FFF6E1;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#fff;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#E8F5F3}.sc.diff{border-color:var(--terra);background:#FBE9E4}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#E2F4F1}.rchips button.wrong{border-color:var(--terra);background:#FBE9E4}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#E8F5F3}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#E8F5F3}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#FBE9E4}
+.ml.done,.mr.done{border-color:var(--teal);background:#E2F4F1;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#E8F5F3}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#FCE8B2;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#FCE8B2;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#E2F4F1}
+.eline.bad{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#fff;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#FFFFFF 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#E2F4F1}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#FBE9E4}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#FFF3D6}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#FFF3D6;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#E2F4F1}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#FBE9E4}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#FFF3D6;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#E8F5F3}.mcard2.wrong{border-color:var(--terra);background:#FBE9E4}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #fff;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#E8F5F3}.idc.wrong{border-color:var(--terra);background:#FBE9E4}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#E8F5F3}.claim2.wrong{border-color:var(--terra);background:#FBE9E4}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#FFF6EA}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#E8F5F3}.ct.no{border-color:var(--terra);background:#FBE9E4}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#FFF6EA}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#EADFF0;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#EADFCD;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#FFF6E0;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#fff;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#E8F5F3}.wuq .wo button.wrong{border-color:var(--terra);background:#FBE9E4}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#fff;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#FBF6EC;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#FBE9E4}.pick button.right{border-color:var(--teal);background:#E8F5F3}
+.why{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#E8F5F3}.why .wb button.wrong{border-color:var(--terra);background:#FBE9E4}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#fff;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#ddd;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#fff;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#FFFDF7}
+.tchip.lost{border-color:var(--terra);background:#FBE9E4}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#FBEDEA}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#E8F5F3}.pickph.wrong{border-color:var(--terra);background:#FBE9E4}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#E8F5F3}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#FBF6EC}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#E8F5F3;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#FBF6EC;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#fff;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#FFE7A8;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#FBF6EC;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#fff}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#E8F5F3;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#fff;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#fff;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#E8F5F3;border-color:var(--teal)}.tile.g1{background:#FFF0E6;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#FBF6EC;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#fff;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#fff;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#fff;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#fff;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#F3ECE1}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#fff}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#F3ECE1}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#fff}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#E9E2D6;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+.ptab{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ptab button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 2px;font-family:inherit;color:var(--ink);cursor:pointer}
+.ptab button b{display:block;font-size:24px;font-family:ui-monospace,monospace}
+.ptab button small{display:block;font-size:11px;color:var(--clay)}
+.ptab button.on{border-color:var(--terra);background:#FBE9E4}
+#ecCards .mtq svg{max-width:150px}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Science · Grade 7 · Unit 1<small id="curLabel">Energy and States of Matter</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="Particles of ice, liquid water and steam">
+<defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F2A37"/><stop offset="1" stop-color="#2B3B4E"/></linearGradient>
+<pattern id="hg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+<radialGradient id="hp" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#BFEAF5"/><stop offset="1" stop-color="#2A8FB0"/></radialGradient></defs>
+<rect width="640" height="360" fill="url(#hb)"/><rect width="640" height="360" fill="url(#hg)"/>
+<g fill="none" stroke="#E9B44C" stroke-width="3"><rect x="40" y="30" width="160" height="160" rx="16"/><rect x="240" y="30" width="160" height="160" rx="16"/><rect x="440" y="30" width="160" height="160" rx="16"/></g>
+<g fill="url(#hp)">
+<circle cx="75" cy="65" r="13"/><circle cx="105" cy="65" r="13"/><circle cx="135" cy="65" r="13"/><circle cx="165" cy="65" r="13"/>
+<circle cx="75" cy="95" r="13"/><circle cx="105" cy="95" r="13"/><circle cx="135" cy="95" r="13"/><circle cx="165" cy="95" r="13"/>
+<circle cx="75" cy="125" r="13"/><circle cx="105" cy="125" r="13"/><circle cx="135" cy="125" r="13"/><circle cx="165" cy="125" r="13"/>
+<circle cx="75" cy="155" r="13"/><circle cx="105" cy="155" r="13"/><circle cx="135" cy="155" r="13"/><circle cx="165" cy="155" r="13"/>
+<circle cx="268" cy="150" r="13"/><circle cx="296" cy="160" r="13"/><circle cx="325" cy="148" r="13"/><circle cx="356" cy="162" r="13"/><circle cx="380" cy="140" r="13"/><circle cx="280" cy="122" r="13"/><circle cx="312" cy="120" r="13"/><circle cx="345" cy="128" r="13"/><circle cx="372" cy="110" r="13"/><circle cx="300" cy="92" r="13"/>
+<circle cx="470" cy="60" r="13"/><circle cx="560" cy="80" r="13"/><circle cx="505" cy="135" r="13"/><circle cx="580" cy="160" r="13"/><circle cx="465" cy="165" r="13"/></g>
+<g stroke="#7FD3E6" stroke-width="2.5" stroke-linecap="round" fill="none"><path d="M452 54l-14-5M452 62l-14 3"/><path d="M578 74l14-6M578 84l14 2"/><path d="M487 140l-14 6M487 130l-15 0"/><path d="M562 156l-14-6M562 166l-14 0"/></g>
+</svg>
+    <div class="herotxt"><span class="kicker light">Science · Grade 7 · Unit 1 · Lesson 1-1</span><h1>Energy and States of Matter</h1><p class="ar">الطاقة وحالات المادة</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في متصفح Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="think"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Ice, water and steam look so different. But they are all the same substance! The secret is in the tiny <b>particles</b> and their <b>energy</b>. Let's find out.</p><p class="ar">الجليد والماء والبخار تبدو مختلفة جدًا، لكنها كلها المادة نفسها! السرّ في <b>الجسيمات</b> الصغيرة جدًا و<b>طاقتها</b>. هيا نكتشف.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ describe particles in solids, liquids and gases<br>✔ link temperature and kinetic energy to the state of matter<br>✔ tell atoms, elements, compounds and substances apart<br>✔ read element symbols and chemical formulas</p><p class="ar"><b>سأتعلّم اليوم أن:</b><br>✔ أصف الجسيمات في المواد الصلبة والسائلة والغازية<br>✔ أربط درجة الحرارة والطاقة الحركية بحالة المادة<br>✔ أميّز بين الذرة والعنصر والمركّب والمادة النقية<br>✔ أقرأ رموز العناصر والصيغ الكيميائية</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic.</p><p class="ar"><b>نصيحة:</b> اضغط زر <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمات.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up</span>
+  <h2>What do you already know?</h2>
+  <p class="hsub ar">ماذا تعرف من قبل؟</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Tap an answer, or tap "Show me".</p><p class="ar">مجرد تسخين، لا شيء يُحسب! اضغط على إجابة، أو اضغط «أرني».</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+</section>
+
+<section class="screen" data-title="The hot car">
+  <span class="kicker">Phenomenon</span>
+  <h2>A soda bottle in a hot car</h2>
+  <p class="hsub ar">زجاجة مياه غازية في سيارة ساخنة</p>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="hcC" style="aspect-ratio:16/10" role="img" aria-label="A closed soda bottle in a car; inside, gas particles speed up as the car heats"></canvas></div>
+      <div class="seg needjs" id="hcMode"><button data-v="0" class="on">Morning · 25°C</button><button data-v="1">Afternoon · 60°C</button></div>
+    </div>
+    <div class="side">
+      <div class="bi"><p class="en">On a summer day in the UAE, the air inside a parked car can pass <b>60°C</b>. You left a closed bottle of soda inside. Switch from morning to afternoon and watch the gas at the top of the bottle.</p><p class="ar">في يوم صيفي في الإمارات، قد تتجاوز حرارة الهواء داخل سيارة متوقفة <b>60°C</b>. تركتَ زجاجة مياه غازية مغلقة داخلها. انتقل من الصباح إلى بعد الظهر وراقب الغاز أعلى الزجاجة.</p></div>
+      <div class="msg bi needjs" id="hcMsg"></div>
+      <div class="why needjs" id="why0"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="States of matter">
+  <span class="kicker">Explore</span>
+  <h2>Particles in solids, liquids and gases</h2>
+  <p class="hsub ar">الجسيمات في الصلب والسائل والغاز</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> All <b class="term">matter</b> is made of tiny <b class="term">particles</b> that are always moving. How close they are and how freely they move decide the <b class="term">state of matter</b>: solid, liquid or gas.</p><p class="ar">كل <b>مادة</b> تتكوّن من <b>جسيمات</b> صغيرة جدًا تتحرك دائمًا. مدى تقاربها ومدى حرية حركتها يحدّدان <b>حالة المادة</b>: صلبة أو سائلة أو غازية.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="stC" style="aspect-ratio:16/10" role="img" aria-label="Particles of a solid, a liquid or a gas in a container"></canvas></div>
+      <div class="seg needjs" id="stMode"><button data-v="0" class="on">Solid</button><button data-v="1">Liquid</button><button data-v="2">Gas</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="stMsg"></div>
+      <div class="why needjs" id="why1"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Temperature">
+  <span class="kicker">Explore</span>
+  <h2>Kinetic energy and temperature</h2>
+  <p class="hsub ar">الطاقة الحركية ودرجة الحرارة</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Kinetic energy</b> is the energy of motion. <b class="term">Temperature</b> is a measure of the <b>average</b> kinetic energy of the particles. <b class="term">Thermal energy</b> is the <b>total</b> energy of all the particles in a material.</p><p class="ar"><b>الطاقة الحركية</b> هي طاقة الحركة. <b>درجة الحرارة</b> مقياس <b>لمتوسط</b> الطاقة الحركية للجسيمات. <b>الطاقة الحرارية</b> هي الطاقة <b>الكلية</b> لكل جسيمات المادة.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="tpC" style="aspect-ratio:16/9" role="img" aria-label="Two beakers of water with particles moving at different speeds"></canvas></div>
+      <div class="needjs"><div class="rlab">Beaker B temperature · حرارة الكأس B</div><input type="range" id="tpR" min="0" max="100" step="5" value="80" aria-label="Temperature of beaker B"></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="tpMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Changing state">
+  <span class="kicker">Virtual lab</span>
+  <h2>Temperature and states of matter</h2>
+  <p class="hsub ar">درجة الحرارة وحالات المادة</p>
+  <div class="bi"><p class="en">Add or remove thermal energy from water and watch the particles. Adding energy makes them move faster; at certain temperatures the <b>state changes</b>.</p><p class="ar">أضف طاقة حرارية إلى الماء أو انزعها منه وراقب الجسيمات. إضافة الطاقة تجعلها أسرع، وعند درجات حرارة معيّنة <b>تتغيّر الحالة</b>.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="csC" style="aspect-ratio:16/10" role="img" aria-label="Water particles at a chosen temperature with a thermometer"></canvas></div>
+      <div class="needjs"><div class="rlab">Temperature · درجة الحرارة</div><input type="range" id="csR" min="-20" max="120" step="5" value="-20" aria-label="Temperature of the water"></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="csMsg"></div>
+      <div class="why needjs" id="why2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Size of an atom">
+  <span class="kicker">A closer look</span>
+  <h2>How small is an atom?</h2>
+  <p class="hsub ar">ما مدى صغر الذرة؟</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> An <b class="term">atom</b> is a very small particle that is the building block of matter. Atoms are far too small to see, even with an ordinary microscope.</p><p class="ar"><b>الذرة</b> جسيم صغير جدًا، وهي وحدة بناء المادة. الذرات أصغر بكثير من أن تُرى، حتى بالمجهر العادي.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="zmSvg" viewBox="0 0 440 300" role="img" aria-label="Zooming from a hair to an atom"></svg></div>
+      <div class="seg wrap needjs" id="zmMode"><button data-v="0" class="on">Hair</button><button data-v="1">× 1 000</button><button data-v="2">× 1 000 000</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="zmMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Elements and compounds">
+  <span class="kicker">Explore</span>
+  <h2>Atoms, elements, compounds, substances</h2>
+  <p class="hsub ar">الذرات والعناصر والمركّبات والمواد النقية</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A <b class="term">substance</b> is matter whose composition is always the same. An <b class="term">element</b> is a substance made of only <b>one type</b> of atom. A <b class="term">compound</b> is a substance made of <b>two or more different</b> elements bonded together.</p><p class="ar"><b>المادة النقية</b> مادة تركيبها ثابت دائمًا. <b>العنصر</b> مادة نقية تتكوّن من <b>نوع واحد</b> فقط من الذرات. <b>المركّب</b> مادة نقية تتكوّن من <b>عنصرين مختلفين أو أكثر</b> مرتبطة معًا.</p></div>
+  <div class="bi"><p class="en">Look at each model. Is it an element or a compound? Count the colours: each colour is one type of atom.</p><p class="ar">انظر إلى كل نموذج. هل هو عنصر أم مركّب؟ عُدّ الألوان: كل لون نوع واحد من الذرات.</p></div>
+  <div class="idg needjs" id="ecCards"></div>
+  <div class="why needjs" id="why3"></div>
+</section>
+
+<section class="screen" data-title="Breaking down water">
+  <span class="kicker">Virtual lab</span>
+  <h2>Breaking down water</h2>
+  <p class="hsub ar">تفكيك الماء</p>
+  <div class="bi"><p class="en">Water is a compound. Electricity can break it down into the two elements it is made of. Switch on the battery and watch the two tubes fill with gas.</p><p class="ar">الماء مركّب. يمكن للكهرباء أن تفكّكه إلى العنصرين اللذين يتكوّن منهما. شغّل البطارية وراقب الأنبوبين يمتلئان بالغاز.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="elC" style="aspect-ratio:4/3" role="img" aria-label="Water being split by electricity; one tube collects hydrogen, the other oxygen"></canvas></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="elGo">Switch on ▶</button><button class="btn alt sm" id="elRe">↺ Reset</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="elMsg"></div>
+      <div class="why needjs" id="why4"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Compound ratios">
+  <span class="kicker">Worked examples</span>
+  <h2>Reading a chemical formula</h2>
+  <p class="hsub ar">قراءة الصيغة الكيميائية</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A <b class="term">chemical formula</b> shows which atoms are in a compound and in what <b>ratio</b>. The small number after a symbol, the <b class="term">subscript</b>, tells how many of that atom. No number means one.</p><p class="ar"><b>الصيغة الكيميائية</b> تبيّن الذرات الموجودة في المركّب و<b>نسبتها</b>. الرقم الصغير بعد الرمز، <b>الرقم السفلي</b>، يبيّن عدد ذرات ذلك العنصر. عدم وجود رقم يعني ذرة واحدة.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="mlSvg" viewBox="0 0 440 240" role="img" aria-label="Ball model of a molecule"></svg></div>
+      <div class="seg wrap needjs" id="mlMode"><button data-v="0" class="on">H₂O</button><button data-v="1">CO₂</button><button data-v="2">NH₃</button><button data-v="3">CH₄</button></div>
+    </div>
+    <div class="side">
+      <div class="fader" data-f="fr"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Element symbols">
+  <span class="kicker">Explore</span>
+  <h2>Element symbols</h2>
+  <p class="hsub ar">رموز العناصر</p>
+  <div class="bi"><p class="en">Water is <i>water</i> in English, <i>ماء</i> in Arabic and <i>eau</i> in French. Scientists all over the world use the same <b class="term">chemical symbols</b>, so everyone understands. A symbol has one or two letters: the first is a <b>capital</b>, the second is <b>small</b>.</p><p class="ar">الماء اسمه <i>water</i> بالإنجليزية و<i>ماء</i> بالعربية و<i>eau</i> بالفرنسية. يستخدم العلماء في كل العالم <b>الرموز الكيميائية</b> نفسها ليفهم الجميع. الرمز حرف أو حرفان: الأول <b>كبير</b> والثاني <b>صغير</b>.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="ptab needjs" id="ptab"></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="ptMsg"></div>
+      <div class="why needjs" id="why5"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Practice</span>
+  <h2>Check yourself</h2>
+  <p class="hsub ar">تحقّق من نفسك</p>
+  <div class="idg needjs" id="ckCards"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work! Now the quiz. A wrong answer gives you a hint first.</p><p class="ar">عمل رائع! والآن الاختبار. الإجابة الخاطئة تعطيك تلميحًا أولًا.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+</main>
+
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="sci7a_1_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"American · Grade 7"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹ =+,./≠]*[0-9A-Za-z()\[\]½²³⁴¹])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}<small>${n[1]}</small></button>`).join("")}</div><div class="mwhy"></div></div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll("button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});}
+
+/* ---------- particle simulation engine ---------- */
+const RM=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const SIMS=[];const PUR=["#C9A6F2","#6A3FB0"],ORA=["#FFD08A","#E07A2E"],BLU=["#BFEAF5","#2A8FB0"];
+function sim(id,ar,draw){const c=document.getElementById(id),W=800,H=Math.round(W/ar);c.width=W;c.height=H;const s={c,ctx:c.getContext("2d"),W,H,draw,t:0};SIMS.push(s);return s;}
+function ball(g,x,y,r,col){const gr=g.createRadialGradient(x-r*.35,y-r*.35,r*.15,x,y,r);gr.addColorStop(0,col[0]);gr.addColorStop(1,col[1]);g.fillStyle=gr;g.beginPath();g.arc(x,y,r,0,7);g.fill();}
+function trail(g,p,k,col){const sp=Math.hypot(p.vx,p.vy);if(sp<1)return;const ux=p.vx/sp,uy=p.vy/sp;g.strokeStyle=col||"rgba(127,211,230,.75)";g.lineWidth=2.5;g.lineCap="round";for(let i=-1;i<=1;i++){const ox=-uy*i*p.r*.55,oy=ux*i*p.r*.55;g.beginPath();g.moveTo(p.x-ux*(p.r+3)+ox,p.y-uy*(p.r+3)+oy);g.lineTo(p.x-ux*(p.r+3+sp*k)+ox,p.y-uy*(p.r+3+sp*k)+oy);g.stroke();}}
+function mk(n,b,r,sp){return Array.from({length:n},()=>{const a=Math.random()*6.283;return {x:b.x+r+Math.random()*(b.w-2*r),y:b.y+r+Math.random()*(b.h-2*r),vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,r}});}
+function gasStep(ps,b,dt,sp){ps.forEach(p=>{const v=Math.hypot(p.vx,p.vy)||1;p.vx*=sp/v;p.vy*=sp/v;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<b.x+p.r){p.x=b.x+p.r;p.vx=Math.abs(p.vx)}if(p.x>b.x+b.w-p.r){p.x=b.x+b.w-p.r;p.vx=-Math.abs(p.vx)}if(p.y<b.y+p.r){p.y=b.y+p.r;p.vy=Math.abs(p.vy)}if(p.y>b.y+b.h-p.r){p.y=b.y+b.h-p.r;p.vy=-Math.abs(p.vy)}});}
+function liqStep(ps,b,dt,sp){ps.forEach(p=>{const a=Math.atan2(p.vy,p.vx)+(Math.random()-.5)*1.4;p.vx=Math.cos(a)*sp;p.vy=Math.sin(a)*sp;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<b.x+p.r){p.x=b.x+p.r;p.vx=Math.abs(p.vx)}if(p.x>b.x+b.w-p.r){p.x=b.x+b.w-p.r;p.vx=-Math.abs(p.vx)}if(p.y<b.y+p.r){p.y=b.y+p.r;p.vy=Math.abs(p.vy)}if(p.y>b.y+b.h-p.r){p.y=b.y+b.h-p.r;p.vy=-Math.abs(p.vy)}});}
+function bg(s,col){const g=s.ctx;g.fillStyle=col||"#0E1A26";g.fillRect(0,0,s.W,s.H);g.strokeStyle="rgba(255,255,255,.05)";g.lineWidth=1;for(let x=0;x<s.W;x+=32){g.beginPath();g.moveTo(x,0);g.lineTo(x,s.H);g.stroke();}for(let y=0;y<s.H;y+=32){g.beginPath();g.moveTo(0,y);g.lineTo(s.W,y);g.stroke();}}
+function label(g,t,x,y,col,size,al){g.font=`800 ${size||22}px ui-monospace,monospace`;g.fillStyle=col||"#fff";g.textAlign=al||"center";g.fillText(t,x,y);}
+function beaker(g,x,y,w,h,fill,lvl){g.save();g.fillStyle=fill;g.fillRect(x+4,y+h*(1-lvl),w-8,h*lvl-4);g.strokeStyle="rgba(255,255,255,.75)";g.lineWidth=4;g.beginPath();g.moveTo(x-8,y);g.lineTo(x,y);g.lineTo(x,y+h);g.lineTo(x+w,y+h);g.lineTo(x+w,y);g.lineTo(x+w+8,y);g.stroke();g.restore();}
+let last=0;function loop(ts){const dt=Math.min(.05,(ts-last)/1000||0);last=ts;SIMS.forEach(s=>{const scr=s.c.closest(".screen");if(scr&&scr.classList.contains("active")){s.t+=RM?0:dt;s.draw(s,RM?0:dt);}});requestAnimationFrame(loop);}
+function drawAll(){SIMS.forEach(s=>s.draw(s,0));}
+
+/* warm-up (prior knowledge) */
+const WU=[{q:"Matter is anything that has mass and takes up…",qa:"المادة هي كل ما له كتلة ويشغل…",o:[["space","حيّزًا"],["colour","لونًا"],["light","ضوءًا"]],a:0,w:["Matter has mass and volume (takes up space).","للمادة كتلة وحجم (تشغل حيّزًا)."]},
+ {q:"Which one is a liquid at room temperature?",qa:"أيّها سائل عند درجة حرارة الغرفة؟",o:[["ice","الجليد"],["oxygen","الأكسجين"],["water","الماء"]],a:2,w:["Water is a liquid at room temperature.","الماء سائل عند درجة حرارة الغرفة."]},
+ {q:"What happens to ice when you heat it?",qa:"ماذا يحدث للجليد عندما تسخّنه؟",o:[["it melts","ينصهر"],["it gets harder","يزداد صلابة"],["nothing","لا شيء"]],a:0,w:["Heat turns solid ice into liquid water.","الحرارة تحوّل الجليد الصلب إلى ماء سائل."]}];
+$("#wuBox").innerHTML=WU.map((x,i)=>`<div class="wuq" data-i="${i}"><div class="qq">${i+1}. ${x.q}<span class="ar">${x.qa}</span></div><div class="wo">${x.o.map((o,j)=>`<button data-j="${j}">${o[0]}</button>`).join("")}<button class="show" data-j="-1">Show me · أرني</button></div><div class="wa"><b>${x.o[x.a][0]}</b> ${x.w[0]}<span class="ar">${x.w[1]}</span></div></div>`).join("");
+$$("#wuBox .wuq").forEach(card=>{const x=WU[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const j=+b.dataset.j;card.querySelectorAll("button").forEach(y=>{if(+y.dataset.j===x.a)y.classList.add("right");});if(j>=0&&j!==x.a)b.classList.add("wrong");card.classList.add("done");});});
+const seg=(id,f)=>$$(id+" button").forEach(b=>b.onclick=()=>{$$(id+" button").forEach(x=>x.classList.toggle("on",x===b));f(+b.dataset.v);});
+const LSC=1.4;const lab=(g,t,x,y,c,s,a)=>label(g,t,x,y,c,Math.round((s||20)*LSC),a);
+
+/* 0. hot car */
+let hcK=0;const HB={x:300,y:70,w:200,h:150};let hcP=mk(16,HB,13,60);
+sim("hcC",16/10,(s,dt)=>{const g=s.ctx;bg(s,hcK?"#2A2118":"#0E1A26");
+  if(hcK){g.fillStyle="#E9B44C";g.beginPath();g.arc(700,80,40,0,7);g.fill();}
+  const bulge=hcK?10:0;g.fillStyle="rgba(255,255,255,.08)";g.strokeStyle="rgba(255,255,255,.8)";g.lineWidth=5;
+  g.beginPath();g.moveTo(360,20);g.lineTo(440,20);g.lineTo(440,50);g.quadraticCurveTo(HB.x+HB.w+bulge,60,HB.x+HB.w+bulge,110);g.lineTo(HB.x+HB.w+bulge,450);g.quadraticCurveTo(400,470,HB.x-bulge,450);g.lineTo(HB.x-bulge,110);g.quadraticCurveTo(HB.x-bulge,60,360,50);g.closePath();g.fill();g.stroke();
+  g.fillStyle="#C8553D";g.fillRect(350,6,100,22);
+  g.fillStyle="rgba(140,90,60,.75)";g.fillRect(HB.x-bulge+4,230,HB.w+2*bulge-8,214);
+  gasStep(hcP,HB,dt,hcK?260:80);hcP.forEach(p=>{trail(g,p,.07);ball(g,p.x,p.y,p.r,BLU);});
+  lab(g,"gas",HB.x-60,150,"#7FD3E6",18);lab(g,"liquid",HB.x-70,340,"#E9B44C",18);
+  lab(g,hcK?"60°C":"25°C",650,470,hcK?"#F6A58F":"#7FD3E6",26);});
+function hcSet(k){hcK=k;setMsg($("#hcMsg"),k?"<b>60°C:</b> the gas particles move much <b>faster</b>. They hit the bottle walls and the cap harder and more often. The bottle bulges, and it could even burst!":"<b>25°C:</b> the gas particles move and hit the walls of the bottle. Now switch to the afternoon.",k?"<b>60°C:</b> تتحرك جسيمات الغاز <b>أسرع</b> بكثير، وتصطدم بجدران الزجاجة وغطائها بقوة أكبر ومرات أكثر. تنتفخ الزجاجة، وقد تنفجر أيضًا!":"<b>25°C:</b> تتحرك جسيمات الغاز وتصطدم بجدران الزجاجة. انتقل الآن إلى بعد الظهر.");}
+seg("#hcMode",hcSet);hcSet(0);
+whyBox($("#why0"),"Why does the hot bottle bulge?","لماذا تنتفخ الزجاجة الساخنة؟",[
+ ["The particles gained energy, so they move faster and push harder on the walls.","اكتسبت الجسيمات طاقة، فصارت أسرع وتدفع الجدران بقوة أكبر.",1,"More thermal energy means faster particles. We will see why in this lesson.","طاقة حرارية أكبر تعني جسيمات أسرع، وسنرى السبب في هذا الدرس."],
+ ["New gas particles came in from outside.","دخلت جسيمات غاز جديدة من الخارج.",0,"The bottle is closed. The number of particles is the same.","الزجاجة مغلقة، وعدد الجسيمات لم يتغيّر."],
+ ["The particles grew bigger.","كبر حجم الجسيمات.",0,"Particles do not grow. They move faster.","الجسيمات لا تكبر، بل تتحرك أسرع."]]);
+
+/* 1. states of matter */
+let stK=0;const SB={x:150,y:50,w:500,h:390};const stLat=[];for(let i=0;i<9;i++)for(let j=0;j<4;j++)stLat.push({hx:SB.x+40+i*52.5,hy:SB.y+SB.h-30-j*50,ph:Math.random()*6.28});
+const SL={x:SB.x,y:SB.y+190,w:SB.w,h:SB.h-190};let stLiq=mk(36,SL,20,80),stGas=mk(14,SB,20,260);
+sim("stC",16/10,(s,dt)=>{const g=s.ctx;bg(s);g.strokeStyle="rgba(255,255,255,.55)";g.lineWidth=4;g.beginPath();g.moveTo(SB.x,SB.y-10);g.lineTo(SB.x,SB.y+SB.h);g.lineTo(SB.x+SB.w,SB.y+SB.h);g.lineTo(SB.x+SB.w,SB.y-10);g.stroke();
+  if(stK===2){g.setLineDash([8,8]);g.beginPath();g.moveTo(SB.x,SB.y);g.lineTo(SB.x+SB.w,SB.y);g.stroke();g.setLineDash([]);}
+  if(stK===0)stLat.forEach(p=>{const a=RM?0:4,x=p.hx+Math.sin(s.t*21+p.ph)*a,y=p.hy+Math.cos(s.t*17+p.ph)*a;ball(g,x,y,22,BLU);});
+  else if(stK===1){liqStep(stLiq,SL,dt,80);stLiq.forEach(p=>{trail(g,p,.12);ball(g,p.x,p.y,p.r,BLU);});}
+  else{gasStep(stGas,SB,dt,260);stGas.forEach(p=>{trail(g,p,.08);ball(g,p.x,p.y,p.r,BLU);});}
+  lab(g,["solid","liquid","gas"][stK],400,488,"#fff",20);});
+const STM=[["<b>Solid:</b> particles are packed close together in fixed places. They only <b>vibrate</b>. A solid has a definite <b>shape</b> and a definite <b>volume</b>.","<b>الصلب:</b> الجسيمات متراصّة في أماكن ثابتة، وتهتز فقط. للصلب <b>شكل</b> ثابت و<b>حجم</b> ثابت."],
+ ["<b>Liquid:</b> particles are close together but <b>slide past</b> each other. A liquid has a definite <b>volume</b> but takes the <b>shape</b> of its container.","<b>السائل:</b> الجسيمات متقاربة لكنها <b>تنزلق</b> بجوار بعضها. للسائل <b>حجم</b> ثابت لكنه يأخذ <b>شكل</b> الإناء."],
+ ["<b>Gas:</b> particles are <b>far apart</b> and move fast in all directions. A gas has <b>no definite shape or volume</b>: it spreads out to fill its whole container.","<b>الغاز:</b> الجسيمات <b>متباعدة</b> وتتحرك بسرعة في كل الاتجاهات. ليس للغاز <b>شكل ولا حجم ثابت</b>: ينتشر ليملأ الإناء كله."]];
+seg("#stMode",k=>{stK=k;setMsg($("#stMsg"),STM[k][0],STM[k][1]);});setMsg($("#stMsg"),STM[0][0],STM[0][1]);
+whyBox($("#why1"),"Why does a gas fill its whole container, but a liquid does not?","لماذا يملأ الغاز الإناء كله ولا يملؤه السائل؟",[
+ ["Gas particles are far apart and move fast and freely, so they spread into all the space.","جسيمات الغاز متباعدة وتتحرك بسرعة وحرية، فتنتشر في كل الحيّز.",1,"Liquid particles stay close together, so a liquid keeps its volume.","جسيمات السائل تبقى متقاربة، فيحتفظ السائل بحجمه."],
+ ["Gas particles are bigger.","جسيمات الغاز أكبر.",0,"Size is not the reason. Look at the spaces between particles.","الحجم ليس السبب. انظر إلى المسافات بين الجسيمات."],
+ ["Gas particles do not move.","جسيمات الغاز لا تتحرك.",0,"Gas particles move the fastest of the three states.","جسيمات الغاز هي الأسرع بين الحالات الثلاث."]]);
+
+/* 2. temperature */
+const TA={x:90,y:110,w:250,h:260},TBx={x:460,y:110,w:250,h:260};let tpA=mk(20,{x:TA.x+6,y:TA.y+60,w:TA.w-12,h:TA.h-66},12,30),tpB=mk(20,{x:TBx.x+6,y:TBx.y+60,w:TBx.w-12,h:TBx.h-66},12,30);
+const tsp=t=>20+t*2.4;
+sim("tpC",16/9,(s,dt)=>{const g=s.ctx;bg(s);const T=+$("#tpR").value;
+  [[TA,20,tpA],[TBx,T,tpB]].forEach(([B,t,ps],i)=>{const hot=t/100;beaker(g,B.x,B.y,B.w,B.h,`rgba(${Math.round(42+180*hot)},${Math.round(143-60*hot)},${Math.round(176-120*hot)},.35)`,.78);
+    const box={x:B.x+6,y:B.y+60,w:B.w-12,h:B.h-66};liqStep(ps,box,dt,tsp(t));ps.forEach(p=>{trail(g,p,.08);ball(g,p.x,p.y,p.r,BLU);});
+    lab(g,(i?"B":"A")+": "+t+"°C",B.x+B.w/2,75,t>=50?"#F6A58F":"#7FD3E6",22);});});
+function tpSet(){const T=+$("#tpR").value;setMsg($("#tpMsg"),T>20?`Beaker B is hotter (${T}°C): its particles move <b>faster on average</b>. Higher temperature = higher average kinetic energy.`:T<20?`Beaker B is colder (${T}°C): its particles move <b>slower on average</b>.`:"Same temperature, same average speed.",T>20?`الكأس B أسخن (${T}°C): جسيماتها <b>أسرع في المتوسط</b>. درجة حرارة أعلى = متوسط طاقة حركية أكبر.`:T<20?`الكأس B أبرد (${T}°C): جسيماتها <b>أبطأ في المتوسط</b>.`:"درجة الحرارة نفسها، متوسط السرعة نفسه.");}
+$("#tpR").oninput=tpSet;tpSet();
+
+/* 3. changing state */
+const CB={x:90,y:60,w:440,h:380};const csLat=[];for(let i=0;i<8;i++)for(let j=0;j<5;j++)csLat.push({hx:CB.x+45+i*50,hy:CB.y+CB.h-30-j*48,ph:Math.random()*6.28});
+const CL={x:CB.x,y:CB.y+150,w:CB.w,h:CB.h-150};let csLiq=mk(34,CL,19,60),csGas=mk(14,CB,19,240);
+const csT=()=>+$("#csR").value;
+sim("csC",16/10,(s,dt)=>{const g=s.ctx;bg(s);const T=csT();g.strokeStyle="rgba(255,255,255,.55)";g.lineWidth=4;g.strokeRect(CB.x,CB.y,CB.w,CB.h);
+  const half=(T===0||T===100);
+  if(T<0||T===0){const a=RM?0:2+(T+20)/4;csLat.forEach((p,i)=>{if(T===0&&i%3===0)return;ball(g,p.hx+Math.sin(s.t*21+p.ph)*a,p.hy+Math.cos(s.t*17+p.ph)*a,19,BLU);});}
+  if(T>=0&&T<=100){const sp=40+T*1.3;const n=T===0?12:T===100?20:34;liqStep(csLiq,CL,dt,sp);csLiq.slice(0,n).forEach(p=>{trail(g,p,.1);ball(g,p.x,p.y,p.r,BLU);});}
+  if(T>=100){const n=T===100?5:14,sp=220+(T-100)*6;gasStep(csGas,CB,dt,sp);csGas.slice(0,n).forEach(p=>{trail(g,p,.07);ball(g,p.x,p.y,p.r,BLU);});}
+  /* thermometer */
+  const tx=660,top=60,bot=420,Y=t=>bot-(t+20)/140*(bot-top);g.fillStyle="#EEF3F6";g.fillRect(tx-12,top-10,24,bot-top+20);g.fillStyle="#C8553D";g.fillRect(tx-7,Y(T),14,bot-Y(T)+10);g.beginPath();g.arc(tx,bot+28,22,0,7);g.fill();
+  [[100,"100"],[0,"0"]].forEach(([t,l])=>{g.strokeStyle="#2A9D8F";g.lineWidth=2;g.beginPath();g.moveTo(tx-30,Y(t));g.lineTo(tx+30,Y(t));g.stroke();lab(g,l,tx+60,Y(t)+8,"#7FD3E6",15);});
+  lab(g,T+"°C",tx,40,"#F6A58F",20);
+  lab(g,T<0?"solid (ice)":T===0?"melting":T<100?"liquid (water)":T===100?"boiling":"gas (steam)",CB.x+CB.w/2,486,"#fff",19);});
+function csSet(){const T=csT();const M=T<0?["<b>Ice below 0°C:</b> particles vibrate in fixed places. Add energy: they vibrate faster.","<b>جليد تحت 0°C:</b> الجسيمات تهتز في أماكن ثابتة. أضف طاقة: تهتز أسرع."]:
+ T===0?["<b>0°C, melting point:</b> particles gain enough energy to break out of their fixed places. Solid and liquid are both here.","<b>0°C، درجة الانصهار:</b> تكتسب الجسيمات طاقة تكفي لتتحرّر من أماكنها الثابتة. الصلب والسائل موجودان معًا."]:
+ T<100?["<b>Liquid water:</b> particles slide past each other. Hotter water = faster particles.","<b>ماء سائل:</b> الجسيمات تنزلق بجوار بعضها. ماء أسخن = جسيمات أسرع."]:
+ T===100?["<b>100°C, boiling point:</b> particles gain enough energy to escape the liquid and become a gas.","<b>100°C، درجة الغليان:</b> تكتسب الجسيمات طاقة تكفي لتهرب من السائل وتصبح غازًا."]:
+ ["<b>Steam above 100°C:</b> particles are far apart and move very fast. Remove energy and the changes go backwards: gas → liquid → solid.","<b>بخار فوق 100°C:</b> الجسيمات متباعدة وسريعة جدًا. انزع الطاقة فتنعكس التغيّرات: غاز ← سائل ← صلب."];setMsg($("#csMsg"),M[0],M[1]);}
+$("#csR").oninput=csSet;csSet();
+whyBox($("#why2"),"Why does ice melt when you add thermal energy?","لماذا ينصهر الجليد عندما نضيف طاقة حرارية؟",[
+ ["The particles move faster until they can break out of their fixed places.","تتحرك الجسيمات أسرع حتى تتحرّر من أماكنها الثابتة.",1,"Adding energy raises kinetic energy; at 0°C the solid structure breaks apart.","إضافة الطاقة ترفع الطاقة الحركية، وعند 0°C يتفكك البناء الصلب."],
+ ["The particles melt into smaller pieces.","الجسيمات نفسها تنصهر إلى قطع أصغر.",0,"Particles do not change. Only their motion and spacing change.","الجسيمات لا تتغيّر، بل تتغيّر حركتها والمسافات بينها."],
+ ["The particles stop moving.","تتوقف الجسيمات عن الحركة.",0,"Adding energy makes them move faster, not stop.","إضافة الطاقة تجعلها أسرع، لا تجعلها تتوقف."]]);
+
+/* 4. size of an atom */
+function zmDraw(k){let s=`<rect width="440" height="300" fill="#0E1A26"/>`;
+  if(k===0){s+=`<path d="M40 210 C140 170 260 250 400 190" stroke="#8C5A3C" stroke-width="10" fill="none" stroke-linecap="round"/><circle cx="220" cy="208" r="16" fill="none" stroke="#E9B44C" stroke-width="3"/>`;}
+  else if(k===1){s+=`<rect x="60" y="80" width="320" height="140" rx="20" fill="#8C5A3C"/>`;for(let i=0;i<7;i++)s+=`<path d="M${70+i*45} 82 q20 70 0 136" stroke="#5E3B26" stroke-width="3" fill="none"/>`;s+=`<circle cx="220" cy="150" r="16" fill="none" stroke="#E9B44C" stroke-width="3"/>`;}
+  else{for(let i=0;i<9;i++)for(let j=0;j<5;j++){const x=50+i*42+(j%2)*21,y=60+j*42;s+=`<circle cx="${x}" cy="${y}" r="17" fill="url(#zmg)"/>`;}}
+  const bars=[["0.1 mm","0,1 مم"],["0.0001 mm","0,0001 مم"],["0.0000001 mm","0,0000001 مم"]];
+  s=`<defs><radialGradient id="zmg" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#BFEAF5"/><stop offset="1" stop-color="#2A8FB0"/></radialGradient></defs>`+s+`<line x1="40" y1="272" x2="${k===2?82:k===1?120:400}" y2="272" stroke="#E9B44C" stroke-width="4"/><text x="40" y="262" fill="#E9B44C" font-size="15" font-weight="800" font-family="ui-monospace,monospace">${bars[k][0]}</text><text x="420" y="30" text-anchor="end" fill="#fff" font-size="16" font-weight="800">${["a human hair","× 1 000","× 1 000 000: atoms"][k]}</text>`;
+  $("#zmSvg").innerHTML=s;
+  const M=[["A human hair is about <b>0.1 mm</b> thick. You can just see it. Zoom in on the yellow circle.","سُمك شعرة الإنسان حوالي <b>0.1 مم</b>، وبالكاد تراها. كبّر الدائرة الصفراء."],["Magnified 1 000 times, the hair looks like a thick rope with scales. Still no atoms in sight! Zoom in again.","بتكبير 1000 مرة تبدو الشعرة حبلًا سميكًا عليه قشور، ولا ذرات بعد! كبّر مرة أخرى."],["Magnified about <b>1 000 000 times</b>, we finally reach atoms. About <b>one million atoms</b> side by side would be as wide as one hair! (rounded numbers)","بتكبير حوالي <b>مليون مرة</b> نصل أخيرًا إلى الذرات. حوالي <b>مليون ذرة</b> متجاورة تساوي عرض شعرة واحدة! (أرقام تقريبية)"]];setMsg($("#zmMsg"),M[k][0],M[k][1]);}
+seg("#zmMode",zmDraw);zmDraw(0);
+
+/* atom drawing (SVG) */
+const EL={H:["#F4F6F8","#9AA5B1",15],O:["#E57A62","#A8402C",24],C:["#5B6675","#1F2A37",23],N:["#7CC4DE","#2A6F8F",23],He:["#F3D27E","#C08F1E",18],Na:["#C9A6F2","#6A3FB0",26],Cl:["#9ED38E","#4E8F3C",25],Fe:["#C99A7A","#8C5A3C",24]};
+let gid=0;function atm(x,y,e,sc){const c=EL[e],r=c[2]*(sc||1),id="ag"+(gid++);return `<defs><radialGradient id="${id}" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="${c[0]}"/><stop offset="1" stop-color="${c[1]}"/></radialGradient></defs><circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id})"/><text x="${x}" y="${y+5}" text-anchor="middle" font-size="${Math.round(13*(sc||1))}" font-weight="800" fill="${e==="H"||e==="He"?"#1F2A37":"#fff"}">${e}</text>`;}
+const mini=(parts,w)=>`<svg viewBox="0 0 ${w||120} 70" style="width:100%;max-width:150px;height:auto;display:block;margin:0 auto 6px;background:#0E1A26;border-radius:10px">${parts}</svg>`;
+
+/* 5. elements and compounds */
+const ECX=[["Helium gas","غاز الهيليوم",mini(atm(35,35,"He",.9)+atm(85,38,"He",.9)),0,"Only one colour: helium atoms on their own.","لون واحد فقط: ذرات هيليوم منفردة."],
+ ["Water","الماء",mini(atm(60,40,"O",.9)+atm(36,26,"H",.9)+atm(84,26,"H",.9)),1,"Two colours: hydrogen and oxygen bonded together.","لونان: هيدروجين وأكسجين مرتبطان معًا."],
+ ["Oxygen gas","غاز الأكسجين",mini(atm(46,35,"O",.9)+atm(76,35,"O",.9)),0,"Two atoms, but both are oxygen: one type of atom, so an element.","ذرتان لكنهما أكسجين: نوع واحد من الذرات، إذن عنصر."],
+ ["Carbon dioxide","ثاني أكسيد الكربون",mini(atm(60,35,"C",.9)+atm(28,35,"O",.9)+atm(92,35,"O",.9)),1,"Carbon and oxygen: two different elements bonded together.","كربون وأكسجين: عنصران مختلفان مرتبطان معًا."]];
+cardsQ($("#ecCards"),ECX.map(x=>({t:[x[2]+x[0],x[1]],o:[["Element","عنصر"],["Compound","مركّب"]],cls:"two",a:x[3],w:[x[4],x[5]],h:["Count the types of atoms (colours), not the number of atoms.","عُدّ أنواع الذرات (الألوان)، لا عدد الذرات."]})));
+whyBox($("#why3"),"Water is made of hydrogen and oxygen. Why is it not like them?","الماء مكوّن من الهيدروجين والأكسجين. لماذا لا يشبههما؟",[
+ ["A compound has different properties from the elements that make it.","للمركّب خصائص مختلفة عن العناصر المكوّنة له.",1,"Hydrogen and oxygen are gases, but water is a liquid at room temperature.","الهيدروجين والأكسجين غازان، أما الماء فسائل عند درجة حرارة الغرفة."],
+ ["Water has no atoms.","الماء ليس فيه ذرات.",0,"Water is made of hydrogen and oxygen atoms.","الماء يتكوّن من ذرات هيدروجين وأكسجين."],
+ ["Water is an element.","الماء عنصر.",0,"It has two types of atoms, so it is a compound.","فيه نوعان من الذرات، إذن هو مركّب."]]);
+
+/* 6. breaking down water */
+let elOn=false,elV=0;const elB=[];
+sim("elC",4/3,(s,dt)=>{const g=s.ctx;bg(s);if(elOn&&elV<1)elV=Math.min(1,elV+dt*.12);
+  beaker(g,150,300,500,240,"rgba(42,143,176,.45)",.85);
+  [[270,"H"],[530,"O"]].forEach(([x,e],i)=>{const lvl=i?elV/2:elV,top=110,h=300;g.fillStyle="rgba(42,143,176,.45)";g.fillRect(x-40,top+h*lvl,80,h*(1-lvl));g.fillStyle="rgba(255,255,255,.12)";g.fillRect(x-40,top,80,h*lvl);
+    g.strokeStyle="rgba(255,255,255,.8)";g.lineWidth=4;g.beginPath();g.moveTo(x-40,top+h+20);g.lineTo(x-40,top+20);g.arc(x,top+20,40,Math.PI,0);g.lineTo(x+40,top+h+20);g.stroke();
+    for(let k=0;k<=4;k++){g.fillStyle="rgba(255,255,255,.6)";g.fillRect(x+28,top+20+k*65,12,3);}
+    g.fillStyle="#9AA5B1";g.fillRect(x-6,400,12,120);
+    lab(g,i?"oxygen":"hydrogen",x,90,i?"#F6A58F":"#E9F4F8",17);lab(g,(Math.round(lvl*20))+" mL",x,275,"#E9B44C",13);});
+  if(elOn&&elV<1&&!RM){if(Math.random()<.5)elB.push({x:270+(Math.random()-.5)*20,y:400,e:0});if(Math.random()<.25)elB.push({x:530+(Math.random()-.5)*20,y:400,e:1});}
+  for(let i=elB.length-1;i>=0;i--){const b=elB[i];b.y-=140*dt;const top=110+300*(b.e?elV/2:elV);if(b.y<top){elB.splice(i,1);continue;}g.strokeStyle="rgba(255,255,255,.8)";g.lineWidth=2;g.beginPath();g.arc(b.x,b.y,5,0,7);g.stroke();}
+  g.fillStyle="#1F2A37";g.strokeStyle="#E9B44C";g.lineWidth=3;g.fillRect(340,20,120,50);g.strokeRect(340,20,120,50);lab(g,"− battery +",400,52,"#E9B44C",13);
+  g.strokeStyle=elOn?"#E9B44C":"#5B6675";g.lineWidth=4;g.beginPath();g.moveTo(340,45);g.lineTo(110,45);g.lineTo(110,580);g.lineTo(270,580);g.lineTo(270,520);g.moveTo(460,45);g.lineTo(690,45);g.lineTo(690,580);g.lineTo(530,580);g.lineTo(530,520);g.stroke();
+  if(elOn&&elV>=1&&!s.done){s.done=1;elMsgEnd();}});
+function elMsgEnd(){setMsg($("#elMsg"),"<b>Done!</b> Hydrogen: 20 mL. Oxygen: 10 mL. There is <b>twice as much hydrogen</b> as oxygen, because each water molecule (H₂O) has <b>2 hydrogen atoms and 1 oxygen atom</b>.","<b>انتهى!</b> الهيدروجين: 20 mL، والأكسجين: 10 mL. كمية الهيدروجين <b>ضعف</b> كمية الأكسجين، لأن كل جزيء ماء (H₂O) فيه <b>ذرتا هيدروجين وذرة أكسجين واحدة</b>.");}
+function elReset(){elOn=false;elV=0;elB.length=0;SIMS.forEach(x=>{if(x.c.id==="elC")x.done=0;});setMsg($("#elMsg"),"Tap <b>Switch on</b>. Electricity passes through the water.","اضغط <b>Switch on</b>. تمرّ الكهرباء خلال الماء.");}
+$("#elGo").onclick=()=>{elOn=true;if(RM){elV=1;}setMsg($("#elMsg"),"Bubbles appear at both metal rods. Water is breaking down into two gases. Compare the two tubes.","تظهر فقاعات عند القضيبين المعدنيين. الماء يتفكك إلى غازين. قارن بين الأنبوبين.");};
+$("#elRe").onclick=elReset;elReset();
+whyBox($("#why4"),"Why does the hydrogen tube fill twice as fast?","لماذا يمتلئ أنبوب الهيدروجين بسرعة الضِّعف؟",[
+ ["Water has 2 hydrogen atoms for every 1 oxygen atom.","في الماء ذرتا هيدروجين لكل ذرة أكسجين واحدة.",1,"The ratio in the formula H₂O is 2 : 1, and the gases come out in the same ratio.","النسبة في الصيغة H₂O هي 2 : 1، وتخرج الغازات بالنسبة نفسها."],
+ ["Hydrogen atoms are bigger.","ذرات الهيدروجين أكبر.",0,"Hydrogen atoms are actually the smallest atoms.","ذرات الهيدروجين في الحقيقة أصغر الذرات."],
+ ["The left tube is wider.","الأنبوب الأيسر أعرض.",0,"Both tubes are the same size.","الأنبوبان بالحجم نفسه."]]);
+
+/* 7. molecule models */
+const ML=[[[["O",220,120],["H",160,80],["H",280,80]],"H₂O · water","2 H : 1 O","ماء"],[[["C",220,120],["O",150,120],["O",290,120]],"CO₂ · carbon dioxide","1 C : 2 O","ثاني أكسيد الكربون"],[[["N",220,100],["H",160,150],["H",220,175],["H",280,150]],"NH₃ · ammonia","1 N : 3 H","الأمونيا"],[[["C",220,120],["H",220,55],["H",160,155],["H",280,155],["H",220,185]],"CH₄ · methane","1 C : 4 H","الميثان"]];
+function mlDraw(k){const m=ML[k],c=m[0][0];let s=`<rect width="440" height="240" fill="#0E1A26"/>`;m[0].slice(1).forEach(a=>s+=`<line x1="${c[1]}" y1="${c[2]}" x2="${a[1]}" y2="${a[2]}" stroke="#9AA5B1" stroke-width="8"/>`);
+  m[0].slice(1).concat([c]).forEach(a=>s+=atm(a[1],a[2],a[0],1.4));s+=`<text x="16" y="28" fill="#fff" font-size="16" font-weight="800">${m[1]}</text><text x="424" y="226" text-anchor="end" fill="#E9B44C" font-size="18" font-weight="800" font-family="ui-monospace,monospace">${m[2]}</text>`;$("#mlSvg").innerHTML=s;}
+seg("#mlMode",mlDraw);mlDraw(0);
+
+/* 8. element symbols */
+const PT=[["H","Hydrogen","الهيدروجين","One letter, a capital."],["He","Helium","الهيليوم","Two letters: capital H, small e."],["C","Carbon","الكربون","One letter."],["N","Nitrogen","النيتروجين","One letter."],["O","Oxygen","الأكسجين","One letter."],["Na","Sodium","الصوديوم","From its Latin name, <i>natrium</i>."],["Cl","Chlorine","الكلور","Capital C, small l."],["Fe","Iron","الحديد","From its Latin name, <i>ferrum</i>."],["Cu","Copper","النحاس","From its Latin name, <i>cuprum</i>."],["Au","Gold","الذهب","From its Latin name, <i>aurum</i>."],["Co","Cobalt","الكوبالت","Capital C, small o. Not the same as CO!"],["Ca","Calcium","الكالسيوم","Capital C, small a."]];
+$("#ptab").innerHTML=PT.map((p,i)=>`<button data-i="${i}"><b>${p[0]}</b><small>${p[1]}</small></button>`).join("");
+$$("#ptab button").forEach(b=>b.onclick=()=>{const p=PT[+b.dataset.i];$$("#ptab button").forEach(x=>x.classList.toggle("on",x===b));setMsg($("#ptMsg"),`<b>${p[0]} = ${p[1]}</b>. ${p[3]}`,`<b>${p[0]} = ${p[2]}</b>.`);});
+setMsg($("#ptMsg"),"Tap an element to see its name. Look for symbols that do not match the English name!","اضغط على عنصر لترى اسمه. ابحث عن رموز لا تطابق الاسم الإنجليزي!");
+whyBox($("#why5"),"Co and CO look almost the same. Why are they different?","Co و CO متشابهان تقريبًا. لماذا هما مختلفان؟",[
+ ["Co (small o) is one element, cobalt. CO (two capitals) is a compound of carbon and oxygen.","Co (حرف o صغير) عنصر واحد هو الكوبالت. أما CO (حرفان كبيران) فمركّب من الكربون والأكسجين.",1,"Every capital letter starts a new element symbol.","كل حرف كبير يبدأ رمز عنصر جديد."],
+ ["They are the same; capitals do not matter.","هما الشيء نفسه، والحروف الكبيرة لا تهم.",0,"Capitals matter: a capital letter starts a new symbol.","الحروف الكبيرة مهمة: الحرف الكبير يبدأ رمزًا جديدًا."],
+ ["CO is a bigger cobalt atom.","CO ذرة كوبالت أكبر.",0,"CO has two capitals, so it has two different elements.","في CO حرفان كبيران، إذن فيه عنصران مختلفان."]]);
+
+const FD={
+ fr:[{q:"Read the formula <b>H₂O</b> (water).<span class=\"ar\">اقرأ الصيغة <b>H₂O</b> (الماء).</span>",words:true,txt:true,s:[["The symbols are H (hydrogen) and O (oxygen).","Symbols","الرموز: H (الهيدروجين) و O (الأكسجين)."],["The subscript 2 after H means 2 hydrogen atoms.","Subscript","الرقم السفلي 2 بعد H يعني ذرتي هيدروجين."],["No number after O means 1 oxygen atom.","No number = 1","عدم وجود رقم بعد O يعني ذرة أكسجين واحدة."],["Ratio 2 H : 1 O, 3 atoms in each molecule.","Ratio","النسبة 2 H : 1 O، أي 3 ذرات في كل جزيء."]],blank:0},
+  {q:"Read the formula <b>CO₂</b> (carbon dioxide).<span class=\"ar\">اقرأ الصيغة <b>CO₂</b> (ثاني أكسيد الكربون).</span>",words:true,txt:true,s:[["The symbols are C (carbon) and O (oxygen).","Symbols","الرموز: C (الكربون) و O (الأكسجين)."],["No number after C means 1 carbon atom.","No number = 1","عدم وجود رقم بعد C يعني ذرة كربون واحدة."],["The subscript 2 after O means 2 oxygen atoms.","Subscript","الرقم السفلي 2 بعد O يعني ذرتي أكسجين."],["Ratio 1 C : 2 O, 3 atoms in each molecule.","Ratio","النسبة 1 C : 2 O، أي 3 ذرات في كل جزيء."]],blank:1,o:[["Ratio 1 C : 2 O, 3 atoms in each molecule.","Ratio 2 C : 1 O, 3 atoms in each molecule.","Ratio 1 C : 1 O, 2 atoms in each molecule."]],h:[["1 carbon atom and 2 oxygen atoms.","ذرة كربون واحدة وذرتا أكسجين."]]},
+  {q:"Read the formula <b>NH₃</b> (ammonia).<span class=\"ar\">اقرأ الصيغة <b>NH₃</b> (الأمونيا).</span>",words:true,txt:true,s:[["The symbols are N (nitrogen) and H (hydrogen).","Symbols","الرموز: N (النيتروجين) و H (الهيدروجين)."],["No number after N means 1 nitrogen atom.","No number = 1","عدم وجود رقم بعد N يعني ذرة نيتروجين واحدة."],["The subscript 3 after H means 3 hydrogen atoms.","Subscript","الرقم السفلي 3 بعد H يعني 3 ذرات هيدروجين."],["Ratio 1 N : 3 H, 4 atoms in each molecule.","Ratio","النسبة 1 N : 3 H، أي 4 ذرات في كل جزيء."]],blank:2,o:[["The subscript 3 after H means 3 hydrogen atoms.","The subscript 3 after H means 3 nitrogen atoms.","The subscript 3 means 3 molecules."],["Ratio 1 N : 3 H, 4 atoms in each molecule.","Ratio 3 N : 1 H, 4 atoms in each molecule.","Ratio 1 N : 3 H, 3 atoms in each molecule."]],h:[["A subscript belongs to the symbol just before it.","الرقم السفلي يخص الرمز الذي قبله مباشرة."],["Add the atoms: 1 + 3.","اجمع الذرات: 1 + 3."]]}]};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+
+/* check yourself */
+cardsQ($("#ckCards"),[
+ {t:["Particles that are close together and slide past each other are in a…","الجسيمات المتقاربة التي تنزلق بجوار بعضها تكون في…"],o:[["solid","صلب"],["liquid","سائل"],["gas","غاز"]],a:1,w:["Liquids keep their volume but flow.","السوائل تحتفظ بحجمها لكنها تنساب."],h:["Which state can flow but keeps its volume?","أيّ حالة تنساب لكنها تحتفظ بحجمها؟"]},
+ {t:["Temperature measures the … kinetic energy of particles.","درجة الحرارة تقيس … الطاقة الحركية للجسيمات."],o:[["average","متوسط"],["total","مجموع"],["lowest","أقل"]],a:0,w:["Thermal energy is the total; temperature is the average.","الطاقة الحرارية هي المجموع، ودرجة الحرارة هي المتوسط."],h:["Total energy has another name: thermal energy.","للطاقة الكلية اسم آخر: الطاقة الحرارية."]},
+ {t:["Which one is an element?","أيّها عنصر؟"],o:[["H₂O","H₂O"],["CO₂","CO₂"],["O₂","O₂"]],a:2,w:["O₂ has only oxygen atoms.","O₂ فيه ذرات أكسجين فقط."],h:["Look for only one type of atom.","ابحث عن نوع واحد فقط من الذرات."]},
+ {t:["How many hydrogen atoms are in CH₄?","كم ذرة هيدروجين في CH₄؟"],o:[["1","1"],["4","4"],["5","5"]],a:1,w:["The subscript 4 belongs to H.","الرقم السفلي 4 يخص H."],h:["Read the small number after H.","اقرأ الرقم الصغير بعد H."]},
+ {t:["Breaking down water gives…","تفكيك الماء يعطي…"],o:[["hydrogen and oxygen","هيدروجين وأكسجين"],["carbon and oxygen","كربون وأكسجين"],["only oxygen","أكسجين فقط"]],a:0,cls:"stack",w:["Water (H₂O) is made of hydrogen and oxygen.","الماء (H₂O) يتكوّن من الهيدروجين والأكسجين."],h:["Read the symbols in H₂O.","اقرأ الرموز في H₂O."]},
+ {t:["What is the symbol for iron?","ما رمز الحديد؟"],o:[["Ir","Ir"],["I","I"],["Fe","Fe"]],a:2,w:["Fe comes from the Latin <i>ferrum</i>.","Fe من الاسم اللاتيني <i>ferrum</i>."],h:["It comes from its Latin name.","يأتي من اسمه اللاتيني."]}]);
+
+requestAnimationFrame(loop);
+const FL=[["● ● ●","Particles","الجسيمات","All matter is made of tiny particles that are always moving.","كل مادة تتكوّن من جسيمات صغيرة جدًا تتحرك دائمًا."],
+ ["▦","Solid","الصلب","Particles vibrate in fixed places. Definite shape and volume.","الجسيمات تهتز في أماكن ثابتة. شكل وحجم ثابتان."],
+ ["≈","Liquid","السائل","Particles slide past each other. Definite volume, shape of container.","الجسيمات تنزلق بجوار بعضها. حجم ثابت، وشكل الإناء."],
+ ["∴","Gas","الغاز","Particles far apart, moving fast. Fills its whole container.","الجسيمات متباعدة وسريعة. يملأ الإناء كله."],
+ ["°C","Temperature","درجة الحرارة","A measure of the average kinetic energy of the particles.","مقياس لمتوسط الطاقة الحركية للجسيمات."],
+ ["Σ","Thermal energy","الطاقة الحرارية","The total energy of all the particles in a material.","الطاقة الكلية لكل جسيمات المادة."],
+ ["O₂","Element","العنصر","A substance made of only one type of atom.","مادة نقية تتكوّن من نوع واحد فقط من الذرات."],
+ ["H₂O","Compound","المركّب","Two or more different elements bonded in a fixed ratio.","عنصران مختلفان أو أكثر مرتبطة بنسبة ثابتة."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+const Q=[
+ {q:"In which state of matter are particles far apart and moving fast in all directions?",qa:"في أيّ حالة من حالات المادة تكون الجسيمات متباعدة وتتحرك بسرعة في كل الاتجاهات؟",o:[["solid","الصلب"],["liquid","السائل"],["gas","الغاز"],["all of them","كلها"]],a:2,ex:["Gas particles are far apart and move freely, so a gas fills its container.","جسيمات الغاز متباعدة وتتحرك بحرية، فيملأ الغاز إناءه."],h:[["Which state fills its whole container?","أيّ حالة تملأ الإناء كله؟"],["Solids and liquids have particles close together.","في الصلب والسائل تكون الجسيمات متقاربة."]]},
+ {q:"Juice is poured from a bottle into a glass. What stays the same?",qa:"يُسكب عصير من زجاجة في كوب. ما الذي يبقى كما هو؟",o:[["its volume","حجمه"],["its shape","شكله"],["both shape and volume","الشكل والحجم معًا"],["neither","لا شيء منهما"]],a:0,ex:["A liquid keeps its volume but takes the shape of its container.","السائل يحتفظ بحجمه لكنه يأخذ شكل إنائه."],h:[["Juice is a liquid.","العصير سائل."],["Does the juice look like the bottle or the glass now?","هل يشبه العصير الزجاجة أم الكوب الآن؟"]]},
+ {q:"Temperature is a measure of…",qa:"درجة الحرارة مقياس…",o:[["the total energy of a material","للطاقة الكلية للمادة"],["the average kinetic energy of the particles","لمتوسط الطاقة الحركية للجسيمات"],["the size of the particles","لحجم الجسيمات"],["the number of particles","لعدد الجسيمات"]],a:1,ex:["Temperature = average kinetic energy. Total energy is thermal energy.","درجة الحرارة = متوسط الطاقة الحركية. والطاقة الكلية هي الطاقة الحرارية."],h:[["It is about motion.","الأمر متعلق بالحركة."],["Average, not total.","المتوسط، لا المجموع."]]},
+ {q:"Water at 20°C is heated to 70°C. What happens to its particles?",qa:"يُسخَّن ماء من 20°C إلى 70°C. ماذا يحدث لجسيماته؟",o:[["They slow down.","تبطؤ."],["They get bigger.","تكبر."],["They stop moving.","تتوقف عن الحركة."],["They move faster on average.","تتحرك أسرع في المتوسط."]],a:3,ex:["Higher temperature means higher average kinetic energy: faster particles.","درجة حرارة أعلى تعني متوسط طاقة حركية أكبر: جسيمات أسرع."],h:[["Heating adds energy.","التسخين يضيف طاقة."],["Particles do not change size.","الجسيمات لا يتغيّر حجمها."]]},
+ {q:"Ice at 0°C is melting. What are the particles doing?",qa:"جليد عند 0°C ينصهر. ماذا تفعل الجسيمات؟",o:[["Gaining enough energy to break out of fixed places","تكتسب طاقة تكفي لتتحرّر من أماكنها الثابتة"],["Losing energy and moving closer","تفقد طاقة وتقترب من بعضها"],["Turning into new atoms","تتحوّل إلى ذرات جديدة"],["Escaping as a gas","تهرب على شكل غاز"]],a:0,ex:["At the melting point, particles gain enough energy to slide past each other.","عند درجة الانصهار تكتسب الجسيمات طاقة تكفي لتنزلق بجوار بعضها."],h:[["Melting needs energy added.","الانصهار يحتاج إلى إضافة طاقة."],["Solid → liquid, not liquid → gas.","صلب ← سائل، وليس سائل ← غاز."]]},
+ {q:"Which statement about an element is correct?",qa:"أيّ عبارة عن العنصر صحيحة؟",o:[["It has two or more types of atoms.","فيه نوعان أو أكثر من الذرات."],["It is always a gas.","هو غاز دائمًا."],["It is made of only one type of atom.","يتكوّن من نوع واحد فقط من الذرات."],["It can be broken down into simpler substances.","يمكن تفكيكه إلى مواد أبسط."]],a:2,ex:["An element has one type of atom. Compounds have two or more.","العنصر فيه نوع واحد من الذرات، والمركّب فيه نوعان أو أكثر."],h:[["Think of O₂ or He.","فكّر في O₂ أو He."],["Count the types of atoms.","عُدّ أنواع الذرات."]]},
+ {q:"Which of these is a compound?",qa:"أيّ مما يلي مركّب؟",o:[["N₂","N₂"],["NH₃","NH₃"],["He","He"],["Fe","Fe"]],a:1,ex:["NH₃ has two different elements: nitrogen and hydrogen.","NH₃ فيه عنصران مختلفان: النيتروجين والهيدروجين."],h:[["Look for two different symbols.","ابحث عن رمزين مختلفين."],["Each capital letter starts a new symbol.","كل حرف كبير يبدأ رمزًا جديدًا."]]},
+ {q:"How many atoms are in one molecule of CO₂?",qa:"كم ذرة في جزيء واحد من CO₂؟",o:[["1","1"],["2","2"],["4","4"],["3","3"]],a:3,ex:["1 carbon + 2 oxygen = 3 atoms.","1 كربون + 2 أكسجين = 3 ذرات."],h:[["No number after C means 1.","عدم وجود رقم بعد C يعني 1."],["Add: 1 C + 2 O.","اجمع: 1 C + 2 O."]]},
+ {q:"Water is broken down by electricity and 30 mL of hydrogen is collected. About how much oxygen is collected?",qa:"يُفكَّك الماء بالكهرباء ويُجمع 30 mL من الهيدروجين. كم الأكسجين الذي يُجمع تقريبًا؟",o:[["15 mL","15 mL"],["30 mL","30 mL"],["60 mL","60 mL"],["90 mL","90 mL"]],a:0,ex:["H₂O has 2 H : 1 O, so oxygen is half the hydrogen: 30 ÷ 2 = 15 mL.","في H₂O النسبة 2 H : 1 O، فالأكسجين نصف الهيدروجين: 30 ÷ 2 = 15 mL."],h:[["Remember the two tubes in the lab.","تذكّر الأنبوبين في المعمل."],["Hydrogen is twice the oxygen.","الهيدروجين ضعف الأكسجين."]]},
+ {q:"Why do scientists everywhere use chemical symbols like Na and Cl?",qa:"لماذا يستخدم العلماء في كل مكان رموزًا كيميائية مثل Na و Cl؟",o:[["Because the symbols are shorter than numbers","لأن الرموز أقصر من الأرقام"],["So that all scientists understand them, in any language","ليفهمها كل العلماء بأي لغة"],["Because every element has an English name starting with that letter","لأن كل عنصر له اسم إنجليزي يبدأ بذلك الحرف"],["To keep the elements secret","لإبقاء العناصر سرًّا"]],a:1,ex:["Symbols are the same in every language. Na comes from the Latin <i>natrium</i>, not English.","الرموز واحدة في كل اللغات. و Na من الاسم اللاتيني <i>natrium</i>، لا من الإنجليزية."],h:[["Water has different names in Arabic, English and French.","للماء أسماء مختلفة بالعربية والإنجليزية والفرنسية."],["Sodium does not start with N in English.","Sodium لا يبدأ بحرف N بالإنجليزية."]]}];
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${first?ICON.check+" Correct!":ok?ICON.check+" Yes, now you have it.":ICON.cross+" Here is the answer."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${first?"إجابة صحيحة!":ok?"نعم، الآن فهمتها.":"إليك الإجابة."} ${q.ex[1]}</div>`;
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Scientist";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You understand matter and its particles!","رائع! أنت تفهم المادة وجسيماتها!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the virtual labs, then retry.","محاولة جيدة! أعد المعامل الافتراضية، ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Science · Grade 7 · Unit 1 · Lesson 1-1 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
