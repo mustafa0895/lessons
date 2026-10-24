@@ -1,0 +1,1598 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F1E8">
+<title>Thermal Energy Transfers – Science G6 Lesson 1-3</title>
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(247,241,232,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#EADFCD;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#F9E3DC;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#FFF6E1;border:1px solid #F1D9A6;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #E9CFA0;background:#FFF8EA;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#fff;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #E2D5C0}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#E4F3F1;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#FBF3EA;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#E8F5F3}
+.opt.right{border-color:var(--teal);background:#E2F4F1}
+.opt.wrong{border-color:var(--terra);background:#FBE9E4}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#EADFCD;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#fff;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#E8F5F3;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#FBE9E4;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#fff;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#fff}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#E2D5C0}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #fff}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#fff;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#fff}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #fff;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#FFF6E1}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#E2F4F1;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#E2F4F1}
+.pieces button.no{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#E2D5C0}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#E2F4F1;border-left:5px solid var(--teal)}
+.feedback.no{background:#FBE9E4;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#fff;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#fff;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#FFF6E1;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#fff;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#E8F5F3}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#FFF6E1}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#fff;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#FBE9E4}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#FFF6E1;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#fff;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#E8F5F3}.sc.diff{border-color:var(--terra);background:#FBE9E4}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#E2F4F1}.rchips button.wrong{border-color:var(--terra);background:#FBE9E4}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#E8F5F3}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#E8F5F3}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#FBE9E4}
+.ml.done,.mr.done{border-color:var(--teal);background:#E2F4F1;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#E8F5F3}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#FCE8B2;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#FCE8B2;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#E2F4F1}
+.eline.bad{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#fff;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#FFFFFF 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#E2F4F1}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#FBE9E4}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#FFF3D6}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#FFF3D6;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#E2F4F1}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#FBE9E4}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#FFF3D6;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#E8F5F3}.mcard2.wrong{border-color:var(--terra);background:#FBE9E4}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #fff;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#E8F5F3}.idc.wrong{border-color:var(--terra);background:#FBE9E4}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#E8F5F3}.claim2.wrong{border-color:var(--terra);background:#FBE9E4}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#FFF6EA}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#E8F5F3}.ct.no{border-color:var(--terra);background:#FBE9E4}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#FFF6EA}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#EADFF0;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#EADFCD;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#FFF6E0;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#fff;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#E8F5F3}.wuq .wo button.wrong{border-color:var(--terra);background:#FBE9E4}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#fff;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#FBF6EC;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#FBE9E4}.pick button.right{border-color:var(--teal);background:#E8F5F3}
+.why{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#E8F5F3}.why .wb button.wrong{border-color:var(--terra);background:#FBE9E4}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#fff;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#ddd;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#fff;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#FFFDF7}
+.tchip.lost{border-color:var(--terra);background:#FBE9E4}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#FBEDEA}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#E8F5F3}.pickph.wrong{border-color:var(--terra);background:#FBE9E4}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#E8F5F3}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#FBF6EC}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#E8F5F3;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#FBF6EC;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#fff;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#FFE7A8;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#FBF6EC;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#fff}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#E8F5F3;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#fff;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#fff;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#E8F5F3;border-color:var(--teal)}.tile.g1{background:#FFF0E6;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#FBF6EC;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#fff;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#fff;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#fff;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#fff;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#F3ECE1}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#fff}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#F3ECE1}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#fff}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#E9E2D6;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+/* g6 science 1-2 */
+.tord{display:grid;gap:8px;margin:8px 0}
+.tord button{display:flex;gap:10px;align-items:center;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.35;color:var(--ink);box-shadow:var(--shadow)}
+.tord button .n{flex:0 0 28px;height:28px;border-radius:50%;background:#EADFCD;display:grid;place-items:center;font-weight:800;font-family:ui-monospace,monospace}
+.tord button .ar{display:block;font-size:13px;color:var(--clay);direction:rtl;text-align:right}
+.tord button .tx{flex:1}
+.tord button.done{border-color:var(--teal);background:#E8F6F3}
+.tord button.done .n{background:var(--teal);color:#fff}
+.tord button.wrong{border-color:var(--terra);animation:shake .3s}
+#csMode button.seen{color:var(--teal-d)}
+#csMode button.on{color:var(--terra)}
+.flow{stroke-dasharray:9 7;animation:flowd 1.1s linear infinite}
+@keyframes flowd{to{stroke-dashoffset:-16}}
+@media (prefers-reduced-motion:reduce){.flow{animation:none}}
+[data-spot]{cursor:pointer}
+.idc .mb button{height:auto;min-height:44px}
+.idc .mb button small{line-height:1.3;margin-top:2px}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Science · Grade 6 · Unit 1<small id="curLabel">Thermal Energy Transfers</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="A toaster giving off heat by conduction, convection and radiation">
+<defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F2A37"/><stop offset="1" stop-color="#2B3B4E"/></linearGradient>
+<pattern id="hg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+<linearGradient id="ht" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7B8794"/><stop offset=".45" stop-color="#E6EBF0"/><stop offset="1" stop-color="#6B7785"/></linearGradient>
+<linearGradient id="hs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0C27A"/><stop offset="1" stop-color="#B9773C"/></linearGradient>
+<radialGradient id="hglow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#C8553D" stop-opacity=".55"/><stop offset="1" stop-color="#C8553D" stop-opacity="0"/></radialGradient></defs>
+<rect width="640" height="360" fill="url(#hb)"/><rect width="640" height="360" fill="url(#hg)"/>
+<circle cx="470" cy="150" r="150" fill="url(#hglow)"/>
+<rect x="420" y="88" width="48" height="44" rx="7" fill="url(#hs)"/><rect x="476" y="80" width="48" height="52" rx="7" fill="url(#hs)"/>
+<rect x="390" y="118" width="164" height="98" rx="28" fill="url(#ht)"/>
+<rect x="416" y="119" width="54" height="8" rx="4" fill="#1F2A37"/><rect x="474" y="119" width="54" height="8" rx="4" fill="#1F2A37"/>
+<rect x="551" y="140" width="11" height="30" rx="4" fill="#C8553D"/>
+<g fill="none" stroke="#E9B44C" stroke-width="4" stroke-linecap="round"><path d="M444 72 q-11 -14 0 -28 q11 -14 0 -28"/><path d="M500 66 q-11 -14 0 -28 q11 -14 0 -28"/></g>
+<g fill="none" stroke="#F6A58F" stroke-width="3.5" stroke-linecap="round"><path d="M372 150 q-7 -7 -14 0 t-14 0 t-14 0"/><path d="M372 185 q-7 -7 -14 0 t-14 0 t-14 0"/><path d="M580 165 q7 -7 14 0 t14 0 t14 0"/></g>
+<rect x="370" y="216" width="220" height="10" rx="5" fill="#8C5A3C"/>
+<g font-family="ui-monospace,monospace" font-size="14" font-weight="800"><text x="540" y="30" fill="#E9B44C">convection</text><text x="250" y="140" fill="#F6A58F">radiation</text><text x="480" y="248" fill="#7FD3E6" text-anchor="middle">conduction</text></g>
+</svg>
+    <div class="herotxt"><span class="kicker light">Science · Grade 6 · Unit 1 · Lesson 1-3</span><h1>Thermal Energy Transfers</h1><p class="ar">انتقال الطاقة الحرارية</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في متصفح Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="think"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">A toaster warms the bread, the plate, the air above it, and even your face nearby. Thermal energy travels in <b>three different ways</b>. Let's find them!</p><p class="ar">يُسخّن التوستر الخبز والطبق والهواء فوقه، وحتى وجهك إذا اقتربت منه. تنتقل الطاقة الحرارية <b>بثلاث طرق مختلفة</b>. هيا نكتشفها!</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ tell an open system from a closed system<br>✔ explain why heat flows from hot to cold<br>✔ describe thermal equilibrium<br>✔ compare conduction, convection and radiation<br>✔ plan a fair heat investigation</p><p class="ar"><b>سأتعلّم اليوم أن:</b><br>✔ أميّز النظام المفتوح من النظام المغلق<br>✔ أفسّر لماذا تنتقل الحرارة من الساخن إلى البارد<br>✔ أصف الاتزان الحراري<br>✔ أقارن بين التوصيل والحمل والإشعاع<br>✔ أخطّط لتجربة عادلة عن الحرارة</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic.</p><p class="ar"><b>نصيحة:</b> اضغط زر <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمات.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up</span>
+  <h2>Remember Lesson 1-2?</h2>
+  <p class="hsub ar">هل تتذكّر الدرس 1-2؟</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Tap an answer, or tap "Show me".</p><p class="ar">مجرد تسخين، لا شيء يُحسب! اضغط على إجابة، أو اضغط «أرني».</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+</section>
+
+<section class="screen" data-title="Systems">
+  <span class="kicker">Explore</span>
+  <h2>Open and closed systems</h2>
+  <p class="hsub ar">الأنظمة المفتوحة والمغلقة</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A <b class="term">system</b> is the group of objects we study. In an <b class="term">open system</b>, both matter and energy can move in or out. In a <b class="term">closed system</b>, only energy can move in or out.</p><p class="ar"><b>النظام</b> هو مجموعة الأجسام التي ندرسها. في <b>النظام المفتوح</b> يمكن أن تدخل المادة والطاقة أو تخرجا. وفي <b>النظام المغلق</b> تدخل الطاقة أو تخرج فقط.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="syC" style="aspect-ratio:16/10" role="img" aria-label="A beaker of hot water, open or with a lid, losing steam and energy"></canvas></div>
+      <div class="seg needjs" id="syMode"><button data-v="0" class="on">Open beaker</button><button data-v="1">Closed jar</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="syMsg"></div>
+      <div class="card"><div class="bi"><p class="en"><b>Energy flow model:</b> the <b>source</b> object gives energy, the <b>receiver</b> object gains it. The hot water is the source; the cooler air around it is the receiver.</p><p class="ar"><b>نموذج تدفّق الطاقة:</b> الجسم <b>المصدر</b> يعطي الطاقة، والجسم <b>المستقبِل</b> يكتسبها. الماء الساخن هو المصدر، والهواء الأبرد حوله هو المستقبِل.</p></div></div>
+      <div class="why needjs" id="why1"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Hot to cold">
+  <span class="kicker">Explore</span>
+  <h2>Heat always flows from hot to cold</h2>
+  <p class="hsub ar">الحرارة تنتقل دائمًا من الساخن إلى البارد</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Heat</b> is thermal energy moving from an object at a <b>higher temperature</b> to an object at a <b>lower temperature</b>. We never "add coldness": to cool something, its heat must flow into something colder.</p><p class="ar"><b>الحرارة</b> هي طاقة حرارية تنتقل من جسم <b>درجة حرارته أعلى</b> إلى جسم <b>درجة حرارته أقل</b>. نحن لا «نضيف برودة» أبدًا: لنبرّد شيئًا يجب أن تنتقل حرارته إلى شيء أبرد منه.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="hfSvg" viewBox="0 0 480 220" role="img" aria-label="Two objects at different temperatures and the direction of heat flow"></svg></div>
+      <div class="seg wrap needjs" id="hfMode"><button data-v="0" class="on">Ice tray in freezer</button><button data-v="1">Hot tea and hand</button><button data-v="2">Hand on ice</button></div>
+      <div class="btnrow c needjs"><button class="btn sm alt" id="hfL">◀ Heat flows left</button><button class="btn sm alt" id="hfR">Heat flows right ▶</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="hfMsg"></div>
+      <div class="why needjs" id="why2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Thermal equilibrium">
+  <span class="kicker">Virtual lab</span>
+  <h2>Thermal equilibrium</h2>
+  <p class="hsub ar">الاتزان الحراري</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> When two objects touch, heat flows from the hotter one to the colder one until their temperatures are equal. This is <b class="term">thermal equilibrium</b>. The particles keep colliding, but the average kinetic energy is now the same on both sides.</p><p class="ar">عندما يتلامس جسمان تنتقل الحرارة من الأسخن إلى الأبرد حتى تتساوى درجتا حرارتهما، وهذا هو <b>الاتزان الحراري</b>. تستمر الجسيمات في التصادم، لكن متوسط الطاقة الحركية أصبح متساويًا في الجانبين.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="eqC" style="aspect-ratio:16/9" role="img" aria-label="A hot block and a cold block touching, with a temperature graph"></canvas></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="eqGo">Put them together ▶</button><button class="btn alt sm" id="eqRe">↺ Reset</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="eqMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Conduction">
+  <span class="kicker">Explore</span>
+  <h2>Conduction: passing energy by touch</h2>
+  <p class="hsub ar">التوصيل: نقل الطاقة بالتلامس</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Conduction</b> is the transfer of thermal energy by <b>collisions</b> between particles that are in <b>direct contact</b>. It happens in solids, liquids and gases. Example: hot toast warming a cold plate.</p><p class="ar"><b>التوصيل</b> هو انتقال الطاقة الحرارية عن طريق <b>تصادم</b> الجسيمات المتلامسة <b>تلامسًا مباشرًا</b>. يحدث في المواد الصلبة والسائلة والغازية. مثال: توست ساخن يُدفئ طبقًا باردًا.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="cnC" style="aspect-ratio:16/9" role="img" aria-label="A metal rod heated at one end; particles pass energy along"></canvas></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="cnGo">Heat the left end ▶</button><button class="btn alt sm" id="cnRe">↺ Reset</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="cnMsg"></div>
+      <div class="bi"><p class="en">The same thing happens in a glass of cold water: energy passes from the warm <b>air</b> particles to the <b>glass</b> particles, then to the <b>water</b> particles, one collision at a time.</p><p class="ar">ويحدث الشيء نفسه في كوب ماء بارد: تنتقل الطاقة من جسيمات <b>الهواء</b> الدافئ إلى جسيمات <b>الزجاج</b>، ثم إلى جسيمات <b>الماء</b>، تصادمًا بعد تصادم.</p></div>
+      <div class="why needjs" id="why3"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Convection">
+  <span class="kicker">Explore</span>
+  <h2>Convection: moving fluids carry energy</h2>
+  <p class="hsub ar">الحمل: الموائع المتحركة تحمل الطاقة</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Convection</b> is the transfer of thermal energy by the movement of particles from one place to another in a <b>fluid</b> (a liquid or a gas). Warmer fluid is less dense and <b>rises</b>; cooler fluid is denser and <b>sinks</b>. Example: air warmed by a toaster rises into the room.</p><p class="ar"><b>الحمل</b> هو انتقال الطاقة الحرارية بحركة الجسيمات من مكان إلى آخر داخل <b>مائع</b> (سائل أو غاز). المائع الأدفأ أقل كثافة <b>فيصعد</b>، والمائع الأبرد أكثر كثافة <b>فيهبط</b>. مثال: الهواء الذي يُسخّنه التوستر يصعد إلى الغرفة.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="cvC" style="aspect-ratio:4/3" role="img" aria-label="Water heated from below, moving in convection currents"></canvas></div>
+      <div class="seg needjs" id="cvMode"><button data-v="0" class="on">Water (liquid)</button><button data-v="1">Metal block (solid)</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="cvMsg"></div>
+      <div class="why needjs" id="why4"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Radiation">
+  <span class="kicker">Explore</span>
+  <h2>Radiation: energy without particles</h2>
+  <p class="hsub ar">الإشعاع: طاقة دون جسيمات</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Radiation</b> is the transfer of energy by <b>electromagnetic waves</b>. It needs no particles, so it can cross <b>empty space</b> and pass through clear materials like air and glass. All objects give off radiation; <b>warmer objects give off more</b>.</p><p class="ar"><b>الإشعاع</b> هو انتقال الطاقة عن طريق <b>الموجات الكهرومغناطيسية</b>. لا يحتاج إلى جسيمات، لذلك يعبر <b>الفضاء الفارغ</b> ويمرّ عبر المواد الشفافة كالهواء والزجاج. كل الأجسام تُطلق إشعاعًا، و<b>الأجسام الأسخن تُطلق إشعاعًا أكثر</b>.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="rdC" style="aspect-ratio:16/9" role="img" aria-label="Waves of energy from the Sun or from a teapot"></canvas></div>
+      <div class="seg needjs" id="rdMode"><button data-v="0" class="on">Sun and Earth</button><button data-v="1">Teapot</button></div>
+      <div class="needjs" id="rdSl" style="display:none"><div class="rlab">Temperature of the teapot · درجة حرارة البرّاد</div><input type="range" id="rdR" min="20" max="100" step="10" value="90" aria-label="Temperature of the teapot"></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="rdMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Sort the examples">
+  <span class="kicker">Practice</span>
+  <h2>Conduction, convection or radiation?</h2>
+  <p class="hsub ar">توصيل أم حمل أم إشعاع؟</p>
+  <table class="vtable"><tr><th></th><th>Conduction</th><th>Convection</th><th>Radiation</th></tr><tr><td><small>How</small></td><td><small>particle collisions</small></td><td><small>fluid currents</small></td><td><small>electromagnetic waves</small></td></tr><tr><td><small>Contact?</small></td><td><small>yes</small></td><td><small>no</small></td><td><small>no</small></td></tr><tr><td><small>Works in</small></td><td><small>solids, liquids, gases</small></td><td><small>liquids and gases</small></td><td><small>empty space, clear matter</small></td></tr></table>
+  <div class="idg needjs" id="soCards"></div>
+</section>
+
+<section class="screen" data-title="Earth">
+  <span class="kicker">Explore</span>
+  <h2>All three working together on Earth</h2>
+  <p class="hsub ar">الطرق الثلاث تعمل معًا على الأرض</p>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="erSvg" viewBox="0 0 480 300" role="img" aria-label="The Sun, Earth's atmosphere, crust, mantle and core with heat transfers"></svg></div>
+      <div class="seg needjs" id="erMode"><button data-v="0">Radiation</button><button data-v="1">Convection</button><button data-v="2">Conduction</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="erMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Velinda's experiment">
+  <span class="kicker">Virtual lab</span>
+  <h2>Velinda's investigation</h2>
+  <p class="hsub ar">تجربة فيليندا</p>
+  <div class="bi"><p class="en"><b>Velinda</b> wants to check that thermal energy moves from warmer to cooler substances until they reach the same temperature. She heats ice and water in a 500 mL beaker on a hot plate and reads three thermometers (bottom, centre, top) every 2 minutes, until the water boils and for two more readings.</p><p class="ar">تريد <b>فيليندا</b> أن تتحقّق من أن الطاقة الحرارية تنتقل من المواد الأدفأ إلى الأبرد حتى تصل إلى درجة الحرارة نفسها. تُسخّن ثلجًا وماءً في كأس سعته 500 mL على سخّان، وتقرأ ثلاثة ترمومترات (أسفل، وسط، أعلى) كل دقيقتين حتى يغلي الماء، ثم تأخذ قراءتين إضافيتين.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="vlC" style="aspect-ratio:16/9" role="img" aria-label="A beaker of ice and water on a hot plate with three thermometers and a graph"></canvas></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="vlGo">Wait 2 minutes ▶</button><button class="btn alt sm" id="vlRe">↺ Start again</button></div>
+      <div class="msg bi needjs" id="vlMsg"></div>
+    </div>
+    <div class="side">
+      <div class="idg needjs" id="vlCards"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Energy auditor">
+  <span class="kicker">Careers</span>
+  <h2>Energy auditors see heat</h2>
+  <p class="hsub ar">مدقّق الطاقة يرى الحرارة</p>
+  <div class="bi"><p class="en">An <b>energy auditor</b> uses a thermal camera to find hidden heat transfers in buildings. In Abu Dhabi, the problem is usually heat getting <b>in</b>, which makes the air conditioner work harder. Switch on the camera and tap the three weak spots.</p><p class="ar"><b>مدقّق الطاقة</b> يستخدم كاميرا حرارية ليجد انتقالات الحرارة المخفية في المباني. في أبوظبي تكون المشكلة غالبًا دخول الحرارة <b>إلى</b> المبنى، مما يجعل المكيّف يعمل بجهد أكبر. شغّل الكاميرا واضغط على نقاط الضعف الثلاث.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="auSvg" viewBox="0 0 480 300" role="img" aria-label="A house in normal view or thermal camera view"></svg></div>
+      <div class="seg needjs" id="auMode"><button data-v="0" class="on">Normal view</button><button data-v="1">Thermal camera</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="auMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Practice</span>
+  <h2>Check yourself</h2>
+  <p class="hsub ar">تحقّق من نفسك</p>
+  <div class="idg needjs" id="ckCards"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work! Now the quiz. A wrong answer gives you a hint first.</p><p class="ar">عمل رائع! والآن الاختبار. الإجابة الخاطئة تعطيك تلميحًا أولًا.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+</main>
+
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="sci6_3_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"UAE MOE · Grade 6"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹ =+,./≠]*[0-9A-Za-z()\[\]½²³⁴¹])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}<small>${n[1]}</small></button>`).join("")}</div><div class="mwhy"></div></div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll("button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});}
+function segOn(id,fn){$$("#"+id+" button").forEach(b=>b.onclick=()=>{$$("#"+id+" button").forEach(x=>x.classList.toggle("on",x===b));fn(b.dataset.v,b);});}
+
+
+const WU=[{q:"On a heating curve, a flat part shows…",qa:"في منحنى التسخين، الجزء الأفقي يُظهر…",o:[["the temperature rising fast","ارتفاع درجة الحرارة بسرعة"],["a change of state","تغيّر الحالة"],["energy being removed","إزالة الطاقة"]],a:1,w:["The energy pulls particles apart: potential energy increases.","الطاقة تُبعد الجسيمات عن بعضها: تزداد طاقة الوضع."]},
+ {q:"Dry ice turning straight into a gas is called…",qa:"تحوّل الثلج الجاف مباشرة إلى غاز يُسمّى…",o:[["sublimation","التسامي"],["condensation","التكثّف"],["melting","الانصهار"]],a:0,w:["Sublimation skips the liquid state.","التسامي يتخطّى حالة السائل."]},
+ {q:"Solid iron and molten iron are both at 1538°C. Which has more thermal energy?",qa:"حديد صلب وحديد منصهر، كلاهما عند 1538°C. أيّهما طاقته الحرارية أكبر؟",o:[["the solid iron","الحديد الصلب"],["they are the same","متساويان"],["the molten iron","الحديد المنصهر"]],a:2,w:["Same kinetic energy, but the liquid has more potential energy.","الطاقة الحركية نفسها، لكن طاقة الوضع في السائل أكبر."]}];
+$("#wuBox").innerHTML=WU.map((x,i)=>`<div class="wuq" data-i="${i}"><div class="qq">${i+1}. ${x.q}<span class="ar">${x.qa}</span></div><div class="wo">${x.o.map((o,j)=>`<button data-j="${j}">${o[0]}</button>`).join("")}<button class="show" data-j="-1">Show me · أرني</button></div><div class="wa"><b>${x.o[x.a][0]}</b> ${x.w[0]}<span class="ar">${x.w[1]}</span></div></div>`).join("");
+$$("#wuBox .wuq").forEach(card=>{const x=WU[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const j=+b.dataset.j;card.querySelectorAll("button").forEach(y=>{if(+y.dataset.j===x.a)y.classList.add("right");});if(j>=0&&j!==x.a)b.classList.add("wrong");card.classList.add("done");});});
+
+/* ---------- particle simulation engine ---------- */
+const RM=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const SIMS=[];const PUR=["#C9A6F2","#6A3FB0"],ORA=["#FFD08A","#E07A2E"],BLU=["#BFEAF5","#2A8FB0"],SIL=["#FFFFFF","#8E99A6"];
+function sim(id,ar,draw){const c=document.getElementById(id),W=800,H=Math.round(W/ar);c.width=W;c.height=H;const s={c,ctx:c.getContext("2d"),W,H,draw,t:0};SIMS.push(s);return s;}
+function ball(g,x,y,r,col){const gr=g.createRadialGradient(x-r*.35,y-r*.35,r*.15,x,y,r);gr.addColorStop(0,col[0]);gr.addColorStop(1,col[1]);g.fillStyle=gr;g.beginPath();g.arc(x,y,r,0,7);g.fill();}
+function trail(g,p,k,col){const sp=Math.hypot(p.vx,p.vy);if(sp<1)return;const ux=p.vx/sp,uy=p.vy/sp;g.strokeStyle=col||"rgba(127,211,230,.75)";g.lineWidth=2.5;g.lineCap="round";for(let i=-1;i<=1;i++){const ox=-uy*i*p.r*.55,oy=ux*i*p.r*.55;g.beginPath();g.moveTo(p.x-ux*(p.r+3)+ox,p.y-uy*(p.r+3)+oy);g.lineTo(p.x-ux*(p.r+3+sp*k)+ox,p.y-uy*(p.r+3+sp*k)+oy);g.stroke();}}
+function mk(n,b,r,sp){return Array.from({length:n},()=>{const a=Math.random()*6.283;return {x:b.x+r+Math.random()*(b.w-2*r),y:b.y+r+Math.random()*(b.h-2*r),vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,r}});}
+function wall(p,b){if(p.x<b.x+p.r){p.x=b.x+p.r;p.vx=Math.abs(p.vx)}if(p.x>b.x+b.w-p.r){p.x=b.x+b.w-p.r;p.vx=-Math.abs(p.vx)}if(p.y<b.y+p.r){p.y=b.y+p.r;p.vy=Math.abs(p.vy)}if(p.y>b.y+b.h-p.r){p.y=b.y+b.h-p.r;p.vy=-Math.abs(p.vy)}}
+function gasStep(ps,b,dt,sp){ps.forEach(p=>{const v=Math.hypot(p.vx,p.vy)||1;p.vx*=sp/v;p.vy*=sp/v;p.x+=p.vx*dt;p.y+=p.vy*dt;wall(p,b);});}
+function liqStep(ps,b,dt,sp){ps.forEach(p=>{const a=Math.atan2(p.vy,p.vx)+(Math.random()-.5)*1.4;p.vx=Math.cos(a)*sp;p.vy=Math.sin(a)*sp;p.x+=p.vx*dt;p.y+=p.vy*dt;wall(p,b);});}
+function bg(s,col){const g=s.ctx;g.fillStyle=col||"#0E1A26";g.fillRect(0,0,s.W,s.H);g.strokeStyle="rgba(255,255,255,.05)";g.lineWidth=1;for(let x=0;x<s.W;x+=32){g.beginPath();g.moveTo(x,0);g.lineTo(x,s.H);g.stroke();}for(let y=0;y<s.H;y+=32){g.beginPath();g.moveTo(0,y);g.lineTo(s.W,y);g.stroke();}}
+function label(g,t,x,y,col,size,al){g.font=`800 ${size||22}px ui-monospace,monospace`;g.fillStyle=col||"#fff";g.textAlign=al||"center";g.fillText(t,x,y);}
+function zoomRing(g,cx,cy,r){g.strokeStyle="#E9B44C";g.lineWidth=5;g.beginPath();g.arc(cx,cy,r,0,7);g.stroke();}
+function bar(g,x,y,w,h,f,col,t){g.fillStyle="rgba(255,255,255,.12)";g.fillRect(x,y,w,h);g.fillStyle=col;g.fillRect(x,y,w*Math.max(0,Math.min(1,f)),h);if(t)label(g,t,x+w/2,y+h+32,col,26);}
+let last=0;function loop(ts){if(window.__pause){last=ts;requestAnimationFrame(loop);return;}const dt=Math.min(.05,(ts-last)/1000||0);last=ts;SIMS.forEach(s=>{const scr=s.c.closest(".screen");if(scr&&scr.classList.contains("active")){s.t+=RM?0:dt;s.draw(s,RM?0:dt);}});requestAnimationFrame(loop);}
+/* lattice particles that can break free and lock back in place */
+function lattice(cx,cy,cols,rows,gap,r){const a=[];for(let j=0;j<rows;j++)for(let i=0;i<cols;i++)a.push({hx:cx+(i-(cols-1)/2)*gap,hy:cy+(j-(rows-1)/2)*gap,x:0,y:0,vx:0,vy:0,r,ph:Math.random()*6.28,free:0});a.forEach(p=>{p.x=p.hx;p.y=p.hy;});return a;}
+function freeIt(p,sp){if(!p.free){p.free=1;const a=Math.random()*6.28;p.vx=Math.cos(a)*sp;p.vy=Math.sin(a)*sp;}}
+function lockStep(p,s,amp,dt){p.free=0;const k=RM?1:Math.min(1,dt*4);p.x+=(p.hx-p.x)*k;p.y+=(p.hy-p.y)*k;const a=RM?0:amp;return [p.x+Math.sin(s.t*19+p.ph)*a,p.y+Math.cos(s.t*23+p.ph*1.3)*a];}
+
+/* helpers */
+function lerpC(a,b,t){t=Math.max(0,Math.min(1,t));const p=h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16));const A=p(a),B=p(b);return "rgb("+A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(",")+")";}
+function tcol(t){return [lerpC("#BFEAF5","#FFD08A",t),lerpC("#2A8FB0","#C8553D",t)];}
+function wave(g,x0,y0,ang,len,ph,col,amp,lw){const ux=Math.cos(ang),uy=Math.sin(ang),nx=-uy,ny=ux;g.strokeStyle=col;g.lineWidth=lw||4;g.lineCap="round";g.beginPath();
+  for(let d=0;d<=len;d+=4){const o=Math.sin(d/14-ph)*(amp||8);const x=x0+ux*d+nx*o,y=y0+uy*d+ny*o;d?g.lineTo(x,y):g.moveTo(x,y);}g.stroke();
+  const hx=x0+ux*len,hy=y0+uy*len;g.fillStyle=col;g.beginPath();g.moveTo(hx+ux*14,hy+uy*14);g.lineTo(hx+nx*9,hy+ny*9);g.lineTo(hx-nx*9,hy-ny*9);g.fill();}
+function chip(g,t,x,y,col,size){g.font=`800 ${size||22}px ui-monospace,monospace`;const w=g.measureText(t).width+20;g.fillStyle="rgba(0,0,0,.55)";g.fillRect(x-w/2,y-(size||22),w,(size||22)+12);label(g,t,x,y,col,size);}
+
+/* 1. systems */
+let syK=0,syS=[];const SYB={x:300,y:190,w:200,h:230},SYW={x:306,y:262,w:188,h:152};let syP=mk(22,SYW,11,60);
+sim("syC",16/10,(s,dt)=>{const g=s.ctx;bg(s);const closed=syK===1;
+  g.strokeStyle="rgba(233,180,76,.8)";g.lineWidth=3;g.setLineDash([12,10]);g.strokeRect(240,110,320,345);g.setLineDash([]);label(g,"system",250,100,"#E9B44C",24,"left");
+  g.fillStyle="rgba(200,85,61,.35)";g.fillRect(SYB.x,256,SYB.w,SYB.h-66);
+  liqStep(syP,SYW,dt,120);syP.forEach(p=>{trail(g,p,.08,"rgba(255,208,138,.7)");ball(g,p.x,p.y,p.r,ORA);});
+  if(!RM&&Math.random()<dt*(closed?1.5:3))syS.push({x:SYB.x+20+Math.random()*(SYB.w-40),y:250,vx:(Math.random()-.5)*60,vy:-120,r:10});
+  if(closed){const box={x:SYB.x+4,y:SYB.y+10,w:SYB.w-8,h:56};if(syS.length>9)syS.length=9;syS.forEach(p=>{p.vy=p.vy||-100;});gasStep(syS,box,dt,150);}
+  else syS=syS.filter(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;return p.y>-20;});
+  syS.forEach(p=>{trail(g,p,.08,"rgba(127,211,230,.7)");ball(g,p.x,p.y,p.r,BLU);});
+  g.strokeStyle="rgba(255,255,255,.85)";g.lineWidth=5;g.beginPath();g.moveTo(SYB.x-10,SYB.y);g.lineTo(SYB.x,SYB.y);g.lineTo(SYB.x,SYB.y+SYB.h);g.lineTo(SYB.x+SYB.w,SYB.y+SYB.h);g.lineTo(SYB.x+SYB.w,SYB.y);g.lineTo(SYB.x+SYB.w+10,SYB.y);g.stroke();
+  if(closed){g.fillStyle="#9AA5B1";g.fillRect(SYB.x-14,SYB.y-14,SYB.w+28,16);}
+  const ph=s.t*6;[[-1,300],[-1,370],[1,300],[1,370]].forEach(([d,y])=>wave(g,d<0?SYB.x-20:SYB.x+SYB.w+20,y,d<0?Math.PI:0,d<0?190:190,ph,"#F6A58F",7,4));
+  chip(g,"energy out",120,250,"#F6A58F",22);chip(g,"energy out",680,250,"#F6A58F",22);
+  if(!closed)chip(g,"matter out (steam)",400,60,"#7FD3E6",22);else chip(g,"lid: matter stays in",400,150,"#7FD3E6",20);});
+function sySet(){setMsg($("#syMsg"),syK?"<b>Closed system:</b> the lid keeps the steam (matter) inside, but <b>energy</b> still leaves through the walls and the lid. A microwave oven with its door shut works like a closed system.":"<b>Open system:</b> steam particles (matter) escape into the air, and <b>energy</b> leaves too. Both matter and energy cross the boundary.",syK?"<b>نظام مغلق:</b> الغطاء يُبقي البخار (المادة) في الداخل، لكن <b>الطاقة</b> ما زالت تخرج عبر الجدران والغطاء. فرن الميكروويف وبابه مغلق يعمل كنظام مغلق.":"<b>نظام مفتوح:</b> تهرب جسيمات البخار (المادة) إلى الهواء، وتخرج <b>الطاقة</b> أيضًا. المادة والطاقة كلتاهما تعبران حدود النظام.");}
+segOn("syMode",v=>{syK=+v;syS=[];sySet();});sySet();
+whyBox($("#why1"),"A pot of soup is cooking with no lid. What kind of system is it?","قِدر حساء يُطهى دون غطاء. ما نوع هذا النظام؟",[
+ ["Open: steam (matter) and energy both leave the pot.","مفتوح: يخرج البخار (المادة) والطاقة كلاهما من القِدر.",1,"Matter crossing the boundary is what makes a system open.","عبور المادة لحدود النظام هو ما يجعله مفتوحًا."],
+ ["Closed: only energy leaves.","مغلق: تخرج الطاقة فقط.",0,"Look at the steam. It is matter, and it is escaping.","انظر إلى البخار. إنه مادة، وهو يهرب."],
+ ["It is not a system.","ليس نظامًا.",0,"Any group of objects we choose to study is a system.","أي مجموعة أجسام نختار دراستها هي نظام."]]);
+
+/* 2. hot to cold */
+const HF=[["water in ice tray",20,"freezer air",-18,1,"Heat flows from the water (20°C) into the colder freezer air (−18°C). The water loses energy and freezes. The freezer does not add coldness!","تنتقل الحرارة من الماء (20°C) إلى هواء الفريزر الأبرد (−18°C)، فيفقد الماء طاقة ويتجمّد. الفريزر لا يضيف برودة!"],
+ ["your hand",37,"cup of hot tea",80,0,"Heat flows from the hot tea (80°C) into your hand (37°C). That is why the cup feels hot.","تنتقل الحرارة من الشاي الساخن (80°C) إلى يدك (37°C)، ولهذا تشعر بسخونة الكوب."],
+ ["ice cube",0,"your hand",37,0,"Heat flows from your hand (37°C) into the ice (0°C). Your hand feels cold because it is <b>losing</b> energy, not because cold goes into it.","تنتقل الحرارة من يدك (37°C) إلى الجليد (0°C). تشعر يدك بالبرودة لأنها <b>تفقد</b> طاقة، لا لأن البرودة تدخلها."]];
+let hfK=0;const hfDone=[0,0,0];
+function hfDraw(){const p=HF[hfK],c=t=>t>=60?"#C8553D":t>=30?"#E9B44C":t>=10?"#2A9D8F":"#2A8FB0";
+  const box=(x,n,t)=>`<rect x="${x}" y="40" width="160" height="130" rx="18" fill="#fff" stroke="${c(t)}" stroke-width="4"/><text x="${x+80}" y="105" text-anchor="middle" font-size="34" font-weight="800" fill="${c(t)}" font-family="ui-monospace,monospace">${String(t).replace("-","−")}°C</text><text x="${x+80}" y="145" text-anchor="middle" font-size="14" font-weight="700" fill="#1F2A37">${n}</text>`;
+  let s=`<rect width="480" height="220" fill="#F7F1E8"/>`+box(20,p[0],p[1])+box(300,p[2],p[3]);
+  if(hfDone[hfK]){const r=p[4];s+=`<path d="M${r?190:290} 105 L${r?290:190} 105" stroke="#C8553D" stroke-width="10" stroke-linecap="round"/><path d="${r?"M300 105 l-22 -16 v32 z":"M180 105 l22 -16 v32 z"}" fill="#C8553D"/><text x="240" y="85" text-anchor="middle" font-size="15" font-weight="800" fill="#C8553D">heat</text>`;}
+  else s+=`<text x="240" y="112" text-anchor="middle" font-size="30" font-weight="800" fill="#9AA5B1">?</text>`;
+  $("#hfSvg").innerHTML=s;}
+function hfPick(r){const p=HF[hfK];if((r?1:0)===p[4]){hfDone[hfK]=1;hfDraw();setMsg($("#hfMsg"),ICON.check+" "+p[5],p[6]);}else setMsg($("#hfMsg"),"Not quite. Compare the two temperatures: heat moves from the <b>higher</b> one to the <b>lower</b> one.","ليس تمامًا. قارن درجتي الحرارة: تنتقل الحرارة من <b>الأعلى</b> إلى <b>الأقل</b>.",true);}
+$("#hfL").onclick=()=>hfPick(0);$("#hfR").onclick=()=>hfPick(1);
+segOn("hfMode",v=>{hfK=+v;hfDraw();if(hfDone[hfK])setMsg($("#hfMsg"),HF[hfK][5],HF[hfK][6]);else setMsg($("#hfMsg"),"Which way does the heat flow? Tap a button under the picture.","في أيّ اتجاه تنتقل الحرارة؟ اضغط زرًا تحت الصورة.");});
+hfDraw();setMsg($("#hfMsg"),"Which way does the heat flow? Tap a button under the picture.","في أيّ اتجاه تنتقل الحرارة؟ اضغط زرًا تحت الصورة.");
+whyBox($("#why2"),"Why does holding ice make your hand feel cold?","لماذا تشعر يدك بالبرودة عندما تمسك الجليد؟",[
+ ["Heat flows from your hand into the ice, so your hand loses energy.","تنتقل الحرارة من يدك إلى الجليد، فتفقد يدك طاقة.",1,"Cold is not a thing that moves. Only thermal energy moves, from hot to cold.","البرودة ليست شيئًا ينتقل. الطاقة الحرارية وحدها تنتقل، من الساخن إلى البارد."],
+ ["Coldness flows from the ice into your hand.","تنتقل البرودة من الجليد إلى يدك.",0,"There is no 'coldness' energy. Think about which object is losing energy.","لا توجد طاقة اسمها «برودة». فكّر في أيّ الجسمين يفقد طاقة."],
+ ["Ice has no thermal energy at all.","الجليد ليس فيه طاقة حرارية أبدًا.",0,"Ice particles still vibrate, so ice does have thermal energy, just less per particle than your hand.","جسيمات الجليد تهتز، فللجليد طاقة حرارية، لكنها أقل لكل جسيم من يدك."]]);
+
+/* 3. thermal equilibrium */
+let eqA=80,eqB=20,eqOn=false,eqX=0,eqHist=[],eqT=0,eqDone=false;const eqLA=lattice(0,0,4,5,40,13),eqLB=lattice(0,0,4,5,40,13);
+const tN=t=>(t-20)/60;
+sim("eqC",16/9,(s,dt)=>{const g=s.ctx;bg(s);
+  eqX+=((eqOn?1:0)-eqX)*Math.min(1,RM?1:dt*3);const gap=24*(1-eqX);
+  if(eqOn&&!eqDone){const k=RM?50:dt*.5;const d=(eqB-eqA)*Math.min(.5,k);eqA+=d;eqB-=d;eqT+=dt;if(Math.abs(eqA-eqB)<1||RM){eqA=eqB=50;eqDone=true;eqSet();}}
+  if(eqOn&&(!eqHist.length||eqT-eqHist[eqHist.length-1][0]>.15)&&eqT<12)eqHist.push([eqT,eqA,eqB]);
+  const A={x:40-gap,y:90,w:200,h:250},B={x:240+gap,y:90,w:200,h:250};
+  [[A,eqA,eqLA,"A"],[B,eqB,eqLB,"B"]].forEach(([R,T,L,n])=>{const c=tcol(tN(T));g.fillStyle=lerpC("#1B3B52","#5A2418",tN(T));g.fillRect(R.x,R.y,R.w,R.h);
+    L.forEach((p,i)=>{p.hx=R.x+40+(i%4)*40;p.hy=R.y+45+Math.floor(i/4)*40;const [x,y]=lockStep(p,s,2+tN(T)*7,1);ball(g,x,y,p.r,c);});
+    g.strokeStyle="rgba(255,255,255,.6)";g.lineWidth=3;g.strokeRect(R.x,R.y,R.w,R.h);label(g,n+": "+Math.round(T)+"°C",R.x+R.w/2,R.y-16,lerpC("#7FD3E6","#F6A58F",tN(T)),28);});
+  if(eqOn&&!eqDone&&!RM){wave(g,190,380,0,90,s.t*8,"#F6A58F",0,6);label(g,"heat",235,425,"#F6A58F",22);}
+  const G={x:500,y:60,w:270,h:280};g.strokeStyle="rgba(255,255,255,.5)";g.lineWidth=2;g.beginPath();g.moveTo(G.x,G.y);g.lineTo(G.x,G.y+G.h);g.lineTo(G.x+G.w,G.y+G.h);g.stroke();
+  const gy=t=>G.y+G.h-(t-10)/80*G.h,gx=t=>G.x+t/12*G.w;[20,50,80].forEach(t=>{g.strokeStyle="rgba(255,255,255,.1)";g.beginPath();g.moveTo(G.x,gy(t));g.lineTo(G.x+G.w,gy(t));g.stroke();label(g,t+"",G.x-8,gy(t)+7,"#9AA5B1",20,"right");});
+  label(g,"time →",G.x+G.w,G.y+G.h+32,"#9AA5B1",20,"right");label(g,"°C",G.x-8,G.y-14,"#9AA5B1",20,"right");
+  [[1,"#F6A58F"],[2,"#7FD3E6"]].forEach(([k,col])=>{if(eqHist.length<2)return;g.strokeStyle=col;g.lineWidth=5;g.beginPath();eqHist.forEach((h,i)=>{const x=gx(h[0]),y=gy(h[k]);i?g.lineTo(x,y):g.moveTo(x,y);});g.stroke();});
+  if(eqHist.length>1){label(g,"A",gx(eqHist[0][0])+14,gy(80)+28,"#F6A58F",22);label(g,"B",gx(eqHist[0][0])+14,gy(20)-12,"#7FD3E6",22);}});
+function eqSet(){if(!eqOn)setMsg($("#eqMsg"),"Block <b>A</b> is at 80°C and block <b>B</b> is at 20°C (same size, same metal). They are not touching, so no heat flows. Tap <b>Put them together</b>.","القطعة <b>A</b> عند 80°C والقطعة <b>B</b> عند 20°C (بالحجم نفسه ومن الفلز نفسه). إنهما غير متلامستين، فلا تنتقل حرارة. اضغط <b>Put them together</b>.");
+  else if(!eqDone)setMsg($("#eqMsg"),"<b>Heat flows from A to B.</b> Fast particles in A bump into slower particles in B and pass on kinetic energy. A cools down, B warms up. Watch the graph.","<b>تنتقل الحرارة من A إلى B.</b> الجسيمات السريعة في A تصطدم بالجسيمات الأبطأ في B وتنقل إليها طاقة حركية، فتبرد A وتدفأ B. راقب الرسم البياني.");
+  else setMsg($("#eqMsg"),`${ICON.check} <b>Thermal equilibrium at 50°C!</b> Both blocks now have the same temperature. The particles still collide and swap energy, but there is no more <b>net</b> heat flow.`,"<b>اتزان حراري عند 50°C!</b> أصبحت درجة حرارة القطعتين واحدة. ما زالت الجسيمات تتصادم وتتبادل الطاقة، لكن لم يعد هناك انتقال <b>صافٍ</b> للحرارة.");}
+$("#eqGo").onclick=()=>{if(eqOn)return;eqOn=true;eqT=0;eqHist=[];eqSet();};
+$("#eqRe").onclick=()=>{eqOn=false;eqDone=false;eqA=80;eqB=20;eqHist=[];eqSet();};eqSet();
+
+/* 4. conduction */
+const CNN=14,cnE=new Array(CNN).fill(0),cnL=lattice(0,0,CNN,3,44,15);let cnOn=false,cnSt=-1;
+sim("cnC",16/9,(s,dt)=>{const g=s.ctx;bg(s);
+  if(cnOn){const st=RM?20:Math.max(1,Math.ceil(dt/.01));for(let k=0;k<st;k++){const h=RM?.02:dt/st;cnE[0]+=(1-cnE[0])*Math.min(1,h*4);const n=cnE.slice();for(let i=1;i<CNN;i++){const r=i<CNN-1?n[i+1]:n[i];cnE[i]+=20*(n[i-1]-2*n[i]+r)*h;}}if(RM)for(let i=0;i<CNN;i++)cnE[i]=Math.max(cnE[i],.85-i*.02);}
+  if(cnOn){const fg=g.createRadialGradient(70,300,5,70,280,90);fg.addColorStop(0,"#FFE08A");fg.addColorStop(.5,"#E07A2E");fg.addColorStop(1,"rgba(200,85,61,0)");g.fillStyle=fg;g.beginPath();g.ellipse(70,285,55,85,0,0,7);g.fill();}
+  g.fillStyle="#3A4654";g.fillRect(40,360,60,20);label(g,"burner",70,410,"#9AA5B1",20);
+  g.fillStyle="rgba(255,255,255,.06)";g.fillRect(105,175,670,130);
+  cnL.forEach((p,i)=>{const c=i%CNN,e=cnE[c];p.hx=130+c*46.5;p.hy=200+Math.floor(i/CNN)*40;const [x,y]=lockStep(p,s,1.5+e*8,1);ball(g,x,y,p.r,tcol(e));});
+  const far=Math.round(25+cnE[CNN-1]*175);chip(g,"far end: "+far+"°C",660,120,far>60?"#F6A58F":"#7FD3E6",24);chip(g,"metal rod",440,350,"#E6EBF0",22);
+  const st=!cnOn?0:cnE[CNN-1]<.15?1:2;if(st!==cnSt){cnSt=st;cnSet();}});
+function cnSet(){const M=[["A metal rod at room temperature. Its particles vibrate gently. Tap <b>Heat the left end</b>.","قضيب فلزي عند درجة حرارة الغرفة، جسيماته تهتز بهدوء. اضغط <b>Heat the left end</b>."],
+ ["The flame touches only the left end. Those particles vibrate faster and <b>bump into their neighbours</b>, passing energy along the rod, one collision at a time.","اللهب يلمس الطرف الأيسر فقط. تهتز جسيماته أسرع و<b>تصطدم بجيرانها</b>، فتنقل الطاقة على طول القضيب تصادمًا بعد تصادم."],
+ ["Now even the <b>far end</b> is getting hot, although the flame never touched it. Energy travelled through the rod by <b>conduction</b>. The particles themselves stayed in place!","الآن حتى <b>الطرف البعيد</b> يسخن، مع أن اللهب لم يلمسه أبدًا. انتقلت الطاقة عبر القضيب <b>بالتوصيل</b>، والجسيمات نفسها بقيت في أماكنها!"]][cnSt];setMsg($("#cnMsg"),M[0],M[1]);}
+$("#cnGo").onclick=()=>{cnOn=true;};$("#cnRe").onclick=()=>{cnOn=false;cnE.fill(0);};
+whyBox($("#why3"),"In conduction, do the particles travel along the rod?","في التوصيل، هل تنتقل الجسيمات على طول القضيب؟",[
+ ["No. Each particle stays in place and passes energy to its neighbour by colliding.","لا. يبقى كل جسيم في مكانه وينقل الطاقة إلى جاره بالتصادم.",1,"The energy moves; the particles do not. That is the difference from convection.","الطاقة هي التي تنتقل لا الجسيمات، وهذا هو الفرق عن الحمل."],
+ ["Yes, hot particles move to the cold end.","نعم، الجسيمات الساخنة تنتقل إلى الطرف البارد.",0,"In a solid the particles are locked in place. Only the energy is passed on.","في الصلب تكون الجسيمات مثبّتة في أماكنها، والطاقة وحدها تنتقل."],
+ ["Conduction needs no contact.","التوصيل لا يحتاج إلى تلامس.",0,"Conduction needs direct contact so that particles can collide.","التوصيل يحتاج إلى تلامس مباشر حتى تتصادم الجسيمات."]]);
+
+/* 5. convection */
+let cvK=0;const CVB={x:140,y:120,w:520,h:400};let cvP=mk(90,CVB,9,0);cvP.forEach(p=>p.T=Math.random()*.3);
+const cvL=lattice(400,320,10,8,42,12);cvL.forEach(p=>p.T=0);
+sim("cvC",4/3,(s,dt)=>{const g=s.ctx;bg(s);const B=CVB;
+  const hg=g.createLinearGradient(0,528,0,560);hg.addColorStop(0,"#FFD08A");hg.addColorStop(1,"#C8553D");g.fillStyle=hg;g.fillRect(310,530,180,18);label(g,"heat source",400,585,"#F6A58F",22);
+  if(cvK===0){g.fillStyle="rgba(42,143,176,.18)";g.fillRect(B.x,B.y,B.w,B.h);const A=95,hw=B.w/2;
+    cvP.forEach(p=>{const X=(p.x-B.x)/hw,Y=(p.y-B.y)/B.h;const u=-A*Math.sin(Math.PI*X)*Math.cos(Math.PI*Y),v=A*(B.h/hw)*Math.cos(Math.PI*X)*Math.sin(Math.PI*Y);
+      p.vx=u+(Math.random()-.5)*40;p.vy=v+(Math.random()-.5)*40;if(!RM){p.x+=p.vx*dt;p.y+=p.vy*dt;}wall(p,B);
+      if(p.y>B.y+B.h-90&&Math.abs(p.x-400)<150)p.T=Math.min(1,p.T+dt*3);else if(p.y<B.y+80)p.T=Math.max(0,p.T-dt*.7);else p.T=Math.max(0,p.T-dt*.05);
+      trail(g,p,.08,"rgba(255,255,255,.35)");ball(g,p.x,p.y,p.r,tcol(p.T));});
+    g.globalAlpha=.85;[[1,-1],[-1,1]].forEach(([d])=>{g.strokeStyle="#E9B44C";g.lineWidth=5;g.setLineDash([14,10]);g.lineDashOffset=RM?0:-s.t*30*d;g.beginPath();g.ellipse(400-d*130,320,95,150,0,0,7);g.stroke();});g.setLineDash([]);g.globalAlpha=1;
+    chip(g,"warm water rises",400,170,"#F6A58F",22);chip(g,"cool water sinks",400,480,"#7FD3E6",22);}
+  else{g.fillStyle="#2B3B4E";g.fillRect(B.x+60,B.y+20,B.w-120,B.h-20);
+    cvL.forEach(p=>{const target=Math.max(0,1-(520-p.hy)/330-Math.abs(p.hx-400)/700);p.T+=(target-p.T)*Math.min(1,RM?1:dt*.3);const [x,y]=lockStep(p,s,1.5+p.T*5,1);ball(g,x,y,p.r,tcol(p.T));});
+    chip(g,"no currents: particles stay in place",400,95,"#E6EBF0",22);}
+  g.strokeStyle="rgba(255,255,255,.8)";g.lineWidth=5;g.beginPath();g.moveTo(B.x,B.y-20);g.lineTo(B.x,B.y+B.h);g.lineTo(B.x+B.w,B.y+B.h);g.lineTo(B.x+B.w,B.y-20);g.stroke();});
+function cvSet(){setMsg($("#cvMsg"),cvK?"In a <b>solid</b>, the particles are locked in place, so no currents can form. Energy spreads upward only by <b>conduction</b>, and much more slowly.":"Water at the bottom gains energy, becomes <b>less dense</b> and <b>rises</b>. At the top it cools, becomes <b>denser</b> and <b>sinks</b>. This loop is a <b>convection current</b>: the moving water carries the energy with it.",cvK?"في <b>الصلب</b> تكون الجسيمات مثبّتة في أماكنها، فلا تتكوّن تيارات. تنتشر الطاقة إلى الأعلى <b>بالتوصيل</b> فقط، وببطء أكبر بكثير.":"الماء في الأسفل يكتسب طاقة فيصبح <b>أقل كثافة</b> و<b>يصعد</b>. وفي الأعلى يبرد فيصبح <b>أكثر كثافة</b> و<b>يهبط</b>. هذه الحلقة هي <b>تيار الحمل</b>: الماء المتحرك يحمل الطاقة معه.");}
+segOn("cvMode",v=>{cvK=+v;cvL.forEach(p=>p.T=0);cvSet();});cvSet();
+whyBox($("#why4"),"Why can convection not happen in a solid?","لماذا لا يحدث الحمل في الصلب؟",[
+ ["Solid particles are locked in place, so they cannot flow and carry energy somewhere else.","جسيمات الصلب مثبّتة في أماكنها، فلا تستطيع أن تنساب وتحمل الطاقة إلى مكان آخر.",1,"Convection needs a fluid: a liquid or a gas.","الحمل يحتاج إلى مائع: سائل أو غاز."],
+ ["Solids have no thermal energy.","المواد الصلبة ليس فيها طاقة حرارية.",0,"Solids do have thermal energy: their particles vibrate.","للمواد الصلبة طاقة حرارية، فجسيماتها تهتز."],
+ ["Solids are always cold.","المواد الصلبة باردة دائمًا.",0,"A solid can be very hot, like a hot pan. It still cannot flow.","قد يكون الصلب ساخنًا جدًا مثل المقلاة الساخنة، لكنه لا ينساب."]]);
+
+/* 6. radiation */
+let rdK=0;const stars=Array.from({length:40},()=>[Math.random()*800,Math.random()*450,Math.random()*2+1]);
+sim("rdC",16/9,(s,dt)=>{const g=s.ctx;g.fillStyle="#05080D";g.fillRect(0,0,s.W,s.H);const ph=s.t*7;
+  if(rdK===0){stars.forEach(([x,y,r])=>{g.fillStyle="rgba(255,255,255,.5)";g.fillRect(x,y,r,r);});
+    const sg=g.createRadialGradient(-30,225,40,-30,225,230);sg.addColorStop(0,"#FFF3C4");sg.addColorStop(.55,"#E9B44C");sg.addColorStop(1,"rgba(233,180,76,0)");g.fillStyle=sg;g.beginPath();g.arc(-30,225,230,0,7);g.fill();
+    const eg=g.createRadialGradient(680,205,10,700,225,70);eg.addColorStop(0,"#7FD3E6");eg.addColorStop(.6,"#2A8FB0");eg.addColorStop(1,"#1B4F6B");g.fillStyle=eg;g.beginPath();g.arc(700,225,62,0,7);g.fill();
+    g.fillStyle="#2A9D8F";g.beginPath();g.ellipse(690,205,22,14,.4,0,7);g.fill();g.beginPath();g.ellipse(715,250,16,20,-.3,0,7);g.fill();
+    [140,185,225,265,310].forEach(y=>wave(g,200,y,Math.atan2(225-y,0)*.0,400,ph,"#FFD08A",9,4));
+    chip(g,"empty space: no particles",410,60,"#E6EBF0",22);label(g,"Sun",70,420,"#E9B44C",26);label(g,"Earth",700,330,"#7FD3E6",26);}
+  else{const T=+$("#rdR").value,t=(T-20)/80;bg(s,"#120D0B");
+    const cx=330,cy=270,body=lerpC("#8E99A6","#E07A2E",t);const gl=g.createRadialGradient(cx,cy,20,cx,cy,230);gl.addColorStop(0,`rgba(200,85,61,${.5*t})`);gl.addColorStop(1,"rgba(200,85,61,0)");g.fillStyle=gl;g.beginPath();g.arc(cx,cy,230,0,7);g.fill();
+    g.fillStyle=body;g.beginPath();g.ellipse(cx,cy,110,80,0,0,7);g.fill();g.beginPath();g.moveTo(cx+90,cy-10);g.quadraticCurveTo(cx+170,cy-30,cx+190,cy-90);g.lineTo(cx+176,cy-92);g.quadraticCurveTo(cx+150,cy-40,cx+92,cy+20);g.fill();
+    g.strokeStyle=body;g.lineWidth=16;g.beginPath();g.arc(cx-120,cy,46,1.9,4.4);g.stroke();g.fillRect(cx-46,cy-98,92,26);g.beginPath();g.arc(cx,cy-104,12,0,7);g.fill();
+    g.fillStyle="#3A2A20";g.fillRect(cx-150,cy+80,300,14);
+    const n=Math.round(3+t*7);for(let i=0;i<n;i++){const a=-Math.PI-.3+i*((Math.PI+.6)/(n-1));wave(g,cx+Math.cos(a)*150,cy+Math.sin(a)*115,a,60+t*70,ph,`rgba(246,165,143,${.35+.65*t})`,3+t*1.5,3+t*2);}
+    chip(g,T+"°C",640,90,lerpC("#7FD3E6","#F6A58F",t),34);label(g,"teapot",cx,cy+140,"#FFD08A",24);}});
+function rdSet(){if(rdK===0){setMsg($("#rdMsg"),"Energy from the Sun crosses about 150 million km of <b>empty space</b>. There are no particles there to collide or flow, so conduction and convection are impossible. Only <b>radiation</b> reaches Earth.","تعبر طاقة الشمس نحو 150 مليون km من <b>الفضاء الفارغ</b>. لا توجد هناك جسيمات تتصادم أو تنساب، فالتوصيل والحمل مستحيلان. <b>الإشعاع</b> وحده يصل إلى الأرض.");return;}
+  const T=+$("#rdR").value;setMsg($("#rdMsg"),T>=70?`At <b>${T}°C</b> the teapot gives off a lot of radiation. Hold your hand near it, without touching, and you feel the warmth.`:T>=40?`At <b>${T}°C</b> the teapot gives off less radiation.`:`At <b>${T}°C</b> (room temperature) the teapot still gives off radiation, just very little. <b>All</b> matter radiates energy.`,T>=70?`عند <b>${T}°C</b> يُطلق البرّاد إشعاعًا كثيرًا. قرّب يدك منه دون أن تلمسه فتشعر بالدفء.`:T>=40?`عند <b>${T}°C</b> يُطلق البرّاد إشعاعًا أقل.`:`عند <b>${T}°C</b> (درجة حرارة الغرفة) ما زال البرّاد يُطلق إشعاعًا لكنه قليل جدًا. <b>كل</b> مادة تُشعّ طاقة.`);}
+segOn("rdMode",v=>{rdK=+v;$("#rdSl").style.display=rdK?"":"none";rdSet();});$("#rdR").oninput=rdSet;rdSet();
+
+/* sort the examples */
+const MO=[["Conduction","التوصيل"],["Convection","الحمل"],["Radiation","الإشعاع"]];
+const WHY=[["Particles in direct contact pass energy by collisions.","الجسيمات المتلامسة تنقل الطاقة بالتصادم."],["A moving fluid (air or water) carries the energy.","مائع متحرك (هواء أو ماء) يحمل الطاقة."],["Waves carry the energy, no contact needed.","موجات تحمل الطاقة دون حاجة إلى تلامس."]];
+const HN=[["Is there direct touching?","هل يوجد تلامس مباشر؟"],["Is a liquid or gas moving?","هل يتحرك سائل أو غاز؟"],["Does it work across a gap, with no touching?","هل يحدث عبر مسافة دون تلامس؟"]];
+cardsQ($("#soCards"),[["Hot toast warming a cold plate","توست ساخن يُدفئ طبقًا باردًا",0],["Air warmed by a toaster rising into the room","هواء يُسخّنه التوستر يصعد إلى الغرفة",1],["Feeling the heat of a campfire on your face","الشعور بحرارة نار المخيّم على وجهك",2],["Hot sand burning your feet on an Abu Dhabi beach","رمل ساخن يحرق قدميك على شاطئ في أبوظبي",0],["Cool air from a high air conditioner sinking to the floor","هواء بارد من مكيّف مرتفع يهبط إلى الأرض",1],["Sunlight warming the water of the Arabian Gulf","ضوء الشمس يُدفئ مياه الخليج العربي",2]].map(([en,ar,a])=>({t:[en,ar],o:MO,a,w:WHY[a],h:HN[a]})));
+
+/* Earth */
+let erK=-1;
+function erDraw(){const on=k=>erK===k?1:.25,fl=k=>erK===k?' class="flow"':"";let s=`<defs><radialGradient id="esun" cx="0" cy=".5" r="1"><stop offset="0" stop-color="#FFF3C4"/><stop offset=".6" stop-color="#E9B44C"/><stop offset="1" stop-color="#E9B44C" stop-opacity="0"/></radialGradient><marker id="ea" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs><rect width="480" height="300" fill="#05080D"/>`;
+  s+=`<circle cx="-30" cy="170" r="120" fill="url(#esun)"/><text x="12" y="290" font-size="15" font-weight="800" fill="#E9B44C">Sun</text>`;
+  s+=`<circle cx="330" cy="330" r="235" fill="#7FD3E6" fill-opacity=".25"/><circle cx="330" cy="330" r="215" fill="#8C5A3C"/><circle cx="330" cy="330" r="203" fill="#C8553D"/><circle cx="330" cy="330" r="200" fill="#E07A2E"/><circle cx="330" cy="330" r="80" fill="#E9B44C"/>`;
+  s+=`<g font-size="12" font-weight="800" fill="#fff"><text x="330" y="282" text-anchor="middle">core</text><text x="330" y="185" text-anchor="middle">mantle</text><text x="472" y="78" fill="#7FD3E6" text-anchor="end">atmosphere</text><text x="236" y="122" fill="#F2D3B0">crust</text></g>`;
+  s+=`<g opacity="${on(0)}" stroke="#FFD08A" stroke-width="3" fill="none" marker-end="url(#ea)">${[110,150,190,230].map(y=>`<path${fl(0)} d="M70 ${y} q12 -8 24 0 t24 0 t24 0 t24 0 t24 0"/>`).join("")}</g>`;
+  s+=`<g opacity="${on(1)}" stroke="#fff" stroke-width="3" fill="none" marker-end="url(#ea)"><path${fl(1)} d="M250 250 q-30 -50 10 -80 q40 -10 40 40"/><path${fl(1)} d="M410 250 q30 -50 -10 -80 q-40 -10 -40 40"/><path${fl(1)} d="M300 112 q30 -20 60 -6" stroke="#7FD3E6"/><path${fl(1)} d="M380 112 q30 -14 50 6" stroke="#7FD3E6"/></g>`;
+  s+=`<g opacity="${on(2)}"><circle cx="190" cy="60" r="38" fill="#3A2A20" stroke="#E9B44C" stroke-width="3"/>${[[-14,-12],[2,-14],[16,-8],[-18,6],[-2,4],[14,10],[-8,20],[8,22]].map(([x,y])=>`<circle cx="${190+x}" cy="${60+y}" r="6" fill="#B9773C"/>`).join("")}<path d="M220 82 L248 118" stroke="#E9B44C" stroke-width="2" stroke-dasharray="4 4"/><path${fl(2)} d="M176 48 l20 20" stroke="#F6A58F" stroke-width="3" marker-end="url(#ea)"/></g>`;
+  $("#erSvg").innerHTML=s;}
+function erSet(){const M=[["<b>Radiation:</b> energy from the Sun crosses empty space and warms Earth's land, oceans and atmosphere.","<b>الإشعاع:</b> تعبر طاقة الشمس الفضاء الفارغ وتُدفئ يابسة الأرض ومحيطاتها وغلافها الجوي."],
+ ["<b>Convection:</b> currents of warm air in the atmosphere and of water in the oceans carry energy around Earth. Deep inside, hot rock in the <b>mantle</b> also flows, very slowly, in convection currents.","<b>الحمل:</b> تيارات الهواء الدافئ في الغلاف الجوي وتيارات الماء في المحيطات تنقل الطاقة حول الأرض. وفي العمق تنساب الصخور الساخنة في <b>الوشاح</b> أيضًا، ببطء شديد، في تيارات حمل."],
+ ["<b>Conduction:</b> energy moves through the solid <b>crust</b> as rock particles touch and collide. Warm ground also heats the air just above it by conduction.","<b>التوصيل:</b> تنتقل الطاقة عبر <b>القشرة</b> الصلبة بتلامس جسيمات الصخر وتصادمها. والأرض الدافئة تُسخّن الهواء الملامس لها بالتوصيل أيضًا."]][erK];setMsg($("#erMsg"),M[0]+(erK>=0?"<br>All three transfers work together to drive Earth's weather and climate.":""),M[1]+(erK>=0?"<br>تعمل الطرق الثلاث معًا لتحرّك الطقس والمناخ على الأرض.":""));}
+segOn("erMode",v=>{erK=+v;erDraw();erSet();});erDraw();setMsg($("#erMsg"),"Tap a type of transfer to see where it happens on Earth.","اضغط على نوع انتقال لترى أين يحدث على الأرض.");
+
+/* Velinda */
+let vlK=0;const vlT=(t,pos)=>{const b=t<=4?t:Math.min(100,4+(t-4)*12);return b>=100||t===0?b:Math.max(0,Math.min(99,b+[4,0,-4][pos]));};
+sim("vlC",16/9,(s,dt)=>{const g=s.ctx;bg(s);const t=vlK*2,ice=Math.max(0,1-t/4);
+  g.fillStyle="#3A4654";g.fillRect(70,380,260,26);g.fillStyle=vlK?"#C8553D":"#5B6675";g.fillRect(90,372,220,10);label(g,"hot plate",200,438,"#9AA5B1",24);
+  const wb=vlT(t,1)/100;g.fillStyle="rgba(42,143,176,.55)";g.fillRect(100,190,200,180);g.fillStyle=`rgba(232,120,60,${.3*wb})`;g.fillRect(100,190,200,180);
+  for(let i=0;i<3;i++)if(ice>0){const sz=40*Math.sqrt(ice);g.fillStyle="rgba(230,248,255,.85)";g.fillRect(120+i*55,200,sz,sz);}
+  if(t>=12&&!RM)for(let i=0;i<6;i++){const y=360-((s.t*80+i*37)%160);g.strokeStyle="rgba(255,255,255,.8)";g.lineWidth=2;g.beginPath();g.arc(120+i*30,y,6,0,7);g.stroke();}
+  g.strokeStyle="rgba(255,255,255,.85)";g.lineWidth=5;g.beginPath();g.moveTo(90,150);g.lineTo(100,150);g.lineTo(100,370);g.lineTo(300,370);g.lineTo(300,150);g.lineTo(310,150);g.stroke();
+  const cols=["#F6A58F","#E9B44C","#7FD3E6"],nm=["bottom","centre","top"];
+  [[340,0],[270,1],[200,2]].forEach(([y,k],i)=>{g.fillStyle=cols[k];g.beginPath();g.arc(285,y,7,0,7);g.fill();chip(g,Math.round(vlT(t,k))+"°C",380,y+9,cols[k],26);});
+  label(g,"t = "+t+" min",200,120,"#fff",30);
+  const G={x:470,y:50,w:300,h:300},gx=x=>G.x+x/16*G.w,gy=v=>G.y+G.h-v/100*G.h;
+  g.strokeStyle="rgba(255,255,255,.5)";g.lineWidth=2;g.beginPath();g.moveTo(G.x,G.y);g.lineTo(G.x,G.y+G.h);g.lineTo(G.x+G.w,G.y+G.h);g.stroke();
+  [0,50,100].forEach(v=>{label(g,v+"",G.x-8,gy(v)+8,"#9AA5B1",24,"right");g.strokeStyle="rgba(255,255,255,.1)";g.beginPath();g.moveTo(G.x,gy(v));g.lineTo(G.x+G.w,gy(v));g.stroke();});
+  [0,8,16].forEach(x=>label(g,x+"",gx(x),G.y+G.h+28,"#9AA5B1",24));label(g,"time (min)",G.x+G.w,G.y+G.h+58,"#9AA5B1",22,"right");label(g,"°C",G.x-8,G.y-14,"#9AA5B1",22,"right");
+  [0,1,2].forEach(k=>{g.strokeStyle=cols[k];g.fillStyle=cols[k];g.lineWidth=4;g.beginPath();for(let j=0;j<=vlK;j++){const x=gx(j*2),y=gy(vlT(j*2,k));j?g.lineTo(x,y):g.moveTo(x,y);}g.stroke();for(let j=0;j<=vlK;j++){g.beginPath();g.arc(gx(j*2),gy(vlT(j*2,k)),5,0,7);g.fill();}});
+  nm.forEach((n,k)=>label(g,n,G.x+10+k*100,G.y-14,cols[k],22,"left"));});
+function vlSet(){const t=vlK*2;const M=t===0?["<b>t = 0 min.</b> Ice and water. All three thermometers read about 0°C. Tap <b>Wait 2 minutes</b>.","<b>t = 0 min.</b> ثلج وماء، والترمومترات الثلاثة تقرأ نحو 0°C. اضغط <b>Wait 2 minutes</b>."]
+  :t<=4?["The hot plate is the <b>source</b>. The energy goes into melting the ice first, so the temperature stays close to 0°C.","السخّان هو <b>المصدر</b>. تذهب الطاقة أولًا إلى صهر الثلج، فتبقى درجة الحرارة قريبة من 0°C."]
+  :t<12?["The water warms up. The <b>bottom</b> is a little warmer than the <b>top</b>: energy enters at the bottom and spreads up by conduction and convection.","يسخن الماء. <b>الأسفل</b> أدفأ قليلًا من <b>الأعلى</b>: تدخل الطاقة من الأسفل وتنتشر إلى الأعلى بالتوصيل والحمل."]
+  :t<16?["The water boils at 100°C. Now all three thermometers agree: the whole beaker has the same temperature.","يغلي الماء عند 100°C. الآن تتّفق الترمومترات الثلاثة: درجة حرارة الكأس كلها واحدة."]
+  :[ICON.check+" Velinda's two extra readings stay at 100°C. Energy spread until every part of the water had the same temperature: her hypothesis is <b>supported</b>.","بقيت قراءتا فيليندا الإضافيتان عند 100°C. انتشرت الطاقة حتى صارت لكل أجزاء الماء درجة الحرارة نفسها: <b>فرضيتها مدعومة</b>."];
+  setMsg($("#vlMsg"),M[0],M[1]);$("#vlGo").disabled=vlK>=8;}
+$("#vlGo").onclick=()=>{if(vlK<8){vlK++;vlSet();}};$("#vlRe").onclick=()=>{vlK=0;vlSet();};vlSet();
+cardsQ($("#vlCards"),[
+ {t:["Which equipment did Velinda leave off her list that keeps her <b>safe</b>?","أيّ أدوات نسيتها فيليندا في قائمتها وهي تحميها <b>وتحافظ على سلامتها</b>؟"],o:[["balance, candle, glass dish","ميزان، شمعة، طبق زجاجي"],["goggles, apron, heat-resistant gloves","نظارات واقية، مريلة، قفازات مقاومة للحرارة"],["metal tongs, Bunsen burner, spark igniter","ملقط فلزي، موقد بنزن، قدّاحة"],["vent hood, safety handbook, eyewash station","خزانة شفط، دليل سلامة، محطة غسل العين"]],a:1,cls:"stack",w:["She works with a hot plate and boiling water, so she must protect her eyes, body and hands.","تعمل بسخّان وماء مغلي، فيجب أن تحمي عينيها وجسمها ويديها."],h:["Think about what she wears to protect herself from hot water.","فكّر في ما ترتديه لتحمي نفسها من الماء الساخن."]},
+ {t:["Which are the independent and dependent variables?","ما المتغيّر المستقل والمتغيّر التابع؟"],o:[["independent: temperature; dependent: thermal energy","المستقل: درجة الحرارة؛ التابع: الطاقة الحرارية"],["independent: thermal energy; dependent: time","المستقل: الطاقة الحرارية؛ التابع: الزمن"],["independent: temperature; dependent: time","المستقل: درجة الحرارة؛ التابع: الزمن"],["independent: time; dependent: temperature","المستقل: الزمن؛ التابع: درجة الحرارة"]],a:3,cls:"stack",w:["She chooses when to read (every 2 minutes), and measures the temperature that results.","هي تختار وقت القراءة (كل دقيقتين)، وتقيس درجة الحرارة الناتجة."],h:["The independent variable is the one Velinda controls. What does she change step by step?","المتغيّر المستقل هو الذي تتحكّم فيه فيليندا. ما الذي تغيّره خطوة بخطوة؟"]}]);
+
+/* energy auditor */
+let auK=0;const auF=new Set();
+const AUS=[["win",167,182,"<b>Hot window!</b> Single glass lets heat in by conduction, and sunlight in by radiation. Better glass or shades would help.","<b>نافذة ساخنة!</b> الزجاج المفرد يُدخل الحرارة بالتوصيل، ويُدخل ضوء الشمس بالإشعاع. زجاج أفضل أو ستائر ستساعد."],
+ ["roof",240,95,"<b>Hot roof!</b> The Sun heats the roof by radiation, and the heat moves through it by conduction. Insulation under the roof stops this.","<b>سقف ساخن!</b> تُسخّن الشمس السقف بالإشعاع، وتنتقل الحرارة عبره بالتوصيل. العزل تحت السقف يمنع ذلك."],
+ ["door",240,235,"<b>Hot gap around the door!</b> Hot outside air flows in through the gap: convection. Sealing the gap fixes it.","<b>فجوة ساخنة حول الباب!</b> يتدفّق الهواء الساخن من الخارج عبر الفجوة: حمل. سدّ الفجوة يحلّ المشكلة."]];
+function auDraw(){const th=auK===1;let s=`<rect width="480" height="300" fill="${th?"#0B1230":"#CFE8F2"}"/>`;
+  if(!th)s+=`<circle cx="420" cy="50" r="26" fill="#E9B44C"/><rect y="270" width="480" height="30" fill="#E3C99A"/>`;else s+=`<rect y="270" width="480" height="30" fill="#7A2E10"/>`;
+  s+=`<path d="M90 135 L240 50 L390 135 Z" fill="${th?"url(#tr)":"#C8553D"}"/><rect x="110" y="135" width="260" height="135" fill="${th?"#1F4E9A":"#F2E3C6"}"/>`;
+  s+=`<defs><linearGradient id="tr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE08A"/><stop offset=".5" stop-color="#E07A2E"/><stop offset="1" stop-color="#C8553D"/></linearGradient><radialGradient id="tw"><stop offset="0" stop-color="#FFF3C4"/><stop offset=".5" stop-color="#E9B44C"/><stop offset="1" stop-color="#C8553D"/></radialGradient></defs>`;
+  s+=`<rect x="140" y="160" width="55" height="45" fill="${th?"url(#tw)":"#7FB8D0"}" stroke="${th?"none":"#fff"}" stroke-width="3"/><rect x="285" y="160" width="55" height="45" fill="${th?"#2A6FB0":"#7FB8D0"}" stroke="${th?"none":"#fff"}" stroke-width="3"/>`;
+  s+=`<rect x="215" y="200" width="50" height="70" fill="${th?"#2A5FA0":"#8C5A3C"}"/>${th?`<rect x="210" y="196" width="60" height="78" fill="none" stroke="#E07A2E" stroke-width="6"/>`:""}<rect x="372" y="170" width="34" height="26" fill="${th?"#2A9D8F":"#E6EBF0"}" stroke="#9AA5B1"/>`;
+  if(th)AUS.forEach(([id,x,y])=>{const f=auF.has(id);s+=`<g data-spot="${id}"><circle cx="${x}" cy="${y}" r="24" fill="rgba(255,255,255,.01)" stroke="${f?"#2A9D8F":"#fff"}" stroke-width="3" stroke-dasharray="${f?"0":"5 5"}"/>${f?`<path d="M${x-9} ${y} l6 7 l12 -13" stroke="#2A9D8F" stroke-width="4" fill="none"/>`:""}</g>`;});
+  s+=`<text x="12" y="22" font-size="13" font-weight="800" fill="${th?"#fff":"#1F2A37"}">${th?"thermal camera · found "+auF.size+" / 3":"normal view"}</text>`;
+  if(th)s+=`<g font-size="11" fill="#fff"><rect x="400" y="215" width="70" height="10" fill="url(#tr)"/><text x="400" y="240">cool</text><text x="470" y="240" text-anchor="end">hot</text></g>`;
+  $("#auSvg").innerHTML=s;$$("#auSvg [data-spot]").forEach(e=>e.addEventListener("click",()=>{const a=AUS.find(z=>z[0]===e.dataset.spot);auF.add(a[0]);auDraw();setMsg($("#auMsg"),a[3]+(auF.size===3?"<br>"+ICON.check+" <b>You found all three weak spots!</b>":""),a[4]+(auF.size===3?"<br><b>وجدت نقاط الضعف الثلاث كلها!</b>":""));}));}
+segOn("auMode",v=>{auK=+v;auDraw();if(auK===0)setMsg($("#auMsg"),"In normal view the house looks fine. Switch on the <b>thermal camera</b>.","في العرض العادي يبدو البيت سليمًا. شغّل <b>الكاميرا الحرارية</b>.");else setMsg($("#auMsg"),"Red and yellow mean hot, blue means cool. Tap the three hot spots.","الأحمر والأصفر يعنيان ساخنًا، والأزرق يعني باردًا. اضغط على البقع الساخنة الثلاث.");});
+auDraw();setMsg($("#auMsg"),"In normal view the house looks fine. Switch on the <b>thermal camera</b>.","في العرض العادي يبدو البيت سليمًا. شغّل <b>الكاميرا الحرارية</b>.");
+
+/* check yourself */
+cardsQ($("#ckCards"),[
+ {t:["Hot toast is placed on a cold plate. Which way does heat flow?","يوضع توست ساخن على طبق بارد. في أيّ اتجاه تنتقل الحرارة؟"],o:[["from the plate to the toast","من الطبق إلى التوست"],["from the toast to the plate","من التوست إلى الطبق"],["no heat flows","لا تنتقل حرارة"]],a:1,cls:"stack",w:["Heat flows from higher to lower temperature.","تنتقل الحرارة من الأعلى إلى الأقل درجة حرارة."],h:["Which one is hotter?","أيّهما أسخن؟"]},
+ {t:["The handle of a metal spoon in hot soup gets hot. This is…","يسخن مقبض ملعقة فلزية في حساء ساخن. هذا…"],o:[["convection","حمل"],["radiation","إشعاع"],["conduction","توصيل"]],a:2,w:["Energy passes along the metal by particle collisions.","تنتقل الطاقة على طول الفلز بتصادم الجسيمات."],h:["The energy travels through a solid.","الطاقة تنتقل عبر جسم صلب."]},
+ {t:["Which transfer can travel through empty space?","أيّ انتقال يمكنه أن يعبر الفضاء الفارغ؟"],o:[["radiation","الإشعاع"],["conduction","التوصيل"],["convection","الحمل"]],a:0,w:["Waves need no particles.","الموجات لا تحتاج إلى جسيمات."],h:["Empty space has no particles to collide or flow.","الفضاء الفارغ ليس فيه جسيمات تتصادم أو تنساب."]},
+ {t:["A kettle boils with its lid open and steam escapes. The kettle is…","تغلي غلاية وغطاؤها مفتوح ويخرج البخار. الغلاية…"],o:[["a closed system","نظام مغلق"],["an open system","نظام مفتوح"],["not a system","ليست نظامًا"]],a:1,w:["Matter (steam) and energy both leave.","تخرج المادة (البخار) والطاقة كلتاهما."],h:["Is matter leaving?","هل تخرج مادة؟"]},
+ {t:["Equal amounts of water at 70°C and 30°C are mixed. The final temperature is about…","يُخلط مقداران متساويان من الماء عند 70°C و30°C. درجة الحرارة النهائية تقريبًا…"],o:[["100°C","100°C"],["30°C","30°C"],["50°C","50°C"]],a:2,w:["They reach thermal equilibrium halfway between.","يصلان إلى الاتزان الحراري في المنتصف."],h:["Heat flows until both are equal.","تنتقل الحرارة حتى يتساويا."]},
+ {t:["Why does a room air conditioner work best when it is mounted <b>high</b> on the wall?","لماذا يعمل مكيّف الغرفة أفضل عندما يُركَّب <b>مرتفعًا</b> على الجدار؟"],o:[["Cool air is denser, so it sinks through the room.","الهواء البارد أكثر كثافة فيهبط في الغرفة."],["Cool air rises to the ceiling.","الهواء البارد يصعد إلى السقف."],["It is safer from radiation.","يكون أبعد عن الإشعاع."]],a:0,cls:"stack",w:["This sets up a convection current in the room.","هذا يُكوّن تيار حمل في الغرفة."],h:["Does cool air rise or sink?","هل يصعد الهواء البارد أم يهبط؟"]}]);
+
+requestAnimationFrame(loop);
+const FL=[["⇄","Open system","النظام المفتوح","Matter and energy can both move in or out. Example: a pot with no lid.","يمكن أن تدخل المادة والطاقة أو تخرجا. مثال: قِدر دون غطاء."],
+ ["▣","Closed system","النظام المغلق","Only energy moves in or out. Example: a closed jar or a microwave oven.","تدخل الطاقة أو تخرج فقط. مثال: برطمان مغلق أو فرن ميكروويف."],
+ ["→","Heat","الحرارة","Thermal energy that flows from higher temperature to lower temperature. Never the other way.","طاقة حرارية تنتقل من درجة الحرارة الأعلى إلى الأقل، ولا تنتقل بالعكس أبدًا."],
+ ["=","Thermal equilibrium","الاتزان الحراري","Objects reach the same temperature, so there is no more net heat flow.","تصل الأجسام إلى درجة الحرارة نفسها، فلا يبقى انتقال صافٍ للحرارة."],
+ ["●→●","Conduction","التوصيل","Energy passed by collisions between particles in direct contact. Solids, liquids and gases.","طاقة تنتقل بتصادم الجسيمات المتلامسة. في المواد الصلبة والسائلة والغازية."],
+ ["↻","Convection","الحمل","A moving fluid carries energy: warm fluid rises, cool fluid sinks. Liquids and gases only.","مائع متحرك يحمل الطاقة: المائع الدافئ يصعد والبارد يهبط. في السوائل والغازات فقط."],
+ ["∿","Radiation","الإشعاع","Energy carried by electromagnetic waves. Needs no particles; crosses empty space.","طاقة تحملها موجات كهرومغناطيسية. لا تحتاج إلى جسيمات، وتعبر الفضاء الفارغ."],
+ ["◐","Earth","الأرض","Radiation from the Sun, convection in air, oceans and mantle, conduction in the crust: all at once.","إشعاع من الشمس، وحمل في الهواء والمحيطات والوشاح، وتوصيل في القشرة: كلها معًا."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+const Q=[
+ {q:"Heat always flows…",qa:"تنتقل الحرارة دائمًا…",o:[["from higher temperature to lower temperature","من درجة الحرارة الأعلى إلى الأقل"],["from lower temperature to higher temperature","من درجة الحرارة الأقل إلى الأعلى"],["from small objects to big objects","من الأجسام الصغيرة إلى الكبيرة"],["only upward","إلى الأعلى فقط"]],a:0,ex:["A freezer cools water by taking its heat, not by adding coldness.","الفريزر يبرّد الماء بأخذ حرارته، لا بإضافة برودة."],h:[["Think of hot tea warming your hand.","فكّر في الشاي الساخن الذي يُدفئ يدك."],["The source is the hotter object.","المصدر هو الجسم الأسخن."]]},
+ {q:"In a closed system…",qa:"في النظام المغلق…",o:[["only energy can move in or out","تدخل الطاقة أو تخرج فقط"],["only matter can move in or out","تدخل المادة أو تخرج فقط"],["matter and energy both move in or out","تدخل المادة والطاقة أو تخرجان"],["nothing can ever move in or out","لا يدخل أو يخرج شيء أبدًا"]],a:0,ex:["The lid keeps matter in, but energy still crosses the walls.","الغطاء يُبقي المادة في الداخل، لكن الطاقة تعبر الجدران."],h:[["Think of the jar with a lid.","تذكّر البرطمان ذا الغطاء."],["Did the energy waves still leave the jar?","هل ظلّت موجات الطاقة تخرج من البرطمان؟"]]},
+ {q:"Block A (80°C) touches block B (20°C). What happens at thermal equilibrium?",qa:"القطعة A (80°C) تلامس القطعة B (20°C). ماذا يحدث عند الاتزان الحراري؟",o:[["Both reach the same temperature and there is no net heat flow.","تصلان إلى درجة الحرارة نفسها ولا يبقى انتقال صافٍ للحرارة."],["All particles stop moving.","تتوقف كل الجسيمات عن الحركة."],["A becomes colder than B.","تصبح A أبرد من B."],["B keeps heating up forever.","تستمر B في السخونة إلى الأبد."]],a:0,ex:["Particles still collide, but the average kinetic energy is equal.","تستمر الجسيمات في التصادم، لكن متوسط الطاقة الحركية متساوٍ."],h:[["Particles never stop moving.","الجسيمات لا تتوقف عن الحركة أبدًا."],["Look at where the two graph lines end.","انظر إلى أين ينتهي خطّا الرسم البياني."]]},
+ {q:"Conduction needs…",qa:"يحتاج التوصيل إلى…",o:[["direct contact between particles","تلامس مباشر بين الجسيمات"],["empty space","فضاء فارغ"],["a moving liquid","سائل متحرك"],["sunlight","ضوء الشمس"]],a:0,ex:["Particles must touch to collide and pass on energy.","يجب أن تتلامس الجسيمات لتتصادم وتنقل الطاقة."],h:[["Think of toast on a plate.","فكّر في التوست على الطبق."],["How did energy move along the metal rod?","كيف انتقلت الطاقة على طول القضيب الفلزي؟"]]},
+ {q:"Convection can happen in…",qa:"يمكن أن يحدث الحمل في…",o:[["liquids and gases only","السوائل والغازات فقط"],["solids only","المواد الصلبة فقط"],["empty space","الفضاء الفارغ"],["solids, liquids and gases","المواد الصلبة والسائلة والغازية"]],a:0,ex:["The particles must be free to flow from place to place.","يجب أن تكون الجسيمات حرّة لتنساب من مكان إلى آخر."],h:[["Convection needs a fluid.","الحمل يحتاج إلى مائع."],["Can the particles of a metal block flow?","هل تستطيع جسيمات قطعة فلز أن تنساب؟"]]},
+ {q:"How does energy from the Sun reach Earth?",qa:"كيف تصل طاقة الشمس إلى الأرض؟",o:[["by radiation","بالإشعاع"],["by conduction","بالتوصيل"],["by convection","بالحمل"],["it cannot reach Earth","لا يمكنها الوصول إلى الأرض"]],a:0,ex:["Space is empty, so only electromagnetic waves can cross it.","الفضاء فارغ، فالموجات الكهرومغناطيسية وحدها تعبره."],h:[["Are there particles between the Sun and Earth?","هل توجد جسيمات بين الشمس والأرض؟"],["Which transfer needs no particles?","أيّ انتقال لا يحتاج إلى جسيمات؟"]]},
+ {q:"In Velinda's experiment, she records the temperature every 2 minutes. Which are the variables?",qa:"في تجربة فيليندا، تسجّل درجة الحرارة كل دقيقتين. ما المتغيّرات؟",o:[["independent: time; dependent: temperature","المستقل: الزمن؛ التابع: درجة الحرارة"],["independent: temperature; dependent: time","المستقل: درجة الحرارة؛ التابع: الزمن"],["independent: temperature; dependent: thermal energy","المستقل: درجة الحرارة؛ التابع: الطاقة الحرارية"],["independent: thermal energy; dependent: time","المستقل: الطاقة الحرارية؛ التابع: الزمن"]],a:0,ex:["She controls the time; the temperature is what she measures.","هي تتحكّم في الزمن، ودرجة الحرارة هي ما تقيسه."],h:[["Which one does Velinda choose?","أيّهما تختاره فيليندا بنفسها؟"],["The dependent variable is what she reads on the thermometer.","المتغيّر التابع هو ما تقرؤه على الترمومتر."]]},
+ {q:"Which is an example of convection?",qa:"أيّها مثال على الحمل؟",o:[["Cool air from a high air conditioner sinking through a room","هواء بارد من مكيّف مرتفع يهبط في الغرفة"],["A metal spoon getting hot in soup","ملعقة فلزية تسخن في الحساء"],["Feeling the Sun's warmth on your face","الشعور بدفء الشمس على وجهك"],["Hot sand burning your feet","رمل ساخن يحرق قدميك"]],a:0,ex:["A moving fluid (air) carries the energy.","مائع متحرك (الهواء) يحمل الطاقة."],h:[["Look for a moving fluid.","ابحث عن مائع يتحرك."],["Two of the others are conduction, one is radiation.","اثنان من الباقي توصيل، وواحد إشعاع."]]},
+ {q:"From Lesson 1-1: Faster particles have more…",qa:"من الدرس 1-1: الجسيمات الأسرع لها…",o:[["kinetic energy","طاقة حركية أكبر"],["mass","كتلة أكبر"],["volume","حجم أكبر"],["colour","لون أغمق"]],a:0,ex:["Kinetic energy is the energy of motion.","الطاقة الحركية هي طاقة الحركة."],h:[["It is the energy of motion.","إنها طاقة الحركة."],["Temperature measures its average.","درجة الحرارة تقيس متوسطها."]]},
+ {q:"From Lesson 1-2: Which change of state needs thermal energy to be removed?",qa:"من الدرس 1-2: أيّ تحوّل في الحالة يحتاج إلى إزالة طاقة حرارية؟",o:[["freezing","التجمّد"],["melting","الانصهار"],["boiling","الغليان"],["sublimation","التسامي"]],a:0,ex:["Liquid → solid: the particles slow down and lock in place.","سائل ← صلب: تبطؤ الجسيمات وتثبت في أماكنها."],h:[["Three of these need energy added.","ثلاثة من هذه تحتاج إلى إضافة طاقة."],["Think of water in the freezer.","فكّر في الماء داخل الفريزر."]]}];
+[2,0,3,1,2,0,1,3,0,2].forEach((t,i)=>{const q=Q[i],c=q.o[q.a],r=q.o.filter((_,j)=>j!==q.a);r.splice(t,0,c);q.o=r;q.a=t;});
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${first?ICON.check+" Correct!":ok?ICON.check+" Yes, now you have it.":ICON.cross+" Here is the answer."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${first?"إجابة صحيحة!":ok?"نعم، الآن فهمتها.":"إليك الإجابة."} ${q.ex[1]}</div>`;
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Scientist";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You can track every heat transfer!","رائع! أنت تتتبّع كل انتقال للحرارة!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the virtual labs, then retry.","محاولة جيدة! أعد المعامل الافتراضية، ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Science · Grade 6 · Unit 1 · Lesson 1-3 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
