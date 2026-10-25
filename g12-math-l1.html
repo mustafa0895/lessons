@@ -1,0 +1,1505 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F1E8">
+<title>Graphing Quadratic Functions – Math G12 Lesson 1-1</title>
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(247,241,232,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#EADFCD;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#F9E3DC;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#FFF6E1;border:1px solid #F1D9A6;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #E9CFA0;background:#FFF8EA;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#fff;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #E2D5C0}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#E4F3F1;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#FBF3EA;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#E8F5F3}
+.opt.right{border-color:var(--teal);background:#E2F4F1}
+.opt.wrong{border-color:var(--terra);background:#FBE9E4}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#EADFCD;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#fff;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#E8F5F3;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#FBE9E4;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#fff;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#fff}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#E2D5C0}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #fff}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#fff;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#fff}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #fff;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#FFF6E1}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#E2F4F1;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#E2F4F1}
+.pieces button.no{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#E2D5C0}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#E2F4F1;border-left:5px solid var(--teal)}
+.feedback.no{background:#FBE9E4;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#fff;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#fff;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#FFF6E1;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#fff;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#E8F5F3}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#FFF6E1}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#fff;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#FBE9E4}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#FFF6E1;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#fff;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#E8F5F3}.sc.diff{border-color:var(--terra);background:#FBE9E4}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#E2F4F1}.rchips button.wrong{border-color:var(--terra);background:#FBE9E4}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#E8F5F3}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#E8F5F3}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#FBE9E4}
+.ml.done,.mr.done{border-color:var(--teal);background:#E2F4F1;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#E8F5F3}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#FCE8B2;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#FCE8B2;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#E2F4F1}
+.eline.bad{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#fff;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#FFFFFF 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#E2F4F1}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#FBE9E4}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#FFF3D6}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#FFF3D6;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#E2F4F1}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#FBE9E4}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#FFF3D6;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#E8F5F3}.mcard2.wrong{border-color:var(--terra);background:#FBE9E4}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #fff;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#E8F5F3}.idc.wrong{border-color:var(--terra);background:#FBE9E4}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#E8F5F3}.claim2.wrong{border-color:var(--terra);background:#FBE9E4}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#FFF6EA}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#E8F5F3}.ct.no{border-color:var(--terra);background:#FBE9E4}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#FFF6EA}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#EADFF0;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#EADFCD;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#FFF6E0;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#fff;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#E8F5F3}.wuq .wo button.wrong{border-color:var(--terra);background:#FBE9E4}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#fff;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#FBF6EC;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#FBE9E4}.pick button.right{border-color:var(--teal);background:#E8F5F3}
+.why{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#E8F5F3}.why .wb button.wrong{border-color:var(--terra);background:#FBE9E4}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#fff;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#ddd;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#fff;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#FFFDF7}
+.tchip.lost{border-color:var(--terra);background:#FBE9E4}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#FBEDEA}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#E8F5F3}.pickph.wrong{border-color:var(--terra);background:#FBE9E4}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#E8F5F3}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#FBF6EC}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#E8F5F3;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#FBF6EC;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#fff;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#FFE7A8;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#FBF6EC;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#fff}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#E8F5F3;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#fff;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#fff;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#E8F5F3;border-color:var(--teal)}.tile.g1{background:#FFF0E6;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#FBF6EC;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#fff;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#fff;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#fff;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#fff;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#F3ECE1}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#fff}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#F3ECE1}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#fff}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#E9E2D6;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+
+.fq .ar{display:block;margin-top:4px}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Math · Grade 12 · Unit 1<small id="curLabel">Graphing Quadratic Functions</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="A parabola on a coordinate grid with its vertex and axis of symmetry">
+<defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F2A37"/><stop offset="1" stop-color="#2B3B4E"/></linearGradient>
+<pattern id="hg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".07"/></pattern>
+<linearGradient id="hc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2A9D8F"/><stop offset=".5" stop-color="#E9B44C"/><stop offset="1" stop-color="#C8553D"/></linearGradient>
+<radialGradient id="hv" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#FFE3A3"/><stop offset="1" stop-color="#E9B44C"/></radialGradient></defs>
+<rect width="640" height="360" fill="url(#hb)"/><rect width="640" height="360" fill="url(#hg)"/>
+<line x1="60" y1="72" x2="590" y2="72" stroke="#fff" stroke-opacity=".45" stroke-width="2"/><line x1="224" y1="8" x2="224" y2="128" stroke="#fff" stroke-opacity=".45" stroke-width="2"/>
+<line x1="352" y1="8" x2="352" y2="126" stroke="#E9B44C" stroke-width="2.5" stroke-dasharray="8 7"/>
+<path d="M232 10 Q352 180 472 10" fill="none" stroke="url(#hc)" stroke-width="6" stroke-linecap="round"/>
+<g fill="#7FD3E6" stroke="#1F2A37" stroke-width="2"><circle cx="265" cy="50" r="7"/><circle cx="439" cy="50" r="7"/></g>
+<path d="M273 50 H431" stroke="#7FD3E6" stroke-width="2" stroke-dasharray="4 6" opacity=".8"/>
+<circle cx="352" cy="95" r="10" fill="url(#hv)" stroke="#1F2A37" stroke-width="2.5"/>
+<rect x="368" y="84" width="74" height="24" rx="8" fill="#0E1A26" stroke="#E9B44C"/><text x="405" y="101" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" font-weight="800" fill="#E9B44C">vertex</text>
+<rect x="480" y="14" width="96" height="24" rx="8" fill="#0E1A26" stroke="#E9B44C"/><text x="528" y="31" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" font-weight="800" fill="#E9B44C">x = −b/2a</text>
+</svg>
+    <div class="herotxt"><span class="kicker light">Math · Grade 12 · Unit 1 · Lesson 1-1</span><h1>Graphing Quadratic Functions</h1><p class="ar">تمثيل الدوال التربيعية بيانيًا</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في متصفح Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="happy"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">When a football flies across the pitch, its path is a curve called a <b>parabola</b>. Today you will learn to draw it and read its secrets: the highest or lowest point, its mirror line and its values.</p><p class="ar">عندما تطير كرة القدم فوق الملعب يكون مسارها منحنى اسمه <b>القطع المكافئ</b>. اليوم ستتعلّم أن ترسمه وتقرأ أسراره: أعلى أو أدنى نقطة، وخط المرآة، وقيمه.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ recognise a quadratic function and its parabola<br>✔ find the axis of symmetry, the vertex and the y-intercept<br>✔ graph a quadratic function and state its domain and range<br>✔ find a maximum or minimum value and use it in real life<br>✔ find the average rate of change over an interval</p><p class="ar"><b>سأتعلّم اليوم أن:</b><br>✔ أتعرّف الدالة التربيعية وقطعها المكافئ<br>✔ أجد محور التماثل والرأس والمقطع y<br>✔ أمثّل الدالة التربيعية بيانيًا وأحدد مجالها ومداها<br>✔ أجد القيمة العظمى أو الصغرى وأستخدمها في الحياة<br>✔ أجد متوسط معدل التغير على فترة</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic.</p><p class="ar"><b>نصيحة:</b> اضغط زر <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمات.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up</span>
+  <h2>What do you already know?</h2>
+  <p class="hsub ar">ماذا تعرف من قبل؟</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Tap an answer, or tap "Show me".</p><p class="ar">مجرد تسخين، لا شيء يُحسب! اضغط على إجابة، أو اضغط «أرني».</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+</section>
+
+<section class="screen" data-title="Quadratic function">
+  <span class="kicker">Explore</span>
+  <h2>A quadratic function makes a parabola</h2>
+  <p class="hsub ar">الدالة التربيعية ترسم قطعًا مكافئًا</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A <b class="term">quadratic function</b> can be written in <b class="term">standard form</b> f(x) = ax² + bx + c, where a ≠ 0. Its graph is a U-shaped curve called a <b class="term">parabola</b>. The simplest one is the <b class="term">parent function</b> f(x) = x².</p><p class="ar"><b>الدالة التربيعية</b> يمكن كتابتها في <b>الصيغة القياسية</b> f(x) = ax² + bx + c حيث a ≠ 0. تمثيلها البياني منحنى على شكل حرف U اسمه <b>القطع المكافئ</b>. أبسطها هي <b>الدالة الأم</b> f(x) = x².</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="gfig"><svg id="qfSvg" viewBox="0 0 400 400" role="img" aria-label="The graph of f(x) = ax² + bx + c that changes with the sliders"></svg></div>
+      <div class="readout" id="qfEq">f(x) = x²</div>
+      <div class="needjs">
+        <div class="rlab">a = <span id="qfAv">1</span> <small>(quadratic term · الحد التربيعي)</small></div><input type="range" id="qfA" min="-3" max="3" step="0.5" value="1" aria-label="a">
+        <div class="rlab">b = <span id="qfBv">0</span> <small>(linear term · الحد الخطي)</small></div><input type="range" id="qfB" min="-6" max="6" step="1" value="0" aria-label="b">
+        <div class="rlab">c = <span id="qfCv">0</span> <small>(constant term · الحد الثابت)</small></div><input type="range" id="qfC" min="-6" max="6" step="1" value="0" aria-label="c">
+        <div class="btnrow c"><button class="btn alt sm" id="qfReset">↺ Parent function x²</button></div>
+      </div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="qfMsg"></div>
+      <div class="why needjs" id="why1"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Axis and vertex">
+  <span class="kicker">Explore</span>
+  <h2>The mirror line and the turning point</h2>
+  <p class="hsub ar">خط المرآة ونقطة الانعطاف</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> Every parabola is symmetric about a vertical line, the <b class="term">axis of symmetry</b>: x = −b/(2a). The parabola turns at the <b class="term">vertex</b>, which lies on this axis. The <b class="term">y-intercept</b> is c, because f(0) = c.</p><p class="ar">كل قطع مكافئ متماثل حول خط رأسي هو <b>محور التماثل</b>: x = −b/(2a). ينعطف القطع عند <b>الرأس</b> الذي يقع على هذا المحور. و<b>المقطع y</b> هو c لأن f(0) = c.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="gfig"><svg id="avSvg" viewBox="0 0 400 400" role="img" aria-label="The parabola f(x) = x² + 6x + 8 with mirror points on each side of its axis"></svg></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="avFold">Fold along the axis ▶</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="avMsg"></div>
+    </div>
+  </div>
+  <div class="bi"><p class="en"><b>Find the vertex:</b> step 1 find a, b and c; step 2 x = −b/(2a); step 3 put this x into f(x) to find y.</p><p class="ar"><b>إيجاد الرأس:</b> الخطوة 1 حدّد a وb وc؛ الخطوة 2 x = −b/(2a)؛ الخطوة 3 عوّض بقيمة x في f(x) لتجد y.</p></div>
+  <div class="fader" data-f="av"></div>
+  <div class="why needjs" id="why2"></div>
+</section>
+
+<section class="screen" data-title="Graph it">
+  <span class="kicker">Step by step</span>
+  <h2>Graph f(x) = x² − 2x − 3</h2>
+  <p class="hsub ar">مثّل f(x) = x² − 2x − 3 بيانيًا</p>
+  <div class="zrow"><div class="zav" data-zayed="think"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Start in the middle, at the vertex. Then use the mirror: every point on one side has a twin on the other side.</p><p class="ar">ابدأ من المنتصف، من الرأس. ثم استخدم المرآة: كل نقطة في جهة لها توأم في الجهة الأخرى.</p></div></div>
+  <div class="bench">
+    <div class="main">
+      <div class="gfig"><svg id="grSvg" viewBox="0 0 400 400" role="img" aria-label="Graphing f(x) = x² − 2x − 3 one step at a time"></svg></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="grNext">Show me ▶</button><button class="btn alt sm" id="grReset">↺ Start again</button></div>
+    </div>
+    <div class="side">
+      <table class="vtable" id="grTab"><tr><th>x</th><th>f(x)</th></tr></table>
+      <div class="msg bi" id="grMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Max or min">
+  <span class="kicker">Explore</span>
+  <h2>Maximum or minimum? Domain and range</h2>
+  <p class="hsub ar">قيمة عظمى أم صغرى؟ المجال والمدى</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> If a &gt; 0 the parabola opens <b>up</b> and the vertex is a <b class="term">minimum</b>. If a &lt; 0 it opens <b>down</b> and the vertex is a <b class="term">maximum</b>. The <b class="term">domain</b> is all real numbers. The <b class="term">range</b> starts at the y-value of the vertex.</p><p class="ar">إذا كانت a &gt; 0 يُفتح القطع <b>لأعلى</b> ويكون الرأس <b>قيمة صغرى</b>. وإذا كانت a &lt; 0 يُفتح <b>لأسفل</b> ويكون الرأس <b>قيمة عظمى</b>. <b>المجال</b> هو كل الأعداد الحقيقية، و<b>المدى</b> يبدأ من قيمة y للرأس.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="seg needjs" id="mmMode"><button data-v="0" class="on">f(x) = x² − 4x + 1</button><button data-v="1">f(x) = −x² + 4x + 1</button></div>
+      <div class="gfig"><svg id="mmSvg" viewBox="0 0 400 400" role="img" aria-label="A parabola with its range shaded on the y-axis"></svg></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="mmMsg"></div>
+      <div class="why needjs" id="why3"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Compare functions">
+  <span class="kicker">Apply</span>
+  <h2>Compare functions in different forms</h2>
+  <p class="hsub ar">قارن دوالًا مكتوبة بصيغ مختلفة</p>
+  <div class="bi"><p class="en">One function is an equation; the other is a graph or a table. Find the same feature for both (vertex, maximum, minimum or y-intercept), then compare.</p><p class="ar">إحدى الدالتين معادلة والأخرى تمثيل بياني أو جدول. أوجد الخاصية نفسها للدالتين (الرأس أو القيمة العظمى أو الصغرى أو المقطع y) ثم قارن.</p></div>
+  <div class="idg needjs" id="cmCards"></div>
+</section>
+
+<section class="screen" data-title="Rate of change">
+  <span class="kicker">Explore</span>
+  <h2>Average rate of change</h2>
+  <p class="hsub ar">متوسط معدل التغير</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> The <b class="term">average rate of change</b> of f over the interval [a, b] is the slope of the line through (a, f(a)) and (b, f(b)): (f(b) − f(a)) / (b − a).</p><p class="ar"><b>متوسط معدل التغير</b> للدالة f على الفترة [a, b] هو ميل الخط المار بالنقطتين (a, f(a)) و(b, f(b)): (f(b) − f(a)) / (b − a).</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="gfig"><svg id="rcSvg" viewBox="0 0 400 400" role="img" aria-label="The parabola f(x) = x² − 2x − 3 with a line through two of its points"></svg></div>
+      <div class="needjs"><div class="rlab">a = <span id="rcAv">−1</span></div><input type="range" id="rcA" min="-2" max="4" step="1" value="-1" aria-label="a">
+      <div class="rlab">b = <span id="rcBv">3</span></div><input type="range" id="rcB" min="-2" max="4" step="1" value="3" aria-label="b"></div>
+    </div>
+    <div class="side">
+      <div class="readout" id="rcCalc"></div>
+      <div class="msg bi needjs" id="rcMsg"></div>
+    </div>
+  </div>
+  <div class="fader" data-f="rc"></div>
+</section>
+
+<section class="screen" data-title="Real life">
+  <span class="kicker">Real life</span>
+  <h2>Ski passes: the price that earns the most</h2>
+  <p class="hsub ar">تذاكر التزلّج: السعر الذي يحقق أكبر إيراد</p>
+  <div class="bi"><p class="en">A ski resort sold <b>680</b> holiday-weekend passes at <b>$120</b> each. For every <b>$5</b> price increase, it expects to sell <b>20 fewer</b> passes. Let x = the number of $5 increases. Revenue = price × passes.</p><p class="ar">باع منتجع تزلّج <b>680</b> تذكرة لعطلة نهاية الأسبوع بسعر <b>$120</b> للتذكرة. مع كل زيادة <b>$5</b> في السعر يتوقع أن يبيع <b>20 تذكرة أقل</b>. لتكن x = عدد زيادات الـ $5. الإيراد = السعر × عدد التذاكر.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="gfig"><svg id="skSvg" viewBox="0 0 400 300" role="img" aria-label="Price, passes sold and the revenue parabola for the ski resort"></svg></div>
+      <div class="needjs"><div class="rlab">x = <span id="skXv">0</span> increases of $5</div><input type="range" id="skX" min="0" max="34" step="1" value="0" aria-label="number of $5 increases"></div>
+    </div>
+    <div class="side">
+      <div class="readout" id="skCalc"></div>
+      <div class="msg bi needjs" id="skMsg"></div>
+    </div>
+  </div>
+  <div class="fader" data-f="sk"></div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Check yourself</span>
+  <h2>Practice before the quiz</h2>
+  <p class="hsub ar">تدرّب قبل الاختبار</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Practice only: try each card. A wrong pick tells you where to look.</p><p class="ar">للتدريب فقط: جرّب كل بطاقة. الاختيار الخاطئ يخبرك أين تنظر.</p></div></div>
+  <div class="idg needjs" id="pcCards"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work! Now the quiz. A wrong answer gives you a hint first.</p><p class="ar">عمل رائع! والآن الاختبار. الإجابة الخاطئة تعطيك تلميحًا أولًا.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+</main>
+
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="math12_1_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"UAE MOE · Grade 12"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹ =+,./≠]*[0-9A-Za-z()\[\]½²³⁴¹])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}${n[1]&&n[1]!==n[0]?`<small>${n[1]}</small>`:""}</button>`).join("")}</div><div class="mwhy"></div></div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll("button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});}
+
+/* warm-up (prior knowledge) */
+const WU=[{q:"If f(x) = x² + 3, what is f(−2)?",qa:"إذا كانت f(x) = x² + 3، فما قيمة f(−2)؟",o:[["7","7"],["−1","−1"],["1","1"]],a:0,w:["(−2)² = 4, then 4 + 3 = 7.","(−2)² = 4، ثم 4 + 3 = 7."]},
+ {q:"What is (−3)²?",qa:"ما قيمة (−3)²؟",o:[["−9","−9"],["9","9"],["−6","−6"]],a:1,w:["(−3)(−3) = 9. A negative times a negative is positive.","(−3)(−3) = 9. السالب × السالب = موجب."]},
+ {q:"What is the slope of the line through (1, 2) and (3, 8)?",qa:"ما ميل الخط المار بالنقطتين (1, 2) و(3, 8)؟",o:[["6","6"],["2","2"],["3","3"]],a:2,w:["(8 − 2)/(3 − 1) = 6/2 = 3.","(8 − 2)/(3 − 1) = 6/2 = 3."]}];
+$("#wuBox").innerHTML=WU.map((x,i)=>`<div class="wuq" data-i="${i}"><div class="qq">${i+1}. ${x.q}<span class="ar">${x.qa}</span></div><div class="wo">${x.o.map((o,j)=>`<button data-j="${j}">${o[0]}</button>`).join("")}<button class="show" data-j="-1">Show me · أرني</button></div><div class="wa"><b>${x.o[x.a][0]}</b> ${x.w[0]}<span class="ar">${x.w[1]}</span></div></div>`).join("");
+$$("#wuBox .wuq").forEach(card=>{const x=WU[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const j=+b.dataset.j;card.querySelectorAll("button").forEach(y=>{if(+y.dataset.j===x.a)y.classList.add("right");});if(j>=0&&j!==x.a)b.classList.add("wrong");card.classList.add("done");});});
+
+/* ---------- graph helpers (measured coordinate grids in SVG) ---------- */
+const RM=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const mono='font-family="ui-monospace,monospace"';
+const fm=v=>{v=Math.round(v*100)/100;if(Object.is(v,-0))v=0;return v<0?"−"+(-v).toLocaleString("en-US"):v.toLocaleString("en-US");};
+const pr=v=>v<0?"("+fm(v)+")":fm(v);
+function grid(xr,yr,every,W,H){W=W||400;H=H||400;const pad=26,u=Math.min((W-2*pad)/(xr[1]-xr[0]),(H-2*pad)/(yr[1]-yr[0])),ox=pad+(W-2*pad-u*(xr[1]-xr[0]))/2,oy=pad+(H-2*pad-u*(yr[1]-yr[0]))/2;
+  const X=x=>ox+(x-xr[0])*u,Y=y=>oy+(yr[1]-y)*u;let s=`<defs><marker id="gA" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1F2A37"/></marker></defs>`;
+  for(let x=xr[0];x<=xr[1];x++)s+=`<line x1="${X(x)}" y1="${Y(yr[0])}" x2="${X(x)}" y2="${Y(yr[1])}" stroke="#E6EDED" stroke-width="1"/>`;
+  for(let y=yr[0];y<=yr[1];y++)s+=`<line x1="${X(xr[0])}" y1="${Y(y)}" x2="${X(xr[1])}" y2="${Y(y)}" stroke="#E6EDED" stroke-width="1"/>`;
+  const ax0=xr[0]<=0&&xr[1]>=0,ay0=yr[0]<=0&&yr[1]>=0;
+  if(ay0)s+=`<line x1="${X(xr[0])-6}" y1="${Y(0)}" x2="${X(xr[1])+6}" y2="${Y(0)}" stroke="#1F2A37" stroke-width="2" marker-start="url(#gA)" marker-end="url(#gA)"/><text x="${X(xr[1])}" y="${Y(0)-8}" font-size="14" font-weight="800" fill="#1F2A37" ${mono}>x</text>`;
+  if(ax0)s+=`<line x1="${X(0)}" y1="${Y(yr[0])+6}" x2="${X(0)}" y2="${Y(yr[1])-6}" stroke="#1F2A37" stroke-width="2" marker-start="url(#gA)" marker-end="url(#gA)"/><text x="${X(0)+8}" y="${Y(yr[1])+6}" font-size="14" font-weight="800" fill="#1F2A37" ${mono}>y</text>`;
+  const yb=ay0?Y(0)+16:Y(yr[0])+16,xb=ax0?X(0)-6:X(xr[0])-6;
+  for(let x=xr[0];x<=xr[1];x++)if(x&&x%every===0)s+=`<text x="${X(x)}" y="${yb}" text-anchor="middle" font-size="12" fill="#5B6675" ${mono}>${fm(x)}</text>`;
+  for(let y=yr[0];y<=yr[1];y++)if(y&&y%every===0)s+=`<text x="${xb}" y="${Y(y)+4}" text-anchor="end" font-size="12" fill="#5B6675" ${mono}>${fm(y)}</text>`;
+  return {X,Y,s,xr,yr};}
+function curve(g,f,col,x0,x1,w){x0=x0===undefined?g.xr[0]:x0;x1=x1===undefined?g.xr[1]:x1;let d="",pen=false;const n=160;
+  for(let i=0;i<=n;i++){const x=x0+(x1-x0)*i/n,y=f(x);if(y<g.yr[0]-.01||y>g.yr[1]+.01){pen=false;continue;}d+=(pen?"L":"M")+g.X(x).toFixed(1)+" "+g.Y(y).toFixed(1);pen=true;}
+  return `<path d="${d}" fill="none" stroke="${col||"#2A9D8F"}" stroke-width="${w||4}" stroke-linecap="round" stroke-linejoin="round"/>`;}
+const dot=(g,x,y,col,lab,dx,dy)=>{dx=dx===undefined?8:dx;dy=dy===undefined?-8:dy;const lw=lab?lab.length*7.6+10:0,lx=dx<0?g.X(x)+dx-lw:g.X(x)+dx;
+  return `<circle cx="${g.X(x)}" cy="${g.Y(y)}" r="6.5" fill="${col}" stroke="#fff" stroke-width="2.5"/>`+(lab?`<rect x="${lx}" y="${g.Y(y)+dy-14}" width="${lw}" height="20" rx="6" fill="#FBF7F0" stroke="${col}"/><text x="${lx+5}" y="${g.Y(y)+dy+1}" font-size="13" font-weight="800" fill="${col}" ${mono}>${lab}</text>`:"");};
+const vline=(g,x,col,lab)=>`<line x1="${g.X(x)}" y1="${g.Y(g.yr[0])}" x2="${g.X(x)}" y2="${g.Y(g.yr[1])}" stroke="${col||"#E9B44C"}" stroke-width="2.5" stroke-dasharray="7 6"/>`+(lab?`<rect x="${g.X(x)+6}" y="${g.Y(g.yr[1])+2}" width="${lab.length*7.6+10}" height="20" rx="6" fill="#FFF6E0" stroke="#B07D1A"/><text x="${g.X(x)+11}" y="${g.Y(g.yr[1])+17}" font-size="13" font-weight="800" fill="#8A5E10" ${mono}>${lab}</text>`:"");
+const pt=(x,y)=>"("+fm(x)+", "+fm(y)+")";
+function poly(a,b,c){let s="";const t=(k,v,first)=>{if(!k)return"";const sg=k<0?(first?"−":" − "):(first?"":" + "),m=Math.abs(k);return sg+(v&&m===1?"":fm(m))+v;};
+  s+=t(a,"x²",true);s+=t(b,"x",!s);s+=t(c,"",!s);return s||"0";}
+
+/* 1. quadratic function explorer */
+const qf=()=>[+$("#qfA").value,+$("#qfB").value,+$("#qfC").value];
+function qfDraw(){const [a,b,c]=qf(),g=grid([-8,8],[-8,8],2),f=x=>a*x*x+b*x+c;let s=g.s;
+  $("#qfAv").textContent=fm(a);$("#qfBv").textContent=fm(b);$("#qfCv").textContent=fm(c);$("#qfEq").textContent="f(x) = "+poly(a,b,c);
+  if(a===0){s+=curve(g,f,"#9AA5B1");s+=dot(g,0,c,"#C8553D","(0, "+fm(c)+")",8,-8);$("#qfSvg").innerHTML=s;
+    setMsg($("#qfMsg"),"a = 0, so there is no x² term. f(x) = "+poly(0,b,c)+" is a <b>line</b>, not a quadratic function.","a = 0، إذن لا يوجد حد x². الدالة f(x) = "+poly(0,b,c)+" <b>خط مستقيم</b> وليست دالة تربيعية.",true);return;}
+  const h=-b/(2*a),k=f(h);if(h>=-8&&h<=8)s+=vline(g,h);s+=curve(g,f,a>0?"#2A9D8F":"#C8553D");
+  if(k>=-8&&k<=8&&h>=-8&&h<=8)s+=dot(g,h,k,"#1F2A37","vertex",h>0?-10:10,a>0?22:-10);
+  if(c>=-8&&c<=8)s+=dot(g,0,c,"#7B4FA0","",0,0);
+  $("#qfSvg").innerHTML=s;
+  const wide=Math.abs(a)>1?["narrower","أضيق"]:Math.abs(a)<1?["wider","أوسع"]:["the same width as","بعرض"];
+  setMsg($("#qfMsg"),`a = ${fm(a)} ${a>0?"&gt; 0: it opens <b>up</b>":"&lt; 0: it opens <b>down</b>"}, and it is <b>${wide[0]}</b>${Math.abs(a)===1?" x²":" than x²"}. Vertex ${pt(h,k)}. Purple point: y-intercept (0, ${fm(c)}). Change b: the parabola slides sideways.`,
+   `a = ${fm(a)} ${a>0?"&gt; 0: يُفتح <b>لأعلى</b>":"&lt; 0: يُفتح <b>لأسفل</b>"}، وهو <b>${wide[1]}</b>${Math.abs(a)===1?" x²":" من x²"}. الرأس ${pt(h,k)}. النقطة البنفسجية: المقطع y هو (0, ${fm(c)}). غيّر b: يتحرك القطع جانبيًا.`);}
+["#qfA","#qfB","#qfC"].forEach(id=>$(id).oninput=qfDraw);
+$("#qfReset").onclick=()=>{$("#qfA").value=1;$("#qfB").value=0;$("#qfC").value=0;qfDraw();};qfDraw();
+whyBox($("#why1"),"Why must a ≠ 0 in f(x) = ax² + bx + c?","لماذا يجب أن تكون a ≠ 0 في f(x) = ax² + bx + c؟",[
+ ["Because c must be 0.","لأن c يجب أن تساوي 0.",0,"c can be any number. It is the y-intercept.","يمكن أن تكون c أي عدد؛ إنها المقطع y."],
+ ["With a = 0 the x² term disappears, so the graph is a line.","عندما a = 0 يختفي حد x²، فيصبح التمثيل خطًا مستقيمًا.",1,"Try it: move a to 0 and watch the curve become a line.","جرّب: حرّك a إلى 0 وشاهد المنحنى يصبح خطًا."],
+ ["Because a parabola cannot open down.","لأن القطع المكافئ لا يمكن أن يُفتح لأسفل.",0,"It can: when a &lt; 0 it opens down.","يمكن ذلك: عندما a &lt; 0 يُفتح لأسفل."]]);
+
+/* 2. axis and vertex: fold */
+const avf=x=>x*x+6*x+8,AVP=[-2,-1,0];let avBusy=false;
+function avDraw(t){const g=grid([-7,1],[-2,9],1);let s=g.s+vline(g,-3,null,"x = −3");
+  s+=curve(g,avf,"#2A9D8F",-3,1);if(t>=1)s+=curve(g,avf,"#2A9D8F",-7,-3);
+  AVP.forEach(x=>{const m=-6-x,xx=x+(m-x)*Math.min(1,t);s+=`<line x1="${g.X(x)}" y1="${g.Y(avf(x))}" x2="${g.X(xx)}" y2="${g.Y(avf(x))}" stroke="#7FD3E6" stroke-width="2" stroke-dasharray="4 5"/>`;
+    s+=dot(g,x,avf(x),"#2A8FB0",t<1?pt(x,avf(x)):"",8,4);if(t>0)s+=dot(g,xx,avf(x),"#7B4FA0",t>=1?pt(m,avf(x)):"",-8,4);});
+  s+=dot(g,-3,-1,"#1F2A37","vertex (−3, −1)",10,18);$("#avSvg").innerHTML=s;}
+avDraw(0);setMsg($("#avMsg"),"f(x) = x² + 6x + 8: a = 1, b = 6, c = 8. Axis: x = −6/(2·1) = −3. Here is only the right half. Tap <b>Fold</b> to mirror it.","f(x) = x² + 6x + 8: a = 1 وb = 6 وc = 8. المحور: x = −6/(2·1) = −3. هنا النصف الأيمن فقط. اضغط <b>Fold</b> لعكسه.");
+$("#avFold").onclick=()=>{if(avBusy)return;const done=()=>{avBusy=false;avDraw(1);setMsg($("#avMsg"),"Each point has a twin at the same height, the same distance from x = −3: (0, 8) and (−6, 8). The y-intercept is (0, 8) = c. Vertex (−3, −1).","لكل نقطة توأم على الارتفاع نفسه وعلى البعد نفسه من x = −3: (0, 8) و(−6, 8). المقطع y هو (0, 8) = c. الرأس (−3, −1).");};
+  if(RM){done();return;}avBusy=true;const t0=performance.now();(function st(n){const p=Math.min(1,(n-t0)/1400);avDraw(p<1?p*.999:1);if(p<1)requestAnimationFrame(st);else done();})(t0);};
+whyBox($("#why2"),"Why is the y-intercept of f(x) = ax² + bx + c always c?","لماذا يكون المقطع y للدالة f(x) = ax² + bx + c دائمًا c؟",[
+ ["Because the vertex is always at (0, c).","لأن الرأس دائمًا عند (0, c).",0,"Only when b = 0. Here the vertex is (−3, −1) but the y-intercept is 8.","فقط عندما b = 0. هنا الرأس (−3, −1) لكن المقطع y هو 8."],
+ ["Because c is the biggest number.","لأن c أكبر عدد.",0,"Size does not matter. Think about x = 0.","الحجم لا يهم. فكّر في x = 0."],
+ ["Because at x = 0, ax² and bx are 0, so f(0) = c.","لأنه عند x = 0 يكون ax² وbx صفرًا، إذن f(0) = c.",1,"The graph meets the y-axis where x = 0.","يقطع التمثيل محور y عندما x = 0."]]);
+
+/* 3. graph it, step by step */
+const grf=x=>x*x-2*x-3;let grK=0;
+const GR=[[[],"Tap <b>Show me</b> to graph it in 6 steps.","اضغط <b>Show me</b> للتمثيل في 6 خطوات."],
+ [[],"<b>1. Axis:</b> a = 1, b = −2. x = −(−2)/(2·1) = <b>1</b>.","<b>1. المحور:</b> a = 1 وb = −2. x = −(−2)/(2·1) = <b>1</b>."],
+ [[1],"<b>2. Vertex:</b> f(1) = 1 − 2 − 3 = −4. Vertex <b>(1, −4)</b>.","<b>2. الرأس:</b> f(1) = 1 − 2 − 3 = −4. الرأس <b>(1, −4)</b>."],
+ [[0,2],"<b>3. y-intercept:</b> f(0) = −3, so (0, −3). Its twin across x = 1 is (2, −3).","<b>3. المقطع y:</b> f(0) = −3، إذن (0, −3). توأمها عبر x = 1 هو (2, −3)."],
+ [[-1,3],"<b>4. One more point:</b> f(−1) = 1 + 2 − 3 = 0, so (−1, 0). Twin: (3, 0).","<b>4. نقطة أخرى:</b> f(−1) = 1 + 2 − 3 = 0، إذن (−1, 0). التوأم: (3, 0)."],
+ [[-2,4],"<b>5. Another:</b> f(−2) = 4 + 4 − 3 = 5, so (−2, 5). Twin: (4, 5).","<b>5. نقطة أخرى:</b> f(−2) = 4 + 4 − 3 = 5، إذن (−2, 5). التوأم: (4, 5)."],
+ [[],"<b>6. Join the points</b> with a smooth U-shaped curve, not straight lines. Domain: all real numbers. Range: {y | y ≥ −4}.","<b>6. صِل النقاط</b> بمنحنى أملس على شكل U وليس بخطوط مستقيمة. المجال: كل الأعداد الحقيقية. المدى: {y | y ≥ −4}."]];
+function grDraw(){const g=grid([-3,5],[-5,6],1);let s=g.s,xs=[];for(let i=1;i<=grK;i++)xs=xs.concat(GR[i][0]);
+  if(grK>=1)s+=vline(g,1,null,"x = 1");if(grK>=6)s+=curve(g,grf,"#2A9D8F");
+  xs.forEach(x=>{s+=dot(g,x,grf(x),x===1?"#1F2A37":"#C8553D",grK<6||x===1?pt(x,grf(x)):"",x<1?-8:8,x===1?20:-8);});
+  $("#grSvg").innerHTML=s;const rows=[...xs].sort((p,q)=>p-q);
+  $("#grTab").innerHTML="<tr><th>x</th><th>f(x)</th></tr>"+rows.map(x=>`<tr class="${x===1?"cur":""}"><td>${fm(x)}</td><td>${fm(grf(x))}</td></tr>`).join("");
+  setMsg($("#grMsg"),GR[grK][1],GR[grK][2]);$("#grNext").disabled=grK>=6;}
+$("#grNext").onclick=()=>{if(grK<6){grK++;grDraw();}};$("#grReset").onclick=()=>{grK=0;grDraw();};grDraw();
+
+/* 4. maximum or minimum */
+const MM=[{f:x=>x*x-4*x+1,a:1,k:-3},{f:x=>-x*x+4*x+1,a:-1,k:5}];let mmK=0;
+function mmDraw(){const m=MM[mmK],g=grid([-2,6],[-4,7],1);let s=g.s;
+  const y1=m.a>0?g.Y(7):g.Y(m.k),y2=m.a>0?g.Y(m.k):g.Y(-4);
+  s+=`<rect x="${g.X(0)-7}" y="${y1}" width="14" height="${y2-y1}" rx="7" fill="#E9B44C" opacity=".55"/>`;
+  s+=`<line x1="${g.X(-2)}" y1="${g.Y(m.k)}" x2="${g.X(6)}" y2="${g.Y(m.k)}" stroke="#C8553D" stroke-width="2" stroke-dasharray="6 6"/>`;
+  s+=curve(g,m.f,m.a>0?"#2A9D8F":"#C8553D");s+=dot(g,2,m.k,"#1F2A37",(m.a>0?"min ":"max ")+pt(2,m.k),10,m.a>0?22:-10);
+  s+=`<text x="${g.X(0)+12}" y="${m.a>0?g.Y(6.3):g.Y(-3.4)}" font-size="13" font-weight="800" fill="#8A5E10" ${mono}>range</text>`;
+  $("#mmSvg").innerHTML=s;
+  if(m.a>0)setMsg($("#mmMsg"),"a = 1 &gt; 0: opens up. Vertex (2, −3) is the lowest point: <b>minimum value −3</b>. Domain: all real numbers. Range: <b>{y | y ≥ −3}</b> (the yellow band).","a = 1 &gt; 0: يُفتح لأعلى. الرأس (2, −3) أدنى نقطة: <b>القيمة الصغرى −3</b>. المجال: كل الأعداد الحقيقية. المدى: <b>{y | y ≥ −3}</b> (الشريط الأصفر).");
+  else setMsg($("#mmMsg"),"a = −1 &lt; 0: opens down. Vertex (2, 5) is the highest point: <b>maximum value 5</b>. Domain: all real numbers. Range: <b>{y | y ≤ 5}</b> (the yellow band).","a = −1 &lt; 0: يُفتح لأسفل. الرأس (2, 5) أعلى نقطة: <b>القيمة العظمى 5</b>. المجال: كل الأعداد الحقيقية. المدى: <b>{y | y ≤ 5}</b> (الشريط الأصفر).");}
+$$("#mmMode button").forEach(b=>b.onclick=()=>{$$("#mmMode button").forEach(x=>x.classList.toggle("on",x===b));mmK=+b.dataset.v;mmDraw();});mmDraw();
+whyBox($("#why3"),"Why does the range of f(x) = x² − 4x + 1 start at −3?","لماذا يبدأ مدى f(x) = x² − 4x + 1 من −3؟",[
+ ["Because the y-intercept is −3.","لأن المقطع y هو −3.",0,"The y-intercept is c = 1. Look at the vertex instead.","المقطع y هو c = 1. انظر إلى الرأس بدلًا منه."],
+ ["Because −3 is the lowest y-value: the vertex is a minimum.","لأن −3 أصغر قيمة لـ y: الرأس قيمة صغرى.",1,"Every other point of the parabola is higher than the vertex.","كل نقاط القطع الأخرى أعلى من الرأس."],
+ ["Because the axis of symmetry is x = −3.","لأن محور التماثل هو x = −3.",0,"The axis is x = 2. The range is about y-values.","المحور هو x = 2. المدى يخص قيم y."]]);
+
+/* 5. compare functions */
+function mini(fn,xr,yr,lab){const g=grid(xr,yr,2,400,250);return `<svg viewBox="0 0 400 250" style="display:block;width:100%;max-width:340px;margin:8px auto;background:#fff;border:1px solid #E3E8EC;border-radius:12px">${g.s+curve(g,fn,"#7B4FA0",undefined,undefined,3.5)+(lab?lab(g):"")}</svg>`;}
+const tbl=(xs,ys)=>`<table class="vtable" style="margin:8px auto"><tr><th>x</th>${xs.map(v=>`<td>${fm(v)}</td>`).join("")}</tr><tr><th>g(x)</th>${ys.map(v=>`<td>${fm(v)}</td>`).join("")}</tr></table>`;
+cardsQ($("#cmCards"),[
+ {t:[`<b>f(x) = x² − 10x + 5</b> and g(x) in the graph. Which has the lesser minimum?${mini(x=>(x+1)*(x+1)-5,[-5,3],[-6,4],g=>dot(g,-1,-5,"#1F2A37","(−1, −5)",10,18))}`,"f(x) = x² − 10x + 5 وg(x) في التمثيل البياني. أيّهما له قيمة صغرى أقل؟"],
+  o:[["f(x): minimum −20","f(x): القيمة الصغرى −20"],["g(x): minimum −5","g(x): القيمة الصغرى −5"],["They are equal","متساويتان"]],a:0,cls:"stack",
+  w:["f: x = 10/2 = 5, f(5) = 25 − 50 + 5 = −20. g: vertex (−1, −5). −20 &lt; −5.","f: x = 10/2 = 5، f(5) = 25 − 50 + 5 = −20. g: الرأس (−1, −5). −20 &lt; −5."],h:["Find the vertex of f first: x = −b/(2a) = 5, then f(5).","أوجد رأس f أولًا: x = −b/(2a) = 5، ثم f(5)."]},
+ {t:[`<b>f(x) = −x² + 6x − 15</b> and g(x) in the table. Which has the greater maximum?${tbl([-2,-1,0,1,2],[-7,-4,-3,-4,-7])}`,"f(x) = −x² + 6x − 15 وg(x) في الجدول. أيّهما له قيمة عظمى أكبر؟"],
+  o:[["f(x): maximum −6","f(x): القيمة العظمى −6"],["g(x): maximum −3","g(x): القيمة العظمى −3"],["They are equal","متساويتان"]],a:1,cls:"stack",
+  w:["f: x = −6/(−2) = 3, f(3) = −9 + 18 − 15 = −6. g: the table is symmetric about x = 0, so its maximum is −3. −3 &gt; −6.","f: x = −6/(−2) = 3، f(3) = −9 + 18 − 15 = −6. g: الجدول متماثل حول x = 0 فقيمته العظمى −3. −3 &gt; −6."],h:["In the table, find the middle row: the values are the same on both sides of it.","في الجدول ابحث عن العمود الأوسط: القيم متساوية على جانبيه."]},
+ {t:[`<b>f(x) = 2x² − 4x + 3</b> and h(x) in the graph. Which has the greater y-intercept?${mini(x=>x*x+2*x-2,[-4,2],[-4,4],g=>dot(g,0,-2,"#1F2A37","(0, −2)",10,18))}`,"f(x) = 2x² − 4x + 3 وh(x) في التمثيل البياني. أيّهما له مقطع y أكبر؟"],
+  o:[["They are equal","متساويتان"],["h(x): y-intercept −2","h(x): المقطع y هو −2"],["f(x): y-intercept 3","f(x): المقطع y هو 3"]],a:2,cls:"stack",
+  w:["The y-intercept of f is c = 3. The graph of h crosses the y-axis at −2. 3 &gt; −2.","المقطع y للدالة f هو c = 3. تمثيل h يقطع محور y عند −2. 3 &gt; −2."],h:["The y-intercept of f is the constant term c.","المقطع y للدالة f هو الحد الثابت c."]}]);
+
+/* 6. average rate of change */
+function rcDraw(){const a=+$("#rcA").value,b=+$("#rcB").value,g=grid([-3,5],[-5,6],1);let s=g.s+curve(g,grf,"#2A9D8F");
+  $("#rcAv").textContent=fm(a);$("#rcBv").textContent=fm(b);const fa=grf(a),fb=grf(b);
+  if(a===b){s+=dot(g,a,fa,"#C8553D","a = b");$("#rcSvg").innerHTML=s;$("#rcCalc").textContent="b − a = 0";setMsg($("#rcMsg"),"a and b are the same number. An interval needs two different ends. Move a slider.","a وb العدد نفسه. الفترة تحتاج طرفين مختلفين. حرّك أحد المنزلقين.",true);return;}
+  const m=(fb-fa)/(b-a),L=x=>fa+m*(x-a);s+=curve(g,L,"#E9B44C",undefined,undefined,3);
+  s+=dot(g,a,fa,"#C8553D","("+fm(a)+", "+fm(fa)+")",a<b?-8:8,-8)+dot(g,b,fb,"#7B4FA0","("+fm(b)+", "+fm(fb)+")",a<b?8:-8,-8);$("#rcSvg").innerHTML=s;
+  $("#rcCalc").innerHTML=`f(${fm(b)}) = ${fm(fb)}, f(${fm(a)}) = ${fm(fa)}<br>(${fm(fb)} − ${pr(fa)}) / (${fm(b)} − ${pr(a)}) = ${fm(fb-fa)}/${fm(b-a)} = <b>${fm(m)}</b>`;
+  if(m>0)setMsg($("#rcMsg"),`Rate = ${fm(m)} &gt; 0: on average f <b>increases</b> by ${fm(m)} for each 1 unit of x on this interval.`,`المعدل = ${fm(m)} &gt; 0: في المتوسط <b>تزداد</b> f بمقدار ${fm(m)} لكل وحدة من x على هذه الفترة.`);
+  else if(m<0)setMsg($("#rcMsg"),`Rate = ${fm(m)} &lt; 0: on average f <b>decreases</b> by ${fm(-m)} for each 1 unit of x on this interval.`,`المعدل = ${fm(m)} &lt; 0: في المتوسط <b>تتناقص</b> f بمقدار ${fm(-m)} لكل وحدة من x على هذه الفترة.`);
+  else setMsg($("#rcMsg"),"Rate = 0: f(a) = f(b). The two points are mirror twins across the axis x = 1, so the line is horizontal.","المعدل = 0: f(a) = f(b). النقطتان توأمان حول المحور x = 1، لذلك الخط أفقي.");}
+$("#rcA").oninput=rcDraw;$("#rcB").oninput=rcDraw;rcDraw();
+
+/* 7. real life: ski passes */
+const skR=x=>(120+5*x)*(680-20*x);let skSeen=false;
+function skDraw(){const x=+$("#skX").value,p=120+5*x,n=680-20*x,R=skR(x);$("#skXv").textContent=x;if(x===5)skSeen=true;
+  const X=v=>46+v*(338/34),Y=v=>280-v/90000*150;let s=`<rect width="400" height="300" fill="#fff"/>`;
+  const chip=(cx,lab,val,col)=>`<rect x="${cx}" y="10" width="118" height="58" rx="12" fill="${col}" opacity=".12"/><rect x="${cx}" y="10" width="118" height="58" rx="12" fill="none" stroke="${col}" stroke-width="2"/><text x="${cx+59}" y="31" text-anchor="middle" font-size="12" font-weight="700" fill="#1F2A37" ${mono}>${lab}</text><text x="${cx+59}" y="56" text-anchor="middle" font-size="18" font-weight="800" fill="${col}" ${mono}>${val}</text>`;
+  s+=chip(10,"price","$"+p,"#C8553D")+chip(141,"passes",""+n,"#2A9D8F")+chip(272,"revenue","$"+R.toLocaleString("en-US"),"#8C5A3C");
+  for(let v=0;v<=90000;v+=30000){s+=`<line x1="${X(0)}" y1="${Y(v)}" x2="${X(34)}" y2="${Y(v)}" stroke="#E6EDED"/><text x="${X(0)-4}" y="${Y(v)+4}" text-anchor="end" font-size="11" fill="#5B6675" ${mono}>${v/1000}k</text>`;}
+  for(let v=0;v<=34;v+=5)s+=`<text x="${X(v)}" y="${Y(0)+15}" text-anchor="middle" font-size="11" fill="#5B6675" ${mono}>${v}</text>`;
+  s+=`<line x1="${X(0)}" y1="${Y(0)}" x2="${X(34)+6}" y2="${Y(0)}" stroke="#1F2A37" stroke-width="2"/><line x1="${X(0)}" y1="${Y(0)}" x2="${X(0)}" y2="${Y(92000)}" stroke="#1F2A37" stroke-width="2"/><text x="${X(34)+2}" y="${Y(0)-6}" font-size="12" font-weight="800" fill="#1F2A37" ${mono}>x</text><text x="${X(0)+6}" y="${Y(90000)+2}" font-size="12" font-weight="800" fill="#1F2A37" ${mono}>R</text>`;
+  if(skSeen)s+=`<line x1="${X(5)}" y1="${Y(0)}" x2="${X(5)}" y2="${Y(90000)}" stroke="#E9B44C" stroke-width="2" stroke-dasharray="6 5"/>`;
+  let d="";for(let i=0;i<=68;i++){const v=i/2;d+=(i?"L":"M")+X(v).toFixed(1)+" "+Y(skR(v)).toFixed(1);}s+=`<path d="${d}" fill="none" stroke="#2A9D8F" stroke-width="3.5"/>`;
+  s+=`<circle cx="${X(x)}" cy="${Y(R)}" r="7" fill="${x===5?"#E9B44C":"#C8553D"}" stroke="#fff" stroke-width="2.5"/>`;
+  $("#skSvg").innerHTML=s;
+  $("#skCalc").innerHTML=`price = 120 + 5(${x}) = $${p}<br>passes = 680 − 20(${x}) = ${n}<br>R = ${p} × ${n} = <b>$${R.toLocaleString("en-US")}</b>`;
+  if(x<5)setMsg($("#skMsg"),"Revenue is still going <b>up</b>. Keep raising the price.","الإيراد ما زال <b>يرتفع</b>. استمر في رفع السعر.");
+  else if(x===5)setMsg($("#skMsg"),"<b>Maximum!</b> At x = 5 the price is $145, 580 passes are sold and the revenue is <b>$84,100</b>. This is the vertex of the parabola.","<b>القيمة العظمى!</b> عند x = 5 يكون السعر $145 ويُباع 580 تذكرة ويكون الإيراد <b>$84,100</b>. هذا هو رأس القطع المكافئ.");
+  else if(x===34)setMsg($("#skMsg"),"At $290 nobody buys: 0 passes, $0. So in this situation x goes from 0 to 34 (domain) and R from 0 to 84,100 (range).","عند $290 لا أحد يشتري: 0 تذكرة و$0. إذن في هذا الموقف x من 0 إلى 34 (المجال) وR من 0 إلى 84,100 (المدى).",true);
+  else setMsg($("#skMsg"),"The price is higher, but so many fewer passes are sold that revenue goes <b>down</b>.","السعر أعلى، لكن عدد التذاكر المبيعة يقلّ كثيرًا فينخفض الإيراد.",true);}
+$("#skX").oninput=skDraw;skDraw();
+
+const FD={
+ av:[{q:"Find the vertex of f(x) = x² + 6x + 8.<span class=\"ar\">أوجد رأس f(x) = x² + 6x + 8.</span>",s:[["a = 1, b = 6, c = 8","Find a, b, c","حدّد a وb وc"],["x = −6 / (2 × 1) = −3","Axis of symmetry","محور التماثل"],["f(−3) = 9 − 18 + 8 = −1","Find y","أوجد y"],["vertex (−3, −1)","Vertex","الرأس"]],blank:0},
+  {q:"Find the vertex of f(x) = −x² − 2x + 2.<span class=\"ar\">أوجد رأس f(x) = −x² − 2x + 2.</span>",s:[["a = −1, b = −2, c = 2","Find a, b, c","حدّد a وb وc"],["x = −(−2) / (2 × (−1)) = −1","Axis of symmetry","محور التماثل"],["f(−1) = −1 + 2 + 2 = 3","Find y","أوجد y"],["vertex (−1, 3)","Vertex","الرأس"]],blank:1,
+   o:[["vertex (−1, 3)","vertex (3, −1)","vertex (−1, 1)"]],h:[["Write x first, then y: (x, f(x)).","اكتب x أولًا ثم y: (x, f(x))."]]},
+  {q:"Find the vertex of f(x) = 2x² − 4x + 3.<span class=\"ar\">أوجد رأس f(x) = 2x² − 4x + 3.</span>",s:[["a = 2, b = −4, c = 3","Find a, b, c","حدّد a وb وc"],["x = −(−4) / (2 × 2) = 1","Axis of symmetry","محور التماثل"],["f(1) = 2 − 4 + 3 = 1","Find y","أوجد y"],["vertex (1, 1)","Vertex","الرأس"]],blank:2,
+   o:[["f(1) = 2 − 4 + 3 = 1","f(1) = 4 − 4 + 3 = 3","f(1) = 2 + 4 + 3 = 9"],["vertex (1, 1)","vertex (1, 3)","vertex (3, 1)"]],h:[["2x² at x = 1 is 2·1² = 2, and −4x is −4.","2x² عند x = 1 تساوي 2·1² = 2، و−4x تساوي −4."],["Use x = 1 and the y you just found.","استخدم x = 1 وقيمة y التي وجدتها."]]}],
+ rc:[{q:"Average rate of change of f(x) = x² − 10x + 5 over [−4, 4].<span class=\"ar\">متوسط معدل التغير للدالة f(x) = x² − 10x + 5 على [−4, 4].</span>",s:[["f(4) = 16 − 40 + 5 = −19","f(b)","f(b)"],["f(−4) = 16 + 40 + 5 = 61","f(a)","f(a)"],["(−19 − 61) / (4 − (−4)) = −80/8 = −10","Divide","اقسم"]],blank:0},
+  {q:"Average rate of change of f(x) = 2x² − 3x + 1 over [−2, 2].<span class=\"ar\">متوسط معدل التغير للدالة f(x) = 2x² − 3x + 1 على [−2, 2].</span>",s:[["f(2) = 8 − 6 + 1 = 3","f(b)","f(b)"],["f(−2) = 8 + 6 + 1 = 15","f(a)","f(a)"],["(3 − 15) / (2 − (−2)) = −12/4 = −3","Divide","اقسم"]],blank:1,
+   o:[["(15 − 3) / (2 − (−2)) = 12/4 = 3","(3 − 15) / (2 − (−2)) = −12/4 = −3","(3 + 15) / (2 + 2) = 18/4 = 4.5"]],h:[["Always f(b) − f(a) on top: the right end first.","دائمًا f(b) − f(a) في البسط: الطرف الأيمن أولًا."]]},
+  {q:"Average rate of change of f(x) = x² − 7 over [−3, 3].<span class=\"ar\">متوسط معدل التغير للدالة f(x) = x² − 7 على [−3, 3].</span>",s:[["f(3) = 9 − 7 = 2","f(b)","f(b)"],["f(−3) = 9 − 7 = 2","f(a)","f(a)"],["(2 − 2) / (3 − (−3)) = 0/6 = 0","Divide","اقسم"]],blank:2,
+   o:[["f(−3) = −9 − 7 = −16","f(−3) = 9 − 7 = 2","f(−3) = 9 + 7 = 16"],["(2 − 2) / (3 − (−3)) = 0/6 = 0","(2 + 2) / (3 − (−3)) = 4/6 = 2/3","(2 − 2) / (3 − 3) = undefined"]],h:[["(−3)² = 9, not −9.","(−3)² = 9 وليس −9."],["3 − (−3) = 6, so we can divide.","3 − (−3) = 6، إذن يمكن القسمة."]]}],
+ sk:[{q:"Ski resort: 680 passes at $120; each $5 increase → 20 fewer passes. Find the price for maximum revenue.<span class=\"ar\">منتجع التزلّج: 680 تذكرة بسعر $120؛ كل زيادة $5 ← 20 تذكرة أقل. أوجد السعر الذي يعطي أكبر إيراد.</span>",s:[["R(x) = (120 + 5x)(680 − 20x)","Price × passes","السعر × عدد التذاكر"],["R(x) = −100x² + 1000x + 81,600","Multiply out","فكّ الأقواس"],["x = −1000 / (2 × (−100)) = 5","Axis of symmetry","محور التماثل"],["price = 120 + 5(5) = $145, passes = 680 − 20(5) = 580","Interpret x = 5","فسّر x = 5"],["R(5) = 145 × 580 = $84,100 (maximum)","Maximum revenue","أكبر إيراد"]],blank:0},
+  {q:"Country park: 480 fishing permits at $80; each $4 increase → 16 fewer permits. Find the maximum revenue.<span class=\"ar\">حديقة ريفية: 480 تصريح صيد بسعر $80؛ كل زيادة $4 ← 16 تصريحًا أقل. أوجد أكبر إيراد.</span>",s:[["R(x) = (80 + 4x)(480 − 16x)","Price × permits","السعر × عدد التصاريح"],["R(x) = −64x² + 640x + 38,400","Multiply out","فكّ الأقواس"],["x = −640 / (2 × (−64)) = 5","Axis of symmetry","محور التماثل"],["price = 80 + 4(5) = $100, permits = 480 − 16(5) = 400","Interpret x = 5","فسّر x = 5"],["R(5) = 100 × 400 = $40,000 (maximum)","Maximum revenue","أكبر إيراد"]],blank:1,
+   o:[["R(5) = 100 × 400 = $40,000 (minimum)","R(5) = 80 × 480 = $38,400 (maximum)","R(5) = 100 × 400 = $40,000 (maximum)"]],h:[["Use the new price and the new number of permits. a = −64 &lt; 0, so the vertex is a maximum.","استخدم السعر الجديد والعدد الجديد للتصاريح. a = −64 &lt; 0، إذن الرأس قيمة عظمى."]]}]};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+
+/* 8. check yourself */
+cardsQ($("#pcCards"),[
+ {t:["Find the vertex of f(x) = −9x² − 12x + 19. Is it a maximum or a minimum?","أوجد رأس f(x) = −9x² − 12x + 19. هل هو قيمة عظمى أم صغرى؟"],o:[["(−2/3, 23) minimum","(−2/3, 23) صغرى"],["(−2/3, 23) maximum","(−2/3, 23) عظمى"],["(2/3, 7) maximum","(2/3, 7) عظمى"]],a:1,cls:"stack",
+  w:["x = −(−12)/(2·(−9)) = −2/3. f(−2/3) = −4 + 8 + 19 = 23. a = −9 &lt; 0, so it is a maximum.","x = −(−12)/(2·(−9)) = −2/3. f(−2/3) = −4 + 8 + 19 = 23. a = −9 &lt; 0، إذن قيمة عظمى."],h:["Careful with the signs: b = −12 and a = −9, so x = 12/(−18).","انتبه للإشارات: b = −12 وa = −9، إذن x = 12/(−18)."]},
+ {t:["What is the axis of symmetry of f(x) = 2x² + 8x − 1?","ما محور التماثل للدالة f(x) = 2x² + 8x − 1؟"],o:[["x = 2","x = 2"],["x = −4","x = −4"],["x = −2","x = −2"]],a:2,cls:"two",
+  w:["x = −8/(2·2) = −8/4 = −2.","x = −8/(2·2) = −8/4 = −2."],h:["Use x = −b/(2a) with a = 2, b = 8. Don't forget the 2 in 2a.","استخدم x = −b/(2a) حيث a = 2 وb = 8. لا تنسَ العدد 2 في 2a."]},
+ {t:["Which function opens down and has a maximum?","أيّ دالة يُفتح تمثيلها لأسفل ولها قيمة عظمى؟"],o:[["f(x) = 3x² − x","f(x) = 3x² − x"],["f(x) = −2x² + 5x + 1","f(x) = −2x² + 5x + 1"],["f(x) = x² − 9","f(x) = x² − 9"]],a:1,cls:"stack",
+  w:["a = −2 &lt; 0, so it opens down and the vertex is a maximum.","a = −2 &lt; 0، إذن يُفتح لأسفل والرأس قيمة عظمى."],h:["Look only at the sign of a, the number in front of x².","انظر فقط إلى إشارة a، العدد أمام x²."]},
+ {t:["What is the range of f(x) = x² + 6x + 8?","ما مدى الدالة f(x) = x² + 6x + 8؟"],o:[["{y | y ≥ −1}","{y | y ≥ −1}"],["{y | y ≤ −1}","{y | y ≤ −1}"],["{y | y ≥ −3}","{y | y ≥ −3}"]],a:0,cls:"stack",
+  w:["Vertex (−3, −1) and a &gt; 0, so the lowest y is −1.","الرأس (−3, −1) وa &gt; 0، إذن أصغر قيمة لـ y هي −1."],h:["The range uses the y-value of the vertex, not the x-value.","المدى يستخدم قيمة y للرأس وليس قيمة x."]},
+ {t:["What is the y-intercept of f(x) = 3x² − 5x + 7?","ما المقطع y للدالة f(x) = 3x² − 5x + 7؟"],o:[["(7, 0)","(7, 0)"],["(0, −5)","(0, −5)"],["(0, 7)","(0, 7)"]],a:2,cls:"two",
+  w:["f(0) = 7, so the graph crosses the y-axis at (0, 7).","f(0) = 7، إذن يقطع التمثيل محور y عند (0, 7)."],h:["On the y-axis, x = 0. Find f(0).","على محور y تكون x = 0. أوجد f(0)."]}]);
+const FL=[["ax²+bx+c","Quadratic function","الدالة التربيعية","f(x) = ax² + bx + c in standard form, with a ≠ 0.","f(x) = ax² + bx + c في الصيغة القياسية، حيث a ≠ 0."],
+ ["∪ ∩","Parabola","القطع المكافئ","The U-shaped graph of a quadratic function. Parent function: f(x) = x².","التمثيل البياني للدالة التربيعية على شكل U. الدالة الأم: f(x) = x²."],
+ ["x = −b/2a","Axis of symmetry","محور التماثل","The vertical mirror line of the parabola: x = −b/(2a).","خط المرآة الرأسي للقطع المكافئ: x = −b/(2a)."],
+ ["(x, f(x))","Vertex","الرأس","The turning point. x = −b/(2a), then y = f(x).","نقطة الانعطاف. x = −b/(2a) ثم y = f(x)."],
+ ["(0, c)","y-intercept","المقطع y","f(0) = c: the graph crosses the y-axis at (0, c).","f(0) = c: يقطع التمثيل محور y عند (0, c)."],
+ ["min · max","Minimum or maximum","صغرى أو عظمى","a &gt; 0: opens up, minimum. a &lt; 0: opens down, maximum.","a &gt; 0: يُفتح لأعلى، قيمة صغرى. a &lt; 0: يُفتح لأسفل، قيمة عظمى."],
+ ["D · R","Domain and range","المجال والمدى","Domain: all real numbers. Range: y ≥ k (minimum) or y ≤ k (maximum).","المجال: كل الأعداد الحقيقية. المدى: y ≥ k (صغرى) أو y ≤ k (عظمى)."],
+ ["Δy / Δx","Average rate of change","متوسط معدل التغير","(f(b) − f(a)) / (b − a): the slope between two points of the graph.","(f(b) − f(a)) / (b − a): الميل بين نقطتين على التمثيل."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+const Q=[
+ {q:"Which of these is a quadratic function?",qa:"أيّ مما يلي دالة تربيعية؟",o:[["f(x) = 3x + 2","f(x) = 3x + 2"],["f(x) = −4x² + x − 1","f(x) = −4x² + x − 1"],["f(x) = 5/x","f(x) = 5/x"],["f(x) = x³ − x","f(x) = x³ − x"]],a:1,ex:["It has the form ax² + bx + c with a = −4 ≠ 0.","لها الصيغة ax² + bx + c حيث a = −4 ≠ 0."],h:[["Look for the highest power of x.","ابحث عن أعلى أس لـ x."],["A quadratic has x² as its highest power.","الدالة التربيعية أعلى أس فيها x²."]]},
+ {q:"What is the axis of symmetry of f(x) = x² − 8x + 3?",qa:"ما محور التماثل للدالة f(x) = x² − 8x + 3؟",o:[["x = −4","x = −4"],["x = 8","x = 8"],["x = 3","x = 3"],["x = 4","x = 4"]],a:3,ex:["x = −(−8)/(2·1) = 8/2 = 4.","x = −(−8)/(2·1) = 8/2 = 4."],h:[["Use x = −b/(2a).","استخدم x = −b/(2a)."],["b = −8, so −b = 8. Divide by 2a = 2.","b = −8، إذن −b = 8. اقسم على 2a = 2."]]},
+ {q:"What is the vertex of f(x) = 2x² + 4x − 5?",qa:"ما رأس الدالة f(x) = 2x² + 4x − 5؟",o:[["(−1, −7)","(−1, −7)"],["(1, 1)","(1, 1)"],["(−1, −3)","(−1, −3)"],["(−2, −5)","(−2, −5)"]],a:0,ex:["x = −4/(2·2) = −1. f(−1) = 2 − 4 − 5 = −7.","x = −4/(2·2) = −1. f(−1) = 2 − 4 − 5 = −7."],h:[["First find x = −b/(2a).","أوجد أولًا x = −b/(2a)."],["x = −1. Now f(−1) = 2(1) + 4(−1) − 5.","x = −1. والآن f(−1) = 2(1) + 4(−1) − 5."]]},
+ {q:"What is the y-intercept of f(x) = −x² + 3x − 8?",qa:"ما المقطع y للدالة f(x) = −x² + 3x − 8؟",o:[["(0, 3)","(0, 3)"],["(−8, 0)","(−8, 0)"],["(0, −8)","(0, −8)"],["(0, 8)","(0, 8)"]],a:2,ex:["f(0) = −8, so the y-intercept is (0, −8).","f(0) = −8، إذن المقطع y هو (0, −8)."],h:[["On the y-axis, x = 0.","على محور y تكون x = 0."],["The y-intercept is c, with its sign.","المقطع y هو c مع إشارته."]]},
+ {q:"The function f(x) = −3x² + 12x − 2 has…",qa:"الدالة f(x) = −3x² + 12x − 2 لها…",o:[["a minimum value of 10","قيمة صغرى 10"],["a maximum value of 10","قيمة عظمى 10"],["a maximum value of 2","قيمة عظمى 2"],["a minimum value of −2","قيمة صغرى −2"]],a:1,ex:["a = −3 &lt; 0: maximum. x = −12/(−6) = 2, f(2) = −12 + 24 − 2 = 10.","a = −3 &lt; 0: قيمة عظمى. x = −12/(−6) = 2، f(2) = −12 + 24 − 2 = 10."],h:[["The sign of a tells you maximum or minimum.","إشارة a تخبرك: عظمى أم صغرى."],["The value is the y of the vertex: find f(2).","القيمة هي y للرأس: أوجد f(2)."]]},
+ {q:"What is the range of f(x) = x² − 6x + 4?",qa:"ما مدى الدالة f(x) = x² − 6x + 4؟",o:[["{y | y ≥ −5}","{y | y ≥ −5}"],["{y | y ≤ −5}","{y | y ≤ −5}"],["all real numbers","كل الأعداد الحقيقية"],["{y | y ≥ 3}","{y | y ≥ 3}"]],a:0,ex:["Vertex: x = 3, f(3) = 9 − 18 + 4 = −5. a &gt; 0, so y ≥ −5.","الرأس: x = 3، f(3) = 9 − 18 + 4 = −5. a &gt; 0، إذن y ≥ −5."],h:[["Find the vertex first.","أوجد الرأس أولًا."],["The range uses the y-value of the vertex, −5, and the parabola opens up.","المدى يستخدم قيمة y للرأس وهي −5، والقطع يُفتح لأعلى."]]},
+ {q:"What is the domain of any quadratic function?",qa:"ما مجال أي دالة تربيعية؟",o:[["x ≥ 0","x ≥ 0"],["only the x-value of the vertex","قيمة x للرأس فقط"],["y ≥ k","y ≥ k"],["all real numbers","كل الأعداد الحقيقية"]],a:3,ex:["You can put any real number into ax² + bx + c.","يمكنك التعويض بأي عدد حقيقي في ax² + bx + c."],h:[["The domain is about x, not y.","المجال يخص x وليس y."],["Is there any x you cannot square?","هل يوجد x لا يمكن تربيعه؟"]]},
+ {q:"Find the average rate of change of f(x) = x² + 2x over [1, 3].",qa:"أوجد متوسط معدل التغير للدالة f(x) = x² + 2x على [1, 3].",o:[["4","4"],["12","12"],["6","6"],["7.5","7.5"]],a:2,ex:["f(3) = 15, f(1) = 3. (15 − 3)/(3 − 1) = 12/2 = 6.","f(3) = 15، f(1) = 3. (15 − 3)/(3 − 1) = 12/2 = 6."],h:[["Find f(3) and f(1).","أوجد f(3) وf(1)."],["Then divide f(3) − f(1) by 3 − 1.","ثم اقسم f(3) − f(1) على 3 − 1."]]},
+ {q:"A ball is kicked in a park in Abu Dhabi. Its height is h(t) = −5t² + 20t + 1 metres after t seconds. What is the maximum height?",qa:"تُركل كرة في حديقة في أبوظبي. ارتفاعها h(t) = −5t² + 20t + 1 مترًا بعد t ثانية. ما أقصى ارتفاع؟",o:[["21 m","21 m"],["2 m","2 m"],["41 m","41 m"],["16 m","16 m"]],a:0,ex:["t = −20/(2·(−5)) = 2 s. h(2) = −20 + 40 + 1 = 21 m.","t = −20/(2·(−5)) = 2 s. h(2) = −20 + 40 + 1 = 21 m."],h:[["The maximum is at the vertex: t = −b/(2a).","القيمة العظمى عند الرأس: t = −b/(2a)."],["t = 2 is the time. The height is h(2).","t = 2 هو الزمن، والارتفاع هو h(2)."]]},
+ {q:"f(x) = x² − 4x + 7. The table shows g(x): x = −1, 0, 1, 2, 3 gives g(x) = 6, 3, 2, 3, 6. Which has the lesser minimum?",qa:"f(x) = x² − 4x + 7. الجدول يبيّن g(x): عند x = −1, 0, 1, 2, 3 تكون g(x) = 6, 3, 2, 3, 6. أيّهما له قيمة صغرى أقل؟",o:[["f(x), minimum 3","f(x)، القيمة الصغرى 3"],["g(x), minimum 2","g(x)، القيمة الصغرى 2"],["They are equal","متساويتان"],["We cannot tell","لا يمكن المعرفة"]],a:1,ex:["f: x = 2, f(2) = 4 − 8 + 7 = 3. g: symmetric about x = 1, minimum 2. 2 &lt; 3.","f: x = 2، f(2) = 4 − 8 + 7 = 3. g: متماثل حول x = 1، القيمة الصغرى 2. 2 &lt; 3."],h:[["Find the vertex of f: x = 2.","أوجد رأس f: x = 2."],["In the table, the smallest g-value is in the middle.","في الجدول أصغر قيمة لـ g في المنتصف."]]}];
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${first?ICON.check+" Correct!":ok?ICON.check+" Yes, now you have it.":ICON.cross+" Here is the answer."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${first?"إجابة صحيحة!":ok?"نعم، الآن فهمتها.":"إليك الإجابة."} ${q.ex[1]}</div>`;
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Mathematician";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You can read every secret of a parabola!","رائع! أنت تقرأ كل أسرار القطع المكافئ!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the graphs and worked examples, then retry.","محاولة جيدة! أعد التمثيلات والأمثلة المحلولة، ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Math · Grade 12 · Unit 1 · Lesson 1-1 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
