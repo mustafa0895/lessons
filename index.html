@@ -573,14 +573,15 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
    {g:6,s:"science",unit:"Unit 1 · Energy in the Atmosphere",unitAr:"الوحدة 1 · الطاقة في الغلاف الجوي",n:"Lesson 1-4",en:"Thermal Energy Conductivity",ar:"التوصيل الحراري للمواد",f:"g6-science-l4.html"},
    {g:6,s:"science",unit:"Unit 1 · Energy in the Atmosphere",unitAr:"الوحدة 1 · الطاقة في الغلاف الجوي",n:"Lesson 2-1",en:"Water in the Atmosphere",ar:"الماء في الغلاف الجوي",f:"g6-science-l5.html"},
    {g:6,s:"science",unit:"Unit 1 · Energy in the Atmosphere",unitAr:"الوحدة 1 · الطاقة في الغلاف الجوي",n:"Lesson 2-2",en:"Water on Earth's Surface",ar:"الماء على سطح الأرض",f:"g6-science-l6.html"},
+   {g:12,s:"chemistry",unit:"Unit 1 · Chemical Bonding and Reaction",unitAr:"الوحدة 1 · الترابط الكيميائي والتفاعلات",n:"Lesson 1-1",en:"Measuring Matter",ar:"قياس المادة",f:"g12-chemistry-l1.html"},
   ];
   try{document.getElementById('statLessons').textContent=LESSONS.length;document.getElementById('statSubjects').textContent=new Set(LESSONS.map(l=>l.s)).size}catch(e){}
-  const SUBJ={math:["Math","رياضيات"],science:["Science","علوم"]};
+  const SUBJ={math:["Math","رياضيات"],science:["Science","علوم"],chemistry:["Chemistry","كيمياء"]};
   /* grades taught in two curricula: Grade → curriculum → subject → lessons */
   const SPLIT=[7,9];
   const CURR={moe:["UAE MOE","المنهج الحكومي","Ministry of Education"],us:["American","المنهج الأمريكي","American curriculum"]};
   LESSONS.forEach(l=>{if(!l.c)l.c="moe"});
-  const ICO={science:'<path d="M9 3h6M10 3v6L5 18a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 14h9"/>',math:'<path d="M18 5V4H6l6 8-6 8h12v-1"/>'};
+  const ICO={chemistry:'<circle cx="12" cy="12" r="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/>',science:'<path d="M9 3h6M10 3v6L5 18a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 14h9"/>',math:'<path d="M18 5V4H6l6 8-6 8h12v-1"/>'};
   const ARW='<svg class="aic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
   const esc=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;");
   const st={g:null,c:null,s:null,u:null};
@@ -619,7 +620,7 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
     /* step 2: subject */
     subjStep.hidden=false;
     document.getElementById('subjLab').firstChild.textContent=(split?"2 · ":"")+"Choose your subject";
-    const subs=Object.keys(SUBJ);
+    const subs=Object.keys(SUBJ).filter(k=>k!=="chemistry"||st.g>=10);
     const counts=Object.fromEntries(subs.map(k=>[k,inGrade.filter(l=>l.s===k).length]));
     const withL=subs.filter(k=>counts[k]);
     if(!st.s&&withL.length===1)st.s=withL[0];
