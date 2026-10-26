@@ -1,0 +1,1508 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F1E8">
+<title>Solving Quadratic Equations by Graphing – Math G12 Lesson 1-2</title>
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(247,241,232,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#EADFCD;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#F9E3DC;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#FFF6E1;border:1px solid #F1D9A6;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #E9CFA0;background:#FFF8EA;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#fff;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #E2D5C0}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#E4F3F1;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#FBF3EA;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#E8F5F3}
+.opt.right{border-color:var(--teal);background:#E2F4F1}
+.opt.wrong{border-color:var(--terra);background:#FBE9E4}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#EADFCD;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#fff;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#E8F5F3;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#FBE9E4;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#fff;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#fff}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#E2D5C0}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #fff}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#fff;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#fff}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #fff;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#FFF6E1}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#E2F4F1;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#E2F4F1}
+.pieces button.no{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#E2D5C0}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#E2F4F1;border-left:5px solid var(--teal)}
+.feedback.no{background:#FBE9E4;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#fff;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#fff;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#FFF6E1;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#fff;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#E8F5F3}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#FFF6E1}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#fff;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#FBE9E4}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#FFF6E1;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#fff;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#E8F5F3}.sc.diff{border-color:var(--terra);background:#FBE9E4}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#E2F4F1}.rchips button.wrong{border-color:var(--terra);background:#FBE9E4}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#E8F5F3}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#E8F5F3}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#FBE9E4}
+.ml.done,.mr.done{border-color:var(--teal);background:#E2F4F1;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#E8F5F3}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#FCE8B2;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#FCE8B2;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#E2F4F1}
+.eline.bad{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#fff;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#FFFFFF 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#E2F4F1}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#FBE9E4}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#FFF3D6}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#FFF3D6;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#E2F4F1}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#FBE9E4}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#FFF3D6;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#E8F5F3}.mcard2.wrong{border-color:var(--terra);background:#FBE9E4}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #fff;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#E8F5F3}.idc.wrong{border-color:var(--terra);background:#FBE9E4}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#E8F5F3}.claim2.wrong{border-color:var(--terra);background:#FBE9E4}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#FFF6EA}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#E8F5F3}.ct.no{border-color:var(--terra);background:#FBE9E4}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#FFF6EA}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#EADFF0;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#EADFCD;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#FFF6E0;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#fff;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#E8F5F3}.wuq .wo button.wrong{border-color:var(--terra);background:#FBE9E4}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#fff;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#FBF6EC;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#FBE9E4}.pick button.right{border-color:var(--teal);background:#E8F5F3}
+.why{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#E8F5F3}.why .wb button.wrong{border-color:var(--terra);background:#FBE9E4}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#fff;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#ddd;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#fff;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#FFFDF7}
+.tchip.lost{border-color:var(--terra);background:#FBE9E4}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#FBEDEA}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#E8F5F3}.pickph.wrong{border-color:var(--terra);background:#FBE9E4}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#E8F5F3}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#FBF6EC}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#E8F5F3;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#FBF6EC;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#fff;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#FFE7A8;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#FBF6EC;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#fff}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#E8F5F3;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#fff;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#fff;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#E8F5F3;border-color:var(--teal)}.tile.g1{background:#FFF0E6;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#FBF6EC;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#fff;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#fff;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#fff;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#fff;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#F3ECE1}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#fff}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#F3ECE1}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#fff}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#E9E2D6;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+
+.fq .ar{display:block;margin-top:4px}
+.calcbox{background:linear-gradient(160deg,#3A4656,#1F2A37);border-radius:22px;padding:14px;box-shadow:0 10px 24px rgba(31,42,55,.25)}
+.calcbox svg{display:block;width:100%;height:auto;border-radius:10px;border:3px solid #111A24}
+.keys{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.keys span{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:40px;border-radius:10px;background:#52606F;color:#F7F1E8;font:800 13px ui-monospace,monospace;box-shadow:0 3px 0 #111A24;transition:transform .15s,background .15s}
+.keys span small{font-size:10px;color:#9FD8F0;font-weight:700}
+.keys span[data-k="2nd"]{background:#3D7FB0}
+.keys span.on{background:#E9B44C;color:#1F2A37;transform:translateY(2px);box-shadow:0 1px 0 #111A24}
+.keys span.on small{color:#1F2A37}
+.signtab{overflow-x:auto;margin:6px 0}
+.signtab table{border-collapse:separate;border-spacing:3px;margin:0 auto;font:700 15px ui-monospace,monospace}
+.signtab th,.signtab td{min-width:34px;padding:7px 4px;text-align:center;border-radius:8px;background:#fff;border:1px solid var(--line)}
+.signtab th{background:var(--ink);color:#F7F1E8}
+.signtab td.pos{background:#DDF1EE;color:#1E7A6F;border-color:#2A9D8F}
+.signtab td.neg{background:#F8DDD6;color:#A23E2A;border-color:#C8553D}
+.gaps{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:8px 0}
+.gaps button{font:inherit;font-size:14px;font-weight:700;border-radius:999px;padding:8px 12px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;min-height:40px}
+.gaps button.right{background:#DDF1EE;border-color:#2A9D8F;color:#1E7A6F}
+.gaps button.wrong{background:#F8DDD6;border-color:#C8553D;color:#A23E2A}
+.fq svg{display:block;width:100%;max-width:340px;margin:8px auto;background:#fff;border:1px solid #E3E8EC;border-radius:12px}
+.calcbox{max-width:440px;margin:0 auto}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Math · Grade 12 · Unit 1<small id="curLabel">Solving Quadratic Equations by Graphing</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="A parabola crossing the x-axis at two points, the solutions">
+<defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F2A37"/><stop offset="1" stop-color="#2B3B4E"/></linearGradient>
+<pattern id="hg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".07"/></pattern>
+<linearGradient id="hc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2A9D8F"/><stop offset=".5" stop-color="#E9B44C"/><stop offset="1" stop-color="#C8553D"/></linearGradient>
+<radialGradient id="hv" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#FFB8A6"/><stop offset="1" stop-color="#C8553D"/></radialGradient></defs>
+<rect width="640" height="360" fill="url(#hb)"/><rect width="640" height="360" fill="url(#hg)"/>
+<line x1="60" y1="66" x2="590" y2="66" stroke="#fff" stroke-opacity=".55" stroke-width="2"/><line x1="200" y1="8" x2="200" y2="128" stroke="#fff" stroke-opacity=".45" stroke-width="2"/>
+<path d="M232 8 Q352 184 472 8" fill="none" stroke="url(#hc)" stroke-width="6" stroke-linecap="round"/>
+<circle cx="282" cy="66" r="10" fill="url(#hv)" stroke="#fff" stroke-width="2.5"/><circle cx="422" cy="66" r="10" fill="url(#hv)" stroke="#fff" stroke-width="2.5"/>
+<rect x="198" y="22" width="84" height="24" rx="8" fill="#0E1A26" stroke="#E9B44C"/><text x="240" y="39" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" font-weight="800" fill="#E9B44C">root 1</text>
+<rect x="422" y="22" width="84" height="24" rx="8" fill="#0E1A26" stroke="#E9B44C"/><text x="464" y="39" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" font-weight="800" fill="#E9B44C">root 2</text>
+<rect x="488" y="90" width="120" height="24" rx="8" fill="#0E1A26" stroke="#7FD3E6"/><text x="548" y="107" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" font-weight="800" fill="#7FD3E6">f(x) = 0</text>
+</svg>
+    <div class="herotxt"><span class="kicker light">Math · Grade 12 · Unit 1 · Lesson 1-2</span><h1>Solving Quadratic Equations by Graphing</h1><p class="ar">حل المعادلات التربيعية بالتمثيل البياني</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في متصفح Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="happy"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Last lesson you drew parabolas. Today the graph answers a question: where does f(x) = 0? Every place the parabola touches the x-axis is a <b>solution</b> of the equation.</p><p class="ar">في الدرس السابق رسمت القطوع المكافئة. اليوم يجيب التمثيل البياني عن سؤال: أين f(x) = 0؟ كل مكان يلمس فيه القطع محور x هو <b>حل</b> للمعادلة.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ link the roots of an equation, the zeros of a function and the x-intercepts<br>✔ tell if an equation has two, one or no real solutions<br>✔ solve a quadratic equation by graphing and check the answer<br>✔ use a graphing calculator to find zeros<br>✔ locate roots between two consecutive integers<br>✔ solve real problems by graphing</p><p class="ar"><b>سأتعلّم اليوم أن:</b><br>✔ أربط جذور المعادلة بأصفار الدالة والمقاطع x<br>✔ أحدد هل للمعادلة حلّان أم حل واحد أم لا حل حقيقي لها<br>✔ أحل المعادلة التربيعية بالتمثيل البياني وأتحقق من الحل<br>✔ أستخدم الآلة الحاسبة البيانية لإيجاد الأصفار<br>✔ أحدد موقع الجذر بين عددين صحيحين متتاليين<br>✔ أحل مسائل حياتية بالتمثيل البياني</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic.</p><p class="ar"><b>نصيحة:</b> اضغط زر <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمات.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up · From Lesson 1-1</span>
+  <h2>What do you remember?</h2>
+  <p class="hsub ar">ماذا تتذكر؟</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up from the last lesson, nothing is counted!</p><p class="ar">مجرد تسخين من الدرس السابق، لا شيء يُحسب!</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+</section>
+
+<section class="screen" data-title="Roots and zeros">
+  <span class="kicker">Explore</span>
+  <h2>Roots, zeros and x-intercepts</h2>
+  <p class="hsub ar">الجذور والأصفار والمقاطع x</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A <b class="term">quadratic equation</b> has the form ax² + bx + c = 0. Its <b class="term">related function</b> is f(x) = ax² + bx + c. The solutions of the equation are called <b class="term">roots</b>. They are the <b class="term">zeros</b> of the function, and the <b class="term">x-intercepts</b> of its graph.</p><p class="ar"><b>المعادلة التربيعية</b> صيغتها ax² + bx + c = 0، و<b>الدالة المرتبطة</b> بها f(x) = ax² + bx + c. تُسمّى حلول المعادلة <b>جذورًا</b>، وهي <b>أصفار</b> الدالة، و<b>المقاطع x</b> لتمثيلها البياني.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="gfig"><svg id="rzSvg" viewBox="0 0 400 400" role="img" aria-label="The graph of f(x) = x² − 2x + c and its x-intercepts"></svg></div>
+      <div class="readout" id="rzEq"></div>
+      <div class="needjs"><div class="rlab">c = <span id="rzCv">−3</span></div><input type="range" id="rzC" min="-8" max="4" step="1" value="-3" aria-label="c"></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="rzMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="How many solutions">
+  <span class="kicker">Explore</span>
+  <h2>Two, one or no real solutions</h2>
+  <p class="hsub ar">حلّان أو حل واحد أو لا حلول حقيقية</p>
+  <div class="bench">
+    <div class="main">
+      <div class="seg wrap needjs" id="hmMode"><button data-v="0" class="on">x² − 3x − 10 = 0</button><button data-v="1">−x² − 8x − 16 = 0</button><button data-v="2">x² + 2x + 3 = 0</button></div>
+      <div class="gfig"><svg id="hmSvg" viewBox="0 0 400 400" role="img" aria-label="The graph of the related function and where it meets the x-axis"></svg></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="hmMsg"></div>
+      <div class="why needjs" id="why1"></div>
+    </div>
+  </div>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> When the vertex touches the x-axis, the two roots are the same number: a <b class="term">double root</b> (one real solution). When the graph does not meet the x-axis, there are <b>no real solutions</b>.</p><p class="ar">عندما يلمس الرأس محور x يكون الجذران العدد نفسه: <b>جذر مكرر</b> (حل حقيقي واحد). وعندما لا يقطع التمثيل محور x <b>لا توجد حلول حقيقية</b>.</p></div>
+</section>
+
+<section class="screen" data-title="Solve by graphing">
+  <span class="kicker">Worked examples</span>
+  <h2>Solve by graphing, then check</h2>
+  <p class="hsub ar">حل بالتمثيل البياني ثم تحقّق</p>
+  <div class="bi"><p class="en"><b>Steps:</b> 1. Move every term to one side so the other side is 0. 2. Graph the related function. 3. Read the x-intercepts. 4. Check each one in the equation.</p><p class="ar"><b>الخطوات:</b> 1. انقل كل الحدود إلى طرف واحد ليصبح الطرف الآخر 0. 2. مثّل الدالة المرتبطة بيانيًا. 3. اقرأ المقاطع x. 4. تحقّق من كل حل بالتعويض في المعادلة.</p></div>
+  <div class="fader" data-f="sg"></div>
+  <div class="why needjs" id="why2"></div>
+</section>
+
+<section class="screen" data-title="Graphing calculator">
+  <span class="kicker">Technology</span>
+  <h2>Find zeros with a graphing calculator</h2>
+  <p class="hsub ar">أوجد الأصفار بالآلة الحاسبة البيانية</p>
+  <div class="zrow"><div class="zav" data-zayed="think"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">The roots of x² + 6x + 6 = 0 are not whole numbers. Reading them from a paper graph is hard, so let the calculator find them. Tap <b>Next key</b>.</p><p class="ar">جذور x² + 6x + 6 = 0 ليست أعدادًا صحيحة، وقراءتها من رسم على الورق صعبة، فلنترك الآلة الحاسبة تجدها. اضغط <b>Next key</b>.</p></div></div>
+  <div class="bench">
+    <div class="main">
+      <div class="calcbox"><svg id="gcSvg" viewBox="0 0 400 270" role="img" aria-label="Graphing calculator screen"></svg>
+        <div class="keys" id="gcKeys"><span data-k="y">Y=</span><span data-k="zoom">ZOOM</span><span data-k="2nd">2nd</span><span data-k="trace">TRACE<small>CALC</small></span><span data-k="2">2</span><span data-k="arrow">◀ ▶</span><span data-k="enter">ENTER</span></div></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="gcNext">Next key ▶</button><button class="btn alt sm" id="gcReset">↺ Start again</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi" id="gcMsg"></div>
+    </div>
+  </div>
+  <div class="card"><div class="bi"><p class="en"><b>On a phone or computer</b> (for example a free graphing app): type y = x² + 6x + 6 and tap each point where the graph crosses the x-axis. The app shows the same zeros.</p><p class="ar"><b>على الهاتف أو الحاسوب</b> (مثل تطبيق رسم بياني مجاني): اكتب y = x² + 6x + 6 واضغط على كل نقطة يقطع فيها التمثيل محور x، فيعرض التطبيق الأصفار نفسها.</p></div></div>
+</section>
+
+<section class="screen" data-title="Estimate roots">
+  <span class="kicker">Explore</span>
+  <h2>Roots between two integers</h2>
+  <p class="hsub ar">جذور بين عددين صحيحين</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> If f(x) changes <b>sign</b> between two consecutive integers (from + to − or from − to +), the graph crosses the x-axis between them, so there is a <b>root between them</b>.</p><p class="ar">إذا تغيّرت <b>إشارة</b> f(x) بين عددين صحيحين متتاليين (من + إلى − أو من − إلى +) فإن التمثيل يقطع محور x بينهما، إذن يوجد <b>جذر بينهما</b>.</p></div>
+  <div class="bi"><p class="en">Equation: <b>x² − 4x + 2 = 0</b>. Tap <b>Colour the signs</b>, then tap the two gaps where a root is.</p><p class="ar">المعادلة: <b>x² − 4x + 2 = 0</b>. اضغط <b>Colour the signs</b>، ثم اضغط على الفجوتين اللتين يقع فيهما جذر.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="signtab" id="erTab"></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="erSign">Colour the signs ▶</button></div>
+      <div class="gaps needjs" id="erGaps"></div>
+      <div class="gfig"><svg id="erSvg" viewBox="0 0 400 300" role="img" aria-label="The graph of f(x) = x² − 4x + 2 crossing the x-axis between integers"></svg></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="erMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Sum and product">
+  <span class="kicker">Apply</span>
+  <h2>Two numbers from their sum and product</h2>
+  <p class="hsub ar">عددان من مجموعهما وحاصل ضربهما</p>
+  <div class="bi"><p class="en">Let one number be x. If the sum is s, the other number is s − x. Their product is p: x(s − x) = p, so <b>x² − sx + p = 0</b>. The zeros of f(x) = x² − sx + p are the two numbers.</p><p class="ar">ليكن أحد العددين x. إذا كان المجموع s فالعدد الآخر s − x. وحاصل ضربهما p: x(s − x) = p، إذن <b>x² − sx + p = 0</b>. أصفار الدالة f(x) = x² − sx + p هي العددان.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="seg wrap needjs" id="spMode"><button data-v="0" class="on">sum 2, product −24</button><button data-v="1">sum −15, product −54</button><button data-v="2">sum 24, product 143</button><button data-v="3">sum 2, product 5</button></div>
+      <div class="gfig"><svg id="spSvg" viewBox="0 0 400 340" role="img" aria-label="The graph of f(x) = x² − sx + p and its zeros"></svg></div>
+    </div>
+    <div class="side">
+      <div class="readout" id="spCalc"></div>
+      <div class="msg bi needjs" id="spMsg"></div>
+      <div class="why needjs" id="why3"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Real life">
+  <span class="kicker">Real life</span>
+  <h2>When does the football land?</h2>
+  <p class="hsub ar">متى تسقط كرة القدم؟</p>
+  <div class="bi"><p class="en">A kicker punts a football. Its height after t seconds is h(t) = −16t² + 50t + 1.5 feet (1.5 ft is the height of the ball when the foot hits it). The ball hits the ground when <b>h(t) = 0</b>.</p><p class="ar">يركل لاعب كرة قدم. ارتفاعها بعد t ثانية هو h(t) = −16t² + 50t + 1.5 قدم (1.5 قدم هو ارتفاع الكرة لحظة ضربها بالقدم). تصطدم الكرة بالأرض عندما <b>h(t) = 0</b>.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="gfig"><svg id="fbSvg" viewBox="0 0 400 300" role="img" aria-label="The football's height over time"></svg></div>
+      <div class="needjs"><div class="rlab">t = <span id="fbTv">0</span> s</div><input type="range" id="fbT" min="0" max="3.2" step="0.05" value="0" aria-label="time in seconds"></div>
+    </div>
+    <div class="side">
+      <div class="readout" id="fbCalc"></div>
+      <div class="msg bi needjs" id="fbMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Check yourself</span>
+  <h2>Practice before the quiz</h2>
+  <p class="hsub ar">تدرّب قبل الاختبار</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Practice only: try each card. A wrong pick tells you where to look.</p><p class="ar">للتدريب فقط: جرّب كل بطاقة. الاختيار الخاطئ يخبرك أين تنظر.</p></div></div>
+  <div class="idg needjs" id="pcCards"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work! Now the quiz. Two questions review Lesson 1-1. A wrong answer gives you a hint first.</p><p class="ar">عمل رائع! والآن الاختبار. سؤالان يراجعان الدرس 1-1. الإجابة الخاطئة تعطيك تلميحًا أولًا.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+</main>
+
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="math12_2_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"UAE MOE · Grade 12"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹ =+,./≠]*[0-9A-Za-z()\[\]½²³⁴¹])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}${n[1]&&n[1]!==n[0]?`<small>${n[1]}</small>`:""}</button>`).join("")}</div><div class="mwhy"></div></div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll("button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});}
+
+/* ---------- graph helpers (measured coordinate grids in SVG) ---------- */
+const RM=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const mono='font-family="ui-monospace,monospace"';
+const fm=v=>{v=Math.round(v*100)/100;if(Object.is(v,-0))v=0;return v<0?"−"+(-v).toLocaleString("en-US"):v.toLocaleString("en-US");};
+const pr=v=>v<0?"("+fm(v)+")":fm(v);
+function grid(xr,yr,every,W,H){W=W||400;H=H||400;const pad=26,u=Math.min((W-2*pad)/(xr[1]-xr[0]),(H-2*pad)/(yr[1]-yr[0])),ox=pad+(W-2*pad-u*(xr[1]-xr[0]))/2,oy=pad+(H-2*pad-u*(yr[1]-yr[0]))/2;
+  const X=x=>ox+(x-xr[0])*u,Y=y=>oy+(yr[1]-y)*u;let s=`<defs><marker id="gA" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1F2A37"/></marker></defs>`;
+  for(let x=xr[0];x<=xr[1];x++)s+=`<line x1="${X(x)}" y1="${Y(yr[0])}" x2="${X(x)}" y2="${Y(yr[1])}" stroke="#E6EDED" stroke-width="1"/>`;
+  for(let y=yr[0];y<=yr[1];y++)s+=`<line x1="${X(xr[0])}" y1="${Y(y)}" x2="${X(xr[1])}" y2="${Y(y)}" stroke="#E6EDED" stroke-width="1"/>`;
+  const ax0=xr[0]<=0&&xr[1]>=0,ay0=yr[0]<=0&&yr[1]>=0;
+  if(ay0)s+=`<line x1="${X(xr[0])-6}" y1="${Y(0)}" x2="${X(xr[1])+6}" y2="${Y(0)}" stroke="#1F2A37" stroke-width="2" marker-start="url(#gA)" marker-end="url(#gA)"/><text x="${X(xr[1])}" y="${Y(0)-8}" font-size="14" font-weight="800" fill="#1F2A37" ${mono}>x</text>`;
+  if(ax0)s+=`<line x1="${X(0)}" y1="${Y(yr[0])+6}" x2="${X(0)}" y2="${Y(yr[1])-6}" stroke="#1F2A37" stroke-width="2" marker-start="url(#gA)" marker-end="url(#gA)"/><text x="${X(0)+8}" y="${Y(yr[1])+6}" font-size="14" font-weight="800" fill="#1F2A37" ${mono}>y</text>`;
+  const yb=ay0?Y(0)+16:Y(yr[0])+16,xb=ax0?X(0)-6:X(xr[0])-6;
+  for(let x=xr[0];x<=xr[1];x++)if(x&&x%every===0)s+=`<text x="${X(x)}" y="${yb}" text-anchor="middle" font-size="12" fill="#5B6675" ${mono}>${fm(x)}</text>`;
+  for(let y=yr[0];y<=yr[1];y++)if(y&&y%every===0)s+=`<text x="${xb}" y="${Y(y)+4}" text-anchor="end" font-size="12" fill="#5B6675" ${mono}>${fm(y)}</text>`;
+  return {X,Y,s,xr,yr};}
+function curve(g,f,col,x0,x1,w){x0=x0===undefined?g.xr[0]:x0;x1=x1===undefined?g.xr[1]:x1;let d="",pen=false;const n=160;
+  for(let i=0;i<=n;i++){const x=x0+(x1-x0)*i/n,y=f(x);if(y<g.yr[0]-.01||y>g.yr[1]+.01){pen=false;continue;}d+=(pen?"L":"M")+g.X(x).toFixed(1)+" "+g.Y(y).toFixed(1);pen=true;}
+  return `<path d="${d}" fill="none" stroke="${col||"#2A9D8F"}" stroke-width="${w||4}" stroke-linecap="round" stroke-linejoin="round"/>`;}
+const dot=(g,x,y,col,lab,dx,dy)=>{dx=dx===undefined?8:dx;dy=dy===undefined?-8:dy;const lw=lab?lab.length*7.6+10:0,lx=dx<0?g.X(x)+dx-lw:g.X(x)+dx;
+  return `<circle cx="${g.X(x)}" cy="${g.Y(y)}" r="6.5" fill="${col}" stroke="#fff" stroke-width="2.5"/>`+(lab?`<rect x="${lx}" y="${g.Y(y)+dy-14}" width="${lw}" height="20" rx="6" fill="#FBF7F0" stroke="${col}"/><text x="${lx+5}" y="${g.Y(y)+dy+1}" font-size="13" font-weight="800" fill="${col}" ${mono}>${lab}</text>`:"");};
+const vline=(g,x,col,lab)=>`<line x1="${g.X(x)}" y1="${g.Y(g.yr[0])}" x2="${g.X(x)}" y2="${g.Y(g.yr[1])}" stroke="${col||"#E9B44C"}" stroke-width="2.5" stroke-dasharray="7 6"/>`+(lab?`<rect x="${g.X(x)+6}" y="${g.Y(g.yr[1])+2}" width="${lab.length*7.6+10}" height="20" rx="6" fill="#FFF6E0" stroke="#B07D1A"/><text x="${g.X(x)+11}" y="${g.Y(g.yr[1])+17}" font-size="13" font-weight="800" fill="#8A5E10" ${mono}>${lab}</text>`:"");
+const pt=(x,y)=>"("+fm(x)+", "+fm(y)+")";
+function poly(a,b,c){let s="";const t=(k,v,first)=>{if(!k)return"";const sg=k<0?(first?"−":" − "):(first?"":" + "),m=Math.abs(k);return sg+(v&&m===1?"":fm(m))+v;};
+  s+=t(a,"x²",true);s+=t(b,"x",!s);s+=t(c,"",!s);return s||"0";}
+
+
+/* free-scale grid (x and y units can differ) */
+function gridF(o){const W=o.W||400,H=o.H||400,pad=28,xr=o.xr,yr=o.yr,ux=(W-2*pad)/(xr[1]-xr[0]),uy=(H-2*pad)/(yr[1]-yr[0]);
+  const X=x=>pad+(x-xr[0])*ux,Y=y=>pad+(yr[1]-y)*uy;let s=`<defs><marker id="gA" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1F2A37"/></marker></defs>`;
+  const ticks=(r,st)=>{const a=[];for(let k=Math.ceil(r[0]/st-1e-9);k*st<=r[1]+1e-9;k++)a.push(+(k*st).toFixed(6));return a;};
+  ticks(xr,o.gx||1).forEach(x=>s+=`<line x1="${X(x)}" y1="${Y(yr[0])}" x2="${X(x)}" y2="${Y(yr[1])}" stroke="#E6EDED" stroke-width="1"/>`);
+  ticks(yr,o.gy||1).forEach(y=>s+=`<line x1="${X(xr[0])}" y1="${Y(y)}" x2="${X(xr[1])}" y2="${Y(y)}" stroke="#E6EDED" stroke-width="1"/>`);
+  const ax0=xr[0]<=0&&xr[1]>=0,ay0=yr[0]<=0&&yr[1]>=0;
+  if(ay0)s+=`<line x1="${X(xr[0])-6}" y1="${Y(0)}" x2="${X(xr[1])+6}" y2="${Y(0)}" stroke="#1F2A37" stroke-width="2" marker-start="url(#gA)" marker-end="url(#gA)"/><text x="${X(xr[1])-2}" y="${Y(0)-8}" font-size="14" font-weight="800" fill="#1F2A37" ${mono}>${o.xl||"x"}</text>`;
+  if(ax0)s+=`<line x1="${X(0)}" y1="${Y(yr[0])+6}" x2="${X(0)}" y2="${Y(yr[1])-6}" stroke="#1F2A37" stroke-width="2" marker-start="url(#gA)" marker-end="url(#gA)"/><text x="${X(0)+8}" y="${Y(yr[1])+6}" font-size="14" font-weight="800" fill="#1F2A37" ${mono}>${o.yl||"y"}</text>`;
+  const yb=ay0?Y(0)+16:Y(yr[0])+16,xb=ax0?X(0)-6:X(xr[0])-6;
+  ticks(xr,o.lx||2).forEach(x=>{if(x)s+=`<text x="${X(x)}" y="${yb}" text-anchor="middle" font-size="12" fill="#5B6675" ${mono}>${fm(x)}</text>`;});
+  ticks(yr,o.ly||2).forEach(y=>{if(y)s+=`<text x="${xb}" y="${Y(y)+4}" text-anchor="end" font-size="12" fill="#5B6675" ${mono}>${fm(y)}</text>`;});
+  return {X,Y,s,xr,yr};}
+const ex=v=>Math.abs(v-Math.round(v))<1e-9?fm(Math.round(v)):"≈ "+fm(v);
+const xl=v=>Math.abs(v-Math.round(v))<1e-9?"x = "+fm(Math.round(v)):"x ≈ "+fm(v);
+const roots=(a,b,c)=>{const d=b*b-4*a*c;if(d<-1e-12)return [];if(Math.abs(d)<1e-12)return [-b/(2*a)];const r=Math.sqrt(d);return [(-b-r)/(2*a),(-b+r)/(2*a)].sort((p,q)=>p-q);};
+const root=(g,x,lab,dy,dx)=>`<circle cx="${g.X(x)}" cy="${g.Y(0)}" r="8" fill="#C8553D" stroke="#fff" stroke-width="2.5"/>`+(lab?dot(g,x,0,"#C8553D",lab,dx===undefined?8:dx,dy===undefined?-12:dy).replace(/<circle[^>]*\/>/,""):"");
+function mini(fn,o,extra){const g=gridF(Object.assign({W:400,H:250},o));return `<svg viewBox="0 0 400 250">${g.s+curve(g,fn,"#7B4FA0",undefined,undefined,3.5)+(extra?extra(g):"")}</svg>`;}
+
+/* warm-up (Lesson 1-1) */
+const WU=[{q:"What is the axis of symmetry of f(x) = x² − 6x + 5?",qa:"ما محور التماثل للدالة f(x) = x² − 6x + 5؟",o:[["x = 3","x = 3"],["x = −3","x = −3"],["x = 6","x = 6"]],a:0,w:["x = −(−6)/(2 × 1) = 3.","x = −(−6)/(2 × 1) = 3."]},
+ {q:"What is the y-intercept of f(x) = 2x² − x − 7?",qa:"ما المقطع y للدالة f(x) = 2x² − x − 7؟",o:[["(0, 2)","(0, 2)"],["(0, −7)","(0, −7)"],["(−7, 0)","(−7, 0)"]],a:1,w:["f(0) = c = −7.","f(0) = c = −7."]},
+ {q:"Which parabola opens down?",qa:"أيّ قطع مكافئ يُفتح لأسفل؟",o:[["f(x) = x² + 4","f(x) = x² + 4"],["f(x) = 3x² − x","f(x) = 3x² − x"],["f(x) = −2x² + x","f(x) = −2x² + x"]],a:2,w:["a = −2 &lt; 0, so it opens down.","a = −2 &lt; 0، إذن يُفتح لأسفل."]}];
+$("#wuBox").innerHTML=WU.map((x,i)=>`<div class="wuq" data-i="${i}"><div class="qq">${i+1}. ${x.q}<span class="ar">${x.qa}</span></div><div class="wo">${x.o.map((o,j)=>`<button data-j="${j}">${o[0]}</button>`).join("")}<button class="show" data-j="-1">Show me · أرني</button></div><div class="wa"><b>${x.o[x.a][0]}</b> ${x.w[0]}<span class="ar">${x.w[1]}</span></div></div>`).join("");
+$$("#wuBox .wuq").forEach(card=>{const x=WU[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const j=+b.dataset.j;card.querySelectorAll("button").forEach(y=>{if(+y.dataset.j===x.a)y.classList.add("right");});if(j>=0&&j!==x.a)b.classList.add("wrong");card.classList.add("done");});});
+
+/* 1. roots, zeros, x-intercepts */
+function rzDraw(){const c=+$("#rzC").value,f=x=>x*x-2*x+c,g=grid([-5,7],[-10,5],2);let s=g.s+curve(g,f,"#2A9D8F");const r=roots(1,-2,c);
+  $("#rzCv").textContent=fm(c);r.forEach((x,i)=>s+=root(g,x,xl(x),i?-12:22));s+=dot(g,1,c-1,"#1F2A37","",0,0);$("#rzSvg").innerHTML=s;
+  $("#rzEq").innerHTML=`${poly(1,-2,c)} = 0`+(r.length?`<br>roots: ${r.map(x=>xl(x)).join(", ")}`:"<br>no real roots");
+  if(r.length===2)setMsg($("#rzMsg"),`The graph crosses the x-axis <b>twice</b>: two real solutions. ${r.map(x=>ex(x)).join(" and ")} are the roots of the equation, the zeros of f, and the x-intercepts.`,`يقطع التمثيل محور x <b>مرتين</b>: حلّان حقيقيان. ${r.map(x=>ex(x)).join(" و")} هما جذرا المعادلة وصفرا الدالة f والمقطعان x.`);
+  else if(r.length===1)setMsg($("#rzMsg"),"The vertex (1, 0) just <b>touches</b> the x-axis: one real solution, x = 1.","الرأس (1, 0) <b>يلمس</b> محور x فقط: حل حقيقي واحد، x = 1.");
+  else setMsg($("#rzMsg"),"The whole parabola is <b>above</b> the x-axis: f(x) is never 0, so there are <b>no real solutions</b>.","القطع كله <b>فوق</b> محور x: لا تساوي f(x) صفرًا أبدًا، إذن <b>لا توجد حلول حقيقية</b>.",true);}
+$("#rzC").oninput=rzDraw;rzDraw();
+
+/* 2. how many solutions */
+const HM=[{a:1,b:-3,c:-10,o:{xr:[-4,7],yr:[-13,6],lx:2,ly:2}},{a:-1,b:-8,c:-16,o:{xr:[-8,1],yr:[-8,2],lx:2,ly:2}},{a:1,b:2,c:3,o:{xr:[-4,2],yr:[-1,8],lx:1,ly:2}}];let hmK=0;
+function hmDraw(){const m=HM[hmK],f=x=>m.a*x*x+m.b*x+m.c,g=gridF(m.o);let s=g.s+curve(g,f,m.a>0?"#2A9D8F":"#C8553D");const r=roots(m.a,m.b,m.c);
+  r.forEach((x,i)=>s+=root(g,x,xl(x),i?-12:-12));const h=-m.b/(2*m.a);if(r.length!==1)s+=dot(g,h,f(h),"#1F2A37","vertex "+pt(h,f(h)),h>0?-10:10,m.a>0?22:-10);
+  $("#hmSvg").innerHTML=s;
+  if(hmK===0)setMsg($("#hmMsg"),"f(x) = x² − 3x − 10 crosses the x-axis at −2 and 5. <b>Two real solutions:</b> x = −2, x = 5. Check: (5)² − 3(5) − 10 = 0.","f(x) = x² − 3x − 10 يقطع محور x عند −2 و5. <b>حلّان حقيقيان:</b> x = −2 وx = 5. تحقّق: (5)² − 3(5) − 10 = 0.");
+  else if(hmK===1)setMsg($("#hmMsg"),"The vertex (−4, 0) is on the x-axis. <b>One real solution</b> (a double root): x = −4.","الرأس (−4, 0) على محور x. <b>حل حقيقي واحد</b> (جذر مكرر): x = −4.");
+  else setMsg($("#hmMsg"),"The graph never meets the x-axis. <b>No real solutions.</b>","التمثيل لا يقطع محور x أبدًا. <b>لا توجد حلول حقيقية.</b>",true);}
+$$("#hmMode button").forEach(b=>b.onclick=()=>{$$("#hmMode button").forEach(x=>x.classList.toggle("on",x===b));hmK=+b.dataset.v;hmDraw();});hmDraw();
+whyBox($("#why1"),"Why does x² + 2x + 3 = 0 have no real solutions?","لماذا لا توجد حلول حقيقية للمعادلة x² + 2x + 3 = 0؟",[
+ ["Because c = 3 is positive.","لأن c = 3 موجبة.",0,"A positive c alone does not decide it: x² − 5x + 3 = 0 has two solutions.","إشارة c وحدها لا تحدد ذلك: x² − 5x + 3 = 0 لها حلّان."],
+ ["The vertex (−1, 2) is above the x-axis and the parabola opens up, so it never reaches y = 0.","الرأس (−1, 2) فوق محور x والقطع يُفتح لأعلى، فلا يصل أبدًا إلى y = 0.",1,"Lowest point above the axis + opening up = no x-intercepts.","أدنى نقطة فوق المحور + فتح لأعلى = لا مقاطع x."],
+ ["Because the graph has no vertex.","لأن التمثيل ليس له رأس.",0,"Every parabola has a vertex. Here it is (−1, 2).","لكل قطع مكافئ رأس، وهو هنا (−1, 2)."]]);
+whyBox($("#why2"),"Why must one side be 0 before you graph?","لماذا يجب أن يكون أحد الطرفين 0 قبل التمثيل؟",[
+ ["Because the graph must pass through (0, 0).","لأن التمثيل يجب أن يمر بالنقطة (0, 0).",0,"Most parabolas do not pass through the origin.","معظم القطوع لا تمر بنقطة الأصل."],
+ ["Because a must be 1.","لأن a يجب أن تساوي 1.",0,"a can be any number except 0, like 4 in Example 2.","يمكن أن تكون a أي عدد غير 0، مثل 4 في المثال 2."],
+ ["Because the solutions are where f(x) = 0: the x-intercepts.","لأن الحلول هي حيث f(x) = 0: المقاطع x.",1,"So 4x² − 15 = −4x becomes 4x² + 4x − 15 = 0 first.","لذلك تصبح 4x² − 15 = −4x أولًا 4x² + 4x − 15 = 0."]]);
+
+/* 3. graphing calculator */
+const GC_F=x=>x*x+6*x+6;let gcK=0;
+function lcd(body,foot){return `<rect width="400" height="270" fill="#E8EEE2"/>${body}${foot?`<rect x="0" y="238" width="400" height="32" fill="#D3DCCB"/><text x="10" y="260" font-size="16" font-weight="700" fill="#16202B" ${mono}>${foot}</text>`:""}`;}
+function gcGraph(cur,marks,res){const X=x=>10+(x+10)*19,Y=y=>120-y*11;let s=`<line x1="10" y1="${Y(0)}" x2="390" y2="${Y(0)}" stroke="#16202B" stroke-width="1.5"/><line x1="${X(0)}" y1="4" x2="${X(0)}" y2="236" stroke="#16202B" stroke-width="1.5"/>`;
+  for(let k=-10;k<=10;k++){s+=`<line x1="${X(k)}" y1="${Y(0)-3}" x2="${X(k)}" y2="${Y(0)+3}" stroke="#16202B"/>`;}for(let k=-10;k<=10;k++)if(Y(k)>4&&Y(k)<236)s+=`<line x1="${X(0)-3}" y1="${Y(k)}" x2="${X(0)+3}" y2="${Y(k)}" stroke="#16202B"/>`;
+  let d="";for(let i=0;i<=200;i++){const x=-10+i/10,y=GC_F(x);if(Y(y)<0||Y(y)>236)continue;d+=(d?"L":"M")+X(x).toFixed(1)+" "+Y(y).toFixed(1);}s+=`<path d="${d}" fill="none" stroke="#1F4FBF" stroke-width="2.5"/>`;
+  (marks||[]).forEach(([x,dir])=>s+=`<path d="M${X(x)} ${Y(0)-14} l${dir*7} -7 l0 14z" fill="#16202B"/>`);
+  if(cur!==undefined){const cx=X(cur),cy=Y(GC_F(cur));s+=`<path d="M${cx-8} ${cy}H${cx+8}M${cx} ${cy-8}V${cy+8}" stroke="#C8553D" stroke-width="2.5"/>`;}
+  if(res!==undefined)s+=`<circle cx="${X(res)}" cy="${Y(0)}" r="6" fill="#C8553D" stroke="#fff" stroke-width="2"/>`;return s;}
+const GC=[
+ {k:[],scr:()=>lcd(`<text x="12" y="30" font-size="18" fill="#16202B" ${mono}>█</text>`),en:"Equation: <b>x² + 6x + 6 = 0</b>. The related function is f(x) = x² + 6x + 6. Tap <b>Next key</b>.",ar:"المعادلة: <b>x² + 6x + 6 = 0</b>. الدالة المرتبطة f(x) = x² + 6x + 6. اضغط <b>Next key</b>."},
+ {k:["y"],scr:()=>lcd(`<text x="12" y="28" font-size="15" fill="#16202B" ${mono}>Plot1  Plot2  Plot3</text><rect x="8" y="40" width="384" height="26" fill="#16202B" opacity=".08"/><text x="12" y="60" font-size="18" font-weight="700" fill="#1F4FBF" ${mono}>\\Y1 = X²+6X+6</text><text x="12" y="92" font-size="18" fill="#16202B" ${mono}>\\Y2 =</text><text x="12" y="122" font-size="18" fill="#16202B" ${mono}>\\Y3 =</text>`),en:"<b>1. Y=</b> Type the function: X² + 6X + 6.",ar:"<b>1. Y=</b> اكتب الدالة: X² + 6X + 6."},
+ {k:["zoom"],scr:()=>lcd(gcGraph()),en:"<b>2. ZOOM → 6: ZStandard.</b> The graph appears in the window −10 to 10. It crosses the x-axis twice, between −5 and −4 and between −2 and −1.",ar:"<b>2. ZOOM ← 6: ZStandard.</b> يظهر التمثيل في النافذة من −10 إلى 10، ويقطع محور x مرتين: بين −5 و−4 وبين −2 و−1."},
+ {k:["2nd","trace"],scr:()=>lcd(`<rect x="0" y="0" width="400" height="30" fill="#16202B"/><text x="12" y="21" font-size="16" font-weight="700" fill="#E8EEE2" ${mono}>CALCULATE</text>${["1:value","2:zero","3:minimum","4:maximum","5:intersect"].map((t,i)=>`${i===1?`<rect x="8" y="${42+i*34}" width="160" height="28" fill="#16202B"/>`:""}<text x="14" y="${62+i*34}" font-size="18" fill="${i===1?"#E8EEE2":"#16202B"}" ${mono}>${t}</text>`).join("")}`),en:"<b>3. 2nd → TRACE</b> opens the CALC menu. Choose <b>2: zero</b>.",ar:"<b>3. 2nd ← TRACE</b> تفتح قائمة CALC. اختر <b>2: zero</b>."},
+ {k:["2"],scr:()=>lcd(gcGraph(-5.6),"Left Bound?  X=−5.6"),en:"<b>4. Left Bound?</b> Move the cursor to the <b>left</b> of the first root.",ar:"<b>4. Left Bound?</b> حرّك المؤشر إلى <b>يسار</b> الجذر الأول."},
+ {k:["arrow","enter"],scr:()=>lcd(gcGraph(-4.2,[[-5.6,1]]),"Right Bound?  X=−4.2"),en:"<b>5. ENTER</b>, then <b>Right Bound?</b> Move the cursor to the <b>right</b> of the root.",ar:"<b>5. ENTER</b>، ثم <b>Right Bound?</b> حرّك المؤشر إلى <b>يمين</b> الجذر."},
+ {k:["enter"],scr:()=>lcd(gcGraph(-4.7,[[-5.6,1],[-4.2,-1]]),"Guess?  X=−4.7"),en:"<b>6. ENTER</b>, then <b>Guess?</b> Put the cursor near the root.",ar:"<b>6. ENTER</b>، ثم <b>Guess?</b> ضع المؤشر قرب الجذر."},
+ {k:["enter"],scr:()=>lcd(gcGraph(undefined,[],-4.732051),"Zero  X=−4.732051  Y=0"),en:"<b>7. ENTER.</b> Zero: x ≈ <b>−4.73</b>.",ar:"<b>7. ENTER.</b> الصفر: x ≈ <b>−4.73</b>."},
+ {k:["2nd","trace","2","arrow","enter"],scr:()=>lcd(gcGraph(undefined,[],-1.267949)+`<circle cx="${10+(-4.732051+10)*19}" cy="120" r="6" fill="#C8553D" stroke="#fff" stroke-width="2"/>`,"Zero  X=−1.267949  Y=0"),en:"<b>8. Repeat</b> for the second root: x ≈ <b>−1.27</b>. Solutions: x ≈ −4.73 and x ≈ −1.27 (rounded to hundredths).",ar:"<b>8. كرّر</b> للجذر الثاني: x ≈ <b>−1.27</b>. الحلول: x ≈ −4.73 وx ≈ −1.27 (مقرّبة لأقرب جزء من مئة)."}];
+function gcDraw(){const st=GC[gcK];$("#gcSvg").innerHTML=st.scr();$$("#gcKeys span").forEach(k=>k.classList.toggle("on",st.k.includes(k.dataset.k)));setMsg($("#gcMsg"),st.en,st.ar);$("#gcNext").disabled=gcK>=GC.length-1;}
+$("#gcNext").onclick=()=>{if(gcK<GC.length-1){gcK++;gcDraw();}};$("#gcReset").onclick=()=>{gcK=0;gcDraw();};gcDraw();
+
+/* 4. estimate roots between integers */
+const erF=x=>x*x-4*x+2,ER=[-1,0,1,2,3,4,5];let erOn=false,erFound=new Set();
+function erDraw(){$("#erTab").innerHTML=`<table><tr><th>x</th>${ER.map(x=>`<td>${fm(x)}</td>`).join("")}</tr><tr><th>f(x)</th>${ER.map(x=>{const v=erF(x);return `<td class="${erOn?(v>0?"pos":"neg"):""}">${fm(v)}${erOn?`<br><small>${v>0?"+":"−"}</small>`:""}</td>`;}).join("")}</tr></table>`;
+  $("#erGaps").innerHTML=erOn?ER.slice(0,-1).map((x,i)=>`<button data-i="${i}" class="${erFound.has(i)?"right":""}">between ${fm(x)} and ${fm(ER[i+1])}</button>`).join(""):"";
+  $$("#erGaps button").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=erF(ER[i])*erF(ER[i+1])<0;
+    if(ok){erFound.add(i);erDraw();if(erFound.size===2)setMsg($("#erMsg"),`${ICON.check} <b>Both found!</b> One root is between 0 and 1, the other between 3 and 4. The calculator gives x ≈ 0.59 and x ≈ 3.41.`,`${ICON.check} <b>وجدت الاثنين!</b> جذر بين 0 و1، والآخر بين 3 و4. تعطي الآلة الحاسبة x ≈ 0.59 وx ≈ 3.41.`);else setMsg($("#erMsg"),`${ICON.check} Yes: f(${fm(ER[i])}) and f(${fm(ER[i+1])}) have opposite signs. Find the other one.`,`${ICON.check} نعم: f(${fm(ER[i])}) وf(${fm(ER[i+1])}) إشارتاهما مختلفتان. ابحث عن الأخرى.`);}
+    else{b.classList.add("wrong");setMsg($("#erMsg"),`Not here: f(${fm(ER[i])}) and f(${fm(ER[i+1])}) have the <b>same</b> sign. Look for + next to −.`,`ليس هنا: f(${fm(ER[i])}) وf(${fm(ER[i+1])}) لهما الإشارة <b>نفسها</b>. ابحث عن + بجانب −.`,true);}});
+  const g=gridF({xr:[-1,5],yr:[-3,8],W:400,H:300,lx:1,ly:2});let s=g.s;
+  erFound.forEach(i=>s+=`<rect x="${g.X(ER[i])}" y="${g.Y(0)-10}" width="${g.X(ER[i+1])-g.X(ER[i])}" height="20" rx="6" fill="#E9B44C" opacity=".5"/>`);
+  s+=curve(g,erF,"#2A9D8F");if(erOn)ER.forEach(x=>{const v=erF(x);if(v>=-3&&v<=8)s+=dot(g,x,v,v>0?"#2A9D8F":"#C8553D","",0,0);});
+  if(erFound.size===2)roots(1,-4,2).forEach(x=>s+=root(g,x,"≈ "+fm(x),-14));$("#erSvg").innerHTML=s;$("#erSign").disabled=erOn;}
+$("#erSign").onclick=()=>{erOn=true;erDraw();setMsg($("#erMsg"),"Green = positive, red = negative. Now tap the two gaps where the sign changes.","الأخضر = موجب، والأحمر = سالب. اضغط الآن على الفجوتين اللتين تتغير فيهما الإشارة.");};
+erDraw();setMsg($("#erMsg"),"Look at the table. Which values are positive and which are negative?","انظر إلى الجدول. أيّ القيم موجبة وأيّها سالبة؟");
+
+/* 5. sum and product */
+const SP=[{s:2,p:-24,o:{xr:[-6,8],yr:[-27,10],gy:5,lx:2,ly:5}},{s:-15,p:-54,o:{xr:[-20,6],yr:[-115,30],gx:2,gy:10,lx:4,ly:20}},{s:24,p:143,o:{xr:[8,16],yr:[-2,8],lx:2,ly:2}},{s:2,p:5,o:{xr:[-3,5],yr:[-1,10],lx:1,ly:2}}];let spK=0;
+function spDraw(){const m=SP[spK],f=x=>x*x-m.s*x+m.p,g=gridF(Object.assign({W:400,H:340},m.o));let s=g.s+curve(g,f,"#2A9D8F");const r=roots(1,-m.s,m.p);
+  r.forEach((x,i)=>s+=root(g,x,xl(x),i?-12:22));$("#spSvg").innerHTML=s;
+  $("#spCalc").innerHTML=`x(${fm(m.s)} − x) = ${fm(m.p)}<br>${poly(1,-m.s,m.p)} = 0`;
+  if(r.length===2)setMsg($("#spMsg"),`Zeros: <b>${fm(r[0])}</b> and <b>${fm(r[1])}</b>. Check: ${fm(r[0])} + ${pr(r[1])} = ${fm(m.s)} and ${fm(r[0])} × ${pr(r[1])} = ${fm(m.p)}.`,`الصفران: <b>${fm(r[0])}</b> و<b>${fm(r[1])}</b>. تحقّق: ${fm(r[0])} + ${pr(r[1])} = ${fm(m.s)} و${fm(r[0])} × ${pr(r[1])} = ${fm(m.p)}.`);
+  else setMsg($("#spMsg"),"The graph never meets the x-axis: there are <b>no two real numbers</b> with sum 2 and product 5.","التمثيل لا يقطع محور x: <b>لا يوجد عددان حقيقيان</b> مجموعهما 2 وحاصل ضربهما 5.",true);}
+$$("#spMode button").forEach(b=>b.onclick=()=>{$$("#spMode button").forEach(x=>x.classList.toggle("on",x===b));spK=+b.dataset.v;spDraw();});spDraw();
+whyBox($("#why3"),"Why is the other number s − x?","لماذا يكون العدد الآخر s − x؟",[
+ ["Because x + (s − x) = s, the sum we want.","لأن x + (s − x) = s، وهو المجموع المطلوب.",1,"Any two numbers with sum s can be written as x and s − x.","أي عددين مجموعهما s يمكن كتابتهما x وs − x."],
+ ["Because the product is always negative.","لأن حاصل الضرب سالب دائمًا.",0,"In sum 24, product 143 the product is positive.","في المجموع 24 والحاصل 143 يكون الحاصل موجبًا."],
+ ["Because s − x is the vertex.","لأن s − x هو الرأس.",0,"The vertex is at x = s/2, not s − x.","الرأس عند x = s/2 وليس s − x."]]);
+
+/* 6. real life: football */
+const fbH=t=>-16*t*t+50*t+1.5,fbR=(50+Math.sqrt(2500+96))/32;
+function fbDraw(){const t=+$("#fbT").value,g=gridF({xr:[0,3.4],yr:[-5,45],W:400,H:300,gx:.5,gy:5,lx:1,ly:10,xl:"t",yl:"h"});let s=g.s;
+  s+=`<rect x="${g.X(0)}" y="${g.Y(0)}" width="${g.X(3.4)-g.X(0)}" height="${g.Y(-5)-g.Y(0)}" fill="#8BBF5A" opacity=".35"/>`;
+  s+=curve(g,fbH,"#C8553D",0,fbR,3.5);const land=t>=fbR,tt=land?fbR:t,h=land?0:fbH(t);
+  if(t>=3.05)s+=root(g,fbR,"t ≈ 3.15",-34,-10);
+  const bx=g.X(tt),by=g.Y(h);s+=`<g transform="translate(${bx} ${by-2}) rotate(${-30+tt*25})"><ellipse rx="13" ry="8" fill="#8C5A3C" stroke="#4A2E1C" stroke-width="2"/><path d="M-5 0H5M-3 -3V3M0 -3V3M3 -3V3" stroke="#fff" stroke-width="1.5"/></g>`;
+  $("#fbSvg").innerHTML=s;$("#fbTv").textContent=fm(t);
+  $("#fbCalc").innerHTML=`h(${fm(t)}) = −16(${fm(t)})² + 50(${fm(t)}) + 1.5<br>= <b>${fm(fbH(t))}</b> ft`;
+  if(land)setMsg($("#fbMsg"),"h(t) is negative here: the ball is already on the ground. It landed when h(t) = 0, at <b>t ≈ 3.15 s</b> (the calculator zero). The other zero, t ≈ −0.03, is rejected: time cannot be negative.","h(t) سالبة هنا: الكرة على الأرض بالفعل. سقطت عندما h(t) = 0، عند <b>t ≈ 3.15 s</b> (صفر الآلة الحاسبة). الصفر الآخر t ≈ −0.03 مرفوض: الزمن لا يكون سالبًا.",true);
+  else if(t>=3.05)setMsg($("#fbMsg"),"Almost on the ground! h(t) is close to 0. The zero of h is <b>t ≈ 3.15 s</b>.","تقريبًا على الأرض! h(t) قريبة من 0. صفر الدالة h هو <b>t ≈ 3.15 s</b>.");
+  else if(Math.abs(t-1.55)<.06)setMsg($("#fbMsg"),"This is near the vertex: the highest point, about 40.6 ft. Keep moving t.","هذا قرب الرأس: أعلى نقطة، حوالي 40.6 قدم. استمر في تحريك t.");
+  else setMsg($("#fbMsg"),"The ball is in the air. Move t until the height is 0.","الكرة في الهواء. حرّك t حتى يصبح الارتفاع 0.");}
+$("#fbT").oninput=fbDraw;fbDraw();
+
+const FD={
+ sg:[{q:`Solve x² − 10x + 21 = 0 by graphing.<span class="ar">حل x² − 10x + 21 = 0 بالتمثيل البياني.</span>${mini(x=>x*x-10*x+21,{xr:[-1,9],yr:[-5,10],lx:1,ly:2},g=>root(g,3,"",0)+root(g,7,"",0)+dot(g,5,-4,"#1F2A37","(5, −4)",10,18))}`,
+   s:[["f(x) = x² − 10x + 21","Related function","الدالة المرتبطة"],["x = −(−10) / (2 × 1) = 5, f(5) = −4","Vertex (5, −4)","الرأس (5, −4)"],["x-intercepts: 3 and 7","Read the graph","اقرأ التمثيل"],["3² − 10(3) + 21 = 0 ✓, 7² − 10(7) + 21 = 0 ✓","Check","تحقّق"],["x = 3, x = 7","Solutions","الحلول"]],blank:0},
+  {q:`Solve 4x² − 15 = −4x by graphing.<span class="ar">حل 4x² − 15 = −4x بالتمثيل البياني.</span>${mini(x=>4*x*x+4*x-15,{xr:[-4,3],yr:[-17,10],gy:2,lx:1,ly:4},g=>root(g,-2.5,"",0)+root(g,1.5,"",0))}`,
+   s:[["4x² + 4x − 15 = 0","Add 4x to both sides","أضف 4x إلى الطرفين"],["f(x) = 4x² + 4x − 15","Related function","الدالة المرتبطة"],["x-intercepts: −2.5 and 1.5","Read the graph","اقرأ التمثيل"],["4(1.5)² + 4(1.5) − 15 = 9 + 6 − 15 = 0 ✓","Check","تحقّق"],["x = −5/2, x = 3/2","Solutions","الحلول"]],blank:1,
+   o:[["x = 5/2, x = −3/2","x = −5/2, x = 3/2","x = −15, x = 4"]],h:[["Read the x-intercepts: −2.5 = −5/2 and 1.5 = 3/2.","اقرأ المقاطع x: −2.5 = −5/2 و1.5 = 3/2."]]},
+  {q:`Solve −x² − 6x − 9 = 0 by graphing.<span class="ar">حل −x² − 6x − 9 = 0 بالتمثيل البياني.</span>${mini(x=>-x*x-6*x-9,{xr:[-7,1],yr:[-9,2],lx:1,ly:2},g=>root(g,-3,"",0))}`,
+   s:[["f(x) = −x² − 6x − 9","Related function","الدالة المرتبطة"],["x = −(−6) / (2 × (−1)) = −3, f(−3) = 0","Vertex (−3, 0)","الرأس (−3, 0)"],["The vertex touches the x-axis: one real solution","Count the solutions","عدّ الحلول"],["x = −3","Solution (double root)","الحل (جذر مكرر)"]],blank:2,
+   o:[["The vertex is below the x-axis: no real solutions","The vertex touches the x-axis: one real solution","The graph crosses the x-axis twice: two real solutions"],["x = 3","x = −9","x = −3"]],h:[["The vertex is (−3, 0). Where is that point?","الرأس (−3, 0). أين تقع هذه النقطة؟"],["The only x-intercept is the x of the vertex.","المقطع x الوحيد هو قيمة x للرأس."]]}]};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+
+/* 7. check yourself */
+cardsQ($("#pcCards"),[
+ {t:[`The graph shows the related function of x² + x − 6 = 0. What are the solutions?${mini(x=>x*x+x-6,{xr:[-5,4],yr:[-7,6],lx:1,ly:2},g=>root(g,-3,"",0)+root(g,2,"",0))}`,"يبيّن التمثيل الدالة المرتبطة بالمعادلة x² + x − 6 = 0. ما الحلول؟"],o:[["x = −3 and x = 2","x = −3 وx = 2"],["x = 3 and x = −2","x = 3 وx = −2"],["x = −6","x = −6"]],a:0,cls:"stack",
+  w:["The graph crosses the x-axis at −3 and 2. Check: (2)² + 2 − 6 = 0.","يقطع التمثيل محور x عند −3 و2. تحقّق: (2)² + 2 − 6 = 0."],h:["Read where the curve meets the x-axis, not the y-axis.","اقرأ أين يقطع المنحنى محور x وليس محور y."]},
+ {t:["How many real solutions does −x² − 4x − 6 = 0 have?","كم حلًا حقيقيًا للمعادلة −x² − 4x − 6 = 0؟"],o:[["two","حلّان"],["one","حل واحد"],["none","لا يوجد"]],a:2,cls:"two",
+  w:["Vertex: x = −2, f(−2) = −4 + 8 − 6 = −2. It is below the x-axis and opens down, so it never reaches 0.","الرأس: x = −2، f(−2) = −4 + 8 − 6 = −2. يقع تحت محور x ويُفتح لأسفل، فلا يصل إلى 0 أبدًا."],h:["Find the vertex and look at the sign of a.","أوجد الرأس وانظر إلى إشارة a."]},
+ {t:[`Between which consecutive integers are the roots?<table class="vtable" style="margin:8px auto"><tr><th>x</th><td>−2</td><td>−1</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><th>f(x)</th><td>6</td><td>1</td><td>−2</td><td>−3</td><td>−2</td><td>1</td><td>6</td></tr></table>`,"بين أيّ عددين صحيحين متتاليين تقع الجذور؟"],o:[["between −2 and −1, and between 3 and 4","بين −2 و−1، وبين 3 و4"],["between −1 and 0, and between 2 and 3","بين −1 و0، وبين 2 و3"],["between 0 and 1 only","بين 0 و1 فقط"]],a:1,cls:"stack",
+  w:["f changes from 1 to −2 between −1 and 0, and from −2 to 1 between 2 and 3.","تتغير f من 1 إلى −2 بين −1 و0، ومن −2 إلى 1 بين 2 و3."],h:["Find a positive value right next to a negative value.","ابحث عن قيمة موجبة بجانب قيمة سالبة مباشرة."]},
+ {t:["Find two real numbers with a sum of 10 and a product of 21.","أوجد عددين حقيقيين مجموعهما 10 وحاصل ضربهما 21."],o:[["−3 and −7","−3 و−7"],["3 and 7","3 و7"],["1 and 21","1 و21"]],a:1,cls:"two",
+  w:["x² − 10x + 21 = 0 has zeros 3 and 7: 3 + 7 = 10, 3 × 7 = 21.","للمعادلة x² − 10x + 21 = 0 صفران 3 و7: 3 + 7 = 10، 3 × 7 = 21."],h:["Check both the sum and the product.","تحقّق من المجموع وحاصل الضرب معًا."]},
+ {t:["On a graphing calculator, which keys find a zero?","في الآلة الحاسبة البيانية، أيّ مفاتيح تجد الصفر؟"],o:[["Y= only","Y= فقط"],["ZOOM → 6","ZOOM ← 6"],["2nd → TRACE (CALC) → 2: zero","2nd ← TRACE (CALC) ← 2: zero"]],a:2,cls:"stack",
+  w:["CALC → zero asks for a left bound, a right bound and a guess.","CALC ← zero تطلب حدًا أيسر وحدًا أيمن وتخمينًا."],h:["Y= types the function and ZOOM shows the graph. Which menu calculates?","Y= لكتابة الدالة وZOOM لعرض التمثيل. أيّ قائمة تحسب؟"]}]);
+const FL=[["ax²+bx+c=0","Quadratic equation","المعادلة التربيعية","Its related function is f(x) = ax² + bx + c.","دالتها المرتبطة f(x) = ax² + bx + c."],
+ ["x = r","Root","الجذر","A solution of the equation ax² + bx + c = 0.","حل للمعادلة ax² + bx + c = 0."],
+ ["f(r) = 0","Zero","الصفر","A value of x that makes f(x) = 0. Zeros = roots.","قيمة x التي تجعل f(x) = 0. الأصفار = الجذور."],
+ ["(r, 0)","x-intercept","المقطع x","Where the graph meets the x-axis. It shows a root.","حيث يقطع التمثيل محور x، ويبيّن جذرًا."],
+ ["2 · 1 · 0","Number of real solutions","عدد الحلول الحقيقية","Crosses twice: 2. Touches at the vertex: 1 (double root). Never meets: 0.","يقطع مرتين: 2. يلمس عند الرأس: 1 (جذر مكرر). لا يقطع: 0."],
+ ["+ | −","Sign change","تغيّر الإشارة","If f(a) and f(b) have opposite signs, a root lies between a and b.","إذا كانت إشارتا f(a) وf(b) مختلفتين فهناك جذر بين a وb."],
+ ["CALC → zero","Graphing calculator","الآلة الحاسبة البيانية","Y= → ZOOM 6 → 2nd TRACE → 2: zero → left bound, right bound, guess.","Y= ← ZOOM 6 ← 2nd TRACE ← 2: zero ← حد أيسر، حد أيمن، تخمين."],
+ ["x² − sx + p","Sum and product","المجموع وحاصل الضرب","Two numbers with sum s and product p are the zeros of x² − sx + p.","العددان اللذان مجموعهما s وحاصل ضربهما p هما صفرا x² − sx + p."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+const Q=[
+ {q:"The graph of the related function of x² − x − 6 = 0 crosses the x-axis at which points?",qa:"عند أيّ نقطتين يقطع تمثيل الدالة المرتبطة بالمعادلة x² − x − 6 = 0 محور x؟",o:[["x = −3 and x = 2","x = −3 وx = 2"],["x = 3 and x = −2","x = 3 وx = −2"],["x = −6 and x = 1","x = −6 وx = 1"],["x = 1 and x = 6","x = 1 وx = 6"]],a:1,ex:["Check: 3² − 3 − 6 = 0 and (−2)² + 2 − 6 = 0.","تحقّق: 3² − 3 − 6 = 0 و(−2)² + 2 − 6 = 0."],h:[["Test each pair in the equation.","اختبر كل زوج بالتعويض في المعادلة."],["Which numbers make x² − x − 6 equal to 0?","أيّ عددين يجعلان x² − x − 6 تساوي 0؟"]]},
+ {q:"How many real solutions does x² + 4x + 4 = 0 have?",qa:"كم حلًا حقيقيًا للمعادلة x² + 4x + 4 = 0؟",o:[["no real solutions","لا توجد حلول حقيقية"],["two real solutions","حلّان حقيقيان"],["one real solution, x = −2","حل حقيقي واحد، x = −2"],["one real solution, x = 2","حل حقيقي واحد، x = 2"]],a:2,ex:["Vertex: x = −2, f(−2) = 4 − 8 + 4 = 0. The vertex touches the x-axis: a double root.","الرأس: x = −2، f(−2) = 4 − 8 + 4 = 0. الرأس يلمس محور x: جذر مكرر."],h:[["Find the vertex.","أوجد الرأس."],["The vertex is on the x-axis. What is its x?","الرأس على محور x. ما قيمة x له؟"]]},
+ {q:"What are the real solutions of x² + 5 = 0?",qa:"ما الحلول الحقيقية للمعادلة x² + 5 = 0؟",o:[["no real solutions","لا توجد حلول حقيقية"],["x = 5","x = 5"],["x = −5","x = −5"],["x = 5 and x = −5","x = 5 وx = −5"]],a:0,ex:["The vertex (0, 5) is above the x-axis and the parabola opens up.","الرأس (0, 5) فوق محور x والقطع يُفتح لأعلى."],h:[["Where is the vertex of f(x) = x² + 5?","أين رأس f(x) = x² + 5؟"],["Can x² + 5 ever be 0? x² is never negative.","هل يمكن أن تساوي x² + 5 صفرًا؟ x² لا تكون سالبة أبدًا."]]},
+ {q:"Between which consecutive integers are the roots of x² − 5x + 3 = 0?",qa:"بين أيّ عددين صحيحين متتاليين تقع جذور x² − 5x + 3 = 0؟",o:[["between 0 and 1 only","بين 0 و1 فقط"],["between 1 and 2, and between 3 and 4","بين 1 و2، وبين 3 و4"],["between −1 and 0, and between 4 and 5","بين −1 و0، وبين 4 و5"],["between 0 and 1, and between 4 and 5","بين 0 و1، وبين 4 و5"]],a:3,ex:["f(0) = 3, f(1) = −1: sign change. f(4) = −1, f(5) = 3: sign change.","f(0) = 3، f(1) = −1: تغيّر في الإشارة. f(4) = −1، f(5) = 3: تغيّر في الإشارة."],h:[["Make a table of f(x) for x = 0, 1, 2, 3, 4, 5.","كوّن جدولًا لقيم f(x) عند x = 0, 1, 2, 3, 4, 5."],["Look for + next to −.","ابحث عن + بجانب −."]]},
+ {q:"For a quadratic function, f(1) = −2 and f(2) = 3. What can you say?",qa:"لدالة تربيعية f(1) = −2 وf(2) = 3. ماذا تستنتج؟",o:[["There is a root between 0 and 1.","يوجد جذر بين 0 و1."],["There is a root between 1 and 2.","يوجد جذر بين 1 و2."],["x = 2 is a root.","x = 2 جذر."],["There is no root.","لا يوجد جذر."]],a:1,ex:["The sign changes from − to +, so the graph crosses the x-axis between 1 and 2.","تتغير الإشارة من − إلى +، إذن يقطع التمثيل محور x بين 1 و2."],h:[["Compare the signs of f(1) and f(2).","قارن إشارتي f(1) وf(2)."],["Opposite signs mean the graph crosses y = 0.","الإشارتان المختلفتان تعنيان أن التمثيل يقطع y = 0."]]},
+ {q:"Find two real numbers with a sum of −2 and a product of −15.",qa:"أوجد عددين حقيقيين مجموعهما −2 وحاصل ضربهما −15.",o:[["3 and −5","3 و−5"],["−3 and 5","−3 و5"],["−3 and −5","−3 و−5"],["15 and −1","15 و−1"]],a:0,ex:["x² + 2x − 15 = 0 has zeros 3 and −5: 3 + (−5) = −2, 3 × (−5) = −15.","للمعادلة x² + 2x − 15 = 0 صفران 3 و−5: 3 + (−5) = −2، 3 × (−5) = −15."],h:[["Check the sum first.","تحقّق من المجموع أولًا."],["−3 + 5 = 2, not −2.","−3 + 5 = 2 وليس −2."]]},
+ {q:"What is the related function of 3x² = 2x + 1?",qa:"ما الدالة المرتبطة بالمعادلة 3x² = 2x + 1؟",o:[["f(x) = 3x² + 2x + 1","f(x) = 3x² + 2x + 1"],["f(x) = 3x² − 2x","f(x) = 3x² − 2x"],["f(x) = 3x² − 2x − 1","f(x) = 3x² − 2x − 1"],["f(x) = 2x + 1","f(x) = 2x + 1"]],a:2,ex:["Subtract 2x + 1 from both sides: 3x² − 2x − 1 = 0.","اطرح 2x + 1 من الطرفين: 3x² − 2x − 1 = 0."],h:[["Move every term to the left side.","انقل كل الحدود إلى الطرف الأيسر."],["When a term moves across =, its sign changes.","عندما ينتقل حد عبر = تتغير إشارته."]]},
+ {q:"A ball is kicked in a stadium in Abu Dhabi. Its height is h(t) = −5t² + 10t + 15 metres. When does it hit the ground?",qa:"تُركل كرة في ملعب في أبوظبي. ارتفاعها h(t) = −5t² + 10t + 15 مترًا. متى تصطدم بالأرض؟",o:[["t = −1 s","t = −1 s"],["t = 1 s","t = 1 s"],["t = 15 s","t = 15 s"],["t = 3 s","t = 3 s"]],a:3,ex:["−5t² + 10t + 15 = 0 has zeros −1 and 3. Time cannot be negative, so t = 3 s.","للمعادلة −5t² + 10t + 15 = 0 صفران −1 و3. الزمن لا يكون سالبًا، إذن t = 3 s."],h:[["The ball is on the ground when h(t) = 0.","تكون الكرة على الأرض عندما h(t) = 0."],["Check h(3) = −45 + 30 + 15.","تحقّق: h(3) = −45 + 30 + 15."]]},
+ {q:"From Lesson 1-1: What is the vertex of f(x) = x² + 4x − 1?",qa:"من الدرس 1-1: ما رأس الدالة f(x) = x² + 4x − 1؟",o:[["(−2, −5)","(−2, −5)"],["(2, 11)","(2, 11)"],["(−4, −1)","(−4, −1)"],["(−2, −1)","(−2, −1)"]],a:0,ex:["x = −4/2 = −2, f(−2) = 4 − 8 − 1 = −5.","x = −4/2 = −2، f(−2) = 4 − 8 − 1 = −5."],h:[["x = −b/(2a).","x = −b/(2a)."],["Now find f(−2).","والآن أوجد f(−2)."]]},
+ {q:"From Lesson 1-1: What is the range of f(x) = −x² + 2x + 3?",qa:"من الدرس 1-1: ما مدى الدالة f(x) = −x² + 2x + 3؟",o:[["{y | y ≥ 4}","{y | y ≥ 4}"],["{y | y ≤ 4}","{y | y ≤ 4}"],["all real numbers","كل الأعداد الحقيقية"],["{y | y ≤ 1}","{y | y ≤ 1}"]],a:1,ex:["Vertex (1, 4) and a &lt; 0: maximum 4, so y ≤ 4.","الرأس (1, 4) وa &lt; 0: القيمة العظمى 4، إذن y ≤ 4."],h:[["Find the vertex first.","أوجد الرأس أولًا."],["It opens down, so y goes down from the vertex.","يُفتح لأسفل، إذن تنزل y من الرأس."]]}];
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${first?ICON.check+" Correct!":ok?ICON.check+" Yes, now you have it.":ICON.cross+" Here is the answer."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${first?"إجابة صحيحة!":ok?"نعم، الآن فهمتها.":"إليك الإجابة."} ${q.ex[1]}</div>`;
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Mathematician";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You can find roots from any graph!","رائع! أنت تجد الجذور من أي تمثيل بياني!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the graphs and worked examples, then retry.","محاولة جيدة! أعد التمثيلات والأمثلة المحلولة، ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Math · Grade 12 · Unit 1 · Lesson 1-2 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
