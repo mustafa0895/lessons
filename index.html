@@ -579,15 +579,16 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
    {g:6,s:"science",unit:"Unit 1 · Energy in the Atmosphere",unitAr:"الوحدة 1 · الطاقة في الغلاف الجوي",n:"Lesson 3-1",en:"Solar Energy on Earth",ar:"الطاقة الشمسية على الأرض",f:"g6-science-l7.html"},
    {g:12,s:"chemistry",unit:"Unit 1 · Chemical Bonding and Reaction",unitAr:"الوحدة 1 · الترابط الكيميائي والتفاعلات",n:"Lesson 1-1",en:"Measuring Matter",ar:"قياس المادة",f:"g12-chemistry-l1.html"},
    {g:12,s:"chemistry",unit:"Unit 1 · Chemical Bonding and Reaction",unitAr:"الوحدة 1 · الترابط الكيميائي والتفاعلات",n:"Lesson 1-2",en:"Mass and the Mole",ar:"الكتلة والمول",f:"g12-chemistry-l2.html"},
+   {g:12,s:"biology",unit:"Unit 1 · The Human Body",unitAr:"الوحدة 1 · جسم الإنسان",n:"Lesson 1-1",en:"Infectious Diseases",ar:"الأمراض المعدية",f:"g12-biology-l1.html"},
    {g:12,s:"math",unit:"Unit 1 · Quadratic Functions",unitAr:"الوحدة 1 · الدوال التربيعية",n:"Lesson 1-1",en:"Graphing Quadratic Functions",ar:"تمثيل الدوال التربيعية بيانيًا",f:"g12-math-l1.html"},
   ];
   try{document.getElementById('statLessons').textContent=LESSONS.length;document.getElementById('statSubjects').textContent=new Set(LESSONS.map(l=>l.s)).size}catch(e){}
-  const SUBJ={math:["Math","رياضيات"],science:["Science","علوم"],chemistry:["Chemistry","كيمياء"]};
+  const SUBJ={math:["Math","رياضيات"],science:["Science","علوم"],chemistry:["Chemistry","كيمياء"],biology:["Biology","أحياء"]};
   /* grades taught in two curricula: Grade → curriculum → subject → lessons */
   const SPLIT=[7,9];
   const CURR={moe:["UAE MOE","المنهج الحكومي","Ministry of Education"],us:["American","المنهج الأمريكي","American curriculum"]};
   LESSONS.forEach(l=>{if(!l.c)l.c="moe"});
-  const ICO={chemistry:'<circle cx="12" cy="12" r="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/>',science:'<path d="M9 3h6M10 3v6L5 18a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 14h9"/>',math:'<path d="M18 5V4H6l6 8-6 8h12v-1"/>'};
+  const ICO={biology:'<path d="M8 3c0 6 8 6 8 12s-8 6-8 6M16 3c0 6-8 6-8 12s8 6 8 6"/><path d="M9 7h6M9 17h6"/>',chemistry:'<circle cx="12" cy="12" r="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/>',science:'<path d="M9 3h6M10 3v6L5 18a2 2 0 0 0 1.7 3h10.6A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 14h9"/>',math:'<path d="M18 5V4H6l6 8-6 8h12v-1"/>'};
   const ARW='<svg class="aic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
   const esc=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;");
   const st={g:null,c:null,s:null,u:null};
@@ -604,7 +605,7 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
    [/geologic|time/i,'<path d="M30 10h40M30 90h40"/><path d="M34 10 C34 34 50 40 50 50 C50 60 34 66 34 90M66 10 C66 34 50 40 50 50 C50 60 66 66 66 90"/><path d="M40 78h20M38 84h24"/><path d="M44 30h12"/><path d="M50 50v14"/>'],
    [/volume|prism|area/i,'<path d="M50 12 L84 30 L84 70 L50 88 L16 70 L16 30Z"/><path d="M16 30 L50 48 L84 30M50 48V88"/><path d="M27 36v40M38 42v40M61 42v40M72 36v40" opacity=".55"/><path d="M16 50 L50 68 L84 50" opacity=".55"/>'],
   ];
-  const ARTFB={science:'<path d="M40 12h20M43 12v24L22 80a6 6 0 0 0 5 8h46a6 6 0 0 0 5-8L57 36V12"/><path d="M30 64h40"/><circle cx="44" cy="74" r="3"/><circle cx="58" cy="70" r="2"/>',math:'<path d="M72 18H26l26 32-26 32h46"/>'};
+  const ARTFB={biology:'<circle cx="50" cy="50" r="18"/><path d="M50 32V18M50 68v14M32 50H18M68 50h14M37 37l-10-10M63 63l10 10M63 37l10-10M37 63l-10 10"/><circle cx="50" cy="16" r="3"/><circle cx="50" cy="84" r="3"/><circle cx="16" cy="50" r="3"/><circle cx="84" cy="50" r="3"/>',science:'<path d="M40 12h20M43 12v24L22 80a6 6 0 0 0 5 8h46a6 6 0 0 0 5-8L57 36V12"/><path d="M30 64h40"/><circle cx="44" cy="74" r="3"/><circle cx="58" cy="70" r="2"/>',math:'<path d="M72 18H26l26 32-26 32h46"/>'};
   const artFor=l=>{const hit=ART.find(([re])=>re.test(l.unit+' '+l.en));return `<svg class="lart" viewBox="0 0 100 100" aria-hidden="true">${hit?hit[1]:ARTFB[l.s]}</svg>`};
   function card(l){return `<a class="lesson ${l.s} in" href="${BASE+l.f}">${artFor(l)}<div class="lesson-top"><span class="tag"><svg class="tic" viewBox="0 0 24 24" aria-hidden="true">${ICO[l.s]}</svg>${SUBJ[l.s][0]}</span><span class="grade">Grade ${l.g}</span></div><span class="lnum">${esc(l.n)}</span><h3>${esc(l.en)}</h3><p class="ar" dir="rtl" lang="ar">${l.ar}</p><span class="open">Open lesson ${ARW}</span></a>`}
   function render(scroll){
@@ -626,7 +627,7 @@ footer{max-width:var(--maxw);margin:clamp(64px,9vw,110px) auto 0;padding-block:4
     /* step 2: subject */
     subjStep.hidden=false;
     document.getElementById('subjLab').firstChild.textContent=(split?"2 · ":"")+"Choose your subject";
-    const subs=Object.keys(SUBJ).filter(k=>k!=="chemistry"||st.g>=10);
+    const subs=Object.keys(SUBJ).filter(k=>(k!=="chemistry"&&k!=="biology")||st.g>=10);
     const counts=Object.fromEntries(subs.map(k=>[k,inGrade.filter(l=>l.s===k).length]));
     const withL=subs.filter(k=>counts[k]);
     if(!st.s&&withL.length===1)st.s=withL[0];

@@ -1,0 +1,1760 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F1E8">
+<title>Infectious Diseases – Biology G12 Lesson 1-1</title>
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(247,241,232,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#EADFCD;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#F9E3DC;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#FFF6E1;border:1px solid #F1D9A6;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #E9CFA0;background:#FFF8EA;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#fff;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #E2D5C0}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#E4F3F1;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#FBF3EA;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#E8F5F3}
+.opt.right{border-color:var(--teal);background:#E2F4F1}
+.opt.wrong{border-color:var(--terra);background:#FBE9E4}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#EADFCD;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#fff;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#E8F5F3;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#FBE9E4;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#fff;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#fff}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#E2D5C0}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #fff}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#fff;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#fff}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #fff;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#FFF6E1}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#E2F4F1;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#E2F4F1}
+.pieces button.no{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#E2D5C0}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#E2F4F1;border-left:5px solid var(--teal)}
+.feedback.no{background:#FBE9E4;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#fff;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#fff;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#FFF6E1;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#fff;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#E8F5F3}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#FFF6E1}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#fff;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#FBE9E4}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#FFF6E1;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#fff;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#E8F5F3}.sc.diff{border-color:var(--terra);background:#FBE9E4}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#E2F4F1}.rchips button.wrong{border-color:var(--terra);background:#FBE9E4}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#E8F5F3}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#E8F5F3}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#FBE9E4}
+.ml.done,.mr.done{border-color:var(--teal);background:#E2F4F1;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#E8F5F3}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#FCE8B2;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#FCE8B2;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#E2F4F1}
+.eline.bad{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#fff;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#FFFFFF 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#E2F4F1}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#FBE9E4}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#FFF3D6}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#FFF3D6;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#E2F4F1}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#FBE9E4}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#FFF3D6;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#E8F5F3}.mcard2.wrong{border-color:var(--terra);background:#FBE9E4}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #fff;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#E8F5F3}.idc.wrong{border-color:var(--terra);background:#FBE9E4}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#E8F5F3}.claim2.wrong{border-color:var(--terra);background:#FBE9E4}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#FFF6EA}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#E8F5F3}.ct.no{border-color:var(--terra);background:#FBE9E4}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#FFF6EA}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#EADFF0;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#EADFCD;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#FFF6E0;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#fff;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#E8F5F3}.wuq .wo button.wrong{border-color:var(--terra);background:#FBE9E4}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#fff;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#FBF6EC;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#FBE9E4}.pick button.right{border-color:var(--teal);background:#E8F5F3}
+.why{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#E8F5F3}.why .wb button.wrong{border-color:var(--terra);background:#FBE9E4}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#fff;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#ddd;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#fff;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#FFFDF7}
+.tchip.lost{border-color:var(--terra);background:#FBE9E4}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#FBEDEA}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#E8F5F3}.pickph.wrong{border-color:var(--terra);background:#FBE9E4}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#E8F5F3}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#FBF6EC}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#E8F5F3;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#FBF6EC;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#fff;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#FFE7A8;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#FBF6EC;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#fff}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#E8F5F3;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#fff;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#fff;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#E8F5F3;border-color:var(--teal)}.tile.g1{background:#FFF0E6;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#FBF6EC;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#fff;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#fff;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#fff;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#fff;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#F3ECE1}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#fff}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#F3ECE1}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#fff}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#E9E2D6;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+/* G12 Bio 1-1 */
+.nojs-only{display:none}
+html.nojs .nojs-only{display:block}
+.pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:0 0 10px}
+.pgrid .pcd{display:flex;flex-direction:column;align-items:center;gap:2px;border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px 2px;font-size:12.5px;line-height:1.15;color:var(--ink)}
+.pgrid .pcd small{font-size:10.5px;color:var(--clay);font-weight:600}
+.pgrid .pcd.on{border-color:var(--terra);background:#FFF6EA;box-shadow:var(--shadow)}
+.pgrid .pcd svg{flex:none}
+.idg.two{grid-template-columns:1fr}
+@media (min-width:700px){.idg.two{grid-template-columns:1fr 1fr}}
+.tblwrap{width:100%;overflow:hidden}
+.ctab{font-size:13.5px}
+.ctab td{font-family:inherit;text-align:left;vertical-align:middle}
+.ctab td small.ar{display:block;color:var(--muted);font-size:12px;direction:rtl;text-align:left}
+.ctab tr[data-i]{cursor:pointer;transition:background .2s}
+.ctab tr.sel td{outline:2px solid var(--terra);outline-offset:-2px}
+.ctab .cz{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.ctab .cz svg{flex:none}
+@media (max-width:560px){.ctab .org{display:none}.ctab{font-size:12.5px}.ctab td{padding:5px 4px}.ctab .cz svg{display:none}}
+.chips button svg{vertical-align:-5px}
+.wo button small.ar{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.fbig svg{display:block;margin:0 auto}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Biology · Grade 12 · Unit 1<small id="curLabel">Infectious Diseases</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="A petri dish and a zoom circle showing bacteria and a virus">
+<defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F2A37"/><stop offset="1" stop-color="#2B3B4E"/></linearGradient>
+<pattern id="hg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+<radialGradient id="hdish" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#FFF4D6"/><stop offset="1" stop-color="#E9C77A"/></radialGradient>
+<linearGradient id="hbac" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FE0D2"/><stop offset="1" stop-color="#1F7F74"/></linearGradient>
+<linearGradient id="hbac2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB49E"/><stop offset="1" stop-color="#B8432D"/></linearGradient>
+<radialGradient id="hvir" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#FFE29A"/><stop offset="1" stop-color="#C98A12"/></radialGradient></defs>
+<rect width="640" height="360" fill="url(#hb)"/><rect width="640" height="360" fill="url(#hg)"/><g transform="translate(70 -14) scale(.8)">
+<ellipse cx="150" cy="128" rx="110" ry="46" fill="#0E1A26" stroke="#fff" stroke-opacity=".55" stroke-width="3"/>
+<ellipse cx="150" cy="122" rx="98" ry="38" fill="url(#hdish)" opacity=".92"/>
+<g fill="#2A9D8F"><circle cx="112" cy="115" r="7"/><circle cx="135" cy="132" r="5"/><circle cx="172" cy="110" r="8"/><circle cx="190" cy="132" r="5"/><circle cx="150" cy="118" r="4"/><circle cx="96" cy="130" r="4"/></g>
+<circle cx="172" cy="112" r="16" fill="none" stroke="#E9B44C" stroke-width="3"/>
+<line x1="186" y1="102" x2="372" y2="44" stroke="#E9B44C" stroke-width="2" stroke-dasharray="6 6"/><line x1="184" y1="122" x2="372" y2="196" stroke="#E9B44C" stroke-width="2" stroke-dasharray="6 6"/>
+<circle cx="470" cy="120" r="102" fill="#0B1622" stroke="#E9B44C" stroke-width="4"/>
+<g transform="rotate(-20 430 95)"><rect x="392" y="80" width="78" height="30" rx="15" fill="url(#hbac)" stroke="#0E4F48" stroke-width="2"/><path d="M392 95 q-14 -8 -22 4 M470 95 q14 8 22 -4" fill="none" stroke="#7FE0D2" stroke-width="2"/></g>
+<g transform="rotate(25 500 165)"><rect x="466" y="152" width="68" height="26" rx="13" fill="url(#hbac2)" stroke="#7A2A1B" stroke-width="2"/></g>
+<g><circle cx="520" cy="85" r="26" fill="url(#hvir)" stroke="#7A5A0E" stroke-width="2"/>
+<g stroke="#C98A12" stroke-width="3" stroke-linecap="round"><path d="M520 59v-10M520 111v10M494 85h-10M546 85h10M502 67l-7-7M538 103l7 7M538 67l7-7M502 103l-7 7"/></g>
+<g fill="#C8553D"><circle cx="520" cy="47" r="4"/><circle cx="520" cy="123" r="4"/><circle cx="482" cy="85" r="4"/><circle cx="558" cy="85" r="4"/><circle cx="493" cy="58" r="4"/><circle cx="547" cy="112" r="4"/><circle cx="547" cy="58" r="4"/><circle cx="493" cy="112" r="4"/></g></g>
+<g fill="#C9A6F2" opacity=".85"><circle cx="420" cy="165" r="6"/><circle cx="436" cy="178" r="4"/><circle cx="452" cy="60" r="4"/></g></g>
+</svg>
+    <div class="herotxt"><span class="kicker light">Biology · Grade 12 · Unit 1 · Lesson 1-1</span><h1>Infectious Diseases</h1><p class="ar">الأمراض المعدية</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في متصفح Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="think"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">A cold and athlete's foot look very different. One makes you sneeze, the other makes your feet itch. So what do they have in common? Both are caused by tiny invaders called <b>pathogens</b>. Let's investigate!</p><p class="ar">الزكام وقدم الرياضي مختلفان جدًا؛ الأول يجعلك تعطس، والثاني يجعل قدميك تحكّانك. فما الذي يجمع بينهما؟ كلاهما يسببه غزاة صغار جدًا تُسمّى <b>الممرضات</b>. هيا نحقّق!</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ name the types of pathogens<br>✔ explain Koch's postulates<br>✔ describe disease reservoirs and how diseases spread<br>✔ explain why we feel sick and how outbreaks are classified<br>✔ compare antibiotics and antivirals, and explain antibiotic resistance</p><p class="ar"><b>سأتعلّم اليوم أن:</b><br>✔ أسمّي أنواع الممرضات<br>✔ أشرح فرضيات كوخ<br>✔ أصف مستودعات الأمراض وطرق انتقالها<br>✔ أفسّر لماذا نشعر بالمرض وكيف تُصنَّف موجات التفشّي<br>✔ أقارن بين المضادات الحيوية ومضادات الفيروسات، وأفسّر مقاومة المضادات الحيوية</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic.</p><p class="ar"><b>نصيحة:</b> اضغط زر <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمات.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up</span>
+  <h2>What do you already know?</h2>
+  <p class="hsub ar">ماذا تعرف من قبل؟</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Tap an answer, or tap "Show me".</p><p class="ar">مجرد تسخين، لا شيء يُحسب! اضغط على إجابة، أو اضغط «أرني».</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+</section>
+
+<section class="screen" data-title="Pathogens">
+  <span class="kicker">Explore</span>
+  <h2>What is an infectious disease?</h2>
+  <p class="hsub ar">ما المرض المعدي؟</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> An <b class="term">infectious disease</b> is caused by a <b class="term">pathogen</b> passed from one organism to another. The pathogen <b>disrupts the body's homeostasis</b> (its stable internal balance).</p><p class="ar"><b>المرض المعدي</b> مرض يسببه <b>ممرض</b> ينتقل من كائن حي إلى آخر. ويُخلّ الممرض <b>بالاتزان الداخلي</b> للجسم (توازنه الداخلي المستقر).</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="pgrid needjs" id="pgGrid"></div>
+      <div class="simfig"><svg id="pgBig" viewBox="0 0 400 220" role="img" aria-label="A large drawing of the chosen pathogen"></svg></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="pgMsg"></div>
+      <div class="card nojs-only"><div class="bi"><p class="en">The five types of pathogens: <b>bacteria, viruses, protozoans, fungi</b> and <b>parasites</b> (such as worms).</p><p class="ar">أنواع الممرضات الخمسة: <b>البكتيريا والفيروسات والطلائعيات (البروتوزوا) والفطريات</b> و<b>الطفيليات</b> (مثل الديدان).</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Normal flora">
+  <span class="kicker">Living scene</span>
+  <h2>Do all microbes cause disease?</h2>
+  <p class="hsub ar">هل تسبّب كل الميكروبات الأمراض؟</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>No!</b> Most microbes are harmless or helpful. Bacteria that normally live on your skin and in your intestines are called <b class="term">normal flora</b>. They take the space and food, so harmful pathogens cannot thrive.</p><p class="ar"><b>لا!</b> معظم الميكروبات غير ضارة أو مفيدة. البكتيريا التي تعيش عادةً على جلدك وفي أمعائك تُسمّى <b>الفلورا الطبيعية</b>. إنها تشغل المكان وتأخذ الغذاء، فلا تستطيع الممرضات الضارة أن تزدهر.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="nfC" style="aspect-ratio:16/10" role="img" aria-label="Normal flora bacteria covering the gut wall and a few harmful bacteria"></canvas></div>
+      <div class="seg needjs" id="nfMode"><button data-v="0" class="on">Healthy gut</button><button data-v="1">After strong antibiotics</button></div>
+      <div class="legend"><span><i style="background:#2A9D8F"></i>normal flora · الفلورا الطبيعية</span><span><i style="background:#C8553D"></i>pathogen · ممرض</span></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="nfMsg"></div>
+      <div class="why needjs" id="why1"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Koch's postulates">
+  <span class="kicker">Step by step</span>
+  <h2>Proving the cause: Koch's postulates</h2>
+  <p class="hsub ar">إثبات المسبّب: فرضيات كوخ</p>
+  <div class="bi"><p class="en">How do scientists prove that a <b>specific pathogen</b> causes a <b>specific disease</b>? In the 1870s and 1880s the German doctor <b>Robert Koch</b> set four rules, called <b class="term">Koch's postulates</b>.</p><p class="ar">كيف يثبت العلماء أن <b>ممرضًا محددًا</b> يسبّب <b>مرضًا محددًا</b>؟ في سبعينيات القرن التاسع عشر وثمانينياته وضع الطبيب الألماني <b>روبرت كوخ</b> أربع قواعد تُسمّى <b>فرضيات كوخ</b>.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="kpSvg" viewBox="0 0 520 380" role="img" aria-label="The four steps of Koch's postulates with mice and a petri dish"></svg></div>
+      <div class="seg needjs" id="kpMode"><button data-v="0" class="on">A bacterium</button><button data-v="1">Syphilis</button><button data-v="2">A virus</button></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="kpNext">Show me ▶</button><button class="btn alt sm" id="kpReset">↺ Start again</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="kpMsg"></div>
+      <div class="why needjs" id="why2"></div>
+    </div>
+  </div>
+  <div class="card nojs-only"><div class="bi"><p class="en">1. Isolate the suspected pathogen from a diseased host. 2. Grow it in a pure culture on artificial media. 3. Inject it into a healthy host: it must cause the same disease. 4. Isolate it again from the new host and show it matches the original.</p><p class="ar">1. اعزل الممرض المشتبه به من عائل مريض. 2. نمِّه في مزرعة نقية على وسط اصطناعي. 3. احقنه في عائل سليم: يجب أن يسبّب المرض نفسه. 4. اعزله مرة أخرى من العائل الجديد وبيّن أنه مطابق للأصلي.</p></div></div>
+</section>
+
+<section class="screen" data-title="Your turn: Koch">
+  <span class="kicker">Practice</span>
+  <h2>Put the postulates in order</h2>
+  <p class="hsub ar">رتّب الفرضيات</p>
+  <div class="bi"><p class="en">Example 1 is Koch's own work on <b>anthrax</b> (1876). In examples 2 and 3 you finish the steps yourself.</p><p class="ar">المثال 1 هو عمل كوخ نفسه على <b>الجمرة الخبيثة</b> (1876). في المثالين 2 و3 تكمل الخطوات بنفسك.</p></div>
+  <div class="fader" data-f="kp"></div>
+</section>
+
+<section class="screen" data-title="Reservoirs">
+  <span class="kicker">Sort it</span>
+  <h2>Where do pathogens hide?</h2>
+  <p class="hsub ar">أين تختبئ الممرضات؟</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A <b class="term">reservoir</b> is the source of a pathogen in the environment. There are three kinds: <b>human</b>, <b>animal</b> and <b>inanimate</b> (non-living: soil, water).</p><p class="ar"><b>المستودع</b> هو مصدر الممرض في البيئة، وله ثلاثة أنواع: <b>بشري</b> و<b>حيواني</b> و<b>غير حي</b> (التربة والماء).</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="idg two needjs" id="rvCards"></div>
+    </div>
+    <div class="side">
+      <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A <b class="term">carrier</b> is a person who has <b>no symptoms</b> but can still pass the pathogen to others. Humans are the main reservoir for human diseases.</p><p class="ar"><b>حامل المرض</b> شخص <b>لا تظهر عليه أعراض</b> لكنه يستطيع نقل الممرض إلى الآخرين. والإنسان هو المستودع الرئيس لأمراض الإنسان.</p></div>
+      <div class="card"><div class="bi"><p class="en"><b>A true story:</b> in the early 1900s, a cook in New York named Mary Mallon felt healthy, but she carried typhoid bacteria. She passed the disease to many people she cooked for. She became known as "Typhoid Mary".</p><p class="ar"><b>قصة حقيقية:</b> في أوائل القرن العشرين كانت طاهية في نيويورك اسمها ماري مالون تشعر بأنها بصحة جيدة، لكنها كانت تحمل بكتيريا التيفويد، فنقلت المرض إلى كثيرين ممن طبخت لهم. وعُرفت باسم «ماري التيفويد».</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Transmission">
+  <span class="kicker">Living scene</span>
+  <h2>How do diseases spread?</h2>
+  <p class="hsub ar">كيف تنتقل الأمراض؟</p>
+  <div class="bi"><p class="en">How does a pathogen get from the reservoir to you? There are three main routes. Choose one and watch.</p><p class="ar">كيف يصل الممرض من المستودع إليك؟ هناك ثلاثة طرق رئيسة. اختر طريقًا وراقب.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="trC" style="aspect-ratio:16/10" role="img" aria-label="Two people and the route a pathogen takes between them"></canvas></div>
+      <div class="seg needjs" id="trMode"><button data-v="0" class="on">Direct</button><button data-v="1">Indirect</button><button data-v="2">Vector</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="trMsg"></div>
+      <div class="why needjs" id="why3"></div>
+    </div>
+  </div>
+  <div class="card nojs-only"><div class="bi"><p class="en"><b>Direct contact:</b> touching or body fluids (mononucleosis, herpes). <b>Indirect contact:</b> air droplets or contaminated objects (colds, flu). <b>Vectors:</b> organisms that carry the pathogen, usually arthropods (ticks: Lyme disease; mosquitoes: malaria, Zika).</p><p class="ar"><b>التلامس المباشر:</b> اللمس أو سوائل الجسم (كثرة الوحيدات، الهربس). <b>التلامس غير المباشر:</b> رذاذ الهواء أو الأشياء الملوثة (الزكام، الإنفلونزا). <b>النواقل:</b> كائنات تحمل الممرض، غالبًا مفصليات (القراد: مرض لايم؛ البعوض: الملاريا وزيكا).</p></div></div>
+</section>
+
+<section class="screen" data-title="Clinical table">
+  <span class="kicker">Read the data</span>
+  <h2>Common human infectious diseases</h2>
+  <p class="hsub ar">أمراض معدية شائعة عند الإنسان</p>
+  <div class="bi"><p class="en">Tap a filter to light up the matching diseases. Tap a row to read about it.</p><p class="ar">اضغط على مرشّح لتضيء الأمراض المطابقة، واضغط على صف لتقرأ عنه.</p></div>
+  <div class="chips needjs" id="ctChips"></div>
+  <div class="bench">
+    <div class="main"><div class="tblwrap"><table class="vtable ctab" id="ctTab"></table></div></div>
+    <div class="side"><div class="msg bi needjs" id="ctMsg"></div></div>
+  </div>
+</section>
+
+<section class="screen" data-title="Why we feel sick">
+  <span class="kicker">Virtual lab</span>
+  <h2>Why do we feel sick?</h2>
+  <p class="hsub ar">لماذا نشعر بالمرض؟</p>
+  <div class="bi"><p class="en">Pathogens make us sick in two main ways. Switch between them and press <b>Play</b>.</p><p class="ar">تجعلنا الممرضات مرضى بطريقتين رئيستين. بدّل بينهما واضغط <b>Play</b>.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="skC" style="aspect-ratio:16/10" role="img" aria-label="A virus damaging a cell, or bacteria releasing toxins into the blood"></canvas></div>
+      <div class="seg needjs" id="skMode"><button data-v="0" class="on">Viral cell damage</button><button data-v="1">Bacterial toxins</button></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="skPlay">Play ▶</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="skMsg"></div>
+      <div class="why needjs" id="why4"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Disease patterns">
+  <span class="kicker">Living scene</span>
+  <h2>Tracking disease patterns</h2>
+  <p class="hsub ar">تتبّع أنماط الأمراض</p>
+  <div class="bi"><p class="en">Organizations like the <b>WHO</b> (World Health Organization) watch how far a disease spreads. Slide to make the outbreak bigger.</p><p class="ar">تراقب منظمات مثل <b>منظمة الصحة العالمية</b> مدى انتشار المرض. حرّك المؤشر لتكبير التفشّي.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="dpC" style="aspect-ratio:16/9" role="img" aria-label="A world map with outbreak spots growing"></canvas></div>
+      <div class="needjs"><div class="rlab">How far it spreads · مدى الانتشار</div><input type="range" id="dpR" min="0" max="2" step="1" value="0" aria-label="Outbreak size"></div>
+      <div class="seg needjs" id="dpMode"><button data-v="0" class="on">Endemic</button><button data-v="1">Epidemic</button><button data-v="2">Pandemic</button></div>
+    </div>
+    <div class="side"><div class="msg bi needjs" id="dpMsg"></div></div>
+  </div>
+  <div class="card nojs-only"><div class="bi"><p class="en"><b>Endemic:</b> small numbers of cases found all the time in a population (the common cold). <b>Epidemic:</b> a large outbreak across an area or region (SARS, 2003). <b>Pandemic:</b> widespread across a large region, a continent, or the whole globe (HIV, the 1918 flu, COVID-19).</p><p class="ar"><b>متوطن:</b> أعداد قليلة من الإصابات توجد باستمرار في مجتمع (الزكام). <b>وباء:</b> تفشٍّ كبير ينتشر في منطقة أو إقليم (سارس، 2003). <b>جائحة:</b> انتشار واسع في إقليم كبير أو قارة أو العالم كله (الإيدز، إنفلونزا 1918، كوفيد-19).</p></div></div>
+</section>
+
+<section class="screen" data-title="Through time">
+  <span class="kicker">Timeline</span>
+  <h2>Immunology through time</h2>
+  <p class="hsub ar">علم المناعة عبر الزمن</p>
+  <div class="bi"><p class="en">Centuries of struggle and discovery. Slide through the years.</p><p class="ar">قرون من الكفاح والاكتشافات. تنقّل بين السنوات.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="tlSvg" viewBox="0 0 520 300" role="img" aria-label="Timeline of discoveries in immunology"></svg></div>
+      <div class="needjs"><input type="range" id="tlR" min="0" max="6" step="1" value="0" aria-label="Year"></div>
+    </div>
+    <div class="side"><div class="msg bi needjs" id="tlMsg"></div></div>
+  </div>
+</section>
+
+<section class="screen" data-title="Treatments">
+  <span class="kicker">Virtual lab</span>
+  <h2>Fighting back: medical treatments</h2>
+  <p class="hsub ar">المقاومة: العلاجات الطبية</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Antibiotics</b> are drugs that <b>kill bacteria or stop them from growing</b>. The first ones were made by fungi, like <i>Penicillium</i>. Antibiotics do <b>not</b> work on viruses. Viral infections are treated with <b class="term">antiviral drugs</b> or cleared by the body's own immune system.</p><p class="ar"><b>المضادات الحيوية</b> أدوية <b>تقتل البكتيريا أو توقف نموها</b>. أُخذت أولاها من فطريات مثل <i>البنسليوم</i>. المضادات الحيوية <b>لا</b> تؤثر في الفيروسات؛ تُعالج العدوى الفيروسية <b>بمضادات الفيروسات</b> أو يتخلص منها جهاز المناعة في الجسم.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="txC" style="aspect-ratio:16/10" role="img" aria-label="An antibiotic acting on bacteria and on viruses"></canvas></div>
+      <div class="seg needjs" id="txMode"><button data-v="0" class="on">Bacterial infection</button><button data-v="1">Viral infection (flu)</button></div>
+      <div class="btnrow c needjs"><button class="btn sm terra" id="txGive">Give penicillin ▶</button><button class="btn sm" id="txAnti">Give antiviral ▶</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="txMsg"></div>
+      <div class="why needjs" id="why5"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Resistance lab">
+  <span class="kicker">Virtual lab</span>
+  <h2>When the drugs stop working</h2>
+  <p class="hsub ar">عندما تتوقف الأدوية عن العمل</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Antibiotic resistance</b> rises by <b>natural selection</b>. A few bacteria have a variation that lets them survive the antibiotic. They reproduce and pass the trait on. Overusing antibiotics creates "<b>superbugs</b>" such as <b>MRSA</b>.</p><p class="ar"><b>مقاومة المضادات الحيوية</b> تنشأ <b>بالانتخاب الطبيعي</b>. لدى عدد قليل من البكتيريا تباين يساعدها على النجاة من المضاد الحيوي، فتتكاثر وتنقل الصفة. والإفراط في استخدام المضادات الحيوية يُنتج «<b>بكتيريا خارقة</b>» مثل <b>MRSA</b>.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="rsC" style="aspect-ratio:16/10" role="img" aria-label="A bacterial population with a few resistant bacteria and a bar chart of resistance"></canvas></div>
+      <div class="btnrow c needjs"><button class="btn sm terra" id="rsDose">1. Give antibiotic</button><button class="btn sm" id="rsGrow">2. Survivors reproduce</button></div>
+      <div class="btnrow c needjs"><button class="btn alt sm" id="rsReset">↺ Start again</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="rsMsg"></div>
+      <div class="why needjs" id="why6"></div>
+    </div>
+  </div>
+  <h3>Real data: gonorrhea resistant to penicillin</h3>
+  <p class="hsub ar" style="font-size:15px">بيانات حقيقية: السيلان المقاوم للبنسلين</p>
+  <div class="bench">
+    <div class="main"><div class="simfig"><svg id="gnSvg" viewBox="0 0 520 300" role="img" aria-label="Bar chart: penicillin-resistant gonorrhea rose from about 0.2 percent in 1980 to about 9 percent in 1990"></svg></div></div>
+    <div class="side"><div class="bi"><p class="en">Penicillin-resistant gonorrhea rose from about <b>0.2%</b> of cases in 1980 to about <b>9%</b> in 1990 (values from the book's graph, rounded). Tap a bar to read it.</p><p class="ar">ارتفعت نسبة السيلان المقاوم للبنسلين من نحو <b>0.2%</b> من الحالات عام 1980 إلى نحو <b>9%</b> عام 1990 (قيم من رسم الكتاب، مقرّبة). اضغط على عمود لتقرأه.</p></div><div class="msg bi needjs" id="gnMsg"></div></div>
+  </div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Practice</span>
+  <h2>Check yourself</h2>
+  <p class="hsub ar">تحقّق من نفسك</p>
+  <div class="idg two needjs" id="cyCards"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work, disease detective! Now the quiz. A wrong answer gives you a hint first.</p><p class="ar">عمل رائع أيها المحقق! والآن الاختبار. الإجابة الخاطئة تعطيك تلميحًا أولًا.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+</main>
+
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="bio12_1_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"UAE MOE · Grade 12"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹ =+,./≠]*[0-9A-Za-z()\[\]½²³⁴¹])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}<small>${n[1]}</small></button>`).join("")}</div><div class="mwhy"></div></div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll("button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});}
+function segBind(id,fn){$$("#"+id+" button").forEach(b=>b.onclick=()=>{$$("#"+id+" button").forEach(x=>x.classList.toggle("on",x===b));fn(+b.dataset.v,b);});}
+
+/* warm-up (prior knowledge) */
+const WU=[{q:"Homeostasis means…",qa:"الاتزان الداخلي يعني…",o:[["growing bigger","النمو والزيادة في الحجم"],["keeping a stable internal balance","المحافظة على توازن داخلي مستقر"],["making new cells","إنتاج خلايا جديدة"]],a:1,w:["For example, your body keeps its temperature near 37°C.","مثلًا: يحافظ جسمك على درجة حرارته قرب 37°C."]},
+ {q:"Which one can only make copies of itself inside a living cell?",qa:"أيّها لا يستطيع أن يصنع نسخًا من نفسه إلا داخل خلية حية؟",o:[["a bacterium","البكتيريا"],["a fungus","الفطر"],["a virus","الفيروس"]],a:2,w:["A virus is not a cell. It needs a host cell to reproduce.","الفيروس ليس خلية، ويحتاج إلى خلية عائل ليتكاثر."]},
+ {q:"Which blood cells defend the body against infection?",qa:"أيّ خلايا الدم تدافع عن الجسم ضد العدوى؟",o:[["white blood cells","خلايا الدم البيضاء"],["red blood cells","خلايا الدم الحمراء"],["platelets","الصفائح الدموية"]],a:0,w:["Red blood cells carry oxygen; platelets help blood clot.","خلايا الدم الحمراء تنقل الأكسجين، والصفائح تساعد على تجلّط الدم."]}];
+$("#wuBox").innerHTML=WU.map((x,i)=>`<div class="wuq" data-i="${i}"><div class="qq">${i+1}. ${x.q}<span class="ar">${x.qa}</span></div><div class="wo">${x.o.map((o,j)=>`<button data-j="${j}">${o[0]}<small class="ar">${o[1]}</small></button>`).join("")}<button class="show" data-j="-1">Show me · أرني</button></div><div class="wa"><b>${x.o[x.a][0]}</b> ${x.w[0]}<span class="ar">${x.w[1]}</span></div></div>`).join("");
+$$("#wuBox .wuq").forEach(card=>{const x=WU[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const j=+b.dataset.j;card.querySelectorAll("button").forEach(y=>{if(+y.dataset.j===x.a)y.classList.add("right");});if(j>=0&&j!==x.a)b.classList.add("wrong");card.classList.add("done");});});
+
+/* ---------- canvas engine ---------- */
+const RM=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const LSC=1.9;
+const SIMS=[];const TEAL=["#8FE6D9","#1F7F74"],TERRA=["#FFB49E","#B8432D"],OCH=["#FFE29A","#C98A12"],PUR=["#D9C2F5","#7A4FC0"],RBC=["#F59A8E","#B83A2E"];
+function sim(id,ar,draw){const c=document.getElementById(id),W=800,H=Math.round(W/ar);c.width=W;c.height=H;const s={c,ctx:c.getContext("2d"),W,H,draw,t:0};SIMS.push(s);return s;}
+function ball(g,x,y,r,col,a){const gr=g.createRadialGradient(x-r*.35,y-r*.35,r*.15,x,y,r);gr.addColorStop(0,col[0]);gr.addColorStop(1,col[1]);g.globalAlpha=a==null?1:a;g.fillStyle=gr;g.beginPath();g.arc(x,y,r,0,7);g.fill();g.globalAlpha=1;}
+function rr(g,x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.lineTo(x+w-r,y);g.arcTo(x+w,y,x+w,y+r,r);g.lineTo(x+w,y+h-r);g.arcTo(x+w,y+h,x+w-r,y+h,r);g.lineTo(x+r,y+h);g.arcTo(x,y+h,x,y+h-r,r);g.lineTo(x,y+r);g.arcTo(x,y,x+r,y,r);g.closePath();}
+function rod(g,x,y,L,w,ang,col,a){g.save();g.translate(x,y);g.rotate(ang);g.globalAlpha=a==null?1:a;const gr=g.createLinearGradient(0,-w/2,0,w/2);gr.addColorStop(0,col[0]);gr.addColorStop(1,col[1]);g.fillStyle=gr;rr(g,-L/2,-w/2,L,w,w/2);g.fill();g.strokeStyle="rgba(0,0,0,.35)";g.lineWidth=2;g.stroke();g.fillStyle="rgba(255,255,255,.35)";rr(g,-L/2+w*.4,-w/2+3,L-w*.8,w*.22,w*.11);g.fill();g.restore();g.globalAlpha=1;}
+function virus(g,x,y,r,col,a,rot){g.save();g.globalAlpha=a==null?1:a;g.translate(x,y);g.rotate(rot||0);g.strokeStyle=col[1];g.lineWidth=Math.max(2,r*.16);g.lineCap="round";for(let i=0;i<10;i++){const t=i*.628;g.beginPath();g.moveTo(Math.cos(t)*r*.9,Math.sin(t)*r*.9);g.lineTo(Math.cos(t)*r*1.4,Math.sin(t)*r*1.4);g.stroke();g.fillStyle="#C8553D";g.beginPath();g.arc(Math.cos(t)*r*1.45,Math.sin(t)*r*1.45,r*.17,0,7);g.fill();}g.restore();ball(g,x,y,r,col,a);}
+function bg(s,col){const g=s.ctx;g.fillStyle=col||"#0E1A26";g.fillRect(0,0,s.W,s.H);g.strokeStyle="rgba(255,255,255,.05)";g.lineWidth=1;for(let x=0;x<s.W;x+=32){g.beginPath();g.moveTo(x,0);g.lineTo(x,s.H);g.stroke();}for(let y=0;y<s.H;y+=32){g.beginPath();g.moveTo(0,y);g.lineTo(s.W,y);g.stroke();}}
+function label(g,t,x,y,col,size,al){g.font=`800 ${Math.round((size||20)*LSC)}px system-ui,-apple-system,Segoe UI,sans-serif`;g.fillStyle=col||"#fff";g.textAlign=al||"center";g.fillText(t,x,y);}
+function chip(g,t,x,y,col,size){g.font=`800 ${Math.round((size||16)*LSC)}px system-ui,-apple-system,Segoe UI,sans-serif`;const w=g.measureText(t).width+28,h=(size||16)*LSC+16;g.fillStyle="rgba(14,26,38,.82)";rr(g,x-w/2,y-h/2,w,h,h/2);g.fill();g.strokeStyle=col||"#E9B44C";g.lineWidth=2.5;g.stroke();g.fillStyle=col||"#E9B44C";g.textAlign="center";g.textBaseline="middle";g.fillText(t,x,y+1);g.textBaseline="alphabetic";}
+function move(ps,b,dt){ps.forEach(p=>{p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<b.x){p.x=b.x;p.vx=Math.abs(p.vx)}if(p.x>b.x+b.w){p.x=b.x+b.w;p.vx=-Math.abs(p.vx)}if(p.y<b.y){p.y=b.y;p.vy=Math.abs(p.vy)}if(p.y>b.y+b.h){p.y=b.y+b.h;p.vy=-Math.abs(p.vy)}p.ang=(p.ang||0)+(p.spin||0)*dt;});}
+function rnd(a,b){return a+Math.random()*(b-a);}
+function mkp(n,b,sp){return Array.from({length:n},()=>{const a=Math.random()*6.283;return {x:rnd(b.x,b.x+b.w),y:rnd(b.y,b.y+b.h),vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,ang:Math.random()*6.28,spin:rnd(-.8,.8),a:1}});}
+let last=0;function loop(ts){const dt=Math.min(.05,(ts-last)/1000||0);last=ts;SIMS.forEach(s=>{const scr=s.c.closest(".screen");if(scr&&scr.classList.contains("active")){s.t+=RM?0:dt;s.draw(s,RM?0:dt);}});requestAnimationFrame(loop);}
+
+/* ---------- pathogen drawings (SVG, centred on 0,0) ---------- */
+const PG={
+ bac:`<defs><linearGradient id="pgb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FE6D9"/><stop offset="1" stop-color="#1F7F74"/></linearGradient></defs><path d="M-30 0q-12-10-22-2M30 0q12 10 22 2M-20-14q-6-12-16-12M20 14q6 12 16 12" fill="none" stroke="#1F7F74" stroke-width="2.2" stroke-linecap="round"/><rect x="-32" y="-14" width="64" height="28" rx="14" fill="url(#pgb)" stroke="#0E4F48" stroke-width="2.5"/><rect x="-20" y="-10" width="40" height="5" rx="2.5" fill="#fff" opacity=".4"/><path d="M-12 2q6-6 12 0t12 0" fill="none" stroke="#0E4F48" stroke-width="2" opacity=".55"/>`,
+ vir:`<defs><radialGradient id="pgv" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#FFE29A"/><stop offset="1" stop-color="#C98A12"/></radialGradient></defs><g stroke="#C98A12" stroke-width="3.5" stroke-linecap="round"><path d="M0-20v-12M0 20v12M-20 0h-12M20 0h12M-14-14l-9-9M14 14l9 9M14-14l9-9M-14 14l-9 9"/></g><g fill="#C8553D"><circle cy="-34" r="4.5"/><circle cy="34" r="4.5"/><circle cx="-34" r="4.5"/><circle cx="34" r="4.5"/><circle cx="-25" cy="-25" r="4.5"/><circle cx="25" cy="25" r="4.5"/><circle cx="25" cy="-25" r="4.5"/><circle cx="-25" cy="25" r="4.5"/></g><circle r="21" fill="url(#pgv)" stroke="#7A5A0E" stroke-width="2.5"/><path d="M-8-6l6 4 6-6 6 5" fill="none" stroke="#7A5A0E" stroke-width="2" opacity=".6"/>`,
+ pro:`<defs><radialGradient id="pgp" cx=".4" cy=".3" r=".8"><stop offset="0" stop-color="#E7D8FA"/><stop offset="1" stop-color="#8A62C9"/></radialGradient></defs><path d="M-8 22q-10 14-20 16M8 22q10 14 20 16M-14 4q-18 2-24 12M14 4q18 2 24 12" fill="none" stroke="#7A4FC0" stroke-width="2.2" stroke-linecap="round"/><path d="M0-30C22-30 26-6 18 12C12 24 4 28 0 28C-4 28-12 24-18 12C-26-6-22-30 0-30Z" fill="url(#pgp)" stroke="#5A3596" stroke-width="2.5"/><ellipse cx="-8" cy="-10" rx="6" ry="8" fill="#5A3596" opacity=".75"/><ellipse cx="8" cy="-10" rx="6" ry="8" fill="#5A3596" opacity=".75"/><path d="M0 4v18" stroke="#5A3596" stroke-width="2"/>`,
+ fun:`<defs><radialGradient id="pgf" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#F7E7C6"/><stop offset="1" stop-color="#C9A06A"/></radialGradient></defs><path d="M-36 30Q-18 18-10 0T0-26M-10 0Q4 6 14-10T30-24M-22 16Q-30 4-34-10" fill="none" stroke="#8C5A3C" stroke-width="4" stroke-linecap="round"/><g fill="url(#pgf)" stroke="#8C5A3C" stroke-width="2"><circle cx="0" cy="-30" r="8"/><circle cx="31" cy="-26" r="7"/><circle cx="-35" cy="-14" r="6.5"/><circle cx="14" cy="-12" r="5"/></g><g fill="#8C5A3C"><circle cx="-6" cy="-40" r="2.2"/><circle cx="6" cy="-41" r="2.2"/><circle cx="37" cy="-34" r="2"/><circle cx="-41" cy="-20" r="2"/></g>`,
+ par:`<path d="M-38 10C-28-12-14 18 0 0S26-14 38 4" fill="none" stroke="#B5615F" stroke-width="13" stroke-linecap="round"/><path d="M-38 10C-28-12-14 18 0 0S26-14 38 4" fill="none" stroke="#E7A3A0" stroke-width="9" stroke-linecap="round"/><path d="M-27 -2v8M-17 2v8M-6 3v8M6-5v8M17-7v8M28-3v8" stroke="#B5615F" stroke-width="1.8"/><circle cx="40" cy="4" r="2" fill="#5B2E2C"/>`};
+function pgSvg(k,s){return `<svg viewBox="-50 -50 100 100" width="${s}" height="${s}" aria-hidden="true">${PG[k]}</svg>`;}
+
+/* 1. pathogens */
+const PGI=[["bac","Bacteria","البكتيريا","Strep throat","التهاب الحلق البكتيري","Single cells with <b>no nucleus</b>. Some make toxins. Size: about 1–5 µm (micrometres).","خلايا مفردة <b>بلا نواة</b>، وبعضها يفرز سمومًا. الحجم: نحو 1–5 µm (ميكرومتر).","~ 2 µm"],
+ ["vir","Viruses","الفيروسات","Influenza (flu)","الإنفلونزا","<b>Not cells.</b> Genetic material in a protein coat. They can only multiply <b>inside a living host cell</b>. Much smaller than bacteria.","<b>ليست خلايا</b>، بل مادة وراثية داخل غلاف بروتيني، ولا تتكاثر إلا <b>داخل خلية عائل حية</b>. أصغر بكثير من البكتيريا.","~ 0.1 µm"],
+ ["pro","Protozoans","الطلائعيات (البروتوزوا)","Malaria, Giardia","الملاريا، الجيارديا","Single cells <b>with a nucleus</b>. Many live in water or are carried by insects. The drawing shows <i>Giardia</i>.","خلايا مفردة <b>لها نواة</b>، يعيش كثير منها في الماء أو تنقلها الحشرات. الرسمة تُظهر <i>الجيارديا</i>.","~ 15 µm"],
+ ["fun","Fungi","الفطريات","Athlete's foot","قدم الرياضي","Grow as threads (hyphae) and make spores. They like warm, damp places, such as between the toes.","تنمو على شكل خيوط (هيفات) وتنتج أبواغًا، وتحب الأماكن الدافئة الرطبة مثل ما بين أصابع القدم.","threads"],
+ ["par","Parasites","الطفيليات","Tapeworm","الدودة الشريطية","Many-celled animals, such as <b>worms</b>, that live in or on a host and harm it.","حيوانات عديدة الخلايا مثل <b>الديدان</b>، تعيش داخل العائل أو عليه وتضرّه.","mm to m"]];
+let pgK=0;
+$("#pgGrid").innerHTML=PGI.map((p,i)=>`<button class="pcd${i?"":" on"}" data-i="${i}">${pgSvg(p[0],46)}<b>${p[1]}</b><small>${p[2]}</small></button>`).join("");
+function pgSet(){const p=PGI[pgK];$$("#pgGrid .pcd").forEach(b=>b.classList.toggle("on",+b.dataset.i===pgK));
+  $("#pgBig").innerHTML=`<defs><radialGradient id="pgbg" cx=".5" cy=".5" r=".6"><stop offset="0" stop-color="#16293A"/><stop offset="1" stop-color="#0B1622"/></radialGradient></defs><rect width="400" height="220" rx="16" fill="url(#pgbg)"/><circle cx="130" cy="110" r="92" fill="none" stroke="#E9B44C" stroke-width="3"/><g transform="translate(130 110) scale(1.55)">${PG[p[0]]}</g><text x="250" y="80" fill="#fff" font-size="22" font-weight="800">${p[1]}</text><text x="250" y="108" fill="#F6D88E" font-size="16" font-weight="700">e.g. ${p[3]}</text><text x="250" y="140" fill="#7FD3E6" font-size="15" font-family="ui-monospace,monospace">size: ${p[7]}</text>`;
+  setMsg($("#pgMsg"),`<b>${p[1]}</b>: ${p[5]} <br>Example: <b>${p[3]}</b>.`,`<b>${p[2]}</b>: ${p[6]}<br>مثال: <b>${p[4]}</b>.`);}
+$$("#pgGrid .pcd").forEach(b=>b.onclick=()=>{pgK=+b.dataset.i;pgSet();});pgSet();
+
+/* 2. normal flora */
+let nfK=0,nfT=0;const NFW=400;let nfF=[],nfP=[];
+function nfReset(){nfT=0;nfF=Array.from({length:34},(_,i)=>({x:30+i*22.5+rnd(-6,6),y:rnd(NFW-46,NFW-14),ang:rnd(-.5,.5)+(Math.random()<.5?0:3.14),ph:Math.random()*6.28,a:1}));nfP=mkp(4,{x:60,y:60,w:680,h:180},60);nfP.forEach(p=>p.a=1);}
+nfReset();
+sim("nfC",16/10,(s,dt)=>{const g=s.ctx;nfT+=dt;
+  const sky=g.createLinearGradient(0,0,0,s.H);sky.addColorStop(0,"#2A1F2E");sky.addColorStop(1,"#3C2633");g.fillStyle=sky;g.fillRect(0,0,s.W,s.H);
+  g.fillStyle="#C76B6B";g.beginPath();g.moveTo(0,s.H);g.lineTo(0,NFW);for(let x=0;x<=s.W;x+=40){g.quadraticCurveTo(x+20,NFW-26,x+40,NFW);}g.lineTo(s.W,s.H);g.fill();
+  g.fillStyle="#E7A3A0";g.fillRect(0,NFW+18,s.W,6);label(g,"intestine wall",400,NFW+70,"#FFE0DA",15);
+  if(nfK===1)nfF.forEach(f=>f.a=Math.max(0,f.a-dt*.8));
+  nfF.forEach(f=>{if(f.a>0)rod(g,f.x+Math.sin(s.t*2+f.ph)*2,f.y,34,14,f.ang,TEAL,f.a);});
+  const free=nfK===1&&nfF[0].a<.2;const box=free?{x:30,y:50,w:740,h:NFW-60}:{x:40,y:50,w:720,h:NFW-130};
+  move(nfP,box,dt);
+  if(free&&nfP.length<40&&Math.random()<dt*3.5){const p=nfP[Math.floor(Math.random()*nfP.length)];nfP.push({x:p.x+8,y:p.y,vx:-p.vy,vy:p.vx,ang:p.ang+1,spin:rnd(-.8,.8),a:1});}
+  nfP.forEach(p=>rod(g,p.x,p.y,34,14,p.ang,TERRA));
+  chip(g,`pathogens: ${nfP.length}`,150,40,"#FFB49E",15);if(nfK===1)chip(g,free?"flora gone":"antibiotic acting…",600,40,"#E9B44C",15);});
+function nfSet(){setMsg($("#nfMsg"),nfK?"Strong antibiotics killed many of the <b>normal flora</b> too. Now there is free space and food, and the pathogen <b>multiplies</b> and reaches the gut wall. Watch the counter.":"The <b>normal flora</b> cover the gut wall. The few pathogens cannot find a place to attach, so they stay few.",nfK?"قتلت المضادات الحيوية القوية كثيرًا من <b>الفلورا الطبيعية</b> أيضًا. الآن يوجد مكان وغذاء، <b>فيتكاثر</b> الممرض ويصل إلى جدار الأمعاء. راقب العدّاد.":"تغطي <b>الفلورا الطبيعية</b> جدار الأمعاء، فلا تجد الممرضات القليلة مكانًا تلتصق به، فتبقى قليلة.");}
+segBind("nfMode",v=>{nfK=v;nfReset();nfSet();});nfSet();
+whyBox($("#why1"),"Why can a long course of strong antibiotics sometimes lead to a new infection?","لماذا قد يؤدي تناول مضادات حيوية قوية مدة طويلة إلى عدوى جديدة أحيانًا؟",[
+ ["The antibiotics are themselves pathogens.","المضادات الحيوية نفسها ممرضات.",0,"Antibiotics are drugs, not living organisms.","المضادات الحيوية أدوية، وليست كائنات حية."],
+ ["They also kill helpful normal flora, which leaves space for harmful microbes to grow.","تقتل أيضًا الفلورا الطبيعية المفيدة، فتترك مكانًا تنمو فيه الميكروبات الضارة.",1,"Normal flora protect us by taking the space and food first.","الفلورا الطبيعية تحمينا لأنها تشغل المكان وتأخذ الغذاء أولًا."],
+ ["They make the gut wall thinner.","تجعل جدار الأمعاء أرق.",0,"Look at the scene: what disappeared from the wall?","انظر إلى المشهد: ما الذي اختفى من على الجدار؟"]]);
+
+/* 3. Koch's postulates */
+function mouseSvg(x,y,s,sick,lab){const c=sick?"#9A8B80":"#B8A090",d=sick?"#6E5F55":"#5B4636";return `<g transform="translate(${x} ${y}) scale(${s})"><path d="M22 6C38 8 42-4 34-10" fill="none" stroke="#C9A99A" stroke-width="3" stroke-linecap="round"/><ellipse cx="2" cy="4" rx="24" ry="15" fill="${c}" stroke="${d}" stroke-width="2"/><circle cx="-22" cy="-4" r="11" fill="${c}" stroke="${d}" stroke-width="2"/><circle cx="-20" cy="-16" r="7" fill="#E9BFB2" stroke="${d}" stroke-width="2"/><circle cx="-27" cy="-6" r="2" fill="#1F2A37"/><circle cx="-33" cy="-2" r="2.4" fill="#C8553D"/>${sick?`<g fill="#C8553D" opacity=".85"><circle cx="0" cy="0" r="3.2"/><circle cx="10" cy="8" r="2.6"/><circle cx="-6" cy="10" r="2.4"/><circle cx="14" cy="-4" r="2.2"/></g>`:""}</g>${lab?`<text x="${x}" y="${y+34*s}" text-anchor="middle" font-size="19" font-weight="800" fill="${sick?"#C8553D":"#2A9D8F"}">${lab}</text>`:""}`;}
+function dishSvg(x,y,r,mode){const col=mode===0?"#2A9D8F":"none";let c="";if(mode===0){[[-.4,-.2,.16],[.2,-.35,.12],[.35,.15,.18],[-.15,.3,.13],[0,0,.1],[-.5,.25,.08]].forEach(([a,b,q])=>c+=`<circle cx="${x+a*r}" cy="${y+b*r*.6}" r="${q*r*.7}" fill="${col}" opacity=".9"/>`);}
+  return `<ellipse cx="${x}" cy="${y+4}" rx="${r+6}" ry="${r*.6+5}" fill="#0E1A26" opacity=".18"/><ellipse cx="${x}" cy="${y}" rx="${r}" ry="${r*.6}" fill="#FFF0C7" stroke="#9AA5B1" stroke-width="3"/><ellipse cx="${x}" cy="${y}" rx="${r*.86}" ry="${r*.5}" fill="#F3D88F"/>${c}${mode>0?`<path d="M${x-14} ${y-10}l28 20M${x+14} ${y-10}l-28 20" stroke="#C8553D" stroke-width="4" stroke-linecap="round"/>`:""}`;}
+const syringe=(x,y)=>`<g transform="translate(${x} ${y}) rotate(-35)"><rect x="-26" y="-6" width="40" height="12" rx="3" fill="#EAF2F6" stroke="#5B6675" stroke-width="2"/><rect x="-22" y="-3" width="22" height="6" fill="#2A9D8F" opacity=".8"/><path d="M14 0h18" stroke="#5B6675" stroke-width="2.5"/><path d="M-26 0h-10M-36-7v14" stroke="#5B6675" stroke-width="3"/></g>`;
+let kpK=0,kpM=0;
+const KPS=[["<b>Step 1 · Isolate.</b> Take the suspected pathogen from a <b>diseased host</b>. It must be found in every sick animal.","<b>الخطوة 1 · العزل.</b> خذ الممرض المشتبه به من <b>عائل مريض</b>، ويجب أن يوجد في كل حيوان مريض."],
+ ["<b>Step 2 · Pure culture.</b> Grow the pathogen alone in a <b>pure culture on artificial media</b> (a nutrient gel in a dish).","<b>الخطوة 2 · المزرعة النقية.</b> نمِّ الممرض وحده في <b>مزرعة نقية على وسط اصطناعي</b> (هلام مغذٍّ في طبق)."],
+ ["<b>Step 3 · Infect.</b> Inject the culture into a <b>healthy host</b>. It must cause the <b>same disease</b>.","<b>الخطوة 3 · العدوى.</b> احقن المزرعة في <b>عائل سليم</b>، ويجب أن يسبّب <b>المرض نفسه</b>."],
+ ["<b>Step 4 · Isolate again.</b> Take the pathogen from the new host and show it <b>matches the original</b>. Now the cause is proven!","<b>الخطوة 4 · العزل مرة أخرى.</b> خذ الممرض من العائل الجديد وبيّن أنه <b>مطابق للأصلي</b>. الآن ثبت المسبّب!"]];
+const KPX=[["<b>Exception!</b> The bacterium that causes <b>syphilis</b> cannot grow on artificial media, so step 2 fails.","<b>استثناء!</b> البكتيريا المسببة <b>للزهري</b> لا تنمو على وسط اصطناعي، فتفشل الخطوة 2."],["<b>Exception!</b> <b>Viruses</b> cannot grow on artificial media. They need living cells, so scientists grow them in <b>cell cultures</b>.","<b>استثناء!</b> <b>الفيروسات</b> لا تنمو على وسط اصطناعي؛ إنها تحتاج إلى خلايا حية، لذلك ينمّيها العلماء في <b>مزارع خلايا</b>."]];
+function kpDraw(){const P=[[130,95],[390,95],[390,285],[130,285]],fail=kpM>0&&kpK>=2;let s=`<rect width="520" height="380" rx="16" fill="#FBF7F0"/>`;
+  const box=(i,inner)=>{const [x,y]=P[i],on=kpK>i,cur=kpK===i+1,dim=fail&&i>=2;s+=`<g opacity="${on?(dim?.28:1):.18}"><rect x="${x-118}" y="${y-78}" width="236" height="156" rx="20" fill="#fff" stroke="${cur?"#C8553D":i%2?"#2A9D8F":"#E9B44C"}" stroke-width="${cur?4:2.5}"/><circle cx="${x-96}" cy="${y-56}" r="15" fill="${cur?"#C8553D":"#1F2A37"}"/><text x="${x-96}" y="${y-51}" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">${i+1}</text>${inner}</g>`;};
+  box(0,mouseSvg(85,105,1.1,true,"diseased host")+`<path d="M122 95h22" stroke="#5B6675" stroke-width="2.5" marker-end="url(#ka)"/>`+dishSvg(190,100,32,0));
+  box(1,dishSvg(390,100,62,kpM?kpM:0)+`<text x="390" y="162" text-anchor="middle" font-size="19" font-weight="800" fill="${kpM?"#C8553D":"#2A9D8F"}">${kpM?"no growth":"pure culture"}</text>`);
+  box(2,mouseSvg(372,300,1.15,kpK>=3&&!fail,kpK>=3&&!fail?"same disease":"healthy host")+syringe(440,262));
+  box(3,mouseSvg(85,295,1.1,true,"new host")+`<path d="M122 285h22" stroke="#5B6675" stroke-width="2.5" marker-end="url(#ka)"/>`+dishSvg(190,290,32,0)+`<text x="190" y="336" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F">matches!</text>`);
+  s=s.replace('<rect width="520"',`<defs><marker id="ka" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6675"/></marker><marker id="kb" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#C8553D"/></marker></defs><rect width="520"`);
+  const ar=(d,on)=>s+=`<path d="${d}" fill="none" stroke="#C8553D" stroke-width="4" stroke-linecap="round" marker-end="url(#kb)" opacity="${on?1:.15}"/>`;
+  ar("M252 95h14",kpK>=2);ar("M390 177v16",kpK>=3&&!fail);ar("M268 285h-14",kpK>=4&&!fail);ar("M130 205v-24",kpK>=4&&!fail);
+  $("#kpSvg").innerHTML=s;}
+function kpSet(){kpDraw();const fail=kpM>0&&kpK>=2;
+  if(kpK===0)setMsg($("#kpMsg"),"Tap <b>Show me</b> to follow Koch's four steps.","اضغط <b>Show me</b> لتتبع خطوات كوخ الأربع.");
+  else if(fail)setMsg($("#kpMsg"),KPX[kpM-1][0],KPX[kpM-1][1],true);
+  else setMsg($("#kpMsg"),KPS[kpK-1][0],KPS[kpK-1][1]);
+  $("#kpNext").disabled=kpK>=4||fail;}
+$("#kpNext").onclick=()=>{kpK++;kpSet();};$("#kpReset").onclick=()=>{kpK=0;kpSet();};
+segBind("kpMode",v=>{kpM=v;kpK=0;kpSet();});kpSet();
+whyBox($("#why2"),"Why must the pathogen be isolated a second time (step 4)?","لماذا يجب عزل الممرض مرة ثانية (الخطوة 4)؟",[
+ ["To make more of it for medicine.","لصنع كمية أكبر منه للدواء.",0,"The goal of step 4 is proof, not production.","هدف الخطوة 4 هو الإثبات، لا الإنتاج."],
+ ["To prove that the same pathogen, and not something else, caused the disease in the new host.","لإثبات أن الممرض نفسه، لا شيئًا آخر، هو الذي سبّب المرض في العائل الجديد.",1,"If the pathogen from the new host matches the original, the link is proven.","إذا طابق الممرض المأخوذ من العائل الجديد الممرضَ الأصلي، يثبت الارتباط."],
+ ["Because the first sample always dies.","لأن العينة الأولى تموت دائمًا.",0,"The first sample was grown in a pure culture in step 2.","العينة الأولى نُمّيت في مزرعة نقية في الخطوة 2."]]);
+
+const FD={
+ kp:[{q:"Robert Koch, 1876: cows and sheep are dying of <b>anthrax</b>.<span class=\"ar\">روبرت كوخ، 1876: أبقار وأغنام تموت بسبب <b>الجمرة الخبيثة</b>.</span>",words:true,txt:true,s:[
+   ["Isolate the rod-shaped bacteria from the blood of a sick cow.","Step 1","الخطوة 1: اعزل البكتيريا العصوية من دم بقرة مريضة."],
+   ["Grow the bacteria in a pure culture on artificial media.","Step 2","الخطوة 2: نمِّ البكتيريا في مزرعة نقية على وسط اصطناعي."],
+   ["Inject the culture into a healthy mouse: it gets anthrax.","Step 3","الخطوة 3: احقن المزرعة في فأر سليم: يصاب بالجمرة الخبيثة."],
+   ["Isolate the bacteria from the mouse: they match the original.","Step 4","الخطوة 4: اعزل البكتيريا من الفأر: إنها مطابقة للأصلية."]],blank:0},
+  {q:"Robert Koch, 1882: many people are dying of <b>tuberculosis</b> (TB).<span class=\"ar\">روبرت كوخ، 1882: كثير من الناس يموتون بسبب <b>السل</b>.</span>",words:true,txt:true,s:[
+   ["Isolate the bacteria from the lungs of a person who died of TB.","Step 1","الخطوة 1: اعزل البكتيريا من رئتي شخص توفي بالسل."],
+   ["Grow the bacteria in a pure culture on artificial media.","Step 2","الخطوة 2: نمِّ البكتيريا في مزرعة نقية على وسط اصطناعي."],
+   ["Inject the culture into a healthy guinea pig: it gets TB.","Step 3","الخطوة 3: احقن المزرعة في خنزير غينيا سليم: يصاب بالسل."],
+   ["Isolate the bacteria from the guinea pig: they match the original.","Step 4","الخطوة 4: اعزل البكتيريا من خنزير غينيا: إنها مطابقة للأصلية."]],blank:1,
+   o:[["Treat the guinea pig with antibiotics.","Isolate the bacteria from the guinea pig: they match the original.","Grow the bacteria in a pure culture on artificial media."]],
+   h:[["The last step proves the same pathogen caused the disease again.","الخطوة الأخيرة تثبت أن الممرض نفسه سبّب المرض مرة أخرى."]]},
+  {q:"Today: chickens on a farm in Al Ain fall sick with a new bacterial disease.<span class=\"ar\">اليوم: دجاج في مزرعة بالعين يمرض بمرض بكتيري جديد.</span>",words:true,txt:true,s:[
+   ["Isolate the bacteria from a sick chicken.","Step 1","الخطوة 1: اعزل البكتيريا من دجاجة مريضة."],
+   ["Grow the bacteria in a pure culture on artificial media.","Step 2","الخطوة 2: نمِّ البكتيريا في مزرعة نقية على وسط اصطناعي."],
+   ["Inject the culture into a healthy chicken: it gets the same disease.","Step 3","الخطوة 3: احقن المزرعة في دجاجة سليمة: تصاب بالمرض نفسه."],
+   ["Isolate the bacteria from that chicken: they match the original.","Step 4","الخطوة 4: اعزل البكتيريا من تلك الدجاجة: إنها مطابقة للأصلية."]],blank:2,
+   o:[["Inject the culture into a healthy chicken: it gets the same disease.","Give the sick chicken a vaccine.","Isolate the bacteria from that chicken: they match the original."],
+      ["Count the eggs the chicken lays.","Isolate the bacteria from that chicken: they match the original.","Inject the culture into a healthy chicken: it gets the same disease."]],
+   h:[["After growing the culture, test it on a healthy host.","بعد تنمية المزرعة، اختبرها على عائل سليم."],["Now prove it is the same pathogen.","الآن أثبت أنه الممرض نفسه."]]}]};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+
+/* 5. reservoirs */
+const RVO=[["Human","بشري"],["Animal","حيواني"],["Inanimate","غير حي"]];
+cardsQ($("#rvCards"),[
+ {t:["HIV: passed from person to person, often by people who feel healthy.","فيروس HIV: ينتقل من شخص إلى آخر، غالبًا من أشخاص يشعرون بأنهم أصحّاء."],o:RVO,a:0,w:["Humans are the reservoir, and many are carriers.","الإنسان هو المستودع، وكثيرون حاملون للمرض."],h:["Who passes it on?","من ينقله؟"]},
+ {t:["Rabies: passed to people by a bite from an infected bat or dog.","السعار (داء الكلب): ينتقل إلى الإنسان بعضة خفاش أو كلب مصاب."],o:RVO,a:1,w:["Animals are the reservoir.","الحيوانات هي المستودع."],h:["Where does the virus live before it reaches us?","أين يعيش الفيروس قبل أن يصل إلينا؟"]},
+ {t:["Tetanus: bacteria live in soil and enter through a deep wound.","الكزاز: بكتيريا تعيش في التربة وتدخل من جرح عميق."],o:RVO,a:2,w:["Soil is non-living: an inanimate reservoir.","التربة غير حية: مستودع غير حي."],h:["Is soil living?","هل التربة حية؟"]},
+ {t:["The common cold: passed between classmates.","الزكام: ينتقل بين زملاء الصف."],o:RVO,a:0,w:["People are the main reservoir for colds.","الناس هم المستودع الرئيس للزكام."],h:["It moves from person to person.","ينتقل من شخص إلى شخص."]},
+ {t:["MERS: a virus that has been passed to people from camels in the Arabian Peninsula.","متلازمة الشرق الأوسط التنفسية (MERS): فيروس انتقل إلى الناس من الإبل في شبه الجزيرة العربية."],o:RVO,a:1,w:["Dromedary camels are an animal reservoir for MERS.","الإبل وحيدة السنام مستودع حيواني لفيروس MERS."],h:["Camels are animals.","الإبل حيوانات."]},
+ {t:["Giardia: drinking contaminated water from a stream.","الجيارديا: شرب ماء ملوث من جدول."],o:RVO,a:2,w:["Contaminated water is an inanimate reservoir.","الماء الملوث مستودع غير حي."],h:["Water is not alive.","الماء ليس كائنًا حيًا."]},
+ {t:["A new flu strain that first spread from pigs to farm workers.","سلالة إنفلونزا جديدة انتقلت أولًا من الخنازير إلى عمال مزرعة."],o:RVO,a:1,w:["Pigs (and birds) are animal reservoirs for influenza.","الخنازير (والطيور) مستودعات حيوانية للإنفلونزا."],h:["Where did it come from first?","من أين جاءت أولًا؟"]}]);
+
+/* 6. transmission */
+let trK=0;
+function person(g,x,y,col,sick,face){g.save();g.translate(x,y);
+  g.fillStyle="rgba(0,0,0,.25)";g.beginPath();g.ellipse(0,0,48,10,0,0,7);g.fill();
+  const gr=g.createLinearGradient(-40,-170,40,0);gr.addColorStop(0,"#FFFFFF");gr.addColorStop(1,col);g.fillStyle=gr;g.beginPath();g.moveTo(-26,-150);g.quadraticCurveTo(-46,-60,-40,0);g.lineTo(40,0);g.quadraticCurveTo(46,-60,26,-150);g.closePath();g.fill();g.strokeStyle="rgba(0,0,0,.25)";g.lineWidth=2;g.stroke();
+  g.fillStyle="#C68A5C";g.beginPath();g.arc(0,-180,28,0,7);g.fill();
+  g.fillStyle="#F4F4F2";g.beginPath();g.moveTo(-34,-178);g.quadraticCurveTo(-36,-218,0,-216);g.quadraticCurveTo(36,-218,34,-178);g.lineTo(38,-140);g.lineTo(24,-150);g.lineTo(24,-186);g.quadraticCurveTo(0,-200,-24,-186);g.lineTo(-24,-150);g.lineTo(-38,-140);g.closePath();g.fill();g.strokeStyle="#C9D3DD";g.lineWidth=2;g.stroke();
+  g.strokeStyle="#1F2A37";g.lineWidth=4;g.beginPath();g.moveTo(-28,-204);g.quadraticCurveTo(0,-214,28,-204);g.stroke();
+  const fx=face||1;g.fillStyle="#1F2A37";g.beginPath();g.arc(8*fx,-182,3,0,7);g.arc(-6*fx,-182,3,0,7);g.fill();
+  if(sick){g.fillStyle="rgba(200,85,61,.5)";g.beginPath();g.arc(14*fx,-172,6,0,7);g.arc(-12*fx,-172,6,0,7);g.fill();g.strokeStyle="#1F2A37";g.lineWidth=2.5;g.beginPath();g.arc(2*fx,-160,7,3.5,6);g.stroke();}
+  else{g.strokeStyle="#1F2A37";g.lineWidth=2.5;g.beginPath();g.arc(2*fx,-170,8,.4,2.7);g.stroke();}
+  g.restore();}
+function mosq(g,x,y,sc,flap){g.save();g.translate(x,y);g.scale(sc,sc);g.fillStyle="rgba(191,234,245,.55)";g.beginPath();g.ellipse(-4,-12,14,6,-.6+flap,0,7);g.ellipse(6,-12,14,6,.6-flap,0,7);g.fill();g.fillStyle="#3B3F46";g.beginPath();g.ellipse(0,0,18,5,0,0,7);g.fill();g.beginPath();g.arc(-20,0,6,0,7);g.fill();g.strokeStyle="#3B3F46";g.lineWidth=2;g.beginPath();g.moveTo(-25,1);g.lineTo(-40,6);for(let i=-1;i<=1;i++){g.moveTo(i*7,3);g.lineTo(i*9-4,18);}g.stroke();g.restore();}
+sim("trC",16/10,(s,dt)=>{const g=s.ctx;const sky=g.createLinearGradient(0,0,0,s.H);sky.addColorStop(0,"#1F2A37");sky.addColorStop(1,"#2E4157");g.fillStyle=sky;g.fillRect(0,0,s.W,s.H);
+  g.fillStyle="#C9A06A";g.fillRect(0,420,s.W,80);g.fillStyle="#B48A55";g.fillRect(0,420,s.W,6);
+  const T=(s.t%4)/4,ax=trK===0?300:170,bx=trK===0?500:630;
+  person(g,ax,430,"#E9D9C9",true,1);person(g,bx,430,"#D7E7E4",T>.85,-1);
+  label(g,"sick",ax,490,"#7A2A1B",14);label(g,T>.85?"infected":"healthy",bx,490,T>.85?"#7A2A1B":"#0E4F48",14);
+  if(trK===0){const hx=(ax+bx)/2;g.strokeStyle="#C68A5C";g.lineWidth=14;g.lineCap="round";g.beginPath();g.moveTo(ax+30,330);g.lineTo(hx-6,322);g.moveTo(bx-30,330);g.lineTo(hx+6,322);g.stroke();
+    for(let i=0;i<6;i++){const q=Math.min(1,Math.max(0,T*1.3-i*.06));const x=ax+30+(bx-30-ax-30)*q,y=322-Math.sin(q*3.14)*40+i*3;ball(g,x,y,7,TERRA);}chip(g,"handshake · body fluids",400,70,"#E9B44C",16);}
+  else if(trK===1){g.fillStyle="#8C5A3C";rr(g,382,250,36,170,6);g.fill();g.fillStyle="#E9B44C";rr(g,386,330,28,10,5);g.fill();label(g,"door",400,240,"#F6D88E",13);
+    for(let i=0;i<14;i++){const ph=(T+i/14)%1,ang=-.35+((i*37)%10)/10*.7,d=ph*260,x=ax+24+Math.cos(ang)*d,y=255+Math.sin(ang)*d+ph*ph*60;if(x<395)ball(g,x,y,5+((i*13)%4),OCH,1-ph*.6);}
+    ball(g,396,334,7,TERRA);ball(g,406,330,6,TERRA);if(T>.55){const q=Math.min(1,(T-.55)/.3);ball(g,406+(bx-40-406)*q,334-q*60,7,TERRA);}chip(g,"sneeze droplets · door handle",400,70,"#E9B44C",16);}
+  else{const q=T,x=ax+20+(bx-ax-40)*q,y=200-Math.sin(q*6.28)*40-Math.sin(q*3.14)*60;mosq(g,x,y,1.6,Math.sin(s.t*40)*.4);if(q>.1)ball(g,x+4,y+4,5,TERRA);chip(g,"mosquito carries the pathogen",400,70,"#E9B44C",16);}
+});
+const TRM=[["<b>Direct contact:</b> the pathogen passes by touching or by body fluids. Examples: <b>mononucleosis, herpes</b>.","<b>التلامس المباشر:</b> ينتقل الممرض باللمس أو بسوائل الجسم. أمثلة: <b>كثرة الوحيدات، الهربس</b>."],
+ ["<b>Indirect contact:</b> the pathogen travels through the <b>air</b> in droplets, or on <b>contaminated objects</b> like a door handle. Examples: <b>colds, flu</b>.","<b>التلامس غير المباشر:</b> ينتقل الممرض عبر <b>الهواء</b> في الرذاذ، أو على <b>أشياء ملوثة</b> مثل مقبض الباب. أمثلة: <b>الزكام، الإنفلونزا</b>."],
+ ["<b>Vector:</b> an organism, usually an <b>arthropod</b>, carries the pathogen between hosts. Examples: ticks (<b>Lyme disease</b>), mosquitoes (<b>malaria, Zika</b>).","<b>الناقل:</b> كائن حي، غالبًا من <b>المفصليات</b>، يحمل الممرض بين العوائل. أمثلة: القراد (<b>مرض لايم</b>)، البعوض (<b>الملاريا، زيكا</b>)."]];
+segBind("trMode",v=>{trK=v;setMsg($("#trMsg"),TRM[v][0],TRM[v][1]);});setMsg($("#trMsg"),TRM[0][0],TRM[0][1]);
+whyBox($("#why3"),"A mosquito bites a person with malaria, then bites you. What type of transmission is this?","تلدغ بعوضة شخصًا مصابًا بالملاريا، ثم تلدغك. ما نوع هذا الانتقال؟",[
+ ["Direct contact, because the bite touches the skin.","تلامس مباشر، لأن اللدغة تلمس الجلد.",0,"Direct contact is between two hosts. Here a third organism carries the pathogen.","التلامس المباشر يكون بين عائلين. هنا كائن ثالث يحمل الممرض."],
+ ["Vector transmission: the mosquito carries the pathogen from one host to another.","انتقال بالناقل: البعوضة تحمل الممرض من عائل إلى آخر.",1,"Mosquitoes and ticks are vectors.","البعوض والقراد نواقل."],
+ ["Indirect contact through the air.","تلامس غير مباشر عبر الهواء.",0,"Malaria does not travel in air droplets.","الملاريا لا تنتقل في رذاذ الهواء."]]);
+
+/* 7. clinical table */
+const CT=[["Tetanus","الكزاز","Bacterium","Nervous system","Soil in a deep puncture wound",["bac","wound"],"Bacteria from soil enter a deep wound and release a toxin that causes muscle spasms.","تدخل البكتيريا من التربة إلى جرح عميق وتفرز سمًا يسبّب تشنجات عضلية."],
+ ["Strep throat","التهاب الحلق البكتيري","Bacterium","Respiratory system","Droplets / direct contact",["bac","drop"],"Spread when someone coughs or sneezes, or by close contact. Treated with antibiotics.","ينتقل عندما يسعل شخص أو يعطس، أو بالمخالطة. يُعالج بالمضادات الحيوية."],
+ ["Lyme disease","مرض لايم","Bacterium","Skeletal and nervous systems","Vector (tick)",["bac","vec"],"A tick bite passes the bacteria into the blood.","تنقل لدغة القراد البكتيريا إلى الدم."],
+ ["Chicken pox","جدري الماء","Virus","Skin","Droplets / direct contact",["vir","drop"],"Very contagious. Causes an itchy rash with blisters.","شديد العدوى، يسبّب طفحًا جلديًا مع بثور تثير الحكة."],
+ ["Rabies","السعار (داء الكلب)","Virus","Nervous system","Animal bite",["vir","bite"],"The virus is in the saliva of an infected animal.","يوجد الفيروس في لعاب الحيوان المصاب."],
+ ["Influenza (flu)","الإنفلونزا","Virus","Respiratory system","Droplets / direct contact",["vir","drop"],"Spread in air droplets. Antibiotics do not cure it.","تنتقل في رذاذ الهواء، والمضادات الحيوية لا تعالجها."],
+ ["Giardia","الجيارديا","Protozoan","Digestive tract","Contaminated water",["pro","wound"],"Drinking water with Giardia causes diarrhea.","شرب ماء فيه الجيارديا يسبّب الإسهال."],
+ ["Malaria","الملاريا","Protozoan","Blood and liver","Vector (mosquito)",["pro","vec"],"Mosquitoes carry the protozoan Plasmodium.","ينقل البعوض الطلائعي المسمّى بلازموديوم."],
+ ["Athlete's foot","قدم الرياضي","Fungus","Skin","Direct contact / contaminated objects",["fun","drop"],"Grows on warm, damp skin. Spread on wet floors and shared towels.","ينمو على الجلد الدافئ الرطب، وينتقل عبر الأرضيات المبتلة والمناشف المشتركة."]];
+const CTF=[["bac","Bacterium","بكتيريا"],["vir","Virus","فيروس"],["pro","Protozoan","طلائعي"],["fun","Fungus","فطر"],["drop","Droplets / contact","رذاذ / تلامس"],["vec","Vector","ناقل"],["bite","Animal bite","عضة حيوان"],["wound","Soil / water","تربة / ماء"]];
+let ctF=null,ctR=-1;
+$("#ctChips").innerHTML=CTF.map(f=>`<button data-f="${f[0]}">${f[0].length===3?pgSvg(f[0],20):""} ${f[1]}<small>${f[2]}</small></button>`).join("");
+function ctDraw(){$("#ctTab").innerHTML=`<tr><th>Disease</th><th>Cause</th><th class="org">Organ system</th><th>How it spreads</th></tr>`+CT.map((r,i)=>`<tr data-i="${i}" class="${ctF&&r[5].includes(ctF)?"cur":""}${ctR===i?" sel":""}"><td><b>${r[0]}</b><small class="ar">${r[1]}</small></td><td><span class="cz">${pgSvg(r[5][0],22)}${r[2]}</span></td><td class="org">${r[3]}</td><td>${r[4]}</td></tr>`).join("");
+  $$("#ctTab tr[data-i]").forEach(tr=>tr.onclick=()=>{ctR=+tr.dataset.i;const r=CT[ctR];ctDraw();setMsg($("#ctMsg"),`<b>${r[0]}</b> · ${r[2]} · ${r[3]}. ${r[6]}`,`<b>${r[1]}</b>: ${r[7]}`);});}
+$$("#ctChips button").forEach(b=>b.onclick=()=>{ctF=ctF===b.dataset.f?null:b.dataset.f;$$("#ctChips button").forEach(x=>x.classList.toggle("on",x.dataset.f===ctF));ctDraw();
+  if(ctF){const n=CT.filter(r=>r[5].includes(ctF)).map(r=>r[0]);const f=CTF.find(x=>x[0]===ctF);setMsg($("#ctMsg"),`<b>${f[1]}</b>: ${n.join(", ")}.`,`<b>${f[2]}</b>: ${CT.filter(r=>r[5].includes(ctF)).map(r=>r[1]).join("، ")}.`);}});
+ctDraw();setMsg($("#ctMsg"),"Quick check: which disease in the table is caused by a <b>fungus</b>? Tap the <b>Fungus</b> filter to find out.","سؤال سريع: أيّ مرض في الجدول يسبّبه <b>فطر</b>؟ اضغط مرشّح <b>Fungus</b> لتعرف.");
+
+/* 8. why we feel sick */
+let skK=0,skT=0,skOn=false;const SKD=[8,7];
+const cellPts=Array.from({length:3},(_,i)=>({x:200+i*220,y:250}));
+sim("skC",16/10,(s,dt)=>{const g=s.ctx;if(skOn){skT+=dt;if(skT>=SKD[skK]){skT=SKD[skK];skOn=false;$("#skPlay").textContent="Play again ▶";}}const T=RM&&skOn?SKD[skK]:skT;
+  if(skK===0){bg(s,"#121E2B");
+    cellPts.forEach((c,i)=>{const burst=i===0&&T>5.2,ip=i===1&&T>7;if(burst){const q=Math.min(1,(T-5.2)/1);for(let k=0;k<10;k++){const a=k*.63;g.fillStyle=`rgba(127,211,230,${.6-q*.5})`;g.beginPath();g.arc(c.x+Math.cos(a)*(60+q*80),c.y+Math.sin(a)*(50+q*60),12-q*6,0,7);g.fill();}return;}
+      const gr=g.createRadialGradient(c.x-30,c.y-30,10,c.x,c.y,95);gr.addColorStop(0,"#BFEAF5");gr.addColorStop(1,"#2A8FB0");g.globalAlpha=.85;g.fillStyle=gr;g.beginPath();g.ellipse(c.x,c.y,90,75,0,0,7);g.fill();g.globalAlpha=1;g.strokeStyle="#7FD3E6";g.lineWidth=3;g.stroke();g.fillStyle="#1F5A73";g.beginPath();g.arc(c.x+20,c.y-10,22,0,7);g.fill();if(ip)virus(g,c.x-30,c.y+20,9,OCH);});
+    const c=cellPts[0];
+    if(T<2.5){const q=Math.min(1,T/2.5),x=60+(c.x-30-60)*q,y=90+(c.y+10-90)*q;virus(g,x,y,14,OCH,1,s.t);}
+    else if(T<=5.2){const n=Math.min(8,1+Math.floor((T-2.5)/2.7*8));for(let k=0;k<n;k++){const a=k*.78+s.t*.3;virus(g,c.x-20+Math.cos(a)*40,c.y+15+Math.sin(a)*28,9,OCH);}}
+    else{for(let k=0;k<8;k++){const q=Math.min(1,(T-5.2)/2.6),a=k*.78;const tx=k<3?cellPts[1].x-30:c.x+Math.cos(a)*260,ty=k<3?cellPts[1].y+20:c.y+Math.sin(a)*180;virus(g,c.x+(tx-c.x)*q,c.y+(ty-c.y)*q,9,OCH,1,s.t);}}
+    chip(g,T<1?"1. virus arrives":T<2.5?"2. virus enters the cell":T<5.2?"3. it makes many copies":T<6.6?"4. the cell bursts":"5. new viruses attack more cells",400,50,"#E9B44C",16);}
+  else{bg(s,"#1E1418");
+    g.fillStyle="#E7B8A8";g.fillRect(0,330,s.W,170);g.fillStyle="#C9928A";g.fillRect(0,330,s.W,8);
+    g.fillStyle="#7A1E1E";rr(g,0,170,s.W,90,40);g.fill();g.fillStyle="#9E2A2A";rr(g,0,182,s.W,66,33);g.fill();label(g,"blood vessel",120,160,"#FFB49E",14);
+    for(let k=0;k<12;k++){const x=((k*80+s.t*90)%(s.W+60))-30;g.fillStyle="#E05A4E";g.beginPath();g.ellipse(x,215+((k*29)%30)-15,16,9,0,0,7);g.fill();}
+    g.strokeStyle="#5B2E2C";g.lineWidth=5;g.beginPath();g.moveTo(90,330);g.lineTo(130,420);g.stroke();label(g,"deep wound",115,455,"#5B2E2C",14);
+    for(let k=0;k<7;k++)rod(g,95+((k*23)%60),380+((k*17)%40),26,11,k,TERRA);
+    const spasm=T>5.2;g.save();g.translate(650,400);const sq=spasm?Math.sin(s.t*30)*4:0;g.fillStyle=spasm?"#C8553D":"#D98A8A";rr(g,-90,-40+sq,180,70-sq*2,35);g.fill();g.strokeStyle="#8E3B2C";g.lineWidth=2;for(let i=-60;i<=60;i+=20){g.beginPath();g.moveTo(i,-30+sq);g.lineTo(i,20-sq);g.stroke();}g.restore();label(g,spasm?"muscle spasm!":"muscle",650,470,spasm?"#C8553D":"#5B2E2C",14);
+    for(let k=0;k<9;k++){const st=.4+k*.35,q=Math.max(0,Math.min(1,(T-st)/2.6));if(T<st)continue;let x,y;if(q<.25){x=110;y=370-(370-215)*(q/.25);}else if(q<.8){x=110+(650-110)*((q-.25)/.55);y=215+Math.sin(k)*12;}else{x=650;y=215+(390-215)*((q-.8)/.2);}g.save();g.translate(x,y);g.rotate(s.t*2+k);g.fillStyle="#FFD23F";g.beginPath();for(let j=0;j<10;j++){const r=j%2?4:10,a=j*.628;g.lineTo(Math.cos(a)*r,Math.sin(a)*r);}g.fill();g.restore();}
+    chip(g,T<.5?"bacteria stay in the wound":T<3.5?"they release toxins into the blood":T<5.2?"toxins travel far away":"toxin reaches nerves and muscles",400,50,"#FFD23F",16);}
+});
+const SKM=[["<b>Viral cell damage:</b> a virus enters a cell and uses it to make copies. The new viruses leave by <b>exocytosis</b> or by <b>bursting</b> the cell. The cells die, which damages the tissue.","<b>تلف الخلايا بالفيروس:</b> يدخل الفيروس الخلية ويستخدمها لصنع نسخ منه، ثم تخرج الفيروسات الجديدة <b>بالإخراج الخلوي</b> أو <b>بتفجير</b> الخلية. تموت الخلايا فيتلف النسيج."],
+ ["<b>Bacterial toxins:</b> some bacteria release harmful chemicals called <b class=\"term\">toxins</b>. The blood carries them to distant body parts. Tetanus bacteria stay in the wound, but their toxin causes <b>muscle spasms</b>. Botulism toxin causes <b>paralysis</b>.","<b>السموم البكتيرية:</b> تفرز بعض البكتيريا مواد كيميائية ضارة تُسمّى <b>السموم</b>، ويحملها الدم إلى أجزاء بعيدة من الجسم. تبقى بكتيريا الكزاز في الجرح، لكن سمّها يسبّب <b>تشنجات عضلية</b>. وسمّ البوتيوليزم (التسمم الوشيقي) يسبّب <b>الشلل</b>."]];
+function skSet(){setMsg($("#skMsg"),SKM[skK][0],SKM[skK][1]);}
+$("#skPlay").onclick=()=>{skT=0;skOn=true;$("#skPlay").textContent="Playing…";};
+segBind("skMode",v=>{skK=v;skT=0;skOn=false;$("#skPlay").textContent="Play ▶";skSet();});skSet();
+whyBox($("#why4"),"Do all symptoms come directly from the pathogen?","هل تأتي كل الأعراض من الممرض مباشرة؟",[
+ ["Yes, only the pathogen causes symptoms.","نعم، الممرض وحده يسبّب الأعراض.",0,"Think about a fever. Who raises your temperature?","فكّر في الحمّى. من يرفع درجة حرارتك؟"],
+ ["No. Cell damage, toxins and the body's own immune response (like fever) all cause symptoms.","لا. تلف الخلايا والسموم واستجابة الجسم المناعية نفسها (مثل الحمّى) كلها تسبّب الأعراض.",1,"Fever, swelling and a runny nose are partly the body fighting back.","الحمّى والتورّم وسيلان الأنف جزء من دفاع الجسم."],
+ ["No, symptoms come only from the medicine.","لا، الأعراض تأتي من الدواء فقط.",0,"People feel sick before they take any medicine.","يشعر الناس بالمرض قبل أن يتناولوا أي دواء."]]);
+
+/* 9. disease patterns */
+const LAND=[[[90,90],[200,60],[300,70],[330,120],[280,170],[250,210],[215,240],[190,215],[150,170],[100,140]],[[235,255],[290,262],[318,300],[292,360],[266,405],[250,360],[236,300]],[[388,88],[455,74],[478,108],[445,135],[402,132]],[[392,158],[470,150],[506,190],[492,262],[456,322],[432,312],[410,242],[384,200]],[[470,80],[600,58],[722,88],[734,140],[684,190],[622,212],[572,192],[522,170],[482,140]],[[500,172],[546,178],[556,206],[522,226],[504,200]],[[640,292],[712,286],[732,330],[690,356],[646,336]]];
+const SPOTS=[[150,110],[250,100],[280,140],[200,190],[270,300],[420,100],[440,200],[470,270],[540,190],[600,110],[680,120],[650,170],[690,320],[300,80],[460,120],[230,160]];
+let dpK=0;
+sim("dpC",16/9,(s,dt)=>{const g=s.ctx;g.fillStyle="#0E2233";g.fillRect(0,0,s.W,s.H);g.strokeStyle="rgba(127,211,230,.08)";g.lineWidth=1;for(let x=0;x<s.W;x+=50){g.beginPath();g.moveTo(x,0);g.lineTo(x,s.H);g.stroke();}for(let y=0;y<s.H;y+=50){g.beginPath();g.moveTo(0,y);g.lineTo(s.W,y);g.stroke();}
+  LAND.forEach(p=>{g.beginPath();p.forEach(([x,y],i)=>i?g.lineTo(x,y):g.moveTo(x,y));g.closePath();g.fillStyle="#2B4A5E";g.fill();g.strokeStyle="#4F7890";g.lineWidth=2;g.stroke();});
+  const pulse=(Math.sin(s.t*3)+1)/2;
+  const dot=(x,y,r)=>{g.fillStyle=`rgba(200,85,61,${.25+.25*pulse})`;g.beginPath();g.arc(x,y,r*2.2,0,7);g.fill();g.fillStyle="#FF7A5C";g.beginPath();g.arc(x,y,r,0,7);g.fill();};
+  if(dpK===0){[[452,232],[466,248],[440,250]].forEach(([x,y],i)=>dot(x,y,5+((i+Math.floor(s.t*1.5))%3===0?2:0)));chip(g,"Level 1 · Endemic",400,410,"#E9B44C",16);}
+  else if(dpK===1){const gr=g.createRadialGradient(650,150,5,650,150,110);gr.addColorStop(0,`rgba(255,122,92,${.55+.2*pulse})`);gr.addColorStop(1,"rgba(255,122,92,0)");g.fillStyle=gr;g.beginPath();g.arc(650,150,110,0,7);g.fill();[[640,140],[662,160],[620,170],[680,130],[650,180],[600,140],[700,165]].forEach(([x,y])=>dot(x,y,5));chip(g,"Level 2 · Epidemic",400,410,"#E9B44C",16);}
+  else{g.strokeStyle=`rgba(255,122,92,${.35+.3*pulse})`;g.lineWidth=2;SPOTS.forEach((a,i)=>{const b=SPOTS[(i*5+3)%SPOTS.length];g.beginPath();g.moveTo(a[0],a[1]);g.quadraticCurveTo((a[0]+b[0])/2,Math.min(a[1],b[1])-50,b[0],b[1]);g.stroke();});SPOTS.forEach(([x,y])=>dot(x,y,5));chip(g,"Level 3 · Pandemic",400,410,"#E9B44C",16);}});
+const DPM=[["<b>Endemic:</b> small numbers of cases are <b>always</b> found in a population. Book example: the <b>common cold</b>. Malaria is endemic in parts of Africa.","<b>متوطن:</b> أعداد قليلة من الإصابات توجد <b>دائمًا</b> في مجتمع ما. مثال الكتاب: <b>الزكام</b>. والملاريا متوطنة في أجزاء من أفريقيا."],
+ ["<b>Epidemic:</b> a <b>large outbreak</b> spreading across an area or region. Book example: the <b>SARS</b> outbreak in 2003, which started in East Asia. (It reached about 29 countries, so some sources call it a pandemic.)","<b>وباء:</b> <b>تفشٍّ كبير</b> ينتشر في منطقة أو إقليم. مثال الكتاب: تفشّي <b>سارس</b> عام 2003 الذي بدأ في شرق آسيا. (وصل إلى نحو 29 دولة، لذلك تسمّيه بعض المصادر جائحة.)"],
+ ["<b>Pandemic:</b> widespread across a large region, a continent or <b>the whole globe</b>. Examples: <b>HIV</b>, the <b>1918 flu</b>, and <b>COVID-19</b> (2020).","<b>جائحة:</b> انتشار واسع في إقليم كبير أو قارة أو <b>العالم كله</b>. أمثلة: <b>الإيدز</b>، و<b>إنفلونزا 1918</b>، و<b>كوفيد-19</b> (2020)."]];
+function dpSet(v){dpK=v;$("#dpR").value=v;$$("#dpMode button").forEach(x=>x.classList.toggle("on",+x.dataset.v===v));setMsg($("#dpMsg"),DPM[v][0],DPM[v][1]);}
+$("#dpR").oninput=()=>dpSet(+$("#dpR").value);segBind("dpMode",v=>dpSet(v));dpSet(0);
+
+/* 10. timeline */
+const TL=[["1796","Edward Jenner uses cowpox to make the first <b>vaccine</b>, against smallpox.","إدوارد جينر يستخدم جدري البقر ليصنع أول <b>لقاح</b>، ضد الجدري.","vac"],
+ ["1882","Élie Metchnikoff sees white blood cells <b>engulfing</b> microbes: <b>phagocytosis</b>.","إيلي ميتشنيكوف يرى خلايا الدم البيضاء <b>تبتلع</b> الميكروبات: <b>البلعمة</b>.","pha"],
+ ["1908","Metchnikoff and Paul Ehrlich win the Nobel Prize for their work on phagocytosis and <b>antibodies</b>.","ميتشنيكوف وبول إيرليخ يفوزان بجائزة نوبل لأعمالهما عن البلعمة و<b>الأجسام المضادة</b>.","ab"],
+ ["1928","Alexander Fleming discovers <b>penicillin</b> made by a fungus. It is mass-produced during World War II (1940s).","ألكسندر فليمنغ يكتشف <b>البنسلين</b> الذي يفرزه فطر، ويُنتَج بكميات كبيرة خلال الحرب العالمية الثانية (الأربعينيات).","pen"],
+ ["1981","Doctors give the first clinical description of <b>AIDS</b>.","الأطباء يقدّمون أول وصف سريري <b>للإيدز</b>.","rib"],
+ ["1984–85","<b>HIV</b> is identified as the cause of AIDS. It is cloned, and blood tests become possible.","تحديد <b>فيروس HIV</b> مسبّبًا للإيدز، واستنساخه، وإتاحة فحوص الدم.","vir"],
+ ["2009–15","Targeted <b>antiretroviral</b> drugs control HIV. By 2015 about 17 million people are on therapy.","أدوية <b>مضادة للفيروسات القهقرية</b> موجّهة تسيطر على HIV، وبحلول 2015 كان نحو 17 مليون شخص يتلقّون العلاج.","pil"]];
+const TLI={vac:`<g transform="rotate(-30)"><rect x="-40" y="-10" width="60" height="20" rx="4" fill="#EAF2F6" stroke="#5B6675" stroke-width="3"/><rect x="-34" y="-5" width="34" height="10" fill="#2A9D8F"/><path d="M20 0h30M-40 0h-14M-54-12v24" stroke="#5B6675" stroke-width="4"/></g>`,
+ pha:`<path d="M-44 0C-44-34 30-40 40-10C30-22 16-16 18 0C16 16 30 22 40 10C30 40-44 34-44 0Z" fill="#D9C2F5" stroke="#7A4FC0" stroke-width="3"/><circle cx="-14" cy="0" r="12" fill="#7A4FC0" opacity=".7"/><rect x="22" y="-8" width="30" height="16" rx="8" fill="#2A9D8F" stroke="#0E4F48" stroke-width="2"/>`,
+ ab:`<path d="M0 40V0M0 0L-26-30M0 0L26-30" stroke="#2A9D8F" stroke-width="12" stroke-linecap="round"/><path d="M-26-30l-10-12M26-30l10-12" stroke="#E9B44C" stroke-width="10" stroke-linecap="round"/>`,
+ pen:`<ellipse rx="52" ry="32" fill="#FFF0C7" stroke="#9AA5B1" stroke-width="3"/><circle cx="-8" cy="0" r="14" fill="#5C8F4E"/><circle cx="-8" cy="0" r="28" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="4 4"/><g fill="#2A9D8F"><circle cx="34" cy="-10" r="4"/><circle cx="38" cy="8" r="4"/><circle cx="26" cy="18" r="4"/><circle cx="28" cy="-20" r="3"/></g>`,
+ rib:`<path d="M0-6C-20-40 20-40 0-6L-24 40M0-6L24 40" fill="none" stroke="#C8553D" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>`,
+ vir:`<g transform="scale(1.1)">${PG.vir}</g>`,
+ pil:`<g transform="rotate(-30)"><rect x="-44" y="-18" width="88" height="36" rx="18" fill="#2A9D8F"/><path d="M0-18h26a18 18 0 0 1 0 36H0z" fill="#E9B44C"/><rect x="-34" y="-12" width="60" height="6" rx="3" fill="#fff" opacity=".35"/></g>`};
+function tlSet(){const k=+$("#tlR").value,e=TL[k];let s=`<rect width="520" height="300" rx="16" fill="#FBF7F0"/><line x1="40" y1="250" x2="480" y2="250" stroke="#9AA5B1" stroke-width="4" stroke-linecap="round"/>`;
+  TL.forEach((t,i)=>{const x=40+i*440/6,on=i===k;s+=`<circle cx="${x}" cy="250" r="${on?12:7}" fill="${on?"#C8553D":i<k?"#2A9D8F":"#fff"}" stroke="${on?"#C8553D":"#9AA5B1"}" stroke-width="3"/><text x="${x}" y="282" text-anchor="middle" font-size="${on?17:14}" font-weight="800" fill="${on?"#C8553D":"#5B6675"}">${t[0]}</text>`;});
+  s+=`<rect x="110" y="24" width="300" height="190" rx="22" fill="#fff" stroke="#E9B44C" stroke-width="3"/><g transform="translate(260 105)">${TLI[e[3]]}</g><text x="260" y="196" text-anchor="middle" font-size="26" font-weight="900" fill="#1F2A37">${e[0]}</text>`;
+  $("#tlSvg").innerHTML=s;setMsg($("#tlMsg"),`<b>${e[0]}</b>: ${e[1]}`,`<b>${e[0]}</b>: ${e[2]}`);}
+$("#tlR").oninput=tlSet;tlSet();
+
+/* 11. treatments */
+let txK=0,txDrug=0,txT=0;const TXB={x:40,y:90,w:720,h:360};let txB=[],txV=[],txD=[];const txCells=[[200,280],[400,240],[600,300]];
+function txReset(){txDrug=0;txT=0;txD=[];txB=mkp(26,TXB,40).map(p=>({...p,a:1}));txV=Array.from({length:10},(_,i)=>({cell:i%4<3?i%3:-1,x:rnd(80,720),y:rnd(110,430),vx:rnd(-30,30),vy:rnd(-30,30),a:1,ph:Math.random()*6}));$("#txGive").disabled=false;$("#txAnti").style.display=txK?"":"none";$("#txAnti").disabled=false;}
+sim("txC",16/10,(s,dt)=>{const g=s.ctx;bg(s,"#121E2B");txT+=dt;
+  if(txK===0){move(txB,TXB,dt);txB.forEach(p=>{if(txDrug===1){p.a=Math.max(0,p.a-dt*.45*(.6+((p.x*7)%10)/10));}if(p.a>0)rod(g,p.x,p.y,40,16,p.ang,TEAL,p.a);});}
+  else{txCells.forEach(([x,y])=>{const gr=g.createRadialGradient(x-30,y-30,10,x,y,95);gr.addColorStop(0,"#F6E3D8");gr.addColorStop(1,"#C98E7A");g.fillStyle=gr;g.beginPath();g.ellipse(x,y,85,70,0,0,7);g.fill();g.strokeStyle="#8C5A3C";g.lineWidth=3;g.stroke();g.fillStyle="#8C5A3C";g.globalAlpha=.6;g.beginPath();g.arc(x+22,y-14,18,0,7);g.fill();g.globalAlpha=1;});
+    txV.forEach((v,i)=>{if(txDrug===2)v.a=Math.max(.0,v.a-dt*.35);if(v.a<=0)return;if(v.cell>=0){const [x,y]=txCells[v.cell];virus(g,x-28+Math.cos(s.t+v.ph)*18,y+18+Math.sin(s.t+v.ph)*12,9,OCH,v.a);}else{move([v],{x:60,y:110,w:680,h:320},dt);virus(g,v.x,v.y,9,OCH,v.a,s.t);}});
+    label(g,"body cells",400,470,"#F6D88E",14);}
+  txD.forEach(d=>{d.x+=d.vx*dt;d.y+=d.vy*dt;d.a=Math.max(0,d.a-dt*.25);g.fillStyle=d.c;g.globalAlpha=d.a;g.beginPath();g.arc(d.x,d.y,5,0,7);g.fill();g.globalAlpha=1;});
+  const alive=txK===0?txB.filter(p=>p.a>.05).length:txV.filter(v=>v.a>.05).length;
+  chip(g,txK===0?`bacteria alive: ${alive}`:`viruses: ${alive}`,170,44,txK===0?"#8FE6D9":"#FFE29A",15);
+  if(txDrug)chip(g,txDrug===1?"penicillin":"antiviral",640,44,txDrug===1?"#FFD23F":"#C9A6F2",15);
+  if(txK===1&&txDrug===1&&txT>2.5)chip(g,"no effect on viruses!",400,250,"#FF7A5C",18);});
+function spray(c){for(let i=0;i<70;i++){const a=Math.random()*6.28,v=rnd(60,260);txD.push({x:400,y:280,vx:Math.cos(a)*v,vy:Math.sin(a)*v*.7,a:1,c});}}
+const TXM=[["Tap <b>Give penicillin</b> and watch the bacteria.","اضغط <b>Give penicillin</b> وراقب البكتيريا."],["The bacteria die: penicillin damages the <b>bacterial cell wall</b>, so they burst. That is why antibiotics work on <b>bacteria</b>. Always finish the full course your doctor gives you.","تموت البكتيريا: البنسلين يتلف <b>الجدار الخلوي للبكتيريا</b> فتنفجر؛ لذلك تعمل المضادات الحيوية على <b>البكتيريا</b>. أكمل دائمًا الجرعة كاملة التي يصفها الطبيب."],
+ ["This person has the <b>flu</b>, a virus. Tap <b>Give penicillin</b>.","هذا الشخص مصاب <b>بالإنفلونزا</b>، وهي فيروس. اضغط <b>Give penicillin</b>."],["<b>Nothing happens!</b> Viruses have no cell wall, and they hide inside our own cells. Antibiotics do <b>not</b> work on viruses. Now try the <b>antiviral</b>.","<b>لا شيء يحدث!</b> الفيروسات ليس لها جدار خلوي، وتختبئ داخل خلايانا. المضادات الحيوية <b>لا</b> تؤثر في الفيروسات. جرّب الآن <b>مضاد الفيروسات</b>."],
+ ["<b>Antiviral drugs</b> stop the virus from making copies (used for herpes, flu, HIV). Together with the body's <b>immune system</b>, the infection clears.","<b>مضادات الفيروسات</b> توقف الفيروس عن صنع نسخ منه (تُستخدم للهربس والإنفلونزا وHIV). ومع <b>جهاز المناعة</b> في الجسم تزول العدوى."]];
+const txM=i=>setMsg($("#txMsg"),TXM[i][0],TXM[i][1],i===3);
+$("#txGive").onclick=()=>{txDrug=1;txT=0;spray("#FFD23F");$("#txGive").disabled=true;txM(txK?3:1);};
+$("#txAnti").onclick=()=>{txDrug=2;txT=0;spray("#C9A6F2");$("#txAnti").disabled=true;txM(4);};
+segBind("txMode",v=>{txK=v;txReset();txM(v?2:0);});txReset();txM(0);
+whyBox($("#why5"),"Can you use penicillin to cure the flu?","هل يمكن استخدام البنسلين لعلاج الإنفلونزا؟",[
+ ["Yes, a stronger dose will kill the flu virus.","نعم، جرعة أقوى تقتل فيروس الإنفلونزا.",0,"Any dose of an antibiotic misses viruses. They have no cell wall to attack.","أي جرعة من المضاد الحيوي لا تصيب الفيروسات، فليس لها جدار خلوي تهاجمه."],
+ ["No. The flu is caused by a virus, and antibiotics only work on bacteria.","لا. الإنفلونزا يسبّبها فيروس، والمضادات الحيوية تعمل على البكتيريا فقط.",1,"Using antibiotics for viruses does not help, and it adds to antibiotic resistance.","استخدام المضادات الحيوية للفيروسات لا يفيد، ويزيد من مقاومة المضادات الحيوية."],
+ ["Yes, because the flu is caused by a fungus.","نعم، لأن الإنفلونزا يسبّبها فطر.",0,"Check the clinical table: influenza is a virus.","راجع الجدول: الإنفلونزا فيروس."]]);
+
+/* 12. resistance lab */
+const RSB={x:40,y:70,w:440,h:380};let rsP=[],rsStage=0,rsHist=[];
+function rsNew(n,fr){return Array.from({length:n},(_,i)=>{const a=Math.random()*6.28;return {x:rnd(RSB.x+30,RSB.x+RSB.w-30),y:rnd(RSB.y+30,RSB.y+RSB.h-30),vx:Math.cos(a)*25,vy:Math.sin(a)*25,ang:Math.random()*6.28,spin:rnd(-.6,.6),res:i<fr,a:1,die:false}});}
+function rsPct(){const live=rsP.filter(p=>!p.die);return Math.round(100*live.filter(p=>p.res).length/live.length);}
+function rsReset(){rsP=rsNew(60,3);rsStage=0;rsHist=[rsPct()];rsBtn();setMsg($("#rsMsg"),"A population of 60 bacteria. Just <b>3</b> have a random variation (red) that lets them survive the antibiotic. Tap <b>1. Give antibiotic</b>.","مجموعة من 60 بكتيريا. لدى <b>3</b> فقط تباين عشوائي (باللون الأحمر) يساعدها على النجاة من المضاد الحيوي. اضغط <b>1. Give antibiotic</b>.");}
+function rsBtn(){$("#rsDose").disabled=rsStage%2===1||rsHist.length>=5;$("#rsGrow").disabled=rsStage%2===0;}
+$("#rsDose").onclick=()=>{let kept=0;rsP.forEach(p=>{if(!p.res){if(kept<6&&Math.random()<.12)kept++;else p.die=true;}});rsStage++;rsBtn();const sv=rsP.filter(p=>!p.die),r=sv.filter(p=>p.res).length;
+  setMsg($("#rsMsg"),`The antibiotic killed most of the bacteria. <b>${sv.length}</b> survived, and <b>${r}</b> of them are resistant. Tap <b>2. Survivors reproduce</b>.`,`قتل المضاد الحيوي معظم البكتيريا. نجت <b>${sv.length}</b>، منها <b>${r}</b> مقاوِمة. اضغط <b>2. Survivors reproduce</b>.`);};
+$("#rsGrow").onclick=()=>{const sv=rsP.filter(p=>!p.die);const fr=Math.round(60*sv.filter(p=>p.res).length/sv.length);rsP=rsNew(60,fr);rsStage++;rsHist.push(rsPct());rsBtn();const pc=rsHist[rsHist.length-1];
+  setMsg($("#rsMsg"),rsHist.length>=5?`After 4 rounds, <b>${pc}%</b> of the bacteria are resistant. The antibiotic barely works now: a <b>superbug</b>. Nobody "taught" the bacteria; the drug only <b>selected</b> the ones that were already resistant.`:`Bacteria reproduce very fast, and each survivor passes its trait on. Now <b>${pc}%</b> are resistant. Give the antibiotic again.`,rsHist.length>=5?`بعد 4 جولات أصبحت <b>${pc}%</b> من البكتيريا مقاوِمة، والمضاد الحيوي بالكاد يعمل الآن: <b>بكتيريا خارقة</b>. لم «يعلّم» أحدٌ البكتيريا؛ الدواء فقط <b>انتخب</b> البكتيريا التي كانت مقاوِمة أصلًا.`:`تتكاثر البكتيريا بسرعة كبيرة، وكل ناجية تنقل صفتها. الآن <b>${pc}%</b> منها مقاوِمة. أعطِ المضاد الحيوي مرة أخرى.`);};
+$("#rsReset").onclick=rsReset;
+sim("rsC",16/10,(s,dt)=>{const g=s.ctx;bg(s,"#121E2B");
+  g.fillStyle="#1B2C3B";rr(g,RSB.x,RSB.y,RSB.w,RSB.h,30);g.fill();g.strokeStyle="#9AA5B1";g.lineWidth=4;g.stroke();
+  move(rsP.filter(p=>!p.die),{x:RSB.x+24,y:RSB.y+24,w:RSB.w-48,h:RSB.h-48},dt);
+  rsP.forEach(p=>{if(p.die)p.a=Math.max(0,p.a-dt*1.2);if(p.a>0)rod(g,p.x,p.y,30,13,p.ang,p.res?TERRA:TEAL,p.a);});
+  label(g,"bacteria",RSB.x+RSB.w/2,52,"#8FE6D9",15);
+  const cx=520,cy=430,ch=300,bw=40;g.strokeStyle="#9AA5B1";g.lineWidth=2;g.beginPath();g.moveTo(cx,cy-ch);g.lineTo(cx,cy);g.lineTo(cx+250,cy);g.stroke();
+  label(g,"% resistant",cx+125,52,"#FFB49E",15);[0,50,100].forEach(v=>{g.font="700 18px system-ui";g.fillStyle="#9AA5B1";g.textAlign="right";g.fillText(v,cx-6,cy-v/100*ch+6);});
+  rsHist.forEach((v,i)=>{const x=cx+12+i*48,h=v/100*ch;const gr=g.createLinearGradient(0,cy-h,0,cy);gr.addColorStop(0,"#FFB49E");gr.addColorStop(1,"#B8432D");g.fillStyle=gr;rr(g,x,cy-h,bw,Math.max(h,2),6);g.fill();label(g,v+"",x+bw/2,cy-h-10,"#fff",10.5);label(g,i?"R"+i:"start",x+bw/2,cy+30,"#9AA5B1",11);});});
+rsReset();
+whyBox($("#why6"),"Why does resistance spread so quickly in bacteria?","لماذا تنتشر المقاومة بسرعة كبيرة في البكتيريا؟",[
+ ["The antibiotic teaches the bacteria how to resist it.","المضاد الحيوي يعلّم البكتيريا كيف تقاومه.",0,"The variation was there before the drug. The drug only removed the others.","التباين كان موجودًا قبل الدواء، والدواء أزال البكتيريا الأخرى فقط."],
+ ["The resistant survivors reproduce very fast and pass the trait to their offspring.","البكتيريا المقاوِمة الناجية تتكاثر بسرعة كبيرة وتنقل الصفة إلى نسلها.",1,"This is natural selection. Overusing antibiotics speeds it up.","هذا هو الانتخاب الطبيعي، والإفراط في استخدام المضادات الحيوية يسرّعه."],
+ ["Bacteria become bigger and stronger after each dose.","تصبح البكتيريا أكبر وأقوى بعد كل جرعة.",0,"Size has nothing to do with it. Look at the red bacteria in the lab.","الحجم لا علاقة له بذلك. انظر إلى البكتيريا الحمراء في المعمل."]]);
+
+/* gonorrhea graph */
+const GN=[0.2,0.4,0.6,0.8,1.0,2.6,4.4,4.4,7.6,8.5,9.0];
+function gnDraw(sel){const x0=56,y0=250,hh=200,bw=30;let s=`<rect width="520" height="300" rx="16" fill="#fff"/>`;
+  for(let v=0;v<=9;v+=3){const y=y0-v/9*hh;s+=`<line x1="${x0}" y1="${y}" x2="500" y2="${y}" stroke="#E6DED0"/><text x="${x0-8}" y="${y+4}" text-anchor="end" font-size="15" fill="#5B6675">${v}</text>`;}
+  s+=`<text x="16" y="${y0-hh/2}" transform="rotate(-90 16 ${y0-hh/2})" text-anchor="middle" font-size="15" font-weight="700" fill="#5B6675">resistant (%)</text>`;
+  GN.forEach((v,i)=>{const x=x0+10+i*40,h=v/9*hh,on=i===sel;s+=`<rect class="gnb" data-i="${i}" x="${x}" y="${y0-h}" width="${bw}" height="${Math.max(h,2)}" rx="4" fill="${on?"#C8553D":i>=5?"#E07A5F":"#2A9D8F"}"/><rect class="gnb" data-i="${i}" x="${x-4}" y="${y0-hh}" width="${bw+8}" height="${hh}" fill="transparent"/><text x="${x+bw/2}" y="${y0+18}" text-anchor="middle" font-size="15" fill="#5B6675">'${String(80+i).slice(-2)}</text>${on?`<text x="${x+bw/2}" y="${y0-h-8}" text-anchor="middle" font-size="17" font-weight="800" fill="#C8553D">${v}%</text>`:""}`;});
+  s+=`<line x1="${x0}" y1="${y0}" x2="500" y2="${y0}" stroke="#1F2A37" stroke-width="2"/>`;$("#gnSvg").innerHTML=s;
+  $$("#gnSvg .gnb").forEach(r=>r.onclick=()=>{const i=+r.dataset.i;gnDraw(i);setMsg($("#gnMsg"),`<b>${1980+i}</b>: about <b>${GN[i]}%</b> of gonorrhea cases were resistant to penicillin.${i?` That is about <b>${Math.round(GN[i]/GN[0])}×</b> the 1980 value.`:""}`,`<b>${1980+i}</b>: كانت نحو <b>${GN[i]}%</b> من حالات السيلان مقاوِمة للبنسلين.${i?` أي نحو <b>${Math.round(GN[i]/GN[0])}</b> أضعاف قيمة 1980.`:""}`);});}
+gnDraw(10);setMsg($("#gnMsg"),"Tap any bar.","اضغط على أي عمود.");
+
+/* check yourself */
+cardsQ($("#cyCards"),[
+ {t:["Which pathogen is NOT a cell?","أيّ الممرضات التالية ليس خلية؟"],o:[["Bacterium","بكتيريا"],["Virus","فيروس"],["Protozoan","طلائعي"]],a:1,w:["Viruses only multiply inside living host cells.","الفيروسات لا تتكاثر إلا داخل خلايا عائل حية."],h:["Which one needs a host cell to multiply?","أيّها يحتاج إلى خلية عائل ليتكاثر؟"]},
+ {t:["Contaminated soil is which type of reservoir?","التربة الملوثة أيّ نوع من المستودعات؟"],o:[["Human","بشري"],["Animal","حيواني"],["Inanimate","غير حي"]],a:2,w:["Soil and water are non-living reservoirs.","التربة والماء مستودعات غير حية."],h:["Is soil alive?","هل التربة حية؟"]},
+ {t:["A tick passes Lyme disease to a hiker. This is…","ينقل القراد مرض لايم إلى متنزّه. هذا…"],o:[["vector transmission","انتقال بالناقل"],["direct contact","تلامس مباشر"],["an epidemic","وباء"]],a:0,cls:"stack",w:["Ticks and mosquitoes are vectors.","القراد والبعوض نواقل."],h:["Another organism carried the pathogen.","كائن آخر حمل الممرض."]},
+ {t:["Koch's step 2 fails for viruses because they…","تفشل الخطوة 2 من فرضيات كوخ مع الفيروسات لأنها…"],o:[["are too big","كبيرة جدًا"],["need living cells to grow","تحتاج إلى خلايا حية لتنمو"],["are killed by heat","تموت بالحرارة"]],a:1,cls:"stack",w:["They cannot grow on artificial media.","لا تنمو على وسط اصطناعي."],h:["Step 2 uses artificial media.","الخطوة 2 تستخدم وسطًا اصطناعيًا."]},
+ {t:["Tetanus bacteria stay in the wound, but cause spasms far away. How?","تبقى بكتيريا الكزاز في الجرح لكنها تسبّب تشنجات بعيدة. كيف؟"],o:[["Their toxins travel in the blood","سمومها تنتقل في الدم"],["They burst the muscle cells","تفجّر خلايا العضلات"],["They move to the muscles","تنتقل إلى العضلات"]],a:0,cls:"stack",w:["Toxins are carried by the bloodstream.","السموم يحملها مجرى الدم."],h:["Remember the toxin animation.","تذكّر محاكاة السموم."]},
+ {t:["A disease spreads across many continents. It is…","ينتشر مرض عبر قارات كثيرة. إنه…"],o:[["endemic","متوطن"],["an epidemic","وباء"],["a pandemic","جائحة"]],a:2,w:["Pandemic = widespread, even global.","الجائحة = انتشار واسع، وقد يكون عالميًا."],h:["Which level is the biggest?","أيّ مستوى هو الأكبر؟"]}]);
+
+requestAnimationFrame(loop);
+const FL=[["bac","Pathogen","الممرض","An agent that causes infectious disease: bacteria, viruses, protozoans, fungi, parasites.","مسبّب المرض المعدي: بكتيريا، فيروسات، طلائعيات، فطريات، طفيليات."],
+ ["fl","Normal flora","الفلورا الطبيعية","Helpful bacteria on the skin and in the gut that keep pathogens from thriving.","بكتيريا نافعة على الجلد وفي الأمعاء تمنع الممرضات من الازدهار."],
+ ["4","Koch's postulates","فرضيات كوخ","Isolate → pure culture → infect a healthy host → isolate again and match.","اعزل ← مزرعة نقية ← اعدِ عائلًا سليمًا ← اعزل مرة أخرى وطابق."],
+ ["rv","Reservoir","المستودع","Source of a pathogen: human, animal or inanimate (soil, water).","مصدر الممرض: بشري، حيواني، أو غير حي (تربة، ماء)."],
+ ["ca","Carrier","حامل المرض","A person with no symptoms who can still pass on the pathogen.","شخص لا تظهر عليه أعراض لكنه يستطيع نقل الممرض."],
+ ["vec","Transmission","طرق الانتقال","Direct contact · indirect contact (air, objects) · vectors (ticks, mosquitoes).","تلامس مباشر · تلامس غير مباشر (هواء، أشياء) · نواقل (قراد، بعوض)."],
+ ["map","Disease patterns","أنماط الأمراض","Endemic (always, small) → epidemic (a region) → pandemic (continents, globe).","متوطن (دائم، قليل) ← وباء (إقليم) ← جائحة (قارات، العالم)."],
+ ["pil","Antibiotic resistance","مقاومة المضادات الحيوية","Antibiotics kill bacteria, not viruses. Overuse selects resistant superbugs.","المضادات الحيوية تقتل البكتيريا لا الفيروسات، والإفراط فيها ينتخب بكتيريا خارقة مقاوِمة."]];
+const FLI={fl:`<svg viewBox="-50 -50 100 100" width="44" height="44"><g transform="scale(.55) translate(-30 -10)">${PG.bac}</g><g transform="scale(.55) translate(30 20)">${PG.bac}</g></svg>`,"4":`<b style="font-size:30px">1→4</b>`,rv:pgSvg("fun",44),ca:`<svg viewBox="0 0 40 40" width="44" height="44"><circle cx="20" cy="12" r="8" fill="#C68A5C"/><path d="M6 38c0-12 6-16 14-16s14 4 14 16z" fill="#2A9D8F"/><circle cx="30" cy="30" r="5" fill="#C8553D"/></svg>`,vec:`<svg viewBox="0 0 40 40" width="44" height="44"><ellipse cx="20" cy="22" rx="12" ry="4" fill="#3B3F46"/><circle cx="7" cy="22" r="4" fill="#3B3F46"/><ellipse cx="18" cy="14" rx="9" ry="4" fill="#7FD3E6" opacity=".6"/><path d="M4 23l-4 4" stroke="#3B3F46" stroke-width="2"/></svg>`,map:`<svg viewBox="0 0 40 40" width="44" height="44"><circle cx="20" cy="20" r="16" fill="#2B4A5E"/><circle cx="14" cy="16" r="3" fill="#FF7A5C"/><circle cx="26" cy="22" r="3" fill="#FF7A5C"/><circle cx="18" cy="28" r="3" fill="#FF7A5C"/></svg>`,pil:`<svg viewBox="0 0 40 40" width="44" height="44"><g transform="rotate(-30 20 20)"><rect x="4" y="13" width="32" height="14" rx="7" fill="#2A9D8F"/><path d="M20 13h9a7 7 0 0 1 0 14h-9z" fill="#E9B44C"/></g></svg>`};
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${FLI[f[0]]||pgSvg(f[0],44)}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+const Q=[
+ {q:"What is the direct cause of an infectious disease?",qa:"ما السبب المباشر للمرض المعدي؟",o:[["A lack of vitamins","نقص الفيتامينات"],["A pathogen that disrupts the body's homeostasis","ممرض يُخلّ بالاتزان الداخلي للجسم"],["High blood pressure","ارتفاع ضغط الدم"],["A random genetic mutation","طفرة جينية عشوائية"]],a:1,ex:["Infectious diseases are caused by pathogens passed between organisms.","الأمراض المعدية تسبّبها ممرضات تنتقل بين الكائنات الحية."],h:[["The word 'infectious' means it can be passed on.","كلمة «معدٍ» تعني أنه ينتقل."],["What passes from one organism to another?","ما الذي ينتقل من كائن إلى آخر؟"]]},
+ {q:"A student puts a sample from a sick camel's blood on a nutrient gel in a dish, and only one kind of bacteria grows. Which of Koch's steps is this?",qa:"وضع طالب عينة من دم ناقة مريضة على هلام مغذٍّ في طبق، فنما نوع واحد فقط من البكتيريا. أيّ خطوة من خطوات كوخ هذه؟",o:[["Step 1: isolate from the diseased host","الخطوة 1: العزل من العائل المريض"],["Step 3: inject into a healthy host","الخطوة 3: الحقن في عائل سليم"],["Step 2: grow a pure culture on artificial media","الخطوة 2: تنمية مزرعة نقية على وسط اصطناعي"],["Step 4: isolate again and compare","الخطوة 4: العزل مرة أخرى والمقارنة"]],a:2,ex:["One kind of bacteria growing on a gel = a pure culture on artificial media.","نوع واحد من البكتيريا ينمو على الهلام = مزرعة نقية على وسط اصطناعي."],h:[["The gel in a dish is the artificial media.","الهلام في الطبق هو الوسط الاصطناعي."],["'Only one kind' means the culture is pure.","«نوع واحد فقط» يعني أن المزرعة نقية."]]},
+ {q:"Which pathogen is an exception to Koch's second postulate because it cannot grow on artificial media?",qa:"أيّ ممرض يُستثنى من فرضية كوخ الثانية لأنه لا ينمو على وسط اصطناعي؟",o:[["The bacterium that causes syphilis","البكتيريا المسببة للزهري"],["The bacterium that causes tetanus","البكتيريا المسببة للكزاز"],["The fungus that causes athlete's foot","الفطر المسبب لقدم الرياضي"],["The bacterium that causes strep throat","البكتيريا المسببة لالتهاب الحلق"]],a:0,ex:["Syphilis bacteria (and all viruses) cannot be grown on artificial media.","بكتيريا الزهري (وجميع الفيروسات) لا تنمو على وسط اصطناعي."],h:[["Remember the exception buttons on the Koch screen.","تذكّر أزرار الاستثناء في شاشة كوخ."],["It is a bacterium spread by direct contact.","إنها بكتيريا تنتقل بالتلامس المباشر."]]},
+ {q:"A man feels completely healthy, but tests show he has been passing typhoid bacteria to his family. He is a…",qa:"رجل يشعر بأنه بصحة جيدة تمامًا، لكن الفحوص تُظهر أنه ينقل بكتيريا التيفويد إلى أسرته. إنه…",o:[["vector","ناقل"],["inanimate reservoir","مستودع غير حي"],["pandemic","جائحة"],["carrier","حامل للمرض"]],a:3,ex:["A carrier has no symptoms but can still pass on the pathogen, like 'Typhoid Mary'.","حامل المرض لا تظهر عليه أعراض لكنه ينقل الممرض، مثل «ماري التيفويد»."],h:[["He is a human, so he is not inanimate.","إنه إنسان، فليس غير حي."],["No symptoms, but he passes it on.","لا أعراض، لكنه ينقله."]]},
+ {q:"Zika and malaria are passed to humans by mosquitoes. What type of transmission is this?",qa:"ينتقل زيكا والملاريا إلى الإنسان عن طريق البعوض. ما نوع هذا الانتقال؟",o:[["Direct contact","تلامس مباشر"],["Vector transmission","انتقال بالناقل"],["Indirect contact through air droplets","تلامس غير مباشر عبر رذاذ الهواء"],["An inanimate reservoir","مستودع غير حي"]],a:1,ex:["Mosquitoes are arthropod vectors that carry pathogens between hosts.","البعوض نواقل من المفصليات تحمل الممرضات بين العوائل."],h:[["A third organism is involved.","هناك كائن ثالث."],["Mosquitoes and ticks are…","البعوض والقراد…"]]},
+ {q:"Which disease is caused by a fungus and spreads by direct contact or contaminated objects?",qa:"أيّ مرض يسبّبه فطر وينتقل بالتلامس المباشر أو الأشياء الملوثة؟",o:[["Tetanus","الكزاز"],["Lyme disease","مرض لايم"],["Malaria","الملاريا"],["Athlete's foot","قدم الرياضي"]],a:3,ex:["Athlete's foot fungus spreads on wet floors and shared towels.","فطر قدم الرياضي ينتقل عبر الأرضيات المبتلة والمناشف المشتركة."],h:[["Use the clinical table's Fungus filter.","استخدم مرشّح Fungus في الجدول."],["It grows on warm, damp skin.","ينمو على الجلد الدافئ الرطب."]]},
+ {q:"Tetanus bacteria stay in a deep foot wound, yet the person's jaw muscles go into spasm. Why?",qa:"تبقى بكتيريا الكزاز في جرح عميق بالقدم، ومع ذلك تتشنج عضلات فكّ المصاب. لماذا؟",o:[["The bacteria release toxins that the blood carries to distant body parts","تفرز البكتيريا سمومًا يحملها الدم إلى أجزاء بعيدة من الجسم"],["The bacteria swim to the jaw","تسبح البكتيريا إلى الفك"],["The wound becomes a vector","يصبح الجرح ناقلًا"],["The immune system attacks the jaw","يهاجم جهاز المناعة الفك"]],a:0,ex:["Toxins travel in the bloodstream and damage nerves far from the infection site.","تنتقل السموم في مجرى الدم وتتلف أعصابًا بعيدة عن مكان العدوى."],h:[["The bacteria do not move.","البكتيريا لا تتحرك."],["Something they make travels in the blood.","شيء تصنعه ينتقل في الدم."]]},
+ {q:"A new virus spreads from one city to people on every continent within months. This is…",qa:"ينتشر فيروس جديد من مدينة واحدة إلى أناس في كل القارات خلال أشهر. هذا…",o:[["endemic","مرض متوطن"],["an epidemic","وباء"],["a pandemic","جائحة"],["a carrier","حامل للمرض"]],a:2,ex:["Pandemic = widespread across continents or the whole globe, like COVID-19.","الجائحة = انتشار واسع عبر القارات أو العالم كله، مثل كوفيد-19."],h:[["Think about the map slider.","فكّر في شريط الخريطة."],["Every continent is the biggest level.","كل القارات هو المستوى الأكبر."]]},
+ {q:"Why does a doctor NOT give antibiotics for the common cold?",qa:"لماذا لا يصف الطبيب مضادًا حيويًا للزكام؟",o:[["Colds are caused by fungi","الزكام يسبّبه فطر"],["Antibiotics make colds spread faster","المضادات الحيوية تجعل الزكام ينتشر أسرع"],["Colds are not infectious","الزكام ليس معديًا"],["Colds are caused by viruses, and antibiotics only work on bacteria","الزكام تسبّبه فيروسات، والمضادات الحيوية تعمل على البكتيريا فقط"]],a:3,ex:["Viruses have no cell wall and hide in our cells, so antibiotics do not affect them.","الفيروسات ليس لها جدار خلوي وتختبئ في خلايانا، فلا تؤثر فيها المضادات الحيوية."],h:[["What kind of pathogen causes a cold?","أيّ نوع من الممرضات يسبّب الزكام؟"],["Remember the 'no effect on viruses!' lab.","تذكّر معمل «لا تأثير على الفيروسات!»."]]},
+ {q:"Which explains how MRSA \"superbugs\" became resistant to antibiotics?",qa:"أيّ مما يلي يفسّر كيف أصبحت «البكتيريا الخارقة» MRSA مقاوِمة للمضادات الحيوية؟",o:[["The antibiotic taught the bacteria to resist it","المضاد الحيوي علّم البكتيريا أن تقاومه"],["Natural selection: resistant bacteria survived, reproduced and passed on the trait","الانتخاب الطبيعي: نجت البكتيريا المقاوِمة وتكاثرت ونقلت الصفة"],["The bacteria grew bigger after each dose","كبر حجم البكتيريا بعد كل جرعة"],["Viruses gave them resistance","الفيروسات أعطتها المقاومة"]],a:1,ex:["The variation already existed; antibiotics removed the others, and overuse speeds this up.","التباين كان موجودًا أصلًا، والمضادات الحيوية أزالت غيرها، والإفراط فيها يسرّع ذلك."],h:[["Remember the red bacteria in the lab.","تذكّر البكتيريا الحمراء في المعمل."],["Who survives, and what do they pass on?","من ينجو، وماذا ينقل؟"]]}];
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${first?ICON.check+" Correct!":ok?ICON.check+" Yes, now you have it.":ICON.cross+" Here is the answer."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${first?"إجابة صحيحة!":ok?"نعم، الآن فهمتها.":"إليك الإجابة."} ${q.ex[1]}</div>`;
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Scientist";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You are a true disease detective!","رائع! أنت محقق أمراض حقيقي!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the virtual labs, then retry.","محاولة جيدة! أعد المعامل الافتراضية، ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Biology · Grade 12 · Unit 1 · Lesson 1-1 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
