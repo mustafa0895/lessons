@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F7F1E8">
-<title>Interactions Within Ecosystems – Science G7 Lesson 2-2</title>
+<title>Energy and States of Matter – Science G7 Lesson 1-1</title>
 <style>
 :root{
   --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
@@ -826,22 +826,12 @@ figure.photo figcaption.bi{margin:0}
 .meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
 .meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
 .simfig svg{max-height:58vh}
-
-.fq .ar{display:block;margin-top:4px}
-/* motion film */
-.player{background:#0E1A26;border-radius:16px;overflow:hidden;margin:10px 0;box-shadow:0 8px 24px rgba(31,42,55,.18)}
-.player canvas{display:block;width:100%;height:auto}
-.fctl{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#1F2A37}
-.fctl button{font:inherit;font-weight:800;border:0;border-radius:999px;padding:8px 14px;background:var(--ochre,#E9B44C);color:#1F2A37;min-width:92px;cursor:pointer}
-.fctl input{flex:1;min-width:0;accent-color:#E9B44C}
-.fctl span{color:#F7F1E8;font-family:ui-monospace,monospace;font-size:12.5px;min-width:64px;text-align:right}
-.fchips{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px;background:#17222E}
-.fchips button{font:inherit;font-size:12.5px;font-weight:700;border:1px solid #3A4A5C;background:transparent;color:#C9D3DD;border-radius:999px;padding:5px 10px;cursor:pointer}
-.fchips button.on{background:#E9B44C;color:#1F2A37;border-color:#E9B44C}
-@media (min-width:1100px){.player{max-width:900px;margin-left:auto;margin-right:auto}}
-
-#baSvg .tapg:hover{filter:brightness(1.06)}
-#spMode button.on{background:#fff;box-shadow:var(--shadow);color:var(--teal-d,#1F7A6E)}
+.ptab{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ptab button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 2px;font-family:inherit;color:var(--ink);cursor:pointer}
+.ptab button b{display:block;font-size:24px;font-family:ui-monospace,monospace}
+.ptab button small{display:block;font-size:11px;color:var(--clay)}
+.ptab button.on{border-color:var(--terra);background:#FBE9E4}
+#ecCards .mtq svg{max-width:150px}
 </style>
 </head>
 <body class="student">
@@ -859,7 +849,7 @@ figure.photo figcaption.bi{margin:0}
 <header class="top">
   <div class="toprow">
     <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
-    <div class="toptitle">Science · Grade 7 · Unit 2<small id="curLabel">Interactions Within Ecosystems</small></div>
+    <div class="toptitle">Science · Grade 7 · Unit 1<small id="curLabel">Energy and States of Matter</small></div>
     <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
   </div>
   <div class="prog"><i id="progBar"></i></div>
@@ -870,201 +860,189 @@ figure.photo figcaption.bi{margin:0}
 <main id="screens">
 <section class="screen s-only" data-title="Welcome">
   <div class="hero">
-    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="Three pairs of linked circles with the symbols plus plus, plus zero and plus minus">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="Particles of ice, liquid water and steam">
 <defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F2A37"/><stop offset="1" stop-color="#2B3B4E"/></linearGradient>
-<pattern id="hg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern></defs>
+<pattern id="hg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+<radialGradient id="hp" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#BFEAF5"/><stop offset="1" stop-color="#2A8FB0"/></radialGradient></defs>
 <rect width="640" height="360" fill="url(#hb)"/><rect width="640" height="360" fill="url(#hg)"/>
-<g font-family="ui-monospace,monospace" font-weight="900" text-anchor="middle" font-size="30">
-<g transform="translate(130,96)"><path d="M-30 0H30" stroke="#7FD3C4" stroke-width="4" stroke-dasharray="6 6"/><circle cx="-48" r="30" fill="#2A9D8F"/><circle cx="48" r="30" fill="#2A9D8F"/><text x="-48" y="10" fill="#fff">+</text><text x="48" y="10" fill="#fff">+</text></g>
-<g transform="translate(320,96)"><path d="M-30 0H30" stroke="#E9B44C" stroke-width="4" stroke-dasharray="6 6"/><circle cx="-48" r="30" fill="#2A9D8F"/><circle cx="48" r="30" fill="#7B8794"/><text x="-48" y="10" fill="#fff">+</text><text x="48" y="10" fill="#fff">0</text></g>
-<g transform="translate(510,96)"><path d="M-30 0H30" stroke="#F6A58F" stroke-width="4" stroke-dasharray="6 6"/><circle cx="-48" r="30" fill="#2A9D8F"/><circle cx="48" r="30" fill="#C8553D"/><text x="-48" y="10" fill="#fff">+</text><text x="48" y="10" fill="#fff">−</text></g>
-</g>
-<g font-family="system-ui,sans-serif" font-weight="800" font-size="15" text-anchor="middle" fill="#E3E7EB"><text x="130" y="152">mutualism</text><text x="320" y="152">commensalism</text><text x="510" y="152">parasitism</text></g>
+<g fill="none" stroke="#E9B44C" stroke-width="3"><rect x="40" y="30" width="160" height="160" rx="16"/><rect x="240" y="30" width="160" height="160" rx="16"/><rect x="440" y="30" width="160" height="160" rx="16"/></g>
+<g fill="url(#hp)">
+<circle cx="75" cy="65" r="13"/><circle cx="105" cy="65" r="13"/><circle cx="135" cy="65" r="13"/><circle cx="165" cy="65" r="13"/>
+<circle cx="75" cy="95" r="13"/><circle cx="105" cy="95" r="13"/><circle cx="135" cy="95" r="13"/><circle cx="165" cy="95" r="13"/>
+<circle cx="75" cy="125" r="13"/><circle cx="105" cy="125" r="13"/><circle cx="135" cy="125" r="13"/><circle cx="165" cy="125" r="13"/>
+<circle cx="75" cy="155" r="13"/><circle cx="105" cy="155" r="13"/><circle cx="135" cy="155" r="13"/><circle cx="165" cy="155" r="13"/>
+<circle cx="268" cy="150" r="13"/><circle cx="296" cy="160" r="13"/><circle cx="325" cy="148" r="13"/><circle cx="356" cy="162" r="13"/><circle cx="380" cy="140" r="13"/><circle cx="280" cy="122" r="13"/><circle cx="312" cy="120" r="13"/><circle cx="345" cy="128" r="13"/><circle cx="372" cy="110" r="13"/><circle cx="300" cy="92" r="13"/>
+<circle cx="470" cy="60" r="13"/><circle cx="560" cy="80" r="13"/><circle cx="505" cy="135" r="13"/><circle cx="580" cy="160" r="13"/><circle cx="465" cy="165" r="13"/></g>
+<g stroke="#7FD3E6" stroke-width="2.5" stroke-linecap="round" fill="none"><path d="M452 54l-14-5M452 62l-14 3"/><path d="M578 74l14-6M578 84l14 2"/><path d="M487 140l-14 6M487 130l-15 0"/><path d="M562 156l-14-6M562 166l-14 0"/></g>
 </svg>
-    <div class="herotxt"><span class="kicker light">Science · Grade 7 · Unit 2 · Lesson 2-2</span><h1>Interactions Within Ecosystems</h1><p class="ar">التفاعلات داخل الأنظمة البيئية</p></div>
+    <div class="herotxt"><span class="kicker light">Science · Grade 7 · Unit 1 · Lesson 1-1</span><h1>Energy and States of Matter</h1><p class="ar">الطاقة وحالات المادة</p></div>
   </div>
   <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في متصفح Safari أو Chrome.</p></div>
   <div class="zrow"><div class="zav bob" data-zayed="think"></div>
-    <div class="bubble bi"><span class="who">Zayed</span><p class="en">A tiny fish lives safely inside stinging tentacles. A bird rides on a buffalo's back. An osprey dives into the sea near the mangroves of Abu Dhabi. Who wins and who loses? Let's find out!</p><p class="ar">سمكة صغيرة تعيش بأمان بين لوامس لاسعة، وطائر يركب على ظهر جاموس، وعُقاب نساري يغوص في البحر قرب أشجار القرم في أبوظبي. من يستفيد ومن يخسر؟ هيا نكتشف!</p></div></div>
-  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ describe symbiosis and its three types<br>✔ give examples of mutualism, commensalism and parasitism<br>✔ explain cooperation, predation and competition<br>✔ explain how predators keep populations in balance</p><p class="ar"><b>سأتعلّم اليوم أن:</b><br>✔ أصف التكافل وأنواعه الثلاثة<br>✔ أعطي أمثلة على تبادل المنفعة والتعايش والتطفل<br>✔ أشرح التعاون والافتراس والتنافس<br>✔ أوضّح كيف تحافظ المفترسات على توازن الجماعات</p></div></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Ice, water and steam look so different. But they are all the same substance! The secret is in the tiny <b>particles</b> and their <b>energy</b>. Let's find out.</p><p class="ar">الجليد والماء والبخار تبدو مختلفة جدًا، لكنها كلها المادة نفسها! السرّ في <b>الجسيمات</b> الصغيرة جدًا و<b>طاقتها</b>. هيا نكتشف.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ describe particles in solids, liquids and gases<br>✔ link temperature and kinetic energy to the state of matter<br>✔ tell atoms, elements, compounds and substances apart<br>✔ read element symbols and chemical formulas</p><p class="ar"><b>سأتعلّم اليوم أن:</b><br>✔ أصف الجسيمات في المواد الصلبة والسائلة والغازية<br>✔ أربط درجة الحرارة والطاقة الحركية بحالة المادة<br>✔ أميّز بين الذرة والعنصر والمركّب والمادة النقية<br>✔ أقرأ رموز العناصر والصيغ الكيميائية</p></div></div>
   <div class="card needjs">
     <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
     <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
   </div>
-  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic.</p><p class="ar"><b>نصيحة:</b> اضغط زر <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل النصوص العربية.</p></div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic.</p><p class="ar"><b>نصيحة:</b> اضغط زر <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمات.</p></div>
 </section>
 
 <section class="screen" data-title="Warm-up">
-  <span class="kicker">Warm-up · from Lesson 2-1</span>
-  <h2>What do you remember?</h2>
-  <p class="hsub ar">ماذا تتذكّر؟</p>
+  <span class="kicker">Warm-up</span>
+  <h2>What do you already know?</h2>
+  <p class="hsub ar">ماذا تعرف من قبل؟</p>
   <div class="zrow"><div class="zav" data-zayed="point"></div>
     <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Tap an answer, or tap "Show me".</p><p class="ar">مجرد تسخين، لا شيء يُحسب! اضغط على إجابة، أو اضغط «أرني».</p></div></div>
   <div class="wu needjs" id="wuBox"></div>
 </section>
 
-<section class="screen" data-title="Web of life">
-  <span class="kicker">Explore</span>
-  <h2>The web of life</h2>
-  <p class="hsub ar">شبكة الحياة</p>
-  <div class="bi"><p class="en">Populations do not live alone. In the same area they form a community. They interact with the <b>nonliving environment</b> and with <b>each other</b>. These interactions decide who survives, how energy flows and how the ecosystem stays balanced.</p><p class="ar">لا تعيش الجماعات وحدها؛ ففي المنطقة نفسها تكوّن مجتمعًا، وتتفاعل مع <b>البيئة غير الحية</b> ومع <b>بعضها بعضًا</b>. وهذه التفاعلات تحدّد من يبقى، وكيف تسري الطاقة، وكيف يبقى النظام البيئي متوازنًا.</p></div>
+<section class="screen" data-title="The hot car">
+  <span class="kicker">Phenomenon</span>
+  <h2>A soda bottle in a hot car</h2>
+  <p class="hsub ar">زجاجة مياه غازية في سيارة ساخنة</p>
   <div class="bench">
     <div class="main">
-      <div class="simfig"><svg id="wbSvg" viewBox="0 0 500 300" role="img" aria-label="A map of interactions: with the nonliving environment, and with each other through symbiosis and community relationships"></svg></div>
-      <div class="seg needjs" id="wbMode"><button data-v="0" class="on">Nonliving</button><button data-v="1">Symbiosis</button><button data-v="2">Community</button></div>
-    </div>
-    <div class="side"><div class="msg bi needjs" id="wbMsg"></div></div>
-  </div>
-</section>
-
-<section class="screen" data-title="Symbiosis">
-  <span class="kicker">Build the symbol</span>
-  <h2>Symbiosis: long-term partners</h2>
-  <p class="hsub ar">التكافل: شركاء لمدة طويلة</p>
-  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Symbiosis</b> is a close, long-term relationship between two species. It usually involves an exchange of food or energy. We use symbols: <b>+</b> = benefits, <b>0</b> = not affected, <b>−</b> = harmed.</p><p class="ar"><b>التكافل</b> علاقة وثيقة طويلة الأمد بين نوعين، وتشمل عادةً تبادل الغذاء أو الطاقة. ونستخدم رموزًا: <b>+</b> = يستفيد، <b>0</b> = لا يتأثر، <b>−</b> = يتضرّر.</p></div>
-  <div class="bench">
-    <div class="main">
-      <div class="simfig"><svg id="syLabel" viewBox="0 0 500 220" role="img" aria-label="Two partners with a symbol each"></svg></div>
-      <div class="seg needjs" id="syMode"><button data-v="0" class="on">Mutualism</button><button data-v="1">Commensalism</button><button data-v="2">Parasitism</button></div>
-      <div class="btnrow c needjs"><button class="btn sm" id="syA">Partner A: +</button><button class="btn sm" id="syB">Partner B: +</button></div>
-    </div>
-    <div class="side"><div class="msg bi needjs" id="syMsg"></div></div>
-  </div>
-</section>
-
-<section class="screen" data-title="Mutualism">
-  <span class="kicker">Living scene · [+ / +]</span>
-  <h2>Mutualism: both partners win</h2>
-  <p class="hsub ar">تبادل المنفعة: الشريكان يربحان</p>
-  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Mutualism</b> is a symbiotic relationship in which <b>both</b> partners benefit.</p><p class="ar"><b>تبادل المنفعة</b> علاقة تكافلية يستفيد فيها <b>الشريكان</b> كلاهما.</p></div>
-  <div class="bench">
-    <div class="main">
-      <div class="simfig"><svg id="muSvg" viewBox="0 0 500 300" role="img" aria-label="Two partners and what each one gains"></svg></div>
-      <div class="seg wrap needjs" id="muMode"><button data-v="0" class="on">Clownfish + anemone</button><button data-v="1">Hippo + barbel fish</button><button data-v="2">Bees + flowers</button></div>
+      <div class="simfig"><canvas id="hcC" style="aspect-ratio:16/10" role="img" aria-label="A closed soda bottle in a car; inside, gas particles speed up as the car heats"></canvas></div>
+      <div class="seg needjs" id="hcMode"><button data-v="0" class="on">Morning · 25°C</button><button data-v="1">Afternoon · 60°C</button></div>
     </div>
     <div class="side">
-      <div class="msg bi needjs" id="muMsg"></div>
+      <div class="bi"><p class="en">On a summer day in the UAE, the air inside a parked car can pass <b>60°C</b>. You left a closed bottle of soda inside. Switch from morning to afternoon and watch the gas at the top of the bottle.</p><p class="ar">في يوم صيفي في الإمارات، قد تتجاوز حرارة الهواء داخل سيارة متوقفة <b>60°C</b>. تركتَ زجاجة مياه غازية مغلقة داخلها. انتقل من الصباح إلى بعد الظهر وراقب الغاز أعلى الزجاجة.</p></div>
+      <div class="msg bi needjs" id="hcMsg"></div>
+      <div class="why needjs" id="why0"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="States of matter">
+  <span class="kicker">Explore</span>
+  <h2>Particles in solids, liquids and gases</h2>
+  <p class="hsub ar">الجسيمات في الصلب والسائل والغاز</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> All <b class="term">matter</b> is made of tiny <b class="term">particles</b> that are always moving. How close they are and how freely they move decide the <b class="term">state of matter</b>: solid, liquid or gas.</p><p class="ar">كل <b>مادة</b> تتكوّن من <b>جسيمات</b> صغيرة جدًا تتحرك دائمًا. مدى تقاربها ومدى حرية حركتها يحدّدان <b>حالة المادة</b>: صلبة أو سائلة أو غازية.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="stC" style="aspect-ratio:16/10" role="img" aria-label="Particles of a solid, a liquid or a gas in a container"></canvas></div>
+      <div class="seg needjs" id="stMode"><button data-v="0" class="on">Solid</button><button data-v="1">Liquid</button><button data-v="2">Gas</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="stMsg"></div>
       <div class="why needjs" id="why1"></div>
     </div>
   </div>
 </section>
 
-<section class="screen" data-title="Commensalism">
-  <span class="kicker">Living scene · [+ / 0]</span>
-  <h2>Commensalism: one wins, one is not affected</h2>
-  <p class="hsub ar">التعايش: أحدهما يربح والآخر لا يتأثر</p>
-  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Commensalism</b> is a symbiotic relationship that benefits one species but does not harm or help the other.</p><p class="ar"><b>التعايش</b> علاقة تكافلية يستفيد فيها نوع، ولا يتضرّر الآخر ولا يستفيد.</p></div>
+<section class="screen" data-title="Temperature">
+  <span class="kicker">Explore</span>
+  <h2>Kinetic energy and temperature</h2>
+  <p class="hsub ar">الطاقة الحركية ودرجة الحرارة</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Kinetic energy</b> is the energy of motion. <b class="term">Temperature</b> is a measure of the <b>average</b> kinetic energy of the particles. <b class="term">Thermal energy</b> is the <b>total</b> energy of all the particles in a material.</p><p class="ar"><b>الطاقة الحركية</b> هي طاقة الحركة. <b>درجة الحرارة</b> مقياس <b>لمتوسط</b> الطاقة الحركية للجسيمات. <b>الطاقة الحرارية</b> هي الطاقة <b>الكلية</b> لكل جسيمات المادة.</p></div>
   <div class="bench">
     <div class="main">
-      <div class="simfig"><svg id="coSvg" viewBox="0 0 500 300" role="img" aria-label="An epiphyte on a tree, or cattle egrets with cattle"></svg></div>
-      <div class="seg needjs" id="coMode"><button data-v="0" class="on">Epiphyte + tree</button><button data-v="1">Egrets + cattle</button></div>
+      <div class="simfig"><canvas id="tpC" style="aspect-ratio:16/9" role="img" aria-label="Two beakers of water with particles moving at different speeds"></canvas></div>
+      <div class="needjs"><div class="rlab">Beaker B temperature · حرارة الكأس B</div><input type="range" id="tpR" min="0" max="100" step="5" value="80" aria-label="Temperature of beaker B"></div>
     </div>
     <div class="side">
-      <div class="msg bi needjs" id="coMsg"></div>
+      <div class="msg bi needjs" id="tpMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Changing state">
+  <span class="kicker">Virtual lab</span>
+  <h2>Temperature and states of matter</h2>
+  <p class="hsub ar">درجة الحرارة وحالات المادة</p>
+  <div class="bi"><p class="en">Add or remove thermal energy from water and watch the particles. Adding energy makes them move faster; at certain temperatures the <b>state changes</b>.</p><p class="ar">أضف طاقة حرارية إلى الماء أو انزعها منه وراقب الجسيمات. إضافة الطاقة تجعلها أسرع، وعند درجات حرارة معيّنة <b>تتغيّر الحالة</b>.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="csC" style="aspect-ratio:16/10" role="img" aria-label="Water particles at a chosen temperature with a thermometer"></canvas></div>
+      <div class="needjs"><div class="rlab">Temperature · درجة الحرارة</div><input type="range" id="csR" min="-20" max="120" step="5" value="-20" aria-label="Temperature of the water"></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="csMsg"></div>
       <div class="why needjs" id="why2"></div>
     </div>
   </div>
 </section>
 
-<section class="screen" data-title="Parasitism">
-  <span class="kicker">Step by step · [+ / −]</span>
-  <h2>Parasitism: one wins, one is harmed</h2>
-  <p class="hsub ar">التطفل: أحدهما يربح والآخر يتضرّر</p>
-  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Parasitism</b> is a symbiotic relationship that benefits one species, the <b>parasite</b>, and harms the other, the <b>host</b>.</p><p class="ar"><b>التطفل</b> علاقة تكافلية يستفيد فيها نوع هو <b>الطفيلي</b>، ويتضرّر الآخر وهو <b>العائل</b>.</p></div>
+<section class="screen" data-title="Size of an atom">
+  <span class="kicker">A closer look</span>
+  <h2>How small is an atom?</h2>
+  <p class="hsub ar">ما مدى صغر الذرة؟</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> An <b class="term">atom</b> is a very small particle that is the building block of matter. Atoms are far too small to see, even with an ordinary microscope.</p><p class="ar"><b>الذرة</b> جسيم صغير جدًا، وهي وحدة بناء المادة. الذرات أصغر بكثير من أن تُرى، حتى بالمجهر العادي.</p></div>
   <div class="bench">
     <div class="main">
-      <div class="simfig"><svg id="paSvg" viewBox="0 0 500 300" role="img" aria-label="A hunting wasp and a spider, or fleas and ticks on a pet"></svg></div>
-      <div class="seg wrap needjs" id="paMode"><button data-v="0" class="on">1 · Sting</button><button data-v="1">2 · Eggs</button><button data-v="2">3 · Larvae</button><button data-v="3">Fleas and ticks</button></div>
+      <div class="simfig"><svg id="zmSvg" viewBox="0 0 440 300" role="img" aria-label="Zooming from a hair to an atom"></svg></div>
+      <div class="seg wrap needjs" id="zmMode"><button data-v="0" class="on">Hair</button><button data-v="1">× 1 000</button><button data-v="2">× 1 000 000</button></div>
     </div>
     <div class="side">
-      <div class="msg bi needjs" id="paMsg"></div>
-      <div class="why needjs" id="why3"></div>
+      <div class="msg bi needjs" id="zmMsg"></div>
     </div>
   </div>
 </section>
 
-<section class="screen" data-title="Friend or foe">
-  <span class="kicker">Case study</span>
-  <h2>The oxpecker: friend or foe?</h2>
-  <p class="hsub ar">طائر نقّار الثيران: صديق أم عدو؟</p>
-  <div class="bi"><p class="en">The African oxpecker feeds on ticks and insects that live on large mammals such as impalas, zebras, rhinos and giraffes. Scientists changed their minds about this relationship. Compare the two ideas.</p><p class="ar">يتغذّى طائر نقّار الثيران الإفريقي على القراد والحشرات التي تعيش على الثدييات الكبيرة مثل الإمبالا والحمير الوحشية ووحيد القرن والزرافات. وقد غيّر العلماء رأيهم في هذه العلاقة؛ قارن بين الفكرتين.</p></div>
+<section class="screen" data-title="Elements and compounds">
+  <span class="kicker">Explore</span>
+  <h2>Atoms, elements, compounds, substances</h2>
+  <p class="hsub ar">الذرات والعناصر والمركّبات والمواد النقية</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A <b class="term">substance</b> is matter whose composition is always the same. An <b class="term">element</b> is a substance made of only <b>one type</b> of atom. A <b class="term">compound</b> is a substance made of <b>two or more different</b> elements bonded together.</p><p class="ar"><b>المادة النقية</b> مادة تركيبها ثابت دائمًا. <b>العنصر</b> مادة نقية تتكوّن من <b>نوع واحد</b> فقط من الذرات. <b>المركّب</b> مادة نقية تتكوّن من <b>عنصرين مختلفين أو أكثر</b> مرتبطة معًا.</p></div>
+  <div class="bi"><p class="en">Look at each model. Is it an element or a compound? Count the colours: each colour is one type of atom.</p><p class="ar">انظر إلى كل نموذج. هل هو عنصر أم مركّب؟ عُدّ الألوان: كل لون نوع واحد من الذرات.</p></div>
+  <div class="idg needjs" id="ecCards"></div>
+  <div class="why needjs" id="why3"></div>
+</section>
+
+<section class="screen" data-title="Breaking down water">
+  <span class="kicker">Virtual lab</span>
+  <h2>Breaking down water</h2>
+  <p class="hsub ar">تفكيك الماء</p>
+  <div class="bi"><p class="en">Water is a compound. Electricity can break it down into the two elements it is made of. Switch on the battery and watch the two tubes fill with gas.</p><p class="ar">الماء مركّب. يمكن للكهرباء أن تفكّكه إلى العنصرين اللذين يتكوّن منهما. شغّل البطارية وراقب الأنبوبين يمتلئان بالغاز.</p></div>
   <div class="bench">
     <div class="main">
-      <div class="simfig"><svg id="oxSvg" viewBox="0 0 500 300" role="img" aria-label="Oxpeckers on the back of a buffalo"></svg></div>
-      <div class="seg needjs" id="oxMode"><button data-v="0" class="on">The old idea</button><button data-v="1">The new evidence</button></div>
+      <div class="simfig"><canvas id="elC" style="aspect-ratio:4/3" role="img" aria-label="Water being split by electricity; one tube collects hydrogen, the other oxygen"></canvas></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="elGo">Switch on ▶</button><button class="btn alt sm" id="elRe">↺ Reset</button></div>
     </div>
     <div class="side">
-      <div class="msg bi needjs" id="oxMsg"></div>
+      <div class="msg bi needjs" id="elMsg"></div>
       <div class="why needjs" id="why4"></div>
     </div>
   </div>
 </section>
 
-<section class="screen" data-title="Cooperation">
-  <span class="kicker">Living scene</span>
-  <h2>Cooperation: working together</h2>
-  <p class="hsub ar">التعاون: العمل معًا</p>
-  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> Not every relationship is symbiosis. In a <b class="term">cooperative relationship</b>, members of a population work together within a group so that they all survive.</p><p class="ar">ليست كل العلاقات تكافلًا. ففي <b>علاقة التعاون</b> يعمل أفراد الجماعة معًا داخل مجموعة حتى يبقوا جميعًا.</p></div>
+<section class="screen" data-title="Compound ratios">
+  <span class="kicker">Worked examples</span>
+  <h2>Reading a chemical formula</h2>
+  <p class="hsub ar">قراءة الصيغة الكيميائية</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A <b class="term">chemical formula</b> shows which atoms are in a compound and in what <b>ratio</b>. The small number after a symbol, the <b class="term">subscript</b>, tells how many of that atom. No number means one.</p><p class="ar"><b>الصيغة الكيميائية</b> تبيّن الذرات الموجودة في المركّب و<b>نسبتها</b>. الرقم الصغير بعد الرمز، <b>الرقم السفلي</b>، يبيّن عدد ذرات ذلك العنصر. عدم وجود رقم يعني ذرة واحدة.</p></div>
   <div class="bench">
     <div class="main">
-      <div class="simfig"><svg id="cpSvg" viewBox="0 0 500 300" role="img" aria-label="Animals working together in a group"></svg></div>
-      <div class="seg wrap needjs" id="cpMode"><button data-v="0" class="on">Leaf-cutter ants</button><button data-v="1">Elephants</button><button data-v="2">Squirrel monkeys</button></div>
-    </div>
-    <div class="side"><div class="msg bi needjs" id="cpMsg"></div></div>
-  </div>
-</section>
-
-<section class="screen" data-title="Osprey film">
-  <span class="kicker">Motion film</span>
-  <h2>The osprey of the mangroves</h2>
-  <p class="hsub ar">عُقاب القرم</p>
-  <div class="player needjs"><canvas id="ofC" role="img" aria-label="Animated film of an osprey catching weak fish near the Abu Dhabi mangroves, with a graph of the fish population"></canvas>
-    <div class="fctl"><button id="ofBtn">▶ Play</button><input type="range" id="ofBar" min="0" value="0" aria-label="Film time"><span id="ofTime"></span></div>
-    <div class="fchips" id="ofChips"></div></div>
-  <div class="msg bi" id="ofCap"><p class="en"><b>Predator and prey:</b> the predator eats the prey, but the ecosystem as a whole wins.</p><p class="ar"><b>المفترس والفريسة:</b> يأكل المفترسُ الفريسةَ، لكن النظام البيئي كله يربح.</p></div>
-  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Predation</b>: one organism, the <b>predator</b>, hunts and eats another, the <b>prey</b>. Predators keep prey populations balanced.</p><p class="ar"><b>الافتراس</b>: كائن هو <b>المفترس</b> يصطاد كائنًا آخر هو <b>الفريسة</b> ويأكله. والمفترسات تحافظ على توازن جماعات الفرائس.</p></div>
-</section>
-
-<section class="screen" data-title="Predator lab">
-  <span class="kicker">Virtual lab</span>
-  <h2>How many ospreys?</h2>
-  <p class="hsub ar">كم عُقابًا؟</p>
-  <div class="bi"><p class="en">Change the number of ospreys hunting near the mangroves. Watch the fish population over ten years and how healthy the fish are.</p><p class="ar">غيّر عدد العُقبان التي تصطاد قرب أشجار القرم، وراقب جماعة الأسماك خلال عشر سنوات ومدى صحتها.</p></div>
-  <div class="bench">
-    <div class="main">
-      <div class="simfig"><canvas id="plC" style="aspect-ratio:16/10" role="img" aria-label="Graph of the fish population over ten years with the carrying capacity line"></canvas></div>
-      <div class="needjs"><div class="rlab">Ospreys · العُقبان</div><input type="range" id="plR" min="0" max="3" step="1" value="0" aria-label="Number of ospreys"></div>
-      <div class="meter needjs"><span>Fish health</span><i><b id="plBar"></b></i><em id="plTxt"></em></div>
+      <div class="simfig"><svg id="mlSvg" viewBox="0 0 440 240" role="img" aria-label="Ball model of a molecule"></svg></div>
+      <div class="seg wrap needjs" id="mlMode"><button data-v="0" class="on">H₂O</button><button data-v="1">CO₂</button><button data-v="2">NH₃</button><button data-v="3">CH₄</button></div>
     </div>
     <div class="side">
-      <div class="msg bi needjs" id="plMsg"></div>
-      <div class="why needjs" id="why5"></div>
+      <div class="fader" data-f="fr"></div>
     </div>
   </div>
 </section>
 
-<section class="screen" data-title="Competition">
+<section class="screen" data-title="Element symbols">
   <span class="kicker">Explore</span>
-  <h2>Competition: the same resource, the same time</h2>
-  <p class="hsub ar">التنافس: المورد نفسه في الوقت نفسه</p>
-  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> In a <b class="term">competitive relationship</b>, organisms that share a habitat fight for the same limited resources at the same time.</p><p class="ar">في <b>علاقة التنافس</b> تتصارع الكائنات التي تشترك في موطن واحد على الموارد المحدودة نفسها في الوقت نفسه.</p></div>
+  <h2>Element symbols</h2>
+  <p class="hsub ar">رموز العناصر</p>
+  <div class="bi"><p class="en">Water is <i>water</i> in English, <i>ماء</i> in Arabic and <i>eau</i> in French. Scientists all over the world use the same <b class="term">chemical symbols</b>, so everyone understands. A symbol has one or two letters: the first is a <b>capital</b>, the second is <b>small</b>.</p><p class="ar">الماء اسمه <i>water</i> بالإنجليزية و<i>ماء</i> بالعربية و<i>eau</i> بالفرنسية. يستخدم العلماء في كل العالم <b>الرموز الكيميائية</b> نفسها ليفهم الجميع. الرمز حرف أو حرفان: الأول <b>كبير</b> والثاني <b>صغير</b>.</p></div>
   <div class="bench">
     <div class="main">
-      <div class="simfig"><svg id="cmSvg" viewBox="0 0 500 300" role="img" aria-label="Two overlapping circles showing what two organisms both need"></svg></div>
-      <div class="seg wrap needjs" id="cmMode"><button data-v="0" class="on">The conflict</button><button data-v="1">Tall and young trees</button><button data-v="2">Wolves and ravens</button></div>
+      <div class="ptab needjs" id="ptab"></div>
     </div>
     <div class="side">
-      <div class="msg bi needjs" id="cmMsg"></div>
-      <div class="why needjs" id="why6"></div>
+      <div class="msg bi needjs" id="ptMsg"></div>
+      <div class="why needjs" id="why5"></div>
     </div>
   </div>
 </section>
 
 <section class="screen" data-title="Check yourself">
   <span class="kicker">Practice</span>
-  <h2>Which relationship is it?</h2>
-  <p class="hsub ar">أيّ علاقة هذه؟</p>
-  <div class="bi"><p class="en">Read each card and choose the relationship.</p><p class="ar">اقرأ كل بطاقة واختر نوع العلاقة.</p></div>
+  <h2>Check yourself</h2>
+  <p class="hsub ar">تحقّق من نفسك</p>
   <div class="idg needjs" id="ckCards"></div>
 </section>
 
@@ -1074,7 +1052,7 @@ figure.photo figcaption.bi{margin:0}
   <p class="hsub ar">اضغط لقلب البطاقة</p>
   <div class="flips" id="flips"></div>
   <div class="zrow"><div class="zav" data-zayed="wow"></div>
-    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work! Now the quiz. Two questions review Lesson 2-1. A wrong answer gives you a hint first.</p><p class="ar">عمل رائع! والآن الاختبار. سؤالان منه لمراجعة الدرس 2-1. الإجابة الخاطئة تعطيك تلميحًا أولًا.</p></div></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work! Now the quiz. A wrong answer gives you a hint first.</p><p class="ar">عمل رائع! والآن الاختبار. الإجابة الخاطئة تعطيك تلميحًا أولًا.</p></div></div>
 </section>
 
 <section class="screen s-only needjs" data-title="Final quiz">
@@ -1181,7 +1159,7 @@ ${front}
 (function(){
 "use strict";
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
-const KEY="sci7_6_";
+const KEY="sci7a_1_";
 const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
@@ -1190,7 +1168,7 @@ const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
 /* ---------- version ---------- */
 document.body.className=VERSION;
 $$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
-const C={name:"UAE MOE · Grade 7"};
+const C={name:"American · Grade 7"};
 $("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
 
 /* ---------- Zayed ---------- */
@@ -1275,54 +1253,6 @@ function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data
     card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll("button").forEach(x=>x.classList.toggle("pick",x===b));
     card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});}
 
-/* warm-up (review of lessons 1-1 and 1-2) */
-const FDATA={};
-/* ---------- check yourself ---------- */
-const R6=[["Mutualism","تبادل المنفعة"],["Commensalism","التعايش"],["Parasitism","التطفل"],["Cooperation","التعاون"],["Predation","الافتراس"],["Competition","التنافس"]];
-const CK=()=>cardsQ($("#ckCards"),[
- {t:["Bees get nectar; flowers get pollinated","النحل يأخذ الرحيق، والزهور تُلقَّح"],o:R6,a:0,cls:"two",w:["Both benefit: [+ / +].","كلاهما يستفيد: [+ / +]."],h:["Does each partner gain?","هل يكسب كل شريك؟"]},
- {t:["Fleas feed on a dog's blood","البراغيث تتغذّى على دم كلب"],o:R6,a:2,cls:"two",w:["The flea gains; the dog is harmed: [+ / −].","البرغوث يستفيد والكلب يتضرّر: [+ / −]."],h:["Is the dog helped or harmed?","هل يستفيد الكلب أم يتضرّر؟"]},
- {t:["An osprey catches a slow fish","عُقاب يصطاد سمكة بطيئة"],o:R6,a:4,cls:"two",w:["The osprey is the predator; the fish is the prey.","العُقاب مفترس والسمكة فريسة."],h:["One hunts and eats the other.","أحدهما يصطاد الآخر ويأكله."]},
- {t:["Cattle egrets eat insects kicked up by grazing cattle","طيور البلشون تأكل الحشرات التي تُثيرها الماشية"],o:R6,a:1,cls:"two",w:["The egrets gain; the cattle are not affected: [+ / 0].","البلشون يستفيد والماشية لا تتأثر: [+ / 0]."],h:["Do the cattle gain or lose anything?","هل تكسب الماشية شيئًا أو تخسر؟"]},
- {t:["Leaf-cutter ants carry leaves to the nest together","النمل قاطع الأوراق يحمل الأوراق معًا إلى العش"],o:R6,a:3,cls:"two",w:["Members of one population work together.","أفراد جماعة واحدة يعملون معًا."],h:["It is one species working as a team.","إنه نوع واحد يعمل كفريق."]},
- {t:["Young trees and tall trees need the same sunlight","الأشجار الصغيرة والطويلة تحتاج إلى ضوء الشمس نفسه"],o:R6,a:5,cls:"two",w:["They fight for the same limited resource.","تتصارع على المورد المحدود نفسه."],h:["Is there enough light for all?","هل يكفي الضوء الجميع؟"]},
- {t:["An epiphyte grows on a tree branch","نبات هوائي ينمو على غصن شجرة"],o:R6,a:1,cls:"two",w:["The epiphyte gains a place in the light; the tree is not affected.","النبات الهوائي يكسب مكانًا في الضوء، والشجرة لا تتأثر."],h:["Does the epiphyte take the tree's food?","هل يأخذ النبات الهوائي غذاء الشجرة؟"]},
- {t:["Barbel fish clean a hippo's mouth and get food","أسماك البربيل تنظّف فم فرس النهر وتحصل على الغذاء"],o:R6,a:0,cls:"two",w:["The fish get food; the hippo gets cleaned.","الأسماك تحصل على الغذاء، وفرس النهر يُنظَّف."],h:["Both partners gain something.","كل شريك يكسب شيئًا."]}]);
-CK();
-
-/* ---------- summary ---------- */
-const FL2=[["+ / ?","Symbiosis","التكافل","A close, long-term relationship between two species, usually an exchange of food or energy.","علاقة وثيقة طويلة الأمد بين نوعين، تشمل عادةً تبادل الغذاء أو الطاقة."],
- ["+ / +","Mutualism","تبادل المنفعة","Both partners benefit: clownfish and anemone, bees and flowers.","يستفيد الشريكان: سمكة المهرج وشقائق النعمان، النحل والزهور."],
- ["+ / 0","Commensalism","التعايش","One benefits; the other is not affected: epiphytes and trees, egrets and cattle.","أحدهما يستفيد والآخر لا يتأثر: النبات الهوائي والشجرة، البلشون والماشية."],
- ["+ / −","Parasitism","التطفل","The parasite benefits and harms the host: wasps and spiders, fleas and pets.","الطفيلي يستفيد ويضرّ العائل: الدبّور والعنكبوت، البراغيث والحيوانات الأليفة."],
- ["team","Cooperation","التعاون","Members of a population work together to survive: ants, elephants, monkeys.","أفراد الجماعة يعملون معًا ليبقوا: النمل، الفيلة، القرود."],
- ["hunt","Predation","الافتراس","A predator eats its prey and keeps the prey population balanced and healthy.","المفترس يأكل الفريسة ويُبقي جماعتها متوازنة وبصحة جيدة."],
- ["A ∩ B","Competition","التنافس","Organisms fight for the same limited resource at the same time.","تتصارع الكائنات على المورد المحدود نفسه في الوقت نفسه."],
- ["evidence","Friend or foe?","صديق أم عدو؟","New evidence showed oxpeckers also harm their hosts, so scientists changed their minds.","أظهر دليل جديد أن نقّار الثيران يضرّ عوائله أيضًا، فغيّر العلماء رأيهم."]];
-
-/* ---------- warm-up (review of lesson 2-1) ---------- */
-const WU2=[{q:"All the antelopes living in one valley at the same time are a…",qa:"كل الظباء التي تعيش في وادٍ واحد في الوقت نفسه تكوّن…",o:[["community","مجتمعًا"],["population","جماعة"],["biosphere","محيطًا حيويًا"]],a:1,w:["Same species, same area, same time.","النوع نفسه، والمنطقة نفسها، والوقت نفسه."]},
- {q:"The largest number of one species an ecosystem can support is its…",qa:"أكبر عدد من نوع واحد يستطيع النظام البيئي دعمه هو…",o:[["carrying capacity","السعة الحاملة"],["biotic potential","الجهد الحيوي"],["limiting factor","العامل المحدِّد"]],a:0,w:["Remember the pond with 16 fish.","تذكّر البركة ذات الـ16 سمكة."]},
- {q:"Foxes that hunt pikas are an example of a…",qa:"الثعالب التي تصطاد البيكا مثال على…",o:[["biotic potential","جهد حيوي"],["abiotic factor","عامل غير حيوي"],["limiting factor","عامل محدِّد"]],a:2,w:["Predators limit the size of a population. Today we look closer at predators!","المفترسات تحدّ من حجم الجماعة. اليوم ننظر إليها عن قرب!"]}];
-
-/* ---------- final quiz ---------- */
-const Q2=[
- {q:"Every bean plant with Rhizobium, a nitrogen-fixing bacterium, in its root nodules is very healthy. Plants without it do poorly. Rhizobium gets food from the plant. What is the relationship?",qa:"كل نبات فاصولياء في عُقده الجذرية بكتيريا الرايزوبيوم المثبّتة للنيتروجين يكون بصحة جيدة جدًا، والنباتات التي تخلو منها تنمو بشكل ضعيف، والرايزوبيوم يأخذ غذاءه من النبات. ما نوع العلاقة؟",o:[["commensalism","تعايش"],["mutualism","تبادل منفعة"],["predator–prey","مفترس وفريسة"],["no relationship","لا توجد علاقة"]],a:1,ex:["The bacteria get food and the plant gets usable nitrogen: [+ / +].","البكتيريا تأخذ الغذاء والنبات يأخذ نيتروجينًا قابلًا للاستخدام: [+ / +]."],h:[["Is the plant helped or not affected?","هل يستفيد النبات أم لا يتأثر؟"],["Plants with the bacteria are healthier.","النباتات التي فيها البكتيريا أكثر صحة."]]},
- {q:"A small remora fish attaches to a shark. It eats parasites on the shark and leftover food. Which explanation fits best?",qa:"تلتصق سمكة الريمورا الصغيرة بالقرش، وتأكل الطفيليات التي عليه وبقايا الطعام. أيّ تفسير هو الأنسب؟",o:[["Mutualism: the fish gets food and the shark is cleared of parasites.","تبادل منفعة: السمكة تحصل على الغذاء والقرش يتخلّص من الطفيليات."],["Parasitism: the fish eats off the shark.","تطفل: السمكة تأكل من القرش."],["Commensalism: only the fish benefits.","تعايش: السمكة وحدها تستفيد."],["Cooperation: both work together to find food.","تعاون: كلاهما يعمل معًا لإيجاد الغذاء."]],a:0,ex:["Removing parasites helps the shark, so both gain.","إزالة الطفيليات تفيد القرش، فكلاهما يكسب."],h:[["Does the shark gain anything?","هل يكسب القرش شيئًا؟"],["Parasites harm the shark. Who removes them?","الطفيليات تضرّ القرش. من يزيلها؟"]]},
- {q:"Which symbol shows commensalism?",qa:"أيّ رمز يمثّل التعايش؟",o:[["[+ / +]","[+ / +]"],["[+ / −]","[+ / −]"],["[+ / 0]","[+ / 0]"],["[− / −]","[− / −]"]],a:2,ex:["One benefits; the other is not affected.","أحدهما يستفيد والآخر لا يتأثر."],h:[["0 means not affected.","0 تعني لا يتأثر."],["Think of the epiphyte and the tree.","فكّر في النبات الهوائي والشجرة."]]},
- {q:"A hunting wasp paralyzes a spider and lays eggs inside it. The larvae eat the spider. This is…",qa:"يشلّ دبّور صيّاد عنكبوتًا ويضع بيضه داخله، ثم تأكل اليرقات العنكبوت. هذا…",o:[["mutualism","تبادل منفعة"],["commensalism","تعايش"],["competition","تنافس"],["parasitism","تطفل"]],a:3,ex:["The wasp benefits and the spider (the host) is harmed.","الدبّور يستفيد والعنكبوت (العائل) يتضرّر."],h:[["Is the spider harmed?","هل يتضرّر العنكبوت؟"],["The spider is the host.","العنكبوت هو العائل."]]},
- {q:"What did new evidence show about oxpeckers?",qa:"ماذا أظهر الدليل الجديد عن طيور نقّار الثيران؟",o:[["They only eat seeds.","أنها تأكل البذور فقط."],["They never touch large mammals.","أنها لا تلمس الثدييات الكبيرة أبدًا."],["They also drink blood and keep wounds open, so they harm their hosts.","أنها تشرب الدم وتُبقي الجروح مفتوحة أيضًا، فتضرّ عوائلها."],["They make the mammals stronger.","أنها تجعل الثدييات أقوى."]],a:2,ex:["So the relationship is closer to parasitism [+ / −].","لذلك العلاقة أقرب إلى التطفل [+ / −]."],h:[["Why did elephants shake them off?","لماذا تنفضها الفيلة عنها؟"],["Think about the wounds.","فكّر في الجروح."]]},
- {q:"An elephant herd keeps the calves in the middle and watches for predators. This is…",qa:"يُبقي قطيع الفيلة الصغار في الوسط ويراقب المفترسات. هذا…",o:[["competition","تنافس"],["cooperation","تعاون"],["parasitism","تطفل"],["predation","افتراس"]],a:1,ex:["Members of a population work together to survive.","أفراد الجماعة يعملون معًا ليبقوا."],h:[["Are they fighting or helping?","هل يتصارعون أم يتساعدون؟"],["One species, working as a team.","نوع واحد يعمل كفريق."]]},
- {q:"How do ospreys help the fish population near the mangroves?",qa:"كيف تساعد العُقبان جماعة الأسماك قرب أشجار القرم؟",o:[["They feed the young fish.","تُطعم الأسماك الصغيرة."],["They make the water cleaner.","تجعل الماء أنظف."],["They catch only the strongest fish.","تصطاد أقوى الأسماك فقط."],["They keep the population below the carrying capacity and healthier.","تُبقي الجماعة دون السعة الحاملة وأكثر صحة."]],a:3,ex:["Removing weak fish frees food and space for the rest.","إزالة الأسماك الضعيفة توفّر الغذاء والمساحة للباقية."],h:[["Which fish are easiest to catch?","أيّ الأسماك أسهل صيدًا؟"],["Remember the film: population control.","تذكّر الفيلم: ضبط الجماعة."]]},
- {q:"Wolves and ravens both eat the meat of an animal the wolves killed. This is…",qa:"تأكل الذئاب والغربان لحم حيوان اصطادته الذئاب. هذا…",o:[["competition","تنافس"],["mutualism","تبادل منفعة"],["cooperation","تعاون"],["commensalism","تعايش"]],a:0,ex:["They fight for the same limited food at the same time.","تتصارع على الغذاء المحدود نفسه في الوقت نفسه."],h:[["Is there enough meat for all?","هل يكفي اللحم الجميع؟"],["Same resource, same time.","المورد نفسه في الوقت نفسه."]]},
- {q:"From Lesson 2-1: what is carrying capacity?",qa:"من الدرس 2-1: ما السعة الحاملة؟",o:[["The fastest growth in perfect conditions","أسرع نمو في ظروف مثالية"],["The number of species in an area","عدد الأنواع في منطقة ما"],["The largest number of one species an ecosystem can support","أكبر عدد من نوع واحد يستطيع النظام البيئي دعمه"],["The amount of water in an ecosystem","كمية الماء في النظام البيئي"]],a:2,ex:["The pond's carrying capacity was 16 fish.","السعة الحاملة للبركة كانت 16 سمكة."],h:[["The first option is biotic potential.","الخيار الأول هو الجهد الحيوي."],["Remember the dashed line.","تذكّر الخط المتقطع."]]},
- {q:"From Lesson 2-1: which of these is an abiotic factor?",qa:"من الدرس 2-1: أيّ مما يلي عامل غير حيوي؟",o:[["a lion","أسد"],["temperature","درجة الحرارة"],["grass","العشب"],["a bird","طائر"]],a:1,ex:["Temperature is nonliving.","درجة الحرارة غير حية."],h:[["Abiotic = nonliving.","غير حيوي = غير حي."],["Three of the options are alive.","ثلاثة من الخيارات حية."]]}];
-
-const WU=WU2;
-$("#wuBox").innerHTML=WU.map((x,i)=>`<div class="wuq" data-i="${i}"><div class="qq">${i+1}. ${x.q}<span class="ar">${x.qa}</span></div><div class="wo">${x.o.map((o,j)=>`<button data-j="${j}">${o[0]}</button>`).join("")}<button class="show" data-j="-1">Show me · أرني</button></div><div class="wa"><b>${x.o[x.a][0]}</b> ${x.w[0]}<span class="ar">${x.w[1]}</span></div></div>`).join("");
-$$("#wuBox .wuq").forEach(card=>{const x=WU[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const j=+b.dataset.j;card.querySelectorAll("button").forEach(y=>{if(+y.dataset.j===x.a)y.classList.add("right");});if(j>=0&&j!==x.a)b.classList.add("wrong");card.classList.add("done");});});
-
-/* ---------- particle simulation engine ---------- */
 /* ---------- particle simulation engine ---------- */
 const RM=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
 const SIMS=[];const PUR=["#C9A6F2","#6A3FB0"],ORA=["#FFD08A","#E07A2E"],BLU=["#BFEAF5","#2A8FB0"];
@@ -1333,317 +1263,161 @@ function mk(n,b,r,sp){return Array.from({length:n},()=>{const a=Math.random()*6.
 function gasStep(ps,b,dt,sp){ps.forEach(p=>{const v=Math.hypot(p.vx,p.vy)||1;p.vx*=sp/v;p.vy*=sp/v;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<b.x+p.r){p.x=b.x+p.r;p.vx=Math.abs(p.vx)}if(p.x>b.x+b.w-p.r){p.x=b.x+b.w-p.r;p.vx=-Math.abs(p.vx)}if(p.y<b.y+p.r){p.y=b.y+p.r;p.vy=Math.abs(p.vy)}if(p.y>b.y+b.h-p.r){p.y=b.y+b.h-p.r;p.vy=-Math.abs(p.vy)}});}
 function liqStep(ps,b,dt,sp){ps.forEach(p=>{const a=Math.atan2(p.vy,p.vx)+(Math.random()-.5)*1.4;p.vx=Math.cos(a)*sp;p.vy=Math.sin(a)*sp;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<b.x+p.r){p.x=b.x+p.r;p.vx=Math.abs(p.vx)}if(p.x>b.x+b.w-p.r){p.x=b.x+b.w-p.r;p.vx=-Math.abs(p.vx)}if(p.y<b.y+p.r){p.y=b.y+p.r;p.vy=Math.abs(p.vy)}if(p.y>b.y+b.h-p.r){p.y=b.y+b.h-p.r;p.vy=-Math.abs(p.vy)}});}
 function bg(s,col){const g=s.ctx;g.fillStyle=col||"#0E1A26";g.fillRect(0,0,s.W,s.H);g.strokeStyle="rgba(255,255,255,.05)";g.lineWidth=1;for(let x=0;x<s.W;x+=32){g.beginPath();g.moveTo(x,0);g.lineTo(x,s.H);g.stroke();}for(let y=0;y<s.H;y+=32){g.beginPath();g.moveTo(0,y);g.lineTo(s.W,y);g.stroke();}}
-const LSC=1.4;function label(g,t,x,y,col,size,al){g.font=`800 ${Math.round((size||22)*LSC)}px ui-monospace,monospace`;g.fillStyle=col||"#fff";g.textAlign=al||"center";g.fillText(t,x,y);}
+function label(g,t,x,y,col,size,al){g.font=`800 ${size||22}px ui-monospace,monospace`;g.fillStyle=col||"#fff";g.textAlign=al||"center";g.fillText(t,x,y);}
 function beaker(g,x,y,w,h,fill,lvl){g.save();g.fillStyle=fill;g.fillRect(x+4,y+h*(1-lvl),w-8,h*lvl-4);g.strokeStyle="rgba(255,255,255,.75)";g.lineWidth=4;g.beginPath();g.moveTo(x-8,y);g.lineTo(x,y);g.lineTo(x,y+h);g.lineTo(x+w,y+h);g.lineTo(x+w,y);g.lineTo(x+w+8,y);g.stroke();g.restore();}
 let last=0;function loop(ts){const dt=Math.min(.05,(ts-last)/1000||0);last=ts;SIMS.forEach(s=>{const scr=s.c.closest(".screen");if(scr&&scr.classList.contains("active")){s.t+=RM?0:dt;s.draw(s,RM?0:dt);}});requestAnimationFrame(loop);}
 function drawAll(){SIMS.forEach(s=>s.draw(s,0));}
 
-/* ---------- lesson 1-2 helpers ---------- */
-const lerp=(a,b,p)=>a+(b-a)*p;
-const ease=p=>p<0?0:p>1?1:1-Math.pow(1-p,3);
-function segBind(id,fn){$$("#"+id+" button").forEach(b=>b.onclick=()=>{$$("#"+id+" button").forEach(x=>x.classList.toggle("on",x===b));fn(+b.dataset.v);});}
-function rr(g,x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath();}
-const ATM=[["#FF9C8A","#C8553D"],["#8A96A3","#2C3540"],["#FFFFFF","#AEB8C2"]];
+/* warm-up (prior knowledge) */
+const WU=[{q:"Matter is anything that has mass and takes up…",qa:"المادة هي كل ما له كتلة ويشغل…",o:[["space","حيّزًا"],["colour","لونًا"],["light","ضوءًا"]],a:0,w:["Matter has mass and volume (takes up space).","للمادة كتلة وحجم (تشغل حيّزًا)."]},
+ {q:"Which one is a liquid at room temperature?",qa:"أيّها سائل عند درجة حرارة الغرفة؟",o:[["ice","الجليد"],["oxygen","الأكسجين"],["water","الماء"]],a:2,w:["Water is a liquid at room temperature.","الماء سائل عند درجة حرارة الغرفة."]},
+ {q:"What happens to ice when you heat it?",qa:"ماذا يحدث للجليد عندما تسخّنه؟",o:[["it melts","ينصهر"],["it gets harder","يزداد صلابة"],["nothing","لا شيء"]],a:0,w:["Heat turns solid ice into liquid water.","الحرارة تحوّل الجليد الصلب إلى ماء سائل."]}];
+$("#wuBox").innerHTML=WU.map((x,i)=>`<div class="wuq" data-i="${i}"><div class="qq">${i+1}. ${x.q}<span class="ar">${x.qa}</span></div><div class="wo">${x.o.map((o,j)=>`<button data-j="${j}">${o[0]}</button>`).join("")}<button class="show" data-j="-1">Show me · أرني</button></div><div class="wa"><b>${x.o[x.a][0]}</b> ${x.w[0]}<span class="ar">${x.w[1]}</span></div></div>`).join("");
+$$("#wuBox .wuq").forEach(card=>{const x=WU[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const j=+b.dataset.j;card.querySelectorAll("button").forEach(y=>{if(+y.dataset.j===x.a)y.classList.add("right");});if(j>=0&&j!==x.a)b.classList.add("wrong");card.classList.add("done");});});
+const seg=(id,f)=>$$(id+" button").forEach(b=>b.onclick=()=>{$$(id+" button").forEach(x=>x.classList.toggle("on",x===b));f(+b.dataset.v);});
+const LSC=1.4;const lab=(g,t,x,y,c,s,a)=>label(g,t,x,y,c,Math.round((s||20)*LSC),a);
 
-/* ---------- organism drawings (SVG, centred on 0,0, about 60 px wide) ---------- */
-const OG={
- sun:`<circle r="17" fill="#FFE08A" stroke="#E9B44C" stroke-width="3"/><g stroke="#E9B44C" stroke-width="3" stroke-linecap="round"><path d="M0 -24V-30M0 24V30M-24 0H-30M24 0H30M-17 -17L-21 -21M17 17L21 21M17 -17L21 -21M-17 17L-21 21"/></g>`,
- plant:`<path d="M0 22V-6" stroke="#3F7A45" stroke-width="3.5" stroke-linecap="round"/><path d="M0 4C-14 2-22-8-22-18C-10-18-2-10 0 0Z" fill="#6DBB5E" stroke="#2E6B39" stroke-width="2"/><path d="M0-2C12-4 20-14 20-24C8-24 0-16 0-6Z" fill="#8CCB74" stroke="#2E6B39" stroke-width="2"/><path d="M0 12C10 10 18 4 20-4C10-4 2 2 0 8Z" fill="#6DBB5E" stroke="#2E6B39" stroke-width="2"/><path d="M-12 24H12" stroke="#8C5A3C" stroke-width="4" stroke-linecap="round"/>`,
- grass:`<g stroke="#2E6B39" stroke-width="2" fill="#7FC36B"><path d="M-18 22C-18 6-14-8-8-20C-10-4-8 10-6 22Z"/><path d="M-6 22C-6 2-2-14 4-24C2-6 2 8 4 22Z"/><path d="M4 22C6 6 12-6 20-14C14 0 12 12 14 22Z"/></g><path d="M-22 23H22" stroke="#8C5A3C" stroke-width="4" stroke-linecap="round"/>`,
- mouse:`<path d="M18 8C30 8 32 0 26-6" fill="none" stroke="#B48F7A" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="2" cy="6" rx="18" ry="12" fill="#A88B76" stroke="#5B4636" stroke-width="2"/><circle cx="-16" cy="0" r="9" fill="#A88B76" stroke="#5B4636" stroke-width="2"/><circle cx="-14" cy="-10" r="6" fill="#E3B7A8" stroke="#5B4636" stroke-width="2"/><circle cx="-20" cy="-1" r="1.8" fill="#1F2A37"/><circle cx="-25" cy="2" r="2" fill="#C8553D"/>`,
- snake:`<path d="M24 14C10 24-6 22-10 12C-14 2 4-2 2-10C0-18-12-18-18-12" fill="none" stroke="#8C5A3C" stroke-width="8" stroke-linecap="round"/><path d="M24 14C10 24-6 22-10 12C-14 2 4-2 2-10C0-18-12-18-18-12" fill="none" stroke="#C9A06A" stroke-width="3" stroke-dasharray="3 5" stroke-linecap="round"/><ellipse cx="-20" cy="-13" rx="7" ry="5" fill="#8C5A3C"/><circle cx="-22" cy="-14" r="1.5" fill="#fff"/>`,
- hawk:`<path d="M0 0C-10-6-22-6-32-14C-24-2-14 4-4 6Z" fill="#8C5A3C" stroke="#4A2E1C" stroke-width="2"/><path d="M0 0C10-6 22-6 32-14C24-2 14 4 4 6Z" fill="#8C5A3C" stroke="#4A2E1C" stroke-width="2"/><ellipse cx="0" cy="6" rx="7" ry="13" fill="#C9A06A" stroke="#4A2E1C" stroke-width="2"/><circle cx="0" cy="-8" r="6" fill="#5B3A24"/><path d="M-1-6L-5-3L0-4Z" fill="#E9B44C"/><path d="M-6 18L0 24L6 18Z" fill="#8C5A3C"/>`,
- locust:`<ellipse cx="2" cy="2" rx="20" ry="7" fill="#9DB65A" stroke="#4E6326" stroke-width="2"/><circle cx="-19" cy="0" r="6" fill="#9DB65A" stroke="#4E6326" stroke-width="2"/><path d="M-4 0L10-12L22 8M-10 6L-14 16M2 8L0 16" stroke="#4E6326" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M-22-4L-30-14" stroke="#4E6326" stroke-width="1.5"/><circle cx="-21" cy="-1" r="1.6" fill="#1F2A37"/>`,
- lizard:`<path d="M-26 0C-16-6 6-6 14 0C22 4 30 2 34-4" fill="none" stroke="#C9A06A" stroke-width="7" stroke-linecap="round"/><ellipse cx="-24" cy="0" rx="8" ry="5.5" fill="#C9A06A" stroke="#7A5232" stroke-width="2"/><path d="M-12-2L-16-12M-12 2L-16 12M6-2L10-12M6 2L10 12" stroke="#7A5232" stroke-width="3" stroke-linecap="round"/><circle cx="-26" cy="-2" r="1.5" fill="#1F2A37"/>`,
- phyto:`<g stroke="#1F6B3A" stroke-width="1.5"><circle cx="-12" cy="-6" r="7" fill="#8CCB74"/><circle cx="6" cy="-10" r="5" fill="#A6D99A"/><circle cx="12" cy="6" r="8" fill="#6DBB5E"/><circle cx="-6" cy="10" r="6" fill="#A6D99A"/><ellipse cx="-20" cy="10" rx="4" ry="7" fill="#8CCB74"/></g>`,
- shrimp:`<path d="M-20 4C-18-12 6-16 18-4C22 2 18 10 10 8" fill="#F4A3A0" stroke="#C8553D" stroke-width="2.5"/><path d="M-12-6L-10 4M-4-9L-2 3M4-9L5 3M11-6L11 4" stroke="#C8553D" stroke-width="1.5"/><path d="M-20 4L-28 0L-26 10Z" fill="#F4A3A0" stroke="#C8553D" stroke-width="2"/><path d="M18-4C26-12 30-18 30-24M16-6C22-16 22-22 20-28" stroke="#C8553D" stroke-width="1.5" fill="none"/><circle cx="14" cy="-4" r="1.8" fill="#1F2A37"/>`,
- fish:`<path d="M-24 0C-14-14 12-14 20 0C12 14-14 14-24 0Z" fill="#9FC3D6" stroke="#2A6F8F" stroke-width="2"/><path d="M18 0L32-12L30 0L32 12Z" fill="#9FC3D6" stroke="#2A6F8F" stroke-width="2"/><circle cx="-14" cy="-3" r="2.5" fill="#1F2A37"/><path d="M-4-8C0-2 0 2-4 8" stroke="#2A6F8F" stroke-width="1.5" fill="none"/>`,
- hammour:`<path d="M-24 0C-14-15 12-15 20 0C12 15-14 15-24 0Z" fill="#B78A5E" stroke="#6B4A2E" stroke-width="2"/><path d="M18 0L32-12L30 0L32 12Z" fill="#B78A5E" stroke="#6B4A2E" stroke-width="2"/><g fill="#6B4A2E"><circle cx="-6" cy="-5" r="2"/><circle cx="2" cy="2" r="2"/><circle cx="8" cy="-4" r="2"/><circle cx="-2" cy="6" r="2"/></g><circle cx="-15" cy="-3" r="2.5" fill="#1F2A37"/>`,
- shark:`<path d="M-30 4C-16-8 14-8 26 0C14 10-16 10-30 4Z" fill="#9AA5B1" stroke="#4A5563" stroke-width="2"/><path d="M-2-6L4-20L10-6Z" fill="#9AA5B1" stroke="#4A5563" stroke-width="2"/><path d="M24 0L36-12L32 2L36 12Z" fill="#9AA5B1" stroke="#4A5563" stroke-width="2"/><path d="M-30 4C-16 8 0 8 14 6" stroke="#fff" stroke-width="2" fill="none"/><circle cx="-20" cy="0" r="2" fill="#1F2A37"/>`,
- orca:`<path d="M-32 2C-20-12 16-12 26 0C16 12-20 14-32 2Z" fill="#1F2A37" stroke="#0E1A26" stroke-width="2"/><path d="M0-8L4-24L12-8Z" fill="#1F2A37"/><path d="M24 0L36-10L33 2L36 12Z" fill="#1F2A37"/><ellipse cx="-20" cy="-3" rx="5" ry="2.5" fill="#fff"/><path d="M-26 6C-16 10-2 10 10 6C-2 4-16 4-26 6Z" fill="#fff"/>`,
- seal:`<path d="M-30 6C-24-6 10-10 22-2C28 2 30 8 26 10C10 14-20 14-30 6Z" fill="#B7BEC6" stroke="#4A5563" stroke-width="2"/><g fill="#6B7684"><circle cx="-8" cy="0" r="2"/><circle cx="4" cy="2" r="2"/><circle cx="-16" cy="5" r="1.8"/><circle cx="12" cy="4" r="1.8"/></g><path d="M-2 10L-8 18L4 14Z" fill="#9AA5B1" stroke="#4A5563" stroke-width="1.5"/><path d="M-30 6L-38 0L-36 10Z" fill="#B7BEC6" stroke="#4A5563" stroke-width="2"/><circle cx="18" cy="-1" r="2" fill="#1F2A37"/>`,
- diatoms:`<g stroke="#1F6B3A" stroke-width="1.5"><path d="M-22 6L-14-8L-6 6Z" fill="#8CCB74"/><ellipse cx="4" cy="-4" rx="10" ry="5" fill="#A6D99A"/><circle cx="16" cy="8" r="6" fill="#6DBB5E"/><rect x="-6" y="6" width="12" height="7" rx="2" fill="#8CCB74"/></g>`,
- copepod:`<path d="M-4-14C8-14 12-2 6 8C2 16-6 16-10 8C-14-2-12-14-4-14Z" fill="#F4A649" stroke="#B5761A" stroke-width="2"/><path d="M-6-12L-24-22M2-13L18-24" stroke="#B5761A" stroke-width="1.5"/><path d="M-2 16L-6 26M2 16L6 26" stroke="#B5761A" stroke-width="1.5"/><circle cx="-3" cy="-6" r="2" fill="#C8553D"/>`,
- krill:`<path d="M-22 2C-18-10 6-12 20-2C14 6 0 8-22 2Z" fill="#F7B7B0" stroke="#C8553D" stroke-width="2"/><path d="M-12 4L-14 12M-4 5L-6 13M4 5L3 13M12 3L12 11" stroke="#C8553D" stroke-width="1.5"/><path d="M20-2C26-8 30-14 32-20" stroke="#C8553D" stroke-width="1.5" fill="none"/><circle cx="14" cy="-3" r="2" fill="#1F2A37"/>`,
- squid:`<path d="M0-26L14 4H-14Z" fill="#E07A7A" stroke="#9A3B3B" stroke-width="2"/><path d="M-10 4C-12 14-16 20-18 26M-4 4C-4 14-6 22-8 28M4 4C4 14 6 22 8 28M10 4C12 14 16 20 18 26" stroke="#9A3B3B" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="-5" cy="-2" r="2" fill="#1F2A37"/><circle cx="5" cy="-2" r="2" fill="#1F2A37"/>`,
- worm:`<path d="M-26 6C-18-6-10 14 0 2C10-10 16 10 26-2" fill="none" stroke="#D98A8A" stroke-width="7" stroke-linecap="round"/><path d="M-12 2V8M-4 4V10M6 0V6M14 0V6" stroke="#B5615F" stroke-width="1.5"/>`,
- beetle:`<ellipse cx="0" cy="4" rx="13" ry="16" fill="#3B3128" stroke="#1F1A15" stroke-width="2"/><path d="M0-12V20" stroke="#6B5A48" stroke-width="1.5"/><circle cx="0" cy="-15" r="6" fill="#3B3128"/><path d="M-12-4L-22-10M-12 6L-22 6M-12 14L-20 22M12-4L22-10M12 6L22 6M12 14L20 22" stroke="#1F1A15" stroke-width="2.5" stroke-linecap="round"/>`,
- mushroom:`<path d="M-6 2V22H6V2Z" fill="#F2E3C4" stroke="#8C5A3C" stroke-width="2"/><path d="M-22 4C-22-14 22-14 22 4Z" fill="#C9A06A" stroke="#8C5A3C" stroke-width="2"/><circle cx="-8" cy="-4" r="2.5" fill="#F2E3C4"/><circle cx="6" cy="-6" r="2" fill="#F2E3C4"/><path d="M-10 22H10" stroke="#5B3A24" stroke-width="3" stroke-linecap="round"/>`,
- bacteria:`<g stroke="#2A6F8F" stroke-width="1.5"><rect x="-20" y="-10" width="18" height="8" rx="4" fill="#7FD3E6"/><rect x="2" y="-4" width="18" height="8" rx="4" fill="#BFEAF5" transform="rotate(30 11 0)"/><rect x="-12" y="8" width="18" height="8" rx="4" fill="#7FD3E6" transform="rotate(-20 -3 12)"/></g>`,
- leaf:`<path d="M-20 10C-18-8 2-18 22-14C18 4 2 16-20 10Z" fill="#B5761A" stroke="#6B4A2E" stroke-width="2"/><path d="M-20 10L18-12" stroke="#6B4A2E" stroke-width="1.5"/>`,
- oryx:`<path d="M-22 2C-18-10 16-10 22 0C24 8 20 14 14 14H-16C-24 14-26 8-22 2Z" fill="#FFFFFF" stroke="#5B4A3A" stroke-width="2"/><path d="M-18 14V28M-10 14V28M10 14V28M16 14V28" stroke="#3B3128" stroke-width="3" stroke-linecap="round"/><path d="M-20 0C-28-4-32-10-32-16C-30-20-26-18-24-14L-18-4" fill="#fff" stroke="#5B4A3A" stroke-width="2"/><path d="M-30-16L-26-40M-26-16L-20-40" stroke="#3B3128" stroke-width="2.5" stroke-linecap="round"/><path d="M-22 4C-10 10 10 10 22 4" stroke="#3B3128" stroke-width="3" fill="none" opacity=".7"/>`
-};
-const og=(k,x,y,s)=>`<g transform="translate(${x},${y}) scale(${s||1})">${OG[k]}</g>`;
-function heat(x,y,c){return `<path d="M${x} ${y}c-5-5 5-9 0-14s5-9 0-14" fill="none" stroke="${c||"#F6A58F"}" stroke-width="2.5" stroke-linecap="round"/><path d="M${x-4} ${y-26}l4-6 4 6" fill="none" stroke="${c||"#F6A58F"}" stroke-width="2.5" stroke-linecap="round"/>`;}
-const DEF=`<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#E9B44C"/></marker><marker id="ard" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F2A37"/></marker><marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3F8B4E"/></marker><radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF3C4"/><stop offset=".5" stop-color="#E9B44C" stop-opacity=".9"/><stop offset="1" stop-color="#E9B44C" stop-opacity="0"/></radialGradient></defs>`;
+/* 0. hot car */
+let hcK=0;const HB={x:300,y:70,w:200,h:150};let hcP=mk(16,HB,13,60);
+sim("hcC",16/10,(s,dt)=>{const g=s.ctx;bg(s,hcK?"#2A2118":"#0E1A26");
+  if(hcK){g.fillStyle="#E9B44C";g.beginPath();g.arc(700,80,40,0,7);g.fill();}
+  const bulge=hcK?10:0;g.fillStyle="rgba(255,255,255,.08)";g.strokeStyle="rgba(255,255,255,.8)";g.lineWidth=5;
+  g.beginPath();g.moveTo(360,20);g.lineTo(440,20);g.lineTo(440,50);g.quadraticCurveTo(HB.x+HB.w+bulge,60,HB.x+HB.w+bulge,110);g.lineTo(HB.x+HB.w+bulge,450);g.quadraticCurveTo(400,470,HB.x-bulge,450);g.lineTo(HB.x-bulge,110);g.quadraticCurveTo(HB.x-bulge,60,360,50);g.closePath();g.fill();g.stroke();
+  g.fillStyle="#C8553D";g.fillRect(350,6,100,22);
+  g.fillStyle="rgba(140,90,60,.75)";g.fillRect(HB.x-bulge+4,230,HB.w+2*bulge-8,214);
+  gasStep(hcP,HB,dt,hcK?260:80);hcP.forEach(p=>{trail(g,p,.07);ball(g,p.x,p.y,p.r,BLU);});
+  lab(g,"gas",HB.x-60,150,"#7FD3E6",18);lab(g,"liquid",HB.x-70,340,"#E9B44C",18);
+  lab(g,hcK?"60°C":"25°C",650,470,hcK?"#F6A58F":"#7FD3E6",26);});
+function hcSet(k){hcK=k;setMsg($("#hcMsg"),k?"<b>60°C:</b> the gas particles move much <b>faster</b>. They hit the bottle walls and the cap harder and more often. The bottle bulges, and it could even burst!":"<b>25°C:</b> the gas particles move and hit the walls of the bottle. Now switch to the afternoon.",k?"<b>60°C:</b> تتحرك جسيمات الغاز <b>أسرع</b> بكثير، وتصطدم بجدران الزجاجة وغطائها بقوة أكبر ومرات أكثر. تنتفخ الزجاجة، وقد تنفجر أيضًا!":"<b>25°C:</b> تتحرك جسيمات الغاز وتصطدم بجدران الزجاجة. انتقل الآن إلى بعد الظهر.");}
+seg("#hcMode",hcSet);hcSet(0);
+whyBox($("#why0"),"Why does the hot bottle bulge?","لماذا تنتفخ الزجاجة الساخنة؟",[
+ ["The particles gained energy, so they move faster and push harder on the walls.","اكتسبت الجسيمات طاقة، فصارت أسرع وتدفع الجدران بقوة أكبر.",1,"More thermal energy means faster particles. We will see why in this lesson.","طاقة حرارية أكبر تعني جسيمات أسرع، وسنرى السبب في هذا الدرس."],
+ ["New gas particles came in from outside.","دخلت جسيمات غاز جديدة من الخارج.",0,"The bottle is closed. The number of particles is the same.","الزجاجة مغلقة، وعدد الجسيمات لم يتغيّر."],
+ ["The particles grew bigger.","كبر حجم الجسيمات.",0,"Particles do not grow. They move faster.","الجسيمات لا تكبر، بل تتحرك أسرع."]]);
 
+/* 1. states of matter */
+let stK=0;const SB={x:150,y:50,w:500,h:390};const stLat=[];for(let i=0;i<9;i++)for(let j=0;j<4;j++)stLat.push({hx:SB.x+40+i*52.5,hy:SB.y+SB.h-30-j*50,ph:Math.random()*6.28});
+const SL={x:SB.x,y:SB.y+190,w:SB.w,h:SB.h-190};let stLiq=mk(36,SL,20,80),stGas=mk(14,SB,20,260);
+sim("stC",16/10,(s,dt)=>{const g=s.ctx;bg(s);g.strokeStyle="rgba(255,255,255,.55)";g.lineWidth=4;g.beginPath();g.moveTo(SB.x,SB.y-10);g.lineTo(SB.x,SB.y+SB.h);g.lineTo(SB.x+SB.w,SB.y+SB.h);g.lineTo(SB.x+SB.w,SB.y-10);g.stroke();
+  if(stK===2){g.setLineDash([8,8]);g.beginPath();g.moveTo(SB.x,SB.y);g.lineTo(SB.x+SB.w,SB.y);g.stroke();g.setLineDash([]);}
+  if(stK===0)stLat.forEach(p=>{const a=RM?0:4,x=p.hx+Math.sin(s.t*21+p.ph)*a,y=p.hy+Math.cos(s.t*17+p.ph)*a;ball(g,x,y,22,BLU);});
+  else if(stK===1){liqStep(stLiq,SL,dt,80);stLiq.forEach(p=>{trail(g,p,.12);ball(g,p.x,p.y,p.r,BLU);});}
+  else{gasStep(stGas,SB,dt,260);stGas.forEach(p=>{trail(g,p,.08);ball(g,p.x,p.y,p.r,BLU);});}
+  lab(g,["solid","liquid","gas"][stK],400,488,"#fff",20);});
+const STM=[["<b>Solid:</b> particles are packed close together in fixed places. They only <b>vibrate</b>. A solid has a definite <b>shape</b> and a definite <b>volume</b>.","<b>الصلب:</b> الجسيمات متراصّة في أماكن ثابتة، وتهتز فقط. للصلب <b>شكل</b> ثابت و<b>حجم</b> ثابت."],
+ ["<b>Liquid:</b> particles are close together but <b>slide past</b> each other. A liquid has a definite <b>volume</b> but takes the <b>shape</b> of its container.","<b>السائل:</b> الجسيمات متقاربة لكنها <b>تنزلق</b> بجوار بعضها. للسائل <b>حجم</b> ثابت لكنه يأخذ <b>شكل</b> الإناء."],
+ ["<b>Gas:</b> particles are <b>far apart</b> and move fast in all directions. A gas has <b>no definite shape or volume</b>: it spreads out to fill its whole container.","<b>الغاز:</b> الجسيمات <b>متباعدة</b> وتتحرك بسرعة في كل الاتجاهات. ليس للغاز <b>شكل ولا حجم ثابت</b>: ينتشر ليملأ الإناء كله."]];
+seg("#stMode",k=>{stK=k;setMsg($("#stMsg"),STM[k][0],STM[k][1]);});setMsg($("#stMsg"),STM[0][0],STM[0][1]);
+whyBox($("#why1"),"Why does a gas fill its whole container, but a liquid does not?","لماذا يملأ الغاز الإناء كله ولا يملؤه السائل؟",[
+ ["Gas particles are far apart and move fast and freely, so they spread into all the space.","جسيمات الغاز متباعدة وتتحرك بسرعة وحرية، فتنتشر في كل الحيّز.",1,"Liquid particles stay close together, so a liquid keeps its volume.","جسيمات السائل تبقى متقاربة، فيحتفظ السائل بحجمه."],
+ ["Gas particles are bigger.","جسيمات الغاز أكبر.",0,"Size is not the reason. Look at the spaces between particles.","الحجم ليس السبب. انظر إلى المسافات بين الجسيمات."],
+ ["Gas particles do not move.","جسيمات الغاز لا تتحرك.",0,"Gas particles move the fastest of the three states.","جسيمات الغاز هي الأسرع بين الحالات الثلاث."]]);
 
-/* ---------- Motion film engine: film(canvasId, scenes, ui) ---------- */
-function film(id,SC,ui){const c=document.getElementById(id),W=800,H=450;c.width=W;c.height=H;const g=c.getContext("2d");
-  const T=SC.reduce((a,s)=>a+s.d,0);let t=0,play=false,last=0,cur=-1;const RMf=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
-  const starts=[];SC.reduce((a,s)=>{starts.push(a);return a+s.d;},0);
-  ui.chips.innerHTML=SC.map((s,i)=>`<button data-i="${i}">${i+1} · ${s.chip}</button>`).join("");
-  ui.chips.querySelectorAll("button").forEach(b=>b.onclick=()=>{t=starts[+b.dataset.i]+.01;draw();});
-  ui.bar.max=T*10;ui.bar.oninput=()=>{t=ui.bar.value/10;draw();};
-  ui.btn.onclick=()=>{if(t>=T-.05)t=0;play=!play;last=0;ui.btn.textContent=play?"❚❚ Pause":"▶ Play";};
-  function draw(){let i=0;while(i<SC.length-1&&t>=starts[i+1])i++;const p=(t-starts[i])/SC[i].d;
-    g.clearRect(0,0,W,H);ui.world(g,t,i,p,W,H);
-    if(i!==cur){cur=i;ui.chips.querySelectorAll("button").forEach((b,k)=>b.classList.toggle("on",k===i));ui.cap(SC[i]);}
-    ui.bar.value=t*10;ui.time.textContent=Math.floor(t)+" / "+Math.round(T)+" s";}
-  function loop(ts){const dt=last?Math.min(.05,(ts-last)/1000):0;last=ts;const scr=c.closest(".screen");const vis=!scr||scr.classList.contains("active");
-    if(play&&vis){t+=RMf?0:dt;if(RMf){play=false;}if(t>=T){t=T-.001;play=false;ui.btn.textContent="↺ Replay";}draw();}requestAnimationFrame(loop);}
-  draw();requestAnimationFrame(loop);return {seek:v=>{t=v;draw();},T};}
+/* 2. temperature */
+const TA={x:90,y:110,w:250,h:260},TBx={x:460,y:110,w:250,h:260};let tpA=mk(20,{x:TA.x+6,y:TA.y+60,w:TA.w-12,h:TA.h-66},12,30),tpB=mk(20,{x:TBx.x+6,y:TBx.y+60,w:TBx.w-12,h:TBx.h-66},12,30);
+const tsp=t=>20+t*2.4;
+sim("tpC",16/9,(s,dt)=>{const g=s.ctx;bg(s);const T=+$("#tpR").value;
+  [[TA,20,tpA],[TBx,T,tpB]].forEach(([B,t,ps],i)=>{const hot=t/100;beaker(g,B.x,B.y,B.w,B.h,`rgba(${Math.round(42+180*hot)},${Math.round(143-60*hot)},${Math.round(176-120*hot)},.35)`,.78);
+    const box={x:B.x+6,y:B.y+60,w:B.w-12,h:B.h-66};liqStep(ps,box,dt,tsp(t));ps.forEach(p=>{trail(g,p,.08);ball(g,p.x,p.y,p.r,BLU);});
+    lab(g,(i?"B":"A")+": "+t+"°C",B.x+B.w/2,75,t>=50?"#F6A58F":"#7FD3E6",22);});});
+function tpSet(){const T=+$("#tpR").value;setMsg($("#tpMsg"),T>20?`Beaker B is hotter (${T}°C): its particles move <b>faster on average</b>. Higher temperature = higher average kinetic energy.`:T<20?`Beaker B is colder (${T}°C): its particles move <b>slower on average</b>.`:"Same temperature, same average speed.",T>20?`الكأس B أسخن (${T}°C): جسيماتها <b>أسرع في المتوسط</b>. درجة حرارة أعلى = متوسط طاقة حركية أكبر.`:T<20?`الكأس B أبرد (${T}°C): جسيماتها <b>أبطأ في المتوسط</b>.`:"درجة الحرارة نفسها، متوسط السرعة نفسه.");}
+$("#tpR").oninput=tpSet;tpSet();
 
-/* ---------- more organism drawings for Lesson 2-1 (centred on 0,0, about 60 px wide) ---------- */
-Object.assign(OG,{
- elephant:`<path d="M-30-4L-36 8" stroke="#5F6B78" stroke-width="2.5" stroke-linecap="round"/><path d="M-22 10V30M-10 12V30M8 12V30M18 10V30" stroke="#6B7684" stroke-width="8" stroke-linecap="round"/><ellipse cx="-4" cy="0" rx="28" ry="18" fill="#A3ADB8" stroke="#4B5563" stroke-width="2"/><ellipse cx="-6" cy="-8" rx="20" ry="7" fill="#fff" opacity=".18"/><circle cx="24" cy="-8" r="13" fill="#A3ADB8" stroke="#4B5563" stroke-width="2"/><path d="M18-18C6-20 4 0 16 4C20 2 22-10 18-18Z" fill="#8C97A3" stroke="#4B5563" stroke-width="2"/><path d="M34-4C40 6 39 18 34 26" fill="none" stroke="#4B5563" stroke-width="8" stroke-linecap="round"/><path d="M34-4C40 6 39 18 34 26" fill="none" stroke="#A3ADB8" stroke-width="4.5" stroke-linecap="round"/><path d="M31 2Q38 8 44 4" fill="none" stroke="#FFF8EA" stroke-width="3" stroke-linecap="round"/><circle cx="28" cy="-11" r="1.8" fill="#1F2A37"/>`,
- zebra:`<path d="M-24-2L-30 10" stroke="#1F2A37" stroke-width="2.5" stroke-linecap="round"/><path d="M-16 8V28M-8 9V28M10 9V28M16 8V28" stroke="#1F2A37" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="-2" cy="0" rx="24" ry="12" fill="#fff" stroke="#1F2A37" stroke-width="2"/><g stroke="#1F2A37" stroke-width="3" fill="none" stroke-linecap="round"><path d="M-16-10Q-14 0-16 10M-8-11Q-6 0-8 11M0-12Q2 0 0 12M8-11Q10 0 8 10"/></g><path d="M14-6L26-24L34-20L24-2Z" fill="#fff" stroke="#1F2A37" stroke-width="2" stroke-linejoin="round"/><path d="M18-12L28-14M20-6L30-10" stroke="#1F2A37" stroke-width="2.5"/><path d="M26-24L36-20L34-14L28-16Z" fill="#1F2A37"/><path d="M15-8L25-26" stroke="#1F2A37" stroke-width="4" stroke-linecap="round"/><circle cx="29" cy="-20" r="1.5" fill="#fff"/>`,
- lion:`<path d="M-24 0C-34-2-36 8-32 12" fill="none" stroke="#B9874A" stroke-width="2.5" stroke-linecap="round"/><circle cx="-33" cy="12" r="3.5" fill="#8C5A3C"/><path d="M-16 8V26M-8 9V26M8 9V26M14 8V26" stroke="#C99A5B" stroke-width="6" stroke-linecap="round"/><ellipse cx="-2" cy="0" rx="24" ry="12" fill="#E2B46B" stroke="#8C5A3C" stroke-width="2"/><circle cx="22" cy="-8" r="15" fill="#A8652F" stroke="#6B3E1F" stroke-width="2"/><circle cx="25" cy="-7" r="9" fill="#E8C07A" stroke="#8C5A3C" stroke-width="1.5"/><circle cx="23" cy="-9" r="1.5" fill="#1F2A37"/><circle cx="28" cy="-9" r="1.5" fill="#1F2A37"/><path d="M24-4L28-4L26-2Z" fill="#6B3E1F"/>`,
- antelope:`<path d="M-20-2L-26 4" stroke="#8C5A3C" stroke-width="2.5" stroke-linecap="round"/><path d="M-14 6V28M-8 7V28M10 7V28M15 6V28" stroke="#8C5A3C" stroke-width="2.8" stroke-linecap="round"/><ellipse cx="0" cy="0" rx="21" ry="10" fill="#D9A86C" stroke="#7A5232" stroke-width="2"/><path d="M-18 4Q0 10 18 4" fill="none" stroke="#FFF8EA" stroke-width="3"/><path d="M14-4L22-20L30-18L22-2Z" fill="#D9A86C" stroke="#7A5232" stroke-width="2" stroke-linejoin="round"/><path d="M22-20L32-17L32-12L25-12Z" fill="#D9A86C" stroke="#7A5232" stroke-width="2" stroke-linejoin="round"/><path d="M24-19Q22-30 26-38M27-19Q27-30 31-36" fill="none" stroke="#3B3128" stroke-width="2.5" stroke-linecap="round"/><circle cx="27" cy="-16" r="1.5" fill="#1F2A37"/>`,
- pika:`<ellipse cx="0" cy="4" rx="17" ry="13" fill="#9C8C7E" stroke="#5B4A3A" stroke-width="2"/><ellipse cx="-2" cy="9" rx="10" ry="6" fill="#C9BBAE"/><circle cx="-8" cy="-10" r="6.5" fill="#9C8C7E" stroke="#5B4A3A" stroke-width="2"/><circle cx="8" cy="-10" r="6.5" fill="#9C8C7E" stroke="#5B4A3A" stroke-width="2"/><circle cx="-8" cy="-10" r="3" fill="#E3B7A8"/><circle cx="8" cy="-10" r="3" fill="#E3B7A8"/><circle cx="-5" cy="0" r="2" fill="#1F2A37"/><circle cx="5" cy="0" r="2" fill="#1F2A37"/><circle cx="0" cy="4" r="1.6" fill="#5B4A3A"/>`,
- fox:`<path d="M-20 0C-36-4-42 10-34 18C-28 16-24 8-18 6" fill="#D9733B" stroke="#8C3E1C" stroke-width="2"/><path d="M-36 14C-38 18-34 20-31 17Z" fill="#fff"/><path d="M-12 8V24M-6 8V24M8 8V24M13 8V24" stroke="#3B2A20" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="0" cy="0" rx="19" ry="10" fill="#D9733B" stroke="#8C3E1C" stroke-width="2"/><path d="M14-6L26-14L38-4L26 2Z" fill="#D9733B" stroke="#8C3E1C" stroke-width="2" stroke-linejoin="round"/><path d="M28 0L38-4L30 4Z" fill="#fff"/><path d="M18-10L20-22L26-13M24-13L28-23L31-11" fill="#D9733B" stroke="#8C3E1C" stroke-width="2" stroke-linejoin="round"/><circle cx="28" cy="-7" r="1.6" fill="#1F2A37"/>`,
- bird:`<path d="M-16 2L-30 8L-28 0Z" fill="#2A7A6E" stroke="#1B4D46" stroke-width="1.5"/><ellipse cx="0" cy="0" rx="16" ry="9" fill="#2A9D8F" stroke="#1B4D46" stroke-width="2"/><path d="M-6-2C-2-14 8-16 12-10C8-6 2-2-6-2Z" fill="#1F7A6E" stroke="#1B4D46" stroke-width="1.5"/><circle cx="14" cy="-4" r="7" fill="#E9B44C" stroke="#1B4D46" stroke-width="1.5"/><path d="M20-4L30-2L20 0Z" fill="#3B3128"/><circle cx="16" cy="-6" r="1.5" fill="#1F2A37"/><path d="M-2 8V14M4 8V14" stroke="#3B3128" stroke-width="2" stroke-linecap="round"/>`,
- spider:`<g stroke="#2C3540" stroke-width="2.4" fill="none" stroke-linecap="round"><path d="M-4-2L-18-14L-24-4M-4 0L-20-4L-26 6M-4 2L-18 8L-22 18M-4 4L-12 14L-14 24M4-2L18-14L24-4M4 0L20-4L26 6M4 2L18 8L22 18M4 4L12 14L14 24"/></g><circle cx="0" cy="6" r="10" fill="#3B4552" stroke="#1F2A37" stroke-width="2"/><circle cx="0" cy="-6" r="6" fill="#3B4552" stroke="#1F2A37" stroke-width="2"/><path d="M-4 4L4 10M4 4L-4 10" stroke="#C8553D" stroke-width="2"/><circle cx="-2" cy="-8" r="1.2" fill="#fff"/><circle cx="2" cy="-8" r="1.2" fill="#fff"/>`,
- frog:`<path d="M-18 10C-28 12-28 20-20 20M18 10C28 12 28 20 20 20" fill="none" stroke="#2E6B39" stroke-width="5" stroke-linecap="round"/><ellipse cx="0" cy="6" rx="20" ry="13" fill="#7FC36B" stroke="#2E6B39" stroke-width="2"/><ellipse cx="0" cy="10" rx="12" ry="7" fill="#CDEBB8"/><circle cx="-9" cy="-6" r="7" fill="#7FC36B" stroke="#2E6B39" stroke-width="2"/><circle cx="9" cy="-6" r="7" fill="#7FC36B" stroke="#2E6B39" stroke-width="2"/><circle cx="-9" cy="-7" r="3" fill="#1F2A37"/><circle cx="9" cy="-7" r="3" fill="#1F2A37"/><path d="M-7 4Q0 8 7 4" fill="none" stroke="#2E6B39" stroke-width="2"/>`,
- otter:`<path d="M-34 10Q-17 4 0 10T34 10" fill="none" stroke="#4FA6C8" stroke-width="3"/><ellipse cx="0" cy="2" rx="26" ry="10" fill="#7A5232" stroke="#4A2E1C" stroke-width="2"/><ellipse cx="2" cy="0" rx="14" ry="6" fill="#B48F6A"/><circle cx="-26" cy="-4" r="10" fill="#C9AE8C" stroke="#4A2E1C" stroke-width="2"/><circle cx="-29" cy="-6" r="1.5" fill="#1F2A37"/><circle cx="-23" cy="-6" r="1.5" fill="#1F2A37"/><circle cx="-26" cy="-2" r="1.6" fill="#3B2A20"/><path d="M8-6Q4-14 0-8M14-6Q14-14 8-10" fill="none" stroke="#4A2E1C" stroke-width="3" stroke-linecap="round"/><path d="M26 2L36-4L34 6Z" fill="#7A5232" stroke="#4A2E1C" stroke-width="1.5"/>`,
- gorilla:`<path d="M-24 22C-30 6-24-12-8-16C8-18 22-10 24 6L24 22Z" fill="#3B4552" stroke="#1F2A37" stroke-width="2"/><path d="M-22 22V8M22 22V6" stroke="#2C3540" stroke-width="9" stroke-linecap="round"/><ellipse cx="0" cy="6" rx="10" ry="10" fill="#5B6573"/><circle cx="2" cy="-18" r="12" fill="#3B4552" stroke="#1F2A37" stroke-width="2"/><ellipse cx="3" cy="-14" rx="7.5" ry="6" fill="#6B7684"/><circle cx="0" cy="-19" r="1.6" fill="#E9B44C"/><circle cx="6" cy="-19" r="1.6" fill="#E9B44C"/><path d="M1-12H6" stroke="#1F2A37" stroke-width="1.5"/>`,
- moa:`<path d="M-6 8L-10 30M6 8L10 30" stroke="#8C5A3C" stroke-width="3.5" stroke-linecap="round"/><path d="M-14 32H-6M6 32H14" stroke="#8C5A3C" stroke-width="3" stroke-linecap="round"/><ellipse cx="0" cy="-2" rx="20" ry="14" fill="#9A6B45" stroke="#5B3A24" stroke-width="2"/><path d="M-12-6Q-4-12 8-8" fill="none" stroke="#5B3A24" stroke-width="1.5" opacity=".6"/><path d="M12-8C16-20 16-30 14-38" fill="none" stroke="#5B3A24" stroke-width="7" stroke-linecap="round"/><path d="M12-8C16-20 16-30 14-38" fill="none" stroke="#9A6B45" stroke-width="4" stroke-linecap="round"/><circle cx="15" cy="-40" r="5" fill="#9A6B45" stroke="#5B3A24" stroke-width="1.5"/><path d="M19-41L26-39L19-38Z" fill="#E9B44C"/><circle cx="16" cy="-41" r="1.2" fill="#1F2A37"/>`,
- tree:`<path d="M0 26V-4M0 6L-10-6M0 2L10-8" stroke="#7A5232" stroke-width="4.5" stroke-linecap="round"/><ellipse cx="0" cy="-12" rx="30" ry="9" fill="#5FA052" stroke="#2E6B39" stroke-width="2"/><ellipse cx="-4" cy="-15" rx="18" ry="4" fill="#8CCB74" opacity=".8"/>`,
- shrub:`<circle cx="-10" cy="6" r="11" fill="#6DBB5E" stroke="#2E6B39" stroke-width="2"/><circle cx="10" cy="6" r="11" fill="#6DBB5E" stroke="#2E6B39" stroke-width="2"/><circle cx="0" cy="-4" r="12" fill="#8CCB74" stroke="#2E6B39" stroke-width="2"/><path d="M-20 17H20" stroke="#8C5A3C" stroke-width="3" stroke-linecap="round"/>`,
- rock:`<path d="M-24 14L-18-4L-4-12L12-8L24 4L22 14Z" fill="#A89584" stroke="#5B4A3A" stroke-width="2" stroke-linejoin="round"/><path d="M-18-4L-6 2L12-8M-6 2L-2 14" fill="none" stroke="#5B4A3A" stroke-width="1.5" opacity=".6"/>`,
- drop:`<path d="M0-18C10-4 14 3 14 8A14 14 0 0 1-14 8C-14 3-10-4 0-18Z" fill="#4FA6C8" stroke="#1E6F8C" stroke-width="2"/><ellipse cx="-5" cy="4" rx="3" ry="5" fill="#fff" opacity=".6"/>`,
- thermo:`<rect x="-5" y="-22" width="10" height="34" rx="5" fill="#fff" stroke="#1F2A37" stroke-width="2"/><rect x="-2" y="-8" width="4" height="20" fill="#C8553D"/><circle cx="0" cy="16" r="8" fill="#C8553D" stroke="#1F2A37" stroke-width="2"/>`,
- air:`<g fill="none" stroke="#7B8794" stroke-width="3" stroke-linecap="round"><path d="M-24-8H8A7 7 0 1 0 1-15"/><path d="M-24 2H18A7 7 0 1 1 11 9"/><path d="M-24 12H0"/></g>`,
- dozer:`<rect x="-26" y="2" width="44" height="14" rx="7" fill="#3B4552" stroke="#1F2A37" stroke-width="2"/><g fill="#9AA5B1"><circle cx="-18" cy="9" r="4"/><circle cx="-4" cy="9" r="4"/><circle cx="10" cy="9" r="4"/></g><rect x="-20" y="-14" width="30" height="16" rx="3" fill="#E9B44C" stroke="#8C5A3C" stroke-width="2"/><rect x="-10" y="-24" width="16" height="12" rx="2" fill="#E9B44C" stroke="#8C5A3C" stroke-width="2"/><rect x="-7" y="-21" width="10" height="7" fill="#BFEAF5"/><path d="M18-6L28-4L30 16L20 14" fill="#C9A06A" stroke="#8C5A3C" stroke-width="2" stroke-linejoin="round"/>`,
- fish2:`<path d="M-16 0L-28-10V10Z" fill="#E9B44C" stroke="#8C5A3C" stroke-width="2" stroke-linejoin="round"/><ellipse cx="0" cy="0" rx="18" ry="10" fill="#F2C14E" stroke="#8C5A3C" stroke-width="2"/><path d="M-2-9Q4-16 10-9" fill="#E9B44C" stroke="#8C5A3C" stroke-width="1.5"/><circle cx="9" cy="-2" r="2.4" fill="#1F2A37"/><path d="M-4-6Q0 0-4 6" fill="none" stroke="#C8553D" stroke-width="2"/>`
-});
-/* ---------- organism drawings for Lesson 2-2 ---------- */
-Object.assign(OG,{
- clown:`<path d="M-16 0L-28-10V10Z" fill="#F08A3C" stroke="#1F2A37" stroke-width="2" stroke-linejoin="round"/><ellipse cx="0" cy="0" rx="20" ry="11" fill="#F08A3C" stroke="#1F2A37" stroke-width="2"/><path d="M8-10Q4 0 8 10M-6-11Q-10 0-6 11" stroke="#fff" stroke-width="5" fill="none"/><path d="M8-10Q4 0 8 10M-6-11Q-10 0-6 11" stroke="#1F2A37" stroke-width="1" fill="none"/><circle cx="13" cy="-3" r="2.4" fill="#1F2A37"/>`,
- anemone:`<g stroke="#8E5BB5" stroke-width="7" stroke-linecap="round" fill="none"><path d="M-30 18Q-40-10-30-28M-18 18Q-24-14-12-34M-6 18Q-6-16 0-38M6 18Q8-16 14-34M18 18Q26-12 28-30M30 18Q40-6 38-20"/></g><g stroke="#D7B5F0" stroke-width="3" stroke-linecap="round" fill="none"><path d="M-30 18Q-40-10-30-28M-18 18Q-24-14-12-34M-6 18Q-6-16 0-38M6 18Q8-16 14-34M18 18Q26-12 28-30M30 18Q40-6 38-20"/></g><ellipse cx="0" cy="22" rx="38" ry="9" fill="#6B3E8E"/>`,
- hippo:`<path d="M-30 14V28M-14 16V28M10 16V28M24 14V28" stroke="#5F5466" stroke-width="9" stroke-linecap="round"/><ellipse cx="-4" cy="2" rx="34" ry="20" fill="#8A7E92" stroke="#3F3546" stroke-width="2"/><path d="M24-14C40-18 52-10 52 2C52 12 40 16 26 12Z" fill="#9A8EA2" stroke="#3F3546" stroke-width="2"/><path d="M30 2Q42 8 52 2" stroke="#3F3546" stroke-width="2" fill="none"/><circle cx="30" cy="-10" r="2" fill="#1F2A37"/><circle cx="26" cy="-18" r="4" fill="#8A7E92" stroke="#3F3546" stroke-width="2"/><path d="M44-6l2 1" stroke="#3F3546" stroke-width="2"/>`,
- bee:`<path d="M-4-6C-10-22 6-22 2-6M4-6C8-20 22-14 8-4" fill="#E3F4FA" stroke="#5B6573" stroke-width="1.5" opacity=".9"/><ellipse cx="0" cy="2" rx="14" ry="9" fill="#F2C14E" stroke="#3B3128" stroke-width="2"/><path d="M-4-6V10M4-6V10" stroke="#3B3128" stroke-width="3.5"/><circle cx="15" cy="0" r="6" fill="#3B3128"/><path d="M-14 2L-20 4" stroke="#3B3128" stroke-width="2.5"/>`,
- flower:`<path d="M0 30V2" stroke="#3F7A45" stroke-width="3.5"/><path d="M0 18C8 12 16 14 18 18C12 22 6 22 0 20" fill="#6DBB5E"/><g fill="#F28AB2" stroke="#B24B78" stroke-width="1.5"><circle cx="0" cy="-12" r="8"/><circle cx="10" cy="-4" r="8"/><circle cx="-10" cy="-4" r="8"/><circle cx="6" cy="6" r="8"/><circle cx="-6" cy="6" r="8"/></g><circle cx="0" cy="0" r="6" fill="#F2C14E" stroke="#B07D1A" stroke-width="1.5"/>`,
- trunk:`<path d="M-26 140C-22 60-24 0-30-60L-10-70C-6-10 4-10 10-70L30-62C22 0 22 60 26 140Z" fill="#8C6A4E" stroke="#4A3526" stroke-width="2"/><path d="M-14 120C-12 60-14 20-18-30M8 120C10 70 8 30 14-20" stroke="#6B4F38" stroke-width="2" fill="none"/>`,
- epiphyte:`<g stroke="#2E6B39" stroke-width="1.5"><path d="M0 0C-20-6-30-20-32-30C-20-24-8-14 0-4Z" fill="#6DBB5E"/><path d="M0 0C20-6 30-20 34-30C22-24 8-14 0-4Z" fill="#6DBB5E"/><path d="M0 0C-8-16-6-30 0-40C6-30 8-16 0 0Z" fill="#8CCB74"/><path d="M0 0C-14-14-16-30-12-38C-4-26 0-14 0 0Z" fill="#7FC36B"/></g><circle cx="-4" cy="-30" r="5" fill="#E85D9A"/><circle cx="6" cy="-34" r="5" fill="#E85D9A"/><path d="M-4 2C-14 8-20 6-26 12M2 2C8 10 16 10 22 16" stroke="#B48F6A" stroke-width="2" fill="none"/>`,
- egret:`<path d="M-2 10L-6 30M4 10L6 30" stroke="#E9B44C" stroke-width="2.5"/><ellipse cx="0" cy="0" rx="14" ry="10" fill="#fff" stroke="#7B8794" stroke-width="2"/><path d="M8-4C14-14 12-24 16-28" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M8-4C14-14 12-24 16-28" stroke="#7B8794" stroke-width="1" fill="none"/><circle cx="17" cy="-29" r="5" fill="#fff" stroke="#7B8794" stroke-width="1.5"/><path d="M21-29L32-27L21-26Z" fill="#E9B44C"/><circle cx="18" cy="-30" r="1.2" fill="#1F2A37"/><path d="M-8-6C-6-10 0-10 4-8" stroke="#F2C14E" stroke-width="2.5" fill="none"/>`,
- cow:`<path d="M-26 10V30M-14 12V30M14 12V30M24 10V30" stroke="#5B4A3A" stroke-width="5" stroke-linecap="round"/><rect x="-32" y="-14" width="62" height="30" rx="14" fill="#F4EEE4" stroke="#3B3128" stroke-width="2"/><path d="M-20-12C-14-4-6-6-6-12M6 4C12 12 20 10 22 2" fill="#3B3128"/><path d="M28-8L42-14L48 0L40 8L30 4Z" fill="#F4EEE4" stroke="#3B3128" stroke-width="2" stroke-linejoin="round"/><path d="M40-14L44-24M46-12L52-20" stroke="#C9A06A" stroke-width="3" stroke-linecap="round"/><circle cx="40" cy="-4" r="1.8" fill="#1F2A37"/><ellipse cx="46" cy="4" rx="4" ry="3" fill="#E3B7A8"/><path d="M-32-4C-40 0-40 12-36 16" stroke="#3B3128" stroke-width="2" fill="none"/>`,
- wasp:`<path d="M-2-6C-8-26 10-26 6-6M4-6C14-22 28-14 10-2" fill="#D6E8F2" stroke="#5B6573" stroke-width="1.5" opacity=".9"/><ellipse cx="-16" cy="2" rx="14" ry="7" fill="#1F2A37"/><path d="M-22 0h12M-20 6h8" stroke="#E9B44C" stroke-width="2.5"/><path d="M-30 4L-36 6" stroke="#1F2A37" stroke-width="2"/><ellipse cx="4" cy="0" rx="9" ry="5" fill="#2C3540"/><circle cx="16" cy="-2" r="5" fill="#2C3540"/><path d="M18-6L26-14M18-6L28-10" stroke="#2C3540" stroke-width="1.5"/><path d="M0 4L-4 16M6 4L6 16M10 2L14 14" stroke="#2C3540" stroke-width="1.8"/>`,
- tick:`<ellipse cx="0" cy="2" rx="10" ry="12" fill="#6B3E1F" stroke="#3B2010" stroke-width="2"/><circle cx="0" cy="-11" r="4" fill="#3B2010"/><g stroke="#3B2010" stroke-width="2" fill="none"><path d="M-8-4L-16-10M-9 2L-17 0M-8 8L-15 12M-5 12L-10 18M8-4L16-10M9 2L17 0M8 8L15 12M5 12L10 18"/></g>`,
- cat:`<path d="M24 6C40 0 40-16 32-20" stroke="#E2A35B" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M-18 10V28M-8 12V28M10 12V28M18 10V28" stroke="#C98A44" stroke-width="5" stroke-linecap="round"/><ellipse cx="0" cy="2" rx="26" ry="14" fill="#E2A35B" stroke="#8C5A3C" stroke-width="2"/><path d="M-8-8Q-4 2-8 12M2-10Q6 2 2 14" stroke="#C98A44" stroke-width="3" fill="none"/><circle cx="-26" cy="-10" r="12" fill="#E2A35B" stroke="#8C5A3C" stroke-width="2"/><path d="M-36-16L-36-28L-28-20M-22-20L-16-28L-16-16" fill="#E2A35B" stroke="#8C5A3C" stroke-width="2" stroke-linejoin="round"/><circle cx="-30" cy="-11" r="1.8" fill="#1F2A37"/><circle cx="-22" cy="-11" r="1.8" fill="#1F2A37"/><path d="M-28-5h4" stroke="#8C5A3C" stroke-width="2"/>`,
- oxpecker:`<path d="M-12 2L-24 6L-22-2Z" fill="#7A5232"/><ellipse cx="0" cy="0" rx="13" ry="8" fill="#8C6A4E" stroke="#4A3526" stroke-width="1.5"/><circle cx="11" cy="-5" r="6" fill="#8C6A4E" stroke="#4A3526" stroke-width="1.5"/><path d="M16-6L26-4L16-2Z" fill="#E0422E"/><circle cx="12" cy="-6" r="2.4" fill="#F2C14E"/><circle cx="12" cy="-6" r="1" fill="#1F2A37"/><path d="M-2 7V12M4 7V12" stroke="#4A3526" stroke-width="2"/>`,
- buffalo:`<path d="M-40 16V44M-24 18V44M18 18V44M34 16V44" stroke="#2C3540" stroke-width="9" stroke-linecap="round"/><path d="M-50-4C-50-24-20-30 10-28C34-26 50-16 50 4C50 20 34 26 10 26C-20 26-50 22-50-4Z" fill="#4B5563" stroke="#1F2A37" stroke-width="2"/><path d="M-50 0C-60 6-60 18-56 24" stroke="#1F2A37" stroke-width="3" fill="none"/><path d="M40-14C60-20 72-8 70 10C68 22 56 24 46 16Z" fill="#4B5563" stroke="#1F2A37" stroke-width="2"/><path d="M44-16C40-30 56-34 66-24C60-30 50-26 52-16M60-16C66-28 82-26 82-12C78-20 70-20 66-12" fill="#9AA5B1" stroke="#1F2A37" stroke-width="2"/><circle cx="56" cy="-4" r="2.2" fill="#1F2A37"/>`,
- ant:`<circle cx="-12" cy="2" r="6" fill="#9A3B22"/><circle cx="0" cy="2" r="4" fill="#9A3B22"/><circle cx="10" cy="0" r="5" fill="#9A3B22"/><g stroke="#6B2814" stroke-width="1.6" fill="none"><path d="M-2 4L-8 12M0 5L0 13M2 4L8 12M14-4L18-10"/></g>`,
- leafbit:`<path d="M-14 6C-14-10 4-18 16-14C14 0 2 10-14 6Z" fill="#8CCB74" stroke="#2E6B39" stroke-width="1.5"/><path d="M-12 4L12-12" stroke="#2E6B39" stroke-width="1"/>`,
- monkey:`<path d="M14 10C30 14 34 30 24 36" stroke="#C9A06A" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="2" cy="6" rx="12" ry="14" fill="#E2B46B" stroke="#7A5232" stroke-width="2"/><path d="M-8 14L-14 28M10 16L14 28" stroke="#E2B46B" stroke-width="5" stroke-linecap="round"/><circle cx="0" cy="-14" r="10" fill="#9C8C7E" stroke="#5B4A3A" stroke-width="2"/><ellipse cx="0" cy="-11" rx="7" ry="6" fill="#FFF1D9"/><circle cx="-3" cy="-13" r="1.6" fill="#1F2A37"/><circle cx="3" cy="-13" r="1.6" fill="#1F2A37"/><ellipse cx="0" cy="-7" rx="3" ry="1.6" fill="#1F2A37"/>`,
- wolf:`<path d="M-26 0C-40-4-44 8-38 14" stroke="#7B8794" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M-18 8V28M-10 10V28M10 10V28M18 8V28" stroke="#5B6573" stroke-width="5" stroke-linecap="round"/><ellipse cx="0" cy="0" rx="26" ry="13" fill="#9AA5B1" stroke="#3B4552" stroke-width="2"/><path d="M20-6L34-14L48-4L34 4Z" fill="#9AA5B1" stroke="#3B4552" stroke-width="2" stroke-linejoin="round"/><path d="M26-10L28-24L34-14" fill="#9AA5B1" stroke="#3B4552" stroke-width="2" stroke-linejoin="round"/><circle cx="34" cy="-6" r="1.8" fill="#1F2A37"/><path d="M46-4h3" stroke="#1F2A37" stroke-width="3"/>`,
- raven:`<path d="M-12 0L-26 6L-24-4Z" fill="#1F2A37"/><ellipse cx="0" cy="0" rx="14" ry="8" fill="#2C3540"/><path d="M-6-4C0-14 10-12 12-6" fill="#3B4552"/><circle cx="12" cy="-6" r="6" fill="#2C3540"/><path d="M17-7L26-4L17-3Z" fill="#1F2A37"/><circle cx="13" cy="-7" r="1.2" fill="#fff"/><path d="M-2 7V14M4 7V14" stroke="#1F2A37" stroke-width="2"/>`
-});
-/* ---------- Lesson 2-2 SVG helpers ---------- */
-const T=(x,y,t,sz,col,an,w)=>`<text x="${x}" y="${y}" font-size="${sz||18}" fill="${col||"#1F2A37"}" text-anchor="${an||"middle"}" font-weight="${w||800}" font-family="system-ui,sans-serif">${t}</text>`;
-const PILL=(x,y,t,bg,fg,sz)=>{sz=sz||17;const w=Math.round(t.length*sz*.56+24);return `<rect x="${x-w/2}" y="${y-sz-4}" width="${w}" height="${sz+14}" rx="${(sz+14)/2}" fill="${bg}"/>`+T(x,y,t,sz,fg);};
-const SKY=(id,h,a,b)=>`<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a||"#9FD0E6"}"/><stop offset="1" stop-color="${b||"#F3EBDD"}"/></linearGradient></defs><rect width="500" height="${h}" fill="url(#${id})"/>`;
-const SEA=(id)=>`<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#155E78"/></linearGradient></defs><rect width="500" height="300" fill="url(#${id})"/><path d="M0 270Q250 250 500 272V300H0Z" fill="#E3C98F"/>`;
-const SYM=(x,y,s)=>{const c=s==="+"?"#2A9D8F":s==="0"?"#7B8794":"#C8553D";return `<circle cx="${x}" cy="${y}" r="20" fill="${c}" stroke="#fff" stroke-width="3"/>`+T(x,y+9,s,26,"#fff");};
-const ARW=`<defs><marker id="aw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#E9B44C"/></marker></defs>`;
-const GAIN=(x1,y1,x2,y2)=>`<path d="M${x1} ${y1}Q${(x1+x2)/2} ${Math.min(y1,y2)-40} ${x2} ${y2}" fill="none" stroke="#E9B44C" stroke-width="4" stroke-dasharray="8 6" marker-end="url(#aw)"/>`;
+/* 3. changing state */
+const CB={x:90,y:60,w:440,h:380};const csLat=[];for(let i=0;i<8;i++)for(let j=0;j<5;j++)csLat.push({hx:CB.x+45+i*50,hy:CB.y+CB.h-30-j*48,ph:Math.random()*6.28});
+const CL={x:CB.x,y:CB.y+150,w:CB.w,h:CB.h-150};let csLiq=mk(34,CL,19,60),csGas=mk(14,CB,19,240);
+const csT=()=>+$("#csR").value;
+sim("csC",16/10,(s,dt)=>{const g=s.ctx;bg(s);const T=csT();g.strokeStyle="rgba(255,255,255,.55)";g.lineWidth=4;g.strokeRect(CB.x,CB.y,CB.w,CB.h);
+  const half=(T===0||T===100);
+  if(T<0||T===0){const a=RM?0:2+(T+20)/4;csLat.forEach((p,i)=>{if(T===0&&i%3===0)return;ball(g,p.hx+Math.sin(s.t*21+p.ph)*a,p.hy+Math.cos(s.t*17+p.ph)*a,19,BLU);});}
+  if(T>=0&&T<=100){const sp=40+T*1.3;const n=T===0?12:T===100?20:34;liqStep(csLiq,CL,dt,sp);csLiq.slice(0,n).forEach(p=>{trail(g,p,.1);ball(g,p.x,p.y,p.r,BLU);});}
+  if(T>=100){const n=T===100?5:14,sp=220+(T-100)*6;gasStep(csGas,CB,dt,sp);csGas.slice(0,n).forEach(p=>{trail(g,p,.07);ball(g,p.x,p.y,p.r,BLU);});}
+  /* thermometer */
+  const tx=660,top=60,bot=420,Y=t=>bot-(t+20)/140*(bot-top);g.fillStyle="#EEF3F6";g.fillRect(tx-12,top-10,24,bot-top+20);g.fillStyle="#C8553D";g.fillRect(tx-7,Y(T),14,bot-Y(T)+10);g.beginPath();g.arc(tx,bot+28,22,0,7);g.fill();
+  [[100,"100"],[0,"0"]].forEach(([t,l])=>{g.strokeStyle="#2A9D8F";g.lineWidth=2;g.beginPath();g.moveTo(tx-30,Y(t));g.lineTo(tx+30,Y(t));g.stroke();lab(g,l,tx+60,Y(t)+8,"#7FD3E6",15);});
+  lab(g,T+"°C",tx,40,"#F6A58F",20);
+  lab(g,T<0?"solid (ice)":T===0?"melting":T<100?"liquid (water)":T===100?"boiling":"gas (steam)",CB.x+CB.w/2,486,"#fff",19);});
+function csSet(){const T=csT();const M=T<0?["<b>Ice below 0°C:</b> particles vibrate in fixed places. Add energy: they vibrate faster.","<b>جليد تحت 0°C:</b> الجسيمات تهتز في أماكن ثابتة. أضف طاقة: تهتز أسرع."]:
+ T===0?["<b>0°C, melting point:</b> particles gain enough energy to break out of their fixed places. Solid and liquid are both here.","<b>0°C، درجة الانصهار:</b> تكتسب الجسيمات طاقة تكفي لتتحرّر من أماكنها الثابتة. الصلب والسائل موجودان معًا."]:
+ T<100?["<b>Liquid water:</b> particles slide past each other. Hotter water = faster particles.","<b>ماء سائل:</b> الجسيمات تنزلق بجوار بعضها. ماء أسخن = جسيمات أسرع."]:
+ T===100?["<b>100°C, boiling point:</b> particles gain enough energy to escape the liquid and become a gas.","<b>100°C، درجة الغليان:</b> تكتسب الجسيمات طاقة تكفي لتهرب من السائل وتصبح غازًا."]:
+ ["<b>Steam above 100°C:</b> particles are far apart and move very fast. Remove energy and the changes go backwards: gas → liquid → solid.","<b>بخار فوق 100°C:</b> الجسيمات متباعدة وسريعة جدًا. انزع الطاقة فتنعكس التغيّرات: غاز ← سائل ← صلب."];setMsg($("#csMsg"),M[0],M[1]);}
+$("#csR").oninput=csSet;csSet();
+whyBox($("#why2"),"Why does ice melt when you add thermal energy?","لماذا ينصهر الجليد عندما نضيف طاقة حرارية؟",[
+ ["The particles move faster until they can break out of their fixed places.","تتحرك الجسيمات أسرع حتى تتحرّر من أماكنها الثابتة.",1,"Adding energy raises kinetic energy; at 0°C the solid structure breaks apart.","إضافة الطاقة ترفع الطاقة الحركية، وعند 0°C يتفكك البناء الصلب."],
+ ["The particles melt into smaller pieces.","الجسيمات نفسها تنصهر إلى قطع أصغر.",0,"Particles do not change. Only their motion and spacing change.","الجسيمات لا تتغيّر، بل تتغيّر حركتها والمسافات بينها."],
+ ["The particles stop moving.","تتوقف الجسيمات عن الحركة.",0,"Adding energy makes them move faster, not stop.","إضافة الطاقة تجعلها أسرع، لا تجعلها تتوقف."]]);
 
-/* ---------- 3. web of life ---------- */
-const WB=[["<b>With the nonliving environment:</b> populations use water, sunlight, soil and air. A drought or a cold winter changes how many can survive.","<b>مع البيئة غير الحية:</b> تستخدم الجماعات الماء وضوء الشمس والتربة والهواء، والجفاف أو الشتاء البارد يغيّر عدد من يستطيع البقاء."],
- ["<b>Symbiosis:</b> close, long-term bonds between two species: mutualism, commensalism and parasitism.","<b>التكافل:</b> روابط وثيقة طويلة الأمد بين نوعين: تبادل المنفعة والتعايش والتطفل."],
- ["<b>Community relationships:</b> populations that share an area also cooperate, hunt and are hunted, and compete.","<b>علاقات المجتمع:</b> الجماعات التي تشترك في منطقة واحدة تتعاون أيضًا، وتصطاد وتُصطاد، وتتنافس."]];
-function wbDraw(m){const box=(x,y,w,t,on,col)=>`<rect x="${x-w/2}" y="${y-22}" width="${w}" height="44" rx="12" fill="${on?col:"#fff"}" stroke="${on?col:"#C9D3DD"}" stroke-width="2.5"/>`+T(x,y+6,t,16,on?"#fff":"#9AA5B1");
-  const ln=(x1,y1,x2,y2,on)=>`<path d="M${x1} ${y1}V${(y1+y2)/2}H${x2}V${y2}" fill="none" stroke="${on?"#1F2A37":"#D9DEE3"}" stroke-width="2.5"/>`;
-  let h=`<rect width="500" height="300" fill="#FFFDF8"/>`+ln(250,58,90,108,m===0)+ln(250,58,290,108,m>0)+ln(290,130,170,180,m===1)+ln(290,130,400,180,m===2);
-  [0,1,2].forEach(i=>h+=ln(170,202,[80,170,260][i],250,m===1));
-  [0,1,2].forEach(i=>h+=ln(400,202,[334,400,466][i],250,m===2));
-  h+=box(250,40,150,"Populations",true,"#1F2A37")+box(90,130,150,"Nonliving",m===0,"#4FA6C8")+box(290,130,150,"Each other",m>0,"#2A9D8F")+box(170,190,120,"Symbiosis",m===1,"#2A9D8F")+box(400,190,120,"Community",m===2,"#8C5A3C");
-  ["+/+","+/0","+/−"].forEach((t,i)=>h+=box([80,170,260][i],260,76,t,m===1,"#2A9D8F"));
-  ["coop.","pred.","comp."].forEach((t,i)=>h+=box([334,400,466][i],260,62,t,m===2,"#8C5A3C"));
-  if(m===0)h+=og("drop",40,200,.9)+og("sun",95,200,.9)+og("rock",150,204,.9);
-  $("#wbSvg").innerHTML=h;setMsg($("#wbMsg"),WB[m][0],WB[m][1]);}
-segBind("wbMode",wbDraw);wbDraw(0);
+/* 4. size of an atom */
+function zmDraw(k){let s=`<rect width="440" height="300" fill="#0E1A26"/>`;
+  if(k===0){s+=`<path d="M40 210 C140 170 260 250 400 190" stroke="#8C5A3C" stroke-width="10" fill="none" stroke-linecap="round"/><circle cx="220" cy="208" r="16" fill="none" stroke="#E9B44C" stroke-width="3"/>`;}
+  else if(k===1){s+=`<rect x="60" y="80" width="320" height="140" rx="20" fill="#8C5A3C"/>`;for(let i=0;i<7;i++)s+=`<path d="M${70+i*45} 82 q20 70 0 136" stroke="#5E3B26" stroke-width="3" fill="none"/>`;s+=`<circle cx="220" cy="150" r="16" fill="none" stroke="#E9B44C" stroke-width="3"/>`;}
+  else{for(let i=0;i<9;i++)for(let j=0;j<5;j++){const x=50+i*42+(j%2)*21,y=60+j*42;s+=`<circle cx="${x}" cy="${y}" r="17" fill="url(#zmg)"/>`;}}
+  const bars=[["0.1 mm","0,1 مم"],["0.0001 mm","0,0001 مم"],["0.0000001 mm","0,0000001 مم"]];
+  s=`<defs><radialGradient id="zmg" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#BFEAF5"/><stop offset="1" stop-color="#2A8FB0"/></radialGradient></defs>`+s+`<line x1="40" y1="272" x2="${k===2?82:k===1?120:400}" y2="272" stroke="#E9B44C" stroke-width="4"/><text x="40" y="262" fill="#E9B44C" font-size="15" font-weight="800" font-family="ui-monospace,monospace">${bars[k][0]}</text><text x="420" y="30" text-anchor="end" fill="#fff" font-size="16" font-weight="800">${["a human hair","× 1 000","× 1 000 000: atoms"][k]}</text>`;
+  $("#zmSvg").innerHTML=s;
+  const M=[["A human hair is about <b>0.1 mm</b> thick. You can just see it. Zoom in on the yellow circle.","سُمك شعرة الإنسان حوالي <b>0.1 مم</b>، وبالكاد تراها. كبّر الدائرة الصفراء."],["Magnified 1 000 times, the hair looks like a thick rope with scales. Still no atoms in sight! Zoom in again.","بتكبير 1000 مرة تبدو الشعرة حبلًا سميكًا عليه قشور، ولا ذرات بعد! كبّر مرة أخرى."],["Magnified about <b>1 000 000 times</b>, we finally reach atoms. About <b>one million atoms</b> side by side would be as wide as one hair! (rounded numbers)","بتكبير حوالي <b>مليون مرة</b> نصل أخيرًا إلى الذرات. حوالي <b>مليون ذرة</b> متجاورة تساوي عرض شعرة واحدة! (أرقام تقريبية)"]];setMsg($("#zmMsg"),M[k][0],M[k][1]);}
+seg("#zmMode",zmDraw);zmDraw(0);
 
-/* ---------- 4. symbiosis: build the symbol ---------- */
-const SYC=["+","0","−"],SYT=[["+","+"],["+","0"],["+","−"]];let sy={m:0,a:0,b:0};
-const SYN=[["Mutualism","تبادل المنفعة","both partners benefit","يستفيد الشريكان كلاهما"],["Commensalism","التعايش","one benefits; the other is not harmed or helped","أحدهما يستفيد والآخر لا يتضرّر ولا يستفيد"],["Parasitism","التطفل","one benefits (the parasite); the other is harmed (the host)","أحدهما يستفيد (الطفيلي) والآخر يتضرّر (العائل)"]];
-function syDraw(){const A=SYC[sy.a],B=SYC[sy.b],ok=A===SYT[sy.m][0]&&B===SYT[sy.m][1];
-  let h=`<rect width="500" height="220" fill="#FFFDF8"/><path d="M150 110H350" stroke="#C9D3DD" stroke-width="6" stroke-dasharray="10 8"/>`;
-  h+=`<circle cx="120" cy="110" r="62" fill="#F3EBDD" stroke="#1F2A37" stroke-width="2.5"/><circle cx="380" cy="110" r="62" fill="#F3EBDD" stroke="#1F2A37" stroke-width="2.5"/>`+T(120,80,"Partner A",17)+T(380,80,"Partner B",17)+SYM(120,128,A)+SYM(380,128,B);
-  h+=PILL(250,40,"["+A+" / "+B+"]",ok?"#2A9D8F":"#1F2A37","#fff",22)+T(250,206,SYN[sy.m][0]+" = "+SYN[sy.m][2],14,"#5B6573",undefined,700);
-  $("#syLabel").innerHTML=h;$("#syA").textContent="Partner A: "+A;$("#syB").textContent="Partner B: "+B;
-  if(ok)setMsg($("#syMsg"),`${ICON.check} <b>${SYN[sy.m][0]} [${A} / ${B}]:</b> ${SYN[sy.m][2]}. Try the next type.`,`${ICON.check} <b>${SYN[sy.m][1]} [${A} / ${B}]:</b> ${SYN[sy.m][3]}. جرّب النوع التالي.`);
-  else setMsg($("#syMsg"),`<b>${SYN[sy.m][0]}:</b> ${SYN[sy.m][2]}. Tap the partner buttons until the symbols match.`,`<b>${SYN[sy.m][1]}:</b> ${SYN[sy.m][3]}. اضغط زرَّي الشريكين حتى تتطابق الرموز.`,true);}
-$("#syA").onclick=()=>{sy.a=(sy.a+1)%3;syDraw();};$("#syB").onclick=()=>{sy.b=(sy.b+1)%3;syDraw();};
-segBind("syMode",v=>{sy.m=v;syDraw();});syDraw();
+/* atom drawing (SVG) */
+const EL={H:["#F4F6F8","#9AA5B1",15],O:["#E57A62","#A8402C",24],C:["#5B6675","#1F2A37",23],N:["#7CC4DE","#2A6F8F",23],He:["#F3D27E","#C08F1E",18],Na:["#C9A6F2","#6A3FB0",26],Cl:["#9ED38E","#4E8F3C",25],Fe:["#C99A7A","#8C5A3C",24]};
+let gid=0;function atm(x,y,e,sc){const c=EL[e],r=c[2]*(sc||1),id="ag"+(gid++);return `<defs><radialGradient id="${id}" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="${c[0]}"/><stop offset="1" stop-color="${c[1]}"/></radialGradient></defs><circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id})"/><text x="${x}" y="${y+5}" text-anchor="middle" font-size="${Math.round(13*(sc||1))}" font-weight="800" fill="${e==="H"||e==="He"?"#1F2A37":"#fff"}">${e}</text>`;}
+const mini=(parts,w)=>`<svg viewBox="0 0 ${w||120} 70" style="width:100%;max-width:150px;height:auto;display:block;margin:0 auto 6px;background:#0E1A26;border-radius:10px">${parts}</svg>`;
 
-/* ---------- 5. mutualism ---------- */
-const MU=[
- {en:"<b>Clownfish [+]:</b> the anemone's stinging tentacles protect it from predators. <b>Sea anemone [+]:</b> it gets nutrients from the clownfish's waste.",ar:"<b>سمكة المهرج [+]:</b> تحميها لوامس شقائق النعمان اللاسعة من المفترسات. <b>شقائق النعمان [+]:</b> تحصل على مغذيات من فضلات سمكة المهرج."},
- {en:"<b>Barbel fish [+]:</b> it follows the hippo and gets a steady food source. <b>Hippopotamus [+]:</b> the fish remove its parasites and clean its mouth.",ar:"<b>سمكة البربيل [+]:</b> تتبع فرس النهر وتحصل على مصدر غذاء ثابت. <b>فرس النهر [+]:</b> تزيل الأسماك طفيلياته وتنظّف فمه."},
- {en:"<b>Bees [+]:</b> they collect nectar to make honey. <b>Flowers [+]:</b> bees carry their pollen from flower to flower, so the flowers are pollinated.",ar:"<b>النحل [+]:</b> يجمع الرحيق ليصنع العسل. <b>الزهور [+]:</b> ينقل النحل حبوب لقاحها من زهرة إلى أخرى، فيحدث التلقيح."}];
-function muDraw(m){let h="";
-  if(m===0)h=SEA("muS")+og("anemone",170,210,2.4)+og("clown",330,150,2)+ARW+GAIN(170,120,300,128)+GAIN(320,186,200,196)+PILL(110,40,"Clownfish: protection","#2A9D8F","#fff",15)+PILL(370,280,"Anemone: nutrients","#2A9D8F","#fff",15)+SYM(330,96,"+")+SYM(80,190,"+");
-  else if(m===1)h=SKY("muK",300,"#BFDDEB","#E8F2F4")+`<rect y="150" width="500" height="150" fill="#4F8FA8"/><path d="M0 150q20-6 40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0" stroke="#fff" stroke-width="2" fill="none" opacity=".5"/>`+og("hippo",220,150,2.4)+og("fish2",340,210,1.3)+og("fish2",400,240,1.1)+og("fish2",300,250,1)+ARW+GAIN(340,196,300,140)+GAIN(250,190,330,230)+PILL(110,40,"Fish: food","#2A9D8F","#fff",15)+PILL(380,40,"Hippo: cleaned","#2A9D8F","#fff",15)+SYM(220,74,"+")+SYM(440,190,"+");
-  else h=SKY("muB",300)+`<path d="M0 230Q250 214 500 232V300H0Z" fill="#9CCB7E"/>`+og("flower",140,210,2)+og("flower",360,214,1.8)+og("bee",250,110,2)+ARW+GAIN(160,170,230,110)+GAIN(270,110,350,170)+PILL(110,40,"Bee: nectar","#2A9D8F","#fff",15)+PILL(390,40,"Flower: pollination","#2A9D8F","#fff",15)+SYM(250,60,"+")+SYM(440,140,"+");
-  $("#muSvg").innerHTML=h;setMsg($("#muMsg"),MU[m].en,MU[m].ar);}
-segBind("muMode",muDraw);muDraw(0);
-whyBox($("#why1"),"Why is the clownfish and anemone relationship mutualism?","لماذا تُعدّ العلاقة بين سمكة المهرج وشقائق النعمان تبادلًا للمنفعة؟",[
- ["Because they live in the same place.","لأنهما تعيشان في المكان نفسه.",0,"Many organisms share a place. Ask: does each partner gain?","كائنات كثيرة تشترك في مكان واحد. اسأل: هل يستفيد كل شريك؟"],
- ["Because both partners gain something: protection and nutrients.","لأن كل شريك يكسب شيئًا: الحماية والمغذيات.",1,"Both get a +, so it is [+ / +].","كلاهما يحصل على +، فهي [+ / +]."],
- ["Because the anemone eats the clownfish.","لأن شقائق النعمان تأكل سمكة المهرج.",0,"It does not eat it; it protects it.","لا تأكلها؛ بل تحميها."]]);
+/* 5. elements and compounds */
+const ECX=[["Helium gas","غاز الهيليوم",mini(atm(35,35,"He",.9)+atm(85,38,"He",.9)),0,"Only one colour: helium atoms on their own.","لون واحد فقط: ذرات هيليوم منفردة."],
+ ["Water","الماء",mini(atm(60,40,"O",.9)+atm(36,26,"H",.9)+atm(84,26,"H",.9)),1,"Two colours: hydrogen and oxygen bonded together.","لونان: هيدروجين وأكسجين مرتبطان معًا."],
+ ["Oxygen gas","غاز الأكسجين",mini(atm(46,35,"O",.9)+atm(76,35,"O",.9)),0,"Two atoms, but both are oxygen: one type of atom, so an element.","ذرتان لكنهما أكسجين: نوع واحد من الذرات، إذن عنصر."],
+ ["Carbon dioxide","ثاني أكسيد الكربون",mini(atm(60,35,"C",.9)+atm(28,35,"O",.9)+atm(92,35,"O",.9)),1,"Carbon and oxygen: two different elements bonded together.","كربون وأكسجين: عنصران مختلفان مرتبطان معًا."]];
+cardsQ($("#ecCards"),ECX.map(x=>({t:[x[2]+x[0],x[1]],o:[["Element","عنصر"],["Compound","مركّب"]],cls:"two",a:x[3],w:[x[4],x[5]],h:["Count the types of atoms (colours), not the number of atoms.","عُدّ أنواع الذرات (الألوان)، لا عدد الذرات."]})));
+whyBox($("#why3"),"Water is made of hydrogen and oxygen. Why is it not like them?","الماء مكوّن من الهيدروجين والأكسجين. لماذا لا يشبههما؟",[
+ ["A compound has different properties from the elements that make it.","للمركّب خصائص مختلفة عن العناصر المكوّنة له.",1,"Hydrogen and oxygen are gases, but water is a liquid at room temperature.","الهيدروجين والأكسجين غازان، أما الماء فسائل عند درجة حرارة الغرفة."],
+ ["Water has no atoms.","الماء ليس فيه ذرات.",0,"Water is made of hydrogen and oxygen atoms.","الماء يتكوّن من ذرات هيدروجين وأكسجين."],
+ ["Water is an element.","الماء عنصر.",0,"It has two types of atoms, so it is a compound.","فيه نوعان من الذرات، إذن هو مركّب."]]);
 
-/* ---------- 6. commensalism ---------- */
-const CO=[
- {en:"<b>Epiphyte [+]:</b> this plant's roots hold on to the tree. It gets space high up in the sunlight, and takes water and nutrients from the air and rain. <b>Tree [0]:</b> it is not helped or harmed.",ar:"<b>النبات الهوائي [+]:</b> تتمسّك جذوره بالشجرة، فيحصل على مكان عالٍ في ضوء الشمس، ويأخذ الماء والمغذيات من الهواء والمطر. <b>الشجرة [0]:</b> لا تستفيد ولا تتضرّر."},
- {en:"<b>Cattle egrets [+]:</b> they eat the insects and worms that the grazing cattle kick up from the grass. <b>Cattle [0]:</b> they are not affected.",ar:"<b>طيور البلشون [+]:</b> تأكل الحشرات والديدان التي تُثيرها الماشية من العشب أثناء رعيها. <b>الماشية [0]:</b> لا تتأثر."}];
-function coDraw(m){let h=SKY("coS",300);
-  if(m===0)h+=`<path d="M0 260H500V300H0Z" fill="#9CCB7E"/>`+og("trunk",250,150,1.2)+`<ellipse cx="250" cy="40" rx="190" ry="50" fill="#5FA052" opacity=".9"/>`+og("epiphyte",232,150,1.6)+og("sun",450,40,1)+`<path d="M420 70L280 120" stroke="#E9B44C" stroke-width="3" stroke-dasharray="6 6"/>`+SYM(150,130,"+")+SYM(350,210,"0")+PILL(120,175,"epiphyte","#2A9D8F","#fff",14)+PILL(380,250,"tree","#7B8794","#fff",14);
-  else h+=`<path d="M0 200Q250 186 500 200V300H0Z" fill="#9CCB7E"/>`+[40,90,140,190,320,380,440].map(x=>og("grass",x,250,.7)).join("")+og("cow",200,220,1.8)+og("egret",350,236,1.4)+og("egret",420,250,1.2)+og("locust",300,272,.6)+`<g fill="#5B4A3A">${[[280,250],[300,240],[320,258]].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="2.5"/>`).join("")}</g>`+SYM(380,170,"+")+SYM(200,140,"0")+PILL(420,130,"egrets","#2A9D8F","#fff",14)+PILL(200,100,"cattle","#7B8794","#fff",14);
-  $("#coSvg").innerHTML=h;setMsg($("#coMsg"),CO[m].en,CO[m].ar);}
-segBind("coMode",coDraw);coDraw(0);
-whyBox($("#why2"),"Why do we give the tree a 0 and not a −?","لماذا نعطي الشجرة 0 وليس −؟",[
- ["The epiphyte does not take food or water from the tree, so the tree is not harmed.","النبات الهوائي لا يأخذ غذاءً ولا ماءً من الشجرة، فلا تتضرّر الشجرة.",1,"It only uses the tree as a place to live: [+ / 0].","إنه يستخدم الشجرة مكانًا للعيش فقط: [+ / 0]."],
- ["The tree is happy to help the epiphyte.","الشجرة سعيدة بمساعدة النبات الهوائي.",0,"Trees do not choose. Ask: does the tree gain or lose anything?","الأشجار لا تختار. اسأل: هل تكسب الشجرة شيئًا أو تخسر؟"],
- ["Because the epiphyte is smaller than the tree.","لأن النبات الهوائي أصغر من الشجرة.",0,"Size does not decide the symbol; the effect does.","الحجم لا يحدّد الرمز؛ بل الأثر."]]);
+/* 6. breaking down water */
+let elOn=false,elV=0;const elB=[];
+sim("elC",4/3,(s,dt)=>{const g=s.ctx;bg(s);if(elOn&&elV<1)elV=Math.min(1,elV+dt*.12);
+  beaker(g,150,300,500,240,"rgba(42,143,176,.45)",.85);
+  [[270,"H"],[530,"O"]].forEach(([x,e],i)=>{const lvl=i?elV/2:elV,top=110,h=300;g.fillStyle="rgba(42,143,176,.45)";g.fillRect(x-40,top+h*lvl,80,h*(1-lvl));g.fillStyle="rgba(255,255,255,.12)";g.fillRect(x-40,top,80,h*lvl);
+    g.strokeStyle="rgba(255,255,255,.8)";g.lineWidth=4;g.beginPath();g.moveTo(x-40,top+h+20);g.lineTo(x-40,top+20);g.arc(x,top+20,40,Math.PI,0);g.lineTo(x+40,top+h+20);g.stroke();
+    for(let k=0;k<=4;k++){g.fillStyle="rgba(255,255,255,.6)";g.fillRect(x+28,top+20+k*65,12,3);}
+    g.fillStyle="#9AA5B1";g.fillRect(x-6,400,12,120);
+    lab(g,i?"oxygen":"hydrogen",x,90,i?"#F6A58F":"#E9F4F8",17);lab(g,(Math.round(lvl*20))+" mL",x,275,"#E9B44C",13);});
+  if(elOn&&elV<1&&!RM){if(Math.random()<.5)elB.push({x:270+(Math.random()-.5)*20,y:400,e:0});if(Math.random()<.25)elB.push({x:530+(Math.random()-.5)*20,y:400,e:1});}
+  for(let i=elB.length-1;i>=0;i--){const b=elB[i];b.y-=140*dt;const top=110+300*(b.e?elV/2:elV);if(b.y<top){elB.splice(i,1);continue;}g.strokeStyle="rgba(255,255,255,.8)";g.lineWidth=2;g.beginPath();g.arc(b.x,b.y,5,0,7);g.stroke();}
+  g.fillStyle="#1F2A37";g.strokeStyle="#E9B44C";g.lineWidth=3;g.fillRect(340,20,120,50);g.strokeRect(340,20,120,50);lab(g,"− battery +",400,52,"#E9B44C",13);
+  g.strokeStyle=elOn?"#E9B44C":"#5B6675";g.lineWidth=4;g.beginPath();g.moveTo(340,45);g.lineTo(110,45);g.lineTo(110,580);g.lineTo(270,580);g.lineTo(270,520);g.moveTo(460,45);g.lineTo(690,45);g.lineTo(690,580);g.lineTo(530,580);g.lineTo(530,520);g.stroke();
+  if(elOn&&elV>=1&&!s.done){s.done=1;elMsgEnd();}});
+function elMsgEnd(){setMsg($("#elMsg"),"<b>Done!</b> Hydrogen: 20 mL. Oxygen: 10 mL. There is <b>twice as much hydrogen</b> as oxygen, because each water molecule (H₂O) has <b>2 hydrogen atoms and 1 oxygen atom</b>.","<b>انتهى!</b> الهيدروجين: 20 mL، والأكسجين: 10 mL. كمية الهيدروجين <b>ضعف</b> كمية الأكسجين، لأن كل جزيء ماء (H₂O) فيه <b>ذرتا هيدروجين وذرة أكسجين واحدة</b>.");}
+function elReset(){elOn=false;elV=0;elB.length=0;SIMS.forEach(x=>{if(x.c.id==="elC")x.done=0;});setMsg($("#elMsg"),"Tap <b>Switch on</b>. Electricity passes through the water.","اضغط <b>Switch on</b>. تمرّ الكهرباء خلال الماء.");}
+$("#elGo").onclick=()=>{elOn=true;if(RM){elV=1;}setMsg($("#elMsg"),"Bubbles appear at both metal rods. Water is breaking down into two gases. Compare the two tubes.","تظهر فقاعات عند القضيبين المعدنيين. الماء يتفكك إلى غازين. قارن بين الأنبوبين.");};
+$("#elRe").onclick=elReset;elReset();
+whyBox($("#why4"),"Why does the hydrogen tube fill twice as fast?","لماذا يمتلئ أنبوب الهيدروجين بسرعة الضِّعف؟",[
+ ["Water has 2 hydrogen atoms for every 1 oxygen atom.","في الماء ذرتا هيدروجين لكل ذرة أكسجين واحدة.",1,"The ratio in the formula H₂O is 2 : 1, and the gases come out in the same ratio.","النسبة في الصيغة H₂O هي 2 : 1، وتخرج الغازات بالنسبة نفسها."],
+ ["Hydrogen atoms are bigger.","ذرات الهيدروجين أكبر.",0,"Hydrogen atoms are actually the smallest atoms.","ذرات الهيدروجين في الحقيقة أصغر الذرات."],
+ ["The left tube is wider.","الأنبوب الأيسر أعرض.",0,"Both tubes are the same size.","الأنبوبان بالحجم نفسه."]]);
 
-/* ---------- 7. parasitism ---------- */
-const PA=[
- {en:"<b>Step 1:</b> the hunting wasp [+] stings the spider and <b>paralyzes</b> it. The spider cannot move.",ar:"<b>الخطوة 1:</b> يلسع الدبّور الصيّاد [+] العنكبوت <b>فيشلّه</b>، فلا يستطيع العنكبوت الحركة."},
- {en:"<b>Step 2:</b> the wasp lays its eggs inside the spider's body. The spider is the <b>host</b>.",ar:"<b>الخطوة 2:</b> يضع الدبّور بيضه داخل جسم العنكبوت؛ فالعنكبوت هو <b>العائل</b>."},
- {en:"<b>Step 3:</b> when the larvae hatch, they eat the paralyzed spider [−]. The wasp benefits; the spider is harmed: [+ / −].",ar:"<b>الخطوة 3:</b> عندما تفقس اليرقات تأكل العنكبوت المشلول [−]. الدبّور يستفيد والعنكبوت يتضرّر: [+ / −]."},
- {en:"<b>Fleas, ticks and pets:</b> fleas and ticks [+] feed on the blood of host cats and dogs [−]. This can make the pet very ill.",ar:"<b>البراغيث والقراد والحيوانات الأليفة:</b> تتغذّى البراغيث والقراد [+] على دم القطط والكلاب العائلة [−]، وقد يُمرض ذلك الحيوان الأليف كثيرًا."}];
-function paDraw(m){let h=`<rect width="500" height="300" fill="#FFFDF8"/><path d="M0 250Q250 236 500 252V300H0Z" fill="#D9C29A"/>`;
-  if(m<3){const sp=`<g ${m>0?'opacity=".85"':""}>${og("spider",220,206,2.4)}</g>`;h+=sp;
-    if(m===0)h+=og("wasp",330,120,2.2)+`<path d="M290 140L250 180" stroke="#C8553D" stroke-width="4" stroke-dasharray="6 6"/>`+PILL(220,290,"paralyzed","#C8553D","#fff",15);
-    if(m===1){h+=og("wasp",380,90,1.8);[[-10,0],[8,-6],[0,10],[14,8]].forEach(e=>h+=`<ellipse cx="${220+e[0]}" cy="${216+e[1]}" rx="6" ry="9" fill="#FFF1D9" stroke="#8C5A3C" stroke-width="1.5"/>`);h+=PILL(220,290,"eggs inside","#8C5A3C","#fff",15);}
-    if(m===2){[[-14,0],[10,-6],[0,12]].forEach(e=>h+=`<path d="M${206+e[0]} ${216+e[1]}q8-8 16 0t16 0" stroke="#FFF1D9" stroke-width="7" fill="none" stroke-linecap="round"/>`);h+=PILL(220,290,"larvae feed","#C8553D","#fff",15);}
-    h+=SYM(380,210,"−")+T(380,250,"spider = host",15)+SYM(110,90,"+")+T(110,130,"wasp = parasite",15);}
-  else{h+=og("cat",230,200,2.6)+og("tick",200,160,1)+og("tick",250,170,.9)+og("tick",280,200,.8);for(let k=0;k<6;k++)h+=`<circle cx="${180+k*22}" cy="${190+(k%2)*14}" r="3" fill="#3B2010"/>`;
-    h+=SYM(110,90,"+")+T(110,130,"fleas, ticks",15)+SYM(400,110,"−")+T(400,150,"pet = host",15);}
-  h+=`<rect x="10" y="10" width="${m<3?190:150}" height="40" rx="20" fill="#1F2A37"/>`+T(m<3?105:85,37,m<3?"Wasp + spider":"Pets",19,"#FFE08A");
-  $("#paSvg").innerHTML=h;setMsg($("#paMsg"),PA[m].en,PA[m].ar,m===2||m===3);}
-segBind("paMode",paDraw);paDraw(0);
-whyBox($("#why3"),"In parasitism, who is the host?","في التطفل، من هو العائل؟",[
- ["The organism that is harmed, such as the spider or the cat.","الكائن الذي يتضرّر، مثل العنكبوت أو القطة.",1,"The parasite lives on or in the host and harms it.","يعيش الطفيلي على العائل أو داخله ويضرّه."],
- ["The organism that benefits, such as the wasp.","الكائن الذي يستفيد، مثل الدبّور.",0,"The one that benefits is the parasite.","الذي يستفيد هو الطفيلي."],
- ["Any organism that is not affected.","أي كائن لا يتأثر.",0,"A 0 is commensalism. The host gets a −.","الرمز 0 للتعايش؛ أما العائل فيأخذ −."]]);
+/* 7. molecule models */
+const ML=[[[["O",220,120],["H",160,80],["H",280,80]],"H₂O · water","2 H : 1 O","ماء"],[[["C",220,120],["O",150,120],["O",290,120]],"CO₂ · carbon dioxide","1 C : 2 O","ثاني أكسيد الكربون"],[[["N",220,100],["H",160,150],["H",220,175],["H",280,150]],"NH₃ · ammonia","1 N : 3 H","الأمونيا"],[[["C",220,120],["H",220,55],["H",160,155],["H",280,155],["H",220,185]],"CH₄ · methane","1 C : 4 H","الميثان"]];
+function mlDraw(k){const m=ML[k],c=m[0][0];let s=`<rect width="440" height="240" fill="#0E1A26"/>`;m[0].slice(1).forEach(a=>s+=`<line x1="${c[1]}" y1="${c[2]}" x2="${a[1]}" y2="${a[2]}" stroke="#9AA5B1" stroke-width="8"/>`);
+  m[0].slice(1).concat([c]).forEach(a=>s+=atm(a[1],a[2],a[0],1.4));s+=`<text x="16" y="28" fill="#fff" font-size="16" font-weight="800">${m[1]}</text><text x="424" y="226" text-anchor="end" fill="#E9B44C" font-size="18" font-weight="800" font-family="ui-monospace,monospace">${m[2]}</text>`;$("#mlSvg").innerHTML=s;}
+seg("#mlMode",mlDraw);mlDraw(0);
 
-/* ---------- 8. friend or foe: the oxpecker ---------- */
-const OX=[["<b>The old idea (mutualism hypothesis):</b> scientists believed the birds got food [+] and the mammals were freed from parasites [+]. That would be [+ / +].","<b>الفكرة القديمة (فرضية تبادل المنفعة):</b> اعتقد العلماء أن الطيور تحصل على الغذاء [+] وأن الثدييات تتخلّص من الطفيليات [+]، أي [+ / +]."],
- ["<b>The new evidence:</b> oxpeckers also drink the blood of the animals they stand on and keep their wounds open [−]. Elephants have even been seen shaking the birds off. So the relationship is closer to parasitism: [+ / −].","<b>الدليل الجديد:</b> تشرب طيور نقّار الثيران أيضًا دم الحيوانات التي تقف عليها وتُبقي جروحها مفتوحة [−]، بل شوهدت الفيلة تنفض الطيور عنها. فالعلاقة أقرب إلى التطفل: [+ / −]."]];
-function oxDraw(m){let h=SKY("oxS",300,"#F3D9A6","#F7EBD3")+`<path d="M0 240Q250 226 500 242V300H0Z" fill="#D8B978"/>`+og("buffalo",230,190,2.2)+og("oxpecker",170,118,1.3)+og("oxpecker",240,112,1.3)+og("oxpecker",300,124,1.2);
-  if(m===0)h+=og("tick",206,150,.7)+og("tick",270,152,.7)+SYM(80,60,"+")+T(80,100,"birds",15)+SYM(420,60,"+")+T(420,100,"buffalo",15)+PILL(250,40,"[+ / +] ?","#7B8794","#fff",20);
-  else h+=`<ellipse cx="270" cy="148" rx="10" ry="6" fill="#B23A2A"/><path d="M270 154q2 10-2 16" stroke="#B23A2A" stroke-width="3" fill="none"/>`+SYM(80,60,"+")+T(80,100,"birds",15)+SYM(420,60,"−")+T(420,100,"buffalo",15)+PILL(250,40,"[+ / −]","#C8553D","#fff",20);
-  $("#oxSvg").innerHTML=h;setMsg($("#oxMsg"),OX[m][0],OX[m][1],m===1);}
-segBind("oxMode",oxDraw);oxDraw(0);
-whyBox($("#why4"),"Why did scientists change their minds about the oxpecker?","لماذا غيّر العلماء رأيهم في طائر نقّار الثيران؟",[
- ["New observations showed the birds also harm their hosts.","لأن ملاحظات جديدة أظهرت أن الطيور تضرّ عوائلها أيضًا.",1,"Science changes when new evidence appears.","العلم يتغيّر عندما يظهر دليل جديد."],
- ["The birds changed their food last year.","لأن الطيور غيّرت غذاءها في العام الماضي.",0,"The birds did not change; our evidence did.","الطيور لم تتغيّر؛ بل تغيّر الدليل الذي لدينا."],
- ["Scientists never change their minds.","لأن العلماء لا يغيّرون رأيهم أبدًا.",0,"They do! Good scientists follow the evidence.","بل يغيّرونه! العالم الجيد يتبع الدليل."]]);
+/* 8. element symbols */
+const PT=[["H","Hydrogen","الهيدروجين","One letter, a capital."],["He","Helium","الهيليوم","Two letters: capital H, small e."],["C","Carbon","الكربون","One letter."],["N","Nitrogen","النيتروجين","One letter."],["O","Oxygen","الأكسجين","One letter."],["Na","Sodium","الصوديوم","From its Latin name, <i>natrium</i>."],["Cl","Chlorine","الكلور","Capital C, small l."],["Fe","Iron","الحديد","From its Latin name, <i>ferrum</i>."],["Cu","Copper","النحاس","From its Latin name, <i>cuprum</i>."],["Au","Gold","الذهب","From its Latin name, <i>aurum</i>."],["Co","Cobalt","الكوبالت","Capital C, small o. Not the same as CO!"],["Ca","Calcium","الكالسيوم","Capital C, small a."]];
+$("#ptab").innerHTML=PT.map((p,i)=>`<button data-i="${i}"><b>${p[0]}</b><small>${p[1]}</small></button>`).join("");
+$$("#ptab button").forEach(b=>b.onclick=()=>{const p=PT[+b.dataset.i];$$("#ptab button").forEach(x=>x.classList.toggle("on",x===b));setMsg($("#ptMsg"),`<b>${p[0]} = ${p[1]}</b>. ${p[3]}`,`<b>${p[0]} = ${p[2]}</b>.`);});
+setMsg($("#ptMsg"),"Tap an element to see its name. Look for symbols that do not match the English name!","اضغط على عنصر لترى اسمه. ابحث عن رموز لا تطابق الاسم الإنجليزي!");
+whyBox($("#why5"),"Co and CO look almost the same. Why are they different?","Co و CO متشابهان تقريبًا. لماذا هما مختلفان؟",[
+ ["Co (small o) is one element, cobalt. CO (two capitals) is a compound of carbon and oxygen.","Co (حرف o صغير) عنصر واحد هو الكوبالت. أما CO (حرفان كبيران) فمركّب من الكربون والأكسجين.",1,"Every capital letter starts a new element symbol.","كل حرف كبير يبدأ رمز عنصر جديد."],
+ ["They are the same; capitals do not matter.","هما الشيء نفسه، والحروف الكبيرة لا تهم.",0,"Capitals matter: a capital letter starts a new symbol.","الحروف الكبيرة مهمة: الحرف الكبير يبدأ رمزًا جديدًا."],
+ ["CO is a bigger cobalt atom.","CO ذرة كوبالت أكبر.",0,"CO has two capitals, so it has two different elements.","في CO حرفان كبيران، إذن فيه عنصران مختلفان."]]);
 
-/* ---------- 9. cooperation ---------- */
-const CP=[["<b>Leaf-cutter ants:</b> they carry pieces of leaves together to their nest. There they use the leaves to grow fungus for food and to build their home.","<b>النمل قاطع الأوراق:</b> يحمل قطع الأوراق معًا إلى عشّه، ويستخدمها هناك لزراعة الفطريات غذاءً ولبناء مسكنه."],
- ["<b>Elephants:</b> the herd raises the young together. The adults keep the calves in the middle and watch for predators.","<b>الفيلة:</b> يربّي القطيع الصغار معًا؛ فيُبقي الكبار الصغار في الوسط ويراقبون المفترسات."],
- ["<b>Squirrel monkeys:</b> they live in groups and look for food together, while some members watch for danger.","<b>قرود السنجاب:</b> تعيش في مجموعات وتبحث عن الغذاء معًا، بينما يراقب بعض الأفراد الخطر."]];
-function cpDraw(m){let h="";
-  if(m===0){h=`<rect width="500" height="300" fill="#E8D3A8"/><path d="M0 150C120 130 260 170 500 140" stroke="#8C6A4E" stroke-width="22" fill="none" stroke-linecap="round"/><ellipse cx="420" cy="250" rx="70" ry="40" fill="#6B4F38"/><ellipse cx="420" cy="250" rx="46" ry="24" fill="#3B2A20"/>`+og("mushroom",410,250,.8)+og("mushroom",440,254,.6);
-    for(let k=0;k<6;k++){const x=40+k*62,y=146-Math.sin(k)*6;h+=og("ant",x,y,1.2)+og("leafbit",x+4,y-16,1);}h+=PILL(420,200,"fungus garden","#1F2A37","#fff",14);}
-  else if(m===1){h=SKY("cpS",300,"#F3D9A6","#F7EBD3")+`<path d="M0 220Q250 206 500 222V300H0Z" fill="#D8B978"/>`+og("elephant",120,200,1.6)+og("elephant",380,206,1.6)+og("elephant",250,180,1.4)+og("elephant",250,234,.8)+og("lion",470,262,.6)+`<circle cx="250" cy="234" r="34" fill="none" stroke="#2A9D8F" stroke-width="3" stroke-dasharray="6 6"/>`+PILL(250,290,"calf in the middle","#2A9D8F","#fff",14)+`<path d="M420 180L460 250" stroke="#C8553D" stroke-width="3" stroke-dasharray="6 6"/>`+PILL(420,140,"watching","#C8553D","#fff",14);}
-  else{h=SKY("cpM",300,"#CFE6C3","#EAF4E3")+`<path d="M0 120C150 100 350 140 500 110" stroke="#7A5232" stroke-width="14" fill="none"/><path d="M60 200C200 180 320 214 480 190" stroke="#7A5232" stroke-width="12" fill="none"/>`+[[60,90],[200,70],[380,80],[120,170],[300,160],[440,150]].map(p=>`<ellipse cx="${p[0]}" cy="${p[1]}" rx="60" ry="26" fill="#5FA052" opacity=".7"/>`).join("")+og("monkey",130,96,1.2)+og("monkey",230,102,1.2)+og("monkey",330,108,1.1)+og("monkey",200,176,1.1)+og("monkey",410,176,1.2)+og("locust",260,160,.6)+PILL(410,226,"lookout","#C8553D","#fff",14)+PILL(180,240,"finding food","#2A9D8F","#fff",14);}
-  $("#cpSvg").innerHTML=h;setMsg($("#cpMsg"),CP[m][0],CP[m][1]);}
-segBind("cpMode",cpDraw);cpDraw(0);
-
-/* ---------- 10. osprey film ---------- */
-const OSC=[
- {d:6,chip:"Mangroves",t:"The mangroves",en:"The <b>Eastern Mangroves</b> of Abu Dhabi. Many fish live in the shallow water. An <b>osprey</b>, a bird of prey, watches from its nest.",ar:"<b>القرم الشرقي</b> في أبوظبي، حيث تعيش أسماك كثيرة في المياه الضحلة، ويراقبها من عشّه <b>عُقاب نساري</b>، وهو طائر جارح."},
- {d:8,chip:"No predator?",t:"What if…",en:"Without a predator, the fish would grow past the <b>carrying capacity</b>. Then food would run out and many fish would die.",ar:"بدون مفترس، تنمو الأسماك فوق <b>السعة الحاملة</b>، ثم ينفد الغذاء ويموت كثير منها."},
- {d:8,chip:"The hunt",t:"Predation occurs",en:"The osprey dives and catches a fish. It usually catches a <b>weak, slow or injured</b> fish, because those are the easiest to catch.",ar:"يغوص العُقاب ويصطاد سمكة، وغالبًا ما تكون سمكة <b>ضعيفة أو بطيئة أو مصابة</b>، لأنها الأسهل صيدًا."},
- {d:8,chip:"Control",t:"Population control",en:"The osprey stops the fish population from growing past the carrying capacity of the ecosystem.",ar:"يمنع العُقابُ جماعةَ الأسماك من تجاوز السعة الحاملة للنظام البيئي."},
- {d:7,chip:"More food",t:"Resources freed",en:"With the weaker fish gone, there is more food and space for the fish that are left.",ar:"بعد ذهاب الأسماك الضعيفة يتوافر غذاء ومساحة أكثر للأسماك الباقية."},
- {d:7,chip:"Healthy",t:"Health maintained",en:"The remaining fish population grows stronger and healthier. The predator eats the prey, but the <b>ecosystem as a whole wins</b>.",ar:"تصبح جماعة الأسماك الباقية أقوى وأكثر صحة. يأكل المفترسُ الفريسةَ، لكن <b>النظام البيئي كله يربح</b>."}];
-const oT=44,oStart=[0,6,14,22,30,37];
-const oFishW=(u)=>u<4?20+60*ease(u/4):80;
-const oFishNo=(u)=>u<5?20+115*ease(u/5):u<7?135-85*ease((u-5)/2):50+35*ease((u-7)/3);
-const oF=Array.from({length:18},(_,i)=>({ph:(i*1.9)%6.28,sp:.4+((i*31)%10)/16,dy:((i*17)%10)/10,weak:i===5}));
-function osprey(g,x,y,s,flap,dive){g.save();g.translate(x,y);g.scale(s,s);if(dive)g.rotate(.9);
-  g.fillStyle="#5B3A24";const f=Math.sin(flap)*14;g.beginPath();g.moveTo(-4,0);g.quadraticCurveTo(-26,-14-f,-50,-6-f*1.4);g.quadraticCurveTo(-30,4,-4,6);g.fill();g.beginPath();g.moveTo(4,0);g.quadraticCurveTo(26,-14-f,50,-6-f*1.4);g.quadraticCurveTo(30,4,4,6);g.fill();
-  g.fillStyle="#F4EEE4";g.beginPath();g.ellipse(0,4,9,16,0,0,7);g.fill();g.fillStyle="#fff";g.beginPath();g.arc(0,-12,8,0,7);g.fill();g.fillStyle="#3B2A20";g.fillRect(-8,-14,16,3);g.fillStyle="#1F2A37";g.beginPath();g.moveTo(3,-10);g.lineTo(9,-7);g.lineTo(3,-6);g.fill();g.restore();}
-function oWorld(g,t,i,p,W,H){
-  let sk=g.createLinearGradient(0,0,0,H);sk.addColorStop(0,"#8EC5E0");sk.addColorStop(.5,"#DDEFF3");sk.addColorStop(1,"#F2E6CC");g.fillStyle=sk;g.fillRect(0,0,W,H);
-  g.fillStyle="#C9B48E";g.fillRect(0,170,W,14);
-  /* Abu Dhabi skyline far away */
-  g.fillStyle="rgba(123,135,148,.45)";[[30,40],[60,70],[95,50],[130,90],[170,60],[205,80]].forEach(([x,h])=>g.fillRect(x,170-h,26,h));
-  /* sea */
-  let se=g.createLinearGradient(0,180,0,H);se.addColorStop(0,"#4FB3C6");se.addColorStop(1,"#1A6A84");g.fillStyle=se;g.fillRect(0,180,W,H-180);
-  /* mangroves */
-  [[300,182,1],[380,176,1.2],[470,184,.9]].forEach(([x,y,s])=>{g.strokeStyle="#7A5232";g.lineWidth=3*s;for(let k=-3;k<=3;k++){g.beginPath();g.moveTo(x+k*8*s,y+30*s);g.quadraticCurveTo(x+k*4*s,y,x,y-20*s);g.stroke();}
-    g.fillStyle="#3F8B4E";g.beginPath();g.ellipse(x,y-36*s,46*s,26*s,0,0,7);g.fill();g.fillStyle="#5FA052";g.beginPath();g.ellipse(x-10*s,y-44*s,26*s,14*s,0,0,7);g.fill();});
-  /* nest */
-  g.strokeStyle="#7A5232";g.lineWidth=5;g.beginPath();g.moveTo(60,260);g.lineTo(60,120);g.stroke();g.fillStyle="#8C6A4E";g.beginPath();g.ellipse(60,118,30,10,0,0,7);g.fill();
-  /* fish */
-  const health=i>=4?1:i>=2?.6:.4;const nShow=i===1?18:i===2&&p>.55?15:i>=3?14:12;
-  for(let k=0;k<Math.min(18,nShow);k++){const f=oF[k];if(i>=2&&f.weak&&!(i===2&&p<.55))continue;const a=t*f.sp+f.ph;const x=280+Math.sin(a)*220,y=320+f.dy*110+Math.sin(a*1.6)*14,dir=Math.cos(a)>=0?1:-1;
-    g.save();g.translate(x,y);g.scale(dir*.9,.9);const weak=f.weak;g.fillStyle=weak?"#9AA5B1":`hsl(${30+health*10},${50+health*40}%,${58}%)`;g.beginPath();g.ellipse(0,0,16,8,0,0,7);g.fill();g.beginPath();g.moveTo(-12,0);g.lineTo(-24,-9);g.lineTo(-24,9);g.fill();g.fillStyle="#1F2A37";g.beginPath();g.arc(8,-2,2,0,7);g.fill();g.restore();
-    if(weak&&i===2&&p<.55){label2(g,"weak fish",x,y-20,"#5B6573",12);}}
-  if(i>=4){g.strokeStyle="rgba(63,139,78,.8)";g.lineWidth=5;for(let k=0;k<8;k++){const x=40+k*95;g.beginPath();g.moveTo(x,H);g.quadraticCurveTo(x+Math.sin(t+k)*8,H-30,x+Math.sin(t*1.2+k)*10,H-50);g.stroke();}}
-  /* osprey */
-  let ox=60,oy=100,dive=false,fl=0;
-  if(i===2){if(p<.35){const u=ease(p/.35);ox=lerp(60,300,u);oy=lerp(100,60,u);fl=t*10;}else if(p<.55){const u=(p-.35)/.2;ox=300;oy=lerp(60,330,u*u);dive=true;}else{const u=ease((p-.55)/.45);ox=lerp(300,60,u);oy=lerp(320,100,u);fl=t*10;}}
-  else if(i===0||i===1)fl=Math.sin(t)*.3;
-  osprey(g,ox,oy,1.1,fl,dive);if(i===2&&p>.55&&p<1){g.fillStyle="#9AA5B1";g.beginPath();g.ellipse(ox,oy+22,12,6,0,0,7);g.fill();}
-  /* graph */
-  if(i>=1){const gx=480,gy=30,gw=296,gh=170;g.fillStyle="rgba(255,255,255,.93)";rr2(g,gx-14,gy-10,gw+28,gh+44,14);g.fill();g.strokeStyle="#1F2A37";g.lineWidth=2;g.beginPath();g.moveTo(gx,gy);g.lineTo(gx,gy+gh);g.lineTo(gx+gw,gy+gh);g.stroke();
-    const X=u=>gx+u/10*gw,Y=v=>gy+gh-v/140*gh;g.strokeStyle="#E9B44C";g.setLineDash([8,6]);g.lineWidth=3;g.beginPath();g.moveTo(gx,Y(100));g.lineTo(gx+gw,Y(100));g.stroke();g.setLineDash([]);label2(g,"carrying capacity",gx+gw-96,Y(100)-8,"#8C5A3C",14);
-    const prog=i===1?ease(p):1;g.strokeStyle="#C8553D";g.lineWidth=3;g.setLineDash([4,6]);g.beginPath();for(let u=0;u<=10*prog;u+=.1){u===0?g.moveTo(X(u),Y(oFishNo(u))):g.lineTo(X(u),Y(oFishNo(u)));}g.stroke();g.setLineDash([]);label2(g,"no osprey",X(2.4),Y(8),"#C8553D",14);
-    if(i>=3){const pr=i===3?ease(p):1;g.strokeStyle="#2A9D8F";g.lineWidth=5;g.beginPath();for(let u=0;u<=10*pr;u+=.1){u===0?g.moveTo(X(u),Y(oFishW(u))):g.lineTo(X(u),Y(oFishW(u)));}g.stroke();label2(g,"with osprey",X(7.4),Y(8),"#1F7A6E",14);}
-    label2(g,"years →",gx+gw-40,gy+gh+28,"#1F2A37",14);}
-  if(i>=4){g.fillStyle="rgba(31,42,55,.85)";rr2(g,16,H-62,330,48,24);g.fill();label2(g,"fish health",100,H-30,"#F7F1E8",14);g.fillStyle="#3A4A5C";rr2(g,190,H-46,140,16,8);g.fill();g.fillStyle="#7FC36B";rr2(g,190,H-46,140*(i===4?lerp(.6,.85,ease(p)):lerp(.85,1,ease(p))),16,8);g.fill();}
-  const TT=OSC[i].t;g.font="800 30px system-ui,sans-serif";const tw=g.measureText(TT).width+32;g.fillStyle="#1F2A37";rr2(g,16,14,tw,50,25);g.fill();g.fillStyle="#FFE08A";g.textAlign="left";g.fillText(TT,32,49);}
-function label2(g,txt,x,y,col,sz){g.font=`800 ${Math.round((sz||14)*1.45)}px system-ui,sans-serif`;g.fillStyle=col;g.textAlign="center";g.fillText(txt,x,y);}
-function rr2(g,x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath();}
-film("ofC",OSC,{chips:$("#ofChips"),bar:$("#ofBar"),btn:$("#ofBtn"),time:$("#ofTime"),world:oWorld,cap:sc=>setMsg($("#ofCap"),sc.en,sc.ar)});
-
-/* ---------- 11. predator lab ---------- */
-const PLF=[oFishNo,u=>20+65*ease(u/4.5),u=>20+50*ease(u/4),u=>u<3?20+20*ease(u/3):40-25*ease((u-3)/5)];
-const PLH=[30,80,90,70];let pl={n:0,t0:0};
-sim("plC",16/10,(s,dt)=>{const g=s.ctx,W=s.W,H=s.H;pl.t0+=dt;const prog=RM?1:Math.min(1,pl.t0/3);
-  g.fillStyle="#FFFDF8";g.fillRect(0,0,W,H);g.strokeStyle="#EADFCD";g.lineWidth=1;for(let x=100;x<W;x+=50){g.beginPath();g.moveTo(x,30);g.lineTo(x,H-70);g.stroke();}
-  const x0=100,y0=H-70,gw=W-140,gh=y0-40,Y=v=>y0-v/150*gh,X=u=>x0+u/10*gw;
-  g.strokeStyle="#1F2A37";g.lineWidth=3;g.beginPath();g.moveTo(x0,30);g.lineTo(x0,y0);g.lineTo(W-30,y0);g.stroke();
-  label(g,"years →",W-90,y0+50,"#1F2A37",19);g.save();g.translate(44,y0-gh/2);g.rotate(-Math.PI/2);label(g,"fish",0,0,"#1F2A37",19);g.restore();
-  g.strokeStyle="#E9B44C";g.lineWidth=4;g.setLineDash([14,10]);g.beginPath();g.moveTo(x0,Y(100));g.lineTo(W-30,Y(100));g.stroke();g.setLineDash([]);label(g,"carrying capacity",W-40,Y(100)-16,"#8C5A3C",18,"right");
-  const f=PLF[pl.n];g.strokeStyle=pl.n===0||pl.n===3?"#C8553D":"#2A9D8F";g.lineWidth=7;g.lineCap="round";g.beginPath();let lu=0;for(let u=0;u<=10*prog;u+=.05){lu=u;u===0?g.moveTo(X(u),Y(f(u))):g.lineTo(X(u),Y(f(u)));}g.stroke();
-  ball(g,X(lu),Y(f(lu)),12,pl.n===0||pl.n===3?["#FFB4A3","#C8553D"]:["#9FE3D6","#1F7A6E"]);
-  for(let k=0;k<pl.n;k++)osprey(g,x0+140+k*130,60,.9,.6,false);});
-function plSet(){pl.n=+$("#plR").value;pl.t0=0;const n=pl.n;$("#plBar").style.width=PLH[n]+"%";$("#plTxt").textContent=PLH[n]+"%";
-  const M=[["<b>No ospreys:</b> the fish grow past the carrying capacity. Food runs out, many fish die, and the ones left are weak and hungry.","<b>بلا عُقبان:</b> تنمو الأسماك فوق السعة الحاملة، فينفد الغذاء ويموت كثير منها، والباقية ضعيفة جائعة."],
-   ["<b>One osprey pair:</b> they catch the weakest fish. The population stays below the carrying capacity and the fish are healthy.","<b>زوج من العُقبان:</b> يصطادان أضعف الأسماك، فتبقى الجماعة دون السعة الحاملة وتكون الأسماك بصحة جيدة."],
-   ["<b>Two pairs:</b> fewer fish, but still a stable, healthy population.","<b>زوجان:</b> أسماك أقل، لكن الجماعة ما زالت مستقرة وبصحة جيدة."],
-   ["<b>Too many ospreys:</b> they catch fish faster than the fish can reproduce. The fish population shrinks, and soon the ospreys will not have enough food either.","<b>عُقبان كثيرة جدًا:</b> تصطاد الأسماك أسرع مما تتكاثر، فتصغر جماعة الأسماك، وقريبًا لن تجد العُقبان غذاءً كافيًا أيضًا."]];
-  setMsg($("#plMsg"),M[n][0],M[n][1],n===0||n===3);}
-$("#plR").oninput=plSet;plSet();
-whyBox($("#why5"),"Why does a population of prey stay healthier when there are some predators?","لماذا تبقى جماعة الفرائس أكثر صحة عند وجود بعض المفترسات؟",[
- ["Predators catch the weak fish, so more food and space are left for the strong ones.","لأن المفترسات تصطاد الأسماك الضعيفة، فيبقى غذاء ومساحة أكثر للقوية.",1,"Predation controls the population and keeps it healthy.","الافتراس يضبط الجماعة ويُبقيها بصحة جيدة."],
- ["Predators bring food to the fish.","لأن المفترسات تُحضر الغذاء للأسماك.",0,"Ospreys eat fish; they do not feed them.","العُقبان تأكل الأسماك ولا تُطعمها."],
- ["Predators catch only the biggest, strongest fish.","لأن المفترسات تصطاد أكبر الأسماك وأقواها فقط.",0,"The weakest are usually the easiest to catch.","الأضعف عادةً هو الأسهل صيدًا."]]);
-
-/* ---------- 12. competition ---------- */
-const CM=[["<b>The conflict:</b> organism A and organism B both need space, sunlight and food. Where their needs overlap, they compete.","<b>الصراع:</b> يحتاج الكائن A والكائن B كلاهما إلى المساحة وضوء الشمس والغذاء، وحيث تتداخل احتياجاتهما يتنافسان."],
- ["<b>Plants compete:</b> tall trees cast shade, so young trees below them must compete for the sunlight they need.","<b>النباتات تتنافس:</b> تُلقي الأشجار الطويلة ظلًا، فتتنافس الأشجار الصغيرة تحتها على ضوء الشمس الذي تحتاجه."],
- ["<b>Animals compete:</b> wolves compete directly with ravens for the meat of animals the wolves have killed.","<b>الحيوانات تتنافس:</b> تتنافس الذئاب مباشرة مع الغربان على لحم الحيوانات التي اصطادتها الذئاب."]];
-function cmDraw(m){let h="";
-  if(m===0)h=`<rect width="500" height="300" fill="#FFFDF8"/><circle cx="190" cy="150" r="110" fill="#2A9D8F" opacity=".18" stroke="#2A9D8F" stroke-width="3"/><circle cx="310" cy="150" r="110" fill="#E9B44C" opacity=".22" stroke="#C99A3C" stroke-width="3"/>`+T(130,120,"Organism A",17)+T(370,120,"Organism B",17)+T(130,150,"needs space,",14,"#5B6573",undefined,700)+T(130,170,"sunlight, food",14,"#5B6573",undefined,700)+T(370,150,"needs space,",14,"#5B6573",undefined,700)+T(370,170,"sunlight, food",14,"#5B6573",undefined,700)+PILL(250,160,"conflict","#C8553D","#fff",17);
-  else if(m===1)h=SKY("cmS",300)+`<path d="M0 260H500V300H0Z" fill="#9CCB7E"/>`+og("sun",80,50,1.2)+`<g stroke="#E9B44C" stroke-width="3" stroke-dasharray="6 6"><path d="M100 70L250 70M110 80L230 120"/></g><path d="M290 90L470 260H230Z" fill="#1F2A37" opacity=".15"/>`+og("tree",290,150,3.4)+og("plant",380,236,1)+og("plant",430,240,.9)+PILL(400,200,"young trees: shade","#C8553D","#fff",14)+PILL(290,40,"tall tree","#2A9D8F","#fff",14);
-  else h=SKY("cmW",300,"#DCE6EE","#F4F7F9")+`<path d="M0 220Q250 206 500 222V300H0Z" fill="#F4F7F9"/><ellipse cx="250" cy="240" rx="50" ry="16" fill="#B05A48"/>`+og("wolf",150,220,1.5)+og("wolf",350,230,1.3)+og("raven",250,200,1.3)+og("raven",300,250,1.1)+og("raven",410,160,1)+PILL(250,290,"same food, same time","#C8553D","#fff",15);
-  $("#cmSvg").innerHTML=h;setMsg($("#cmMsg"),CM[m][0],CM[m][1]);}
-segBind("cmMode",cmDraw);cmDraw(0);
-whyBox($("#why6"),"Wolves and ravens eat the same meat. Why is this competition and not symbiosis?","تأكل الذئاب والغربان اللحم نفسه. لماذا يُعدّ هذا تنافسًا لا تكافلًا؟",[
- ["They fight over the same limited resource at the same time.","لأنهما تتصارعان على المورد المحدود نفسه في الوقت نفسه.",1,"Sharing a limited resource is what makes competition.","التشارك في مورد محدود هو ما يصنع التنافس."],
- ["Because ravens are birds and wolves are mammals.","لأن الغربان طيور والذئاب ثدييات.",0,"Different types of animals can still have any relationship.","الأنواع المختلفة يمكن أن تكون بينها أي علاقة."],
- ["Because both of them benefit.","لأن كليهما يستفيد.",0,"When food is taken by one, the other gets less.","ما يأخذه أحدهما من الغذاء ينقص على الآخر."]]);
-/* ---------- check yourself ---------- */
-const FD=FDATA;
+const FD={
+ fr:[{q:"Read the formula <b>H₂O</b> (water).<span class=\"ar\">اقرأ الصيغة <b>H₂O</b> (الماء).</span>",words:true,txt:true,s:[["The symbols are H (hydrogen) and O (oxygen).","Symbols","الرموز: H (الهيدروجين) و O (الأكسجين)."],["The subscript 2 after H means 2 hydrogen atoms.","Subscript","الرقم السفلي 2 بعد H يعني ذرتي هيدروجين."],["No number after O means 1 oxygen atom.","No number = 1","عدم وجود رقم بعد O يعني ذرة أكسجين واحدة."],["Ratio 2 H : 1 O, 3 atoms in each molecule.","Ratio","النسبة 2 H : 1 O، أي 3 ذرات في كل جزيء."]],blank:0},
+  {q:"Read the formula <b>CO₂</b> (carbon dioxide).<span class=\"ar\">اقرأ الصيغة <b>CO₂</b> (ثاني أكسيد الكربون).</span>",words:true,txt:true,s:[["The symbols are C (carbon) and O (oxygen).","Symbols","الرموز: C (الكربون) و O (الأكسجين)."],["No number after C means 1 carbon atom.","No number = 1","عدم وجود رقم بعد C يعني ذرة كربون واحدة."],["The subscript 2 after O means 2 oxygen atoms.","Subscript","الرقم السفلي 2 بعد O يعني ذرتي أكسجين."],["Ratio 1 C : 2 O, 3 atoms in each molecule.","Ratio","النسبة 1 C : 2 O، أي 3 ذرات في كل جزيء."]],blank:1,o:[["Ratio 1 C : 2 O, 3 atoms in each molecule.","Ratio 2 C : 1 O, 3 atoms in each molecule.","Ratio 1 C : 1 O, 2 atoms in each molecule."]],h:[["1 carbon atom and 2 oxygen atoms.","ذرة كربون واحدة وذرتا أكسجين."]]},
+  {q:"Read the formula <b>NH₃</b> (ammonia).<span class=\"ar\">اقرأ الصيغة <b>NH₃</b> (الأمونيا).</span>",words:true,txt:true,s:[["The symbols are N (nitrogen) and H (hydrogen).","Symbols","الرموز: N (النيتروجين) و H (الهيدروجين)."],["No number after N means 1 nitrogen atom.","No number = 1","عدم وجود رقم بعد N يعني ذرة نيتروجين واحدة."],["The subscript 3 after H means 3 hydrogen atoms.","Subscript","الرقم السفلي 3 بعد H يعني 3 ذرات هيدروجين."],["Ratio 1 N : 3 H, 4 atoms in each molecule.","Ratio","النسبة 1 N : 3 H، أي 4 ذرات في كل جزيء."]],blank:2,o:[["The subscript 3 after H means 3 hydrogen atoms.","The subscript 3 after H means 3 nitrogen atoms.","The subscript 3 means 3 molecules."],["Ratio 1 N : 3 H, 4 atoms in each molecule.","Ratio 3 N : 1 H, 4 atoms in each molecule.","Ratio 1 N : 3 H, 3 atoms in each molecule."]],h:[["A subscript belongs to the symbol just before it.","الرقم السفلي يخص الرمز الذي قبله مباشرة."],["Add the atoms: 1 + 3.","اجمع الذرات: 1 + 3."]]}]};
 $$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
   el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
    <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
@@ -1671,11 +1445,37 @@ $$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
 
 
 
+/* check yourself */
+cardsQ($("#ckCards"),[
+ {t:["Particles that are close together and slide past each other are in a…","الجسيمات المتقاربة التي تنزلق بجوار بعضها تكون في…"],o:[["solid","صلب"],["liquid","سائل"],["gas","غاز"]],a:1,w:["Liquids keep their volume but flow.","السوائل تحتفظ بحجمها لكنها تنساب."],h:["Which state can flow but keeps its volume?","أيّ حالة تنساب لكنها تحتفظ بحجمها؟"]},
+ {t:["Temperature measures the … kinetic energy of particles.","درجة الحرارة تقيس … الطاقة الحركية للجسيمات."],o:[["average","متوسط"],["total","مجموع"],["lowest","أقل"]],a:0,w:["Thermal energy is the total; temperature is the average.","الطاقة الحرارية هي المجموع، ودرجة الحرارة هي المتوسط."],h:["Total energy has another name: thermal energy.","للطاقة الكلية اسم آخر: الطاقة الحرارية."]},
+ {t:["Which one is an element?","أيّها عنصر؟"],o:[["H₂O","H₂O"],["CO₂","CO₂"],["O₂","O₂"]],a:2,w:["O₂ has only oxygen atoms.","O₂ فيه ذرات أكسجين فقط."],h:["Look for only one type of atom.","ابحث عن نوع واحد فقط من الذرات."]},
+ {t:["How many hydrogen atoms are in CH₄?","كم ذرة هيدروجين في CH₄؟"],o:[["1","1"],["4","4"],["5","5"]],a:1,w:["The subscript 4 belongs to H.","الرقم السفلي 4 يخص H."],h:["Read the small number after H.","اقرأ الرقم الصغير بعد H."]},
+ {t:["Breaking down water gives…","تفكيك الماء يعطي…"],o:[["hydrogen and oxygen","هيدروجين وأكسجين"],["carbon and oxygen","كربون وأكسجين"],["only oxygen","أكسجين فقط"]],a:0,cls:"stack",w:["Water (H₂O) is made of hydrogen and oxygen.","الماء (H₂O) يتكوّن من الهيدروجين والأكسجين."],h:["Read the symbols in H₂O.","اقرأ الرموز في H₂O."]},
+ {t:["What is the symbol for iron?","ما رمز الحديد؟"],o:[["Ir","Ir"],["I","I"],["Fe","Fe"]],a:2,w:["Fe comes from the Latin <i>ferrum</i>.","Fe من الاسم اللاتيني <i>ferrum</i>."],h:["It comes from its Latin name.","يأتي من اسمه اللاتيني."]}]);
+
 requestAnimationFrame(loop);
-const FL=FL2;
+const FL=[["● ● ●","Particles","الجسيمات","All matter is made of tiny particles that are always moving.","كل مادة تتكوّن من جسيمات صغيرة جدًا تتحرك دائمًا."],
+ ["▦","Solid","الصلب","Particles vibrate in fixed places. Definite shape and volume.","الجسيمات تهتز في أماكن ثابتة. شكل وحجم ثابتان."],
+ ["≈","Liquid","السائل","Particles slide past each other. Definite volume, shape of container.","الجسيمات تنزلق بجوار بعضها. حجم ثابت، وشكل الإناء."],
+ ["∴","Gas","الغاز","Particles far apart, moving fast. Fills its whole container.","الجسيمات متباعدة وسريعة. يملأ الإناء كله."],
+ ["°C","Temperature","درجة الحرارة","A measure of the average kinetic energy of the particles.","مقياس لمتوسط الطاقة الحركية للجسيمات."],
+ ["Σ","Thermal energy","الطاقة الحرارية","The total energy of all the particles in a material.","الطاقة الكلية لكل جسيمات المادة."],
+ ["O₂","Element","العنصر","A substance made of only one type of atom.","مادة نقية تتكوّن من نوع واحد فقط من الذرات."],
+ ["H₂O","Compound","المركّب","Two or more different elements bonded in a fixed ratio.","عنصران مختلفان أو أكثر مرتبطة بنسبة ثابتة."]];
 $("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
 $$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
-const Q=Q2;
+const Q=[
+ {q:"In which state of matter are particles far apart and moving fast in all directions?",qa:"في أيّ حالة من حالات المادة تكون الجسيمات متباعدة وتتحرك بسرعة في كل الاتجاهات؟",o:[["solid","الصلب"],["liquid","السائل"],["gas","الغاز"],["all of them","كلها"]],a:2,ex:["Gas particles are far apart and move freely, so a gas fills its container.","جسيمات الغاز متباعدة وتتحرك بحرية، فيملأ الغاز إناءه."],h:[["Which state fills its whole container?","أيّ حالة تملأ الإناء كله؟"],["Solids and liquids have particles close together.","في الصلب والسائل تكون الجسيمات متقاربة."]]},
+ {q:"Juice is poured from a bottle into a glass. What stays the same?",qa:"يُسكب عصير من زجاجة في كوب. ما الذي يبقى كما هو؟",o:[["its volume","حجمه"],["its shape","شكله"],["both shape and volume","الشكل والحجم معًا"],["neither","لا شيء منهما"]],a:0,ex:["A liquid keeps its volume but takes the shape of its container.","السائل يحتفظ بحجمه لكنه يأخذ شكل إنائه."],h:[["Juice is a liquid.","العصير سائل."],["Does the juice look like the bottle or the glass now?","هل يشبه العصير الزجاجة أم الكوب الآن؟"]]},
+ {q:"Temperature is a measure of…",qa:"درجة الحرارة مقياس…",o:[["the total energy of a material","للطاقة الكلية للمادة"],["the average kinetic energy of the particles","لمتوسط الطاقة الحركية للجسيمات"],["the size of the particles","لحجم الجسيمات"],["the number of particles","لعدد الجسيمات"]],a:1,ex:["Temperature = average kinetic energy. Total energy is thermal energy.","درجة الحرارة = متوسط الطاقة الحركية. والطاقة الكلية هي الطاقة الحرارية."],h:[["It is about motion.","الأمر متعلق بالحركة."],["Average, not total.","المتوسط، لا المجموع."]]},
+ {q:"Water at 20°C is heated to 70°C. What happens to its particles?",qa:"يُسخَّن ماء من 20°C إلى 70°C. ماذا يحدث لجسيماته؟",o:[["They slow down.","تبطؤ."],["They get bigger.","تكبر."],["They stop moving.","تتوقف عن الحركة."],["They move faster on average.","تتحرك أسرع في المتوسط."]],a:3,ex:["Higher temperature means higher average kinetic energy: faster particles.","درجة حرارة أعلى تعني متوسط طاقة حركية أكبر: جسيمات أسرع."],h:[["Heating adds energy.","التسخين يضيف طاقة."],["Particles do not change size.","الجسيمات لا يتغيّر حجمها."]]},
+ {q:"Ice at 0°C is melting. What are the particles doing?",qa:"جليد عند 0°C ينصهر. ماذا تفعل الجسيمات؟",o:[["Gaining enough energy to break out of fixed places","تكتسب طاقة تكفي لتتحرّر من أماكنها الثابتة"],["Losing energy and moving closer","تفقد طاقة وتقترب من بعضها"],["Turning into new atoms","تتحوّل إلى ذرات جديدة"],["Escaping as a gas","تهرب على شكل غاز"]],a:0,ex:["At the melting point, particles gain enough energy to slide past each other.","عند درجة الانصهار تكتسب الجسيمات طاقة تكفي لتنزلق بجوار بعضها."],h:[["Melting needs energy added.","الانصهار يحتاج إلى إضافة طاقة."],["Solid → liquid, not liquid → gas.","صلب ← سائل، وليس سائل ← غاز."]]},
+ {q:"Which statement about an element is correct?",qa:"أيّ عبارة عن العنصر صحيحة؟",o:[["It has two or more types of atoms.","فيه نوعان أو أكثر من الذرات."],["It is always a gas.","هو غاز دائمًا."],["It is made of only one type of atom.","يتكوّن من نوع واحد فقط من الذرات."],["It can be broken down into simpler substances.","يمكن تفكيكه إلى مواد أبسط."]],a:2,ex:["An element has one type of atom. Compounds have two or more.","العنصر فيه نوع واحد من الذرات، والمركّب فيه نوعان أو أكثر."],h:[["Think of O₂ or He.","فكّر في O₂ أو He."],["Count the types of atoms.","عُدّ أنواع الذرات."]]},
+ {q:"Which of these is a compound?",qa:"أيّ مما يلي مركّب؟",o:[["N₂","N₂"],["NH₃","NH₃"],["He","He"],["Fe","Fe"]],a:1,ex:["NH₃ has two different elements: nitrogen and hydrogen.","NH₃ فيه عنصران مختلفان: النيتروجين والهيدروجين."],h:[["Look for two different symbols.","ابحث عن رمزين مختلفين."],["Each capital letter starts a new symbol.","كل حرف كبير يبدأ رمزًا جديدًا."]]},
+ {q:"How many atoms are in one molecule of CO₂?",qa:"كم ذرة في جزيء واحد من CO₂؟",o:[["1","1"],["2","2"],["4","4"],["3","3"]],a:3,ex:["1 carbon + 2 oxygen = 3 atoms.","1 كربون + 2 أكسجين = 3 ذرات."],h:[["No number after C means 1.","عدم وجود رقم بعد C يعني 1."],["Add: 1 C + 2 O.","اجمع: 1 C + 2 O."]]},
+ {q:"Water is broken down by electricity and 30 mL of hydrogen is collected. About how much oxygen is collected?",qa:"يُفكَّك الماء بالكهرباء ويُجمع 30 mL من الهيدروجين. كم الأكسجين الذي يُجمع تقريبًا؟",o:[["15 mL","15 mL"],["30 mL","30 mL"],["60 mL","60 mL"],["90 mL","90 mL"]],a:0,ex:["H₂O has 2 H : 1 O, so oxygen is half the hydrogen: 30 ÷ 2 = 15 mL.","في H₂O النسبة 2 H : 1 O، فالأكسجين نصف الهيدروجين: 30 ÷ 2 = 15 mL."],h:[["Remember the two tubes in the lab.","تذكّر الأنبوبين في المعمل."],["Hydrogen is twice the oxygen.","الهيدروجين ضعف الأكسجين."]]},
+ {q:"Why do scientists everywhere use chemical symbols like Na and Cl?",qa:"لماذا يستخدم العلماء في كل مكان رموزًا كيميائية مثل Na و Cl؟",o:[["Because the symbols are shorter than numbers","لأن الرموز أقصر من الأرقام"],["So that all scientists understand them, in any language","ليفهمها كل العلماء بأي لغة"],["Because every element has an English name starting with that letter","لأن كل عنصر له اسم إنجليزي يبدأ بذلك الحرف"],["To keep the elements secret","لإبقاء العناصر سرًّا"]],a:1,ex:["Symbols are the same in every language. Na comes from the Latin <i>natrium</i>, not English.","الرموز واحدة في كل اللغات. و Na من الاسم اللاتيني <i>natrium</i>، لا من الإنجليزية."],h:[["Water has different names in Arabic, English and French.","للماء أسماء مختلفة بالعربية والإنجليزية والفرنسية."],["Sodium does not start with N in English.","Sodium لا يبدأ بحرف N بالإنجليزية."]]}];
 /* ---------- apply the Arabic math fix everywhere, now and later ---------- */
 arFix(document.body);
 try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
@@ -1704,9 +1504,9 @@ onShow["Your result"]=()=>{
   const nm=store.get("name","")||"Young Scientist";
   const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
   const mood=st>=2?"happy":st===1?"think":"wow";
-  const msg=st===3?["Outstanding! You can name every relationship in an ecosystem!","رائع! أنت تعرف كل أنواع العلاقات في النظام البيئي!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the virtual labs, then retry.","محاولة جيدة! أعد المعامل الافتراضية، ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  const msg=st===3?["Outstanding! You understand matter and its particles!","رائع! أنت تفهم المادة وجسيماتها!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the virtual labs, then retry.","محاولة جيدة! أعد المعامل الافتراضية، ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
   box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
-   <div class="muted" style="margin-top:6px">Science · Grade 7 · Unit 2 · Lesson 2-2 · ${C.name}</div>
+   <div class="muted" style="margin-top:6px">Science · Grade 7 · Unit 1 · Lesson 1-1 · ${C.name}</div>
    <h2 style="margin:6px 0">${esc(nm)}</h2>
    <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
    <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
