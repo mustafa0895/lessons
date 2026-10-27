@@ -1,0 +1,1585 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F1E8">
+<title>Planning a Fair Investigation – Science G9 (American) Lesson 1</title>
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(247,241,232,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#EADFCD;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#F9E3DC;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#FFF6E1;border:1px solid #F1D9A6;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #E9CFA0;background:#FFF8EA;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#fff;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #E2D5C0}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#E4F3F1;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#FBF3EA;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#E8F5F3}
+.opt.right{border-color:var(--teal);background:#E2F4F1}
+.opt.wrong{border-color:var(--terra);background:#FBE9E4}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#EADFCD;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#fff;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#E8F5F3;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#FBE9E4;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#fff;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#fff}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#E2D5C0}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #fff}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#fff;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#fff}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #fff;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#FFF6E1}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#E2F4F1;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#E2F4F1}
+.pieces button.no{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#E2D5C0}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#E2F4F1;border-left:5px solid var(--teal)}
+.feedback.no{background:#FBE9E4;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#fff;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#fff;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#FFF6E1;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#fff;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#E8F5F3}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#FFF6E1}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#fff;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#FBE9E4}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#FFF6E1;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#fff;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#E8F5F3}.sc.diff{border-color:var(--terra);background:#FBE9E4}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#E2F4F1}.rchips button.wrong{border-color:var(--terra);background:#FBE9E4}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#E8F5F3}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#E8F5F3}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#FBE9E4}
+.ml.done,.mr.done{border-color:var(--teal);background:#E2F4F1;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#E8F5F3}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#FCE8B2;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#FCE8B2;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#E2F4F1}
+.eline.bad{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#fff;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#FFFFFF 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#E2F4F1}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#FBE9E4}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#FFF3D6}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#FFF3D6;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#E2F4F1}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#FBE9E4}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#FFF3D6;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#E8F5F3}.mcard2.wrong{border-color:var(--terra);background:#FBE9E4}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #fff;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#E8F5F3}.idc.wrong{border-color:var(--terra);background:#FBE9E4}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#E8F5F3}.claim2.wrong{border-color:var(--terra);background:#FBE9E4}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#FFF6EA}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#E8F5F3}.ct.no{border-color:var(--terra);background:#FBE9E4}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#FFF6EA}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#EADFF0;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#EADFCD;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#FFF6E0;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#fff;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#E8F5F3}.wuq .wo button.wrong{border-color:var(--terra);background:#FBE9E4}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#fff;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#FBF6EC;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#FBE9E4}.pick button.right{border-color:var(--teal);background:#E8F5F3}
+.why{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#E8F5F3}.why .wb button.wrong{border-color:var(--terra);background:#FBE9E4}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#fff;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#ddd;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#fff;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#FFFDF7}
+.tchip.lost{border-color:var(--terra);background:#FBE9E4}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#FBEDEA}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#E8F5F3}.pickph.wrong{border-color:var(--terra);background:#FBE9E4}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#E8F5F3}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#FBF6EC}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#E8F5F3;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#FBF6EC;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#fff;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#FFE7A8;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#FBF6EC;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#fff}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#E8F5F3;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#fff;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#fff;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#E8F5F3;border-color:var(--teal)}.tile.g1{background:#FFF0E6;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#FBF6EC;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#fff;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#fff;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#fff;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#fff;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#F3ECE1}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#fff}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#F3ECE1}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#fff}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#E9E2D6;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+.rtab{width:100%;border-collapse:collapse;font-size:13px;font-family:ui-monospace,monospace}
+.rtab th{text-align:left;font-family:inherit;font-weight:700;padding:6px;background:#F1ECE3;font-size:12px}
+.rtab td{text-align:center;padding:6px 2px;border-bottom:1px solid #E6E0D6}
+.rtab td.cur{background:#FCEFD2;font-weight:800}
+.chk,.steps{list-style:none;padding:0;margin:0 0 10px;display:grid;gap:6px}
+.chk li,.steps li{background:#fff;border:1px solid #E6E0D6;border-radius:12px;padding:8px 10px;font-size:14px;color:var(--ink)}
+.chk li .ic,.steps li .ic{width:18px;height:18px;vertical-align:-4px}
+.chk li.ok{border-color:#2A9D8F;color:#1F5E57}.chk li.no{border-color:#C8553D;color:#8E3423}
+.steps li.done{border-color:#2A9D8F;background:#EEF8F6}
+.chk li .ar,.steps li .ar{font-size:13px}
+.ftctl .seg{margin-bottom:6px}.ftctl .rlab{margin-top:6px}
+.chk li .ar,.steps li .ar{display:block}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Science · Grade 9 · Unit 1<small id="curLabel">Planning a Fair Investigation</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="Three beakers of cold, warm and hot water with a sugar cube, a stopwatch and a graph">
+<defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F2A37"/><stop offset="1" stop-color="#2B3B4E"/></linearGradient>
+<pattern id="hg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+<linearGradient id="wc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FDDF0"/><stop offset="1" stop-color="#2A8FB0"/></linearGradient>
+<linearGradient id="ww" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D58E"/><stop offset="1" stop-color="#E9B44C"/></linearGradient>
+<linearGradient id="wh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2A38F"/><stop offset="1" stop-color="#C8553D"/></linearGradient>
+<linearGradient id="sc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#D6DCE2"/></linearGradient></defs>
+<rect width="640" height="360" fill="url(#hb)"/><rect width="640" height="360" fill="url(#hg)"/>
+<g stroke="#fff" stroke-opacity=".75" stroke-width="3" fill="#fff" fill-opacity=".06">
+<path d="M40 40 v110 q0 12 12 12 h76 q12 0 12 -12 v-110"/><path d="M165 40 v110 q0 12 12 12 h76 q12 0 12 -12 v-110"/><path d="M290 40 v110 q0 12 12 12 h76 q12 0 12 -12 v-110"/></g>
+<path d="M43 80 h94 v70 q0 9 -9 9 h-76 q-9 0 -9 -9z" fill="url(#wc)" opacity=".9"/>
+<path d="M168 80 h94 v70 q0 9 -9 9 h-76 q-9 0 -9 -9z" fill="url(#ww)" opacity=".9"/>
+<path d="M293 80 h94 v70 q0 9 -9 9 h-76 q-9 0 -9 -9z" fill="url(#wh)" opacity=".9"/>
+<rect x="74" y="118" width="30" height="30" rx="4" fill="url(#sc)" stroke="#9AA5B1"/><rect x="202" y="124" width="24" height="24" rx="4" fill="url(#sc)" stroke="#9AA5B1"/><rect x="331" y="132" width="16" height="16" rx="3" fill="url(#sc)" stroke="#9AA5B1"/>
+<g fill="#fff" opacity=".8"><circle cx="322" cy="112" r="3"/><circle cx="352" cy="104" r="2.5"/><circle cx="340" cy="120" r="2"/><circle cx="218" cy="112" r="2.5"/></g>
+<g font-family="ui-monospace,monospace" font-size="15" font-weight="800" text-anchor="middle"><text x="90" y="30" fill="#7FD3E6">10°C</text><text x="215" y="30" fill="#E9B44C">30°C</text><text x="340" y="30" fill="#F6A58F">50°C</text></g>
+<circle cx="560" cy="62" r="34" fill="#0E1A26" stroke="#E9B44C" stroke-width="4"/><rect x="553" y="20" width="14" height="10" rx="2" fill="#E9B44C"/><path d="M560 62 L560 38" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M560 62 L578 72" stroke="#C8553D" stroke-width="3" stroke-linecap="round"/>
+<g transform="translate(430,108)"><rect width="190" height="80" rx="8" fill="#0E1A26" stroke="#fff" stroke-opacity=".3"/><path d="M18 10 V68 H180" stroke="#fff" stroke-opacity=".7" stroke-width="2" fill="none"/><polyline points="30,16 66,32 102,44 138,53 172,59" fill="none" stroke="#2A9D8F" stroke-width="3"/><g fill="#E9B44C"><circle cx="30" cy="16" r="4"/><circle cx="66" cy="32" r="4"/><circle cx="102" cy="44" r="4"/><circle cx="138" cy="53" r="4"/><circle cx="172" cy="59" r="4"/></g></g>
+</svg>
+    <div class="herotxt"><span class="kicker light">Science · Grade 9 · Unit 1 · Lesson 1</span><h1>Planning a Fair Investigation</h1><p class="ar">التخطيط لاستقصاء عادل</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في متصفح Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="think"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Does a sugar cube dissolve faster in hot water? Guessing is easy. Proving it takes a <b>fair investigation</b>. Today you will plan one like a real scientist.</p><p class="ar">هل يذوب مكعب السكر أسرع في الماء الساخن؟ التخمين سهل، أما الإثبات فيحتاج إلى <b>استقصاء عادل</b>. اليوم ستخطط لاستقصاء مثل عالِم حقيقي.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ identify variables<br>✔ write a hypothesis<br>✔ plan a fair and reliable method<br>✔ draw and interpret a graph<br>✔ use evidence in a conclusion</p><p class="ar"><b>سأتعلّم اليوم أن:</b><br>✔ أحدّد المتغيرات<br>✔ أكتب فرضية<br>✔ أخطط لطريقة عادلة وموثوقة<br>✔ أرسم رسمًا بيانيًا وأفسّره<br>✔ أستخدم الأدلة في الاستنتاج</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic.</p><p class="ar"><b>نصيحة:</b> اضغط زر <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمات.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up</span>
+  <h2>What do you already know?</h2>
+  <p class="hsub ar">ماذا تعرف من قبل؟</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Tap an answer, or tap "Show me".</p><p class="ar">مجرد تسخين، لا شيء يُحسب! اضغط على إجابة، أو اضغط «أرني».</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+</section>
+
+<section class="screen" data-title="The question">
+  <span class="kicker">Virtual lab</span>
+  <h2>The investigation question</h2>
+  <p class="hsub ar">سؤال الاستقصاء</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> An <b class="term">investigation question</b> asks how one thing affects another, and can be answered by testing. Ours: <b>How does water temperature affect the time taken for a sugar cube to dissolve?</b></p><p class="ar"><b>سؤال الاستقصاء</b> يسأل كيف يؤثّر شيء في شيء آخر، ويمكن الإجابة عنه بالتجربة. سؤالنا: <b>كيف تؤثّر درجة حرارة الماء في الزمن اللازم لذوبان مكعب السكر؟</b></p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><canvas id="dsC" style="aspect-ratio:16/9" role="img" aria-label="A sugar cube dissolving in a beaker of water, with a zoom circle showing the particles"></canvas></div>
+      <div class="seg needjs" id="dsT"><button data-v="10" class="on">10°C</button><button data-v="20">20°C</button><button data-v="30">30°C</button><button data-v="40">40°C</button><button data-v="50">50°C</button></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="dsGo">Drop the sugar cube ▶</button></div>
+    </div>
+    <div class="side">
+      <div class="card"><table class="rtab" id="dsTab"></table></div>
+      <div class="msg bi needjs" id="dsMsg"></div>
+      <div class="why needjs" id="why1"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Variables">
+  <span class="kicker">Explore</span>
+  <h2>Change one, measure one, keep the rest the same</h2>
+  <p class="hsub ar">غيّر واحدًا، قِس واحدًا، وثبّت الباقي</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> The <b class="term">independent variable (IV)</b> is the factor you <b>change</b>. The <b class="term">dependent variable (DV)</b> is the outcome you <b>measure</b>. <b class="term">Controlled variables</b> are the factors you <b>keep the same</b>.</p><p class="ar"><b>المتغير المستقل</b> هو العامل الذي <b>تغيّره</b>. و<b>المتغير التابع</b> هو النتيجة التي <b>تقيسها</b>. و<b>المتغيرات المضبوطة</b> هي العوامل التي <b>تُبقيها ثابتة</b>.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="vaSvg" viewBox="0 0 440 260" role="img" aria-label="The sugar investigation with its variables labelled"></svg></div>
+      <div class="seg needjs" id="vaMode"><button data-v="0" class="on">IV</button><button data-v="1">DV</button><button data-v="2">Controlled</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="vaMsg"></div>
+      <div class="why needjs" id="why2"></div>
+    </div>
+  </div>
+  <div class="bi"><p class="en"><b>Sort each factor</b> in the sugar investigation.</p><p class="ar"><b>صنّف كل عامل</b> في استقصاء السكر.</p></div>
+  <div class="idg needjs" id="vaCards"></div>
+</section>
+
+<section class="screen" data-title="Control group">
+  <span class="kicker">Explore</span>
+  <h2>Control group or controlled variable?</h2>
+  <p class="hsub ar">مجموعة ضابطة أم متغير مضبوط؟</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A <b class="term">control group</b> is a group that does <b>not</b> get the treatment, so you can compare. A <b>controlled variable</b> is a factor kept the same for <b>every</b> group.</p><p class="ar"><b>المجموعة الضابطة</b> مجموعة <b>لا</b> تتلقّى المعالجة لكي نقارن بها. أما <b>المتغير المضبوط</b> فعامل يبقى ثابتًا في <b>كل</b> المجموعات.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="cgSvg" viewBox="0 0 440 250" role="img" aria-label="Three groups of bean plants given 0, 5 and 10 grams of nitrogen fertilizer"></svg></div>
+      <div class="seg needjs" id="cgMode"><button data-v="0" class="on">Control group</button><button data-v="1">Controlled variables</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="cgMsg"></div>
+    </div>
+  </div>
+  <div class="bi"><p class="en"><b>Six statements:</b> is each one a controlled variable, a control group, or neither?</p><p class="ar"><b>ست عبارات:</b> هل كل واحدة متغير مضبوط، أم مجموعة ضابطة، أم لا هذا ولا ذاك؟</p></div>
+  <div class="idg needjs" id="cgCards"></div>
+</section>
+
+<section class="screen" data-title="Hypothesis">
+  <span class="kicker">Worked examples</span>
+  <h2>If… then… because…</h2>
+  <p class="hsub ar">إذا… فإن… لأن…</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A <b class="term">hypothesis</b> is a testable prediction with a scientific reason. <b>If</b> (change the IV), <b>then</b> (what happens to the DV), <b>because</b> (the science).</p><p class="ar"><b>الفرضية</b> تنبّؤ قابل للاختبار مع سبب علمي. <b>إذا</b> (غيّرنا المتغير المستقل)، <b>فإن</b> (ماذا يحدث للمتغير التابع)، <b>لأن</b> (التفسير العلمي).</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="fader" data-f="hy"></div>
+    </div>
+    <div class="side">
+      <div class="card"><div class="bi"><p class="en"><b>Science clues</b><br>• Water particles move faster when the water is hotter.<br>• Nitrogen supports plant growth.<br>• Salt reduces water uptake by roots.</p><p class="ar"><b>مفاتيح علمية</b><br>• جسيمات الماء تتحرك أسرع عندما يكون الماء أسخن.<br>• النيتروجين يدعم نمو النبات.<br>• الملح يقلّل امتصاص الجذور للماء.</p></div></div>
+      <div class="why needjs" id="why3"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Fair test lab">
+  <span class="kicker">Virtual lab</span>
+  <h2>Make the method fair</h2>
+  <p class="hsub ar">اجعل الطريقة عادلة</p>
+  <div class="bi"><p class="en">Set up the sugar investigation. Only the <b>water temperature</b> should change. Watch the checklist.</p><p class="ar">جهّز استقصاء السكر. يجب أن تتغيّر <b>درجة حرارة الماء</b> فقط. راقب قائمة التحقّق.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="ftSvg" viewBox="0 0 440 240" role="img" aria-label="Three beakers at 10, 30 and 50 degrees with the chosen sugar cubes and stirring"></svg></div>
+      <div class="ftctl needjs">
+        <div class="rlab">Sugar cubes · مكعبات السكر</div><div class="seg" id="ftSug"><button data-v="1" class="on">Same size</button><button data-v="0">Different sizes</button></div>
+        <div class="rlab">Stirring · التقليب</div><div class="seg" id="ftStir"><button data-v="1" class="on">Same for all</button><button data-v="0">Only 50°C</button></div>
+        <div class="rlab">Water · الماء</div><div class="seg" id="ftVol"><button data-v="1" class="on">200 mL each</button><button data-v="0">Different amounts</button></div>
+        <div class="rlab">Tests at each temperature · مرات الاختبار</div><div class="seg" id="ftRep"><button data-v="0" class="on">Once</button><button data-v="1">Three times</button></div>
+      </div>
+    </div>
+    <div class="side">
+      <ul class="chk" id="ftChk"></ul>
+      <div class="msg bi needjs" id="ftMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Draw the graph">
+  <span class="kicker">Worked example</span>
+  <h2>Results and the line graph</h2>
+  <p class="hsub ar">النتائج والرسم البياني الخطي</p>
+  <div class="bi"><p class="en">Put the <b>IV on the x-axis</b> and the <b>DV on the y-axis</b>. Use an even scale, plot the points, then connect them. Tap <b>Show me</b>.</p><p class="ar">ضع <b>المتغير المستقل على المحور x</b> و<b>المتغير التابع على المحور y</b>. استخدم تدريجًا متساويًا، وعيّن النقاط، ثم صِلها. اضغط <b>Show me</b>.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="grSvg" viewBox="0 0 440 320" role="img" aria-label="Line graph of dissolving time against water temperature"></svg></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="grNext">Show me ▶</button><button class="btn alt sm" id="grReset">↺ Start again</button></div>
+    </div>
+    <div class="side">
+      <div class="card"><table class="rtab"><tr><th>Water temperature (°C)</th><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td></tr><tr><th>Dissolving time (s)</th><td>180</td><td>132</td><td>96</td><td>70</td><td>52</td></tr></table></div>
+      <ol class="steps" id="grSteps"></ol>
+      <div class="msg bi needjs" id="grMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Interpret the graph">
+  <span class="kicker">Explore</span>
+  <h2>What does the graph tell us?</h2>
+  <p class="hsub ar">ماذا يخبرنا الرسم البياني؟</p>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="igSvg" viewBox="0 0 440 320" role="img" aria-label="The graph with a marker you can slide along the line"></svg></div>
+      <div class="needjs"><div class="rlab">Water temperature · درجة حرارة الماء</div><input type="range" id="igR" min="10" max="50" step="5" value="10" aria-label="Water temperature"></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="igMsg"></div>
+      <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Conclusion:</b> As the water temperature increased from <b>10°C</b> to <b>50°C</b>, the dissolving time decreased from <b>180 s</b> to <b>52 s</b>. This supports the hypothesis.</p><p class="ar"><b>الاستنتاج:</b> عندما ارتفعت درجة حرارة الماء من <b>10°C</b> إلى <b>50°C</b>، قلّ زمن الذوبان من <b>180 s</b> إلى <b>52 s</b>. وهذا يدعم الفرضية.</p></div>
+      <div class="why needjs" id="why4"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Valid and reliable">
+  <span class="kicker">Explore</span>
+  <h2>Validity and reliability</h2>
+  <p class="hsub ar">الصلاحية والموثوقية</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Validity:</b> the method tests the question fairly (only the IV changes). <b class="term">Reliability:</b> repeated tests give similar results. Repeat each test and calculate the <b class="term">mean</b>.</p><p class="ar"><b>الصلاحية:</b> الطريقة تختبر السؤال بعدل (يتغيّر المتغير المستقل فقط). <b>الموثوقية:</b> الاختبارات المكررة تعطي نتائج متقاربة. كرّر كل اختبار واحسب <b>المتوسط</b>.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="rlSvg" viewBox="0 0 440 230" role="img" aria-label="Dissolving times at 30 degrees from one test or three tests"></svg></div>
+      <div class="seg needjs" id="rlMode"><button data-v="0" class="on">One test</button><button data-v="1">Three tests</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="rlMsg"></div>
+    </div>
+  </div>
+  <div class="bi"><p class="en"><b>Which one does each problem affect?</b></p><p class="ar"><b>ماذا تؤثّر فيه كل مشكلة؟</b></p></div>
+  <div class="idg needjs" id="rlCards"></div>
+</section>
+
+<section class="screen" data-title="Plan it">
+  <span class="kicker">Apply</span>
+  <h2>Plan the bean plant investigation</h2>
+  <p class="hsub ar">خطّط لاستقصاء نباتات الفاصوليا</p>
+  <div class="bi"><p class="en">A student changes the <b>amount of water</b> given to bean plants and measures their <b>height after two weeks</b>. Tap each part of the plan.</p><p class="ar">يغيّر طالب <b>كمية الماء</b> التي يعطيها لنباتات الفاصوليا، ويقيس <b>طولها بعد أسبوعين</b>. اضغط على كل جزء من الخطة.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="bpSvg" viewBox="0 0 440 250" role="img" aria-label="Four groups of bean plants given different amounts of water, with a ruler"></svg></div>
+      <div class="seg wrap needjs" id="bpMode"><button data-v="0" class="on">IV</button><button data-v="1">DV</button><button data-v="2">Controlled</button><button data-v="3">Repeats</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="bpMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Practice</span>
+  <h2>Check yourself</h2>
+  <p class="hsub ar">تحقّق من نفسك</p>
+  <div class="idg needjs" id="ckCards"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work, scientist! Now the quiz. A wrong answer gives you a hint first.</p><p class="ar">عمل رائع أيها العالِم! والآن الاختبار. الإجابة الخاطئة تعطيك تلميحًا أولًا.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+</main>
+
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="sci9us_1_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"American · Grade 9"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹ =+,./≠]*[0-9A-Za-z()\[\]½²³⁴¹])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}<small>${n[1]}</small></button>`).join("")}</div><div class="mwhy"></div></div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll("button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});}
+
+/* ---------- particle simulation engine ---------- */
+const RM=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const SIMS=[];const PUR=["#C9A6F2","#6A3FB0"],ORA=["#FFD08A","#E07A2E"],BLU=["#BFEAF5","#2A8FB0"];
+function sim(id,ar,draw){const c=document.getElementById(id),W=800,H=Math.round(W/ar);c.width=W;c.height=H;const s={c,ctx:c.getContext("2d"),W,H,draw,t:0};SIMS.push(s);return s;}
+function ball(g,x,y,r,col){const gr=g.createRadialGradient(x-r*.35,y-r*.35,r*.15,x,y,r);gr.addColorStop(0,col[0]);gr.addColorStop(1,col[1]);g.fillStyle=gr;g.beginPath();g.arc(x,y,r,0,7);g.fill();}
+function trail(g,p,k,col){const sp=Math.hypot(p.vx,p.vy);if(sp<1)return;const ux=p.vx/sp,uy=p.vy/sp;g.strokeStyle=col||"rgba(127,211,230,.75)";g.lineWidth=2.5;g.lineCap="round";for(let i=-1;i<=1;i++){const ox=-uy*i*p.r*.55,oy=ux*i*p.r*.55;g.beginPath();g.moveTo(p.x-ux*(p.r+3)+ox,p.y-uy*(p.r+3)+oy);g.lineTo(p.x-ux*(p.r+3+sp*k)+ox,p.y-uy*(p.r+3+sp*k)+oy);g.stroke();}}
+function mk(n,b,r,sp){return Array.from({length:n},()=>{const a=Math.random()*6.283;return {x:b.x+r+Math.random()*(b.w-2*r),y:b.y+r+Math.random()*(b.h-2*r),vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,r}});}
+function gasStep(ps,b,dt,sp){ps.forEach(p=>{const v=Math.hypot(p.vx,p.vy)||1;p.vx*=sp/v;p.vy*=sp/v;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<b.x+p.r){p.x=b.x+p.r;p.vx=Math.abs(p.vx)}if(p.x>b.x+b.w-p.r){p.x=b.x+b.w-p.r;p.vx=-Math.abs(p.vx)}if(p.y<b.y+p.r){p.y=b.y+p.r;p.vy=Math.abs(p.vy)}if(p.y>b.y+b.h-p.r){p.y=b.y+b.h-p.r;p.vy=-Math.abs(p.vy)}});}
+function liqStep(ps,b,dt,sp){ps.forEach(p=>{const a=Math.atan2(p.vy,p.vx)+(Math.random()-.5)*1.4;p.vx=Math.cos(a)*sp;p.vy=Math.sin(a)*sp;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<b.x+p.r){p.x=b.x+p.r;p.vx=Math.abs(p.vx)}if(p.x>b.x+b.w-p.r){p.x=b.x+b.w-p.r;p.vx=-Math.abs(p.vx)}if(p.y<b.y+p.r){p.y=b.y+p.r;p.vy=Math.abs(p.vy)}if(p.y>b.y+b.h-p.r){p.y=b.y+b.h-p.r;p.vy=-Math.abs(p.vy)}});}
+function bg(s,col){const g=s.ctx;g.fillStyle=col||"#0E1A26";g.fillRect(0,0,s.W,s.H);g.strokeStyle="rgba(255,255,255,.05)";g.lineWidth=1;for(let x=0;x<s.W;x+=32){g.beginPath();g.moveTo(x,0);g.lineTo(x,s.H);g.stroke();}for(let y=0;y<s.H;y+=32){g.beginPath();g.moveTo(0,y);g.lineTo(s.W,y);g.stroke();}}
+function label(g,t,x,y,col,size,al){g.font=`800 ${size||22}px ui-monospace,monospace`;g.fillStyle=col||"#fff";g.textAlign=al||"center";g.fillText(t,x,y);}
+function beaker(g,x,y,w,h,fill,lvl){g.save();g.fillStyle=fill;g.fillRect(x+4,y+h*(1-lvl),w-8,h*lvl-4);g.strokeStyle="rgba(255,255,255,.75)";g.lineWidth=4;g.beginPath();g.moveTo(x-8,y);g.lineTo(x,y);g.lineTo(x,y+h);g.lineTo(x+w,y+h);g.lineTo(x+w,y);g.lineTo(x+w+8,y);g.stroke();g.restore();}
+let last=0;function loop(ts){const dt=Math.min(.05,(ts-last)/1000||0);last=ts;SIMS.forEach(s=>{const scr=s.c.closest(".screen");if(scr&&scr.classList.contains("active")){s.t+=RM?0:dt;s.draw(s,RM?0:dt);}});requestAnimationFrame(loop);}
+function drawAll(){SIMS.forEach(s=>s.draw(s,0));}
+
+const T5=[10,20,30,40,50],D5=[180,132,96,70,52];
+const ON=(sel,fn)=>$$(sel+" button").forEach(b=>b.onclick=()=>{$$(sel+" button").forEach(x=>x.classList.toggle("on",x===b));fn(+b.dataset.v);});
+
+/* warm-up */
+const WU=[{q:"Which unit is used to measure time in science?",qa:"ما الوحدة المستخدمة لقياس الزمن في العلوم؟",o:[["metre (m)","المتر (m)"],["second (s)","الثانية (s)"],["gram (g)","الجرام (g)"]],a:1,w:["Time is measured in seconds (s), for example with a stopwatch.","يُقاس الزمن بالثواني (s)، مثلًا بساعة إيقاف."]},
+ {q:"Sugar mixes into water and seems to disappear. This is called…",qa:"يختلط السكر بالماء ويبدو كأنه اختفى. يُسمّى ذلك…",o:[["melting","الانصهار"],["evaporating","التبخّر"],["dissolving","الذوبان"]],a:2,w:["The sugar dissolves: its particles spread out between the water particles.","السكر يذوب: تنتشر جسيماته بين جسيمات الماء."]},
+ {q:"Which tool measures the temperature of water?",qa:"أيّ أداة تقيس درجة حرارة الماء؟",o:[["a thermometer","الترمومتر"],["a balance","الميزان"],["a ruler","المسطرة"]],a:0,w:["A thermometer measures temperature in °C.","الترمومتر يقيس درجة الحرارة بوحدة °C."]}];
+$("#wuBox").innerHTML=WU.map((x,i)=>`<div class="wuq" data-i="${i}"><div class="qq">${i+1}. ${x.q}<span class="ar">${x.qa}</span></div><div class="wo">${x.o.map((o,j)=>`<button data-j="${j}">${o[0]}</button>`).join("")}<button class="show" data-j="-1">Show me · أرني</button></div><div class="wa"><b>${x.o[x.a][0]}</b> ${x.w[0]}<span class="ar">${x.w[1]}</span></div></div>`).join("");
+$$("#wuBox .wuq").forEach(card=>{const x=WU[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const j=+b.dataset.j;card.querySelectorAll("button").forEach(y=>{if(+y.dataset.j===x.a)y.classList.add("right");});if(j>=0&&j!==x.a)b.classList.add("wrong");card.classList.add("done");});});
+
+/* 1. dissolving lab */
+const LSC=1.4;function lab(g,t,x,y,col,size,al){label(g,t,x,y,col,Math.round((size||16)*LSC),al);}
+const wcol=T=>{const h=(T-10)/40;return `rgba(${Math.round(42+158*h)},${Math.round(143-58*h)},${Math.round(176-115*h)},.85)`;};
+const ZC={x:590,y:255,r:170},ZB={x:ZC.x-ZC.r,y:ZC.y-ZC.r,w:ZC.r*2,h:ZC.r*2};
+let dsT=10,dsRun=false,dsP=0,dsDur=1,dsRes={},dsW=mk(34,ZB,13,90),dsFree=[];
+const dsLat=[];for(let i=0;i<4;i++)for(let j=0;j<5;j++)dsLat.push({x:ZC.x-118+i*27,y:ZC.y-54+j*27});
+sim("dsC",16/9,(s,dt)=>{const g=s.ctx;bg(s);const sp=40+dsT*5;
+  if(dsRun){dsP=Math.min(1,dsP+dt/dsDur);if(dsP>=1){dsRun=false;dsDone();}}
+  const left=1-dsP;
+  beaker(g,70,120,250,270,wcol(dsT),.82);
+  const cs=Math.max(0,62*Math.cbrt(left));if(cs>1){const gr=g.createLinearGradient(195-cs/2,380-cs,195+cs/2,380);gr.addColorStop(0,"#fff");gr.addColorStop(1,"#C9D1D9");g.fillStyle=gr;g.fillRect(195-cs/2,382-cs,cs,cs);g.strokeStyle="#9AA5B1";g.lineWidth=2;g.strokeRect(195-cs/2,382-cs,cs,cs);}
+  lab(g,dsT+"°C",195,108,dsT>=40?"#F6A58F":dsT>=30?"#E9B44C":"#7FD3E6",22);
+  const secs=Math.round(dsP*D5[T5.indexOf(dsT)]);
+  g.fillStyle="#0E1A26";g.strokeStyle="#E9B44C";g.lineWidth=3;g.fillRect(40,14,310,58);g.strokeRect(40,14,310,58);lab(g,secs+" s",195,58,"#E9B44C",26);
+  g.strokeStyle="#E9B44C";g.lineWidth=3;g.beginPath();g.arc(195,350,40,0,7);g.stroke();g.setLineDash([7,7]);g.beginPath();g.moveTo(230,330);g.lineTo(ZC.x-ZC.r+20,ZC.y-90);g.moveTo(230,370);g.lineTo(ZC.x-ZC.r+20,ZC.y+90);g.stroke();g.setLineDash([]);
+  g.save();g.beginPath();g.arc(ZC.x,ZC.y,ZC.r,0,7);g.fillStyle="#06111B";g.fill();g.clip();
+  const keep=Math.round(dsLat.length*left);while(dsFree.length<dsLat.length-keep){const p=dsLat[dsFree.length];const a=Math.random()*6.28;dsFree.push({x:p.x,y:p.y,vx:Math.cos(a),vy:Math.sin(a),r:10});}
+  dsLat.slice(dsFree.length).forEach(p=>{g.fillStyle="#F4F6F8";g.fillRect(p.x-11,p.y-11,22,22);g.strokeStyle="#9AA5B1";g.lineWidth=2;g.strokeRect(p.x-11,p.y-11,22,22);});
+  liqStep(dsW,ZB,dt,sp);liqStep(dsFree,ZB,dt,sp*.6);dsFree.forEach(p=>{g.fillStyle="#F4F6F8";g.fillRect(p.x-9,p.y-9,18,18);});dsW.forEach(p=>{trail(g,p,.08);ball(g,p.x,p.y,p.r,BLU);});
+  g.restore();g.strokeStyle="#E9B44C";g.lineWidth=5;g.beginPath();g.arc(ZC.x,ZC.y,ZC.r,0,7);g.stroke();
+  g.fillStyle="#F4F6F8";g.fillRect(452,20,20,20);lab(g,"sugar",520,38,"#fff",14);ball(g,640,30,10,BLU);lab(g,"water",700,38,"#7FD3E6",14);});
+function dsTab(){$("#dsTab").innerHTML=`<tr><th>Water temperature (°C)</th>${T5.map(t=>`<td class="${t===dsT?"cur":""}">${t}</td>`).join("")}</tr><tr><th>Dissolving time (s)</th>${T5.map(t=>`<td class="${t===dsT?"cur":""}">${dsRes[t]||"–"}</td>`).join("")}</tr>`;}
+function dsDone(){const d=D5[T5.indexOf(dsT)];dsRes[dsT]=d;dsTab();const n=Object.keys(dsRes).length;
+  setMsg($("#dsMsg"),`<b>${dsT}°C: ${d} s.</b> ${n<5?"Now try another temperature. What pattern do you see?":"Pattern: the <b>hotter</b> the water, the <b>shorter</b> the dissolving time."}`,`<b>${dsT}°C: ${d} s.</b> ${n<5?"جرّب الآن درجة حرارة أخرى. ما النمط الذي تلاحظه؟":"النمط: كلما كان الماء <b>أسخن</b> كان زمن الذوبان <b>أقصر</b>."}`);}
+function dsReset(){dsP=0;dsRun=false;dsFree=[];}
+$("#dsGo").onclick=()=>{dsReset();dsDur=D5[T5.indexOf(dsT)]/20;dsRun=true;if(RM)dsP=.999;setMsg($("#dsMsg"),"The stopwatch is running (sped up 20 times). Watch the water particles pull sugar particles away.","ساعة الإيقاف تعمل (أسرع 20 مرة). راقب جسيمات الماء وهي تسحب جسيمات السكر بعيدًا.");};
+ON("#dsT",v=>{dsT=v;dsReset();dsTab();setMsg($("#dsMsg"),`Water at <b>${v}°C</b>. Tap <b>Drop the sugar cube</b>.`,`ماء عند <b>${v}°C</b>. اضغط <b>Drop the sugar cube</b>.`);});
+dsTab();setMsg($("#dsMsg"),"Choose a temperature, then tap <b>Drop the sugar cube</b>. Test all five.","اختر درجة حرارة، ثم اضغط <b>Drop the sugar cube</b>. اختبر الدرجات الخمس.");
+whyBox($("#why1"),"Why does sugar dissolve faster in hot water?","لماذا يذوب السكر أسرع في الماء الساخن؟",[
+ ["Hot water particles move faster, so they hit the sugar more often and pull its particles away sooner.","جسيمات الماء الساخن تتحرك أسرع، فتصطدم بالسكر أكثر وتسحب جسيماته أسرع.",1,"More collisions per second means faster dissolving.","تصادمات أكثر في الثانية تعني ذوبانًا أسرع."],
+ ["Hot water has more water in it.","الماء الساخن فيه ماء أكثر.",0,"Every beaker has the same volume of water.","في كل كأس الحجم نفسه من الماء."],
+ ["Heat makes the sugar cube smaller before it enters the water.","الحرارة تصغّر المكعب قبل أن يدخل الماء.",0,"The cubes are the same size. Look at the particles in the zoom circle.","المكعبات بالحجم نفسه. انظر إلى الجسيمات في دائرة التكبير."]]);
+
+/* 2. variables */
+function beakerSvg(x,y,w,h,col,lvl){return `<path d="M${x} ${y} v${h} q0 10 10 10 h${w-20} q10 0 10 -10 v${-h}" fill="#fff" fill-opacity=".5" stroke="#5B6675" stroke-width="2.5"/><path d="M${x+2} ${y+h*(1-lvl)} h${w-4} v${h*lvl} q0 8 -8 8 h${-(w-20)} q-8 0 -8 -8z" fill="${col}" opacity=".85"/>`;}
+function cube(x,y,s){return `<rect x="${x-s/2}" y="${y-s}" width="${s}" height="${s}" rx="3" fill="#fff" stroke="#9AA5B1" stroke-width="1.5"/>`;}
+const hl=(on,x,y,w,h)=>on?`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="none" stroke="#C8553D" stroke-width="3" stroke-dasharray="7 5"/>`:"";
+function chip(x,y,t,on){const w=t.length*7.4+18;return `<g opacity="${on?1:.35}"><rect x="${x}" y="${y}" width="${w}" height="24" rx="12" fill="${on?"#2A9D8F":"#9AA5B1"}"/><text x="${x+w/2}" y="${y+16.5}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">${t}</text></g>`;}
+let vaK=0;function vaDraw(){let s=`<rect width="440" height="260" fill="#FBF8F3"/>`;
+  s+=beakerSvg(150,60,130,130,"#E9B44C",.75)+cube(215,198,30);
+  s+=`<rect x="300" y="30" width="16" height="150" rx="8" fill="#EEF3F6" stroke="#9AA5B1"/><rect x="304" y="90" width="8" height="88" rx="4" fill="#C8553D"/><circle cx="308" cy="190" r="13" fill="#C8553D"/><text x="308" y="22" text-anchor="middle" font-size="12" font-weight="800" fill="#1F2A37">temperature</text>`;
+  s+=`<circle cx="70" cy="95" r="34" fill="#1F2A37" stroke="#E9B44C" stroke-width="4"/><path d="M70 95 V70 M70 95 L88 104" stroke="#fff" stroke-width="3" stroke-linecap="round"/><text x="70" y="148" text-anchor="middle" font-size="12" font-weight="800" fill="#1F2A37">time to dissolve</text>`;
+  s+=hl(vaK===0,286,8,46,206)+hl(vaK===1,22,52,98,108);
+  s+=chip(14,216,"cube size",vaK===2)+chip(102,216,"200 mL water",vaK===2)+chip(214,216,"no stirring",vaK===2)+chip(310,216,"same sugar",vaK===2);
+  $("#vaSvg").innerHTML=s;
+  const M=[["<b>IV = water temperature.</b> This is what we change on purpose: 10, 20, 30, 40 and 50°C.","<b>المتغير المستقل = درجة حرارة الماء.</b> هذا ما نغيّره عن قصد: 10 و20 و30 و40 و50°C."],["<b>DV = time for the cube to dissolve.</b> This is what we measure, in seconds, with a stopwatch.","<b>المتغير التابع = زمن ذوبان المكعب.</b> هذا ما نقيسه بالثواني بساعة إيقاف."],["<b>Controlled variables:</b> sugar-cube size, volume of water, stirring and type of sugar stay the same in every test.","<b>المتغيرات المضبوطة:</b> حجم مكعب السكر وحجم الماء والتقليب ونوع السكر تبقى ثابتة في كل اختبار."]];
+  setMsg($("#vaMsg"),M[vaK][0],M[vaK][1]);}
+ON("#vaMode",v=>{vaK=v;vaDraw();});vaDraw();
+whyBox($("#why2"),"Why do we change only ONE variable?","لماذا نغيّر متغيرًا واحدًا فقط؟",[
+ ["So we know that any change in the DV was caused by the IV.","حتى نعرف أن أي تغيّر في المتغير التابع سببه المتغير المستقل.",1,"If two things change, we cannot tell which one caused the result.","إذا تغيّر شيئان لا نعرف أيّهما سبّب النتيجة."],
+ ["Because changing more takes more time.","لأن تغيير أكثر يأخذ وقتًا أطول.",0,"Time is not the reason. Think about what caused the result.","الوقت ليس السبب. فكّر في ما سبّب النتيجة."],
+ ["So the results are always the same.","حتى تكون النتائج دائمًا متساوية.",0,"The results should change with the IV. We just need to know why.","النتائج يجب أن تتغيّر مع المتغير المستقل، لكننا نريد أن نعرف السبب."]]);
+const VO=[["IV","مستقل"],["DV","تابع"],["Controlled","مضبوط"]];
+cardsQ($("#vaCards"),[
+ {t:["Water temperature","درجة حرارة الماء"],o:VO,a:0,w:["We change it on purpose.","نغيّرها عن قصد."],h:["Is it changed, measured or kept the same?","هل نغيّرها أم نقيسها أم نثبّتها؟"]},
+ {t:["Time for the cube to dissolve","زمن ذوبان المكعب"],o:VO,a:1,w:["We measure it with a stopwatch.","نقيسه بساعة إيقاف."],h:["It is the outcome.","إنه النتيجة."]},
+ {t:["Size of the sugar cube","حجم مكعب السكر"],o:VO,a:2,w:["A bigger cube takes longer, so keep it the same.","المكعب الأكبر يأخذ وقتًا أطول، لذلك نثبّته."],h:["Do we want it to change?","هل نريده أن يتغيّر؟"]},
+ {t:["Volume of water (200 mL)","حجم الماء (200 mL)"],o:VO,a:2,w:["Same volume in every beaker.","الحجم نفسه في كل كأس."],h:["It is the same in every test.","إنه نفسه في كل اختبار."]},
+ {t:["Stirring","التقليب"],o:VO,a:2,w:["Stirring speeds up dissolving, so it must be the same for all.","التقليب يسرّع الذوبان، لذلك يجب أن يكون نفسه للجميع."],h:["Could it change the result unfairly?","هل يمكن أن يغيّر النتيجة بشكل غير عادل؟"]},
+ {t:["Type of sugar","نوع السكر"],o:VO,a:2,w:["Use the same sugar in every test.","نستخدم السكر نفسه في كل اختبار."],h:["Keep everything else the same.","ثبّت كل شيء آخر."]}]);
+
+/* 3. control group (nitrogen fertilizer) */
+function plant(x,y,h,c){c=c||"#2A9D8F";return `<path d="M${x} ${y} C${x-2} ${y-h*.5} ${x+2} ${y-h*.8} ${x} ${y-h}" stroke="#3E7D3A" stroke-width="4" fill="none"/><path d="M${x} ${y-h*.55} q-22 -10 -26 -26 q20 2 26 22z" fill="${c}"/><path d="M${x} ${y-h*.8} q22 -10 26 -26 q-20 2 -26 22z" fill="${c}"/><ellipse cx="${x}" cy="${y-h-6}" rx="10" ry="7" fill="#5CB85C"/>`;}
+function pot(x,y,w){return `<path d="M${x-w/2} ${y} h${w} l-8 46 h${-(w-16)}z" fill="#C8553D"/><rect x="${x-w/2-4}" y="${y-8}" width="${w+8}" height="12" rx="3" fill="#8C5A3C"/>`;}
+let cgK=0;function cgDraw(){let s=`<rect width="440" height="250" fill="#FBF8F3"/>`;const X=[80,220,360],F=["0 g","5 g","10 g"];
+  X.forEach((x,i)=>{s+=plant(x,150,70)+pot(x,150,70)+`<text x="${x}" y="222" text-anchor="middle" font-size="13" font-weight="800" fill="#1F2A37">${F[i]} fertilizer</text>`;});
+  s+=`<text x="220" y="24" text-anchor="middle" font-size="13" font-weight="800" fill="#1F2A37">Does nitrogen fertilizer increase plant growth?</text>`;
+  if(cgK===0)s+=hl(1,28,34,104,200)+`<text x="80" y="246" text-anchor="middle" font-size="12" font-weight="800" fill="#C8553D">control group</text>`;
+  else s+=chip(10,228,"same plant",1)+chip(110,228,"same water",1)+chip(214,228,"same light",1)+chip(316,228,"same soil",1);
+  $("#cgSvg").innerHTML=s;
+  setMsg($("#cgMsg"),cgK?"<b>Controlled variables</b> are kept the same in <b>all three</b> groups: plant type, water, light and soil.":"<b>Control group:</b> the plants with <b>no fertilizer</b>. They show what happens without the treatment, so we can compare.",cgK?"<b>المتغيرات المضبوطة</b> تبقى ثابتة في <b>المجموعات الثلاث</b>: نوع النبات والماء والضوء والتربة.":"<b>المجموعة الضابطة:</b> النباتات <b>بدون سماد</b>. توضّح ما يحدث بدون المعالجة، لكي نقارن بها.");}
+ON("#cgMode",v=>{cgK=v;cgDraw();});cgDraw();
+const CO=[["controlled variable","متغير مضبوط"],["control group","مجموعة ضابطة"],["neither","لا هذا ولا ذاك"]];
+cardsQ($("#cgCards"),[
+ {t:["Plants that get no fertilizer","نباتات لا تحصل على سماد"],o:CO,a:1,cls:"stack",w:["They do not get the treatment: we compare with them.","لا تتلقّى المعالجة: نقارن بها."],h:["Which group has no treatment?","أيّ مجموعة بدون معالجة؟"]},
+ {t:["Every pot gets 50 mL of water a day","كل أصيص يحصل على 50 mL من الماء يوميًا"],o:CO,a:0,cls:"stack",w:["Kept the same for every group.","ثابت في كل المجموعات."],h:["Is it the same for all groups?","هل هو نفسه في كل المجموعات؟"]},
+ {t:["Measuring the height of each plant","قياس طول كل نبات"],o:CO,a:2,cls:"stack",w:["Height is what we measure: the DV.","الطول هو ما نقيسه: المتغير التابع."],h:["It is not kept the same, and it is not a group.","إنه ليس ثابتًا، وليس مجموعة."]},
+ {t:["All plants are the same type of bean","كل النباتات من نوع الفاصوليا نفسه"],o:CO,a:0,cls:"stack",w:["Same plant type for every group.","نوع النبات نفسه في كل المجموعات."],h:["Is this factor the same for all?","هل هذا العامل نفسه للجميع؟"]},
+ {t:["The amount of fertilizer: 0 g, 5 g, 10 g","كمية السماد: 0 g و5 g و10 g"],o:CO,a:2,cls:"stack",w:["This is what we change: the IV.","هذا ما نغيّره: المتغير المستقل."],h:["It changes from group to group.","إنها تتغيّر من مجموعة إلى أخرى."]},
+ {t:["Sugar test: a cube in water with no heating (room temperature)","اختبار السكر: مكعب في ماء بدون تسخين (حرارة الغرفة)"],o:CO,a:1,cls:"stack",w:["It is the comparison without the treatment (heating).","إنه المقارنة بدون المعالجة (التسخين)."],h:["Which test has no treatment?","أيّ اختبار بدون معالجة؟"]}]);
+
+/* 4. hypothesis fader */
+const FD={
+ hy:[{q:"How does water temperature affect the time for a sugar cube to dissolve?<span class=\"ar\">كيف تؤثّر درجة حرارة الماء في زمن ذوبان مكعب السكر؟</span>",words:true,txt:true,s:[["If the water temperature increases,","If · IV","إذا: إذا ارتفعت درجة حرارة الماء،"],["then the sugar cube will dissolve in less time,","then · DV","فإن: فإن مكعب السكر سيذوب في زمن أقل،"],["because the water particles move faster and hit the sugar more often.","because · science","لأن: لأن جسيمات الماء تتحرك أسرع وتصطدم بالسكر أكثر."]],blank:0},
+  {q:"How does nitrogen fertilizer affect the growth of bean plants?<span class=\"ar\">كيف يؤثّر سماد النيتروجين في نمو نباتات الفاصوليا؟</span>",words:true,txt:true,s:[["If bean plants are given more nitrogen fertilizer,","If · IV","إذا: إذا أُعطيت نباتات الفاصوليا سماد نيتروجين أكثر،"],["then they will grow taller,","then · DV","فإن: فإنها ستنمو أطول،"],["because nitrogen supports plant growth.","because · science","لأن: لأن النيتروجين يدعم نمو النبات."]],blank:1,o:[["because nitrogen supports plant growth.","because the plants were given less water.","because fertilizer is green."]],h:[["Use the science clue about nitrogen.","استخدم المفتاح العلمي عن النيتروجين."]]},
+  {q:"How does salt in the water affect the growth of plants?<span class=\"ar\">كيف يؤثّر الملح في الماء في نمو النباتات؟</span>",words:true,txt:true,s:[["If the plants are watered with saltier water,","If · IV","إذا: إذا سُقيت النباتات بماء أكثر ملوحة،"],["then they will grow less,","then · DV","فإن: فإنها ستنمو أقل،"],["because salt reduces water uptake by the roots.","because · science","لأن: لأن الملح يقلّل امتصاص الجذور للماء."]],blank:2,o:[["then they will grow less,","then the salt will turn into sugar,","then the pots will get bigger,"],["because salt reduces water uptake by the roots.","because salt gives plants extra energy.","because salt makes the soil warmer."]],h:[["The DV is plant growth. Will it go up or down?","المتغير التابع هو نمو النبات. هل سيزيد أم يقل؟"],["Use the science clue about salt and roots.","استخدم المفتاح العلمي عن الملح والجذور."]]}]};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+whyBox($("#why3"),"Why does a hypothesis need a “because” part?","لماذا تحتاج الفرضية إلى جزء «لأن»؟",[
+ ["It gives the scientific reason, so the prediction is more than a guess.","يعطي السبب العلمي، فيصبح التنبّؤ أكثر من مجرد تخمين.",1,"A reason links the prediction to science you know.","السبب يربط التنبّؤ بالعلم الذي تعرفه."],
+ ["It tells you the answer before the test.","يخبرك بالإجابة قبل الاختبار.",0,"A hypothesis can be wrong. The test decides.","الفرضية قد تكون خاطئة، والاختبار هو الذي يحكم."],
+ ["It lists the equipment.","يذكر الأدوات.",0,"Equipment goes in the method, not in the hypothesis.","الأدوات تُكتب في الطريقة، لا في الفرضية."]]);
+
+/* 5. fair test lab */
+const FT={sug:1,stir:1,vol:1,rep:0};
+function ftDraw(){let s=`<rect width="440" height="240" fill="#FBF8F3"/>`;const X=[30,170,310],C=["#7FD3E6","#E9B44C","#F2A38F"],L=FT.vol?[.6,.6,.6]:[.4,.6,.8],Z=FT.sug?[24,24,24]:[14,24,34];
+  X.forEach((x,i)=>{s+=beakerSvg(x,50,100,130,C[i],L[i])+cube(x+50,188,Z[i])+`<text x="${x+50}" y="36" text-anchor="middle" font-size="14" font-weight="800" fill="#1F2A37">${T5[i*2]}°C</text>`;
+    if(!FT.stir&&i===2)s+=`<line x1="${x+70}" y1="30" x2="${x+40}" y2="180" stroke="#8C5A3C" stroke-width="5" stroke-linecap="round"/><path d="M${x+20} 150 a28 10 0 1 0 56 0" fill="none" stroke="#1F2A37" stroke-width="2"/>`;
+    s+=`<rect x="${x+28}" y="204" width="44" height="22" rx="11" fill="${FT.rep?"#2A9D8F":"#9AA5B1"}"/><text x="${x+50}" y="219.5" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">×${FT.rep?3:1}</text>`;});
+  $("#ftSvg").innerHTML=s;
+  const items=[[1,"IV: only the water temperature changes","المتغير المستقل: تتغيّر درجة حرارة الماء فقط"],[FT.sug,"Same size of sugar cube","مكعبات سكر بالحجم نفسه"],[FT.stir,"Same stirring for all","التقليب نفسه للجميع"],[FT.vol,"Same volume of water","الحجم نفسه من الماء"],[FT.rep,"Each temperature tested three times","كل درجة حرارة تُختبر ثلاث مرات"]];
+  $("#ftChk").innerHTML=items.map(it=>`<li class="${it[0]?"ok":"no"}">${it[0]?ICON.check:ICON.cross} ${it[1]}<span class="ar">${it[2]}</span></li>`).join("");refreshAr($("#ftChk"));
+  let m;if(!FT.sug)m=["<b>Not valid.</b> A bigger cube takes longer to dissolve anyway, so we cannot tell if the temperature caused the difference.","<b>غير صالحة.</b> المكعب الأكبر يأخذ وقتًا أطول على أي حال، فلا نعرف هل درجة الحرارة هي سبب الفرق.",1];
+  else if(!FT.stir)m=["<b>Not valid.</b> Stirring only the 50°C beaker speeds it up, so two things change at once.","<b>غير صالحة.</b> تقليب كأس 50°C وحدها يسرّعها، فيتغيّر شيئان في وقت واحد.",1];
+  else if(!FT.vol)m=["<b>Not valid.</b> Different amounts of water change the result, so it is not a fair test.","<b>غير صالحة.</b> اختلاف كمية الماء يغيّر النتيجة، فلا يكون الاختبار عادلًا.",1];
+  else if(!FT.rep)m=["<b>Fair (valid), but not yet reliable.</b> One test can be a fluke. Test each temperature three times.","<b>عادلة (صالحة)، لكنها ليست موثوقة بعد.</b> اختبار واحد قد يكون صدفة. اختبر كل درجة حرارة ثلاث مرات.",1];
+  else m=["<b>Fair and reliable!</b> Change one factor, measure one outcome, keep everything else the same, and repeat.","<b>عادلة وموثوقة!</b> غيّر عاملًا واحدًا، وقِس نتيجة واحدة، وثبّت كل شيء آخر، وكرّر.",0];
+  setMsg($("#ftMsg"),m[0],m[1],m[2]);}
+ON("#ftSug",v=>{FT.sug=v;ftDraw();});ON("#ftStir",v=>{FT.stir=v;ftDraw();});ON("#ftVol",v=>{FT.vol=v;ftDraw();});ON("#ftRep",v=>{FT.rep=v;ftDraw();});ftDraw();
+
+/* 6. graph */
+const GX=t=>70+t*6.4,GY=d=>268-d*1.15;
+function axes(step,title){let s=`<rect width="440" height="320" fill="#fff"/>`;for(let x=70;x<=390;x+=16)s+=`<line x1="${x}" y1="38" x2="${x}" y2="268" stroke="#E6ECF1"/>`;for(let y=268;y>=38;y-=11.5)s+=`<line x1="70" y1="${y}" x2="390" y2="${y}" stroke="#E6ECF1"/>`;
+  if(step>=1&&title)s+=`<text x="230" y="24" text-anchor="middle" font-size="13" font-weight="800" fill="#1F2A37">Effect of water temperature on dissolving time</text>`;
+  if(step>=2)s+=`<path d="M70 34 V268 H396" stroke="#1F2A37" stroke-width="2.5" fill="none"/><text x="230" y="308" text-anchor="middle" font-size="12" font-weight="800" fill="#2A9D8F">Water temperature (°C) · IV</text><text transform="translate(18 155) rotate(-90)" text-anchor="middle" font-size="12" font-weight="800" fill="#C8553D">Dissolving time (s) · DV</text>`;
+  if(step>=3){for(let t=0;t<=50;t+=10)s+=`<text x="${GX(t)}" y="284" text-anchor="middle" font-size="14" fill="#1F2A37" font-family="ui-monospace,monospace">${t}</text>`;for(let d=0;d<=200;d+=40)s+=`<text x="62" y="${GY(d)+4}" text-anchor="end" font-size="14" fill="#1F2A37" font-family="ui-monospace,monospace">${d}</text>`;}
+  return s;}
+const GST=[["Add a title","أضف عنوانًا"],["Draw the axes and label them with units","ارسم المحورين واكتب عليهما الوحدات"],["Use an even scale (0–50, 0–200)","استخدم تدريجًا متساويًا (0–50 و0–200)"],["Plot the five points","عيّن النقاط الخمس"],["Connect the points with a line","صِل النقاط بخط"]];
+let grK=0;function grDraw(){const st=grK<=3?grK:grK<=8?4:5,np=Math.max(0,Math.min(5,grK-3));let s=axes(st,1);
+  if(grK>=9)s+=`<polyline points="${T5.map((t,i)=>GX(t)+","+GY(D5[i])).join(" ")}" fill="none" stroke="#2A9D8F" stroke-width="3"/>`;
+  for(let i=0;i<np;i++)s+=`<circle cx="${GX(T5[i])}" cy="${GY(D5[i])}" r="5.5" fill="#E9B44C" stroke="#1F2A37" stroke-width="1.5"/>`;
+  if(np>0&&grK<9){const i=np-1;s+=`<path d="M${GX(T5[i])} 268 V${GY(D5[i])} H70" stroke="#C8553D" stroke-dasharray="4 4" fill="none"/><text x="${GX(T5[i])+9}" y="${GY(D5[i])-8}" font-size="12" font-weight="800" fill="#C8553D">(${T5[i]}, ${D5[i]})</text>`;}
+  $("#grSvg").innerHTML=s;
+  $("#grSteps").innerHTML=GST.map((g,i)=>`<li class="${i<st?"done":""}">${i<st?ICON.check:""} ${g[0]}<span class="ar">${g[1]}</span></li>`).join("");refreshAr($("#grSteps"));
+  $("#grNext").disabled=grK>=9;
+  const M=grK===0?["Start with an empty grid. Tap <b>Show me</b>.","ابدأ بشبكة فارغة. اضغط <b>Show me</b>."]:grK===1?["A title says what the graph shows.","العنوان يوضّح ماذا يبيّن الرسم."]:grK===2?["<b>IV</b> (what we changed) goes on the <b>x-axis</b>. <b>DV</b> (what we measured) goes on the <b>y-axis</b>. Always add units.","<b>المتغير المستقل</b> (ما غيّرناه) على <b>المحور x</b>، و<b>التابع</b> (ما قسناه) على <b>المحور y</b>. أضف الوحدات دائمًا."]:grK===3?["Each square on an axis stands for the same amount: 10°C across, 40 s up.","كل مربع على المحور يمثّل المقدار نفسه: 10°C أفقيًا و40 s رأسيًا."]:grK<9?[`Point (${T5[np-1]}°C, ${D5[np-1]} s): go across to ${T5[np-1]}, then up to ${D5[np-1]}.`,`النقطة (${T5[np-1]}°C، ${D5[np-1]} s): تحرّك أفقيًا إلى ${T5[np-1]} ثم رأسيًا إلى ${D5[np-1]}.`]:["<b>Done!</b> The line slopes <b>down</b>: as temperature goes up, dissolving time goes down.","<b>انتهينا!</b> الخط <b>ينحدر لأسفل</b>: كلما ارتفعت درجة الحرارة قلّ زمن الذوبان."];
+  setMsg($("#grMsg"),M[0],M[1]);}
+$("#grNext").onclick=()=>{if(grK<9){grK++;grDraw();}};$("#grReset").onclick=()=>{grK=0;grDraw();};grDraw();
+
+/* 7. interpret */
+function igVal(t){const i=Math.min(3,Math.floor((t-10)/10)),f=(t-T5[i])/10;return Math.round(D5[i]+(D5[i+1]-D5[i])*f);}
+function igDraw(){const t=+$("#igR").value,d=igVal(t),meas=t%10===0;let s=axes(3,1)+`<polyline points="${T5.map((x,i)=>GX(x)+","+GY(D5[i])).join(" ")}" fill="none" stroke="#2A9D8F" stroke-width="3"/>`;
+  T5.forEach((x,i)=>s+=`<circle cx="${GX(x)}" cy="${GY(D5[i])}" r="4.5" fill="#E9B44C"/>`);
+  s+=`<path d="M${GX(t)} 268 V${GY(d)} H70" stroke="#C8553D" stroke-width="2" stroke-dasharray="5 4" fill="none"/><circle cx="${GX(t)}" cy="${GY(d)}" r="8" fill="#C8553D"/><rect x="${Math.min(300,GX(t)+12)}" y="${GY(d)-30}" width="86" height="24" rx="6" fill="#1F2A37"/><text x="${Math.min(300,GX(t)+12)+43}" y="${GY(d)-13}" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">${meas?"":"≈ "}${d} s</text>`;
+  $("#igSvg").innerHTML=s;
+  setMsg($("#igMsg"),meas?`At <b>${t}°C</b> we measured <b>${d} s</b>. Slide on: the time keeps going <b>down</b> as the temperature goes <b>up</b>.`:`<b>${t}°C</b> was not tested, but the line lets us <b>estimate</b> about <b>${d} s</b>. Reading between points is called interpolation.`,meas?`عند <b>${t}°C</b> قسنا <b>${d} s</b>. حرّك المؤشر: الزمن يستمر في <b>النقصان</b> كلما <b>ارتفعت</b> درجة الحرارة.`:`لم نختبر <b>${t}°C</b>، لكن الخط يسمح لنا <b>بتقدير</b> نحو <b>${d} s</b>. قراءة قيمة بين النقاط تُسمّى الاستيفاء.`);}
+$("#igR").oninput=igDraw;igDraw();
+whyBox($("#why4"),"Which reason explains the pattern in the graph?","أيّ سبب يفسّر النمط في الرسم البياني؟",[
+ ["Hotter water particles move faster and collide with the sugar more often.","جسيمات الماء الأسخن تتحرك أسرع وتصطدم بالسكر أكثر.",1,"A good conclusion gives the pattern, the data and the science reason.","الاستنتاج الجيد يذكر النمط والبيانات والسبب العلمي."],
+ ["The stopwatch runs faster in hot water.","ساعة الإيقاف تعمل أسرع في الماء الساخن.",0,"The stopwatch is not affected. Think about particles.","ساعة الإيقاف لا تتأثّر. فكّر في الجسيمات."],
+ ["The line goes down, so the sugar got heavier.","الخط ينحدر، إذن صار السكر أثقل.",0,"The y-axis shows time, not mass.","المحور y يبيّن الزمن، لا الكتلة."]]);
+
+/* 8. validity and reliability */
+let rlK=0;function rlDraw(){const tr=rlK?[98,94,96]:[98];let s=`<rect width="440" height="230" fill="#fff"/><line x1="40" y1="190" x2="420" y2="190" stroke="#1F2A37" stroke-width="2"/><text x="230" y="22" text-anchor="middle" font-size="13" font-weight="800" fill="#1F2A37">Dissolving time at 30°C (s)</text>`;
+  tr.forEach((v,i)=>{const x=rlK?60+i*95:150,h=v*1.4;s+=`<rect x="${x}" y="${190-h}" width="70" height="${h}" rx="6" fill="#E9B44C"/><text x="${x+35}" y="${182-h}" text-anchor="middle" font-size="14" font-weight="800" fill="#1F2A37">${v}</text><text x="${x+35}" y="210" text-anchor="middle" font-size="12" fill="#5B6675">test ${i+1}</text>`;});
+  if(rlK)s+=`<rect x="345" y="${190-96*1.4}" width="70" height="${96*1.4}" rx="6" fill="#2A9D8F"/><text x="380" y="${182-96*1.4}" text-anchor="middle" font-size="14" font-weight="800" fill="#1F2A37">96</text><text x="380" y="210" text-anchor="middle" font-size="12" font-weight="800" fill="#2A9D8F">mean</text>`;
+  $("#rlSvg").innerHTML=s;
+  setMsg($("#rlMsg"),rlK?"Three results close together (94–98 s): the test is <b>reliable</b>. Mean = (98 + 94 + 96) ÷ 3 = <b>96 s</b>.":"One test gave 98 s. Was it typical, or a fluke? With one result you <b>cannot tell</b>.",rlK?"ثلاث نتائج متقاربة (94–98 s): الاختبار <b>موثوق</b>. المتوسط = (98 + 94 + 96) ÷ 3 = <b>96 s</b>.":"أعطى اختبار واحد 98 s. هل هي نتيجة معتادة أم صدفة؟ بنتيجة واحدة <b>لا يمكنك أن تعرف</b>.");}
+ON("#rlMode",v=>{rlK=v;rlDraw();});rlDraw();
+const RO=[["validity","الصلاحية"],["reliability","الموثوقية"],["no problem","لا مشكلة"]];
+cardsQ($("#rlCards"),[
+ {t:["Different sizes of sugar cube are used","استُخدمت مكعبات سكر بأحجام مختلفة"],o:RO,a:0,cls:"stack",w:["Two factors change, so the test is not fair: a validity problem.","يتغيّر عاملان، فلا يكون الاختبار عادلًا: مشكلة صلاحية."],h:["Is the test still fair?","هل ما زال الاختبار عادلًا؟"]},
+ {t:["Each temperature is tested only once","كل درجة حرارة اختُبرت مرة واحدة فقط"],o:RO,a:1,cls:"stack",w:["No repeats, so we cannot check the results: a reliability problem.","لا تكرار، فلا نستطيع التحقّق من النتائج: مشكلة موثوقية."],h:["Can we check if the result is typical?","هل نستطيع التحقّق من أن النتيجة معتادة؟"]},
+ {t:["Only the 50°C beaker is stirred","قُلّبت كأس 50°C وحدها"],o:RO,a:0,cls:"stack",w:["Stirring is a second change: the test is not fair.","التقليب تغيير ثانٍ: الاختبار غير عادل."],h:["How many factors change now?","كم عاملًا يتغيّر الآن؟"]},
+ {t:["Three tests at 30°C give 98, 94 and 96 s","ثلاثة اختبارات عند 30°C أعطت 98 و94 و96 s"],o:RO,a:2,cls:"stack",w:["Close results: reliable. Use the mean, 96 s.","نتائج متقاربة: موثوقة. استخدم المتوسط 96 s."],h:["Are the results close together?","هل النتائج متقاربة؟"]}]);
+
+/* 9. bean plants */
+let bpK=0;function bpDraw(){let s=`<rect width="440" height="250" fill="#FBF8F3"/>`;const X=[60,150,240,330],W=["0","50","100","150"];
+  X.forEach((x,i)=>{s+=plant(x,140,60)+pot(x,140,56);
+    if(bpK===3)for(let k=0;k<4;k++)s+=`<circle cx="${x-21+k*14}" cy="210" r="5" fill="#3E7D3A"/>`;
+    s+=`<text x="${x}" y="${bpK===3?232:212}" text-anchor="middle" font-size="12" font-weight="800" fill="${bpK===0?"#C8553D":"#1F2A37"}">${W[i]} mL/day</text>`;});
+  s+=`<rect x="392" y="40" width="22" height="146" fill="#F3D58E" stroke="#8C5A3C"/>`;for(let k=0;k<=12;k++)s+=`<line x1="392" y1="${186-k*12}" x2="${k%2?400:406}" y2="${186-k*12}" stroke="#8C5A3C"/>`;
+  if(bpK===0)s+=hl(1,22,196,320,24);if(bpK===1)s+=hl(1,384,30,40,166)+`<text x="403" y="22" text-anchor="middle" font-size="11" font-weight="800" fill="#C8553D">height</text>`;
+  if(bpK===2)s+=chip(8,224,"same bean type",1)+chip(124,224,"same soil",1)+chip(206,224,"same pot",1)+chip(282,224,"same light",1);
+  $("#bpSvg").innerHTML=s;
+  const M=[["<b>IV: the amount of water</b> each day (0, 50, 100, 150 mL). The plants with 0 mL can act as the comparison group.","<b>المتغير المستقل: كمية الماء</b> يوميًا (0 و50 و100 و150 mL). النباتات التي تحصل على 0 mL يمكن أن تكون مجموعة المقارنة."],["<b>DV: the height of each plant after two weeks</b>, measured in cm with a ruler.","<b>المتغير التابع: طول كل نبات بعد أسبوعين</b>، يُقاس بالسنتيمتر بمسطرة."],["<b>Keep the same:</b> type of bean, soil, pot size, light and temperature.","<b>ثبّت:</b> نوع الفاصوليا والتربة وحجم الأصيص والضوء ودرجة الحرارة."],["<b>Several plants for each amount of water</b>, then calculate the mean height. One plant could be weak or sick by chance, so repeats make the results <b>reliable</b>.","<b>عدة نباتات لكل كمية ماء</b>، ثم احسب متوسط الطول. نبات واحد قد يكون ضعيفًا أو مريضًا بالصدفة، لذلك التكرار يجعل النتائج <b>موثوقة</b>."]];
+  setMsg($("#bpMsg"),M[bpK][0],M[bpK][1]);}
+ON("#bpMode",v=>{bpK=v;bpDraw();});bpDraw();
+
+/* check yourself */
+cardsQ($("#ckCards"),[
+ {t:["A student tests how light intensity affects plant growth. The IV is…","يختبر طالب كيف تؤثّر شدة الضوء في نمو النبات. المتغير المستقل هو…"],o:[["plant growth","نمو النبات"],["light intensity","شدة الضوء"],["type of soil","نوع التربة"]],a:1,cls:"stack",w:["Light intensity is what the student changes.","شدة الضوء هي ما يغيّره الطالب."],h:["The IV is what you change.","المتغير المستقل هو ما تغيّره."]},
+ {t:["On a line graph, the DV goes on…","في الرسم البياني الخطي، يوضع المتغير التابع على…"],o:[["the x-axis","المحور x"],["the y-axis","المحور y"],["the title","العنوان"]],a:1,cls:"stack",w:["DV on the y-axis, IV on the x-axis.","التابع على المحور y، والمستقل على المحور x."],h:["What we measure goes up the side.","ما نقيسه يوضع على المحور الرأسي."]},
+ {t:["Which is a complete hypothesis?","أيّها فرضية كاملة؟"],o:[["Sugar dissolves in water.","السكر يذوب في الماء."],["If the water is hotter, then the sugar dissolves faster, because the particles move faster.","إذا كان الماء أسخن، فإن السكر يذوب أسرع، لأن الجسيمات تتحرك أسرع."],["I think hot water is better.","أظن أن الماء الساخن أفضل."]],a:1,cls:"stack",w:["It has If, then and because.","فيها إذا وفإن ولأن."],h:["Look for all three parts.","ابحث عن الأجزاء الثلاثة."]},
+ {t:["Repeating each test three times improves…","تكرار كل اختبار ثلاث مرات يحسّن…"],o:[["reliability","الموثوقية"],["the IV","المتغير المستقل"],["the title","العنوان"]],a:0,cls:"stack",w:["Repeats let you check the results and calculate a mean.","التكرار يسمح لك بالتحقّق من النتائج وحساب المتوسط."],h:["Similar repeated results = ?","نتائج مكررة متقاربة = ؟"]},
+ {t:["Three tests give 52, 50 and 54 s. The mean is…","أعطت ثلاثة اختبارات 52 و50 و54 s. المتوسط هو…"],o:[["50 s","50 s"],["54 s","54 s"],["52 s","52 s"]],a:2,w:["(52 + 50 + 54) ÷ 3 = 156 ÷ 3 = 52 s.","(52 + 50 + 54) ÷ 3 = 156 ÷ 3 = 52 s."],h:["Add the three, then divide by 3.","اجمع الثلاثة ثم اقسم على 3."]},
+ {t:["Plants given salt water are compared with plants given pure water. The pure-water plants are…","نباتات تُسقى بماء مالح تُقارن بنباتات تُسقى بماء نقي. نباتات الماء النقي هي…"],o:[["the control group","المجموعة الضابطة"],["the DV","المتغير التابع"],["a controlled variable","متغير مضبوط"]],a:0,cls:"stack",w:["They get no treatment (no salt), so we compare with them.","لا تتلقّى معالجة (لا ملح)، فنقارن بها."],h:["Which group has no salt?","أيّ مجموعة بدون ملح؟"]}]);
+
+requestAnimationFrame(loop);
+const FL=[["IV","Independent variable","المتغير المستقل","The factor you change on purpose.","العامل الذي تغيّره عن قصد."],
+ ["DV","Dependent variable","المتغير التابع","The outcome you measure.","النتيجة التي تقيسها."],
+ ["= = =","Controlled variables","المتغيرات المضبوطة","Factors kept the same in every test.","عوامل تبقى ثابتة في كل اختبار."],
+ ["0 g","Control group","المجموعة الضابطة","A group without the treatment, used for comparison.","مجموعة بدون المعالجة، تُستخدم للمقارنة."],
+ ["If…then…because","Hypothesis","الفرضية","A testable prediction with a scientific reason.","تنبّؤ قابل للاختبار مع سبب علمي."],
+ ["x · y","Line graph","الرسم البياني الخطي","IV on the x-axis, DV on the y-axis, units and an even scale.","المستقل على x، والتابع على y، مع الوحدات وتدريج متساوٍ."],
+ ["fair","Validity","الصلاحية","The method tests the question fairly: only the IV changes.","الطريقة تختبر السؤال بعدل: يتغيّر المستقل فقط."],
+ ["×3","Reliability","الموثوقية","Repeated tests give similar results. Use the mean.","الاختبارات المكررة تعطي نتائج متقاربة. استخدم المتوسط."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+const Q=[
+ {q:"A student investigates: “How does the mass of salt affect the boiling point of water?” What is the independent variable?",qa:"يستقصي طالب: «كيف تؤثّر كتلة الملح في درجة غليان الماء؟» ما المتغير المستقل؟",o:[["the boiling point of water","درجة غليان الماء"],["the mass of salt","كتلة الملح"],["the type of pan","نوع الوعاء"],["the volume of water","حجم الماء"]],a:1,ex:["The mass of salt is what the student changes on purpose.","كتلة الملح هي ما يغيّره الطالب عن قصد."],h:[["The IV is in the first part of the question: “How does … affect”.","المتغير المستقل في الجزء الأول من السؤال: «كيف يؤثّر …»."],["What does the student change?","ماذا يغيّر الطالب؟"]]},
+ {q:"In the same investigation, what is the dependent variable?",qa:"في الاستقصاء نفسه، ما المتغير التابع؟",o:[["the mass of salt","كتلة الملح"],["the type of salt","نوع الملح"],["the room temperature","درجة حرارة الغرفة"],["the boiling point of water","درجة غليان الماء"]],a:3,ex:["The boiling point is the outcome that is measured.","درجة الغليان هي النتيجة التي تُقاس."],h:[["The DV is measured.","المتغير التابع يُقاس."],["What does the thermometer read at the end?","ماذا يقرأ الترمومتر في النهاية؟"]]},
+ {q:"Why must all sugar cubes be the same size in the dissolving test?",qa:"لماذا يجب أن تكون كل مكعبات السكر بالحجم نفسه في اختبار الذوبان؟",o:[["So only the water temperature affects the dissolving time","حتى تؤثّر درجة حرارة الماء وحدها في زمن الذوبان"],["So the water stays cold","حتى يبقى الماء باردًا"],["So the graph has a title","حتى يكون للرسم عنوان"],["So the test is faster to do","حتى يكون الاختبار أسرع"]],a:0,ex:["Cube size is a controlled variable. If it changed too, the test would not be fair.","حجم المكعب متغير مضبوط، ولو تغيّر هو أيضًا لما كان الاختبار عادلًا."],h:[["A bigger cube takes longer anyway.","المكعب الأكبر يأخذ وقتًا أطول على أي حال."],["Change one, keep the rest the same.","غيّر واحدًا وثبّت الباقي."]]},
+ {q:"Which is the best hypothesis?",qa:"أيّها أفضل فرضية؟",o:[["Plants need light.","النباتات تحتاج إلى الضوء."],["Light is good for plants.","الضوء مفيد للنباتات."],["If plants get more light, then they will grow taller, because light is needed for photosynthesis.","إذا حصلت النباتات على ضوء أكثر، فإنها ستنمو أطول، لأن الضوء لازم للبناء الضوئي."],["I like plants that grow tall.","أحب النباتات التي تنمو طويلة."]],a:2,ex:["It is testable and has If, then and because.","قابلة للاختبار وفيها إذا وفإن ولأن."],h:[["A hypothesis is a testable prediction.","الفرضية تنبّؤ قابل للاختبار."],["Look for If… then… because…","ابحث عن إذا… فإن… لأن…"]]},
+ {q:"Fertilizer is added to plants in groups A and B. Group C gets no fertilizer. What is group C?",qa:"يُضاف سماد إلى النباتات في المجموعتين A وB، والمجموعة C لا تحصل على سماد. ما المجموعة C؟",o:[["a controlled variable","متغير مضبوط"],["the control group","المجموعة الضابطة"],["the dependent variable","المتغير التابع"],["the hypothesis","الفرضية"]],a:1,ex:["It does not get the treatment, so the other groups are compared with it.","لا تتلقّى المعالجة، فتُقارن بها المجموعات الأخرى."],h:[["Which group has no treatment?","أيّ مجموعة بدون معالجة؟"],["A controlled variable is a factor, not a group.","المتغير المضبوط عامل، وليس مجموعة."]]},
+ {q:"On a line graph of this investigation, where should water temperature go?",qa:"في الرسم البياني الخطي لهذا الاستقصاء، أين نضع درجة حرارة الماء؟",o:[["on the x-axis","على المحور x"],["on the y-axis","على المحور y"],["in the title only","في العنوان فقط"],["it is not shown","لا تظهر"]],a:0,ex:["Water temperature is the IV, and the IV goes on the x-axis.","درجة حرارة الماء هي المتغير المستقل، والمستقل يوضع على المحور x."],h:[["Is temperature the IV or the DV here?","هل درجة الحرارة هنا مستقل أم تابع؟"],["IV across, DV up.","المستقل أفقيًا، والتابع رأسيًا."]]},
+ {q:"Use the graph data: 30°C → 96 s and 40°C → 70 s. Estimate the dissolving time at 35°C.",qa:"استخدم بيانات الرسم: 30°C ← 96 s و40°C ← 70 s. قدّر زمن الذوبان عند 35°C.",o:[["about 120 s","نحو 120 s"],["about 50 s","نحو 50 s"],["about 100 s","نحو 100 s"],["about 83 s","نحو 83 s"]],a:3,ex:["35°C is halfway between 30 and 40, so the time is about halfway between 96 and 70: about 83 s.","35°C في منتصف المسافة بين 30 و40، فالزمن تقريبًا في المنتصف بين 96 و70: نحو 83 s."],h:[["The answer must be between 70 s and 96 s.","يجب أن تكون الإجابة بين 70 s و96 s."],["Find the middle: (96 + 70) ÷ 2.","أوجد المنتصف: (96 + 70) ÷ 2."]]},
+ {q:"Three tests at 20°C give 130, 134 and 132 s. What is the mean?",qa:"أعطت ثلاثة اختبارات عند 20°C القيم 130 و134 و132 s. ما المتوسط؟",o:[["130 s","130 s"],["134 s","134 s"],["132 s","132 s"],["396 s","396 s"]],a:2,ex:["(130 + 134 + 132) ÷ 3 = 396 ÷ 3 = 132 s.","(130 + 134 + 132) ÷ 3 = 396 ÷ 3 = 132 s."],h:[["Add the three results first.","اجمع النتائج الثلاث أولًا."],["Then divide the total by 3.","ثم اقسم المجموع على 3."]]},
+ {q:"A student stirs only the 50°C beaker. What does this affect?",qa:"قلّب طالب كأس 50°C وحدها. ماذا يؤثّر ذلك؟",o:[["Validity: two factors now change","الصلاحية: صار عاملان يتغيّران"],["Reliability only","الموثوقية فقط"],["Nothing: stirring has no effect","لا شيء: التقليب لا يؤثّر"],["The units on the graph","الوحدات على الرسم"]],a:0,ex:["Stirring speeds up dissolving, so the 50°C result is not a fair comparison.","التقليب يسرّع الذوبان، فلا تكون نتيجة 50°C مقارنة عادلة."],h:[["Is the test still fair?","هل ما زال الاختبار عادلًا؟"],["Fairness = validity.","العدل = الصلاحية."]]},
+ {q:"Which conclusion best uses evidence?",qa:"أيّ استنتاج يستخدم الأدلة بأفضل شكل؟",o:[["Hot water is better.","الماء الساخن أفضل."],["Sugar dissolves.","السكر يذوب."],["The experiment worked well.","نجحت التجربة."],["As the temperature increased from 10°C to 50°C, the dissolving time decreased from 180 s to 52 s.","عندما ارتفعت درجة الحرارة من 10°C إلى 50°C، قلّ زمن الذوبان من 180 s إلى 52 s."]],a:3,ex:["It states the pattern and uses the data as evidence.","يذكر النمط ويستخدم البيانات دليلًا."],h:[["Evidence means numbers from your results.","الدليل يعني أرقامًا من نتائجك."],["Look for the pattern with data.","ابحث عن النمط مع البيانات."]]}];
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${first?ICON.check+" Correct!":ok?ICON.check+" Yes, now you have it.":ICON.cross+" Here is the answer."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${first?"إجابة صحيحة!":ok?"نعم، الآن فهمتها.":"إليك الإجابة."} ${q.ex[1]}</div>`;
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Scientist";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You plan investigations like a real scientist!","رائع! أنت تخطط للاستقصاءات مثل عالِم حقيقي!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the virtual labs, then retry.","محاولة جيدة! أعد المعامل الافتراضية، ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Science · Grade 9 · Unit 1 · Lesson 1 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
