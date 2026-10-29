@@ -1,0 +1,1485 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F1E8">
+<title>Molecular Structure – Science G7 Lesson 1-4</title>
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(247,241,232,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#EADFCD;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#F9E3DC;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#FFF6E1;border:1px solid #F1D9A6;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #E9CFA0;background:#FFF8EA;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#fff;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #E2D5C0}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#E4F3F1;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#FBF3EA;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#E8F5F3}
+.opt.right{border-color:var(--teal);background:#E2F4F1}
+.opt.wrong{border-color:var(--terra);background:#FBE9E4}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#EADFCD;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#fff;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#E8F5F3;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#FBE9E4;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#fff;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#fff}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#E2D5C0}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #fff}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#fff;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#fff}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #fff;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#FFF6E1}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#fff;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#E2F4F1;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#E2F4F1}
+.pieces button.no{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#E2D5C0}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#E2F4F1;border-left:5px solid var(--teal)}
+.feedback.no{background:#FBE9E4;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#fff;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#fff;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#FFF6E1;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#fff;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#E8F5F3}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#FFF6E1}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#fff;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#FBE9E4}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#FFF6E1;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#fff;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#E8F5F3}.sc.diff{border-color:var(--terra);background:#FBE9E4}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#E2F4F1}.rchips button.wrong{border-color:var(--terra);background:#FBE9E4}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#E8F5F3}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#E8F5F3}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#FBE9E4}
+.ml.done,.mr.done{border-color:var(--teal);background:#E2F4F1;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#E8F5F3}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#FCE8B2;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#FCE8B2;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#E2F4F1}
+.eline.bad{border-color:var(--terra);background:#FBE9E4;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#fff;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#FFFFFF 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#fff;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#E2F4F1}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#FBE9E4}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#FFF3D6}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#FFF3D6;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#E2F4F1}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#FBE9E4}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#FFF3D6;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#E8F5F3}.mcard2.wrong{border-color:var(--terra);background:#FBE9E4}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #fff;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#E8F5F3}.idc.wrong{border-color:var(--terra);background:#FBE9E4}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#E8F5F3}.claim2.wrong{border-color:var(--terra);background:#FBE9E4}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#FFF6EA}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#fff;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#E8F5F3}.ct.no{border-color:var(--terra);background:#FBE9E4}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#FFF6EA}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#EADFF0;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#EADFCD;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#FFF6E0;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#fff;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#E8F5F3}.wuq .wo button.wrong{border-color:var(--terra);background:#FBE9E4}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#fff;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#FBF6EC;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#FBE9E4}.pick button.right{border-color:var(--teal);background:#E8F5F3}
+.why{background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#E8F5F3}.why .wb button.wrong{border-color:var(--terra);background:#FBE9E4}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#fff;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#ddd;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#fff;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#FFFDF7}
+.tchip.lost{border-color:var(--terra);background:#FBE9E4}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#fff;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#FBEDEA}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#E8F5F3}.pickph.wrong{border-color:var(--terra);background:#FBE9E4}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#fff;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#E8F5F3}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#FBF6EC}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#E8F5F3;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#FBF6EC;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#fff;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#FFE7A8;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#FBF6EC;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#fff}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#E8F5F3;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#fff;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#fff;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#E8F5F3;border-color:var(--teal)}.tile.g1{background:#FFF0E6;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#FBF6EC;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#fff;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#fff;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#fff;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#fff;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#fff;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#F3ECE1}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#fff}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#F3ECE1}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#fff}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#E9E2D6;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+.ptab{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ptab button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 2px;font-family:inherit;color:var(--ink);cursor:pointer}
+.ptab button b{display:block;font-size:24px;font-family:ui-monospace,monospace}
+.ptab button small{display:block;font-size:11px;color:var(--clay)}
+.ptab button.on{border-color:var(--terra);background:#FBE9E4}
+#ecCards .mtq svg{max-width:150px}
+.pcg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+.pcg button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:8px 2px;font-family:inherit;color:var(--ink);cursor:pointer;font-size:13px}
+.pcg button small{display:block;font-size:10.5px;color:var(--clay);margin-top:2px}
+.pcg button.on{border-color:var(--terra);background:#FBE9E4}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Science · Grade 7 · Unit 1<small id="curLabel">Molecular Structure</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="A crystal lattice of alternating ions next to separate water molecules">
+<defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F2A37"/><stop offset="1" stop-color="#2B3B4E"/></linearGradient>
+<pattern id="hg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+<radialGradient id="hn" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#C9A6F2"/><stop offset="1" stop-color="#6A3FB0"/></radialGradient>
+<radialGradient id="hc" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#9ED38E"/><stop offset="1" stop-color="#4E8F3C"/></radialGradient>
+<radialGradient id="ho" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#E57A62"/><stop offset="1" stop-color="#A8402C"/></radialGradient>
+<radialGradient id="hh" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#F4F6F8"/><stop offset="1" stop-color="#9AA5B1"/></radialGradient></defs>
+<rect width="640" height="360" fill="url(#hb)"/><rect width="640" height="360" fill="url(#hg)"/>
+<g stroke="#9AA5B1" stroke-width="3" opacity=".6"><path d="M70 50h200M70 100h200M70 150h200M70 200h200M70 50v150M120 50v150M170 50v150M220 50v150M270 50v150"/></g>
+<g><circle cx="70" cy="50" r="15" fill="url(#hn)"/><circle cx="120" cy="50" r="20" fill="url(#hc)"/><circle cx="170" cy="50" r="15" fill="url(#hn)"/><circle cx="220" cy="50" r="20" fill="url(#hc)"/><circle cx="270" cy="50" r="15" fill="url(#hn)"/>
+<circle cx="70" cy="100" r="20" fill="url(#hc)"/><circle cx="120" cy="100" r="15" fill="url(#hn)"/><circle cx="170" cy="100" r="20" fill="url(#hc)"/><circle cx="220" cy="100" r="15" fill="url(#hn)"/><circle cx="270" cy="100" r="20" fill="url(#hc)"/>
+<circle cx="70" cy="150" r="15" fill="url(#hn)"/><circle cx="120" cy="150" r="20" fill="url(#hc)"/><circle cx="170" cy="150" r="15" fill="url(#hn)"/><circle cx="220" cy="150" r="20" fill="url(#hc)"/><circle cx="270" cy="150" r="15" fill="url(#hn)"/>
+<circle cx="70" cy="200" r="20" fill="url(#hc)"/><circle cx="120" cy="200" r="15" fill="url(#hn)"/><circle cx="170" cy="200" r="20" fill="url(#hc)"/><circle cx="220" cy="200" r="15" fill="url(#hn)"/><circle cx="270" cy="200" r="20" fill="url(#hc)"/></g>
+<g><circle cx="420" cy="80" r="22" fill="url(#ho)"/><circle cx="396" cy="62" r="13" fill="url(#hh)"/><circle cx="444" cy="62" r="13" fill="url(#hh)"/>
+<circle cx="540" cy="120" r="22" fill="url(#ho)"/><circle cx="516" cy="102" r="13" fill="url(#hh)"/><circle cx="564" cy="102" r="13" fill="url(#hh)"/>
+<circle cx="450" cy="190" r="22" fill="url(#ho)"/><circle cx="426" cy="172" r="13" fill="url(#hh)"/><circle cx="474" cy="172" r="13" fill="url(#hh)"/></g>
+</svg>
+    <div class="herotxt"><span class="kicker light">Science · Grade 7 · Unit 1 · Lesson 1-4</span><h1>Molecular Structure</h1><p class="ar">التركيب الجزيئي</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في متصفح Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="think"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Diamond and pencil "lead" are both made of carbon atoms. So why is one the hardest material and the other soft? The secret is <b>how the atoms are arranged</b>.</p><p class="ar">الألماس وسنّ القلم الرصاص كلاهما من ذرات الكربون. فلماذا الأول أصلب مادة والثاني طري؟ السرّ في <b>طريقة ترتيب الذرات</b>.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ sort elements into single atoms, molecules and extended structures<br>✔ compare metals, nonmetals and metalloids<br>✔ explain ionic bonds (transfer) and covalent bonds (sharing)<br>✔ link the structure of a substance to its properties</p><p class="ar"><b>سأتعلّم اليوم أن:</b><br>✔ أصنّف العناصر إلى ذرات منفردة وجزيئات وتراكيب ممتدة<br>✔ أقارن بين الفلزات واللافلزات وأشباه الفلزات<br>✔ أفسّر الروابط الأيونية (انتقال) والتساهمية (مشاركة)<br>✔ أربط تركيب المادة بخصائصها</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic.</p><p class="ar"><b>نصيحة:</b> اضغط زر <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمات.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up · Lesson 1-3</span>
+  <h2>What do you remember?</h2>
+  <p class="hsub ar">ماذا تتذكّر؟</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up from the last lesson, nothing is counted!</p><p class="ar">مجرد تسخين من الدرس السابق، لا شيء يُحسب!</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+</section>
+
+<section class="screen" data-title="Organize the elements">
+  <span class="kicker">Explore</span>
+  <h2>Three ways elements exist</h2>
+  <p class="hsub ar">ثلاثة أشكال توجد عليها العناصر</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> An element has only one type of atom, but its atoms can exist as <b class="term">individual atoms</b> (like helium), as <b class="term">molecules</b> of two or more bonded atoms (like oxygen, O₂), or as <b class="term">extended structures</b>: huge repeating networks of bonded atoms (like iron).</p><p class="ar">العنصر فيه نوع واحد من الذرات، لكن ذراته قد توجد <b>ذرات منفردة</b> (مثل الهيليوم)، أو <b>جزيئات</b> من ذرتين مرتبطتين أو أكثر (مثل الأكسجين O₂)، أو <b>تراكيب ممتدة</b>: شبكات ضخمة متكرّرة من الذرات المرتبطة (مثل الحديد).</p></div>
+  <div class="idg needjs" id="oeCards"></div>
+</section>
+
+<section class="screen" data-title="Extended structures">
+  <span class="kicker">Explore</span>
+  <h2>A network or separate molecules?</h2>
+  <p class="hsub ar">شبكة أم جزيئات منفصلة؟</p>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="esSvg" viewBox="0 0 440 260" role="img" aria-label="A sample of iron as one connected network compared with oxygen as separate molecules"></svg></div>
+      <div class="needjs"><div class="rlab">Make the sample bigger · كبّر العيّنة</div><input type="range" id="esR" min="1" max="5" step="1" value="2" aria-label="Sample size"></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="esMsg"></div>
+      <div class="why needjs" id="why0"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Metals and nonmetals">
+  <span class="kicker">Virtual lab</span>
+  <h2>Metals, nonmetals and metalloids</h2>
+  <p class="hsub ar">الفلزات واللافلزات وأشباه الفلزات</p>
+  <div class="bi"><p class="en">Pick an element. Test whether it conducts electricity, then hit it with a hammer. Look at its shine too.</p><p class="ar">اختر عنصرًا. اختبر هل يوصل الكهرباء، ثم اطرقه بالمطرقة، وانظر أيضًا إلى لمعانه.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="mnSvg" viewBox="0 0 440 260" role="img" aria-label="An element sample in a circuit with a bulb and a hammer"></svg></div>
+      <div class="seg wrap needjs" id="mnEl"><button data-v="0" class="on">Copper</button><button data-v="1">Aluminium</button><button data-v="2">Sulfur</button><button data-v="3">Silicon</button></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="mnC">Test the circuit ▶</button><button class="btn sm" id="mnH">Hit with hammer ▶</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="mnMsg"></div>
+      <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Metals</b>: shiny, good <b>conductors</b> of heat and electricity, <b class="term">malleable</b> (can be hammered into sheets). <b class="term">Nonmetals</b>: usually dull, poor conductors, <b class="term">brittle</b> (break easily). <b class="term">Metalloids</b>: some properties of each.</p><p class="ar"><b>الفلزات</b>: لامعة، <b>موصلة</b> جيدة للحرارة والكهرباء، <b>قابلة للطرق</b> إلى صفائح. <b>اللافلزات</b>: باهتة غالبًا، موصلة رديئة، <b>هشّة</b> (تنكسر بسهولة). <b>أشباه الفلزات</b>: لها بعض خصائص كلٍّ منهما.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Bonding">
+  <span class="kicker">Explore</span>
+  <h2>What is bonding?</h2>
+  <p class="hsub ar">ما الترابط؟</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b class="term">Bonding</b> is the interaction between two or more atoms that lets them form a new substance. Bonding uses the <b class="term">valence electrons</b>: the electrons in the <b>outer shell</b> of an atom. Atoms bond to become more <b>stable</b>, usually with a full outer shell.</p><p class="ar"><b>الترابط</b> تفاعل بين ذرتين أو أكثر يسمح لها بتكوين مادة جديدة. يستخدم الترابط <b>إلكترونات التكافؤ</b>: الإلكترونات في <b>الغلاف الخارجي</b> للذرة. ترتبط الذرات لتصبح أكثر <b>استقرارًا</b>، وغالبًا بغلاف خارجي ممتلئ.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="bdSvg" viewBox="0 0 440 260" role="img" aria-label="An atom with its electron shells; the outer electrons are highlighted"></svg></div>
+      <div class="seg needjs" id="bdMode"><button data-v="0" class="on">Sodium · Na</button><button data-v="1">Chlorine · Cl</button><button data-v="2">Hydrogen · H</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="bdMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Ionic bonds">
+  <span class="kicker">Step animation</span>
+  <h2>Ionic bonds: electrons are transferred</h2>
+  <p class="hsub ar">الروابط الأيونية: انتقال الإلكترونات</p>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="ioSvg" viewBox="0 0 440 260" role="img" aria-label="Sodium gives an electron to chlorine, making ions that form a crystal"></svg></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="ioN">Next step ▶</button><button class="btn alt sm" id="ioR">↺ Start again</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="ioMsg"></div>
+      <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> An <b class="term">ion</b> is an atom that has gained or lost electrons, so it has a charge. An <b class="term">ionic compound</b> is made of positive and negative ions that attract each other.</p><p class="ar"><b>الأيون</b> ذرة اكتسبت إلكترونات أو فقدتها فأصبحت مشحونة. <b>المركّب الأيوني</b> يتكوّن من أيونات موجبة وسالبة تتجاذب.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Covalent bonds">
+  <span class="kicker">Step animation</span>
+  <h2>Covalent bonds: electrons are shared</h2>
+  <p class="hsub ar">الروابط التساهمية: مشاركة الإلكترونات</p>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="cvSvg" viewBox="0 0 440 260" role="img" aria-label="Atoms sharing pairs of electrons to make molecules"></svg></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="cvN">Next step ▶</button><button class="btn alt sm" id="cvR">↺ Start again</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="cvMsg"></div>
+      <div class="why needjs" id="why1"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Comparing compounds">
+  <span class="kicker">Virtual lab</span>
+  <h2>Comparing compounds: salt and sugar</h2>
+  <p class="hsub ar">مقارنة المركّبات: الملح والسكر</p>
+  <div class="bi"><p class="en">Table salt (NaCl) is an <b>ionic</b> compound. Sugar is a <b>covalent</b> compound. Both look like white crystals. Compare their structures and properties.</p><p class="ar">ملح الطعام (NaCl) مركّب <b>أيوني</b>، والسكر مركّب <b>تساهمي</b>. كلاهما يبدو بلورات بيضاء. قارن بين تركيبيهما وخصائصهما.</p></div>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="ccSvg" viewBox="0 0 440 260" role="img" aria-label="Structure of salt or sugar with test results"></svg></div>
+      <div class="seg needjs" id="ccMode"><button data-v="0" class="on">Salt · NaCl</button><button data-v="1">Sugar</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="ccMsg"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Carbon">
+  <span class="kicker">A closer look</span>
+  <h2>Carbon: one element, two structures</h2>
+  <p class="hsub ar">الكربون: عنصر واحد وتركيبان</p>
+  <div class="bench">
+    <div class="main">
+      <div class="simfig"><svg id="caSvg" viewBox="0 0 440 260" role="img" aria-label="The structure of diamond or graphite"></svg></div>
+      <div class="seg needjs" id="caMode"><button data-v="0" class="on">Diamond</button><button data-v="1">Graphite</button></div>
+    </div>
+    <div class="side">
+      <div class="msg bi needjs" id="caMsg"></div>
+      <div class="why needjs" id="why2"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Structure and properties">
+  <span class="kicker">Worked examples</span>
+  <h2>Structure → property</h2>
+  <p class="hsub ar">التركيب ← الخاصية</p>
+  <div class="bi"><p class="en">Scientists use the structure of a substance to <b>predict</b> its properties: type of particles → how they are held together → the property.</p><p class="ar">يستخدم العلماء تركيب المادة <b>للتنبّؤ</b> بخصائصها: نوع الجسيمات ← كيف ترتبط ببعضها ← الخاصية.</p></div>
+  <div class="fader" data-f="sp"></div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Practice</span>
+  <h2>Check yourself</h2>
+  <p class="hsub ar">تحقّق من نفسك</p>
+  <div class="idg needjs" id="ckCards"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work! Now the quiz. A wrong answer gives you a hint first.</p><p class="ar">عمل رائع! والآن الاختبار. الإجابة الخاطئة تعطيك تلميحًا أولًا.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+</main>
+
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="sci7a_4_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"American · Grade 7"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹ =+,./≠]*[0-9A-Za-z()\[\]½²³⁴¹])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}<small>${n[1]}</small></button>`).join("")}</div><div class="mwhy"></div></div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll("button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});}
+
+/* ---------- particle simulation engine ---------- */
+const RM=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const SIMS=[];const PUR=["#C9A6F2","#6A3FB0"],ORA=["#FFD08A","#E07A2E"],BLU=["#BFEAF5","#2A8FB0"];
+function sim(id,ar,draw){const c=document.getElementById(id),W=800,H=Math.round(W/ar);c.width=W;c.height=H;const s={c,ctx:c.getContext("2d"),W,H,draw,t:0};SIMS.push(s);return s;}
+function ball(g,x,y,r,col){const gr=g.createRadialGradient(x-r*.35,y-r*.35,r*.15,x,y,r);gr.addColorStop(0,col[0]);gr.addColorStop(1,col[1]);g.fillStyle=gr;g.beginPath();g.arc(x,y,r,0,7);g.fill();}
+function trail(g,p,k,col){const sp=Math.hypot(p.vx,p.vy);if(sp<1)return;const ux=p.vx/sp,uy=p.vy/sp;g.strokeStyle=col||"rgba(127,211,230,.75)";g.lineWidth=2.5;g.lineCap="round";for(let i=-1;i<=1;i++){const ox=-uy*i*p.r*.55,oy=ux*i*p.r*.55;g.beginPath();g.moveTo(p.x-ux*(p.r+3)+ox,p.y-uy*(p.r+3)+oy);g.lineTo(p.x-ux*(p.r+3+sp*k)+ox,p.y-uy*(p.r+3+sp*k)+oy);g.stroke();}}
+function mk(n,b,r,sp){return Array.from({length:n},()=>{const a=Math.random()*6.283;return {x:b.x+r+Math.random()*(b.w-2*r),y:b.y+r+Math.random()*(b.h-2*r),vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,r}});}
+function gasStep(ps,b,dt,sp){ps.forEach(p=>{const v=Math.hypot(p.vx,p.vy)||1;p.vx*=sp/v;p.vy*=sp/v;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<b.x+p.r){p.x=b.x+p.r;p.vx=Math.abs(p.vx)}if(p.x>b.x+b.w-p.r){p.x=b.x+b.w-p.r;p.vx=-Math.abs(p.vx)}if(p.y<b.y+p.r){p.y=b.y+p.r;p.vy=Math.abs(p.vy)}if(p.y>b.y+b.h-p.r){p.y=b.y+b.h-p.r;p.vy=-Math.abs(p.vy)}});}
+function liqStep(ps,b,dt,sp){ps.forEach(p=>{const a=Math.atan2(p.vy,p.vx)+(Math.random()-.5)*1.4;p.vx=Math.cos(a)*sp;p.vy=Math.sin(a)*sp;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<b.x+p.r){p.x=b.x+p.r;p.vx=Math.abs(p.vx)}if(p.x>b.x+b.w-p.r){p.x=b.x+b.w-p.r;p.vx=-Math.abs(p.vx)}if(p.y<b.y+p.r){p.y=b.y+p.r;p.vy=Math.abs(p.vy)}if(p.y>b.y+b.h-p.r){p.y=b.y+b.h-p.r;p.vy=-Math.abs(p.vy)}});}
+function bg(s,col){const g=s.ctx;g.fillStyle=col||"#0E1A26";g.fillRect(0,0,s.W,s.H);g.strokeStyle="rgba(255,255,255,.05)";g.lineWidth=1;for(let x=0;x<s.W;x+=32){g.beginPath();g.moveTo(x,0);g.lineTo(x,s.H);g.stroke();}for(let y=0;y<s.H;y+=32){g.beginPath();g.moveTo(0,y);g.lineTo(s.W,y);g.stroke();}}
+function label(g,t,x,y,col,size,al){g.font=`800 ${size||22}px ui-monospace,monospace`;g.fillStyle=col||"#fff";g.textAlign=al||"center";g.fillText(t,x,y);}
+function beaker(g,x,y,w,h,fill,lvl){g.save();g.fillStyle=fill;g.fillRect(x+4,y+h*(1-lvl),w-8,h*lvl-4);g.strokeStyle="rgba(255,255,255,.75)";g.lineWidth=4;g.beginPath();g.moveTo(x-8,y);g.lineTo(x,y);g.lineTo(x,y+h);g.lineTo(x+w,y+h);g.lineTo(x+w,y);g.lineTo(x+w+8,y);g.stroke();g.restore();}
+let last=0;function loop(ts){const dt=Math.min(.05,(ts-last)/1000||0);last=ts;SIMS.forEach(s=>{const scr=s.c.closest(".screen");if(scr&&scr.classList.contains("active")){s.t+=RM?0:dt;s.draw(s,RM?0:dt);}});requestAnimationFrame(loop);}
+function drawAll(){SIMS.forEach(s=>s.draw(s,0));}
+
+/* warm-up (Lesson 1-3) */
+const WU=[{q:"Gas pressure is caused by particles…",qa:"يحدث ضغط الغاز بسبب الجسيمات التي…",o:[["hitting the walls","تصطدم بالجدران"],["sticking together","تلتصق ببعضها"],["getting bigger","يكبر حجمها"]],a:0,w:["Each collision pushes on the wall.","كل اصطدام يدفع الجدار."]},
+ {q:"Volume halves at constant temperature. Pressure…",qa:"يقلّ الحجم للنصف عند درجة حرارة ثابتة. الضغط…",o:[["halves","يقلّ للنصف"],["doubles","يتضاعف"],["stays the same","يبقى ثابتًا"]],a:1,w:["Boyle's law: an inverse relationship.","قانون بويل: علاقة عكسية."]},
+ {q:"On a high mountain, water boils…",qa:"فوق جبل مرتفع يغلي الماء…",o:[["above 100°C","فوق 100 درجة"],["at 100°C","عند 100 درجة"],["below 100°C","تحت 100 درجة"]],a:2,w:["Lower air pressure, lower boiling point.","ضغط هواء أقل، درجة غليان أقل."]}];
+$("#wuBox").innerHTML=WU.map((x,i)=>`<div class="wuq" data-i="${i}"><div class="qq">${i+1}. ${x.q}<span class="ar">${x.qa}</span></div><div class="wo">${x.o.map((o,j)=>`<button data-j="${j}">${o[0]}</button>`).join("")}<button class="show" data-j="-1">Show me · أرني</button></div><div class="wa"><b>${x.o[x.a][0]}</b> ${x.w[0]}<span class="ar">${x.w[1]}</span></div></div>`).join("");
+$$("#wuBox .wuq").forEach(card=>{const x=WU[+card.dataset.i];card.querySelectorAll("button").forEach(b=>b.onclick=()=>{const j=+b.dataset.j;card.querySelectorAll("button").forEach(y=>{if(+y.dataset.j===x.a)y.classList.add("right");});if(j>=0&&j!==x.a)b.classList.add("wrong");card.classList.add("done");});});
+const seg=(id,f)=>$$(id+" button").forEach(b=>b.onclick=()=>{$$(id+" button").forEach(x=>x.classList.toggle("on",x===b));f(+b.dataset.v);});
+
+/* atoms (SVG) */
+const EL={H:["#F4F6F8","#9AA5B1",15],O:["#E57A62","#A8402C",22],C:["#5B6675","#1F2A37",21],N:["#7CC4DE","#2A6F8F",21],He:["#F3D27E","#C08F1E",17],Ne:["#F6B8A6","#C8553D",18],Na:["#C9A6F2","#6A3FB0",15],Cl:["#9ED38E","#4E8F3C",21],Fe:["#C99A7A","#8C5A3C",17],Cu:["#E7A36B","#B0652F",17]};
+let gid=0;const grad=(e)=>{const c=EL[e],id="ag"+(gid++);return [id,`<defs><radialGradient id="${id}" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="${c[0]}"/><stop offset="1" stop-color="${c[1]}"/></radialGradient></defs>`];};
+function atm(x,y,e,sc,txt){const c=EL[e],r=c[2]*(sc||1),[id,d]=grad(e);return `${d}<circle cx="${x}" cy="${y}" r="${r}" fill="url(#${id})"/><text x="${x}" y="${y+4}" text-anchor="middle" font-size="${Math.round(12*(sc||1))}" font-weight="800" fill="${["H","He","Ne"].includes(e)?"#1F2A37":"#fff"}">${txt==null?e:txt}</text>`;}
+const bond=(x1,y1,x2,y2,w)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#9AA5B1" stroke-width="${w||6}" stroke-linecap="round"/>`;
+const mini=(parts)=>`<svg viewBox="0 0 120 70" style="width:100%;max-width:150px;height:auto;display:block;margin:0 auto 6px;background:#0E1A26;border-radius:10px">${parts}</svg>`;
+const BG=`<rect width="440" height="260" fill="#0E1A26"/>`;
+const txt=(x,y,t,c,s,a)=>`<text x="${x}" y="${y}" text-anchor="${a||"middle"}" font-size="${s||14}" font-weight="800" fill="${c||"#fff"}">${t}</text>`;
+/* electron shells: shells=[2,8,1], hl = highlight outer */
+function shells(x,y,sh,e,opt){opt=opt||{};let s="";const R=i=>26+i*18;sh.forEach((n,i)=>{const out=i===sh.length-1;s+=`<circle cx="${x}" cy="${y}" r="${R(i)}" fill="none" stroke="rgba(255,255,255,${out?.55:.25})" stroke-width="2"/>`;
+  const skip=opt.skip&&out?opt.skip:0;for(let k=0;k<n;k++){if(k<skip)continue;const a=(opt.rot||0)+k/n*6.283-1.57;s+=`<circle cx="${x+Math.cos(a)*R(i)}" cy="${y+Math.sin(a)*R(i)}" r="5" fill="${out&&opt.hl!==false?"#E9B44C":"#7FD3E6"}"/>`;}});
+  return s+atm(x,y,e,.9,opt.label);}
+
+/* 0. organize the elements */
+const OE=[["Helium (He)","الهيليوم",mini(atm(35,35,"He")+atm(85,38,"He")),0],["Oxygen (O₂)","الأكسجين",mini(bond(46,35,74,35)+atm(46,35,"O",.85)+atm(74,35,"O",.85)),1],["Iron (Fe)","الحديد",mini((()=>{let s="";for(let i=0;i<4;i++)for(let j=0;j<2;j++){if(i<3)s+=bond(24+i*24,24+j*24,48+i*24,24+j*24,3);if(!j)s+=bond(24+i*24,24,24+i*24,48,3);}for(let i=0;i<4;i++)for(let j=0;j<2;j++)s+=atm(24+i*24,24+j*24,"Fe",.6,"");return s;})()),2],
+ ["Neon (Ne)","النيون",mini(atm(40,30,"Ne")+atm(84,44,"Ne")),0],["Nitrogen (N₂)","النيتروجين",mini(bond(46,35,74,35)+atm(46,35,"N",.85)+atm(74,35,"N",.85)),1],["Copper (Cu)","النحاس",mini((()=>{let s="";for(let i=0;i<4;i++)for(let j=0;j<2;j++){if(i<3)s+=bond(24+i*24,24+j*24,48+i*24,24+j*24,3);if(!j)s+=bond(24+i*24,24,24+i*24,48,3);}for(let i=0;i<4;i++)for(let j=0;j<2;j++)s+=atm(24+i*24,24+j*24,"Cu",.6,"");return s;})()),2]];
+const OEW=[["Helium atoms exist on their own, not bonded.","ذرات الهيليوم توجد منفردة غير مرتبطة."],["Two oxygen atoms bonded: a molecule.","ذرتا أكسجين مرتبطتان: جزيء."],["Iron atoms form a huge repeating network: an extended structure.","ذرات الحديد تكوّن شبكة ضخمة متكرّرة: تركيب ممتد."]];
+cardsQ($("#oeCards"),OE.map(x=>({t:[x[2]+x[0],x[1]],o:[["Atoms","ذرات"],["Molecule","جزيء"],["Extended","ممتد"]],a:x[3],w:OEW[x[3]],h:["Are the atoms alone, in small groups, or in one big network?","هل الذرات منفردة، أم في مجموعات صغيرة، أم في شبكة واحدة كبيرة؟"]})));
+
+/* 1. extended vs molecules */
+function esDraw(){const k=+$("#esR").value;let s=BG+`<line x1="220" y1="20" x2="220" y2="240" stroke="rgba(255,255,255,.2)" stroke-width="2"/>`+txt(110,22,"Iron (Fe)","#E7A36B",14)+txt(330,22,"Oxygen (O₂)","#E57A62",14);
+  const step=Math.min(36,170/k),ox=110-(k-1)*step/2,oy=128-(k-1)*step/2;
+  for(let i=0;i<k;i++)for(let j=0;j<k;j++){if(i<k-1)s+=bond(ox+i*step,oy+j*step,ox+(i+1)*step,oy+j*step,3);if(j<k-1)s+=bond(ox+i*step,oy+j*step,ox+i*step,oy+(j+1)*step,3);}
+  for(let i=0;i<k;i++)for(let j=0;j<k;j++)s+=atm(ox+i*step,oy+j*step,"Fe",Math.min(.9,step/40),"");
+  const n=k*k,cols=k,sp=Math.min(44,180/k);for(let m=0;m<n;m++){const cx=330-(cols-1)*sp/2+(m%cols)*sp+((m*37)%9-4),cy=128-(k-1)*sp/2+Math.floor(m/cols)*sp+((m*53)%9-4),sc=Math.min(.55,sp/90),o=22*sc*.85;s+=bond(cx-o,cy,cx+o,cy,3)+atm(cx-o,cy,"O",sc,"")+atm(cx+o,cy,"O",sc,"");}
+  s+=txt(110,252,n+" atoms, all bonded","#E9B44C",12)+txt(330,252,n+" separate molecules","#E9B44C",12);$("#esSvg").innerHTML=s;
+  setMsg($("#esMsg"),`Iron: every atom is bonded to its neighbours, so the whole sample is <b>one extended structure</b>. Make it bigger: it just keeps repeating. Oxygen: the sample is many <b>separate O₂ molecules</b>. Each molecule is always just 2 atoms.`,`الحديد: كل ذرة مرتبطة بجيرانها، فالعيّنة كلها <b>تركيب ممتد واحد</b>. كبّرها: يستمر التكرار فقط. الأكسجين: العيّنة <b>جزيئات O₂ منفصلة</b> كثيرة، وكل جزيء ذرتان فقط دائمًا.`);}
+$("#esR").oninput=esDraw;esDraw();
+whyBox($("#why0"),"Why is there no formula like Fe₂ or Fe₅₀ for iron?","لماذا لا توجد صيغة مثل Fe₂ أو Fe₅₀ للحديد؟",[
+ ["Iron is an extended structure with no fixed number of atoms; it just repeats.","الحديد تركيب ممتد ليس له عدد ثابت من الذرات، بل يتكرّر فقط.",1,"We write just the symbol, Fe. Molecules like O₂ have a fixed number.","نكتب الرمز فقط Fe. أما الجزيئات مثل O₂ فلها عدد ثابت."],
+ ["Iron atoms are never bonded.","ذرات الحديد لا ترتبط أبدًا.",0,"They are bonded to all their neighbours.","بل ترتبط بكل جيرانها."],
+ ["Iron is a compound.","الحديد مركّب.",0,"Iron has only one type of atom: it is an element.","الحديد فيه نوع واحد من الذرات: إنه عنصر."]]);
+
+/* 2. metals lab */
+const MN=[["Copper","النحاس","#E7A36B","#9A5426",1,1,"metal","فلز"],["Aluminium","الألومنيوم","#E4E8EC","#8D99A6",1,1,"metal","فلز"],["Sulfur","الكبريت","#F3DC6B","#C9A72A",0,0,"nonmetal","لافلز"],["Silicon","السيليكون","#AFC0D6","#56657A",.5,0,"metalloid","شبه فلز"]];
+let mnK=0,mnC=false,mnH=false;
+function mnDraw(){const m=MN[mnK];let s=`<rect width="440" height="260" fill="#F7F1E8"/><defs><linearGradient id="mng" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${m[2]}"/><stop offset="${mnK===2?1:.5}" stop-color="${mnK===2?m[3]:"#fff"}"/><stop offset="1" stop-color="${m[3]}"/></linearGradient></defs>`;
+  const on=mnC&&m[4]>0,glow=on?(m[4]===1?1:.4):0;
+  s+=`<rect x="30" y="40" width="60" height="34" rx="5" fill="#1F2A37"/><rect x="90" y="50" width="8" height="14" fill="#1F2A37"/>${txt(60,62,"+ −","#E9B44C",13)}`;
+  s+=`<path d="M60 74 V200 H150 M290 200 H380 V40 H260 M220 40 H98" fill="none" stroke="${on?"#E9B44C":"#5B6675"}" stroke-width="4"/>`;
+  if(glow)s+=`<circle cx="240" cy="40" r="${30+glow*10}" fill="#E9B44C" opacity="${.25+glow*.35}"/>`;
+  s+=`<circle cx="240" cy="40" r="18" fill="${glow?"#FFE7A3":"#fff"}" stroke="#1F2A37" stroke-width="3"/><path d="M233 44l4-8 3 8 3-8 4 8" stroke="#1F2A37" stroke-width="2" fill="none"/>`;
+  if(!mnH||m[5])s+=`<rect x="${mnH?135:150}" y="${mnH?192:180}" width="${mnH?170:140}" height="${mnH?16:40}" rx="6" fill="url(#mng)" stroke="${m[3]}" stroke-width="2"/>`;
+  else s+=[[150,186,40,30,-8],[198,192,30,22,10],[236,184,34,28,-4],[276,194,18,16,14],[180,214,16,10,0]].map(([x,y,w,h,r])=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#mng)" stroke="${m[3]}" transform="rotate(${r} ${x+w/2} ${y+h/2})"/>`).join("");
+  s+=`<g transform="translate(330 ${mnH?150:96}) rotate(${mnH?0:-30})"><rect x="-6" y="0" width="12" height="80" rx="4" fill="#8C5A3C"/><rect x="-30" y="-14" width="60" height="22" rx="4" fill="#5B6675"/></g>`;
+  s+=txt(220,245,m[0]+(mnC||mnH?" · "+(mnC&&mnH?m[6]:"testing…"):""),"#1F2A37",15);$("#mnSvg").innerHTML=s;
+  const shine=m[5]||mnK===3?"shiny":"dull",shA=m[5]||mnK===3?"لامع":"باهت";
+  let en=`<b>${m[0]}</b> looks <b>${shine}</b>.`,ar=`<b>${m[1]}</b> يبدو <b>${shA}</b>.`;
+  if(mnC){en+=m[4]===1?" The bulb lights up brightly: a good <b>conductor</b>.":m[4]?" The bulb glows only dimly: it conducts a little.":" The bulb stays off: a poor conductor.";ar+=m[4]===1?" تضيء اللمبة بقوة: <b>موصل</b> جيد.":m[4]?" تضيء اللمبة بخفوت: يوصل قليلًا.":" لا تضيء اللمبة: موصل رديء.";}
+  if(mnH){en+=m[5]?" The hammer flattens it into a sheet: <b>malleable</b>.":" It shatters into pieces: <b>brittle</b>.";ar+=m[5]?" المطرقة تجعله صفيحة: <b>قابل للطرق</b>.":" يتحطّم إلى قطع: <b>هشّ</b>.";}
+  if(mnC&&mnH){en+=` So ${m[0].toLowerCase()} is a <b>${m[6]}</b>.`;ar+=` إذن ${m[1]} <b>${m[7]}</b>.`;}else{en+=" Run both tests.";ar+=" نفّذ الاختبارين.";}
+  setMsg($("#mnMsg"),en,ar);}
+seg("#mnEl",k=>{mnK=k;mnC=mnH=false;mnDraw();});$("#mnC").onclick=()=>{mnC=true;mnDraw();};$("#mnH").onclick=()=>{mnH=true;mnDraw();};mnDraw();
+
+/* 3. bonding: valence electrons */
+const BD=[[[2,8,1],"Na","Sodium has <b>1 valence electron</b> (yellow). It is easier for sodium to <b>lose</b> this one electron than to gain 7.","للصوديوم <b>إلكترون تكافؤ واحد</b> (أصفر). من الأسهل على الصوديوم أن <b>يفقد</b> هذا الإلكترون بدلًا من أن يكتسب 7."],[[2,8,7],"Cl","Chlorine has <b>7 valence electrons</b>. It needs only <b>1 more</b> to fill its outer shell (8).","للكلور <b>7 إلكترونات تكافؤ</b>، ويحتاج إلى <b>إلكترون واحد فقط</b> ليملأ غلافه الخارجي (8)."],[[1],"H","Hydrogen has <b>1 valence electron</b>. Its shell is full with 2, so it often <b>shares</b> electrons with another atom.","للهيدروجين <b>إلكترون تكافؤ واحد</b>، ويمتلئ غلافه بإلكترونين، لذلك غالبًا <b>يشارك</b> الإلكترونات مع ذرة أخرى."]];
+function bdDraw(k){const b=BD[k];$("#bdSvg").innerHTML=BG+shells(220,130,b[0],b[1])+txt(220,250,b[0].join(", ")+"  →  "+b[0][b[0].length-1]+" valence","#E9B44C",14);setMsg($("#bdMsg"),b[2],b[3]);}
+seg("#bdMode",bdDraw);bdDraw(0);
+
+/* 4. ionic: transfer */
+let ioK=0;const IOM=[["<b>Step 1.</b> A sodium atom (1 valence electron) meets a chlorine atom (7 valence electrons).","<b>الخطوة 1.</b> تلتقي ذرة صوديوم (إلكترون تكافؤ واحد) بذرة كلور (7 إلكترونات تكافؤ)."],["<b>Step 2.</b> Sodium <b>transfers</b> (gives) its valence electron to chlorine. No sharing: the electron moves completely.","<b>الخطوة 2.</b> <b>ينقل</b> الصوديوم (يعطي) إلكترون تكافئه إلى الكلور. لا مشاركة: الإلكترون ينتقل تمامًا."],["<b>Step 3.</b> Sodium lost an electron → <b>Na⁺</b> (positive ion). Chlorine gained one → <b>Cl⁻</b> (negative ion). Opposite charges <b>attract</b>: an ionic bond.","<b>الخطوة 3.</b> فقد الصوديوم إلكترونًا ← <b>Na⁺</b> (أيون موجب). واكتسب الكلور إلكترونًا ← <b>Cl⁻</b> (أيون سالب). الشحنات المختلفة <b>تتجاذب</b>: رابطة أيونية."],["<b>Step 4.</b> Many ions attract in all directions and build a repeating crystal: an <b>extended structure</b>. NaCl means 1 Na⁺ for every 1 Cl⁻.","<b>الخطوة 4.</b> تتجاذب أيونات كثيرة في كل الاتجاهات فتبني بلورة متكرّرة: <b>تركيب ممتد</b>. NaCl تعني أيون Na⁺ واحدًا لكل أيون Cl⁻."]];
+function ioDraw(){let s=BG;if(ioK<3){const naE=ioK===0;s+=shells(110,125,ioK===2?[2,8]:[2,8,1],"Na",{label:ioK===2?"Na⁺":"Na"})+shells(320,125,ioK===0?[2,8,7]:[2,8,8],"Cl",{label:ioK===2?"Cl⁻":"Cl"});
+    if(ioK===1)s+=`<path d="M110 55 Q215 0 300 62" fill="none" stroke="#E9B44C" stroke-width="3" stroke-dasharray="6 5"/><path d="M292 52l10 12-15 2" fill="none" stroke="#E9B44C" stroke-width="3"/>`+txt(215,22,"electron transferred","#E9B44C",13);
+    if(ioK===2)s+=txt(110,240,"+","#C9A6F2",26)+txt(320,240,"−","#9ED38E",30)+`<path d="M190 125h50M232 117l10 8-10 8M210 117l-10 8 10 8" stroke="#E9B44C" stroke-width="3" fill="none"/>`+txt(215,108,"attract","#E9B44C",12);}
+  else{for(let i=0;i<8;i++)for(let j=0;j<5;j++){const na=(i+j)%2===0,x=45+i*50,y=30+j*48;s+=atm(x,y,na?"Na":"Cl",na?1:1,na?"+":"−");}}
+  $("#ioSvg").innerHTML=s;setMsg($("#ioMsg"),IOM[ioK][0],IOM[ioK][1]);$("#ioN").disabled=ioK>=3;}
+$("#ioN").onclick=()=>{if(ioK<3)ioK++;ioDraw();};$("#ioR").onclick=()=>{ioK=0;ioDraw();};ioDraw();
+
+/* 5. covalent: sharing */
+let cvK=0;const CVM=[["<b>Step 1.</b> Two hydrogen atoms, each with <b>1 electron</b>. Each needs 2 to be stable.","<b>الخطوة 1.</b> ذرتا هيدروجين، لكلٍّ منهما <b>إلكترون واحد</b>، وتحتاج كلٌّ منهما إلى إلكترونين لتستقر."],["<b>Step 2.</b> The shells overlap and the atoms <b>share</b> a pair of electrons. Now each H counts 2. This shared pair is a <b>covalent bond</b>. The result is a molecule: H₂.","<b>الخطوة 2.</b> تتداخل الأغلفة و<b>تتشارك</b> الذرتان زوجًا من الإلكترونات، فيصبح لكلٍّ منهما إلكترونان. هذا الزوج المشترك <b>رابطة تساهمية</b>، والناتج جزيء H₂."],["<b>Step 3.</b> Water: oxygen (6 valence electrons) shares one pair with <b>each</b> of two hydrogen atoms. Oxygen now counts 8, each H counts 2. A <b>covalent compound</b>: H₂O.","<b>الخطوة 3.</b> الماء: يتشارك الأكسجين (6 إلكترونات تكافؤ) زوجًا مع <b>كلّ</b> ذرة من ذرتي الهيدروجين. أصبح للأكسجين 8، ولكل H إلكترونان. <b>مركّب تساهمي</b>: H₂O."],["<b>Step 4.</b> Covalent compounds usually exist as <b>separate molecules</b>. The bonds inside each molecule are strong, but the molecules are held to each other only weakly.","<b>الخطوة 4.</b> توجد المركّبات التساهمية غالبًا <b>جزيئات منفصلة</b>. الروابط داخل كل جزيء قوية، لكن الجزيئات ترتبط ببعضها ارتباطًا ضعيفًا فقط."]];
+function hS(x,y){return `<circle cx="${x}" cy="${y}" r="30" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/>`+atm(x,y,"H",1);}
+function cvDraw(){let s=BG;
+  if(cvK===0)s+=hS(130,130)+hS(310,130)+`<circle cx="160" cy="130" r="5" fill="#E9B44C"/><circle cx="280" cy="130" r="5" fill="#E9B44C"/>`;
+  else if(cvK===1)s+=hS(195,130)+hS(245,130)+`<circle cx="220" cy="118" r="5" fill="#E9B44C"/><circle cx="220" cy="142" r="5" fill="#E9B44C"/>`+txt(220,200,"shared pair","#E9B44C",13);
+  else if(cvK===2){s+=`<circle cx="220" cy="120" r="44" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/>`+hS(172,162)+hS(268,162);
+    [[192,150],[184,140],[248,150],[256,140]].forEach(([x,y])=>s+=`<circle cx="${x}" cy="${y}" r="5" fill="#E9B44C"/>`);[[200,78],[240,78],[176,104],[264,104]].forEach(([x,y])=>s+=`<circle cx="${x}" cy="${y}" r="5" fill="#7FD3E6"/>`);
+    s+=atm(220,120,"O",1)+txt(120,235,"shared pair","#E9B44C",12)+txt(320,235,"shared pair","#E9B44C",12);}
+  else{[[90,80],[220,150],[340,70],[130,200],[350,200]].forEach(([x,y])=>s+=bond(x,y,x-24,y+18,5)+bond(x,y,x+24,y+18,5)+atm(x,y,"O",.9)+atm(x-24,y+18,"H",.75)+atm(x+24,y+18,"H",.75));s+=txt(220,250,"separate H₂O molecules","#E9B44C",13);}
+  $("#cvSvg").innerHTML=s;setMsg($("#cvMsg"),CVM[cvK][0],CVM[cvK][1]);$("#cvN").disabled=cvK>=3;}
+$("#cvN").onclick=()=>{if(cvK<3)cvK++;cvDraw();};$("#cvR").onclick=()=>{cvK=0;cvDraw();};cvDraw();
+whyBox($("#why1"),"What is the main difference between an ionic and a covalent bond?","ما الفرق الأساسي بين الرابطة الأيونية والتساهمية؟",[
+ ["Ionic: electrons are transferred, making ions. Covalent: electrons are shared.","الأيونية: تنتقل الإلكترونات فتتكوّن أيونات. التساهمية: تتشارك الإلكترونات.",1,"Transfer → ions → attraction. Sharing → molecules.","انتقال ← أيونات ← تجاذب. مشاركة ← جزيئات."],
+ ["Ionic bonds share electrons; covalent bonds transfer them.","الأيونية تشارك الإلكترونات، والتساهمية تنقلها.",0,"It is the other way round: ionic = transfer, covalent = sharing.","العكس هو الصحيح: الأيونية = انتقال، والتساهمية = مشاركة."],
+ ["Only covalent bonds use electrons.","التساهمية فقط تستخدم الإلكترونات.",0,"Both use valence electrons, in different ways.","كلاهما يستخدم إلكترونات التكافؤ بطرق مختلفة."]]);
+
+/* 6. salt vs sugar */
+function ccDraw(k){let s=BG;if(!k){for(let i=0;i<5;i++)for(let j=0;j<5;j++){const na=(i+j)%2===0;s+=atm(30+i*34,40+j*40,na?"Na":"Cl",.8,na?"+":"−");}}
+  else{[[50,60],[140,50],[95,140],[175,150],[50,215],[140,225]].forEach(([x,y])=>{s+=`<polygon points="${[0,1,2,3,4,5].map(i=>`${x+Math.cos(i*1.047)*24},${y+Math.sin(i*1.047)*24}`).join(" ")}" fill="rgba(91,102,117,.6)" stroke="#9AA5B1" stroke-width="3"/>`;[0,2,4].forEach(i=>s+=`<circle cx="${x+Math.cos(i*1.047)*24}" cy="${y+Math.sin(i*1.047)*24}" r="6" fill="#E57A62"/>`);});}
+  const R=k?[["Particles","molecules","#7FD3E6"],["Bonds","covalent","#7FD3E6"],["Melts at","about 186°C","#7FD3E6"],["Dissolved in water","no current","#F6A58F"]]:[["Particles","ions (Na⁺, Cl⁻)","#E9B44C"],["Bonds","ionic","#E9B44C"],["Melts at","about 801°C","#E9B44C"],["Dissolved in water","conducts","#9ED38E"]];
+  R.forEach((r,i)=>s+=`<text x="215" y="${50+i*55}" font-size="12" fill="#9AA5B1" font-weight="700">${r[0]}</text><text x="215" y="${72+i*55}" font-size="17" fill="${r[2]}" font-weight="800">${r[1]}</text>`);$("#ccSvg").innerHTML=s;
+  setMsg($("#ccMsg"),k?"<b>Sugar (covalent):</b> separate molecules held to each other only weakly, so it melts at a much <b>lower</b> temperature. Dissolved sugar has no charged particles, so it does <b>not conduct</b> electricity.":"<b>Salt (ionic):</b> a crystal of ions held tightly in all directions, so it has a very <b>high</b> melting point. The crystal is hard but <b>brittle</b>. Dissolved in water, the ions can move, so salt water <b>conducts</b> electricity.",k?"<b>السكر (تساهمي):</b> جزيئات منفصلة ترتبط ببعضها ارتباطًا ضعيفًا، فينصهر عند درجة حرارة <b>أقل</b> بكثير. السكر المذاب ليس فيه جسيمات مشحونة، فلا <b>يوصل</b> الكهرباء.":"<b>الملح (أيوني):</b> بلورة أيونات مترابطة بقوة في كل الاتجاهات، فدرجة انصهاره <b>عالية</b> جدًا. البلورة صلبة لكنها <b>هشّة</b>. وعند إذابته في الماء تتحرك الأيونات، فيوصل الماء المالح الكهرباء.");}
+seg("#ccMode",ccDraw);ccDraw(0);
+
+/* 7. carbon */
+function caDraw(k){let s=BG;if(!k){const P=[];for(let i=0;i<6;i++)for(let j=0;j<4;j++)P.push([50+i*66+(j%2)*33,40+j*58]);P.forEach(([x,y],a)=>P.forEach(([x2,y2],b)=>{const d=Math.hypot(x-x2,y-y2);if(b>a&&d<70)s+=bond(x,y,x2,y2,4);}));P.forEach(([x,y])=>s+=atm(x,y,"C",.75,""));s+=txt(220,252,"each C bonded to its neighbours in a rigid network","#E9B44C",12);}
+  else{[50,125,200].forEach((y,l)=>{const H=[];for(let i=0;i<7;i++)H.push([40+i*58+(l%2)*29,y]);for(let i=0;i<6;i++)s+=bond(H[i][0],y,H[i+1][0],y,4);H.forEach(([x])=>s+=bond(x,y,x+14,y+14,3));H.forEach(([x])=>s+=atm(x,y,"C",.7,""));if(l<2)s+=`<line x1="20" y1="${y+38}" x2="420" y2="${y+38}" stroke="#E9B44C" stroke-width="2" stroke-dasharray="6 6"/>`;});s+=txt(220,252,"strong layers · weak forces between layers (dashed)","#E9B44C",12);}
+  $("#caSvg").innerHTML=s;setMsg($("#caMsg"),k?"<b>Graphite:</b> carbon atoms are bonded in flat <b>layers</b>. The layers are held together only weakly, so they <b>slide</b> over each other. That is why pencil \"lead\" leaves marks and feels soft.":"<b>Diamond:</b> every carbon atom is strongly bonded to its neighbours in all directions: a rigid <b>extended structure</b>. That makes diamond the hardest natural material.",k?"<b>الجرافيت:</b> ذرات الكربون مرتبطة في <b>طبقات</b> مستوية، والطبقات مرتبطة ببعضها ارتباطًا ضعيفًا فتنزلق فوق بعضها. لهذا يترك سنّ القلم الرصاص أثرًا ويبدو طريًّا.":"<b>الألماس:</b> كل ذرة كربون مرتبطة بقوة بجيرانها في كل الاتجاهات: <b>تركيب ممتد</b> صلب. لهذا الألماس أصلب مادة طبيعية.");}
+seg("#caMode",caDraw);caDraw(0);
+whyBox($("#why2"),"Diamond and graphite are both pure carbon. Why are they so different?","الألماس والجرافيت كلاهما كربون نقي. لماذا هما مختلفان جدًا؟",[
+ ["Their atoms are arranged differently, so their properties are different.","ذراتهما مرتّبة بطريقة مختلفة، فخصائصهما مختلفة.",1,"Same atoms, different structure → different properties.","الذرات نفسها، والتركيب مختلف ← خصائص مختلفة."],
+ ["Diamond has different atoms inside.","في الألماس ذرات مختلفة.",0,"Both contain only carbon atoms.","كلاهما يحتوي على ذرات كربون فقط."],
+ ["Graphite is a compound.","الجرافيت مركّب.",0,"Graphite has one type of atom: it is an element.","الجرافيت فيه نوع واحد من الذرات: إنه عنصر."]]);
+
+const FD={
+ sp:[{q:"Why does copper conduct electricity and bend without breaking?<span class=\"ar\">لماذا يوصل النحاس الكهرباء وينثني دون أن ينكسر؟</span>",words:true,txt:true,s:[["Copper is a metal made of copper atoms only.","Particles","الجسيمات: النحاس فلز يتكوّن من ذرات نحاس فقط."],["Its atoms form an extended structure: a metal lattice.","Structure","التركيب: ذراته تكوّن تركيبًا ممتدًا: شبكة فلزية."],["So it conducts electricity and is malleable.","Property","الخاصية: لذلك يوصل الكهرباء وقابل للطرق."]],blank:0},
+  {q:"Why does salt have a very high melting point?<span class=\"ar\">لماذا درجة انصهار الملح عالية جدًا؟</span>",words:true,txt:true,s:[["Salt is made of Na⁺ and Cl⁻ ions.","Particles","الجسيمات: يتكوّن الملح من أيونات Na⁺ و Cl⁻."],["Opposite ions attract strongly in all directions in a crystal.","Structure","التركيب: الأيونات المختلفة تتجاذب بقوة في كل الاتجاهات داخل بلورة."],["A lot of energy is needed to break it apart, so it melts at about 801°C.","Property","الخاصية: يلزم مقدار كبير من الطاقة لتفكيكه، فينصهر عند حوالي 801°C."]],blank:1,o:[["A lot of energy is needed to break it apart, so it melts at about 801°C.","Very little energy is needed, so it melts below 100°C.","It never melts."]],h:[["Strong attraction in every direction is hard to break.","التجاذب القوي في كل الاتجاهات صعب الكسر."]]},
+  {q:"Why does water (H₂O) boil at only 100°C?<span class=\"ar\">لماذا يغلي الماء (H₂O) عند 100°C فقط؟</span>",words:true,txt:true,s:[["Water is made of H₂O molecules with covalent bonds.","Particles","الجسيمات: يتكوّن الماء من جزيئات H₂O بروابط تساهمية."],["The molecules are separate and held to each other only weakly.","Structure","التركيب: الجزيئات منفصلة وترتبط ببعضها ارتباطًا ضعيفًا."],["Little energy is needed to separate them, so it boils at a low temperature.","Property","الخاصية: يلزم مقدار قليل من الطاقة لفصلها، فيغلي عند درجة حرارة منخفضة."]],blank:2,o:[["The molecules are separate and held to each other only weakly.","The molecules form one strong extended structure.","The molecules are made of ions."],["Little energy is needed to separate them, so it boils at a low temperature.","A lot of energy is needed, so it boils above 800°C.","It conducts electricity."]],h:[["Covalent compounds are usually separate molecules.","المركّبات التساهمية غالبًا جزيئات منفصلة."],["Weak forces → easy to separate → low boiling point.","قوى ضعيفة ← فصل سهل ← درجة غليان منخفضة."]]}]};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+
+/* check yourself */
+cardsQ($("#ckCards"),[
+ {t:["Neon exists as…","يوجد النيون على شكل…"],o:[["single atoms","ذرات منفردة"],["molecules","جزيئات"],["an extended structure","تركيب ممتد"]],a:0,cls:"stack",w:["Neon atoms do not bond.","ذرات النيون لا ترتبط."],h:["Like helium.","مثل الهيليوم."]},
+ {t:["A shiny element that can be hammered into sheets is a…","عنصر لامع يمكن طرقه إلى صفائح هو…"],o:[["nonmetal","لافلز"],["metal","فلز"],["gas","غاز"]],a:1,w:["Shiny + malleable = metal.","لامع + قابل للطرق = فلز."],h:["Remember the copper test.","تذكّر اختبار النحاس."]},
+ {t:["In an ionic bond, electrons are…","في الرابطة الأيونية، الإلكترونات…"],o:[["shared","تتشارك"],["destroyed","تُفنى"],["transferred","تنتقل"]],a:2,w:["Transfer makes ions that attract.","الانتقال يكوّن أيونات تتجاذب."],h:["Sodium gave its electron to chlorine.","الصوديوم أعطى إلكترونه للكلور."]},
+ {t:["Electrons that take part in bonding are called…","الإلكترونات التي تشارك في الترابط تُسمّى…"],o:[["valence electrons","إلكترونات التكافؤ"],["inner electrons","إلكترونات داخلية"],["ions","أيونات"]],a:0,cls:"stack",w:["They are in the outer shell.","توجد في الغلاف الخارجي."],h:["Think of the outer shell.","فكّر في الغلاف الخارجي."]},
+ {t:["Salt water conducts electricity because…","يوصل الماء المالح الكهرباء لأن…"],o:[["sugar is in it","فيه سكر"],["its ions can move","أيوناته تستطيع الحركة"],["water is a metal","الماء فلز"]],a:1,cls:"stack",w:["Moving charged particles carry the current.","الجسيمات المشحونة المتحركة تنقل التيار."],h:["Salt is made of ions.","الملح يتكوّن من أيونات."]},
+ {t:["Graphite is soft because its layers…","الجرافيت طري لأن طبقاته…"],o:[["are made of metal","مصنوعة من فلز"],["are not bonded inside","غير مرتبطة من الداخل"],["slide over each other","تنزلق فوق بعضها"]],a:2,cls:"stack",w:["Weak forces between the layers.","قوى ضعيفة بين الطبقات."],h:["Look at the dashed lines.","انظر إلى الخطوط المتقطّعة."]}]);
+const FL=[["He","Single atoms","ذرات منفردة","Some elements, like helium and neon, exist as atoms on their own.","بعض العناصر مثل الهيليوم والنيون توجد ذرات منفردة."],
+ ["O₂","Molecule","الجزيء","Two or more atoms bonded together in a fixed number.","ذرتان أو أكثر مرتبطة معًا بعدد ثابت."],
+ ["▦","Extended structure","التركيب الممتد","A huge repeating network of bonded particles, like iron or salt.","شبكة ضخمة متكرّرة من الجسيمات المرتبطة، مثل الحديد أو الملح."],
+ ["Cu","Metal","الفلز","Shiny, conducts heat and electricity, malleable.","لامع، يوصل الحرارة والكهرباء، قابل للطرق."],
+ ["S","Nonmetal","اللافلز","Usually dull, poor conductor, brittle.","باهت غالبًا، موصل رديء، هشّ."],
+ ["e⁻","Valence electrons","إلكترونات التكافؤ","Electrons in the outer shell; they form bonds.","إلكترونات الغلاف الخارجي، وهي التي تكوّن الروابط."],
+ ["Na⁺Cl⁻","Ionic compound","المركّب الأيوني","Electrons transferred → positive and negative ions attract.","انتقال الإلكترونات ← أيونات موجبة وسالبة تتجاذب."],
+ ["H–H","Covalent compound","المركّب التساهمي","Electrons shared between atoms → molecules.","مشاركة الإلكترونات بين الذرات ← جزيئات."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+const Q=[
+ {q:"Which element exists as individual atoms?",qa:"أيّ عنصر يوجد على شكل ذرات منفردة؟",o:[["oxygen","الأكسجين"],["iron","الحديد"],["helium","الهيليوم"],["nitrogen","النيتروجين"]],a:2,ex:["Helium atoms do not bond to each other.","ذرات الهيليوم لا ترتبط ببعضها."],h:[["Oxygen and nitrogen form molecules.","الأكسجين والنيتروجين يكوّنان جزيئات."],["Iron is an extended structure.","الحديد تركيب ممتد."]]},
+ {q:"Which describes the structure of iron?",qa:"أيّ عبارة تصف تركيب الحديد؟",o:[["A huge repeating network of bonded atoms","شبكة ضخمة متكرّرة من الذرات المرتبطة"],["Separate Fe₂ molecules","جزيئات Fe₂ منفصلة"],["Single atoms that never bond","ذرات منفردة لا ترتبط أبدًا"],["Positive and negative ions of two elements","أيونات موجبة وسالبة لعنصرين"]],a:0,ex:["Metals are extended structures (metal lattices).","الفلزات تراكيب ممتدة (شبكات فلزية)."],h:[["Remember the iron sample that kept repeating.","تذكّر عيّنة الحديد التي ظلت تتكرّر."],["Iron is an element, so only one type of atom.","الحديد عنصر، إذن نوع واحد من الذرات."]]},
+ {q:"An element is dull, does not conduct electricity and shatters when hit. It is most likely a…",qa:"عنصر باهت لا يوصل الكهرباء ويتحطّم عند طرقه. هو على الأرجح…",o:[["metal","فلز"],["metalloid","شبه فلز"],["compound","مركّب"],["nonmetal","لافلز"]],a:3,ex:["Dull, poor conductor and brittle are properties of nonmetals, like sulfur.","الباهت والموصل الرديء والهشّ من خصائص اللافلزات، مثل الكبريت."],h:[["Remember sulfur in the lab.","تذكّر الكبريت في المعمل."],["Metals are shiny and malleable.","الفلزات لامعة وقابلة للطرق."]]},
+ {q:"What are valence electrons?",qa:"ما إلكترونات التكافؤ؟",o:[["Electrons in the nucleus","إلكترونات في النواة"],["Electrons in the outer shell that take part in bonding","إلكترونات في الغلاف الخارجي تشارك في الترابط"],["Electrons that have been destroyed","إلكترونات فَنِيَت"],["Positive particles","جسيمات موجبة"]],a:1,ex:["Valence electrons are in the outer shell; they form bonds.","إلكترونات التكافؤ في الغلاف الخارجي وهي التي تكوّن الروابط."],h:[["Think of the yellow electrons.","فكّر في الإلكترونات الصفراء."],["They are on the outside of the atom.","توجد في الجزء الخارجي من الذرة."]]},
+ {q:"How does an ionic bond form between sodium and chlorine?",qa:"كيف تتكوّن رابطة أيونية بين الصوديوم والكلور؟",o:[["Sodium transfers an electron to chlorine, and the ions attract.","ينقل الصوديوم إلكترونًا إلى الكلور، فتتجاذب الأيونات."],["They share a pair of electrons.","يتشاركان زوجًا من الإلكترونات."],["Chlorine gives sodium 7 electrons.","يعطي الكلور الصوديوم 7 إلكترونات."],["Their nuclei join together.","تتّحد نواتاهما."]],a:0,ex:["Na loses 1 electron → Na⁺; Cl gains 1 → Cl⁻; opposite charges attract.","يفقد Na إلكترونًا ← Na⁺، ويكتسب Cl إلكترونًا ← Cl⁻، والشحنات المختلفة تتجاذب."],h:[["Ionic = transfer.","الأيونية = انتقال."],["Which atom has only 1 valence electron?","أيّ ذرة لها إلكترون تكافؤ واحد فقط؟"]]},
+ {q:"In a molecule of water (H₂O), the atoms are held together by…",qa:"في جزيء الماء (H₂O) ترتبط الذرات ببعضها بواسطة…",o:[["ionic bonds","روابط أيونية"],["magnets","مغناطيس"],["covalent bonds (shared electrons)","روابط تساهمية (إلكترونات مشتركة)"],["no bonds","لا روابط"]],a:2,ex:["Oxygen shares a pair of electrons with each hydrogen atom.","يتشارك الأكسجين زوجًا من الإلكترونات مع كل ذرة هيدروجين."],h:[["Water is made of molecules.","الماء يتكوّن من جزيئات."],["Molecules form when electrons are shared.","تتكوّن الجزيئات عندما تتشارك الإلكترونات."]]},
+ {q:"Which property shows that salt is an ionic compound?",qa:"أيّ خاصية تبيّن أن الملح مركّب أيوني؟",o:[["It is white.","لونه أبيض."],["It dissolves in water.","يذوب في الماء."],["It melts at a low temperature.","ينصهر عند درجة حرارة منخفضة."],["Dissolved in water, it conducts electricity.","عند إذابته في الماء يوصل الكهرباء."]],a:3,ex:["Dissolved ions can move and carry current. Sugar dissolves too, but does not conduct.","الأيونات المذابة تتحرك وتنقل التيار. السكر يذوب أيضًا لكنه لا يوصل."],h:[["Sugar is also white and dissolves.","السكر أيضًا أبيض ويذوب."],["Ions are charged particles.","الأيونات جسيمات مشحونة."]]},
+ {q:"Diamond is very hard but graphite is soft, although both are carbon. Why?",qa:"الألماس صلب جدًا والجرافيت طري، مع أن كليهما كربون. لماذا؟",o:[["Diamond contains more carbon.","الألماس يحتوي على كربون أكثر."],["Their atoms are arranged in different structures.","ذراتهما مرتّبة في تراكيب مختلفة."],["Graphite contains metal.","الجرافيت يحتوي على فلز."],["Diamond is a compound.","الألماس مركّب."]],a:1,ex:["Diamond is a rigid network; graphite has layers that slide.","الألماس شبكة صلبة، والجرافيت طبقات تنزلق."],h:[["Same atoms, different arrangement.","الذرات نفسها، والترتيب مختلف."],["Look at the layers in graphite.","انظر إلى الطبقات في الجرافيت."]]},
+ {q:"From Lesson 1-3: More gas particles are pumped into a container of the same size. The pressure…",qa:"من الدرس 1-3: تُضخّ جسيمات غاز أكثر في إناء حجمه ثابت. الضغط…",o:[["increases","يزداد"],["decreases","يقلّ"],["stays the same","يبقى ثابتًا"],["becomes zero","يصبح صفرًا"]],a:0,ex:["More particles → more collisions → higher pressure (direct).","جسيمات أكثر ← تصادمات أكثر ← ضغط أعلى (طردية)."],h:[["Remember the pump and the gauge.","تذكّر المضخة والمقياس."],["More hits on the walls.","اصطدامات أكثر بالجدران."]]},
+ {q:"From Lesson 1-3: Boyle's law says that at constant temperature…",qa:"من الدرس 1-3: ينص قانون بويل على أنه عند درجة حرارة ثابتة…",o:[["volume and pressure both increase","يزداد الحجم والضغط معًا"],["pressure does not depend on volume","الضغط لا يعتمد على الحجم"],["when volume decreases, pressure increases","عندما يقلّ الحجم يزداد الضغط"],["gas always boils","الغاز يغلي دائمًا"]],a:2,ex:["Pressure and volume are inversely related.","الضغط والحجم بينهما علاقة عكسية."],h:[["Remember the syringe.","تذكّر السرنجة."],["Inverse: one up, one down.","عكسية: أحدهما يزداد والآخر يقلّ."]]}];
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${first?ICON.check+" Correct!":ok?ICON.check+" Yes, now you have it.":ICON.cross+" Here is the answer."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${first?"إجابة صحيحة!":ok?"نعم، الآن فهمتها.":"إليك الإجابة."} ${q.ex[1]}</div>`;
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Scientist";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You can see how atoms build matter!","رائع! أنت ترى كيف تبني الذرات المادة!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the virtual labs, then retry.","محاولة جيدة! أعد المعامل الافتراضية، ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Science · Grade 7 · Unit 1 · Lesson 1-4 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
