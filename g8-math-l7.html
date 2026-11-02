@@ -1,0 +1,1662 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c1620">
+<title>Terminating and Repeating Decimals – Math G8 Lesson 15</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(12,22,32,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#132532;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#182c3a;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#3a2326;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#2e2a1c;border:1px solid #5a4a26;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#132532;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#132532;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #3a4a55}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#123a3a;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#182c3a;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#132532;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#123a3a}
+.opt.right{border-color:var(--teal);background:#123a3a}
+.opt.wrong{border-color:var(--terra);background:#3a2326}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#182c3a;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#132532;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#123a3a;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#3a2326;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#132532;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#132532}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#3a4a55}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #132532}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#132532;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#132532}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #132532;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#2e2a1c}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#132532;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#123a3a;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#123a3a}
+.pieces button.no{border-color:var(--terra);background:#3a2326;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#3a4a55}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#123a3a;border-left:5px solid var(--teal)}
+.feedback.no{background:#3a2326;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#132532;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#132532;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#132532;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#132532;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#123a3a}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#2e2a1c}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#132532;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#3a2326}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#2e2a1c;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#132532;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#123a3a}.sc.diff{border-color:var(--terra);background:#3a2326}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#123a3a}.rchips button.wrong{border-color:var(--terra);background:#3a2326}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#123a3a}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#123a3a}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#3a2326}
+.ml.done,.mr.done{border-color:var(--teal);background:#123a3a;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#123a3a}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#2e2a1c;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#2e2a1c;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#132532;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#123a3a}
+.eline.bad{border-color:var(--terra);background:#3a2326;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#132532;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#132532 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#123a3a}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#3a2326}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#2e2a1c}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#132532;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#2e2a1c;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#123a3a}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#3a2326}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#2e2a1c;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#123a3a}.mcard2.wrong{border-color:var(--terra);background:#3a2326}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #132532;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#123a3a}.idc.wrong{border-color:var(--terra);background:#3a2326}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#123a3a}.claim2.wrong{border-color:var(--terra);background:#3a2326}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#2e2a1c}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#123a3a}.ct.no{border-color:var(--terra);background:#3a2326}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#2e2a1c}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#2a2440;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#182c3a;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#132532;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#123a3a}.wuq .wo button.wrong{border-color:var(--terra);background:#3a2326}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#132532;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#182c3a;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#132532;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#3a2326}.pick button.right{border-color:var(--teal);background:#123a3a}
+.why{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#123a3a}.why .wb button.wrong{border-color:var(--terra);background:#3a2326}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#132532;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #132532;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#3a4a55;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#132532;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#132532}
+.tchip.lost{border-color:var(--terra);background:#3a2326}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#3a2326}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#123a3a}.pickph.wrong{border-color:var(--terra);background:#3a2326}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#123a3a}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#182c3a}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#123a3a;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#182c3a;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#132532;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#2e2a1c;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#182c3a;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#132532}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#123a3a;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#132532;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#132532;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#123a3a;border-color:var(--teal)}.tile.g1{background:#3a2326;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#182c3a;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#132532;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#132532;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#132532;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#132532;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#132532;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#132532;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#132532;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#182c3a}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#132532}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#182c3a}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#132532}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#182c3a;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+.ov{text-decoration:overline;text-decoration-thickness:2px;text-underline-offset:0}
+.solbox{margin-top:10px}
+.solbtn{display:inline-flex;align-items:center;gap:6px;border:2px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:6px 14px;font-weight:700;font-size:14px}
+.solbtn .ic{width:18px;height:18px}
+.solbtn .ar{display:inline;font-weight:600;font-size:13px}
+.solbtn.on{background:var(--clay);color:#fff;border-color:var(--clay)}
+.solsteps{margin:10px 0 0;padding:10px 12px 10px 34px;background:#132532;border:1px dashed #5a4a26;border-radius:12px;text-align:left;font-size:14.5px;line-height:1.45}
+.solsteps li{margin:6px 0;animation:fadein .3s}
+.solsteps li .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px;margin-top:2px}
+.solsteps[hidden]{display:none}
+.feedback .solbox{margin-top:12px}
+.nchips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.nchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 14px;font-family:Cambria,"Times New Roman",serif;font-size:18px;font-weight:700;color:var(--ink);min-width:58px}
+.nchips button.done{background:#123a3a;border-color:#BFE3E0}
+.nchips button.on{border-color:var(--terra);background:#3a2326}
+#setSvg ellipse,#setSvg rect{transition:filter .3s,stroke-width .3s}
+#setSvg .lit{stroke-width:6;filter:drop-shadow(0 0 8px rgba(242,196,109,.6))}
+#setDots text{font-weight:700;opacity:.75}
+#setDots text.now{fill:#f2c46d;opacity:1;font-size:20px}
+.dmq{font-size:20px;font-weight:800;margin-bottom:8px;overflow-x:auto}
+.dmq .fr{font-size:.8em}
+.dmlog{display:grid;gap:4px;font-size:14.5px;max-height:260px;overflow:auto}
+.dmlog>div{background:#182c3a;border-radius:10px;padding:5px 10px;animation:fadein .3s}
+.dmlog .ar{display:inline;color:var(--muted);font-size:13px;margin-left:6px}
+.tapes{display:grid;gap:8px;overflow-x:auto;padding:4px 0}
+.tape{display:flex;align-items:center;font-family:Consolas,"Courier New",monospace;font-size:20px;direction:ltr}
+.tape .tn{width:66px;font-weight:700;color:var(--clay);font-size:16px;text-align:right;padding-right:8px;flex:none}
+.tape .ti{width:44px;text-align:right;font-weight:700;flex:none}
+.tape .tp{width:12px;text-align:center;font-weight:700;flex:none}
+.tape .td{width:22px;text-align:center;border-radius:5px;flex:none}
+.tape .td.ok{background:rgba(124,194,189,.28);color:#c9f3ee}
+.tape .td.no{background:rgba(239,154,131,.32);color:#ffd9cf}
+.tape .te{padding-left:4px;color:var(--muted)}
+@media (max-width:420px){.tape{font-size:16px}.tape .td{width:16px}.tape .tn{width:56px;font-size:14px}.tape .ti{width:36px}}
+.solwrap{margin-top:6px}
+.idc .mb.two{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb button .fr,.opt .fr{font-size:.95em}
+.fbig .fr{font-size:.9em}
+.opt span.ov{display:inline!important;margin:0!important}
+.opt span.m{display:inline-block!important}
+.opt span.fr{display:inline-flex!important}
+.opt .fr>span{display:block!important}
+@media (max-width:420px){.tape .tn{width:64px;font-size:13px;white-space:nowrap}}
+@media (max-width:700px){.hero{background:#0f1e29}.hero .herotxt{position:relative;padding:4px 16px 14px;background:none}}
+:root{--sand:#0c1620;--paper:#132532;--ink:#f1f6f5;--muted:#9fb3b5;--terra:#ef9a83;--teal:#7cc2bd;--teal-d:#4fa39c;
+--ochre:#f2c46d;--clay:#f2c46d;--stone:#6f8689;--line:rgba(124,194,189,.22);--sky:#123a3a;--cream:#1d2f3b;color-scheme:dark}
+body{font-family:'Readex Pro',system-ui,-apple-system,'Segoe UI',sans-serif;background:radial-gradient(1200px 600px at 50% -10%,rgba(79,163,156,.18),transparent 60%),#0c1620;background-attachment:fixed}
+h1,h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:.01em}
+.ar,[lang=ar]{font-family:'Readex Pro','Geeza Pro','Noto Naskh Arabic',Tahoma,sans-serif}
+.card,.bubble,.idc,.key,.msg,.cert{box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card{background:rgba(19,37,50,.72);border-color:var(--line);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.btn{background:linear-gradient(180deg,#8fd0ca,#6cb7b1);color:#08201f;box-shadow:0 3px 0 #3d8a84,0 8px 24px rgba(124,194,189,.25)}
+.btn.alt{background:rgba(19,37,50,.8);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn:disabled{opacity:.45}
+.nav{background:linear-gradient(rgba(12,22,32,0),rgba(12,22,32,.94) 40%)}
+.kicker{background:rgba(242,196,109,.14);color:#f2c46d}
+.kicker.light{background:rgba(12,22,32,.55);color:#f2c46d;border:1px solid rgba(242,196,109,.35)}
+.hsub{color:#f2c46d}
+.bubble{background:#132532;border-color:#4fa39c}
+.bubble .who{color:#7cc2bd}
+.key{border-left-color:#f2c46d}
+.msg{border-left-color:#7cc2bd}
+.msg.warn{border-left-color:#ef9a83}
+.face.back{background:linear-gradient(160deg,#2b7d77,#1d5c58);color:#f1f6f5}
+.seg button.on,.seg button[aria-pressed=true]{background:#7cc2bd;color:#08201f}
+.namebox{background:#0f1e29;color:var(--ink);border-color:var(--line)}
+.m,.mi{color:inherit}
+.fline .fn{background:#7cc2bd;color:#08201f}
+.solbtn.on{color:#08201f}
+.score{color:#f2c46d}
+.prog{background:rgba(124,194,189,.15)}
+.ibtn{background:rgba(19,37,50,.8);color:var(--ink);border-color:var(--line)}
+.hero{box-shadow:0 20px 50px rgba(0,0,0,.35);border:1px solid var(--line)}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Math · Grade 8 · Unit 2<small id="curLabel">Terminating and Repeating Decimals</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="Long division of 1 by 3: the remainder 1 comes back again and again, so the 3s repeat forever">
+<defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F2A37"/><stop offset="1" stop-color="#2B3B4E"/></linearGradient>
+<pattern id="hg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+<marker id="ha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#E9B44C"/></marker></defs>
+<rect width="640" height="360" fill="url(#hb)"/><rect width="640" height="360" fill="url(#hg)"/>
+<g font-family="Cambria,Times New Roman,serif" fill="#F7F1E8">
+ <text x="96" y="46" font-size="24" fill="#9AA5B1">0 . 3 3 3 …</text>
+ <path d="M84 56 q-8 0 -8 20 v40" stroke="#F7F1E8" stroke-width="3" fill="none"/>
+ <line x1="84" y1="56" x2="240" y2="56" stroke="#F7F1E8" stroke-width="3"/>
+ <text x="50" y="86" font-size="24">3</text>
+ <text x="96" y="86" font-size="24">1 . 0 0 0</text>
+ <text x="132" y="112" font-size="19" fill="#9AA5B1">− 9</text>
+ <text x="146" y="138" font-size="21" fill="#E9B44C">1 0</text>
+ <text x="160" y="162" font-size="19" fill="#9AA5B1">− 9</text>
+ <text x="174" y="186" font-size="21" fill="#E9B44C">1 0</text>
+</g>
+<path d="M200 180 C 262 176, 270 136, 172 132" stroke="#E9B44C" stroke-width="3" fill="none" marker-end="url(#ha)" stroke-dasharray="6 5"/>
+<text x="250" y="166" font-family="sans-serif" font-size="14" fill="#E9B44C">same remainder again</text>
+<g transform="translate(440 26)">
+ <circle cx="76" cy="76" r="66" fill="none" stroke="#2A9D8F" stroke-width="3" stroke-opacity=".7"/>
+ <circle cx="76" cy="76" r="66" fill="none" stroke="#E9B44C" stroke-width="5" stroke-dasharray="36 400" transform="rotate(-90 76 76)"/>
+ <text x="76" y="90" text-anchor="middle" font-family="Cambria,Times New Roman,serif" font-size="38" fill="#F7F1E8">0.3</text>
+ <line x1="92" y1="58" x2="110" y2="58" stroke="#E9B44C" stroke-width="4"/>
+</g>
+</svg>
+    <div class="herotxt"><span class="kicker light">Math · Grade 8 · Lesson 15</span><h1>Terminating and Repeating Decimals</h1><p class="ar">الكسور العشرية المنتهية والدورية</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="happy"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Every fraction hides a decimal. Some decimals <b>stop</b>, and some <b>repeat forever</b>. Today you will find out why, and how to turn a repeating decimal back into a fraction.</p><p class="ar">كل كسر يُخفي عددًا عشريًا. بعض الأعداد العشرية <b>تنتهي</b>، وبعضها <b>يتكرر إلى الأبد</b>. اليوم ستعرف السبب، وكيف تحوّل العدد العشري الدوري إلى كسر من جديد.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ name the sets of numbers: natural, whole, integers, rational<br>✔ write a fraction or mixed number as a decimal<br>✔ tell a terminating decimal from a repeating one, and use bar notation<br>✔ write a repeating decimal as a fraction</p><p class="ar"><b>سأتعلم اليوم أن:</b><br>✔ أسمّي مجموعات الأعداد: الطبيعية، والكلية، والصحيحة، والنسبية<br>✔ أكتب كسرًا أو عددًا كسريًا في صورة عدد عشري<br>✔ أميّز العدد العشري المنتهي من الدوري، وأستخدم رمز الخط العلوي<br>✔ أكتب عددًا عشريًا دوريًا في صورة كسر</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic. Every question has a <b>Show solution</b> button.</p><p class="ar"><b>نصيحة:</b> اضغط <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمة. ولكل سؤال زر <b>طريقة الحل</b>.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up</span>
+  <h2>What do you already know?</h2>
+  <p class="hsub ar">ماذا تعرف من قبل؟</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Tap an answer. Stuck? Tap <b>Show solution</b>.</p><p class="ar">مجرد تسخين، لا شيء يُحسب! اضغط على إجابة. وإن احترت، اضغط <b>طريقة الحل</b>.</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+</section>
+
+<section class="screen" data-title="Number families">
+  <span class="kicker">Learn · Rational numbers</span>
+  <h2>Families of numbers</h2>
+  <p class="hsub ar">عائلات الأعداد</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>Rational number:</b> a number that can be written as a ratio <span class="m">a/b</span> of two integers, where <span class="m">b ≠ 0</span>.</p><p class="ar"><b>العدد النسبي:</b> عدد يمكن كتابته في صورة نسبة <span class="m">a/b</span> بين عددين صحيحين، حيث <span class="m">b ≠ 0</span>.</p></div>
+  <div class="bench">
+    <div class="card">
+      <svg id="setSvg" viewBox="0 0 400 280" style="display:block;width:100%" role="img" aria-label="Nested sets: natural numbers inside whole numbers inside integers inside rational numbers">
+        <rect id="setQ" x="6" y="6" width="388" height="268" rx="26" fill="rgba(124,194,189,.08)" stroke="#4fa39c" stroke-width="3"/>
+        <ellipse id="setZ" cx="200" cy="140" rx="160" ry="100" fill="rgba(124,194,189,.16)" stroke="#7cc2bd" stroke-width="3"/>
+        <ellipse id="setW" cx="200" cy="152" rx="112" ry="76" fill="rgba(242,196,109,.20)" stroke="#f2c46d" stroke-width="3"/>
+        <ellipse id="setN" cx="200" cy="164" rx="66" ry="48" fill="rgba(239,154,131,.30)" stroke="#ef9a83" stroke-width="3"/>
+        <g font-family="sans-serif" font-weight="700" fill="#f1f6f5" text-anchor="middle">
+          <text x="200" y="28" font-size="15">Rational numbers</text>
+          <text x="200" y="64" font-size="14">Integers</text>
+          <text x="200" y="98" font-size="14">Whole numbers</text>
+          <text x="200" y="146" font-size="13">Natural</text>
+        </g>
+        <g id="setDots" font-family="Cambria,Times New Roman,serif" font-size="17" text-anchor="middle" fill="#f1f6f5"></g>
+      </svg>
+      <p class="ar" style="text-align:center;margin-top:6px">النسبية ⊃ الصحيحة ⊃ الكلية ⊃ الطبيعية</p>
+    </div>
+    <div class="card">
+      <div class="bi"><p class="en"><b>Tap a number.</b> See the smallest family it belongs to. It also belongs to every bigger family around it.</p><p class="ar"><b>اضغط على عدد.</b> سترى أصغر عائلة ينتمي إليها، وهو ينتمي أيضًا إلى كل عائلة أكبر تحيط بها.</p></div>
+      <div class="nchips needjs" id="setChips"></div>
+      <div class="msg bi needjs" id="setMsg" style="display:none"></div>
+      <div class="bi" style="margin-top:10px"><p class="en"><b>Natural:</b> 1, 2, 3, … &nbsp;<b>Whole:</b> 0, 1, 2, … &nbsp;<b>Integers:</b> …, −2, −1, 0, 1, 2, …</p><p class="ar"><b>الطبيعية:</b> 1، 2، 3، … &nbsp;<b>الكلية:</b> 0، 1، 2، … &nbsp;<b>الصحيحة:</b> …، −2، −1، 0، 1، 2، …</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="The division machine">
+  <span class="kicker">Explore · Fraction to decimal</span>
+  <h2>Divide and watch the remainders</h2>
+  <p class="hsub ar">اقسم وراقب البواقي</p>
+  <div class="bi"><p class="en">A fraction <span class="m">a/b</span> means <span class="m">a ÷ b</span>. Divide one digit at a time. Watch the <b>remainder</b> on the clock.</p><p class="ar">الكسر <span class="m">a/b</span> يعني <span class="m">a ÷ b</span>. اقسم رقمًا رقمًا، وراقب <b>الباقي</b> على الساعة.</p></div>
+  <div class="seg wrap needjs" id="dmPick"></div>
+  <div class="bench">
+    <div class="card">
+      <svg id="dmClock" viewBox="0 0 300 300" style="display:block;width:100%;max-width:340px;margin:auto" role="img" aria-label="Remainder clock: each point is a possible remainder"></svg>
+      <div class="bi" style="text-align:center"><p class="en" style="margin:4px 0 0">Remainder clock for ÷ the denominator. Each point is a possible remainder.</p><p class="ar">ساعة البواقي عند القسمة على المقام. كل نقطة باقٍ ممكن.</p></div>
+    </div>
+    <div class="card">
+      <div class="dmq" id="dmQ"></div>
+      <div class="dmlog" id="dmLog"></div>
+      <div class="btnrow c needjs"><button class="btn sm" id="dmNext">Next digit ▶</button><button class="btn alt sm" id="dmAll">Finish</button><button class="btn alt sm" id="dmReset">↺</button></div>
+      <div class="msg bi needjs" id="dmMsg" style="display:none"></div>
+    </div>
+  </div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Dividing by 8, there are only 8 possible remainders: 0 to 7. So the remainder must hit <b>0</b> (the decimal stops) or <b>come back</b> (the digits repeat).</p><p class="ar">عند القسمة على 8 لا يوجد إلا 8 بواقٍ ممكنة: من 0 إلى 7. لذلك إما أن يصل الباقي إلى <b>0</b> (فينتهي العدد العشري)، أو <b>يعود</b> باقٍ سابق (فتتكرر الأرقام).</p></div></div>
+</section>
+
+<section class="screen" data-title="Two kinds of decimals">
+  <span class="kicker">Learn · Terminating or repeating</span>
+  <h2>Does it stop or repeat?</h2>
+  <p class="hsub ar">هل ينتهي أم يتكرر؟</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>Repeating decimal:</b> one or more digits repeat forever. <b>Terminating decimal:</b> the repeating digit is <b>0</b>, so it ends, like <span class="m">0.625 = 0.625000…</span></p><p class="ar"><b>العدد العشري الدوري:</b> رقم أو أكثر يتكرر إلى الأبد. <b>العدد العشري المنتهي:</b> الرقم المتكرر هو <b>0</b> فينتهي، مثل <span class="m">0.625 = 0.625000…</span></p></div>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>Bar notation:</b> a bar over the digit(s) that repeat. <span class="m">0.8333… = 0.8<span class="ov">3</span></span> and <span class="m">0.4242… = 0.<span class="ov">42</span></span></p><p class="ar"><b>رمز الخط العلوي:</b> خط فوق الرقم أو الأرقام التي تتكرر. <span class="m">0.8333… = 0.8<span class="ov">3</span></span> و<span class="m">0.4242… = 0.<span class="ov">42</span></span></p></div>
+  <div class="bi"><p class="en"><b>Sort the book's decimals.</b> Does each one end in zeros, or not?</p><p class="ar"><b>صنّف أعداد الكتاب العشرية.</b> هل كل عدد ينتهي بأصفار أم لا؟</p></div>
+  <div class="wu needjs" id="sortBox"></div>
+</section>
+
+<section class="screen" data-title="Fraction to decimal">
+  <span class="kicker">Worked examples · Examples 1–2</span>
+  <h2>Write fractions as decimals</h2>
+  <p class="hsub ar">اكتب الكسور في صورة أعداد عشرية</p>
+  <div class="fader" data-f="f2d"></div>
+</section>
+
+<section class="screen" data-title="Why? Zeros repeat">
+  <span class="kicker">Think about it</span>
+  <h2>Is 5/8 a repeating decimal too?</h2>
+  <p class="hsub ar">هل 5/8 عدد عشري دوري أيضًا؟</p>
+  <div class="card why" id="why1"></div>
+</section>
+
+<section class="screen" data-title="Shift and subtract">
+  <span class="kicker">Learn · Repeating decimal to fraction</span>
+  <h2>Make the endless tail disappear</h2>
+  <p class="hsub ar">اجعل الذيل اللانهائي يختفي</p>
+  <div class="bi"><p class="en">Call the decimal <b>N</b>. Multiply by 10 or 100 so that the repeating tails <b>line up</b>. Then subtract: the tails cancel and only a whole number is left.</p><p class="ar">سمِّ العدد العشري <b>N</b>. اضربه في 10 أو 100 حتى <b>تتطابق</b> الذيول المتكررة. ثم اطرح: تُلغى الذيول ولا يبقى إلا عدد صحيح.</p></div>
+  <div class="seg needjs" id="ssPick"></div>
+  <div class="card">
+    <div class="tapes" id="ssTapes"></div>
+    <div class="btnrow c needjs"><button class="btn alt sm" data-k="10">× 10</button><button class="btn alt sm" data-k="100">× 100</button><button class="btn sm" id="ssSub" disabled>Subtract ▶</button></div>
+    <div class="monoout" id="ssOut" style="margin-top:10px"></div>
+    <div class="msg bi needjs" id="ssMsg" style="display:none"></div>
+  </div>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Try <b>× 10</b> on <span class="m">2.<span class="ov">18</span></span>. Do the tails match? Now try <b>× 100</b>.</p><p class="ar">جرّب <b>× 10</b> مع <span class="m">2.<span class="ov">18</span></span>. هل تتطابق الذيول؟ والآن جرّب <b>× 100</b>.</p></div></div>
+</section>
+
+<section class="screen" data-title="Decimal to fraction">
+  <span class="kicker">Worked examples · Examples 3–4</span>
+  <h2>Write repeating decimals as fractions</h2>
+  <p class="hsub ar">اكتب الأعداد العشرية الدورية في صورة كسور</p>
+  <div class="fader" data-f="d2f"></div>
+</section>
+
+<section class="screen" data-title="Why? Times 100">
+  <span class="kicker">Think about it</span>
+  <h2>Why × 100 for 2.18 repeating?</h2>
+  <p class="hsub ar">لماذا نضرب في 100 مع العدد 2.18 الدوري؟</p>
+  <div class="card why" id="why2"></div>
+</section>
+
+<section class="screen" data-title="Baseball">
+  <span class="kicker">Apply · Baseball</span>
+  <h2>How many hits?</h2>
+  <p class="hsub ar">كم ضربة ناجحة؟</p>
+  <div class="bench">
+    <div class="card">
+      <svg id="bbSvg" viewBox="0 0 400 220" style="display:block;width:100%" role="img" aria-label="Bars comparing at-bats and hits at the same rate"></svg>
+      <input type="range" id="bbS" min="100" max="700" step="10" value="590" aria-label="number of at-bats">
+      <div class="monoout" id="bbOut" style="margin-top:8px"></div>
+    </div>
+    <div class="card">
+      <div class="bi"><p class="en">In a recent season, a first baseman had <b>175 hits</b> in <b>530 at-bats</b>. At this rate, how many hits would he have in <b>590 at-bats</b>?</p><p class="ar">في أحد المواسم، سجّل لاعب القاعدة الأولى <b>175 ضربة ناجحة</b> من <b>530 محاولة</b>. بهذا المعدل، كم ضربة ناجحة سيسجّل في <b>590 محاولة</b>؟</p></div>
+      <div class="solwrap needjs" id="bbSol"></div>
+    </div>
+  </div>
+  <div class="zrow"><div class="zav" data-zayed="think"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">The rate <span class="m">175/530</span> is a rational number. Its decimal, <span class="m">0.3301…</span>, does not stop on a calculator screen, but it does repeat in the end.</p><p class="ar">المعدل <span class="m">175/530</span> عدد نسبي. صورته العشرية <span class="m">0.3301…</span> لا تنتهي على شاشة الآلة الحاسبة، لكنها تتكرر في النهاية.</p></div></div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Check yourself</span>
+  <h2>Your turn: no score here</h2>
+  <p class="hsub ar">دورك: بدون درجات هنا</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Choose an answer. Then open <b>Show solution</b> to check every step.</p><p class="ar">اختر إجابة، ثم افتح <b>طريقة الحل</b> لتراجع كل خطوة.</p></div></div>
+  <div class="wu needjs" id="tryBox"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work! Now the quiz. A wrong answer gives you a hint first. After you answer, you can open the full solution.</p><p class="ar">عمل رائع! والآن الاختبار. الإجابة الخاطئة تعطيك تلميحًا أولًا، وبعد أن تجيب يمكنك فتح طريقة الحل كاملة.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+</main>
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="math8_15_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"UAE MOE · Grade 8"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹ =+,./≠]*[0-9A-Za-z()\[\]½²³⁴¹])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+/* ---------- lesson helpers ---------- */
+const OV=d=>`<span class="ov">${d}</span>`;
+const OVN=(p,r)=>`<span class="m">${p}<span class="ov">${r}</span></span>`;
+/* solution box: steps = [[en, ar], ...] */
+function solHTML(steps){if(!steps||!steps.length)return "";
+  return `<div class="solbox"><button type="button" class="solbtn">${ICON.bulb} Show solution <span class="ar">طريقة الحل</span></button><ol class="solsteps" hidden>${steps.map(s=>`<li><span>${s[0]}</span><span class="ar">${s[1]}</span></li>`).join("")}</ol></div>`;}
+function solBind(root){root.querySelectorAll(".solbtn").forEach(b=>{if(b.dataset.b)return;b.dataset.b=1;b.onclick=e=>{e.stopPropagation();const ol=b.nextElementSibling,open=ol.hidden;ol.hidden=!open;b.classList.toggle("on",open);b.innerHTML=`${ICON.bulb} ${open?"Hide solution":"Show solution"} <span class="ar">${open?"إخفاء الحل":"طريقة الحل"}</span>`;};});}
+
+/* ---------- worked examples that fade ---------- */
+const FD={
+ f2d:[
+  {q:`Write ${F(5,8)} as a decimal. Is it terminating?<br><span class="ar">اكتب ${F(5,8)} في صورة عدد عشري. هل هو منتهٍ؟</span>`,s:[
+    [`${F(5,8)} = 5 ÷ 8`,"A fraction means divide the numerator by the denominator.","الكسر يعني قسمة البسط على المقام."],
+    ["5.000 ÷ 8 = 0.625","Place the decimal point, add zeros and divide. The remainder becomes 0.","ضع الفاصلة العشرية، وأضف أصفارًا، واقسم. يصبح الباقي 0."],
+    ["0.625 → terminating","The repeating digit is 0 (0.625000…), so it is terminating.","الرقم المتكرر هو 0 (0.625000…)، إذن العدد منتهٍ."]],blank:0},
+  {q:`Write −1${F(2,3)} as a decimal. Is it terminating?<br><span class="ar">اكتب −1${F(2,3)} في صورة عدد عشري. هل هو منتهٍ؟</span>`,s:[
+    [`−1${F(2,3)} = −${F(5,3)}`,"Write the mixed number as an improper fraction.","اكتب العدد الكسري في صورة كسر غير فعلي."],
+    ["5 ÷ 3 = 1.666…","Divide. The remainder is always 2, so the 6s never stop.","اقسم. الباقي دائمًا 2، فلا تتوقف الستّات."],
+    [`${OVN("−1.",6)} → not terminating`,"Add the negative sign. The repeating digit is 6, not 0.","أضف إشارة السالب. الرقم المتكرر هو 6 وليس 0."]],blank:1,
+   o:[[`${OVN("−1.",6)} → not terminating`,`−1.6 → terminating`,`${OVN("−1.",6)} → terminating`]],
+   h:[["The digit that repeats is 6. Is it 0?","الرقم المتكرر هو 6. هل هو 0؟"]]},
+  {q:`Write 4${F(13,25)} as a decimal. Is it terminating?<br><span class="ar">اكتب 4${F(13,25)} في صورة عدد عشري. هل هو منتهٍ؟</span>`,s:[
+    [`4${F(13,25)} = 4 + ${F(13,25)}`,"Keep the whole number 4. Change only the fraction.","احتفظ بالعدد الصحيح 4، وحوّل الكسر فقط."],
+    ["13 ÷ 25 = 0.52","Divide 13 by 25. The remainder becomes 0.","اقسم 13 على 25. يصبح الباقي 0."],
+    ["4.52 → terminating","Add 4: the decimal is 4.52, and it ends.","أضف 4: العدد هو 4.52، وهو منتهٍ."]],blank:2,
+   o:[["13 ÷ 25 = 0.52","13 ÷ 25 = 0.13","25 ÷ 13 = 1.92"],["4.52 → terminating",`${OVN("4.",52)} → repeating`,"4.13 → terminating"]],
+   h:[["Divide the numerator 13 by the denominator 25.","اقسم البسط 13 على المقام 25."],["The remainder became 0. Does it end?","أصبح الباقي 0. هل ينتهي العدد؟"]]}
+ ],
+ d2f:[
+  {q:`Write ${OVN("0.",4)} as a fraction.<br><span class="ar">اكتب ${OVN("0.",4)} في صورة كسر.</span>`,s:[
+    ["N = 0.444…","Give the decimal a name, N.","سمِّ العدد العشري N."],
+    ["10N = 4.444…","One digit repeats, so multiply both sides by 10.","يتكرر رقم واحد، فاضرب الطرفين في 10."],
+    ["10N − N = 4.444… − 0.444…","Subtract N. The repeating tails cancel.","اطرح N. تُلغى الذيول المتكررة."],
+    ["9N = 4","Simplify both sides.","بسّط الطرفين."],
+    [`N = ${F(4,9)}`,"Divide both sides by 9.","اقسم الطرفين على 9."]],blank:0},
+  {q:`Write ${OVN("0.",5)} as a fraction in simplest form.<br><span class="ar">اكتب ${OVN("0.",5)} في صورة كسر في أبسط صورة.</span>`,s:[
+    ["N = 0.555…","Give the decimal a name, N.","سمِّ العدد العشري N."],
+    ["10N = 5.555…","One digit repeats, so multiply by 10.","يتكرر رقم واحد، فاضرب في 10."],
+    ["9N = 5","Subtract N = 0.555… from both sides.","اطرح N = 0.555… من الطرفين."],
+    [`N = ${F(5,9)}`,"Divide both sides by 9.","اقسم الطرفين على 9."]],blank:1,
+   o:[[`N = ${F(5,9)}`,`N = ${F(5,10)}`,`N = ${F(9,5)}`]],
+   h:[["9N = 5. What do you do to get N alone?","9N = 5. ماذا تفعل لتحصل على N وحدها؟"]]},
+  {q:`Write ${OVN("2.",18)} as a mixed number in simplest form.<br><span class="ar">اكتب ${OVN("2.",18)} في صورة عدد كسري في أبسط صورة.</span>`,s:[
+    ["N = 2.181818…","Give the decimal a name, N.","سمِّ العدد العشري N."],
+    ["100N = 218.181818…","Two digits repeat, so multiply by 100.","يتكرر رقمان، فاضرب في 100."],
+    ["99N = 216","Subtract N = 2.181818… The tails cancel.","اطرح N = 2.181818… فتُلغى الذيول."],
+    [`N = ${F(216,99)}`,"Divide both sides by 99.","اقسم الطرفين على 99."],
+    [`N = 2${F(2,11)}`,"Simplify: 216/99 = 24/11 = 2 2/11.","بسّط: 216/99 = 24/11 = 2 2/11."]],blank:2,
+   o:[[`N = ${F(216,99)}`,`N = ${F(99,216)}`,`N = ${F(216,100)}`],[`N = 2${F(2,11)}`,`N = 2${F(18,100)}`,`N = 2${F(1,8)}`]],
+   h:[["99N = 216. Divide both sides by 99.","99N = 216. اقسم الطرفين على 99."],["216 ÷ 9 = 24 and 99 ÷ 9 = 11. Then 24 ÷ 11 = 2 remainder 2.","216 ÷ 9 = 24 و99 ÷ 9 = 11. ثم 24 ÷ 11 = 2 والباقي 2."]]}
+ ]
+};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+
+
+/* ---------- practice cards with a solution button ---------- */
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}${n[1]&&n[1]!==n[0]?`<small>${n[1]}</small>`:""}</button>`).join("")}</div><div class="mwhy"></div>${solHTML(c.sol)}</div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll(".mb button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll(".mb button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});
+  solBind(box);}
+
+/* ---------- warm-up ---------- */
+cardsQ($("#wuBox"),[
+ {t:[`What is ${F(3,4)} as a decimal?`,`ما قيمة ${F(3,4)} في صورة عدد عشري؟`],o:[["0.75"],["0.34"],["1.33"]],a:0,
+  w:["3 ÷ 4 = 0.75.","3 ÷ 4 = 0.75."],h:["A fraction means numerator ÷ denominator.","الكسر يعني البسط ÷ المقام."],
+  sol:[[`${F(3,4)} means 3 ÷ 4.`,`${F(3,4)} تعني 3 ÷ 4.`],["4 does not go into 3, so write 3.00.","العدد 4 لا يدخل في 3، فاكتب 3.00."],["30 ÷ 4 = 7 remainder 2, then 20 ÷ 4 = 5.","30 ÷ 4 = 7 والباقي 2، ثم 20 ÷ 4 = 5."],["So 3/4 = 0.75.","إذن 3/4 = 0.75."]]},
+ {t:["Which number is an integer?","أي عدد من الأعداد الصحيحة؟"],o:[["−7"],[F(1,2)],["0.3"]],a:0,
+  w:["Integers are …, −2, −1, 0, 1, 2, … so −7 is one.","الأعداد الصحيحة هي …، −2، −1، 0، 1، 2، … إذن −7 منها."],h:["Integers have no fraction or decimal part.","الأعداد الصحيحة ليس فيها جزء كسري أو عشري."],
+  sol:[["Integers are the whole numbers and their opposites: …, −2, −1, 0, 1, 2, …","الأعداد الصحيحة هي الأعداد الكلية ومعكوساتها: …، −2، −1، 0، 1، 2، …"],["1/2 and 0.3 have a part between whole numbers, so they are not integers.","العددان 1/2 و0.3 يقعان بين عددين صحيحين، فهما ليسا صحيحين."],["−7 is the opposite of 7, so it is an integer.","−7 معكوس 7، إذن هو عدد صحيح."]]},
+ {t:[`Which is greater: ${F(3,5)} or 0.6666…?`,`أيهما أكبر: ${F(3,5)} أم 0.6666…؟`],o:[["0.6666…"],[F(3,5)],["They are equal","متساويان"]],a:0,
+  w:["3/5 = 0.6, and 0.6 < 0.6666…","3/5 = 0.6، و0.6 < 0.6666…"],h:["Write 3/5 as a decimal first.","اكتب 3/5 في صورة عدد عشري أولًا."],
+  sol:[["3/5 = 3 ÷ 5 = 0.6","3/5 = 3 ÷ 5 = 0.6"],["Compare 0.6000… with 0.6666… digit by digit.","قارن 0.6000… مع 0.6666… رقمًا رقمًا."],["The hundredths: 0 < 6, so 0.6 < 0.6666…","في خانة الأجزاء من مئة: 0 < 6، إذن 0.6 < 0.6666…"]]}
+]);
+
+/* ---------- number families ---------- */
+(function(){
+  const NS=[
+   {v:"9",s:"N",x:200,y:196,en:"9 is a counting number. It is natural, whole, an integer and rational.",ar:"9 عدد عدّ. فهو طبيعي، وكلي، وصحيح، ونسبي."},
+   {v:"0",s:"W",x:116,y:168,en:"0 is not a counting number, but it is whole. So it is whole, an integer and rational.",ar:"0 ليس عدد عدّ، لكنه عدد كلي. إذن هو كلي، وصحيح، ونسبي."},
+   {v:"−3",s:"Z",x:64,y:136,en:"−3 is the opposite of 3. It is an integer and rational, but not whole.",ar:"−3 معكوس 3. فهو صحيح ونسبي، لكنه ليس كليًا."},
+   {v:"1/2",s:"Q",x:40,y:48,en:"1/2 is a ratio of two integers, so it is rational, but not an integer.",ar:"1/2 نسبة بين عددين صحيحين، إذن هو نسبي، لكنه ليس صحيحًا."},
+   {v:"−3/4",s:"Q",x:358,y:48,en:"−3/4 = −3 ÷ 4. It is rational.",ar:"−3/4 = −3 ÷ 4، إذن هو نسبي."},
+   {v:"0.45",s:"Q",x:44,y:236,en:"0.45 = 45/100. It is rational.",ar:"0.45 = 45/100، إذن هو نسبي."},
+   {v:"18%",s:"Q",x:356,y:236,en:"18% = 18/100. It is rational.",ar:"18% = 18/100، إذن هو نسبي."},
+   {v:"0.444…",chip:`${OVN("0.",4)}`,s:"Q",x:200,y:250,en:"0.444… = 4/9 (you will see how soon). It is rational.",ar:"0.444… = 4/9 (سترى الطريقة بعد قليل)، إذن هو نسبي."}];
+  const box=$("#setChips"),dots=$("#setDots");if(!box)return;
+  const ids={N:"setN",W:"setW",Z:"setZ",Q:"setQ"};
+  box.innerHTML=NS.map((n,i)=>`<button data-i="${i}">${n.chip||n.v}</button>`).join("");
+  box.querySelectorAll("button").forEach(b=>b.onclick=()=>{const n=NS[+b.dataset.i];
+    box.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));b.classList.add("done");
+    Object.values(ids).forEach(id=>$("#"+id).classList.remove("lit"));$("#"+ids[n.s]).classList.add("lit");
+    if(!dots.querySelector(`[data-i="${b.dataset.i}"]`))dots.insertAdjacentHTML("beforeend",`<text data-i="${b.dataset.i}" x="${n.x}" y="${n.y}">${n.v}</text>`);
+    dots.querySelectorAll("text").forEach(t=>t.classList.toggle("now",t.dataset.i===b.dataset.i));
+    setMsg($("#setMsg"),n.en,n.ar);});
+})();
+
+/* ---------- the division machine ---------- */
+(function(){
+  const FR=[{n:5,d:8,l:F(5,8)},{n:2,d:5,l:F(2,5)},{n:5,d:6,l:F(5,6)},{n:5,d:3,l:`1${F(2,3)}`},{n:4,d:11,l:F(4,11)},{n:1,d:7,l:F(1,7)}];
+  const pick=$("#dmPick");if(!pick)return;
+  pick.innerHTML=FR.map((f,i)=>`<button data-v="${i}" class="${i?"":"on"}">${f.l}</button>`).join("");
+  let f,ip,rems,digs,lines,done,rep;
+  const svg=$("#dmClock"),C=150,R=112;
+  const pos=r=>{const a=-Math.PI/2+2*Math.PI*r/f.d;return [C+R*Math.cos(a),C+R*Math.sin(a)];};
+  function quot(){let s=ip+"."+(digs.length?"":"");
+    if(rep>=0)s+=digs.slice(0,rep).join("")+OV(digs.slice(rep).join(""));else s+=digs.join("")+(done?"":"…");
+    if(!digs.length)s=ip+(done?"":".…");return s;}
+  function draw(){
+    let h=`<circle cx="${C}" cy="${C}" r="${R}" fill="#0f1e29" stroke="rgba(124,194,189,.35)" stroke-width="3"/>`;
+    const cyc=rep>=0?rems.slice(rep):[];
+    for(let k=0;k+1<rems.length;k++){const [x1,y1]=pos(rems[k]),[x2,y2]=pos(rems[k+1]);const inC=rep>=0&&k>=rep;
+      h+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${inC?"#f2c46d":"#7cc2bd"}" stroke-width="${inC?5:3}" stroke-linecap="round" opacity=".9"/>`;}
+    if(rep>=0){const [x1,y1]=pos(rems[rems.length-1]),[x2,y2]=pos(rems[rep]);h+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#f2c46d" stroke-width="5" stroke-dasharray="7 6" stroke-linecap="round"/>`;}
+    for(let r=0;r<f.d;r++){const [x,y]=pos(r),vis=rems.includes(r),now=rems[rems.length-1]===r,zero=r===0&&done&&rep<0;
+      h+=`<circle cx="${x}" cy="${y}" r="${now||zero?17:14}" fill="${zero?"#ef9a83":cyc.includes(r)?"#f2c46d":vis?"#4fa39c":"#1d3240"}" stroke="${now?"#f1f6f5":"#6f8689"}" stroke-width="${now?3:1.5}"/><text x="${x}" y="${y+5}" text-anchor="middle" font-size="14" font-weight="700" font-family="sans-serif" fill="${cyc.includes(r)||zero?"#08201f":vis?"#fff":"#9fb3b5"}">${r}</text>`;}
+        svg.innerHTML=h;
+    $("#dmQ").innerHTML=`<span class="m">${f.l} = ${f.n} ÷ ${f.d} = ${quot()}</span>`;
+    $("#dmLog").innerHTML=lines.map(l=>`<div>${l}</div>`).join("");
+    $("#dmNext").disabled=done;$("#dmAll").disabled=done;}
+  function reset(i){f=FR[i];ip=Math.floor(f.n/f.d);rems=[f.n%f.d];digs=[];done=false;rep=-1;
+    lines=[`<span class="m">${f.n} ÷ ${f.d} = ${ip}</span> remainder <b>${rems[0]}</b> <span class="ar">والباقي ${rems[0]}</span>`];
+    $("#dmMsg").style.display="none";draw();}
+  function step(){if(done)return;const r=rems[rems.length-1],v=r*10,dg=Math.floor(v/f.d),nr=v%f.d;digs.push(dg);
+    lines.push(`<span class="m">${v} ÷ ${f.d} = ${dg}</span> remainder <b>${nr}</b> <span class="ar">والباقي ${nr}</span>`);
+    if(nr===0){done=true;rems.push(0);setMsg($("#dmMsg"),`${ICON.check} The remainder is <b>0</b>. The decimal <b>terminates</b>: ${quot()}`,`${ICON.check} الباقي <b>0</b>، إذن العدد العشري <b>منتهٍ</b>: ${quot()}`);}
+    else if(rems.includes(nr)){done=true;rep=rems.indexOf(nr);setMsg($("#dmMsg"),`Remainder <b>${nr}</b> came back! From here the same digits repeat forever: <b>${quot()}</b>. It is a <b>repeating</b> decimal.`,`عاد الباقي <b>${nr}</b>! من هنا تتكرر الأرقام نفسها إلى الأبد: <b>${quot()}</b>. إنه عدد عشري <b>دوري</b>.`);}
+    else rems.push(nr);
+    draw();}
+  pick.querySelectorAll("button").forEach(b=>b.onclick=()=>{pick.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));reset(+b.dataset.v);});
+  $("#dmNext").onclick=step;$("#dmAll").onclick=()=>{let g=0;while(!done&&g++<20)step();};$("#dmReset").onclick=()=>reset(FR.indexOf(f));
+  reset(0);
+})();
+
+/* ---------- sort: terminating or not ---------- */
+(function(){const T=["Terminates in zeros","ينتهي بأصفار"],R=["Does not terminate","لا ينتهي"];
+ const mk=(d,t,why,whyA)=>({t:[`<span class="m">${d}</span>`,`<span class="m">${d}</span>`],o:[T,R],a:t?0:1,cls:"two",w:[why,whyA],h:["Look at the digit that repeats. Is it 0?","انظر إلى الرقم المتكرر. هل هو 0؟"],
+   sol:[[`Find the digit(s) that repeat in ${d}.`,`حدّد الرقم أو الأرقام المتكررة في ${d}.`],[why,whyA],[t?"So it terminates.":"So it does not terminate. It is a repeating decimal.",t?"إذن هو منتهٍ.":"إذن هو غير منتهٍ، أي عدد عشري دوري."]]});
+ cardsQ($("#sortBox"),[
+  mk("0.64000…",1,"After 0.64 only 0s repeat.","بعد 0.64 لا يتكرر إلا الصفر."),
+  mk(`${OVN("0.",56)}`,0,"The bar shows 56 repeats forever.","الخط العلوي يعني أن 56 يتكرر إلى الأبد."),
+  mk("0.4242…",0,"42 repeats forever.","يتكرر 42 إلى الأبد."),
+  mk("0.84",1,"0.84 = 0.84000…, so the repeating digit is 0.","0.84 = 0.84000…، فالرقم المتكرر هو 0."),
+  mk("0.333…",0,"3 repeats forever.","يتكرر 3 إلى الأبد."),
+  mk("0.7",1,"0.7 = 0.7000…, so the repeating digit is 0.","0.7 = 0.7000…، فالرقم المتكرر هو 0.")]);
+})();
+
+/* ---------- why boxes ---------- */
+whyBox($("#why1"),"Why can we also call 5/8 = 0.625 a repeating decimal?","لماذا يمكن أن نسمي 5/8 = 0.625 عددًا عشريًا دوريًا أيضًا؟",
+ [["Because 0.625 = 0.625000…, and the digit 0 repeats.","لأن 0.625 = 0.625000…، والرقم 0 يتكرر.",true,"Every terminating decimal is a repeating decimal whose repeating digit is 0.","كل عدد عشري منتهٍ هو عدد دوري رقمه المتكرر هو 0."],
+  ["Because 6, 2 and 5 repeat.","لأن 6 و2 و5 تتكرر.",false,"After 0.625 the remainder is 0, so 6, 2, 5 never come again.","بعد 0.625 يصبح الباقي 0، فلا تعود 6 و2 و5 مرة أخرى."],
+  ["Because 8 is an even number.","لأن 8 عدد زوجي.",false,"Being even is not the reason. 5/6 has an even denominator, and 5/6 = 0.8333…","الزوجية ليست السبب. المقام في 5/6 زوجي، و5/6 = 0.8333…"]]);
+whyBox($("#why2"),"In 2.181818…, why do we multiply by 100 and not by 10?","في 2.181818…، لماذا نضرب في 100 وليس في 10؟",
+ [["Two digits repeat, so we move the point two places to line up the tails.","يتكرر رقمان، فننقل الفاصلة منزلتين لتتطابق الذيول.",true,"100N = 218.1818… and N = 2.1818… have the same tail, so it cancels.","100N = 218.1818… وN = 2.1818… لهما الذيل نفسه، فيُلغى."],
+  ["Because 100 is bigger, so the answer is more exact.","لأن 100 أكبر، فتكون الإجابة أدق.",false,"Bigger is not the reason. We need the tails to match exactly.","الكبر ليس السبب. نحتاج أن تتطابق الذيول تمامًا."],
+  ["Because the whole number part is 2.","لأن الجزء الصحيح هو 2.",false,"The whole number part does not decide it. The number of repeating digits does.","الجزء الصحيح لا يحدد ذلك، بل عدد الأرقام المتكررة."]]);
+
+/* ---------- shift and subtract ---------- */
+(function(){
+  const DS=[{ip:2,rep:"18",l:`${OVN("2.",18)}`},{ip:0,rep:"4",l:`${OVN("0.",4)}`},{ip:0,rep:"5",l:`${OVN("0.",5)}`}];
+  const pick=$("#ssPick");if(!pick)return;
+  pick.innerHTML=DS.map((d,i)=>`<button data-v="${i}" class="${i?"":"on"}">${d.l}</button>`).join("");
+  const gcd=(a,b)=>b?gcd(b,a%b):a;
+  let d,k=0;
+  const NDEC=9;
+  function row(name,ip,decs,cmp){let h=`<div class="tape"><span class="tn">${name}</span><span class="ti">${ip}</span><span class="tp">.</span>`;
+    for(let i=0;i<NDEC;i++){const c=decs[i],cl=cmp?(cmp[i]===c?"ok":"no"):"";h+=`<span class="td ${cl}">${c}</span>`;}return h+`<span class="te">…</span></div>`;}
+  function digitsN(){let s="";while(s.length<NDEC+3)s+=d.rep;return s;}
+  function draw(){const s=digitsN();let h=row("N =",String(d.ip),s.slice(0,NDEC));
+    if(k){const m=k===10?1:2,ip2=String(d.ip)+s.slice(0,m),decs2=s.slice(m,m+NDEC);
+      h=row(`${k}N =`,String(+ip2),decs2,null)+row("N =",String(d.ip),s.slice(0,NDEC),decs2);}
+    $("#ssTapes").innerHTML=h;}
+  function reset(i){d=DS[i];k=0;$("#ssOut").textContent="";$("#ssMsg").style.display="none";$("#ssSub").disabled=true;draw();}
+  function aligned(){const s=digitsN(),m=k===10?1:2;return s.slice(m,m+NDEC)===s.slice(0,NDEC);}
+  document.querySelectorAll("#ssTapes ~ .btnrow [data-k]").forEach(b=>b.onclick=()=>{k=+b.dataset.k;draw();$("#ssOut").textContent="";
+    const ok=aligned();$("#ssSub").disabled=!ok;
+    if(ok)setMsg($("#ssMsg"),`${ICON.check} The tails <b>line up</b> digit by digit. Now subtract!${d.rep.length===1&&k===100?" (× 10 is enough when only one digit repeats.)":""}`,`${ICON.check} الذيول <b>متطابقة</b> رقمًا رقمًا. اطرح الآن!${d.rep.length===1&&k===100?" (يكفي الضرب في 10 عندما يتكرر رقم واحد.)":""}`);
+    else setMsg($("#ssMsg"),`The tails do <b>not</b> line up (red digits). Subtracting would not cancel them. ${d.rep.length} digits repeat, so move the point ${d.rep.length} places.`,`الذيول <b>غير</b> متطابقة (الأرقام الحمراء)، فالطرح لن يلغيها. يتكرر ${d.rep.length} رقم، فانقل الفاصلة ${d.rep.length} منزلة.`,true);});
+  $("#ssSub").onclick=()=>{const L=d.rep.length,den0=Math.pow(10,L)-1,num0=d.ip*den0+ +d.rep;const c=k-1,whole=c*num0/den0;
+    const g=gcd(whole,c),nn=whole/g,dd=c/g,mix=nn>dd&&dd>1?` = ${Math.floor(nn/dd)} ${nn%dd}/${dd}`:"";
+    $("#ssOut").textContent=`${k}N − N = ${c}N = ${whole}  →  N = ${whole}/${c}${g>1?` = ${nn}/${dd}`:""}${mix}`;
+    setMsg($("#ssMsg"),`${ICON.check} The endless tails cancelled. <b>${d.l.replace(/<[^>]+>/g,"")}…</b> is the fraction <b>${nn}/${dd}</b>.`,`${ICON.check} أُلغيت الذيول اللانهائية. العدد هو الكسر <b>${nn}/${dd}</b>.`);};
+  pick.querySelectorAll("button").forEach(b=>b.onclick=()=>{pick.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));reset(+b.dataset.v);});
+  reset(0);
+})();
+
+/* ---------- baseball ---------- */
+(function(){const S=$("#bbS");if(!S)return;const svg=$("#bbSvg"),sc=340/700;
+  function bar(y,ab,hits,lab,labA){const w=ab*sc,hw=hits*sc;return `<text x="20" y="${y-10}" font-size="15" font-weight="700" fill="#f1f6f5" font-family="sans-serif">${lab}</text>
+   <rect x="20" y="${y}" width="${w}" height="34" rx="8" fill="rgba(124,194,189,.15)" stroke="#7cc2bd" stroke-width="2"/>
+   <rect x="20" y="${y}" width="${hw}" height="34" rx="8" fill="#f2c46d"/>
+   <text x="${20+hw/2}" y="${y+23}" text-anchor="middle" font-size="14" font-weight="700" fill="#1F2A37" font-family="sans-serif">${hits.toFixed(hits%1?1:0)} hits</text>
+   <text x="${Math.min(20+w+6,330)}" y="${y+23}" font-size="14" fill="#f1f6f5" font-family="sans-serif">${ab}</text>`;}
+  function upd(){const ab=+S.value,h=ab*175/530;
+    svg.innerHTML=``+bar(44,530,175,"Season: 530 at-bats")+bar(150,ab,h,`Same rate: ${ab} at-bats`)+`<text x="20" y="214" font-size="12" fill="#9fb3b5" font-family="sans-serif">yellow = hits · blue = at-bats</text>`;
+    $("#bbOut").textContent=`${ab} × 175/530 ≈ ${h.toFixed(1)} → about ${Math.round(h)} hits`;}
+  S.addEventListener("input",upd);upd();
+  $("#bbSol").innerHTML=solHTML([["The rate is hits ÷ at-bats = 175/530.","المعدل = الضربات الناجحة ÷ المحاولات = 175/530."],["Write a proportion: 175/530 = h/590.","اكتب تناسبًا: 175/530 = h/590."],["Multiply both sides by 590: h = 590 × 175 ÷ 530 = 194.8…","اضرب الطرفين في 590: h = 590 × 175 ÷ 530 = 194.8…"],["Hits are whole numbers, so he would have about 195 hits.","عدد الضربات عدد صحيح، إذن سيسجل نحو 195 ضربة ناجحة."],["Check: 195 is a little more than 175, and 590 is a little more than 530. Reasonable.","تحقّق: 195 أكبر قليلًا من 175، و590 أكبر قليلًا من 530. الإجابة معقولة."]]);solBind($("#bbSol"));
+})();
+
+/* ---------- check yourself ---------- */
+cardsQ($("#tryBox"),[
+ {t:[`Write −${F(2,9)} as a decimal.`,`اكتب −${F(2,9)} في صورة عدد عشري.`],o:[["−0.2"],["−0.22"],[`${OVN("−0.",2)}`],["−0.23"]],a:2,cls:"two",
+  w:["2 ÷ 9 = 0.222…, so −2/9 = −0.2 repeating.","2 ÷ 9 = 0.222…، إذن −2/9 = −0.2 الدوري."],h:["Divide 2 by 9. Does the remainder ever become 0?","اقسم 2 على 9. هل يصبح الباقي 0 يومًا؟"],
+  sol:[["2 ÷ 9: 20 ÷ 9 = 2 remainder 2.","2 ÷ 9: 20 ÷ 9 = 2 والباقي 2."],["The remainder is 2 again, so the digit 2 repeats: 0.222…","الباقي 2 مرة أخرى، فيتكرر الرقم 2: 0.222…"],["Add the negative sign and use a bar: −0.2 with a bar over the 2.","أضف إشارة السالب واستخدم الخط العلوي: −0.2 مع خط فوق الرقم 2."],["It does not terminate.","العدد غير منتهٍ."]]},
+ {t:[`Write ${F(3,8)} as a decimal.`,`اكتب ${F(3,8)} في صورة عدد عشري.`],o:[["0.375"],[`${OVN("0.",375)}`],["0.38"],["2.6"]],a:0,cls:"two",
+  w:["3 ÷ 8 = 0.375, and the remainder becomes 0.","3 ÷ 8 = 0.375، ويصبح الباقي 0."],h:["Divide 3 by 8, not 8 by 3.","اقسم 3 على 8، وليس 8 على 3."],
+  sol:[["3/8 = 3 ÷ 8. Write 3.000.","3/8 = 3 ÷ 8. اكتب 3.000."],["30 ÷ 8 = 3 r 6; 60 ÷ 8 = 7 r 4; 40 ÷ 8 = 5 r 0.","30 ÷ 8 = 3 والباقي 6؛ 60 ÷ 8 = 7 والباقي 4؛ 40 ÷ 8 = 5 والباقي 0."],["The remainder is 0, so 3/8 = 0.375, a terminating decimal.","الباقي 0، إذن 3/8 = 0.375، وهو عدد عشري منتهٍ."]]},
+ {t:[`Write ${OVN("−0.",7)} as a fraction.`,`اكتب ${OVN("−0.",7)} في صورة كسر.`],o:[[`−${F(7,10)}`],[`−${F(7,9)}`],[`−${F(9,7)}`],[`−${F(77,100)}`]],a:1,cls:"two",
+  w:["N = 0.777…, 9N = 7, so N = 7/9. Then add the sign.","N = 0.777…، 9N = 7، إذن N = 7/9. ثم أضف الإشارة."],h:["0.777… is not 7/10. 7/10 = 0.7 exactly.","0.777… ليس 7/10، فإن 7/10 = 0.7 بالضبط."],
+  sol:[["Work with 0.777… first. Let N = 0.777…","تعامل مع 0.777… أولًا. ليكن N = 0.777…"],["One digit repeats: 10N = 7.777…","يتكرر رقم واحد: 10N = 7.777…"],["Subtract: 10N − N = 9N = 7, so N = 7/9.","اطرح: 10N − N = 9N = 7، إذن N = 7/9."],["Add the negative sign: −0.7 repeating = −7/9.","أضف إشارة السالب: −0.7 الدوري = −7/9."]]},
+ {t:[`Write ${OVN("1.",42)} as a mixed number in simplest form.`,`اكتب ${OVN("1.",42)} في صورة عدد كسري في أبسط صورة.`],o:[[`1${F(42,100)}`],[`1${F(14,33)}`],[`1${F(7,50)}`],[`1${F(4,9)}`]],a:1,cls:"two",
+  w:["99N = 141, N = 141/99 = 47/33 = 1 14/33.","99N = 141، N = 141/99 = 47/33 = 1 14/33."],h:["Two digits repeat, so multiply N by 100.","يتكرر رقمان، فاضرب N في 100."],
+  sol:[["Let N = 1.424242…","ليكن N = 1.424242…"],["Two digits repeat: 100N = 142.424242…","يتكرر رقمان: 100N = 142.424242…"],["Subtract N: 99N = 141, so N = 141/99.","اطرح N: 99N = 141، إذن N = 141/99."],["Simplify by 3: 141/99 = 47/33.","بسّط بالقسمة على 3: 141/99 = 47/33."],["47 ÷ 33 = 1 remainder 14, so N = 1 14/33.","47 ÷ 33 = 1 والباقي 14، إذن N = 1 14/33."]]},
+ {t:["At hockey practice, Ajay saved 73 out of 126 shots on goal. At this rate, how many saves out of 200 shots?","في تدريب الهوكي، صدّ أجاي 73 تسديدة من 126. بهذا المعدل، كم تسديدة سيصدّ من 200؟"],o:[["about 116","نحو 116"],["about 73","نحو 73"],["about 345","نحو 345"],["about 147","نحو 147"]],a:0,cls:"two",
+  w:["200 × 73 ÷ 126 ≈ 115.9, about 116 saves.","200 × 73 ÷ 126 ≈ 115.9، أي نحو 116 تسديدة."],h:["Write the proportion 73/126 = s/200.","اكتب التناسب 73/126 = s/200."],
+  sol:[["The rate is 73/126 saves per shot.","المعدل هو 73/126 تسديدة مصدودة لكل تسديدة."],["Proportion: 73/126 = s/200.","التناسب: 73/126 = s/200."],["s = 200 × 73 ÷ 126 = 115.87…","s = 200 × 73 ÷ 126 = 115.87…"],["Round to a whole number: about 116 saves.","قرّب إلى عدد صحيح: نحو 116 تسديدة."]]}
+]);
+
+/* ---------- summary cards ---------- */
+const FL=[[F("a","b"),"Rational number","العدد النسبي","A ratio of two integers a/b, with b ≠ 0.","نسبة بين عددين صحيحين a/b، حيث b ≠ 0."],
+ ["N ⊂ W ⊂ Z ⊂ Q","Number families","عائلات الأعداد","Natural (1, 2, 3, …) are inside whole (0, 1, 2, …), inside integers, inside rationals.","الطبيعية (1، 2، 3، …) داخل الكلية (0، 1، 2، …)، داخل الصحيحة، داخل النسبية."],
+ ["a ÷ b","Fraction → decimal","من كسر إلى عشري","Divide the numerator by the denominator. Add zeros after the point.","اقسم البسط على المقام، وأضف أصفارًا بعد الفاصلة."],
+ ["0.625","Terminating","العشري المنتهي","The remainder becomes 0. The repeating digit is 0: 0.625000…","يصبح الباقي 0، والرقم المتكرر هو 0: 0.625000…"],
+ [`${OVN("0.8",3)}`,"Repeating","العشري الدوري","A remainder comes back, so the same digits repeat forever.","يعود باقٍ سابق، فتتكرر الأرقام نفسها إلى الأبد."],
+ [`${OV("42")}`,"Bar notation","رمز الخط العلوي","Put the bar only over the digit(s) that repeat: 0.4242… = 0.42 with a bar.","ضع الخط فوق الأرقام المتكررة فقط: 0.4242… = 0.42 مع خط."],
+ ["10N or 100N","Repeating → fraction","من دوري إلى كسر","Let N = the decimal. Multiply by 10 (1 digit repeats) or 100 (2 digits), subtract N, then divide.","ليكن N هو العدد. اضرب في 10 (رقم يتكرر) أو 100 (رقمان)، واطرح N، ثم اقسم."],
+ [`${OVN("−1.",6)}`,"Negative numbers","الأعداد السالبة","Work without the sign, then put the negative sign back: −1 2/3 = −1.6 repeating.","احسب دون الإشارة، ثم أعد إشارة السالب: −1 2/3 = −1.6 الدوري."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+
+/* ---------- final quiz (new numbers; answers spread over A–D) ---------- */
+const Q=[
+ {q:`Write ${F(3,16)} as a decimal.`,qa:`اكتب ${F(3,16)} في صورة عدد عشري.`,o:[["0.316","0.316"],["0.1875","0.1875"],[`${OVN("0.",1875)}`,`${OVN("0.",1875)}`],["5.3","5.3"]],a:1,
+  ex:["3 ÷ 16 = 0.1875, and the remainder becomes 0.","3 ÷ 16 = 0.1875، ويصبح الباقي 0."],
+  h:[["A fraction means numerator ÷ denominator: 3 ÷ 16.","الكسر يعني البسط ÷ المقام: 3 ÷ 16."],["Divide: 30 ÷ 16 = 1 r 14, then 140 ÷ 16 = 8 r 12 …","اقسم: 30 ÷ 16 = 1 والباقي 14، ثم 140 ÷ 16 = 8 والباقي 12 …"]],
+  sol:[["3/16 = 3 ÷ 16. Write 3.0000.","3/16 = 3 ÷ 16. اكتب 3.0000."],["30 ÷ 16 = 1 r 14; 140 ÷ 16 = 8 r 12; 120 ÷ 16 = 7 r 8; 80 ÷ 16 = 5 r 0.","30 ÷ 16 = 1 والباقي 14؛ 140 ÷ 16 = 8 والباقي 12؛ 120 ÷ 16 = 7 والباقي 8؛ 80 ÷ 16 = 5 والباقي 0."],["So 3/16 = 0.1875, a terminating decimal.","إذن 3/16 = 0.1875، وهو عدد عشري منتهٍ."]]},
+ {q:"Which fraction gives a decimal that does NOT terminate?",qa:"أي كسر يعطي عددًا عشريًا غير منتهٍ؟",o:[[F(7,20),F(7,20)],[F(3,8),F(3,8)],[F(5,12),F(5,12)],[F(9,25),F(9,25)]],a:2,
+  ex:["5 ÷ 12 = 0.41666…, the 6 repeats.","5 ÷ 12 = 0.41666…، والرقم 6 يتكرر."],
+  h:[["Divide each one. Which remainder never becomes 0?","اقسم كل كسر. أي باقٍ لا يصبح 0 أبدًا؟"],["7/20 = 0.35, 3/8 = 0.375, 9/25 = 0.36. Check the last one.","7/20 = 0.35، و3/8 = 0.375، و9/25 = 0.36. افحص الكسر الباقي."]],
+  sol:[["7/20 = 0.35, 3/8 = 0.375 and 9/25 = 0.36 all end.","7/20 = 0.35، و3/8 = 0.375، و9/25 = 0.36 كلها منتهية."],["5 ÷ 12: 50 ÷ 12 = 4 r 2; 20 ÷ 12 = 1 r 8; 80 ÷ 12 = 6 r 8 …","5 ÷ 12: 50 ÷ 12 = 4 والباقي 2؛ 20 ÷ 12 = 1 والباقي 8؛ 80 ÷ 12 = 6 والباقي 8 …"],["Remainder 8 keeps coming back, so 5/12 = 0.41666… does not terminate.","الباقي 8 يعود دائمًا، إذن 5/12 = 0.41666… غير منتهٍ."]]},
+ {q:`Write −2${F(1,6)} as a decimal.`,qa:`اكتب −2${F(1,6)} في صورة عدد عشري.`,o:[["−2.16","−2.16"],[`${OVN("−2.",16)}`,`${OVN("−2.",16)}`],[`${OVN("−2.",6)}`,`${OVN("−2.",6)}`],[`${OVN("−2.1",6)}`,`${OVN("−2.1",6)}`]],a:3,
+  ex:["1/6 = 0.1666…, so −2 1/6 = −2.1666… The bar is only over the 6.","1/6 = 0.1666…، إذن −2 1/6 = −2.1666… والخط فوق 6 فقط."],
+  h:[["Keep −2 and change only 1/6 into a decimal.","احتفظ بـ −2 وحوّل 1/6 فقط إلى عدد عشري."],["1 ÷ 6 = 0.1666… Which digit repeats: 1 or 6?","1 ÷ 6 = 0.1666… أي رقم يتكرر: 1 أم 6؟"]],
+  sol:[["−2 1/6 = −(2 + 1/6).","−2 1/6 = −(2 + 1/6)."],["1 ÷ 6: 10 ÷ 6 = 1 r 4; 40 ÷ 6 = 6 r 4; 40 ÷ 6 = 6 r 4 …","1 ÷ 6: 10 ÷ 6 = 1 والباقي 4؛ 40 ÷ 6 = 6 والباقي 4؛ 40 ÷ 6 = 6 والباقي 4 …"],["So 1/6 = 0.1666…, only the 6 repeats.","إذن 1/6 = 0.1666…، والرقم 6 وحده يتكرر."],["−2 1/6 = −2.1666… = −2.16 with a bar over the 6 only.","−2 1/6 = −2.1666… = −2.16 مع خط فوق 6 فقط."]]},
+ {q:`Write ${OVN("0.",8)} as a fraction.`,qa:`اكتب ${OVN("0.",8)} في صورة كسر.`,o:[[F(8,9),F(8,9)],[F(4,5),F(4,5)],[F(8,10),F(8,10)],[F(9,8),F(9,8)]],a:0,
+  ex:["N = 0.888…, 10N − N = 9N = 8, so N = 8/9.","N = 0.888…، 10N − N = 9N = 8، إذن N = 8/9."],
+  h:[["Let N = 0.888… and multiply by 10.","ليكن N = 0.888… واضرب في 10."],["10N − N = 8.888… − 0.888… = 8. So 9N = 8.","10N − N = 8.888… − 0.888… = 8، إذن 9N = 8."]],
+  sol:[["Let N = 0.888…","ليكن N = 0.888…"],["One digit repeats: 10N = 8.888…","يتكرر رقم واحد: 10N = 8.888…"],["Subtract: 9N = 8.","اطرح: 9N = 8."],["Divide by 9: N = 8/9.","اقسم على 9: N = 8/9."]]},
+ {q:`Write ${OVN("0.",27)} as a fraction in simplest form.`,qa:`اكتب ${OVN("0.",27)} في صورة كسر في أبسط صورة.`,o:[[F(27,100),F(27,100)],[F(2,7),F(2,7)],[F(3,11),F(3,11)],[F(27,90),F(27,90)]],a:2,
+  ex:["99N = 27, N = 27/99 = 3/11.","99N = 27، N = 27/99 = 3/11."],
+  h:[["Two digits repeat, so multiply N by 100.","يتكرر رقمان، فاضرب N في 100."],["100N − N = 99N = 27. Simplify 27/99.","100N − N = 99N = 27. بسّط 27/99."]],
+  sol:[["Let N = 0.272727…","ليكن N = 0.272727…"],["Two digits repeat: 100N = 27.272727…","يتكرر رقمان: 100N = 27.272727…"],["Subtract: 99N = 27, so N = 27/99.","اطرح: 99N = 27، إذن N = 27/99."],["Divide top and bottom by 9: 27/99 = 3/11.","اقسم البسط والمقام على 9: 27/99 = 3/11."]]},
+ {q:`Write ${OVN("3.",6)} as a mixed number in simplest form.`,qa:`اكتب ${OVN("3.",6)} في صورة عدد كسري في أبسط صورة.`,o:[[`3${F(3,5)}`,`3${F(3,5)}`],[`3${F(2,3)}`,`3${F(2,3)}`],[`3${F(6,10)}`,`3${F(6,10)}`],[`3${F(1,6)}`,`3${F(1,6)}`]],a:1,
+  ex:["0.666… = 6/9 = 2/3, so 3.666… = 3 2/3.","0.666… = 6/9 = 2/3، إذن 3.666… = 3 2/3."],
+  h:[["Let N = 3.666… One digit repeats.","ليكن N = 3.666…، ويتكرر رقم واحد."],["10N − N = 36.666… − 3.666… = 33. So 9N = 33.","10N − N = 36.666… − 3.666… = 33، إذن 9N = 33."]],
+  sol:[["Let N = 3.666…","ليكن N = 3.666…"],["10N = 36.666…","10N = 36.666…"],["Subtract: 9N = 33, so N = 33/9.","اطرح: 9N = 33، إذن N = 33/9."],["Simplify: 33/9 = 11/3 = 3 2/3.","بسّط: 33/9 = 11/3 = 3 2/3."]]},
+ {q:`To write ${OVN("0.",45)} as a fraction, you let N = 0.4545… What do you multiply N by?`,qa:`لكتابة ${OVN("0.",45)} في صورة كسر، نجعل N = 0.4545… في أي عدد نضرب N؟`,o:[["10","10"],["100","100"],["1,000","1,000"],["45","45"]],a:1,
+  ex:["Two digits (45) repeat, so multiply by 100: 100N = 45.4545…","يتكرر رقمان (45)، فنضرب في 100: 100N = 45.4545…"],
+  h:[["Count the digits under the bar.","عُدّ الأرقام تحت الخط العلوي."],["10N = 4.5454… Does its tail match 0.4545…?","10N = 4.5454… هل يطابق ذيله 0.4545…؟"]],
+  sol:[["The digits 4 and 5 repeat: 2 digits.","يتكرر الرقمان 4 و5: أي رقمان."],["10N = 4.5454…: the tail 5454… does not match 4545…","10N = 4.5454…: الذيل 5454… لا يطابق 4545…"],["100N = 45.4545…: the tail matches, so it cancels when you subtract N.","100N = 45.4545…: الذيل يطابق، فيُلغى عند طرح N."],["So multiply by 100. (Then 99N = 45, N = 45/99 = 5/11.)","إذن نضرب في 100. (ثم 99N = 45، N = 45/99 = 5/11.)"]]},
+ {q:"Which statement is true?",qa:"أي عبارة صحيحة؟",o:[["Every integer is a natural number.","كل عدد صحيح هو عدد طبيعي."],["0.25 is not a rational number.","0.25 ليس عددًا نسبيًا."],["Every repeating decimal is a rational number.","كل عدد عشري دوري هو عدد نسبي."],["−4 is a whole number.","−4 عدد كلي."]],a:2,
+  ex:["Every repeating decimal can be written as a fraction, so it is rational.","يمكن كتابة كل عدد عشري دوري في صورة كسر، إذن هو نسبي."],
+  h:[["Test each statement with an example. −1 is an integer: is it natural?","اختبر كل عبارة بمثال. −1 عدد صحيح: هل هو طبيعي؟"],["0.25 = 25/100. And whole numbers start at 0.","0.25 = 25/100. والأعداد الكلية تبدأ من 0."]],
+  sol:[["−1 is an integer but not natural, so A is false.","−1 عدد صحيح لكنه ليس طبيعيًا، إذن A خطأ."],["0.25 = 1/4, so it is rational, and B is false.","0.25 = 1/4، إذن هو نسبي، وB خطأ."],["Whole numbers are 0, 1, 2, …, so −4 is not whole. D is false.","الأعداد الكلية هي 0، 1، 2، …، إذن −4 ليس كليًا. D خطأ."],["Any repeating decimal can be turned into a fraction (N, 10N or 100N, subtract). So C is true.","أي عدد عشري دوري يمكن تحويله إلى كسر (N، و10N أو 100N، ثم الطرح). إذن C صحيحة."]]},
+ {q:"A goalkeeper saved 48 out of 64 shots. At this rate, how many saves would she make out of 100 shots?",qa:"صدّت حارسة مرمى 48 تسديدة من 64. بهذا المعدل، كم تسديدة ستصدّ من 100؟",o:[["75","75"],["52","52"],["84","84"],["64","64"]],a:0,
+  ex:["48/64 = 0.75, and 0.75 × 100 = 75.","48/64 = 0.75، و0.75 × 100 = 75."],
+  h:[["Find the rate 48/64 as a decimal.","أوجد المعدل 48/64 في صورة عدد عشري."],["48 ÷ 64 = 0.75. Now multiply by 100.","48 ÷ 64 = 0.75. الآن اضرب في 100."]],
+  sol:[["Rate = 48/64 = 3/4.","المعدل = 48/64 = 3/4."],["3/4 = 0.75","3/4 = 0.75"],["Out of 100 shots: 0.75 × 100 = 75 saves.","من 100 تسديدة: 0.75 × 100 = 75 تسديدة."]]},
+ {q:`Write 1${F(7,11)} as a decimal.`,qa:`اكتب 1${F(7,11)} في صورة عدد عشري.`,o:[["1.63","1.63"],["1.711","1.711"],[`${OVN("1.",6)}`,`${OVN("1.",6)}`],[`${OVN("1.",63)}`,`${OVN("1.",63)}`]],a:3,
+  ex:["7 ÷ 11 = 0.6363…, so 1 7/11 = 1.6363… with a bar over 63.","7 ÷ 11 = 0.6363…، إذن 1 7/11 = 1.6363… مع خط فوق 63."],
+  h:[["Keep 1. Divide 7 by 11.","احتفظ بـ 1، واقسم 7 على 11."],["70 ÷ 11 = 6 r 4, 40 ÷ 11 = 3 r 7 … the remainder 7 comes back.","70 ÷ 11 = 6 والباقي 4، 40 ÷ 11 = 3 والباقي 7 … الباقي 7 يعود."]],
+  sol:[["1 7/11 = 1 + 7/11.","1 7/11 = 1 + 7/11."],["7 ÷ 11: 70 ÷ 11 = 6 r 4; 40 ÷ 11 = 3 r 7.","7 ÷ 11: 70 ÷ 11 = 6 والباقي 4؛ 40 ÷ 11 = 3 والباقي 7."],["Remainder 7 came back, so 63 repeats: 0.6363…","عاد الباقي 7، إذن يتكرر 63: 0.6363…"],["1 7/11 = 1.6363… = 1.63 with a bar over both digits.","1 7/11 = 1.6363… = 1.63 مع خط فوق الرقمين."]]}
+];
+
+Q.forEach(q=>q.o.forEach(o=>{if(o[1]===o[0])o[1]="";o[0]=`<span class="oe">${o[0]}</span>`;}));
+
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${ok?ICON.check+" Correct!":ICON.cross+" Not quite."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${ok?"إجابة صحيحة!":"ليست صحيحة."} ${q.ex[1]}</div>`+solHTML(q.sol);solBind(fb);
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Scientist";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You can turn fractions into decimals and back!","رائع! أنت تحوّل الكسور إلى أعداد عشرية والعكس!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the worked examples, then retry.","محاولة جيدة! أعد تشغيل الحلول خطوة بخطوة ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Math · Grade 8 · Unit 2 · Lesson 15 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
