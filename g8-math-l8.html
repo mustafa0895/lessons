@@ -1,0 +1,1610 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c1620">
+<title>Find Roots – Math G8 Lesson 17</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(12,22,32,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#132532;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#182c3a;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#3a2326;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#2e2a1c;border:1px solid #5a4a26;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#132532;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#132532;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #3a4a55}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#123a3a;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#182c3a;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#132532;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#123a3a}
+.opt.right{border-color:var(--teal);background:#123a3a}
+.opt.wrong{border-color:var(--terra);background:#3a2326}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#182c3a;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#132532;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#123a3a;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#3a2326;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#132532;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#132532}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#3a4a55}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #132532}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#132532;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#132532}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #132532;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#2e2a1c}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#132532;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#123a3a;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#123a3a}
+.pieces button.no{border-color:var(--terra);background:#3a2326;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#3a4a55}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#123a3a;border-left:5px solid var(--teal)}
+.feedback.no{background:#3a2326;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#132532;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#132532;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#132532;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#132532;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#123a3a}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#2e2a1c}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#132532;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#3a2326}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#2e2a1c;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#132532;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#123a3a}.sc.diff{border-color:var(--terra);background:#3a2326}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#123a3a}.rchips button.wrong{border-color:var(--terra);background:#3a2326}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#123a3a}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#123a3a}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#3a2326}
+.ml.done,.mr.done{border-color:var(--teal);background:#123a3a;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#123a3a}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#2e2a1c;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#2e2a1c;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#132532;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#123a3a}
+.eline.bad{border-color:var(--terra);background:#3a2326;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#132532;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#132532 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#123a3a}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#3a2326}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#2e2a1c}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#132532;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#2e2a1c;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#123a3a}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#3a2326}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#2e2a1c;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#123a3a}.mcard2.wrong{border-color:var(--terra);background:#3a2326}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #132532;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#123a3a}.idc.wrong{border-color:var(--terra);background:#3a2326}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#123a3a}.claim2.wrong{border-color:var(--terra);background:#3a2326}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#2e2a1c}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#123a3a}.ct.no{border-color:var(--terra);background:#3a2326}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#2e2a1c}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#2a2440;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#182c3a;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#132532;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#123a3a}.wuq .wo button.wrong{border-color:var(--terra);background:#3a2326}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#132532;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#182c3a;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#132532;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#3a2326}.pick button.right{border-color:var(--teal);background:#123a3a}
+.why{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#123a3a}.why .wb button.wrong{border-color:var(--terra);background:#3a2326}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#132532;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #132532;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#3a4a55;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#132532;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#132532}
+.tchip.lost{border-color:var(--terra);background:#3a2326}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#3a2326}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#123a3a}.pickph.wrong{border-color:var(--terra);background:#3a2326}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#123a3a}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#182c3a}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#123a3a;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#182c3a;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#132532;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#2e2a1c;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#182c3a;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#132532}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#123a3a;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#132532;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#132532;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#123a3a;border-color:var(--teal)}.tile.g1{background:#3a2326;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#182c3a;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#132532;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#132532;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#132532;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#132532;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#132532;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#132532;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#132532;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#182c3a}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#132532}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#182c3a}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#132532}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#182c3a;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+.ov{text-decoration:overline;text-decoration-thickness:2px;text-underline-offset:0}
+.solbox{margin-top:10px}
+.solbtn{display:inline-flex;align-items:center;gap:6px;border:2px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:6px 14px;font-weight:700;font-size:14px}
+.solbtn .ic{width:18px;height:18px}
+.solbtn .ar{display:inline;font-weight:600;font-size:13px}
+.solbtn.on{background:var(--clay);color:#fff;border-color:var(--clay)}
+.solsteps{margin:10px 0 0;padding:10px 12px 10px 34px;background:#132532;border:1px dashed #5a4a26;border-radius:12px;text-align:left;font-size:14.5px;line-height:1.45}
+.solsteps li{margin:6px 0;animation:fadein .3s}
+.solsteps li .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px;margin-top:2px}
+.solsteps[hidden]{display:none}
+.feedback .solbox{margin-top:12px}
+.nchips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.nchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 14px;font-family:Cambria,"Times New Roman",serif;font-size:18px;font-weight:700;color:var(--ink);min-width:58px}
+.nchips button.done{background:#123a3a;border-color:#BFE3E0}
+.nchips button.on{border-color:var(--terra);background:#3a2326}
+#setSvg ellipse,#setSvg rect{transition:filter .3s,stroke-width .3s}
+#setSvg .lit{stroke-width:6;filter:drop-shadow(0 0 8px rgba(242,196,109,.6))}
+#setDots text{font-weight:700;opacity:.75}
+#setDots text.now{fill:#f2c46d;opacity:1;font-size:20px}
+.dmq{font-size:20px;font-weight:800;margin-bottom:8px;overflow-x:auto}
+.dmq .fr{font-size:.8em}
+.dmlog{display:grid;gap:4px;font-size:14.5px;max-height:260px;overflow:auto}
+.dmlog>div{background:#182c3a;border-radius:10px;padding:5px 10px;animation:fadein .3s}
+.dmlog .ar{display:inline;color:var(--muted);font-size:13px;margin-left:6px}
+.tapes{display:grid;gap:8px;overflow-x:auto;padding:4px 0}
+.tape{display:flex;align-items:center;font-family:Consolas,"Courier New",monospace;font-size:20px;direction:ltr}
+.tape .tn{width:66px;font-weight:700;color:var(--clay);font-size:16px;text-align:right;padding-right:8px;flex:none}
+.tape .ti{width:44px;text-align:right;font-weight:700;flex:none}
+.tape .tp{width:12px;text-align:center;font-weight:700;flex:none}
+.tape .td{width:22px;text-align:center;border-radius:5px;flex:none}
+.tape .td.ok{background:rgba(124,194,189,.28);color:#c9f3ee}
+.tape .td.no{background:rgba(239,154,131,.32);color:#ffd9cf}
+.tape .te{padding-left:4px;color:var(--muted)}
+@media (max-width:420px){.tape{font-size:16px}.tape .td{width:16px}.tape .tn{width:56px;font-size:14px}.tape .ti{width:36px}}
+.solwrap{margin-top:6px}
+.idc .mb.two{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb button .fr,.opt .fr{font-size:.95em}
+.fbig .fr{font-size:.9em}
+.opt span.ov{display:inline!important;margin:0!important}
+.opt span.m{display:inline-block!important}
+.opt span.fr{display:inline-flex!important}
+.opt .fr>span{display:block!important}
+@media (max-width:420px){.tape .tn{width:64px;font-size:13px;white-space:nowrap}}
+@media (max-width:700px){.hero{background:#0f1e29}.hero .herotxt{position:relative;padding:4px 16px 14px;background:none}}
+
+.rad{border-top:2px solid currentColor;padding:0 2px;margin-left:1px;display:inline-block;line-height:1.15}
+.rad .fr{font-size:.9em}
+.rtab{display:grid;gap:6px;margin:10px 0;overflow-x:auto}
+.rrow{display:grid;grid-template-columns:72px repeat(8,1fr);gap:3px}
+.rrow .rh{font-size:12px;line-height:1.2;font-weight:700;color:var(--clay);align-self:center}
+.rrow .rv,.rrow button{border-radius:8px;padding:8px 0;text-align:center;font-weight:700;font-size:15px;font-family:Cambria,"Times New Roman",serif}
+.rrow .rv{background:rgba(124,194,189,.16);color:var(--ink)}
+.rrow button{border:2px dashed rgba(242,196,109,.5);background:none;color:#f2c46d}
+.rrow button.on{border-style:solid;background:rgba(242,196,109,.18)}
+.bigeq{font-size:24px;font-weight:800;text-align:center;margin:10px 0}
+:root{--sand:#0c1620;--paper:#132532;--ink:#f1f6f5;--muted:#9fb3b5;--terra:#ef9a83;--teal:#7cc2bd;--teal-d:#4fa39c;
+--ochre:#f2c46d;--clay:#f2c46d;--stone:#6f8689;--line:rgba(124,194,189,.22);--sky:#123a3a;--cream:#1d2f3b;color-scheme:dark}
+body{font-family:'Readex Pro',system-ui,-apple-system,'Segoe UI',sans-serif;background:radial-gradient(1200px 600px at 50% -10%,rgba(79,163,156,.18),transparent 60%),#0c1620;background-attachment:fixed}
+h1,h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:.01em}
+.ar,[lang=ar]{font-family:'Readex Pro','Geeza Pro','Noto Naskh Arabic',Tahoma,sans-serif}
+.card,.bubble,.idc,.key,.msg,.cert{box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card{background:rgba(19,37,50,.72);border-color:var(--line);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.btn{background:linear-gradient(180deg,#8fd0ca,#6cb7b1);color:#08201f;box-shadow:0 3px 0 #3d8a84,0 8px 24px rgba(124,194,189,.25)}
+.btn.alt{background:rgba(19,37,50,.8);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn:disabled{opacity:.45}
+.nav{background:linear-gradient(rgba(12,22,32,0),rgba(12,22,32,.94) 40%)}
+.kicker{background:rgba(242,196,109,.14);color:#f2c46d}
+.kicker.light{background:rgba(12,22,32,.55);color:#f2c46d;border:1px solid rgba(242,196,109,.35)}
+.hsub{color:#f2c46d}
+.bubble{background:#132532;border-color:#4fa39c}
+.bubble .who{color:#7cc2bd}
+.key{border-left-color:#f2c46d}
+.msg{border-left-color:#7cc2bd}
+.msg.warn{border-left-color:#ef9a83}
+.face.back{background:linear-gradient(160deg,#2b7d77,#1d5c58);color:#f1f6f5}
+.seg button.on,.seg button[aria-pressed=true]{background:#7cc2bd;color:#08201f}
+.namebox{background:#0f1e29;color:var(--ink);border-color:var(--line)}
+.m,.mi{color:inherit}
+.fline .fn{background:#7cc2bd;color:#08201f}
+.solbtn.on{color:#08201f}
+.score{color:#f2c46d}
+.prog{background:rgba(124,194,189,.15)}
+.ibtn{background:rgba(19,37,50,.8);color:var(--ink);border-color:var(--line)}
+.hero{box-shadow:0 20px 50px rgba(0,0,0,.35);border:1px solid var(--line)}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Math · Grade 8 · Unit 2<small id="curLabel">Find Roots</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="A square made of 8 by 8 tiles has area 64 and side 8. A cube made of small cubes has volume 125 and side 5.">
+<defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c1620"/><stop offset="1" stop-color="#173041"/></linearGradient>
+<pattern id="hg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#7cc2bd" stroke-opacity=".07"/></pattern>
+<pattern id="tile" width="18" height="18" patternUnits="userSpaceOnUse"><rect width="18" height="18" fill="rgba(124,194,189,.22)" stroke="#7cc2bd" stroke-opacity=".55"/></pattern></defs>
+<rect width="640" height="360" fill="url(#hb)"/><rect width="640" height="360" fill="url(#hg)"/>
+<rect x="70" y="26" width="144" height="144" fill="url(#tile)" stroke="#7cc2bd" stroke-width="3"/>
+<text x="142" y="104" text-anchor="middle" font-family="Cambria,Times New Roman,serif" font-size="30" fill="#f1f6f5">64</text>
+<text x="142" y="196" text-anchor="middle" font-family="Cambria,Times New Roman,serif" font-size="22" fill="#f2c46d">√64 = 8</text>
+<g id="heroCube" transform="translate(420 30)"></g>
+<text x="470" y="196" text-anchor="middle" font-family="Cambria,Times New Roman,serif" font-size="22" fill="#f2c46d">∛125 = 5</text>
+</svg>
+    <div class="herotxt"><span class="kicker light">Math · Grade 8 · Lesson 17</span><h1>Find Roots</h1><p class="ar">إيجاد الجذور</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="happy"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">A square has an area of 64. How long is its side? A cube holds 125 small cubes. How long is its edge? Today you will <b>undo</b> squaring and cubing.</p><p class="ar">مربع مساحته 64، فكم طول ضلعه؟ ومكعب يتسع لـ 125 مكعبًا صغيرًا، فكم طول حرفه؟ اليوم ستتعلم كيف <b>تعكس</b> التربيع والتكعيب.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ find square roots of perfect squares, fractions and decimals<br>✔ use the radical sign √ and the ± sign<br>✔ solve equations like x² = 169 and s³ = 125/8<br>✔ find cube roots of positive and negative numbers</p><p class="ar"><b>سأتعلم اليوم أن:</b><br>✔ أجد الجذور التربيعية للمربعات الكاملة والكسور والأعداد العشرية<br>✔ أستخدم رمز الجذر √ والرمز ±<br>✔ أحل معادلات مثل x² = 169 وs³ = 125/8<br>✔ أجد الجذور التكعيبية للأعداد الموجبة والسالبة</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic. Every question has a <b>Show solution</b> button.</p><p class="ar"><b>نصيحة:</b> اضغط <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمة. ولكل سؤال زر <b>طريقة الحل</b>.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up</span>
+  <h2>What do you already know?</h2>
+  <p class="hsub ar">ماذا تعرف من قبل؟</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Tap an answer. Stuck? Tap <b>Show solution</b>.</p><p class="ar">مجرد تسخين، لا شيء يُحسب! اضغط على إجابة. وإن احترت، اضغط <b>طريقة الحل</b>.</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+</section>
+
+<section class="screen" data-title="The square model">
+  <span class="kicker">Explore · Square roots</span>
+  <h2>Area → side</h2>
+  <p class="hsub ar">من المساحة إلى طول الضلع</p>
+  <div class="bench">
+    <div class="card">
+      <svg id="sqSvg" viewBox="0 0 300 300" style="display:block;width:100%;max-width:360px;margin:auto" role="img" aria-label="Tiles arranged into the biggest possible square"></svg>
+    </div>
+    <div class="card">
+      <div class="bi"><p class="en">Slide to choose the <b>area</b> (number of tiles). Can the tiles make a full square?</p><p class="ar">حرّك لتختار <b>المساحة</b> (عدد البلاطات). هل تكوّن البلاطات مربعًا كاملًا؟</p></div>
+      <input type="range" id="sqS" min="1" max="100" step="1" value="64" aria-label="area in tiles">
+      <div class="monoout" id="sqOut" style="margin-top:8px"></div>
+      <div class="msg bi needjs" id="sqMsg" style="display:none"></div>
+    </div>
+  </div>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>Square root:</b> one of the two equal factors of a number. If <span class="m">x² = y</span>, then x is a square root of y. <b>Perfect square:</b> a rational number whose square root is a whole number, like 1, 4, 9, 16 …</p><p class="ar"><b>الجذر التربيعي:</b> أحد العاملين المتساويين للعدد. إذا كان <span class="m">x² = y</span> فإن x جذر تربيعي لـ y. <b>المربع الكامل:</b> عدد نسبي جذره التربيعي عدد كلي، مثل 1، 4، 9، 16 …</p></div>
+  <div class="bi"><p class="en"><b>Complete the book's table.</b> Tap each perfect square to see its square root.</p><p class="ar"><b>أكمل جدول الكتاب.</b> اضغط على كل مربع كامل لترى جذره التربيعي.</p></div>
+  <div class="rtab needjs" id="sqTab"></div>
+</section>
+
+<section class="screen" data-title="Plus or minus">
+  <span class="kicker">Learn · Principal root</span>
+  <h2>Two square roots</h2>
+  <p class="hsub ar">جذران تربيعيان</p>
+  <div class="bi"><p class="en">3 · 3 = 9 and (−3) · (−3) = 9. So 9 has <b>two</b> square roots: 3 and −3. The radical sign <b>√</b> means the <b>positive (principal)</b> root. Use <b>±</b> when you want both.</p><p class="ar">3 · 3 = 9 و(−3) · (−3) = 9. إذن للعدد 9 جذران تربيعيان: 3 و−3. رمز الجذر <b>√</b> يعني الجذر <b>الموجب (الرئيسي)</b>. ونستخدم <b>±</b> عندما نريد الجذرين معًا.</p></div>
+  <div class="seg needjs" id="pmPick"></div>
+  <div class="card">
+    <svg id="pmSvg" viewBox="0 0 360 110" style="display:block;width:100%" role="img" aria-label="Number line from −6 to 6 showing the chosen roots of 25"></svg>
+    <div class="monoout" id="pmOut" style="margin-top:6px;text-align:center"></div>
+  </div>
+</section>
+
+<section class="screen" data-title="Square root examples">
+  <span class="kicker">Worked examples · Examples 1–3</span>
+  <h2>Simplify square roots</h2>
+  <p class="hsub ar">بسّط الجذور التربيعية</p>
+  <div class="fader" data-f="sq"></div>
+</section>
+
+<section class="screen" data-title="Why? 1.1 not 0.11">
+  <span class="kicker">Think about it</span>
+  <h2>Where does the decimal point go?</h2>
+  <p class="hsub ar">أين توضع الفاصلة العشرية؟</p>
+  <div class="card why" id="why1"></div>
+</section>
+
+<section class="screen" data-title="Negative under the root">
+  <span class="kicker">Example 4 · Square roots of negative numbers</span>
+  <h2>Can you find √−16?</h2>
+  <p class="hsub ar">هل يمكنك إيجاد √−16؟</p>
+  <div class="bench">
+    <div class="card">
+      <div class="bi"><p class="en">We need a number that, <b>times itself</b>, gives <b>−16</b>. Try every number on the slider.</p><p class="ar">نحتاج عددًا إذا ضُرب <b>في نفسه</b> أعطى <b>−16</b>. جرّب كل الأعداد على المنزلق.</p></div>
+      <input type="range" id="ngS" min="-6" max="6" step="1" value="4" aria-label="number to multiply by itself">
+      <div class="bigeq" id="ngOut"></div>
+      <svg id="ngSvg" viewBox="0 0 360 70" style="display:block;width:100%" role="img" aria-label="Where the product lands on the number line"></svg>
+    </div>
+    <div class="card">
+      <div class="bi"><p class="en">Positive × positive is positive. Negative × negative is also positive. So <b>no rational number</b> times itself is −16. <span class="m">√−16</span> cannot be simplified.</p><p class="ar">الموجب × الموجب = موجب، والسالب × السالب = موجب أيضًا. إذن لا يوجد <b>عدد نسبي</b> إذا ضُرب في نفسه أعطى −16، و<span class="m">√−16</span> لا يمكن تبسيطه.</p></div>
+      <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> Careful: <span class="m">−√16 = −4</span> is fine. The minus is <b>outside</b> the root.</p><p class="ar">انتبه: <span class="m">−√16 = −4</span> صحيح، لأن السالب <b>خارج</b> الجذر.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Solve t² = 169">
+  <span class="kicker">Example 5 · Solve equations</span>
+  <h2>Undo the square</h2>
+  <p class="hsub ar">اعكس التربيع</p>
+  <div class="bi"><p class="en">Squaring and taking the square root are <b>inverse operations</b>: they undo each other. To solve <span class="m">t² = 169</span>, take the square root of <b>each side</b>.</p><p class="ar">التربيع وأخذ الجذر التربيعي <b>عمليتان عكسيتان</b>: كل منهما تلغي الأخرى. لحل <span class="m">t² = 169</span> نأخذ الجذر التربيعي <b>للطرفين</b>.</p></div>
+  <div class="card">
+    <svg id="blSvg" viewBox="0 0 360 170" style="display:block;width:100%;max-width:440px;margin:auto" role="img" aria-label="A balance with the equation on its two pans"></svg>
+    <div class="btnrow c needjs"><button class="btn sm" id="blNext">Next step ▶</button><button class="btn alt sm" id="blReset">↺</button></div>
+    <div class="msg bi needjs" id="blMsg" style="display:none"></div>
+  </div>
+</section>
+
+<section class="screen" data-title="The cube model">
+  <span class="kicker">Learn · Cube roots</span>
+  <h2>Volume → edge</h2>
+  <p class="hsub ar">من الحجم إلى طول الحرف</p>
+  <div class="bench">
+    <div class="card">
+      <svg id="cbSvg" viewBox="0 0 300 280" style="display:block;width:100%;max-width:340px;margin:auto" role="img" aria-label="A cube built from small unit cubes"></svg>
+    </div>
+    <div class="card">
+      <div class="bi"><p class="en">Slide to change the <b>edge</b>. Count how many small cubes fill the big cube.</p><p class="ar">حرّك لتغيّر <b>طول الحرف</b>، وعُدّ المكعبات الصغيرة التي تملأ المكعب الكبير.</p></div>
+      <input type="range" id="cbS" min="1" max="5" step="1" value="5" aria-label="edge length">
+      <div class="monoout" id="cbOut" style="margin-top:8px"></div>
+      <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>Cube root:</b> one of the three equal factors of a number. If <span class="m">x³ = y</span>, then <span class="m">x = ∛y</span>. <b>Perfect cube:</b> the cube of an integer.</p><p class="ar"><b>الجذر التكعيبي:</b> أحد العوامل الثلاثة المتساوية للعدد. إذا كان <span class="m">x³ = y</span> فإن <span class="m">x = ∛y</span>. <b>المكعب الكامل:</b> مكعب عدد صحيح.</p></div>
+    </div>
+  </div>
+  <div class="bi"><p class="en"><b>Every integer has exactly one cube root.</b> A negative number has a negative cube root, because (−2)(−2)(−2) = −8. Tap to complete the book's table.</p><p class="ar"><b>لكل عدد صحيح جذر تكعيبي واحد فقط.</b> وللعدد السالب جذر تكعيبي سالب، لأن (−2)(−2)(−2) = −8. اضغط لتكمل جدول الكتاب.</p></div>
+  <div class="rtab needjs" id="cbTab"></div>
+</section>
+
+<section class="screen" data-title="Cube root examples">
+  <span class="kicker">Worked examples · Examples 6–8</span>
+  <h2>Find cube roots</h2>
+  <p class="hsub ar">أوجد الجذور التكعيبية</p>
+  <div class="fader" data-f="cb"></div>
+</section>
+
+<section class="screen" data-title="Why? Odd and even">
+  <span class="kicker">Think about it</span>
+  <h2>∛−27 works, but √−16 does not. Why?</h2>
+  <p class="hsub ar">∛−27 له حل، و√−16 ليس له حل. لماذا؟</p>
+  <div class="card why" id="why2"></div>
+</section>
+
+<section class="screen" data-title="Bulletin boards">
+  <span class="kicker">Apply · Bulletin boards</span>
+  <h2>How long is the board?</h2>
+  <p class="hsub ar">كم طول اللوحة؟</p>
+  <div class="card">
+    <div class="bi"><p class="en">A bulletin board is made of <b>four equal cork squares</b> in a row. The total area is <b>36 square feet</b>. What is the length of the board?</p><p class="ar">لوحة إعلانات مكوّنة من <b>أربعة مربعات فلين متساوية</b> في صف واحد. مساحتها الكلية <b>36 قدمًا مربعة</b>. كم طول اللوحة؟</p></div>
+    <svg id="bdSvg" viewBox="0 0 360 150" style="display:block;width:100%;margin-top:8px" role="img" aria-label="Four equal squares in a row"></svg>
+    <div class="btnrow c needjs"><button class="btn sm" id="bdNext">Next step ▶</button><button class="btn alt sm" id="bdReset">↺</button></div>
+    <div class="msg bi needjs" id="bdMsg" style="display:none"></div>
+    <div class="solwrap needjs" id="bdSol"></div>
+  </div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Check yourself</span>
+  <h2>Your turn: no score here</h2>
+  <p class="hsub ar">دورك: بدون درجات هنا</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Choose an answer. Then open <b>Show solution</b> to check every step.</p><p class="ar">اختر إجابة، ثم افتح <b>طريقة الحل</b> لتراجع كل خطوة.</p></div></div>
+  <div class="wu needjs" id="tryBox"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work! Now the quiz. Two questions review Lesson 15. A wrong answer gives you a hint first, and after you answer you can open the full solution.</p><p class="ar">عمل رائع! والآن الاختبار، وفيه سؤالان لمراجعة الدرس 15. الإجابة الخاطئة تعطيك تلميحًا أولًا، وبعد أن تجيب يمكنك فتح طريقة الحل كاملة.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+</main>
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="math8_17_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"UAE MOE · Grade 8"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹ =+,./≠]*[0-9A-Za-z()\[\]½²³⁴¹√∛])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t)||(inM&&/^<span/.test(t)))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+/* ---------- lesson helpers ---------- */
+const OV=d=>`<span class="ov">${d}</span>`;
+const OVN=(p,r)=>`<span class="m">${p}<span class="ov">${r}</span></span>`;
+/* solution box: steps = [[en, ar], ...] */
+function solHTML(steps){if(!steps||!steps.length)return "";
+  return `<div class="solbox"><button type="button" class="solbtn">${ICON.bulb} Show solution <span class="ar">طريقة الحل</span></button><ol class="solsteps" hidden>${steps.map(s=>`<li><span>${s[0]}</span><span class="ar">${s[1]}</span></li>`).join("")}</ol></div>`;}
+function solBind(root){root.querySelectorAll(".solbtn").forEach(b=>{if(b.dataset.b)return;b.dataset.b=1;b.onclick=e=>{e.stopPropagation();const ol=b.nextElementSibling,open=ol.hidden;ol.hidden=!open;b.classList.toggle("on",open);b.innerHTML=`${ICON.bulb} ${open?"Hide solution":"Show solution"} <span class="ar">${open?"إخفاء الحل":"طريقة الحل"}</span>`;};});}
+
+
+const SQ=x=>`<span class="m">√<span class="rad">${x}</span></span>`;
+const CB=x=>`<span class="m">∛<span class="rad">${x}</span></span>`;
+const SVGT=(x,y,t,o)=>`<text x="${x}" y="${y}" ${o||""}>${t}</text>`;
+
+/* ---------- worked examples that fade ---------- */
+const FD={
+ sq:[
+  {q:`Simplify ${SQ(64)}.<br><span class="ar">بسّط ${SQ(64)}.</span>`,s:[
+    ["64 = 8 · 8","Find two equal factors of 64.","أوجد عاملين متساويين للعدد 64."],
+    ["8² = 64","8 times itself is 64.","العدد 8 مضروبًا في نفسه يساوي 64."],
+    [`${SQ(64)} = 8`,"The radical sign means the positive root.","رمز الجذر يعني الجذر الموجب."]],blank:0},
+  {q:`Simplify ±${SQ("1.21")}.<br><span class="ar">بسّط ±${SQ("1.21")}.</span>`,s:[
+    [`${SQ(121)} = 11`,"First ignore the decimal point: 11 · 11 = 121.","تجاهل الفاصلة أولًا: 11 · 11 = 121."],
+    ["1.1 · 1.1 = 1.21","1.21 has 2 decimal places, so each factor has 1 decimal place.","للعدد 1.21 منزلتان عشريتان، فلكل عامل منزلة عشرية واحدة."],
+    [`±${SQ("1.21")} = ±1.1`,"The ± sign asks for both roots.","الرمز ± يطلب الجذرين معًا."]],blank:1,
+   o:[[`±${SQ("1.21")} = ±1.1`,`±${SQ("1.21")} = ±0.11`,`±${SQ("1.21")} = 1.1`]],
+   h:[["± means two answers. And 0.11 · 0.11 = 0.0121, not 1.21.","± تعني إجابتين. و0.11 · 0.11 = 0.0121 وليس 1.21."]]},
+  {q:`Simplify −${SQ(F(25,36))}.<br><span class="ar">بسّط −${SQ(F(25,36))}.</span>`,s:[
+    [`(${F(5,6)})² = ${F(25,36)}`,"5² = 25 and 6² = 36.","5² = 25 و6² = 36."],
+    [`${SQ(F(25,36))} = ${F(5,6)}`,"Take the square root of the numerator and of the denominator.","خذ الجذر التربيعي للبسط وللمقام."],
+    [`−${SQ(F(25,36))} = −${F(5,6)}`,"Put the negative sign back.","أعد إشارة السالب."]],blank:2,
+   o:[[`${SQ(F(25,36))} = ${F(5,6)}`,`${SQ(F(25,36))} = ${F(25,6)}`,`${SQ(F(25,36))} = ${F(5,36)}`],[`−${SQ(F(25,36))} = −${F(5,6)}`,`−${SQ(F(25,36))} = ${F(5,6)}`,`−${SQ(F(25,36))} = ±${F(5,6)}`]],
+   h:[["Root of the top AND root of the bottom: √25 and √36.","جذر البسط وجذر المقام معًا: √25 و√36."],["The minus sign is outside the root. Keep it.","إشارة السالب خارج الجذر. احتفظ بها."]]}
+ ],
+ cb:[
+  {q:`Simplify ${CB(125)}.<br><span class="ar">بسّط ${CB(125)}.</span>`,s:[
+    ["5 · 5 · 5 = 125","Find a number used 3 times as a factor to make 125.","أوجد عددًا يُضرب في نفسه 3 مرات ليعطي 125."],
+    ["5³ = 125","Write it as a cube.","اكتبه في صورة مكعب."],
+    [`${CB(125)} = 5`,"So the cube root of 125 is 5.","إذن الجذر التكعيبي للعدد 125 هو 5."]],blank:0},
+  {q:`Simplify ${CB("−27")}.<br><span class="ar">بسّط ${CB("−27")}.</span>`,s:[
+    ["(−3) · (−3) = 9","Two negative factors make a positive.","عاملان سالبان يعطيان ناتجًا موجبًا."],
+    ["9 · (−3) = −27","A third negative factor makes it negative again.","العامل السالب الثالث يجعله سالبًا من جديد."],
+    [`${CB("−27")} = −3`,"So −3 is the cube root of −27.","إذن −3 هو الجذر التكعيبي للعدد −27."]],blank:1,
+   o:[[`${CB("−27")} = −3`,`${CB("−27")} = 3`,`${CB("−27")} = −9`]],
+   h:[["(−3)(−3)(−3) = −27. Is the answer positive or negative?","(−3)(−3)(−3) = −27. هل الإجابة موجبة أم سالبة؟"]]},
+  {q:`Dylan's planter is a cube that holds 15.625, or ${F(125,8)}, cubic feet of soil. Solve <span class="m">s³ = ${F(125,8)}</span> to find the side length.<br><span class="ar">حوض زراعة ديلان مكعب يتسع لـ 15.625 أو ${F(125,8)} قدمًا مكعبة من التربة. حل <span class="m">s³ = ${F(125,8)}</span> لتجد طول الضلع.</span>`,s:[
+    [`s³ = ${F(125,8)}`,"Write the equation.","اكتب المعادلة."],
+    [`s = ${CB(F(125,8))}`,"Take the cube root of each side.","خذ الجذر التكعيبي للطرفين."],
+    [`s = ${F(5,2)}`,"5³ = 125 and 2³ = 8.","5³ = 125 و2³ = 8."],
+    [`s = 2${F(1,2)} ft`,"Check: (5/2)³ = 125/8. Each side is 2 1/2 feet.","تحقّق: (5/2)³ = 125/8. طول كل ضلع 2 1/2 قدم."]],blank:2,
+   o:[[`s = ${F(5,2)}`,`s = ${F(125,24)}`,`s = ${F(25,4)}`],[`s = 2${F(1,2)} ft`,`s = 5${F(1,2)} ft`,`s = 2${F(1,8)} ft`]],
+   h:[["Cube root of the top and of the bottom: ∛125 and ∛8.","الجذر التكعيبي للبسط وللمقام: ∛125 و∛8."],["5/2 as a mixed number: 5 ÷ 2 = 2 remainder 1.","5/2 في صورة عدد كسري: 5 ÷ 2 = 2 والباقي 1."]]}
+ ]
+};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+
+/* ---------- practice cards with a solution button ---------- */
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}${n[1]&&n[1]!==n[0]?`<small>${n[1]}</small>`:""}</button>`).join("")}</div><div class="mwhy"></div>${solHTML(c.sol)}</div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll(".mb button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll(".mb button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});
+  solBind(box);}
+
+
+/* ---------- isometric cube ---------- */
+function isoCube(n,u,ox,oy){const P=(x,y,z)=>[ox+(x-y)*u*.866,oy+(x+y)*u*.5-z*u],pt=a=>a.map(p=>P(...p).map(v=>v.toFixed(1)).join(",")).join(" ");
+  let h=`<polygon points="${pt([[0,0,n],[n,0,n],[n,n,n],[0,n,n]])}" fill="#3f8f89" stroke="#9fe0da" stroke-width="2"/>`;
+  h+=`<polygon points="${pt([[n,0,0],[n,n,0],[n,n,n],[n,0,n]])}" fill="#1f5f5b" stroke="#9fe0da" stroke-width="2"/>`;
+  h+=`<polygon points="${pt([[0,n,0],[n,n,0],[n,n,n],[0,n,n]])}" fill="#2b7570" stroke="#9fe0da" stroke-width="2"/>`;
+  const L=(a,b)=>{const [x1,y1]=P(...a),[x2,y2]=P(...b);return `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#9fe0da" stroke-opacity=".6" stroke-width="1.2"/>`;};
+  for(let i=1;i<n;i++){h+=L([i,0,n],[i,n,n])+L([0,i,n],[n,i,n])+L([n,i,0],[n,i,n])+L([n,0,i],[n,n,i])+L([i,n,0],[i,n,n])+L([0,n,i],[n,n,i]);}
+  return h;}
+$("#heroCube").innerHTML=isoCube(5,14,50,70);
+
+/* ---------- warm-up ---------- */
+cardsQ($("#wuBox"),[
+ {t:["What is 9²?","ما قيمة 9²؟"],o:[["81"],["18"],["99"]],a:0,w:["9² = 9 · 9 = 81.","9² = 9 · 9 = 81."],h:["9² means 9 times itself, not 9 · 2.","9² تعني 9 مضروبًا في نفسه، وليس 9 · 2."],
+  sol:[["The exponent 2 means: use 9 as a factor 2 times.","الأس 2 يعني: استخدم 9 عاملًا مرتين."],["9² = 9 · 9 = 81","9² = 9 · 9 = 81"]]},
+ {t:["What is 5³?","ما قيمة 5³؟"],o:[["15"],["125"],["25"]],a:1,w:["5³ = 5 · 5 · 5 = 125.","5³ = 5 · 5 · 5 = 125."],h:["5³ means 5 · 5 · 5.","5³ تعني 5 · 5 · 5."],
+  sol:[["5³ = 5 · 5 · 5","5³ = 5 · 5 · 5"],["5 · 5 = 25, then 25 · 5 = 125.","5 · 5 = 25، ثم 25 · 5 = 125."]]},
+ {t:["What is (−4)²?","ما قيمة (−4)²؟"],o:[["−16"],["−8"],["16"]],a:2,w:["(−4)(−4) = 16. Negative × negative is positive.","(−4)(−4) = 16. السالب × السالب = موجب."],h:["(−4)² = (−4) · (−4). What is negative × negative?","(−4)² = (−4) · (−4). ما ناتج سالب × سالب؟"],
+  sol:[["(−4)² = (−4) · (−4)","(−4)² = (−4) · (−4)"],["4 · 4 = 16, and negative × negative is positive.","4 · 4 = 16، والسالب × السالب = موجب."],["So (−4)² = 16.","إذن (−4)² = 16."]]}
+]);
+
+/* ---------- the square model ---------- */
+(function(){const S=$("#sqS");if(!S)return;const svg=$("#sqSvg");
+  function upd(){const n=+S.value,k=Math.floor(Math.sqrt(n)),extra=n-k*k,perfect=extra===0;
+    const side=perfect?k:k+1,cell=Math.min(26,250/side),ox=(300-cell*side)/2,oy=(300-cell*side)/2;let h="";
+    for(let i=0;i<n;i++){let r,c;if(i<k*k){r=Math.floor(i/k);c=i%k;}else{const j=i-k*k;if(j<k){c=k;r=j;}else{r=k;c=j-k;}}
+      h+=`<rect x="${(ox+c*cell+1).toFixed(1)}" y="${(oy+r*cell+1).toFixed(1)}" width="${(cell-2).toFixed(1)}" height="${(cell-2).toFixed(1)}" rx="3" fill="${i<k*k?"rgba(124,194,189,.45)":"rgba(239,154,131,.55)"}" stroke="${i<k*k?"#9fe0da":"#ef9a83"}"/>`;}
+    if(perfect){h+=`<rect x="${ox}" y="${oy}" width="${cell*k}" height="${cell*k}" fill="none" stroke="#f2c46d" stroke-width="3"/>`+SVGT(150,oy+cell*k+20,`side = ${k}`,'text-anchor="middle" font-size="16" font-weight="700" fill="#f2c46d" font-family="sans-serif"');}
+    svg.innerHTML=h;
+    $("#sqOut").textContent=perfect?`Area ${n} → side √${n} = ${k}`:`Area ${n} → √${n} is between ${k} and ${k+1}`;
+    if(perfect)setMsg($("#sqMsg"),`${ICON.check} ${n} tiles make a full ${k} × ${k} square. <b>${n} is a perfect square</b>, and √${n} = ${k}.`,`${ICON.check} ${n} بلاطة تكوّن مربعًا كاملًا ${k} × ${k}. إذن <b>${n} مربع كامل</b>، و√${n} = ${k}.`);
+    else setMsg($("#sqMsg"),`${n} tiles do <b>not</b> make a full square (${extra} extra tiles in red). ${n} is not a perfect square.`,`${n} بلاطة <b>لا</b> تكوّن مربعًا كاملًا (${extra} بلاطة زائدة باللون الأحمر). إذن ${n} ليس مربعًا كاملًا.`,true);}
+  S.addEventListener("input",upd);upd();})();
+function rootTable(box,vals,root,lab){if(!box)return;box.innerHTML=`<div class="rrow"><span class="rh">${lab[0]}</span>${vals.map(v=>`<span class="rv">${v}</span>`).join("")}</div><div class="rrow"><span class="rh">${lab[1]}</span>${vals.map((v,i)=>`<button data-i="${i}">?</button>`).join("")}</div>`;
+  box.querySelectorAll("button").forEach(b=>b.onclick=()=>{b.textContent=root(vals[+b.dataset.i]);b.classList.add("on");});}
+rootTable($("#sqTab"),[1,4,9,16,25,36,49,64],v=>Math.sqrt(v),["Perfect square","Square root"]);
+rootTable($("#cbTab"),[1,-1,8,-8,27,-27,64,-64].map(v=>v<0?"−"+(-v):String(v)),v=>{const n=+String(v).replace("−","-");const r=Math.round(Math.cbrt(n));return r<0?"−"+(-r):String(r);},["Perfect cube","Cube root"]);
+
+/* ---------- plus or minus ---------- */
+(function(){const pick=$("#pmPick");if(!pick)return;const opts=[["√25",[5]],["−√25",[-5]],["±√25",[-5,5]]];
+  pick.innerHTML=opts.map((o,i)=>`<button data-v="${i}" class="${i?"":"on"}"><span class="m">${o[0]}</span></button>`).join("");
+  const X=v=>30+(v+6)*25;
+  function draw(i){let h=`<line x1="18" y1="60" x2="342" y2="60" stroke="#9fb3b5" stroke-width="2"/>`;
+    for(let v=-6;v<=6;v++)h+=`<line x1="${X(v)}" y1="54" x2="${X(v)}" y2="66" stroke="#9fb3b5"/>`+SVGT(X(v),86,v<0?"−"+(-v):v,'text-anchor="middle" font-size="13" fill="#9fb3b5" font-family="sans-serif"');
+    opts[i][1].forEach(v=>{h+=`<circle cx="${X(v)}" cy="60" r="10" fill="#f2c46d"/>`+SVGT(X(v),36,v<0?"−5":"5",'text-anchor="middle" font-size="17" font-weight="700" fill="#f2c46d" font-family="sans-serif"');});
+    $("#pmSvg").innerHTML=h;
+    $("#pmOut").textContent=[`√25 = 5 (the principal root)`,`−√25 = −5 (the negative root)`,`±√25 = ±5 (both roots: 5 and −5)`][i];}
+  pick.querySelectorAll("button").forEach(b=>b.onclick=()=>{pick.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));draw(+b.dataset.v);});draw(0);})();
+
+/* ---------- negative under the root ---------- */
+(function(){const S=$("#ngS");if(!S)return;const X=v=>20+(v+20)*5.33;
+  function upd(){const n=+S.value,p=n*n,ns=n<0?`(−${-n})`:String(n);
+    $("#ngOut").innerHTML=`<span class="m">${ns} × ${ns} = ${p}</span>`;
+    let h=`<line x1="14" y1="34" x2="346" y2="34" stroke="#9fb3b5" stroke-width="2"/>`;
+    [-20,-16,-10,0,10,20,30,40].forEach(v=>{if(X(v)>346)return;h+=`<line x1="${X(v)}" y1="28" x2="${X(v)}" y2="40" stroke="#9fb3b5"/>`+(v===-20?"":SVGT(X(v),58,v<0?"−"+(-v):v,`text-anchor="middle" font-size="12" fill="${v===-16?"#ef9a83":"#9fb3b5"}" font-family="sans-serif"`));});
+    h+=`<circle cx="${X(-16)}" cy="34" r="9" fill="none" stroke="#ef9a83" stroke-width="3" stroke-dasharray="4 3"/>`+SVGT(X(-16),16,"target −16",'text-anchor="middle" font-size="12" fill="#ef9a83" font-family="sans-serif"');
+    if(X(p)<=346)h+=`<circle cx="${X(p)}" cy="34" r="8" fill="#7cc2bd"/>`+SVGT(X(p),16,p,'text-anchor="middle" font-size="13" font-weight="700" fill="#7cc2bd" font-family="sans-serif"');
+    $("#ngSvg").innerHTML=h;}
+  S.addEventListener("input",upd);upd();})();
+
+/* ---------- balance: t² = 169 ---------- */
+(function(){const svg=$("#blSvg");if(!svg)return;let st=0;
+  const ST=[["t²","169","Start with the equation t² = 169.","ابدأ بالمعادلة t² = 169."],
+   ["√(t²)","√169","Take the square root of each side. The balance stays level.","خذ الجذر التربيعي للطرفين، فيبقى الميزان متوازنًا."],
+   ["t","±13","t = 13 or t = −13, because 13² = 169 and (−13)² = 169.","t = 13 أو t = −13، لأن 13² = 169 و(−13)² = 169."],
+   ["13² ✓","(−13)² ✓","Check: 13 · 13 = 169 and (−13)(−13) = 169. Two solutions: 13 and −13.","تحقّق: 13 · 13 = 169 و(−13)(−13) = 169. للمعادلة حلّان: 13 و−13."]];
+  function draw(){const s=ST[st];
+    svg.innerHTML=`<polygon points="180,150 165,168 195,168" fill="#6f8689"/><line x1="180" y1="150" x2="180" y2="62" stroke="#6f8689" stroke-width="5"/>
+     <line x1="50" y1="62" x2="310" y2="62" stroke="#9fb3b5" stroke-width="5" stroke-linecap="round"/>
+     <line x1="70" y1="62" x2="70" y2="96" stroke="#9fb3b5"/><line x1="290" y1="62" x2="290" y2="96" stroke="#9fb3b5"/>
+     <path d="M20 96 h100 q-10 30 -50 30 q-40 0 -50 -30z" fill="rgba(124,194,189,.25)" stroke="#7cc2bd" stroke-width="2"/>
+     <path d="M240 96 h100 q-10 30 -50 30 q-40 0 -50 -30z" fill="rgba(242,196,109,.22)" stroke="#f2c46d" stroke-width="2"/>`+
+     SVGT(70,90,s[0],'text-anchor="middle" font-size="22" font-family="Cambria,Times New Roman,serif" fill="#f1f6f5"')+
+     SVGT(290,90,s[1],'text-anchor="middle" font-size="22" font-family="Cambria,Times New Roman,serif" fill="#f1f6f5"')+
+     SVGT(180,40,"=",'text-anchor="middle" font-size="26" fill="#f2c46d"');
+    setMsg($("#blMsg"),`<b>Step ${st+1}:</b> ${s[2]}`,`<b>الخطوة ${st+1}:</b> ${s[3]}`);$("#blNext").disabled=st>=ST.length-1;}
+  $("#blNext").onclick=()=>{if(st<ST.length-1){st++;draw();}};$("#blReset").onclick=()=>{st=0;draw();};draw();})();
+
+/* ---------- cube model ---------- */
+(function(){const S=$("#cbS");if(!S)return;
+  function upd(){const n=+S.value,u=26;$("#cbSvg").innerHTML=isoCube(n,u,150,140+((5-n)*u)/2*0)+SVGT(150,278,`edge ${n} · volume ${n**3}`,'text-anchor="middle" font-size="14" font-weight="700" fill="#f2c46d" font-family="sans-serif"');
+    $("#cbOut").textContent=`${n} × ${n} × ${n} = ${n**3}  →  ∛${n**3} = ${n}`;}
+  S.addEventListener("input",upd);upd();})();
+
+/* ---------- why boxes ---------- */
+whyBox($("#why1"),"Why is √1.21 equal to 1.1 and not 0.11?","لماذا √1.21 يساوي 1.1 وليس 0.11؟",
+ [["Because 1.1 · 1.1 = 1.21, but 0.11 · 0.11 = 0.0121.","لأن 1.1 · 1.1 = 1.21، أما 0.11 · 0.11 = 0.0121.",true,"Each factor has 1 decimal place, so the product has 2, like 1.21.","لكل عامل منزلة عشرية واحدة، فيكون للناتج منزلتان، مثل 1.21."],
+  ["Because we always put the point after the first digit.","لأننا نضع الفاصلة دائمًا بعد الرقم الأول.",false,"There is no such rule. Check by multiplying the answer by itself.","لا توجد قاعدة كهذه. تحقّق بضرب الإجابة في نفسها."],
+  ["Because 1.21 is a perfect square.","لأن 1.21 مربع كامل.",false,"1.21 is not a whole number, so it is not a perfect square by the book's rule. Multiply to check.","1.21 ليس عددًا كليًا، فلا يُعدّ مربعًا كاملًا حسب تعريف الكتاب. اضرب لتتحقق."]]);
+whyBox($("#why2"),"Why does ∛−27 have an answer, but √−16 does not?","لماذا لـ ∛−27 إجابة، وليس لـ √−16 إجابة؟",
+ [["Two equal factors always give a positive, but three negative factors give a negative.","عاملان متساويان يعطيان دائمًا ناتجًا موجبًا، أما ثلاثة عوامل سالبة فتعطي ناتجًا سالبًا.",true,"(−3)(−3)(−3) = −27, but no number times itself is −16.","(−3)(−3)(−3) = −27، ولكن لا يوجد عدد مضروب في نفسه يساوي −16."],
+  ["Because 27 is bigger than 16.","لأن 27 أكبر من 16.",false,"Size is not the reason. √−1 has no answer either.","الحجم ليس السبب، فحتى √−1 ليس له إجابة."],
+  ["Because cube roots are always negative.","لأن الجذور التكعيبية سالبة دائمًا.",false,"∛8 = 2, which is positive. A cube root has the same sign as the number.","∛8 = 2 وهو موجب. للجذر التكعيبي إشارة العدد نفسها."]]);
+
+/* ---------- bulletin boards ---------- */
+(function(){const svg=$("#bdSvg");if(!svg)return;let st=0;
+  const ST=[["The board has 4 equal squares. Total area = 36 ft².","اللوحة 4 مربعات متساوية، والمساحة الكلية = 36 قدمًا مربعة."],
+   ["Area of one square: 36 ÷ 4 = 9 ft².","مساحة المربع الواحد: 36 ÷ 4 = 9 أقدام مربعة."],
+   ["Side of one square: √9 = 3 ft.","ضلع المربع الواحد: √9 = 3 أقدام."],
+   ["Length of the board: 4 × 3 = 12 ft.","طول اللوحة: 4 × 3 = 12 قدمًا."]];
+  function draw(){let h="";for(let i=0;i<4;i++){const x=24+i*78;h+=`<rect x="${x}" y="22" width="72" height="72" rx="4" fill="rgba(242,196,109,.28)" stroke="#f2c46d" stroke-width="2"/>`;
+      if(st>=1)h+=SVGT(x+36,64,"9 ft²",'text-anchor="middle" font-size="14" font-weight="700" fill="#f1f6f5" font-family="sans-serif"');}
+    if(st===0)h+=SVGT(180,64,"36 ft² in total",'text-anchor="middle" font-size="16" font-weight="700" fill="#f1f6f5" font-family="sans-serif"');
+    if(st>=2)h+=`<line x1="${24+3*78+80}" y1="22" x2="${24+3*78+80}" y2="94" stroke="#7cc2bd" stroke-width="2"/>`+SVGT(24+3*78+80,16,"3 ft",'text-anchor="middle" font-size="13" fill="#7cc2bd" font-family="sans-serif"')+SVGT(60,112,"3 ft",'text-anchor="middle" font-size="13" fill="#7cc2bd" font-family="sans-serif"');
+    if(st>=3)h+=`<path d="M24 124 V132 H330 V124" fill="none" stroke="#f2c46d" stroke-width="2"/>`+SVGT(177,148,"length = 12 ft",'text-anchor="middle" font-size="15" font-weight="700" fill="#f2c46d" font-family="sans-serif"');
+    svg.innerHTML=h;setMsg($("#bdMsg"),`<b>Step ${st+1}:</b> ${ST[st][0]}`,`<b>الخطوة ${st+1}:</b> ${ST[st][1]}`);$("#bdNext").disabled=st>=3;}
+  $("#bdNext").onclick=()=>{if(st<3){st++;draw();}};$("#bdReset").onclick=()=>{st=0;draw();};draw();
+  $("#bdSol").innerHTML=solHTML([["The 4 squares are equal, so divide the area: 36 ÷ 4 = 9 ft² each.","المربعات الأربعة متساوية، فاقسم المساحة: 36 ÷ 4 = 9 أقدام مربعة لكل مربع."],["A square with area 9 ft² has side √9 = 3 ft.","المربع الذي مساحته 9 أقدام مربعة طول ضلعه √9 = 3 أقدام."],["The squares sit in a row, so the length is 4 sides: 4 × 3 = 12 ft.","المربعات في صف واحد، فالطول 4 أضلاع: 4 × 3 = 12 قدمًا."],["Check: the board is 12 ft by 3 ft, and 12 × 3 = 36 ft². ✓","تحقّق: اللوحة 12 قدمًا في 3 أقدام، و12 × 3 = 36 قدمًا مربعة. ✓"]]);solBind($("#bdSol"));})();
+
+/* ---------- check yourself ---------- */
+cardsQ($("#tryBox"),[
+ {t:[`Simplify ${SQ(225)}.`,`بسّط ${SQ(225)}.`],o:[["15"],["112.5"],["25"],["±15"]],a:0,cls:"two",w:["15 · 15 = 225, and √ means the positive root.","15 · 15 = 225، و√ تعني الجذر الموجب."],h:["Which number times itself is 225? Try 15.","أي عدد مضروب في نفسه يساوي 225؟ جرّب 15."],
+  sol:[["Look for two equal factors of 225.","ابحث عن عاملين متساويين للعدد 225."],["15 · 15 = 225","15 · 15 = 225"],["√ asks only for the positive root, so √225 = 15.","√ تطلب الجذر الموجب فقط، إذن √225 = 15."]]},
+ {t:[`Simplify ±${SQ("1.44")}.`,`بسّط ±${SQ("1.44")}.`],o:[["1.2"],["±0.12"],["±1.2"],["±12"]],a:2,cls:"two",w:["1.2 · 1.2 = 1.44, and ± gives both roots.","1.2 · 1.2 = 1.44، و± تعطي الجذرين."],h:["Ignore the point first: √144 = 12. Then place the point.","تجاهل الفاصلة أولًا: √144 = 12، ثم ضع الفاصلة."],
+  sol:[["√144 = 12","√144 = 12"],["1.44 has 2 decimal places, so the root has 1: 1.2.","للعدد 1.44 منزلتان عشريتان، فللجذر منزلة واحدة: 1.2."],["Check: 1.2 · 1.2 = 1.44.","تحقّق: 1.2 · 1.2 = 1.44."],["± means both: ±√1.44 = ±1.2.","± تعني الجذرين: ±√1.44 = ±1.2."]]},
+ {t:[`Simplify −${SQ(F(49,64))}.`,`بسّط −${SQ(F(49,64))}.`],o:[[F(7,8)],[`−${F(7,8)}`],[`−${F(49,8)}`],["no answer","لا إجابة"]],a:1,cls:"two",w:["√(49/64) = 7/8, then keep the minus.","√(49/64) = 7/8، ثم احتفظ بالسالب."],h:["The minus is outside the root, so there is an answer.","السالب خارج الجذر، إذن توجد إجابة."],
+  sol:[["√49 = 7 and √64 = 8, so √(49/64) = 7/8.","√49 = 7 و√64 = 8، إذن √(49/64) = 7/8."],["The negative sign is outside the root.","إشارة السالب خارج الجذر."],["So −√(49/64) = −7/8.","إذن −√(49/64) = −7/8."]]},
+ {t:[`Simplify ${CB("−1,000")}.`,`بسّط ${CB("−1,000")}.`],o:[["10"],["−100"],["no answer","لا إجابة"],["−10"]],a:3,cls:"two",w:["(−10)(−10)(−10) = −1,000.","(−10)(−10)(−10) = −1,000."],h:["Cube roots of negative numbers exist. Which number cubed is −1,000?","للأعداد السالبة جذور تكعيبية. أي عدد مكعبه −1,000؟"],
+  sol:[["10 · 10 · 10 = 1,000","10 · 10 · 10 = 1,000"],["(−10)(−10) = 100, then 100 · (−10) = −1,000.","(−10)(−10) = 100، ثم 100 · (−10) = −1,000."],["So ∛−1,000 = −10.","إذن ∛−1,000 = −10."]]},
+ {t:["Three equal square windows sit in a row to form a rectangle. The total area is 108 ft². How long is the row of windows?","ثلاثة شبابيك مربعة متساوية في صف واحد تكوّن مستطيلًا، ومساحتها الكلية 108 أقدام مربعة. ما طول صف الشبابيك؟"],o:[["6 ft","6 أقدام"],["36 ft","36 قدمًا"],["18 ft","18 قدمًا"],["12 ft","12 قدمًا"]],a:2,cls:"two",w:["108 ÷ 3 = 36, √36 = 6, 3 × 6 = 18 ft.","108 ÷ 3 = 36، √36 = 6، 3 × 6 = 18 قدمًا."],h:["First find the area of one window: 108 ÷ 3.","أوجد أولًا مساحة الشباك الواحد: 108 ÷ 3."],
+  sol:[["One window: 108 ÷ 3 = 36 ft².","الشباك الواحد: 108 ÷ 3 = 36 قدمًا مربعة."],["Side of one window: √36 = 6 ft.","ضلع الشباك: √36 = 6 أقدام."],["Three windows in a row: 3 × 6 = 18 ft.","ثلاثة شبابيك في صف: 3 × 6 = 18 قدمًا."]]}
+]);
+
+/* ---------- summary cards ---------- */
+const FL=[["√","Square root","الجذر التربيعي","One of two equal factors. If x² = y, x is a square root of y.","أحد عاملين متساويين. إذا كان x² = y فإن x جذر تربيعي لـ y."],
+ ["1, 4, 9 …","Perfect square","المربع الكامل","A rational number whose square root is a whole number.","عدد نسبي جذره التربيعي عدد كلي."],
+ ["√25 = 5","Principal root","الجذر الرئيسي","The radical sign √ means the positive root only.","رمز الجذر √ يعني الجذر الموجب فقط."],
+ ["±√25 = ±5","Both roots","الجذران","± asks for the positive and the negative root.","الرمز ± يطلب الجذر الموجب والجذر السالب."],
+ ["√−16","No rational root","لا جذر نسبي","No number times itself gives a negative. But −√16 = −4 is fine.","لا يوجد عدد مضروب في نفسه يعطي عددًا سالبًا. لكن −√16 = −4 صحيح."],
+ ["x = ±√p","Solve x² = p","حل x² = p","Take the square root of each side. There are two solutions.","خذ الجذر التربيعي للطرفين، وللمعادلة حلّان."],
+ ["∛","Cube root","الجذر التكعيبي","One of three equal factors. ∛−27 = −3: same sign as the number.","أحد ثلاثة عوامل متساوية. ∛−27 = −3: له إشارة العدد نفسها."],
+ ["x = ∛p","Solve x³ = p","حل x³ = p","Take the cube root of each side. There is one solution.","خذ الجذر التكعيبي للطرفين، وللمعادلة حل واحد."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+
+/* ---------- final quiz (8 on this lesson + 2 review of Lesson 15) ---------- */
+const Q=[
+ {q:`Simplify ${SQ(144)}.`,qa:`بسّط ${SQ(144)}.`,o:[["12",""],["72",""],["14",""],["±12",""]],a:0,ex:["12 · 12 = 144, and √ gives the positive root.","12 · 12 = 144، و√ تعطي الجذر الموجب."],
+  h:[["Which number times itself is 144?","أي عدد مضروب في نفسه يساوي 144؟"],["Try 12: 12 · 12 = ?","جرّب 12: 12 · 12 = ؟"]],
+  sol:[["Find two equal factors of 144.","أوجد عاملين متساويين للعدد 144."],["12 · 12 = 144","12 · 12 = 144"],["√ means only the positive root: √144 = 12.","√ تعني الجذر الموجب فقط: √144 = 12."]]},
+ {q:`Simplify ±${SQ("0.49")}.`,qa:`بسّط ±${SQ("0.49")}.`,o:[["±0.07",""],["±0.7",""],["0.7",""],["±7",""]],a:1,ex:["0.7 · 0.7 = 0.49, and ± gives both roots.","0.7 · 0.7 = 0.49، و± تعطي الجذرين."],
+  h:[["√49 = 7. Now place the decimal point.","√49 = 7. الآن ضع الفاصلة العشرية."],["0.49 has 2 decimal places, so the root has 1. Don't forget ±.","للعدد 0.49 منزلتان عشريتان، فللجذر منزلة واحدة. لا تنسَ ±."]],
+  sol:[["√49 = 7","√49 = 7"],["0.49 has 2 decimal places, so the root has 1: 0.7.","للعدد 0.49 منزلتان عشريتان، فللجذر منزلة واحدة: 0.7."],["Check: 0.7 · 0.7 = 0.49.","تحقّق: 0.7 · 0.7 = 0.49."],["With ±: ±√0.49 = ±0.7.","مع ±: ±√0.49 = ±0.7."]]},
+ {q:`Simplify −${SQ(F(16,81))}.`,qa:`بسّط −${SQ(F(16,81))}.`,o:[[F(4,9),""],[`−${F(16,81)}`,""],[`−${F(4,9)}`,""],[`−${F(8,9)}`,""]],a:2,ex:["√16 = 4 and √81 = 9, then keep the minus: −4/9.","√16 = 4 و√81 = 9، ثم احتفظ بالسالب: −4/9."],
+  h:[["Take the square root of the top and of the bottom.","خذ الجذر التربيعي للبسط وللمقام."],["√16 = 4, √81 = 9. The minus is outside the root.","√16 = 4، √81 = 9. والسالب خارج الجذر."]],
+  sol:[["√16 = 4 and √81 = 9.","√16 = 4 و√81 = 9."],["So √(16/81) = 4/9.","إذن √(16/81) = 4/9."],["Keep the negative sign: −√(16/81) = −4/9.","احتفظ بإشارة السالب: −√(16/81) = −4/9."]]},
+ {q:`Simplify ${SQ("−36")} using rational numbers.`,qa:`بسّط ${SQ("−36")} باستخدام الأعداد النسبية.`,o:[["−6",""],["±6",""],["6",""],["No rational answer","لا توجد إجابة نسبية"]],a:3,ex:["6 · 6 = 36 and (−6)(−6) = 36. No number times itself is −36.","6 · 6 = 36 و(−6)(−6) = 36. لا يوجد عدد مضروب في نفسه يساوي −36."],
+  h:[["Try (−6)(−6). Is it −36?","جرّب (−6)(−6). هل يساوي −36؟"],["Positive × positive and negative × negative are both positive.","الموجب × الموجب والسالب × السالب كلاهما موجب."]],
+  sol:[["We need a number n with n · n = −36.","نحتاج عددًا n بحيث n · n = −36."],["6 · 6 = 36 (positive).","6 · 6 = 36 (موجب)."],["(−6) · (−6) = 36 (also positive).","(−6) · (−6) = 36 (موجب أيضًا)."],["No rational number works, so √−36 cannot be simplified.","لا يوجد عدد نسبي يحقق ذلك، إذن لا يمكن تبسيط √−36."]]},
+ {q:"Solve x² = 225.",qa:"حل x² = 225.",o:[["x = 15 only","x = 15 فقط"],["x = 15 or x = −15","x = 15 أو x = −15"],["x = 112.5",""],["x = −15 only","x = −15 فقط"]],a:1,ex:["Take the square root of each side: x = ±15.","خذ الجذر التربيعي للطرفين: x = ±15."],
+  h:[["Take the square root of each side.","خذ الجذر التربيعي للطرفين."],["(−15)² is also 225. How many solutions?","(−15)² يساوي 225 أيضًا. كم حلًا للمعادلة؟"]],
+  sol:[["x² = 225","x² = 225"],["Take the square root of each side: x = ±√225.","خذ الجذر التربيعي للطرفين: x = ±√225."],["x = 15 or x = −15.","x = 15 أو x = −15."],["Check: 15² = 225 and (−15)² = 225.","تحقّق: 15² = 225 و(−15)² = 225."]]},
+ {q:`Simplify ${CB("−64")}.`,qa:`بسّط ${CB("−64")}.`,o:[["−4",""],["4",""],["−8",""],["No answer","لا إجابة"]],a:0,ex:["(−4)(−4)(−4) = −64.","(−4)(−4)(−4) = −64."],
+  h:[["A cube root of a negative number is negative.","الجذر التكعيبي لعدد سالب يكون سالبًا."],["4 · 4 · 4 = 64. Now think about the sign.","4 · 4 · 4 = 64. فكّر الآن في الإشارة."]],
+  sol:[["4 · 4 · 4 = 64","4 · 4 · 4 = 64"],["(−4)(−4) = 16, then 16 · (−4) = −64.","(−4)(−4) = 16، ثم 16 · (−4) = −64."],["So ∛−64 = −4.","إذن ∛−64 = −4."]]},
+ {q:`Simplify ${CB(343)}.`,qa:`بسّط ${CB(343)}.`,o:[["49",""],["114.3",""],["7",""],["±7",""]],a:2,ex:["7 · 7 · 7 = 343.","7 · 7 · 7 = 343."],
+  h:[["Find a number used 3 times as a factor.","أوجد عددًا يُستخدم عاملًا 3 مرات."],["7 · 7 = 49. Then 49 · 7 = ?","7 · 7 = 49. ثم 49 · 7 = ؟"]],
+  sol:[["7 · 7 = 49","7 · 7 = 49"],["49 · 7 = 343","49 · 7 = 343"],["So ∛343 = 7. (A cube root has only one answer.)","إذن ∛343 = 7. (للجذر التكعيبي إجابة واحدة فقط.)"]]},
+ {q:`A box shaped like a cube has a volume of ${F(27,64)} cubic metres. Solve <span class="m">s³ = ${F(27,64)}</span> to find the side length s.`,qa:`صندوق على شكل مكعب حجمه ${F(27,64)} مترًا مكعبًا. حل <span class="m">s³ = ${F(27,64)}</span> لتجد طول الضلع s.`,o:[[`${F(3,8)} m`,""],[`${F(9,16)} m`,""],[`${F(27,64)} m`,""],[`${F(3,4)} m`,""]],a:3,ex:["∛27 = 3 and ∛64 = 4, so s = 3/4 m.","∛27 = 3 و∛64 = 4، إذن s = 3/4 م."],
+  h:[["Take the cube root of each side.","خذ الجذر التكعيبي للطرفين."],["∛27 = 3. What is ∛64?","∛27 = 3. فما قيمة ∛64؟"]],
+  sol:[["s³ = 27/64","s³ = 27/64"],["Take the cube root of each side: s = ∛(27/64).","خذ الجذر التكعيبي للطرفين: s = ∛(27/64)."],["∛27 = 3 and ∛64 = 4, so s = 3/4 m.","∛27 = 3 و∛64 = 4، إذن s = 3/4 م."],["Check: (3/4)³ = 27/64. ✓","تحقّق: (3/4)³ = 27/64. ✓"]]},
+ {q:`From Lesson 15: Write ${OVN("0.","3")} as a fraction in simplest form.`,qa:`من الدرس 15: اكتب ${OVN("0.","3")} في صورة كسر في أبسط صورة.`,o:[[F(3,10),""],[F(1,3),""],[F(1,30),""],[F(33,100),""]],a:1,ex:["N = 0.333…, 9N = 3, N = 3/9 = 1/3.","N = 0.333…، 9N = 3، N = 3/9 = 1/3."],
+  h:[["Let N = 0.333… and multiply by 10.","ليكن N = 0.333… واضرب في 10."],["10N − N = 9N = 3. Then simplify 3/9.","10N − N = 9N = 3. ثم بسّط 3/9."]],
+  sol:[["Let N = 0.333…","ليكن N = 0.333…"],["10N = 3.333…","10N = 3.333…"],["Subtract: 9N = 3, so N = 3/9.","اطرح: 9N = 3، إذن N = 3/9."],["Simplify: 3/9 = 1/3.","بسّط: 3/9 = 1/3."]]},
+ {q:"From Lesson 15: Which fraction is a terminating decimal?",qa:"من الدرس 15: أي كسر يكون عددًا عشريًا منتهيًا؟",o:[[F(7,8),""],[F(1,3),""],[F(5,6),""],[F(2,9),""]],a:0,ex:["7 ÷ 8 = 0.875, and the remainder becomes 0.","7 ÷ 8 = 0.875، ويصبح الباقي 0."],
+  h:[["Divide each one. Which remainder becomes 0?","اقسم كل كسر. أي باقٍ يصبح 0؟"],["1/3 = 0.333…, 5/6 = 0.8333…, 2/9 = 0.222…","1/3 = 0.333…، 5/6 = 0.8333…، 2/9 = 0.222…"]],
+  sol:[["1/3 = 0.333…, 5/6 = 0.8333… and 2/9 = 0.222… all repeat.","1/3 = 0.333…، و5/6 = 0.8333…، و2/9 = 0.222… كلها دورية."],["7 ÷ 8: 70 ÷ 8 = 8 r 6; 60 ÷ 8 = 7 r 4; 40 ÷ 8 = 5 r 0.","7 ÷ 8: 70 ÷ 8 = 8 والباقي 6؛ 60 ÷ 8 = 7 والباقي 4؛ 40 ÷ 8 = 5 والباقي 0."],["So 7/8 = 0.875 terminates.","إذن 7/8 = 0.875 عدد منتهٍ."]]}
+];
+Q.forEach(q=>q.o.forEach(o=>{if(o[1]===o[0])o[1]="";o[0]=`<span class="oe">${o[0]}</span>`;}));
+
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${ok?ICON.check+" Correct!":ICON.cross+" Not quite."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${ok?"إجابة صحيحة!":"ليست صحيحة."} ${q.ex[1]}</div>`+solHTML(q.sol);solBind(fb);
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Scientist";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You can find square roots and cube roots!","رائع! أنت تجد الجذور التربيعية والتكعيبية!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the worked examples, then retry.","محاولة جيدة! أعد تشغيل الحلول خطوة بخطوة ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Math · Grade 8 · Unit 2 · Lesson 17 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
