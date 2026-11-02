@@ -1284,7 +1284,7 @@ function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){e
   const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
 
 /* ---------- keep math left-to-right inside Arabic text ---------- */
-const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹ =+,./≠]*[0-9A-Za-z()\[\]½²³⁴¹√∛])?/g;
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛ =+,./≠]*[0-9A-Za-z()\[\]½²³⁴¹√∛])?/g;
 function fixAr(h){
   h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
   const parts=h.split(/(<[^>]+>)/);let inM=0;
