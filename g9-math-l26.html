@@ -1,0 +1,1707 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c1620">
+<title>Properties of Real Numbers – Math G9 American Lesson 1-3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(12,22,32,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#132532;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#182c3a;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#3a2326;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#2e2a1c;border:1px solid #5a4a26;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#132532;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#132532;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #3a4a55}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#123a3a;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#182c3a;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#132532;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#123a3a}
+.opt.right{border-color:var(--teal);background:#123a3a}
+.opt.wrong{border-color:var(--terra);background:#3a2326}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#182c3a;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#132532;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#123a3a;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#3a2326;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#132532;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#132532}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#3a4a55}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #132532}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#132532;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#132532}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #132532;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#2e2a1c}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#132532;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#123a3a;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#123a3a}
+.pieces button.no{border-color:var(--terra);background:#3a2326;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#3a4a55}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#123a3a;border-left:5px solid var(--teal)}
+.feedback.no{background:#3a2326;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#132532;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#132532;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#132532;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#132532;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#123a3a}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#2e2a1c}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#132532;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#3a2326}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#2e2a1c;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#132532;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#123a3a}.sc.diff{border-color:var(--terra);background:#3a2326}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#123a3a}.rchips button.wrong{border-color:var(--terra);background:#3a2326}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#123a3a}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#123a3a}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#3a2326}
+.ml.done,.mr.done{border-color:var(--teal);background:#123a3a;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#123a3a}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#2e2a1c;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#2e2a1c;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#132532;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#123a3a}
+.eline.bad{border-color:var(--terra);background:#3a2326;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#132532;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#132532 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#123a3a}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#3a2326}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#2e2a1c}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#132532;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#2e2a1c;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#123a3a}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#3a2326}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#2e2a1c;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#123a3a}.mcard2.wrong{border-color:var(--terra);background:#3a2326}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #132532;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#123a3a}.idc.wrong{border-color:var(--terra);background:#3a2326}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#123a3a}.claim2.wrong{border-color:var(--terra);background:#3a2326}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#2e2a1c}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#123a3a}.ct.no{border-color:var(--terra);background:#3a2326}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#2e2a1c}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#2a2440;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#182c3a;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#132532;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#123a3a}.wuq .wo button.wrong{border-color:var(--terra);background:#3a2326}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#132532;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#182c3a;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#132532;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#3a2326}.pick button.right{border-color:var(--teal);background:#123a3a}
+.why{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#123a3a}.why .wb button.wrong{border-color:var(--terra);background:#3a2326}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#132532;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #132532;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#3a4a55;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#132532;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#132532}
+.tchip.lost{border-color:var(--terra);background:#3a2326}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#3a2326}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#123a3a}.pickph.wrong{border-color:var(--terra);background:#3a2326}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#123a3a}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#182c3a}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#123a3a;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#182c3a;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#132532;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#2e2a1c;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#182c3a;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#132532}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#123a3a;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#132532;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#132532;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#123a3a;border-color:var(--teal)}.tile.g1{background:#3a2326;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#182c3a;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#132532;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#132532;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#132532;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#132532;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#132532;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#132532;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#132532;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#182c3a}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#132532}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#182c3a}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#132532}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#182c3a;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+.ov{text-decoration:overline;text-decoration-thickness:2px;text-underline-offset:0}
+.solbox{margin-top:10px}
+.solbtn{display:inline-flex;align-items:center;gap:6px;border:2px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:6px 14px;font-weight:700;font-size:14px}
+.solbtn .ic{width:18px;height:18px}
+.solbtn .ar{display:inline;font-weight:600;font-size:13px}
+.solbtn.on{background:var(--clay);color:#fff;border-color:var(--clay)}
+.solsteps{margin:10px 0 0;padding:10px 12px 10px 34px;background:#132532;border:1px dashed #5a4a26;border-radius:12px;text-align:left;font-size:14.5px;line-height:1.45}
+.solsteps li{margin:6px 0;animation:fadein .3s}
+.solsteps li .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px;margin-top:2px}
+.solsteps[hidden]{display:none}
+.feedback .solbox{margin-top:12px}
+.nchips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.nchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 14px;font-family:Cambria,"Times New Roman",serif;font-size:18px;font-weight:700;color:var(--ink);min-width:58px}
+.nchips button.done{background:#123a3a;border-color:#BFE3E0}
+.nchips button.on{border-color:var(--terra);background:#3a2326}
+#setSvg ellipse,#setSvg rect{transition:filter .3s,stroke-width .3s}
+#setSvg .lit{stroke-width:6;filter:drop-shadow(0 0 8px rgba(242,196,109,.6))}
+#setDots text{font-weight:700;opacity:.75}
+#setDots text.now{fill:#f2c46d;opacity:1;font-size:20px}
+.dmq{font-size:20px;font-weight:800;margin-bottom:8px;overflow-x:auto}
+.dmq .fr{font-size:.8em}
+.dmlog{display:grid;gap:4px;font-size:14.5px;max-height:260px;overflow:auto}
+.dmlog>div{background:#182c3a;border-radius:10px;padding:5px 10px;animation:fadein .3s}
+.dmlog .ar{display:inline;color:var(--muted);font-size:13px;margin-left:6px}
+.tapes{display:grid;gap:8px;overflow-x:auto;padding:4px 0}
+.tape{display:flex;align-items:center;font-family:Consolas,"Courier New",monospace;font-size:20px;direction:ltr}
+.tape .tn{width:66px;font-weight:700;color:var(--clay);font-size:16px;text-align:right;padding-right:8px;flex:none}
+.tape .ti{width:44px;text-align:right;font-weight:700;flex:none}
+.tape .tp{width:12px;text-align:center;font-weight:700;flex:none}
+.tape .td{width:22px;text-align:center;border-radius:5px;flex:none}
+.tape .td.ok{background:rgba(124,194,189,.28);color:#c9f3ee}
+.tape .td.no{background:rgba(239,154,131,.32);color:#ffd9cf}
+.tape .te{padding-left:4px;color:var(--muted)}
+@media (max-width:420px){.tape{font-size:16px}.tape .td{width:16px}.tape .tn{width:56px;font-size:14px}.tape .ti{width:36px}}
+.solwrap{margin-top:6px}
+.idc .mb.two{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb button .fr,.opt .fr{font-size:.95em}
+.fbig .fr{font-size:.9em}
+.opt span.ov{display:inline!important;margin:0!important}
+.opt span.m{display:inline-block!important}
+.opt span.fr{display:inline-flex!important}
+.opt .fr>span{display:block!important}
+@media (max-width:420px){.tape .tn{width:64px;font-size:13px;white-space:nowrap}}
+@media (max-width:700px){.hero{background:#0f1e29}.hero .herotxt{position:relative;padding:4px 16px 14px;background:none}}
+
+.rad{border-top:2px solid currentColor;padding:0 2px;margin-left:1px;display:inline-block;line-height:1.15}
+.rad .fr{font-size:.9em}
+.rtab{display:grid;gap:6px;margin:10px 0;overflow-x:auto}
+.rrow{display:grid;grid-template-columns:72px repeat(8,1fr);gap:3px}
+.rrow .rh{font-size:12px;line-height:1.2;font-weight:700;color:var(--clay);align-self:center}
+.rrow .rv,.rrow button{border-radius:8px;padding:8px 0;text-align:center;font-weight:700;font-size:15px;font-family:Cambria,"Times New Roman",serif}
+.rrow .rv{background:rgba(124,194,189,.16);color:var(--ink)}
+.rrow button{border:2px dashed rgba(242,196,109,.5);background:none;color:#f2c46d}
+.rrow button.on{border-style:solid;background:rgba(242,196,109,.18)}
+.bigeq{font-size:24px;font-weight:800;text-align:center;margin:10px 0}
+.idc .mb.stack{display:grid;grid-template-columns:1fr;gap:6px}
+.idc .mb.stack button{text-align:left;padding:8px 10px}
+.digrace{display:grid;gap:10px;overflow-x:auto}
+.drrow{display:grid;grid-template-columns:44px 1fr;gap:4px 8px;align-items:center}
+.drn{font-family:Cambria,"Times New Roman",serif;font-size:20px;font-weight:700;color:#f2c46d;text-align:right}
+.drd{font-family:Consolas,"Courier New",monospace;font-size:17px;letter-spacing:1px;word-break:break-all;direction:ltr}
+.drd .c0{color:#7cc2bd}.drd .c1{color:#c9f3ee;text-decoration:underline;text-decoration-color:rgba(124,194,189,.6)}
+.drd .x{color:#f1d9a6}
+.drt{grid-column:2;font-size:12.5px;font-weight:700}
+.drt.q{color:#7cc2bd}.drt.i{color:#f2c46d}
+.clnum{font-size:30px;font-weight:800;text-align:center;margin:4px 0 10px;color:#f2c46d}
+.clline{background:rgba(124,194,189,.08);border-radius:12px;padding:8px 10px;margin:6px 0;font-size:14.5px}
+.clline .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px}
+.clline small{display:block;color:var(--muted);margin-top:4px}
+.clline.ok{border-left:4px solid #7cc2bd}
+.clline.now{border:1px dashed rgba(242,196,109,.6)}
+.clline .btnrow{margin-top:8px}
+.clsets{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.clsets span{border:1px solid var(--line);border-radius:10px;padding:5px 10px;font-weight:700;font-size:13.5px;color:var(--muted)}
+.clsets span small{display:block;font-weight:500;font-size:11.5px}
+.clsets span.on{background:rgba(124,194,189,.25);color:#f1f6f5;border-color:#7cc2bd}
+#vnSvg [data-s]{cursor:pointer}
+#vnSvg [data-s]:hover{filter:brightness(1.25)}
+.sqtab{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px;margin-bottom:8px;font-family:Cambria,"Times New Roman",serif;font-size:16px}
+.sqtab div{background:rgba(124,194,189,.10);border-radius:8px;padding:6px 8px;text-align:center}
+.nchips button.wrongb{border-color:#ef9a83;opacity:.6}
+.tcrow{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px;font-family:Consolas,"Courier New",monospace;font-size:26px;direction:ltr;margin:6px 0 12px}
+.tcn{font-family:Cambria,"Times New Roman",serif;color:#f2c46d;margin-right:6px}
+.tck{color:#f1f6f5;font-weight:700;border-right:3px dashed #f2c46d;padding-right:4px}
+.tcx{color:#ef9a83;text-decoration:line-through;opacity:.8}
+.tccmp{display:grid;gap:6px;font-size:15px}
+.tccmp>div{background:rgba(124,194,189,.08);border-radius:10px;padding:6px 10px}
+.tccmp .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px}
+.tccmp .same{border-left:4px solid #7cc2bd}.tccmp .diff{border-left:4px solid #f2c46d}
+.seg button small{display:block;font-weight:500;font-size:11.5px;opacity:.85}
+.rrow .rv.gold{background:rgba(242,196,109,.18);color:#f2c46d}
+.dcards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.dcards button{border:2px solid var(--line);background:rgba(19,37,50,.8);border-radius:14px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink)}
+.dcards .df{font-family:Cambria,"Times New Roman",serif;font-size:24px;font-weight:700;color:#f2c46d}
+.dcards .dd{font-size:18px;font-weight:700;color:var(--muted)}
+.dcards button.on{border-color:#7cc2bd}.dcards button.on .dd{color:#7cc2bd}
+.dtab{width:100%;border-collapse:collapse;font-size:15px}
+.dtab th,.dtab td{border-bottom:1px solid var(--line);padding:8px;text-align:center}
+.dtab th{color:#f2c46d;font-size:13px}
+
+.tlegend{display:flex;gap:16px;justify-content:center;font-size:13px;color:var(--muted);margin-top:6px}
+.tlegend i{display:inline-block;vertical-align:middle;margin-right:5px;border-radius:3px}
+.tlegend .tx{width:10px;height:18px;background:rgba(124,194,189,.35);border:1.5px solid #7cc2bd}
+.tlegend .t1{width:12px;height:12px;background:rgba(242,196,109,.3);border:1.5px solid #f2c46d}
+.monoout{white-space:pre-line}
+#plH{width:100%;margin-top:8px;accent-color:#f2c46d}
+.stepper .seg{flex-wrap:wrap}
+
+.eqbox{font-family:Cambria,"Times New Roman",serif;font-size:22px;font-weight:700;text-align:center;direction:ltr;padding:12px 6px;margin:8px 0;border:1px dashed rgba(242,196,109,.45);border-radius:12px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.eqbox .eqp{color:#f2c46d;animation:fadein .3s}
+.eqbox .eqq{color:var(--muted);opacity:.6}
+.wchips button{font-family:'Readex Pro',system-ui,sans-serif;font-size:15px;font-weight:600;text-align:left;display:flex;flex-direction:column;gap:2px}
+.wchips button small{font-weight:400;font-size:12.5px;color:var(--muted);direction:rtl}
+.wchips button.done{opacity:.45}
+#muS,#tkS{width:100%;margin-top:8px;accent-color:#f2c46d}
+
+.bins{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.bin{border:1px dashed var(--line);border-radius:12px;padding:8px;min-height:64px}
+.bin b{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.bin.bx{border-color:rgba(124,194,189,.5)}.bin.bn{border-color:rgba(242,196,109,.5)}
+.tm{display:inline-block;font-family:Cambria,"Times New Roman",serif;font-weight:700;padding:2px 6px;border-radius:8px;direction:ltr}
+.tm.tx{color:#7cc2bd;background:rgba(124,194,189,.15)}.tm.tn{color:#f2c46d;background:rgba(242,196,109,.15)}
+.tm.now{outline:2px solid #f2c46d;box-shadow:0 0 14px rgba(242,196,109,.5)}
+.plan{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.plan span{flex:1 1 90px;text-align:center;font-size:13px;font-weight:600;padding:6px 4px;border-radius:10px;border:1px solid var(--line);color:var(--muted)}
+.plan span small{display:block;font-weight:400;font-size:12px}
+.plan span.on{background:#f2c46d;color:#08201f;border-color:#f2c46d}.plan span.on small{color:#08201f}
+.plan span.done{background:rgba(124,194,189,.2);color:var(--ink)}
+#pmX{width:100%;margin-top:8px;accent-color:#f2c46d}
+
+.tlegend .tl{width:12px;height:12px;background:rgba(239,154,131,.45);border:1.5px solid #ef9a83}
+.msel{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.msel button{border:2px solid var(--line);background:rgba(19,37,50,.8);color:var(--ink);border-radius:12px;padding:10px 6px;font-size:16px;font-family:Cambria,"Times New Roman",serif;font-weight:700}
+.msel button.on{border-color:#f2c46d;background:rgba(242,196,109,.15)}
+.msel button.right{border-color:#7cc2bd;background:rgba(124,194,189,.25)}
+.msel button.wrong{border-color:#ef9a83;background:rgba(239,154,131,.22)}
+@media (max-width:420px){.msel{grid-template-columns:1fr}}
+.rtab{table-layout:fixed}
+.rtab td:first-child{font-size:12.5px;hyphens:manual}
+.rc{min-width:0;width:100%;white-space:normal}
+
+table.rtab{display:table;width:100%;border-collapse:collapse;table-layout:fixed;margin:8px 0}
+table.rtab th,table.rtab td{border-bottom:1px solid var(--line);padding:6px 3px;text-align:center;font-size:13px;overflow-wrap:anywhere}
+table.rtab th{color:#f2c46d;font-size:12.5px}
+table.rtab .rc{background:rgba(242,196,109,.12)!important;color:var(--ink)!important;border:2px dashed #f2c46d!important;width:100%;min-width:0;padding:5px 2px;font-size:12.5px;white-space:normal}
+table.rtab .rc.right{background:rgba(124,194,189,.25)!important;border:2px solid #7cc2bd!important}
+table.rtab .rc.wrong{background:rgba(239,154,131,.22)!important;border:2px solid #ef9a83!important}
+table.rtab .rc{padding:5px 1px!important;font-size:12px!important;overflow-wrap:normal;word-break:normal;line-height:1.25}
+table.rtab col:first-child{width:22%!important}
+.bustep>div{flex:1 1 150px;justify-content:space-between}
+.bustep button{width:44px!important;height:44px!important;border-radius:50%!important;border:2px solid #7cc2bd!important;background:rgba(124,194,189,.18)!important;color:#f1f6f5!important;font-size:24px!important;font-weight:700;padding:0!important;line-height:1}
+.bustep{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.bustep>div{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:6px 12px}
+.bustep b{font-size:13px;color:var(--muted);font-weight:600}
+.bustep span{min-width:34px;text-align:center;font-size:24px;font-weight:700;color:#f2c46d;font-family:Cambria,serif}
+#e1X,#e2X,#whX{width:100%;margin-top:8px;accent-color:#f2c46d}
+/* ---- lesson 1-1 widgets ---- */
+.pml{display:grid;gap:8px;margin:10px 0}
+.pml .pmr{display:flex;flex-wrap:wrap;align-items:flex-start;gap:12px;width:100%;text-align:left;background:rgba(19,37,50,.75)!important;border:1.5px solid var(--line)!important;border-radius:14px;padding:10px 12px;color:var(--ink)!important;font:inherit;cursor:pointer}
+.pml .pmr .lt{min-width:46px;font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:700;color:#f2c46d;letter-spacing:.04em}
+.pml .pmr .sy{min-width:52px;font-family:Cambria,'Times New Roman',serif;font-size:19px;color:#7cc2bd}
+.pml .pmr .nm{flex:1;font-weight:700;font-size:15px}
+.pml .pmr .nm small{display:block;font-weight:400;color:var(--muted)}
+.pml .pmr .ex{display:none;font-weight:400;margin-top:6px}
+.pml .pmr .ex>span{display:block}
+.pml .pmr .exm{display:none;flex-basis:100%;padding-left:58px;line-height:1.6;font-family:Cambria,'Times New Roman',serif;font-size:18px;margin-top:4px;direction:ltr;unicode-bidi:isolate}
+.pml .pmr .exm mark{background:rgba(242,196,109,.3);color:#f2c46d;border-radius:4px;padding:0 3px}
+.pml .pmr.on .ex{display:block}
+.pml .pmr.on .exm{display:block}
+.pml .pmr.on,.pml .pmr.lit{border-color:#f2c46d!important;background:rgba(242,196,109,.13)!important}
+.pml.mini .pmr{padding:8px 10px;cursor:default}
+.pml.mini .pmr .lt{font-size:18px}
+.pmexpr{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:5px;padding:14px 4px 10px;font-family:Cambria,'Times New Roman',serif;font-size:28px;direction:ltr}
+.pmexpr .br{color:#f2c46d}
+.pmexpr sup{align-self:flex-start;font-size:inherit}
+.pmexpr button.pmop{min-width:42px;min-height:42px;padding:0 6px;border-radius:12px;border:1.5px solid #7cc2bd!important;background:rgba(124,194,189,.16)!important;color:var(--ink)!important;font-family:inherit;font-size:24px;cursor:pointer}
+.pmexpr sup button.pmop{min-width:32px;min-height:32px;font-size:17px;border-color:#f2c46d!important;background:rgba(242,196,109,.16)!important}
+.pmexpr button.pmop.bad{border-color:#ef9a83!important;background:rgba(239,154,131,.28)!important}
+.pmlog{font-family:Cambria,'Times New Roman',serif;font-size:19px;direction:ltr;text-align:center;color:var(--muted);line-height:1.6}
+.pmlog>div:last-child{color:#f2c46d;font-weight:700}
+.pmlog .pq{display:inline-block;width:22px;color:#7cc2bd}
+.pmlog .und{color:#ef9a83}
+#labPick button{font-family:Cambria,'Times New Roman',serif;direction:ltr}
+.mstab td{font-family:Cambria,'Times New Roman',serif;font-size:17px;line-height:1.7;text-align:center;vertical-align:top}
+.mstab th{text-align:center}
+.pmlog>div>span:not(.pq){margin:0 2px}.pmlog sup{font-size:.7em}
+/* ---- lesson 1-2 widgets ---- */
+.bldout{min-height:52px;font-size:26px;text-align:center;font-family:Cambria,'Times New Roman',serif;direction:ltr}
+.bldout .ph{font-size:13px;color:var(--muted);font-family:'Readex Pro',sans-serif}
+#bdTiles button{font-family:Cambria,'Times New Roman',serif;font-size:22px;min-width:52px;min-height:46px}
+.tmrow{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:12px 0;direction:ltr}
+.tmrow button{font-family:Cambria,'Times New Roman',serif;font-size:26px;min-width:64px;min-height:52px;border-radius:12px;border:1.5px solid var(--line)!important;background:rgba(19,37,50,.8)!important;color:var(--ink)!important;cursor:pointer}
+.tmrow button.kx{border-color:#7cc2bd!important;background:rgba(124,194,189,.22)!important}
+.tmrow button.kc{border-color:#f2c46d!important;background:rgba(242,196,109,.2)!important}
+.kwgrid{display:grid;gap:8px;margin:10px 0}
+.kw{display:grid;grid-template-columns:44px 1fr;column-gap:10px;align-items:center;background:rgba(19,37,50,.75);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+.kw b{grid-row:span 2;font-family:Cambria,serif;font-size:26px;color:#f2c46d;text-align:center}
+.kw span{font-size:14px}
+.phr{display:grid;gap:8px;margin:10px 0}
+@media(min-width:700px){.phr{grid-template-columns:1fr 1fr}.kwgrid{grid-template-columns:1fr 1fr}}
+.phb{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:rgba(19,37,50,.75)!important;border:1.5px solid var(--line)!important;border-radius:12px;padding:10px 12px;color:var(--ink)!important;font:inherit;cursor:pointer}
+.phb .pn{min-width:22px;color:#7cc2bd;font-weight:700}
+.phb .pt{flex:1}
+.phb mark{background:rgba(242,196,109,.25);color:#f2c46d;border-radius:4px;padding:0 3px}
+.phb .pa{display:none;font-family:Cambria,serif;font-size:20px;color:#f2c46d;direction:ltr}
+.phb .tapme{font-size:11px;color:var(--muted)}
+.phb.on{border-color:#f2c46d!important}
+.phb.on .pa{display:block}.phb.on .tapme{display:none}
+.slab{display:block;margin-top:8px;font-weight:700;color:#f2c46d}
+.agout,#mfOut,#stOut,#wcOut{font-size:16px;line-height:1.7;text-align:left;direction:ltr}
+.agout b{color:#7cc2bd;font-weight:600}
+.wcg{display:flex;gap:8px;margin:10px 0}
+.wcg button{flex:1;min-height:64px;border-radius:12px;border:1.5px solid var(--line)!important;background:rgba(19,37,50,.8)!important;color:var(--ink)!important;font:inherit;font-size:13px;cursor:pointer}
+.wcg button b{display:block;font-size:24px}
+.wcg button.rW b{color:#7cc2bd}.wcg button.rT b{color:#f2c46d}.wcg button.rL b{color:#ef9a83}
+.dim{color:var(--muted)}
+.sttab td:last-child{text-align:right;font-family:Cambria,serif}
+/* ---- lesson 1-3 widgets ---- */
+.cmpout{font-size:18px;line-height:1.7;text-align:center;direction:ltr}
+.okc{color:#7cc2bd}.noc{color:#ef9a83}
+.opseg button{font-family:Cambria,serif;font-size:22px}
+#imPick button{font-family:Cambria,serif;font-size:18px;direction:ltr}
+#flips .fbig{font-size:22px;line-height:1.2}
+:root{--sand:#0c1620;--paper:#132532;--ink:#f1f6f5;--muted:#9fb3b5;--terra:#ef9a83;--teal:#7cc2bd;--teal-d:#4fa39c;
+--ochre:#f2c46d;--clay:#f2c46d;--stone:#6f8689;--line:rgba(124,194,189,.22);--sky:#123a3a;--cream:#1d2f3b;color-scheme:dark}
+body{font-family:'Readex Pro',system-ui,-apple-system,'Segoe UI',sans-serif;background:radial-gradient(1200px 600px at 50% -10%,rgba(79,163,156,.18),transparent 60%),#0c1620;background-attachment:fixed}
+h1,h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:.01em}
+.ar,[lang=ar]{font-family:'Readex Pro','Geeza Pro','Noto Naskh Arabic',Tahoma,sans-serif}
+.card,.bubble,.idc,.key,.msg,.cert{box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card{background:rgba(19,37,50,.72);border-color:var(--line);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.btn{background:linear-gradient(180deg,#8fd0ca,#6cb7b1);color:#08201f;box-shadow:0 3px 0 #3d8a84,0 8px 24px rgba(124,194,189,.25)}
+.btn.alt{background:rgba(19,37,50,.8);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn:disabled{opacity:.45}
+.nav{background:linear-gradient(rgba(12,22,32,0),rgba(12,22,32,.94) 40%)}
+.kicker{background:rgba(242,196,109,.14);color:#f2c46d}
+.kicker.light{background:rgba(12,22,32,.55);color:#f2c46d;border:1px solid rgba(242,196,109,.35)}
+.hsub{color:#f2c46d}
+.bubble{background:#132532;border-color:#4fa39c}
+.bubble .who{color:#7cc2bd}
+.key{border-left-color:#f2c46d}
+.msg{border-left-color:#7cc2bd}
+.msg.warn{border-left-color:#ef9a83}
+.face.back{background:linear-gradient(160deg,#2b7d77,#1d5c58);color:#f1f6f5}
+.seg button.on,.seg button[aria-pressed=true]{background:#7cc2bd;color:#08201f}
+.namebox{background:#0f1e29;color:var(--ink);border-color:var(--line)}
+.m,.mi{color:inherit}
+.fline .fn{background:#7cc2bd;color:#08201f}
+.solbtn.on{color:#08201f}
+.score{color:#f2c46d}
+.prog{background:rgba(124,194,189,.15)}
+.ibtn{background:rgba(19,37,50,.8);color:var(--ink);border-color:var(--line)}
+.hero{box-shadow:0 20px 50px rgba(0,0,0,.35);border:1px solid var(--line)}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Math · Grade 9 · Unit 1<small id="curLabel">Properties of Real Numbers</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="Two bars: a then b, and b then a, have the same length"><defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c1620"/><stop offset="1" stop-color="#173041"/></linearGradient><pattern id="hg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#7cc2bd" stroke-opacity=".07"/></pattern></defs><rect width="640" height="360" fill="url(#hb)"/><rect width="640" height="360" fill="url(#hg)"/><rect x="120" y="36" width="250" height="46" rx="10" fill="rgba(124,194,189,.3)" stroke="#7cc2bd" stroke-width="2"/><text x="245.0" y="67" font-size="26" font-style="italic" fill="#f1f6f5" text-anchor="middle" font-family="Cambria,Times New Roman,serif">a</text><rect x="376" y="36" width="140" height="46" rx="10" fill="rgba(242,196,109,.32)" stroke="#f2c46d" stroke-width="2"/><text x="446.0" y="67" font-size="26" font-style="italic" fill="#f1f6f5" text-anchor="middle" font-family="Cambria,Times New Roman,serif">b</text><rect x="120" y="98" width="140" height="46" rx="10" fill="rgba(242,196,109,.32)" stroke="#f2c46d" stroke-width="2"/><text x="190.0" y="129" font-size="26" font-style="italic" fill="#f1f6f5" text-anchor="middle" font-family="Cambria,Times New Roman,serif">b</text><rect x="266" y="98" width="250" height="46" rx="10" fill="rgba(124,194,189,.3)" stroke="#7cc2bd" stroke-width="2"/><text x="391.0" y="129" font-size="26" font-style="italic" fill="#f1f6f5" text-anchor="middle" font-family="Cambria,Times New Roman,serif">a</text><path d="M120 160 V172 H516 V160" fill="none" stroke="#9fb3b5" stroke-width="2"/><text x="318" y="208" font-size="34" fill="#f1f6f5" text-anchor="middle" font-family="Cambria,Times New Roman,serif"><tspan font-style="italic">a</tspan> + <tspan font-style="italic">b</tspan> = <tspan font-style="italic">b</tspan> + <tspan font-style="italic">a</tspan></text><text x="560" y="70" font-size="22" fill="#f2c46d" font-family="Cambria,serif">+0</text><text x="566" y="104" font-size="22" fill="#7cc2bd" font-family="Cambria,serif">×1</text><text x="560" y="138" font-size="22" fill="#f2c46d" font-family="Cambria,serif">−a</text></svg>
+    <div class="herotxt"><span class="kicker light">Math · Grade 9 · Unit 1 · Lesson 1-3</span><h1>Properties of Real Numbers</h1><p class="ar">خصائص الأعداد الحقيقية</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="happy"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Some rules work for <b>every</b> real number, every time. They are called <b>properties</b>. They let you rearrange and simplify without changing the value.</p><p class="ar">بعض القواعد تنجح مع <b>كل</b> عدد حقيقي وفي كل مرة، وتُسمّى <b>خصائص</b>. وهي تسمح لك بإعادة الترتيب والتبسيط من دون أن تتغير القيمة.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ identify the commutative and associative properties<br>✔ use the identity and inverse properties and the property of zero<br>✔ name the properties of equality and use properties to simplify</p><p class="ar"><b>سأتعلم اليوم أن:</b><br>✔ أتعرّف على خاصيتي الإبدال والتجميع<br>✔ أستخدم خصائص العنصر المحايد والنظير وخاصية الضرب في صفر<br>✔ أسمّي خصائص المساواة وأستخدم الخصائص في التبسيط</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic. Every question has a <b>Show solution</b> button.</p><p class="ar"><b>نصيحة:</b> اضغط <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمة. ولكل سؤال زر <b>طريقة الحل</b>.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up · Lessons 1-1 and 1-2</span>
+  <h2>What do you remember?</h2>
+  <p class="hsub ar">ماذا تتذكر؟</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Stuck? Tap <b>Show solution</b>.</p><p class="ar">مجرد تسخين، لا شيء يُحسب! وإن احترت، اضغط <b>طريقة الحل</b>.</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+</section>
+
+<section class="screen" data-title="Always or never?">
+  <span class="kicker">Launch · Always, sometimes or never?</span>
+  <h2>Is the claim always true?</h2>
+  <p class="hsub ar">هل الادعاء صحيح دائمًا؟</p>
+  <div class="wu needjs" id="clBox"></div>
+  <div class="card">
+    <div class="bi"><p class="en"><b>Claim 3:</b> <span class="m">a − b = b − a</span>. Move a and b. When is it true?</p><p class="ar"><b>الادعاء 3:</b> <span class="m">a − b = b − a</span>. حرّك a و b. متى يكون صحيحًا؟</p></div>
+    <label class="slab" id="clAl">a = 7</label><input type="range" id="clA" min="0" max="12" value="7" aria-label="a">
+    <label class="slab" id="clBl">b = 3</label><input type="range" id="clB" min="0" max="12" value="3" aria-label="b">
+    <div class="monoout cmpout" id="clOut"></div>
+  </div>
+</section>
+
+<section class="screen" data-title="Order and grouping">
+  <span class="kicker">Lab · Commutative and associative</span>
+  <h2>Swap the order, move the brackets</h2>
+  <p class="hsub ar">بدّل الترتيب، وحرّك الأقواس</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>Commutative:</b> the <b>order</b> can change: a + b = b + a, ab = ba. <b>Associative:</b> the <b>grouping</b> can change: (a + b) + c = a + (b + c), (ab)c = a(bc).</p><p class="ar"><b>الإبدال:</b> يمكن تغيير <b>الترتيب</b>: <span class="m">a + b = b + a</span> و <span class="m">ab = ba</span>. <b>التجميع:</b> يمكن تغيير <b>طريقة التجميع</b>: <span class="m">(a + b) + c = a + (b + c)</span> و <span class="m">(ab)c = a(bc)</span>.</p></div>
+  <div class="seg needjs" id="laP"><button data-v="0" class="on">Commutative<small>الإبدال</small></button><button data-v="1">Associative<small>التجميع</small></button></div>
+  <div class="seg needjs opseg" id="laO"><button data-v="0" class="on">+</button><button data-v="1">×</button><button data-v="2">−</button><button data-v="3">÷</button></div>
+  <div class="bench">
+    <div class="card">
+      <svg id="laSvg" viewBox="0 0 360 150" style="display:block;width:100%" role="img" aria-label="Picture of both sides"></svg>
+      <div class="monoout cmpout" id="laOut"></div>
+    </div>
+    <div class="card">
+      <label class="slab" id="laAl">a = 6</label><input type="range" id="laA" min="1" max="12" value="6" aria-label="a">
+      <label class="slab" id="laBl">b = 3</label><input type="range" id="laB" min="1" max="12" value="3" aria-label="b">
+      <label class="slab" id="laCl">c = 2</label><input type="range" id="laC" min="1" max="12" value="2" aria-label="c">
+      <div class="msg bi needjs" id="laMsg" style="display:none"></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen" data-title="Identity and inverse">
+  <span class="kicker">Lab · Identity, inverse and zero</span>
+  <h2>The number machine</h2>
+  <p class="hsub ar">آلة الأعداد</p>
+  <div class="bi"><p class="en">Choose a number a. Then tap a property to see what it does.</p><p class="ar">اختر عددًا a، ثم اضغط على خاصية لترى ماذا تفعل.</p></div>
+  <div class="bench">
+    <div class="card">
+      <label class="slab" id="imAl">a = 5</label><input type="range" id="imA" min="-6" max="6" value="5" aria-label="a">
+      <div class="nchips needjs" id="imPick"></div>
+      <svg id="imSvg" viewBox="0 0 360 90" style="display:block;width:100%" role="img" aria-label="Number line"></svg>
+      <div class="monoout bigeq" id="imOut"></div>
+    </div>
+    <div class="card"><div class="bi" id="imTxt"></div></div>
+  </div>
+</section>
+
+<section class="screen" data-title="Equality">
+  <span class="kicker">Learn · Properties of equality</span>
+  <h2>Reflexive, symmetric, transitive</h2>
+  <p class="hsub ar">الانعكاس والتماثل والتعدي</p>
+  <div class="seg needjs" id="eqSeg"><button data-v="0" class="on">Reflexive<small>الانعكاس</small></button><button data-v="1">Symmetric<small>التماثل</small></button><button data-v="2">Transitive<small>التعدي</small></button></div>
+  <div class="bench">
+    <div class="card"><svg id="eqSvg" viewBox="0 0 360 140" style="display:block;width:100%" role="img" aria-label="Diagram of the property"></svg></div>
+    <div class="card"><div class="bi" id="eqTxt"></div></div>
+  </div>
+</section>
+
+<section class="screen" data-title="Pair work">
+  <span class="kicker">Pair work · Identity or inverse?</span>
+  <h2>Tick the right property</h2>
+  <p class="hsub ar">اختر الخاصية الصحيحة</p>
+  <div class="wu needjs" id="pwBox"></div>
+</section>
+
+<section class="screen" data-title="Name the property">
+  <span class="kicker">Practice and present</span>
+  <h2>Name it and justify it</h2>
+  <p class="hsub ar">سمِّها وبرّرها</p>
+  <div class="wu needjs" id="npBox"></div>
+  <div class="card why" id="why1"></div>
+</section>
+
+<section class="screen" data-title="Simplify with properties">
+  <span class="kicker">Worked examples · Name every step</span>
+  <h2>Which property moves each step?</h2>
+  <p class="hsub ar">أي خاصية تنقلنا في كل خطوة؟</p>
+  <div class="fader" data-f="pr"></div>
+</section>
+
+<section class="screen" data-title="Complete it">
+  <span class="kicker">Individual work · Exit ticket</span>
+  <h2>Complete each equation</h2>
+  <p class="hsub ar">أكمل كل معادلة</p>
+  <div class="wu needjs" id="cpBox"></div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Check yourself</span>
+  <h2>Your turn: no score here</h2>
+  <p class="hsub ar">دورك: بدون درجات هنا</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Choose an answer. Then open <b>Show solution</b> to check every step.</p><p class="ar">اختر إجابة، ثم افتح <b>طريقة الحل</b> لتراجع كل خطوة.</p></div></div>
+  <div class="wu needjs" id="tryBox"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Great work! The final quiz has 10 questions: 8 on this lesson and 2 that review Lessons 1-1 and 1-2. A wrong answer gives you a hint first, and after you answer you can open the full solution.</p><p class="ar">عمل رائع! في الاختبار النهائي 10 أسئلة: 8 على هذا الدرس وسؤالان لمراجعة الدرسين 1-1 و 1-2. الإجابة الخاطئة تعطيك تلميحًا أولًا، وبعد أن تجيب يمكنك فتح طريقة الحل كاملة.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+</main>
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="usmath9_13_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"American · Grade 9"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛⅓⅔¼¾⅘](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛⅓⅔¼¾⅘ =+,./≠]*[0-9A-Za-z)\[\]½²³⁴¹√∛⅓⅔¼¾⅘])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t)||(inM&&/^<span/.test(t)))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+/* ---------- lesson helpers ---------- */
+const OV=d=>`<span class="ov">${d}</span>`;
+const OVN=(p,r)=>`<span class="m">${p}<span class="ov">${r}</span></span>`;
+/* solution box: steps = [[en, ar], ...] */
+function solHTML(steps){if(!steps||!steps.length)return "";
+  return `<div class="solbox"><button type="button" class="solbtn">${ICON.bulb} Show solution <span class="ar">طريقة الحل</span></button><ol class="solsteps" hidden>${steps.map(s=>`<li><span>${s[0]}</span><span class="ar">${s[1]}</span></li>`).join("")}</ol></div>`;}
+function solBind(root){root.querySelectorAll(".solbtn").forEach(b=>{if(b.dataset.b)return;b.dataset.b=1;b.onclick=e=>{e.stopPropagation();const ol=b.nextElementSibling,open=ol.hidden;ol.hidden=!open;b.classList.toggle("on",open);b.innerHTML=`${ICON.bulb} ${open?"Hide solution":"Show solution"} <span class="ar">${open?"إخفاء الحل":"طريقة الحل"}</span>`;};});}
+
+
+const SVGT=(x,y,t,o)=>`<text x="${x}" y="${y}" ${o||""}>${t}</text>`;
+const SANS='font-family="sans-serif"',SERIF='font-family="Cambria,serif"';
+const MA=s=>`<span class="m">${s}</span>`;
+const NN=v=>String(v).replace(/-/g,"−");
+const RD=v=>Number.isInteger(v)?NN(v):"≈ "+NN(Math.round(v*100)/100);
+const segBindX=(id,fn)=>$$(`#${id} button`).forEach(b=>b.onclick=()=>{$$(`#${id} button`).forEach(x=>x.classList.toggle("on",x===b));fn(+b.dataset.v);});
+
+/* ---------- worked examples that fade ---------- */
+const FD={
+ pr:[
+  {q:`Simplify <span class="m">5x + (3 + 2x)</span> and name the property used in each step.<br><span class="ar">بسّط <span class="m">5x + (3 + 2x)</span> وسمِّ الخاصية المستخدمة في كل خطوة.</span>`,s:[
+    ["5x + (3 + 2x)","Step 1: the expression.","الخطوة 1: العبارة."],
+    ["5x + (2x + 3)","Commutative Property of Addition: swap 3 and 2x.","خاصية الإبدال في الجمع: بدّل 3 و 2x."],
+    ["(5x + 2x) + 3","Associative Property of Addition: regroup.","خاصية التجميع في الجمع: أعد التجميع."],
+    ["7x + 3","Combine like terms: 5x + 2x = 7x.","اجمع الحدود المتشابهة: 5x + 2x = 7x."]],blank:0},
+  {q:`Simplify <span class="m">4 · (y · 5)</span>. Choose the last step.<br><span class="ar">بسّط <span class="m">4 · (y · 5)</span>. اختر الخطوة الأخيرة.</span>`,s:[
+    ["4 · (y · 5)","The expression.","العبارة."],
+    ["4 · (5 · y)","Commutative Property of Multiplication.","خاصية الإبدال في الضرب."],
+    ["(4 · 5) · y","Associative Property of Multiplication.","خاصية التجميع في الضرب."],
+    ["20y","Multiply: 4 · 5 = 20.","اضرب: 4 · 5 = 20."]],blank:1,
+   o:[["9y","20y","45y"]],h:[["4 · 5 = ?","4 · 5 = ؟"]]},
+  {q:`Simplify <span class="m">(6 + 3n) + (−6)</span>. Choose the last <b>two</b> steps.<br><span class="ar">بسّط <span class="m">(6 + 3n) + (−6)</span>. اختر آخر <b>خطوتين</b>.</span>`,s:[
+    ["(6 + 3n) + (−6)","The expression.","العبارة."],
+    ["(3n + 6) + (−6)","Commutative Property of Addition.","خاصية الإبدال في الجمع."],
+    ["3n + (6 + (−6))","Associative Property of Addition.","خاصية التجميع في الجمع."],
+    ["3n + 0","Additive Inverse: 6 + (−6) = 0.","النظير الجمعي: 6 + (−6) = 0."],
+    ["3n","Additive Identity: 3n + 0 = 3n.","العنصر المحايد الجمعي: 3n + 0 = 3n."]],blank:2,
+   o:[["3n + 12","3n + 0","3n − 0 − 6"],["3n","0","3n + 6"]],
+   h:[["A number plus its opposite is…","العدد مضافًا إليه معكوسه يساوي…"],["Adding 0 changes nothing.","إضافة 0 لا تغيّر شيئًا."]]}
+ ]
+};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+
+/* ---------- practice cards with a solution button ---------- */
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}${n[1]&&n[1]!==n[0]?`<small>${n[1]}</small>`:""}</button>`).join("")}</div><div class="mwhy"></div>${solHTML(c.sol)}</div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll(".mb button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll(".mb button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});
+  solBind(box);}
+
+
+/* ---------- warm-up ---------- */
+cardsQ($("#wuBox"),[
+ {t:["Lesson 1-1: Evaluate <span class=\"m\">10 − 2 × 3</span>.","الدرس 1-1: احسب قيمة <span class=\"m\">10 − 2 × 3</span>."],o:[["24"],["4"],["16"]],a:1,w:["× first: 2 × 3 = 6, then 10 − 6 = 4.","الضرب أولًا: 2 × 3 = 6، ثم 10 − 6 = 4."],h:["Multiply before you subtract.","اضرب قبل أن تطرح."],
+  sol:[["M: 2 × 3 = 6.","الضرب: 2 × 3 = 6."],["S: 10 − 6 = 4.","الطرح: 10 − 6 = 4."]]},
+ {t:["Lesson 1-2: What is the coefficient of x in <span class=\"m\">9 − 4x</span>?","الدرس 1-2: ما معامل x في <span class=\"m\">9 − 4x</span>؟"],o:[["−4"],["4"],["9"]],a:0,w:["The term is −4x, so the coefficient is −4.","الحد هو −4x، إذن المعامل −4."],h:["The term takes the sign in front of it.","الحد يأخذ الإشارة التي أمامه."],
+  sol:[["Terms: 9 and −4x.","الحدود: 9 و −4x."],["Coefficient of x: −4.","معامل x هو −4."]]},
+ {t:["Lesson 1-2: Evaluate <span class=\"m\">3a + 2</span> when <span class=\"m\">a = −2</span>.","الدرس 1-2: احسب قيمة <span class=\"m\">3a + 2</span> عندما <span class=\"m\">a = −2</span>."],o:[["8"],["4"],["−4"]],a:2,w:["3(−2) + 2 = −6 + 2 = −4.","3(−2) + 2 = −6 + 2 = −4."],h:["Substitute in parentheses: 3(−2).","عوّض بين قوسين: 3(−2)."],
+  sol:[["Substitute: 3(−2) + 2.","عوّض: 3(−2) + 2."],["M: 3(−2) = −6.","الضرب: 3(−2) = −6."],["A: −6 + 2 = −4.","الجمع: −6 + 2 = −4."]]}
+]);
+
+/* ---------- always / sometimes / never ---------- */
+const ASN=[["always true","صحيح دائمًا"],["sometimes true","صحيح أحيانًا"],["never true","غير صحيح أبدًا"]];
+cardsQ($("#clBox"),[
+ {t:["<b>Claim 1:</b> <span class=\"m\">(5 × 3) × 2 = 5 × (3 × 2)</span>","<b>الادعاء 1:</b> <span class=\"m\">(5 × 3) × 2 = 5 × (3 × 2)</span>"],o:ASN,a:0,w:["15 × 2 = 30 and 5 × 6 = 30. Changing the grouping in × never changes the product.","15 × 2 = 30 و 5 × 6 = 30. تغيير التجميع في الضرب لا يغيّر الناتج أبدًا."],h:["Work out both sides.","احسب الطرفين."],
+  sol:[["Left: 15 × 2 = 30.","الطرف الأيسر: 15 × 2 = 30."],["Right: 5 × 6 = 30.","الطرف الأيمن: 5 × 6 = 30."],["This is the Associative Property of Multiplication.","هذه خاصية التجميع في الضرب."]]},
+ {t:["<b>Claim 2:</b> <span class=\"m\">3(2 + 4) = 3(2) + 4</span>","<b>الادعاء 2:</b> <span class=\"m\">3(2 + 4) = 3(2) + 4</span>"],o:ASN,a:2,w:["3(6) = 18 but 6 + 4 = 10. The 3 must multiply BOTH numbers (you will meet this in Lesson 1-4).","3(6) = 18 لكن 6 + 4 = 10. يجب أن يضرب العدد 3 العددين كليهما (ستتعلم ذلك في الدرس 1-4)."],h:["Work out both sides.","احسب الطرفين."],
+  sol:[["Left: 3(6) = 18.","الطرف الأيسر: 3(6) = 18."],["Right: 6 + 4 = 10.","الطرف الأيمن: 6 + 4 = 10."],["18 ≠ 10, so the claim is false.","18 ≠ 10، إذن الادعاء خاطئ."]]},
+ {t:["<b>Claim 3:</b> <span class=\"m\">a − b = b − a</span> (use the sliders below)","<b>الادعاء 3:</b> <span class=\"m\">a − b = b − a</span> (استخدم المنزلقات بالأسفل)"],o:ASN,a:1,w:["It is true only when a = b. So subtraction is NOT commutative.","يكون صحيحًا فقط عندما a = b. إذن الطرح ليس إبداليًا."],h:["Try a = 7, b = 3. Then try a = 5, b = 5.","جرّب a = 7 و b = 3، ثم جرّب a = 5 و b = 5."],
+  sol:[["a = 7, b = 3: 7 − 3 = 4 but 3 − 7 = −4.","a = 7 و b = 3: 7 − 3 = 4 لكن 3 − 7 = −4."],["a = 5, b = 5: 0 = 0. True!","a = 5 و b = 5: 0 = 0. صحيح!"],["Sometimes true: only when a = b.","صحيح أحيانًا: فقط عندما a = b."]]}]);
+(function(){function draw(){const a=+$("#clA").value,b=+$("#clB").value,ok=a-b===b-a;$("#clAl").textContent=`a = ${a}`;$("#clBl").textContent=`b = ${b}`;
+  $("#clOut").innerHTML=`a − b = ${a} − ${b} = ${NN(a-b)}<br>b − a = ${b} − ${a} = ${NN(b-a)}<br><b class="${ok?"okc":"noc"}">${ok?"✓ equal: true when a = b":"✗ not equal"}</b>`;}
+  $("#clA").oninput=draw;$("#clB").oninput=draw;draw();})();
+
+/* ---------- order and grouping lab ---------- */
+(function(){let P=0,O=0;const SY=["+","×","−","÷"],F=[(x,y)=>x+y,(x,y)=>x*y,(x,y)=>x-y,(x,y)=>x/y];
+  const NM=[["Addition","الجمع"],["Multiplication","الضرب"],["Subtraction","الطرح"],["Division","القسمة"]];
+  function seg(x0,y,parts){let s="",x=x0;const u=Math.min(26,310/parts.reduce((t,p)=>t+p[0],0));parts.forEach(p=>{const w=p[0]*u;s+=`<rect x="${x}" y="${y}" width="${w-2}" height="30" rx="6" fill="${p[2]}" fill-opacity=".35" stroke="${p[2]}" stroke-width="1.6"/>`+SVGT(x+w/2-1,y+20,p[1],`font-size="13" fill="#f1f6f5" text-anchor="middle" ${SERIF}`);x+=w;});return s;}
+  function grid(x0,y0,r,c,cl){let s="",k=Math.min(16,120/Math.max(r,c));for(let i=0;i<r;i++)for(let j=0;j<c;j++)s+=`<rect x="${x0+j*k}" y="${y0+i*k}" width="${k-1.5}" height="${k-1.5}" rx="1.5" fill="${cl}" fill-opacity=".45"/>`;
+    return s+SVGT(x0+c*k/2,y0+r*k+14,`${r} × ${c}`,`font-size="12" fill="#f1f6f5" text-anchor="middle" ${SERIF}`);}
+  function draw(){const a=+$("#laA").value,b=+$("#laB").value,c=+$("#laC").value,f=F[O],s=SY[O];
+    $("#laAl").textContent=`a = ${a}`;$("#laBl").textContent=`b = ${b}`;$("#laCl").textContent=`c = ${c}`;$("#laCl").style.display=$("#laC").style.display=P?"":"none";
+    let L,R,Ls,Rs;if(!P){L=f(a,b);R=f(b,a);Ls=`${a} ${s} ${b}`;Rs=`${b} ${s} ${a}`;}else{L=f(f(a,b),c);R=f(a,f(b,c));Ls=`(${a} ${s} ${b}) ${s} ${c}`;Rs=`${a} ${s} (${b} ${s} ${c})`;}
+    const ok=Math.abs(L-R)<1e-9,T="#7cc2bd",G="#f2c46d",K="#ef9a83";let g="";
+    if(O===0){g=!P?seg(20,20,[[a,"a",T],[b,"b",G]])+seg(20,70,[[b,"b",G],[a,"a",T]]):seg(20,14,[[a,"a",T],[b,"b",G],[c,"c",K]])+seg(20,70,[[a,"a",T],[b,"b",G],[c,"c",K]]);
+      if(P){const u=Math.min(26,310/(a+b+c));g+=`<path d="M20 50V56H${20+(a+b)*u-2}V50" fill="none" stroke="#f1f6f5" stroke-width="1.5"/><path d="M${20+a*u} 104V110H${20+(a+b+c)*u-2}V104" fill="none" stroke="#f1f6f5" stroke-width="1.5"/>`;}
+      }
+    else if(O===1&&!P){g=grid(20,10,a,b,T)+grid(200,10,b,a,G);}
+    else{const lo=Math.min(0,L,R)-1,hi=Math.max(L,R,1)+1,X=v=>30+(v-lo)/(hi-lo)*300;g=`<line x1="30" y1="80" x2="330" y2="80" stroke="#9fb3b5" stroke-width="2"/><line x1="${X(0)}" y1="72" x2="${X(0)}" y2="88" stroke="#9fb3b5"/>`+SVGT(X(0),104,"0",`font-size="11" fill="#9fb3b5" text-anchor="middle" ${SANS}`)+
+      `<circle cx="${X(L)}" cy="80" r="8" fill="${T}"/>`+SVGT(X(L),58,"left "+RD(L),`font-size="12" fill="${T}" text-anchor="middle" ${SANS}`)+`<circle cx="${X(R)}" cy="80" r="${ok?4:8}" fill="${G}"/>`+SVGT(X(R),ok?40:128,"right "+RD(R),`font-size="12" fill="${G}" text-anchor="middle" ${SANS}`);}
+    $("#laSvg").innerHTML=g;
+    $("#laOut").innerHTML=`${Ls} = ${RD(L)}<br>${Rs} = ${RD(R)}<br><b class="${ok?"okc":"noc"}">${ok?"✓ equal":"✗ not equal"}</b>`;
+    const pn=P?["associative","التجميع"]:["commutative","الإبدال"];
+    if(O<2)setMsg($("#laMsg"),`${ICON.check} ${NM[O][0]} is <b>${pn[0]}</b>: try any numbers, the two sides are always equal.`,`${ICON.check} ${NM[O][1]} عملية تحقق <b>${pn[1]}</b>: جرّب أي أعداد، يتساوى الطرفان دائمًا.`);
+    else setMsg($("#laMsg"),`${ICON.cross} ${NM[O][0]} is <b>not</b> ${pn[0]}. One counterexample is enough to show it.`,`${ICON.cross} ${NM[O][1]} <b>لا</b> تحقق خاصية ${pn[1]}. ويكفي مثال مضاد واحد لإثبات ذلك.`,true);}
+  ["laA","laB","laC"].forEach(i=>$("#"+i).oninput=draw);segBindX("laP",v=>{P=v;draw();});segBindX("laO",v=>{O=v;draw();});draw();})();
+
+/* ---------- identity and inverse machine ---------- */
+(function(){let k=0;const OP=[
+  {b:"+ 0",f:a=>a,n:["Additive Identity","العنصر المحايد الجمعي"],r:["For any number a, a + 0 = a. Adding 0 keeps the number the same.","لأي عدد a يكون a + 0 = a. إضافة 0 تبقي العدد كما هو."],e:a=>`${NN(a)} + 0 = ${NN(a)}`},
+  {b:"× 1",f:a=>a,n:["Multiplicative Identity","العنصر المحايد الضربي"],r:["For any number a, a · 1 = a. Multiplying by 1 keeps the number the same.","لأي عدد a يكون a · 1 = a. الضرب في 1 يبقي العدد كما هو."],e:a=>`${NN(a)} × 1 = ${NN(a)}`},
+  {b:"+ (−a)",f:a=>0,n:["Additive Inverse","النظير الجمعي"],r:["For any number a, a + (−a) = 0. A number plus its opposite is 0.","لأي عدد a يكون a + (−a) = 0. العدد مضافًا إليه معكوسه يساوي 0."],e:a=>`${NN(a)} + (${NN(-a)}) = 0`},
+  {b:"× (1/a)",f:a=>a===0?null:1,n:["Multiplicative Inverse","النظير الضربي"],r:["For every a/b with a, b ≠ 0, (a/b) · (b/a) = 1. A number times its reciprocal is 1.","لكل a/b حيث a, b ≠ 0 يكون (a/b) · (b/a) = 1. العدد مضروبًا في مقلوبه يساوي 1."],e:a=>a===0?"0 has no reciprocal: 1/0 is undefined":`${NN(a)} × (1/${NN(a)}) = 1`},
+  {b:"× 0",f:a=>0,n:["Multiplicative Property of Zero","خاصية الضرب في صفر"],r:["For any number a, a · 0 = 0.","لأي عدد a يكون a · 0 = 0."],e:a=>`${NN(a)} × 0 = 0`}];
+  $("#imPick").innerHTML=OP.map((o,i)=>`<button data-i="${i}" class="${i?"":"on"}">${o.b}</button>`).join("");
+  $$("#imPick button").forEach(b=>b.onclick=()=>{$$("#imPick button").forEach(x=>x.classList.toggle("on",x===b));k=+b.dataset.i;draw();});
+  function draw(){const a=+$("#imA").value,o=OP[k],r=o.f(a),X=v=>20+(v+7)/14*320;$("#imAl").textContent=`a = ${NN(a)}`;
+    let s=`<line x1="20" y1="50" x2="340" y2="50" stroke="#9fb3b5" stroke-width="2"/>`;for(let t=-7;t<=7;t++)s+=`<line x1="${X(t)}" y1="${t%5?46:43}" x2="${X(t)}" y2="${t%5?54:57}" stroke="#9fb3b5"/>`+(t%1===0?SVGT(X(t),72,NN(t),`font-size="10" fill="#9fb3b5" text-anchor="middle" ${SANS}`):"");
+    s+=`<circle cx="${X(a)}" cy="50" r="8" fill="#7cc2bd"/>`+SVGT(X(a),30,"a",`font-size="13" font-style="italic" fill="#7cc2bd" text-anchor="middle" ${SERIF}`);
+    if(r!==null){s+=`<circle cx="${X(r)}" cy="50" r="${r===a?13:8}" fill="none" stroke="#f2c46d" stroke-width="3"/>`+SVGT(X(r),r===a?18:86,"result",`font-size="11" fill="#f2c46d" text-anchor="middle" ${SANS}`);}
+    $("#imSvg").innerHTML=s;$("#imOut").textContent=o.e(a);
+    $("#imTxt").innerHTML=`<p class="en"><b>${o.n[0]}</b><br>${o.r[0]}</p><p class="ar"><b>${o.n[1]}</b><br>${o.r[1]}</p>`;refreshAr($("#imTxt"));}
+  $("#imA").oninput=draw;draw();})();
+
+/* ---------- equality ---------- */
+(function(){const box=(x,y,w,t,c)=>`<rect x="${x}" y="${y}" width="${w}" height="36" rx="9" fill="${c}" fill-opacity=".2" stroke="${c}" stroke-width="1.8"/>`+SVGT(x+w/2,y+24,t,`font-size="16" fill="#f1f6f5" text-anchor="middle" ${SERIF}`);
+  const T="#7cc2bd",G="#f2c46d",ar=(x1,y1,x2,y2,c)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="2.4" marker-end="url(#ah)"/>`;
+  const DEF=`<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f1f6f5"/></marker></defs>`;
+  const E=[{svg:box(110,50,140,"7m − 3",T)+`<path d="M250 62 C320 20 320 110 252 80" fill="none" stroke="${G}" stroke-width="2.4" marker-end="url(#ah)"/>`+SVGT(180,124,"7m − 3 = 7m − 3",`font-size="15" fill="${G}" text-anchor="middle" ${SERIF}`),
+     t:["<b>Reflexive Property of Equality:</b> a = a. Any quantity equals itself.<br>Example: <b>7m − 3 = 7m − 3</b>.","<b>خاصية الانعكاس للمساواة:</b> a = a. أي كمية تساوي نفسها.<br>مثال: <b>7m − 3 = 7m − 3</b>."]},
+    {svg:box(20,30,140,"5k + 9",T)+box(200,30,140,"w",G)+ar(162,42,196,42,"#f1f6f5")+ar(196,58,162,58,"#f1f6f5")+SVGT(180,108,"If 5k + 9 = w, then w = 5k + 9",`font-size="14" fill="${G}" text-anchor="middle" ${SERIF}`),
+     t:["<b>Symmetric Property of Equality:</b> if a = b, then b = a. You can swap the two sides.<br>Example: if 5k + 9 = w, then w = 5k + 9.","<b>خاصية التماثل للمساواة:</b> إذا كان a = b فإن b = a. يمكنك تبديل الطرفين.<br>مثال: إذا كان 5k + 9 = w فإن w = 5k + 9."]},
+    {svg:box(10,60,90,"3y",T)+box(135,60,90,"12",G)+box(260,60,90,"2m",T)+SVGT(117,84,"=",`font-size="20" fill="#f1f6f5" text-anchor="middle" ${SERIF}`)+SVGT(242,84,"=",`font-size="20" fill="#f1f6f5" text-anchor="middle" ${SERIF}`)+`<path d="M55 56 C120 22 240 22 305 56" fill="none" stroke="${G}" stroke-width="2.4" stroke-dasharray="6 4" marker-end="url(#ah)"/>`+SVGT(180,20,"3y = 2m",`font-size="15" fill="${G}" text-anchor="middle" ${SERIF}`)+SVGT(180,124,"If 3y = 12 and 12 = 2m, then 3y = 2m",`font-size="13" fill="#9fb3b5" text-anchor="middle" ${SANS}`),
+     t:["<b>Transitive Property of Equality:</b> if a = b and b = c, then a = c. The middle value links the chain.<br>Example: if 3y = 12 and 12 = 2m, then 3y = 2m.","<b>خاصية التعدي للمساواة:</b> إذا كان a = b و b = c فإن a = c. القيمة الوسطى تربط السلسلة.<br>مثال: إذا كان 3y = 12 و 12 = 2m فإن 3y = 2m."]}];
+  function show(i){$("#eqSvg").innerHTML=DEF+E[i].svg;$("#eqTxt").innerHTML=`<p class="en">${E[i].t[0]}</p><p class="ar">${E[i].t[1]}</p>`;refreshAr($("#eqTxt"));}
+  segBindX("eqSeg",show);show(0);})();
+
+/* ---------- pair work ---------- */
+const IDV=[["Identity (+)","المحايد (+)"],["Identity (×)","المحايد (×)"],["Inverse (+)","النظير (+)"],["Inverse (×)","النظير (×)"]];
+const PW=[["66 + 0 = 66",0],["5 · (1/5) = 1",3],["n = 0 + n",0],["3 + (−3) = 0",2],["91 = 1 · 91",1],["0 + 2b = 2b",0],["p + (−p) = 0",2],["1 = (−2/7) · (−7/2)",3],["0 = y + (−y)",2],["1 · (3 + a) = 3 + a",1]];
+const PWW=[["Adding 0 keeps the value: Additive Identity.","إضافة 0 تبقي القيمة: المحايد الجمعي."],["Multiplying by 1 keeps the value: Multiplicative Identity.","الضرب في 1 يبقي القيمة: المحايد الضربي."],["A number plus its opposite gives 0: Additive Inverse.","العدد مضافًا إليه معكوسه يعطي 0: النظير الجمعي."],["A number times its reciprocal gives 1: Multiplicative Inverse.","العدد مضروبًا في مقلوبه يعطي 1: النظير الضربي."]];
+cardsQ($("#pwBox"),PW.map((p,i)=>({t:[`${i+1}. <span class="m">${p[0]}</span>`,`${i+1}. <span class="m">${p[0]}</span>`],o:IDV,a:p[1],cls:"two",w:PWW[p[1]],h:["Is the answer 0 or 1, or is the number unchanged? Is it + or ×?","هل الناتج 0 أو 1، أم بقي العدد كما هو؟ وهل العملية + أم ×؟"],
+  sol:[["Unchanged with + 0 → Identity (+). Unchanged with × 1 → Identity (×).","يبقى كما هو مع + 0 ← المحايد (+). ويبقى كما هو مع × 1 ← المحايد (×)."],["Result 0 with + → Inverse (+). Result 1 with × → Inverse (×).","الناتج 0 مع + ← النظير (+). والناتج 1 مع × ← النظير (×)."],["Here: "+PWW[p[1]][0],"هنا: "+PWW[p[1]][1]]]})));
+
+/* ---------- name the property ---------- */
+const PN={aa:["Associative (+)","التجميع (+)"],am:["Associative (×)","التجميع (×)"],ca:["Commutative (+)","الإبدال (+)"],cm:["Commutative (×)","الإبدال (×)"],tr:["Transitive","التعدي"],sy:["Symmetric","التماثل"],re:["Reflexive","الانعكاس"],ia:["Identity (+)","المحايد (+)"],im:["Inverse (×)","النظير (×)"],ii:["Inverse (+)","النظير (+)"]};
+const NP=[["(4x + 7) + 3 = 4x + (7 + 3)",["ca","aa","ia"],1,["The numbers stay in the same order; only the brackets move.","الأعداد بالترتيب نفسه، والأقواس فقط تتحرك."]],
+ ["If 3y = 12 and 12 = 2m, then 3y = 2m",["sy","re","tr"],2,["12 links 3y and 2m, so 3y = 2m.","العدد 12 يربط 3y و 2m، إذن 3y = 2m."]],
+ ["15a + 0 = 15a",["ia","ii","aa"],0,["Adding 0 does not change 15a.","إضافة 0 لا تغيّر 15a."]],
+ ["8b · (1 ÷ 8b) = 1, b ≠ 0",["cm","im","ii"],1,["8b times its reciprocal 1/(8b) is 1.","8b مضروبًا في مقلوبه 1/(8b) يساوي 1."]],
+ ["If 5k + 9 = w, then w = 5k + 9",["sy","tr","re"],0,["The two sides of the equation swap places.","يتبادل طرفا المعادلة مكانيهما."]],
+ ["9 · (4m) = (4m) · 9",["am","cm","ca"],1,["The order of the two factors changes.","يتغير ترتيب العاملين."]]];
+cardsQ($("#npBox"),NP.map((p,i)=>({t:[`${i+1}. <span class="m">${p[0]}</span>`,`${i+1}. <span class="m">${p[0]}</span>`],o:p[1].map(k=>PN[k]),a:p[2],w:p[3],h:["Did the order change, the grouping, or something else?","هل تغيّر الترتيب أم التجميع أم شيء آخر؟"],
+  sol:[[`Property: ${PN[p[1][p[2]]][0]}.`,`الخاصية: ${PN[p[1][p[2]]][1]}.`],["Justify: "+p[3][0],"التبرير: "+p[3][1]]]})));
+whyBox($("#why1"),"Tariq said (8 + 5x) + 2 = 8 + (5x + 2) shows the Commutative Property of Addition. Which property is it really?","قال طارق إن <span class=\"m\">(8 + 5x) + 2 = 8 + (5x + 2)</span> تُظهر خاصية الإبدال في الجمع. ما الخاصية الحقيقية؟",
+ [["Associative: 8, 5x and 2 stay in the same order; only the brackets move.","التجميع: 8 و 5x و 2 بالترتيب نفسه، والأقواس فقط تتحرك.",true,"Commutative would change the ORDER, for example (5x + 8) + 2.","الإبدال يغيّر الترتيب، مثل (5x + 8) + 2."],
+  ["Commutative: Tariq is right, the numbers moved.","الإبدال: طارق محق، فالأعداد تحركت.",false,"Read left to right: 8, 5x, 2 on both sides. The order did not change.","اقرأ من اليسار إلى اليمين: 8 ثم 5x ثم 2 في الطرفين. الترتيب لم يتغير."],
+  ["Additive Identity, because nothing changed.","المحايد الجمعي، لأن شيئًا لم يتغير.",false,"Identity needs + 0. There is no 0 here.","المحايد يحتاج إلى + 0، ولا يوجد 0 هنا."]]);
+
+/* ---------- complete it ---------- */
+cardsQ($("#cpBox"),[
+ {t:["a. <span class=\"m\">14k + ( ___ ) = 0</span> · Additive Inverse Property","a. <span class=\"m\">14k + ( ___ ) = 0</span> · خاصية النظير الجمعي"],o:[["14k"],["−14k"],["0"]],a:1,w:["14k + (−14k) = 0.","14k + (−14k) = 0."],h:["Which number added to 14k gives 0?","أي عدد إذا أضيف إلى 14k أعطى 0؟"],sol:[["The additive inverse of 14k is its opposite: −14k.","النظير الجمعي لـ 14k هو معكوسه: −14k."],["14k + (−14k) = 0.","14k + (−14k) = 0."]]},
+ {t:["b. <span class=\"m\">7m − 3 = ___</span> · Reflexive Property of Equality","b. <span class=\"m\">7m − 3 = ___</span> · خاصية الانعكاس للمساواة"],o:[["3 − 7m"],["7m + 3"],["7m − 3"]],a:2,w:["Reflexive: a quantity equals itself.","الانعكاس: الكمية تساوي نفسها."],h:["Reflexive means a = a.","الانعكاس يعني a = a."],sol:[["Reflexive: a = a.","الانعكاس: a = a."],["7m − 3 = 7m − 3.","7m − 3 = 7m − 3."]]},
+ {t:["c. <span class=\"m\">(3w · 5) · 0 = ___</span> · Multiplicative Property of Zero","c. <span class=\"m\">(3w · 5) · 0 = ___</span> · خاصية الضرب في صفر"],o:[["0"],["15w"],["3w"]],a:0,w:["Anything times 0 is 0.","أي شيء مضروبًا في 0 يساوي 0."],h:["What happens when you multiply by 0?","ماذا يحدث عندما تضرب في 0؟"],sol:[["a · 0 = 0 for any a.","a · 0 = 0 لأي a."],["(3w · 5) · 0 = 0.","(3w · 5) · 0 = 0."]]},
+ {t:["Exit ticket: a student claims that division is commutative because 12 ÷ 4 = 3. Which counterexample proves the claim false?","تذكرة الخروج: يدّعي طالب أن القسمة إبدالية لأن 12 ÷ 4 = 3. أي مثال مضاد يثبت أن الادعاء خاطئ؟"],o:[["12 × 4 = 4 × 12"],["12 ÷ 4 = 3 and 4 ÷ 12 = 1/3, and 3 ≠ 1/3"],["12 ÷ 12 = 1"]],a:1,cls:"stack",w:["Swapping the order changes the answer, so division is not commutative.","تبديل الترتيب يغيّر الناتج، إذن القسمة ليست إبدالية."],h:["Swap the numbers: 4 ÷ 12.","بدّل العددين: 4 ÷ 12."],
+  sol:[["Commutative would need 12 ÷ 4 = 4 ÷ 12.","الإبدال يحتاج إلى 12 ÷ 4 = 4 ÷ 12."],["12 ÷ 4 = 3, but 4 ÷ 12 = 1/3.","12 ÷ 4 = 3، لكن 4 ÷ 12 = 1/3."],["3 ≠ 1/3, so one counterexample proves the claim false.","3 ≠ 1/3، إذن مثال مضاد واحد يثبت أن الادعاء خاطئ."]]}]);
+
+/* ---------- check yourself ---------- */
+cardsQ($("#tryBox"),[
+ {t:["Which property is shown: <span class=\"m\">(a × b) × c = a × (b × c)</span>?","أي خاصية تُظهرها: <span class=\"m\">(a × b) × c = a × (b × c)</span>؟"],o:[PN.cm,PN.am,PN.re],a:1,w:["The grouping changes, the order does not.","يتغير التجميع، ولا يتغير الترتيب."],h:["Look at the brackets.","انظر إلى الأقواس."],sol:[["Order: a, b, c on both sides.","الترتيب: a ثم b ثم c في الطرفين."],["Only the brackets move → Associative (×).","الأقواس فقط تتحرك ← التجميع (×)."]]},
+ {t:["What is the multiplicative inverse of <span class=\"m\">−4/9</span>?","ما النظير الضربي لـ <span class=\"m\">−4/9</span>؟"],o:[["4/9"],["−9/4"],["9/4"]],a:1,w:["(−4/9) · (−9/4) = 1. The sign stays the same.","(−4/9) · (−9/4) = 1. الإشارة تبقى كما هي."],h:["Flip the fraction. Keep the sign, so that the product is +1.","اقلب الكسر، واحتفظ بالإشارة ليكون الناتج +1."],sol:[["Reciprocal: flip −4/9 → −9/4.","المقلوب: اقلب −4/9 ← −9/4."],["Check: (−4/9)(−9/4) = 36/36 = 1.","التحقق: (−4/9)(−9/4) = 36/36 = 1."]]},
+ {t:["If <span class=\"m\">x + 5 = y</span> and <span class=\"m\">y = 12</span>, then <span class=\"m\">x + 5 = 12</span>. Which property?","إذا كان <span class=\"m\">x + 5 = y</span> و <span class=\"m\">y = 12</span> فإن <span class=\"m\">x + 5 = 12</span>. أي خاصية؟"],o:[PN.sy,PN.re,PN.tr],a:2,w:["y links the two equations: Transitive.","y يربط المعادلتين: التعدي."],h:["Is there a middle value that links two equations?","هل توجد قيمة وسطى تربط معادلتين؟"],sol:[["x + 5 = y and y = 12.","x + 5 = y و y = 12."],["So x + 5 = 12: Transitive Property of Equality.","إذن x + 5 = 12: خاصية التعدي للمساواة."]]},
+ {t:["Which statement is true for <b>all</b> real numbers a and b?","أي عبارة صحيحة <b>لكل</b> الأعداد الحقيقية a و b؟"],o:[["a − b = b − a"],["a + b = b + a"],["a ÷ b = b ÷ a"]],a:1,w:["Addition is commutative; subtraction and division are not.","الجمع إبدالي، أما الطرح والقسمة فليسا كذلك."],h:["Which operations passed the swap test in the lab?","أي العمليات نجحت في اختبار التبديل في المختبر؟"],sol:[["a − b = b − a fails for 7 and 3.","a − b = b − a تفشل مع 7 و 3."],["a ÷ b = b ÷ a fails for 12 and 4.","a ÷ b = b ÷ a تفشل مع 12 و 4."],["a + b = b + a is always true.","a + b = b + a صحيحة دائمًا."]]},
+ {t:["<span class=\"m\">8 · 0.125 = 1</span> shows which property?","<span class=\"m\">8 · 0.125 = 1</span> تُظهر أي خاصية؟"],o:[["Multiplicative Inverse","النظير الضربي"],["Multiplicative Identity","المحايد الضربي"],["Property of Zero","الضرب في صفر"]],a:0,w:["0.125 = 1/8, the reciprocal of 8.","0.125 = 1/8، وهو مقلوب 8."],h:["The product is 1. Is 0.125 the reciprocal of 8?","الناتج 1. هل 0.125 مقلوب 8؟"],sol:[["0.125 = 1/8.","0.125 = 1/8."],["8 · (1/8) = 1 → Multiplicative Inverse.","8 · (1/8) = 1 ← النظير الضربي."]]},
+ {t:["What is the additive inverse of <span class=\"m\">2.5</span>?","ما النظير الجمعي لـ <span class=\"m\">2.5</span>؟"],o:[["0.4"],["0"],["−2.5"]],a:2,w:["2.5 + (−2.5) = 0.","2.5 + (−2.5) = 0."],h:["Additive inverse = opposite, so the sum is 0.","النظير الجمعي = المعكوس، ليكون المجموع 0."],sol:[["Find the number that adds to 2.5 to give 0.","أوجد العدد الذي إذا أضيف إلى 2.5 أعطى 0."],["2.5 + (−2.5) = 0, so −2.5.","2.5 + (−2.5) = 0، إذن −2.5."],["0.4 is the MULTIPLICATIVE inverse (2.5 × 0.4 = 1).","0.4 هو النظير الضربي (2.5 × 0.4 = 1)."]]}
+]);
+
+/* ---------- summary cards ---------- */
+const FL=[["a + b = b + a","Commutative","الإبدال","The ORDER can change for + and ×. Not for − or ÷.","يمكن تغيير الترتيب في + و ×، وليس في − أو ÷."],
+ ["(ab)c = a(bc)","Associative","التجميع","The GROUPING can change for + and ×.","يمكن تغيير التجميع في + و ×."],
+ ["a + 0 = a","Additive Identity","المحايد الجمعي","Adding 0 keeps the number.","إضافة 0 تبقي العدد."],
+ ["a · 1 = a","Mult. Identity","المحايد الضربي","Multiplying by 1 keeps the number.","الضرب في 1 يبقي العدد."],
+ ["a + (−a) = 0","Additive Inverse","النظير الجمعي","A number plus its opposite is 0.","العدد مضافًا إليه معكوسه يساوي 0."],
+ ["(a/b)(b/a) = 1","Mult. Inverse","النظير الضربي","A number times its reciprocal is 1 (a, b ≠ 0).","العدد مضروبًا في مقلوبه يساوي 1 (a, b ≠ 0)."],
+ ["a · 0 = 0","Property of Zero","الضرب في صفر","Any number times 0 is 0.","أي عدد مضروبًا في 0 يساوي 0."],
+ ["a = b = c","Equality","المساواة","Reflexive: a = a. Symmetric: a = b → b = a. Transitive: a = b, b = c → a = c.","الانعكاس: a = a. التماثل: a = b ← b = a. التعدي: a = b و b = c ← a = c."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+
+/* ---------- final quiz (8 on this lesson + 2 review) ---------- */
+const Q=[
+ {q:"Which property is shown: 7 + 9 = 9 + 7?",qa:"أي خاصية تُظهرها: 7 + 9 = 9 + 7؟",o:[["Associative (+)","التجميع (+)"],["Commutative (+)","الإبدال (+)"],["Identity (+)","المحايد (+)"],["Inverse (+)","النظير (+)"]],a:1,ex:["The order of 7 and 9 changes.","يتغير ترتيب 7 و 9."],
+  h:[["Did the order or the grouping change?","هل تغير الترتيب أم التجميع؟"],["There are no brackets.","لا توجد أقواس."]],sol:[["7 and 9 swap places.","7 و 9 يتبادلان المكان."],["Order changes → Commutative (+).","يتغير الترتيب ← الإبدال (+)."]]},
+ {q:"What is the additive inverse of −11?",qa:"ما النظير الجمعي لـ −11؟",o:[["−11",""],["1/11",""],["0",""],["11",""]],a:3,ex:["−11 + 11 = 0.","−11 + 11 = 0."],
+  h:[["The sum must be 0.","يجب أن يكون المجموع 0."],["The opposite of −11.","معكوس −11."]],sol:[["Additive inverse = opposite.","النظير الجمعي = المعكوس."],["−11 + 11 = 0, so 11.","−11 + 11 = 0، إذن 11."]]},
+ {q:"Which property is shown: 4 · (1/4) = 1?",qa:"أي خاصية تُظهرها: 4 · (1/4) = 1؟",o:[["Multiplicative Inverse","النظير الضربي"],["Multiplicative Identity","المحايد الضربي"],["Commutative (×)","الإبدال (×)"],["Property of Zero","الضرب في صفر"]],a:0,ex:["4 times its reciprocal 1/4 equals 1.","4 مضروبًا في مقلوبه 1/4 يساوي 1."],
+  h:[["The answer is 1.","الناتج 1."],["Is 1/4 the reciprocal of 4?","هل 1/4 مقلوب 4؟"]],sol:[["1/4 is the reciprocal of 4.","1/4 مقلوب 4."],["Number × reciprocal = 1 → Multiplicative Inverse.","العدد × مقلوبه = 1 ← النظير الضربي."]]},
+ {q:"If 2a = b and b = 18, then 2a = 18. Which property is this?",qa:"إذا كان 2a = b و b = 18 فإن 2a = 18. ما هذه الخاصية؟",o:[["Reflexive","الانعكاس"],["Symmetric","التماثل"],["Transitive","التعدي"],["Associative","التجميع"]],a:2,ex:["b links 2a and 18.","b يربط 2a و 18."],
+  h:[["Two equations become one.","معادلتان تصبحان واحدة."],["a = b and b = c → a = c.","a = b و b = c ← a = c."]],sol:[["2a = b and b = 18.","2a = b و b = 18."],["So 2a = 18: Transitive Property.","إذن 2a = 18: خاصية التعدي."]]},
+ {q:"Use properties to evaluate 25 · 7 · 4 quickly.",qa:"استخدم الخصائص لحساب 25 · 7 · 4 بسرعة.",o:[["175",""],["128",""],["700",""],["36",""]],a:2,ex:["Commutative and associative: (25 · 4) · 7 = 100 · 7 = 700.","الإبدال والتجميع: (25 · 4) · 7 = 100 · 7 = 700."],
+  h:[["Which two numbers make 100?","أي عددين يعطيان 100؟"],["25 · 4 = 100.","25 · 4 = 100."]],sol:[["Commutative: 25 · 4 · 7.","الإبدال: 25 · 4 · 7."],["Associative: (25 · 4) · 7 = 100 · 7.","التجميع: (25 · 4) · 7 = 100 · 7."],["= 700.","= 700."]]},
+ {q:"Which one shows the Symmetric Property of Equality?",qa:"أي واحدة تُظهر خاصية التماثل للمساواة؟",o:[["If 9 = x, then x = 9",""],["x = x",""],["x + 0 = x",""],["If x = 9 and 9 = y, then x = y",""]],a:0,ex:["The two sides swap places.","يتبادل الطرفان المكان."],
+  h:[["Symmetric = swap the sides.","التماثل = تبديل الطرفين."],["Look for \"if a = b, then b = a\".","ابحث عن «إذا كان a = b فإن b = a»."]],sol:[["Symmetric: a = b → b = a.","التماثل: a = b ← b = a."],["9 = x → x = 9.","9 = x ← x = 9."]]},
+ {q:"Which is a counterexample showing that subtraction is NOT commutative?",qa:"أي مثال مضاد يُظهر أن الطرح ليس إبداليًا؟",o:[["5 + 2 = 2 + 5",""],["3 − 3 = 3 − 3",""],["0 − 0 = 0 − 0",""],["8 − 2 ≠ 2 − 8",""]],a:3,ex:["8 − 2 = 6 but 2 − 8 = −6.","8 − 2 = 6 لكن 2 − 8 = −6."],
+  h:[["A counterexample must show the swap gives a DIFFERENT answer.","يجب أن يُظهر المثال المضاد أن التبديل يعطي ناتجًا مختلفًا."],["Equal numbers like 3 − 3 always match.","الأعداد المتساوية مثل 3 − 3 تتطابق دائمًا."]],sol:[["8 − 2 = 6.","8 − 2 = 6."],["2 − 8 = −6.","2 − 8 = −6."],["6 ≠ −6, so subtraction is not commutative.","6 ≠ −6، إذن الطرح ليس إبداليًا."]]},
+ {q:"What is (−13.7) · 0?",qa:"كم يساوي (−13.7) · 0؟",o:[["−13.7",""],["0",""],["13.7",""],["1",""]],a:1,ex:["Multiplicative Property of Zero.","خاصية الضرب في صفر."],
+  h:[["Multiply by 0.","الضرب في 0."],["a · 0 = ?","a · 0 = ؟"]],sol:[["a · 0 = 0 for every number a.","a · 0 = 0 لكل عدد a."],["(−13.7) · 0 = 0.","(−13.7) · 0 = 0."]]},
+ {q:"From Lesson 1-2: Evaluate 2x² − y when x = 3 and y = 5.",qa:"من الدرس 1-2: احسب قيمة 2x² − y عندما x = 3 و y = 5.",o:[["13",""],["31",""],["1",""],["7",""]],a:0,ex:["2(9) − 5 = 18 − 5 = 13.","2(9) − 5 = 18 − 5 = 13."],
+  h:[["Substitute, then E first: 3² = 9.","عوّض، ثم الأس أولًا: 3² = 9."],["2(9) = 18.","2(9) = 18."]],sol:[["2(3)² − 5.","2(3)² − 5."],["E: 3² = 9; M: 2(9) = 18.","الأسس: 3² = 9، الضرب: 2(9) = 18."],["S: 18 − 5 = 13.","الطرح: 18 − 5 = 13."]]},
+ {q:"From Lesson 1-1: Evaluate 4 + 18 ÷ 3².",qa:"من الدرس 1-1: احسب قيمة 4 + 18 ÷ 3².",o:[["2",""],["22",""],["10",""],["6",""]],a:3,ex:["3² = 9, 18 ÷ 9 = 2, 4 + 2 = 6.","3² = 9، و 18 ÷ 9 = 2، و 4 + 2 = 6."],
+  h:[["E first: 3² = 9.","الأسس أولًا: 3² = 9."],["Then D: 18 ÷ 9.","ثم القسمة: 18 ÷ 9."]],sol:[["E: 3² = 9.","الأسس: 3² = 9."],["D: 18 ÷ 9 = 2.","القسمة: 18 ÷ 9 = 2."],["A: 4 + 2 = 6.","الجمع: 4 + 2 = 6."]]}
+];
+Q.forEach(q=>q.o.forEach(o=>{if(o[1]===o[0])o[1]="";o[0]=`<span class="oe">${o[0]}</span>`;}));
+
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${ok?ICON.check+" Correct!":ICON.cross+" Not quite."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${ok?"إجابة صحيحة!":"ليست صحيحة."} ${q.ex[1]}</div>`+solHTML(q.sol);solBind(fb);
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Mathematician";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You can name and use the properties of real numbers!","رائع! أنت تسمّي خصائص الأعداد الحقيقية وتستخدمها!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the worked examples, then retry.","محاولة جيدة! أعد تشغيل الحلول خطوة بخطوة ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Math · Grade 9 · Unit 1 · Lesson 1-3 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
