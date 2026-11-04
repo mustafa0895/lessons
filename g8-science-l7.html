@@ -1,0 +1,1789 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c1620">
+<title>Speed and Velocity – Science G8 Lesson 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(12,22,32,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#132532;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#182c3a;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#3a2326;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#2e2a1c;border:1px solid #5a4a26;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#132532;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#132532;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #3a4a55}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#123a3a;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#182c3a;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#132532;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#123a3a}
+.opt.right{border-color:var(--teal);background:#123a3a}
+.opt.wrong{border-color:var(--terra);background:#3a2326}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#182c3a;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#132532;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#123a3a;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#3a2326;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#132532;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#132532}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#3a4a55}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #132532}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#132532;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#132532}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #132532;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#2e2a1c}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#132532;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#123a3a;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#123a3a}
+.pieces button.no{border-color:var(--terra);background:#3a2326;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#3a4a55}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#123a3a;border-left:5px solid var(--teal)}
+.feedback.no{background:#3a2326;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#132532;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#132532;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#132532;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#132532;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#123a3a}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#2e2a1c}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#132532;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#3a2326}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#2e2a1c;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#132532;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#123a3a}.sc.diff{border-color:var(--terra);background:#3a2326}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#123a3a}.rchips button.wrong{border-color:var(--terra);background:#3a2326}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#123a3a}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#123a3a}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#3a2326}
+.ml.done,.mr.done{border-color:var(--teal);background:#123a3a;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#123a3a}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#2e2a1c;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#2e2a1c;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#132532;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#123a3a}
+.eline.bad{border-color:var(--terra);background:#3a2326;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#132532;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#132532 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#123a3a}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#3a2326}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#2e2a1c}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#132532;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#2e2a1c;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#123a3a}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#3a2326}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#2e2a1c;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#123a3a}.mcard2.wrong{border-color:var(--terra);background:#3a2326}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #132532;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#123a3a}.idc.wrong{border-color:var(--terra);background:#3a2326}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#123a3a}.claim2.wrong{border-color:var(--terra);background:#3a2326}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#2e2a1c}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#123a3a}.ct.no{border-color:var(--terra);background:#3a2326}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#2e2a1c}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#2a2440;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#182c3a;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#132532;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#123a3a}.wuq .wo button.wrong{border-color:var(--terra);background:#3a2326}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#132532;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#182c3a;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#132532;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#3a2326}.pick button.right{border-color:var(--teal);background:#123a3a}
+.why{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#123a3a}.why .wb button.wrong{border-color:var(--terra);background:#3a2326}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#132532;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #132532;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#3a4a55;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#132532;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#132532}
+.tchip.lost{border-color:var(--terra);background:#3a2326}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#3a2326}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#123a3a}.pickph.wrong{border-color:var(--terra);background:#3a2326}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#123a3a}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#182c3a}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#123a3a;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#182c3a;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#132532;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#2e2a1c;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#182c3a;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#132532}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#123a3a;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#132532;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#132532;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#123a3a;border-color:var(--teal)}.tile.g1{background:#3a2326;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#182c3a;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#132532;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#132532;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#132532;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#132532;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#132532;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#132532;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#132532;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#182c3a}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#132532}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#182c3a}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#132532}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#182c3a;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+.ov{text-decoration:overline;text-decoration-thickness:2px;text-underline-offset:0}
+.solbox{margin-top:10px}
+.solbtn{display:inline-flex;align-items:center;gap:6px;border:2px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:6px 14px;font-weight:700;font-size:14px}
+.solbtn .ic{width:18px;height:18px}
+.solbtn .ar{display:inline;font-weight:600;font-size:13px}
+.solbtn.on{background:var(--clay);color:#fff;border-color:var(--clay)}
+.solsteps{margin:10px 0 0;padding:10px 12px 10px 34px;background:#132532;border:1px dashed #5a4a26;border-radius:12px;text-align:left;font-size:14.5px;line-height:1.45}
+.solsteps li{margin:6px 0;animation:fadein .3s}
+.solsteps li .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px;margin-top:2px}
+.solsteps[hidden]{display:none}
+.feedback .solbox{margin-top:12px}
+.nchips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.nchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 14px;font-family:Cambria,"Times New Roman",serif;font-size:18px;font-weight:700;color:var(--ink);min-width:58px}
+.nchips button.done{background:#123a3a;border-color:#BFE3E0}
+.nchips button.on{border-color:var(--terra);background:#3a2326}
+#setSvg ellipse,#setSvg rect{transition:filter .3s,stroke-width .3s}
+#setSvg .lit{stroke-width:6;filter:drop-shadow(0 0 8px rgba(242,196,109,.6))}
+#setDots text{font-weight:700;opacity:.75}
+#setDots text.now{fill:#f2c46d;opacity:1;font-size:20px}
+.dmq{font-size:20px;font-weight:800;margin-bottom:8px;overflow-x:auto}
+.dmq .fr{font-size:.8em}
+.dmlog{display:grid;gap:4px;font-size:14.5px;max-height:260px;overflow:auto}
+.dmlog>div{background:#182c3a;border-radius:10px;padding:5px 10px;animation:fadein .3s}
+.dmlog .ar{display:inline;color:var(--muted);font-size:13px;margin-left:6px}
+.tapes{display:grid;gap:8px;overflow-x:auto;padding:4px 0}
+.tape{display:flex;align-items:center;font-family:Consolas,"Courier New",monospace;font-size:20px;direction:ltr}
+.tape .tn{width:66px;font-weight:700;color:var(--clay);font-size:16px;text-align:right;padding-right:8px;flex:none}
+.tape .ti{width:44px;text-align:right;font-weight:700;flex:none}
+.tape .tp{width:12px;text-align:center;font-weight:700;flex:none}
+.tape .td{width:22px;text-align:center;border-radius:5px;flex:none}
+.tape .td.ok{background:rgba(124,194,189,.28);color:#c9f3ee}
+.tape .td.no{background:rgba(239,154,131,.32);color:#ffd9cf}
+.tape .te{padding-left:4px;color:var(--muted)}
+@media (max-width:420px){.tape{font-size:16px}.tape .td{width:16px}.tape .tn{width:56px;font-size:14px}.tape .ti{width:36px}}
+.solwrap{margin-top:6px}
+.idc .mb.two{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb button .fr,.opt .fr{font-size:.95em}
+.fbig .fr{font-size:.9em}
+.opt span.ov{display:inline!important;margin:0!important}
+.opt span.m{display:inline-block!important}
+.opt span.fr{display:inline-flex!important}
+.opt .fr>span{display:block!important}
+@media (max-width:420px){.tape .tn{width:64px;font-size:13px;white-space:nowrap}}
+@media (max-width:700px){.hero{background:#0f1e29}.hero .herotxt{position:relative;padding:4px 16px 14px;background:none}}
+
+.rad{border-top:2px solid currentColor;padding:0 2px;margin-left:1px;display:inline-block;line-height:1.15}
+.rad .fr{font-size:.9em}
+.rtab{display:grid;gap:6px;margin:10px 0;overflow-x:auto}
+.rrow{display:grid;grid-template-columns:72px repeat(8,1fr);gap:3px}
+.rrow .rh{font-size:12px;line-height:1.2;font-weight:700;color:var(--clay);align-self:center}
+.rrow .rv,.rrow button{border-radius:8px;padding:8px 0;text-align:center;font-weight:700;font-size:15px;font-family:Cambria,"Times New Roman",serif}
+.rrow .rv{background:rgba(124,194,189,.16);color:var(--ink)}
+.rrow button{border:2px dashed rgba(242,196,109,.5);background:none;color:#f2c46d}
+.rrow button.on{border-style:solid;background:rgba(242,196,109,.18)}
+.bigeq{font-size:24px;font-weight:800;text-align:center;margin:10px 0}
+.idc .mb.stack{display:grid;grid-template-columns:1fr;gap:6px}
+.idc .mb.stack button{text-align:left;padding:8px 10px}
+.digrace{display:grid;gap:10px;overflow-x:auto}
+.drrow{display:grid;grid-template-columns:44px 1fr;gap:4px 8px;align-items:center}
+.drn{font-family:Cambria,"Times New Roman",serif;font-size:20px;font-weight:700;color:#f2c46d;text-align:right}
+.drd{font-family:Consolas,"Courier New",monospace;font-size:17px;letter-spacing:1px;word-break:break-all;direction:ltr}
+.drd .c0{color:#7cc2bd}.drd .c1{color:#c9f3ee;text-decoration:underline;text-decoration-color:rgba(124,194,189,.6)}
+.drd .x{color:#f1d9a6}
+.drt{grid-column:2;font-size:12.5px;font-weight:700}
+.drt.q{color:#7cc2bd}.drt.i{color:#f2c46d}
+.clnum{font-size:30px;font-weight:800;text-align:center;margin:4px 0 10px;color:#f2c46d}
+.clline{background:rgba(124,194,189,.08);border-radius:12px;padding:8px 10px;margin:6px 0;font-size:14.5px}
+.clline .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px}
+.clline small{display:block;color:var(--muted);margin-top:4px}
+.clline.ok{border-left:4px solid #7cc2bd}
+.clline.now{border:1px dashed rgba(242,196,109,.6)}
+.clline .btnrow{margin-top:8px}
+.clsets{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.clsets span{border:1px solid var(--line);border-radius:10px;padding:5px 10px;font-weight:700;font-size:13.5px;color:var(--muted)}
+.clsets span small{display:block;font-weight:500;font-size:11.5px}
+.clsets span.on{background:rgba(124,194,189,.25);color:#f1f6f5;border-color:#7cc2bd}
+#vnSvg [data-s]{cursor:pointer}
+#vnSvg [data-s]:hover{filter:brightness(1.25)}
+.sqtab{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px;margin-bottom:8px;font-family:Cambria,"Times New Roman",serif;font-size:16px}
+.sqtab div{background:rgba(124,194,189,.10);border-radius:8px;padding:6px 8px;text-align:center}
+.nchips button.wrongb{border-color:#ef9a83;opacity:.6}
+.tcrow{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px;font-family:Consolas,"Courier New",monospace;font-size:26px;direction:ltr;margin:6px 0 12px}
+.tcn{font-family:Cambria,"Times New Roman",serif;color:#f2c46d;margin-right:6px}
+.tck{color:#f1f6f5;font-weight:700;border-right:3px dashed #f2c46d;padding-right:4px}
+.tcx{color:#ef9a83;text-decoration:line-through;opacity:.8}
+.tccmp{display:grid;gap:6px;font-size:15px}
+.tccmp>div{background:rgba(124,194,189,.08);border-radius:10px;padding:6px 10px}
+.tccmp .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px}
+.tccmp .same{border-left:4px solid #7cc2bd}.tccmp .diff{border-left:4px solid #f2c46d}
+.seg button small{display:block;font-weight:500;font-size:11.5px;opacity:.85}
+.rrow .rv.gold{background:rgba(242,196,109,.18);color:#f2c46d}
+.dcards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.dcards button{border:2px solid var(--line);background:rgba(19,37,50,.8);border-radius:14px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink)}
+.dcards .df{font-family:Cambria,"Times New Roman",serif;font-size:24px;font-weight:700;color:#f2c46d}
+.dcards .dd{font-size:18px;font-weight:700;color:var(--muted)}
+.dcards button.on{border-color:#7cc2bd}.dcards button.on .dd{color:#7cc2bd}
+.dtab{width:100%;border-collapse:collapse;font-size:15px}
+.dtab th,.dtab td{border-bottom:1px solid var(--line);padding:8px;text-align:center}
+.dtab th{color:#f2c46d;font-size:13px}
+.gsvg{display:block;width:100%;max-width:470px;margin:auto}
+.ptab{margin-top:10px}
+.ptpick{display:flex;align-items:center;gap:8px;margin:6px 0}.ptpick>b{color:#f2c46d;min-width:16px}.ptpick .seg{margin:0;flex-wrap:wrap}
+.ptpick .seg{flex-wrap:nowrap}.ptpick .seg button{font-size:.8rem!important;padding:6px 7px!important;white-space:nowrap}
+table.ctab tr.now td{background:rgba(242,196,109,.16)}
+.reps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.rep{border:1.5px solid rgba(124,194,189,.25);border-radius:14px;padding:10px;background:rgba(124,194,189,.05);transition:.2s}
+.rep>b{display:block;color:#7cc2bd;margin-bottom:6px;font-size:.9rem}
+.rep.on{border-color:#f2c46d;box-shadow:0 0 0 3px rgba(242,196,109,.18)}
+.rep .rhl{color:inherit;font-weight:700;border-radius:6px;padding:0 3px;transition:.2s}
+.rep.on .rhl{background:#f2c46d;color:#0c1620}
+.rep[data-k="3"]{grid-column:1/-1}
+.rep .bigeq{font-size:1.6rem;text-align:center;margin:8px 0}
+.mtab td,.mtab th{padding:5px 6px!important;text-align:center}
+.tnote{display:block;margin-top:6px;color:#9fb3b5}
+@media (max-width:520px){.reps{grid-template-columns:1fr}}
+.bars{margin-top:10px}.bar{display:grid;grid-template-columns:132px 1fr auto;align-items:center;gap:8px;margin:8px 0;font-size:.9rem}
+.bar .bt{height:20px;border-radius:10px;background:rgba(124,194,189,.1);overflow:hidden}.bar .bt i{display:block;height:100%;border-radius:10px;transition:width .25s}
+.bar b{font-variant-numeric:tabular-nums;min-width:64px;text-align:right}
+.bnote{margin-top:8px;color:#f2c46d;font-weight:600}.bnote .ar{display:block;color:#f2c46d}
+@media (prefers-reduced-motion:reduce){.bar .bt i,.rep{transition:none}}
+.slrow{display:grid;grid-template-columns:52px 1fr 34px;align-items:center;gap:8px;margin:6px 0}.slrow b{font-size:.9rem}.slrow span{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.cr{color:#ef9a83}.cg{color:#f2c46d}
+table.ptab2 td{padding:4px!important;text-align:center}table.ptab2 td.son{color:#f2c46d;font-weight:700}
+.colb{min-width:44px;padding:6px 4px!important;border-radius:9px!important;background:rgba(124,194,189,.1)!important;color:#f1f6f5!important;border:1.5px solid rgba(124,194,189,.35)!important;font-weight:700}
+.colb.on{background:#f2c46d!important;color:#0c1620!important;border-color:#f2c46d!important}
+.tcap{caption-side:top;text-align:left;color:#7cc2bd;font-weight:700;padding:8px 0 4px}
+.mtab th{white-space:nowrap}
+.gbuild,.tplot{margin:10px 0}.tpsvg .hit{cursor:pointer}.tpsvg .hit:hover{fill-opacity:.18}
+.slrow.wide{grid-template-columns:58px 1fr 44px}
+.mini{margin:8px 0 2px;font-size:.78rem;color:#9fb3b5}
+.seg{flex-wrap:wrap}
+#rdRef button,#rdDir button,#spRef button,#ddTrip button,#rtJump button,#msRef button,#boatRef button{font-size:.8rem!important;padding:6px 9px!important}
+.dpad{display:grid;grid-template-columns:repeat(3,1fr);grid-template-areas:". n ." "w . e" ". s .";gap:6px;max-width:260px;margin:4px auto 6px}
+.dpad button{padding:9px 4px!important;border-radius:10px!important;background:rgba(124,194,189,.12)!important;color:#f1f6f5!important;border:1.5px solid rgba(124,194,189,.4)!important;font-weight:700;font-size:.85rem!important}
+.dpad button:active{background:#f2c46d!important;color:#0c1620!important}
+.dpad [data-d=N]{grid-area:n}.dpad [data-d=W]{grid-area:w}.dpad [data-d=E]{grid-area:e}.dpad [data-d=S]{grid-area:s}
+#fairOut,#rtOut,#ddOut,#msOut,#rdOut,#boatOut,#spOut{white-space:pre-wrap;min-height:4.5em}
+.tytab td,.tytab th,.pttab td,.pttab th{padding:4px 6px!important;text-align:center;font-size:.85rem}
+#tyBtns button,#plSeg button,#mdSeg button,#ttSeg button{font-size:.8rem!important;padding:6px 9px!important}
+#isOut,#plOut,#mdOut,#ttOut,#elOut,#grOut{white-space:pre-wrap;min-height:4.5em}
+:root{--sand:#0c1620;--paper:#132532;--ink:#f1f6f5;--muted:#9fb3b5;--terra:#ef9a83;--teal:#7cc2bd;--teal-d:#4fa39c;
+--ochre:#f2c46d;--clay:#f2c46d;--stone:#6f8689;--line:rgba(124,194,189,.22);--sky:#123a3a;--cream:#1d2f3b;color-scheme:dark}
+body{font-family:'Readex Pro',system-ui,-apple-system,'Segoe UI',sans-serif;background:radial-gradient(1200px 600px at 50% -10%,rgba(79,163,156,.18),transparent 60%),#0c1620;background-attachment:fixed}
+h1,h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:.01em}
+.ar,[lang=ar]{font-family:'Readex Pro','Geeza Pro','Noto Naskh Arabic',Tahoma,sans-serif}
+.card,.bubble,.idc,.key,.msg,.cert{box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card{background:rgba(19,37,50,.72);border-color:var(--line);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.btn{background:linear-gradient(180deg,#8fd0ca,#6cb7b1);color:#08201f;box-shadow:0 3px 0 #3d8a84,0 8px 24px rgba(124,194,189,.25)}
+.btn.alt{background:rgba(19,37,50,.8);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn:disabled{opacity:.45}
+.nav{background:linear-gradient(rgba(12,22,32,0),rgba(12,22,32,.94) 40%)}
+.kicker{background:rgba(242,196,109,.14);color:#f2c46d}
+.kicker.light{background:rgba(12,22,32,.55);color:#f2c46d;border:1px solid rgba(242,196,109,.35)}
+.hsub{color:#f2c46d}
+.bubble{background:#132532;border-color:#4fa39c}
+.bubble .who{color:#7cc2bd}
+.key{border-left-color:#f2c46d}
+.msg{border-left-color:#7cc2bd}
+.msg.warn{border-left-color:#ef9a83}
+.face.back{background:linear-gradient(160deg,#2b7d77,#1d5c58);color:#f1f6f5}
+.seg button.on,.seg button[aria-pressed=true]{background:#7cc2bd;color:#08201f}
+.namebox{background:#0f1e29;color:var(--ink);border-color:var(--line)}
+.m,.mi{color:inherit}
+.fline .fn{background:#7cc2bd;color:#08201f}
+.solbtn.on{color:#08201f}
+.score{color:#f2c46d}
+.prog{background:rgba(124,194,189,.15)}
+.ibtn{background:rgba(19,37,50,.8);color:var(--ink);border-color:var(--line)}
+.hero{box-shadow:0 20px 50px rgba(0,0,0,.35);border:1px solid var(--line)}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Science · Grade 8 · Unit 2<small id="curLabel">Speed and Velocity</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="A distance-time graph and a motion diagram with velocity arrows"><defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c1620"/><stop offset="1" stop-color="#173041"/></linearGradient></defs><rect width="640" height="360" fill="url(#hb)"/><line x1="0" y1="0" x2="0" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="40" y1="0" x2="40" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="80" y1="0" x2="80" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="120" y1="0" x2="120" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="160" y1="0" x2="160" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="200" y1="0" x2="200" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="240" y1="0" x2="240" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="280" y1="0" x2="280" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="320" y1="0" x2="320" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="360" y1="0" x2="360" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="400" y1="0" x2="400" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="440" y1="0" x2="440" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="480" y1="0" x2="480" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="520" y1="0" x2="520" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="560" y1="0" x2="560" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="600" y1="0" x2="600" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="640" y1="0" x2="640" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="0" x2="640" y2="0" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="40" x2="640" y2="40" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="80" x2="640" y2="80" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="120" x2="640" y2="120" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="160" x2="640" y2="160" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="200" x2="640" y2="200" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="240" x2="640" y2="240" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="280" x2="640" y2="280" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="320" x2="640" y2="320" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="360" x2="640" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="360" y1="190" x2="610" y2="190" stroke="#9fb3b5" stroke-width="2.5"/><line x1="360" y1="190" x2="360" y2="24" stroke="#9fb3b5" stroke-width="2.5"/><polyline points="360,190 408,150 456,110 504,110 552,40 600,30" fill="none" stroke="#7cc2bd" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="360" cy="190" r="6" fill="#f2c46d" stroke="#0c1620" stroke-width="2.5"/><circle cx="408" cy="150" r="6" fill="#f2c46d" stroke="#0c1620" stroke-width="2.5"/><circle cx="456" cy="110" r="6" fill="#f2c46d" stroke="#0c1620" stroke-width="2.5"/><circle cx="504" cy="110" r="6" fill="#f2c46d" stroke="#0c1620" stroke-width="2.5"/><circle cx="552" cy="40" r="6" fill="#f2c46d" stroke="#0c1620" stroke-width="2.5"/><circle cx="600" cy="30" r="6" fill="#f2c46d" stroke="#0c1620" stroke-width="2.5"/><text x="610" y="212" font-size="15" font-weight="700" fill="#9fb3b5" text-anchor="end" font-family="sans-serif">t</text><text x="350" y="36" font-size="15" font-weight="700" fill="#9fb3b5" text-anchor="end" font-family="sans-serif">d</text><rect x="24" y="150" width="310" height="26" rx="10" fill="#2b3a46"/><line x1="40" y1="120" x2="56.0" y2="120" stroke="#ef9a83" stroke-width="4" stroke-linecap="round"/><path d="M64.0 120l-11 -6v12z" fill="#ef9a83"/><line x1="70" y1="120" x2="94.0" y2="120" stroke="#ef9a83" stroke-width="4" stroke-linecap="round"/><path d="M102.0 120l-11 -6v12z" fill="#ef9a83"/><line x1="110" y1="120" x2="146.0" y2="120" stroke="#ef9a83" stroke-width="4" stroke-linecap="round"/><path d="M154.0 120l-11 -6v12z" fill="#ef9a83"/><line x1="165" y1="120" x2="213.0" y2="120" stroke="#ef9a83" stroke-width="4" stroke-linecap="round"/><path d="M221.0 120l-11 -6v12z" fill="#ef9a83"/><line x1="235" y1="120" x2="295.0" y2="120" stroke="#ef9a83" stroke-width="4" stroke-linecap="round"/><path d="M303.0 120l-11 -6v12z" fill="#ef9a83"/><circle cx="40" cy="163" r="7" fill="#f1f6f5" stroke="#0c1620" stroke-width="2"/><circle cx="70" cy="163" r="7" fill="#f1f6f5" stroke="#0c1620" stroke-width="2"/><circle cx="110" cy="163" r="7" fill="#f1f6f5" stroke="#0c1620" stroke-width="2"/><circle cx="165" cy="163" r="7" fill="#f1f6f5" stroke="#0c1620" stroke-width="2"/><circle cx="235" cy="163" r="7" fill="#f1f6f5" stroke="#0c1620" stroke-width="2"/><circle cx="320" cy="163" r="7" fill="#f1f6f5" stroke="#0c1620" stroke-width="2"/><text x="180" y="90" font-size="22" font-weight="700" fill="#f2c46d" text-anchor="middle" font-family="sans-serif">v̄ = d / t</text></svg>
+    <div class="herotxt"><span class="kicker light">Science · Grade 8 · Unit 2 · Lesson 9</span><h1>Measuring Motion: Speed and Velocity</h1><p class="ar">قياس الحركة: السرعة والسرعة المتجهة</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="happy"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Sometimes you walk slowly, and sometimes you run. How do scientists <b>measure</b> motion? Today you meet <b>speed</b>, <b>velocity</b> and <b>distance-time graphs</b>.</p><p class="ar">أحيانًا تمشي ببطء، وأحيانًا تجري. كيف <b>يقيس</b> العلماء الحركة؟ اليوم تتعرّف إلى <b>السرعة</b> و<b>السرعة المتجهة</b> و<b>تمثيلات المسافة والزمن</b>.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ tell constant speed from changing speed<br>✔ calculate average speed with v̄ = d / t (and find the time)<br>✔ describe velocity as speed and direction, drawn as a vector<br>✔ read distance-time graphs: slope = speed</p><p class="ar"><b>سأتعلم اليوم أن:</b><br>✔ أميّز السرعة الثابتة من السرعة المتغيّرة<br>✔ أحسب متوسط السرعة بـ v̄ = d / t (وأجد الزمن)<br>✔ أصف السرعة المتجهة بأنها سرعة واتجاه وأرسمها متجهًا<br>✔ أقرأ تمثيلات المسافة والزمن: الميل = السرعة</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic. Every question has a <b>Show solution</b> button.</p><p class="ar"><b>نصيحة:</b> اضغط <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمة. ولكل سؤال زر <b>طريقة الحل</b>.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up · Lesson 8</span>
+  <h2>Position, distance, displacement</h2>
+  <p class="hsub ar">الموقع والمسافة والإزاحة</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Remember Lesson 8. Stuck? Tap <b>Show solution</b>.</p><p class="ar">مجرد تسخين، لا شيء يُحسب! تذكّر الدرس 8. وإن احترت، اضغط <b>طريقة الحل</b>.</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+</section>
+
+<section class="screen" data-title="Be the Fastest">
+  <span class="kicker">Virtual lab · Be the Fastest</span>
+  <h2>Which toy is the fastest?</h2>
+  <p class="hsub ar">أي لعبة هي الأسرع؟</p>
+  <div class="bi"><p class="en">Four wind-up toys travel <b>different distances</b>. Run each toy, read the meterstick and the stopwatch, and compare. Did the toy that went farthest move fastest?</p><p class="ar">تقطع أربع ألعاب زنبركية <b>مسافات مختلفة</b>. شغّل كل لعبة، واقرأ المسطرة وساعة الإيقاف، ثم قارن. هل اللعبة التي قطعت أبعد مسافة هي الأسرع؟</p></div>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>Speed</b> is a measure of the distance an object travels in a given amount of time.</p><p class="ar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>السرعة</b> مقياس للمسافة التي يقطعها جسم في زمن معيّن.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="tySvg" viewBox="0 0 360 250" class="gsvg" role="img" aria-label="Four wind-up toys racing on tracks with a stopwatch"></svg>
+      <div class="needjs"><div class="seg" id="tyBtns"><button data-v="0">Run A</button><button data-v="1">Run B</button><button data-v="2">Run C</button><button data-v="3">Run D</button></div></div></div>
+    <div class="card"><table class="rtab tytab" id="tyTab"></table><div class="msg bi" id="tyMsg"></div></div>
+  </div>
+  <div class="wu needjs" id="tyBox"></div>
+</section>
+
+<section class="screen" data-title="Constant or changing speed">
+  <span class="kicker">Learn · Constant and changing speed</span>
+  <h2>Walking, then running</h2>
+  <p class="hsub ar">تمشي، ثم تجري</p>
+  <div class="bi"><p class="en">The stopwatches show the girl every second. In the first seconds she moves the <b>same distance each second</b>: <b>constant speed</b>. When she starts running, she moves a <b>bigger distance each second</b>: her speed is <b>changing</b>.</p><p class="ar">تُظهر ساعات الإيقاف الفتاة كل ثانية. في الثواني الأولى تقطع <b>المسافة نفسها كل ثانية</b>: <b>سرعة ثابتة</b>. وعندما تبدأ الجري، تقطع <b>مسافة أكبر كل ثانية</b>: سرعتها <b>تتغيّر</b>.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="grSvg" viewBox="0 0 360 200" class="gsvg" role="img" aria-label="Positions of the girl every second"></svg>
+      <div class="needjs"><div class="slrow wide"><b>stopwatch</b><input type="range" id="grT" min="1" max="7" step="1" value="1" aria-label="stopwatch second"><span id="grTv"></span></div></div></div>
+    <div class="card"><div class="monoout" id="grOut"></div><div class="msg bi" id="grMsg"></div></div>
+  </div>
+  <div class="card why" id="whyGr"></div>
+</section>
+
+<section class="screen" data-title="Average speed">
+  <span class="kicker">Learn · Average speed equation</span>
+  <h2>v̄ = d ÷ t</h2>
+  <p class="hsub ar">‏<span class="m">v̄ = d ÷ t</span></p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>Average speed</b> = total distance ÷ total time. In symbols: <span class="m">v̄ = d / t</span> (m/s, or km/h). The speed of most objects is not constant, so we use the average for a whole trip.</p><p class="ar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>متوسط السرعة</b> = المسافة الكلية ÷ الزمن الكلي. وبالرموز: <span class="m">v̄ = d / t</span> ‏(m/s أو km/h). سرعة معظم الأجسام ليست ثابتة، لذلك نستخدم المتوسط للرحلة كلها.</p></div>
+  <div class="bi"><p class="en">Example 1 is solved for you. In Example 2 you choose the last step; in Example 3, the last two steps.</p><p class="ar">المثال 1 محلول لك. في المثال 2 تختار الخطوة الأخيرة، وفي المثال 3 آخر خطوتين.</p></div>
+  <div class="fader" data-f="sp"></div>
+</section>
+
+<section class="screen" data-title="Isaiah">
+  <span class="kicker">Three-dimensional thinking · Mathematical evidence</span>
+  <h2>Can Isaiah arrive on time?</h2>
+  <p class="hsub ar">هل يصل إشعيا في الموعد؟</p>
+  <div class="bi"><p class="en">Isaiah leaves one city at <b>noon</b>. He has to be at another city <b>186 km</b> away at <b>3:00 PM</b>. The speed limit the entire way is <b>65 km/h</b>. Choose his average speed.</p><p class="ar">يغادر إشعيا مدينة عند <b>الظهر</b>، وعليه أن يكون في مدينة أخرى تبعد <b>186 km</b> عند <b>الساعة 3:00 مساءً</b>. الحد الأقصى للسرعة طوال الطريق <b>65 km/h</b>. اختر متوسط سرعته.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="isSvg" viewBox="0 0 360 170" class="gsvg" role="img" aria-label="Road from one city to another with a clock"></svg>
+      <div class="needjs"><div class="slrow wide"><b>v̄ (km/h)</b><input type="range" id="isV" min="40" max="80" step="1" value="50" aria-label="average speed in km per hour"><span id="isVv"></span></div></div></div>
+    <div class="card"><div class="monoout" id="isOut"></div><div class="msg bi" id="isMsg"></div></div>
+  </div>
+  <div class="card why" id="whyIs"></div>
+</section>
+
+<section class="screen" data-title="Velocity">
+  <span class="kicker">Investigation · Point the Way</span>
+  <h2>Speed + direction = velocity</h2>
+  <p class="hsub ar">السرعة + الاتجاه = السرعة المتجهة</p>
+  <div class="bi"><p class="en">A plane flies from San Francisco toward Washington, D.C. (east). Halfway, it has traveled <b>2,000 km in 2.5 h</b>. Another plane flies the opposite way (west) and covers the same distance in <b>exactly 2 h</b>.</p><p class="ar">تطير طائرة من سان فرانسيسكو نحو واشنطن العاصمة (شرقًا). في منتصف الرحلة كانت قد قطعت <b>2,000 km في 2.5 h</b>. وتطير طائرة أخرى في الاتجاه المعاكس (غربًا) وتقطع المسافة نفسها في <b>2 h بالضبط</b>.</p></div>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>Velocity</b> is the speed and direction of a moving object. A <b>vector</b> is a quantity with magnitude (size) and direction. We draw it as an arrow: the longer the arrow, the faster.</p><p class="ar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>السرعة المتجهة</b> هي سرعة الجسم المتحرك واتجاهه. و<b>المتجه</b> كمية لها مقدار (حجم) واتجاه. نرسمه سهمًا: كلما طال السهم كانت السرعة أكبر.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="plSvg" viewBox="0 0 360 200" class="gsvg" role="img" aria-label="Velocity arrows of the two planes"></svg>
+      <div class="needjs"><div class="seg" id="plSeg"><button data-v="1" class="on">First plane</button><button data-v="2">Second plane</button><button data-v="3">Both</button></div></div></div>
+    <div class="card"><div class="monoout" id="plOut"></div><div class="msg bi" id="plMsg"></div></div>
+  </div>
+  <div class="wu needjs" id="plBox"></div>
+</section>
+
+<section class="screen" data-title="Motion diagrams">
+  <span class="kicker">Learn · Constant and changing velocity</span>
+  <h2>Motion diagrams</h2>
+  <p class="hsub ar">مخططات الحركة</p>
+  <div class="bi"><p class="en">A <b>motion diagram</b> shows an object's position at equal time intervals (here, every 1 s). The arrows show the velocity. If the <b>speed</b> or the <b>direction</b> changes, the velocity changes.</p><p class="ar"><b>مخطط الحركة</b> يُظهر موقع الجسم في فترات زمنية متساوية (هنا كل 1 s). وتُظهر الأسهم السرعة المتجهة. إذا تغيّرت <b>السرعة</b> أو <b>الاتجاه</b> تتغيّر السرعة المتجهة.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="mdSvg" viewBox="0 0 360 210" class="gsvg" role="img" aria-label="Motion diagram of a cyclist"></svg>
+      <div class="needjs"><div class="seg" id="mdSeg"><button data-v="0" class="on">Constant velocity</button><button data-v="1">Changing speed</button><button data-v="2">Changing direction</button></div></div></div>
+    <div class="card"><div class="monoout" id="mdOut"></div><div class="msg bi" id="mdMsg"></div></div>
+  </div>
+</section>
+
+<section class="screen" data-title="Plot It">
+  <span class="kicker">Investigation · Plot It</span>
+  <h2>A distance-time graph</h2>
+  <p class="hsub ar">تمثيل المسافة والزمن</p>
+  <div class="bi"><p class="en">Tap each row of the train's table to plot it: <b>time</b> on the horizontal axis, <b>distance</b> on the vertical axis.</p><p class="ar">اضغط على كل صف من جدول القطار لتمثيله: <b>الزمن</b> على المحور الأفقي، و<b>المسافة</b> على المحور الرأسي.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="ptSvg" viewBox="0 0 360 280" class="gsvg" role="img" aria-label="Distance-time graph of the train"></svg></div>
+    <div class="card"><table class="rtab pttab" id="ptTab"></table><div class="msg bi" id="ptMsg"></div></div>
+  </div>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> On a <b>distance-time graph</b>, a straight line means constant speed. The <b>steeper</b> the line (the greater the slope), the <b>greater the speed</b>. Slope = distance difference ÷ time difference = speed.</p><p class="ar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> في <b>تمثيل المسافة والزمن</b>، يعني الخط المستقيم سرعة ثابتة. وكلما كان الخط <b>أشد انحدارًا</b> (ميله أكبر) كانت <b>السرعة أكبر</b>. الميل = فرق المسافة ÷ فرق الزمن = السرعة.</p></div>
+  <div class="wu needjs" id="ptBox"></div>
+</section>
+
+<section class="screen" data-title="Sea turtle">
+  <span class="kicker">Three-dimensional thinking · Analyze the data</span>
+  <h2>The hawksbill sea turtle</h2>
+  <p class="hsub ar">سلحفاة منقار الصقر البحرية</p>
+  <div class="bi"><p class="en">The graph shows tracking data of a hawksbill sea turtle. Tap each interval to find the turtle's speed.</p><p class="ar">يُظهر التمثيل بيانات تتبّع سلحفاة منقار الصقر البحرية. اضغط على كل فترة لتجد سرعة السلحفاة.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="ttSvg" viewBox="0 0 360 280" class="gsvg" role="img" aria-label="Hawksbill sea turtle distance-time graph"></svg>
+      <div class="needjs"><div class="seg" id="ttSeg"><button data-v="0">Day 0–2</button><button data-v="1">Day 2–3</button><button data-v="2">Day 3–4</button><button data-v="3">Day 4–6</button></div></div></div>
+    <div class="card"><div class="monoout" id="ttOut"></div><div class="msg bi" id="ttMsg"></div></div>
+  </div>
+  <div class="card why" id="whyTt"></div>
+</section>
+
+<section class="screen" data-title="Apply">
+  <span class="kicker">Apply · Review questions</span>
+  <h2>The elevator and the driver</h2>
+  <p class="hsub ar">المصعد والسائق</p>
+  <div class="bi"><p class="en">The graph shows an elevator going down. Move the time and explain its motion.</p><p class="ar">يُظهر التمثيل مصعدًا ينزل. حرّك الزمن واشرح حركته.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="elSvg" viewBox="0 0 360 260" class="gsvg" role="img" aria-label="Elevator height-time graph"></svg>
+      <div class="needjs"><div class="slrow wide"><b>time (min)</b><input type="range" id="elT" min="0" max="5" step="0.5" value="0" aria-label="time in minutes"><span id="elTv"></span></div></div></div>
+    <div class="card"><div class="monoout" id="elOut"></div><div class="msg bi" id="elMsg"></div></div>
+  </div>
+  <div class="bi"><p class="en"><b>Calculate:</b> a driver travels 55 km in 1 hour. He then drives at 35 km/h for 2 hours. Next, he drives 175 km in 3 hours. What was his average speed?</p><p class="ar"><b>احسب:</b> يقطع سائق 55 km في ساعة واحدة، ثم يقود بسرعة 35 km/h لمدة ساعتين، ثم يقطع 175 km في 3 ساعات. ما متوسط سرعته؟</p></div>
+  <div id="drSt"></div>
+  <div class="card why" id="whyDr"></div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Check yourself</span>
+  <h2>Your turn: no score here</h2>
+  <p class="hsub ar">دورك: بدون درجات هنا</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Write what you know (d, t, v̄), then use <span class="m">v̄ = d / t</span>. Choose an answer, then open <b>Show solution</b>.</p><p class="ar">اكتب ما تعرفه (d وt وv̄)، ثم استخدم <span class="m">v̄ = d / t</span>. اختر إجابة، ثم افتح <b>طريقة الحل</b>.</p></div></div>
+  <div class="wu needjs" id="tryBox"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Well done! Now the final quiz: 10 questions, and two of them review Lesson 8.</p><p class="ar">أحسنت! والآن الاختبار النهائي: 10 أسئلة، اثنان منها مراجعة على الدرس 8.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+
+
+</main>
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="sci8_u2l9_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"UAE MOE · Grade 8"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛⅓⅔¼¾⅘](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛⅓⅔¼¾⅘ =+,./≠]*[0-9A-Za-z)\[\]½²³⁴¹√∛⅓⅔¼¾⅘])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t)||(inM&&/^<span/.test(t)))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+/* ---------- lesson helpers ---------- */
+const OV=d=>`<span class="ov">${d}</span>`;
+const OVN=(p,r)=>`<span class="m">${p}<span class="ov">${r}</span></span>`;
+/* solution box: steps = [[en, ar], ...] */
+function solHTML(steps){if(!steps||!steps.length)return "";
+  return `<div class="solbox"><button type="button" class="solbtn">${ICON.bulb} Show solution <span class="ar">طريقة الحل</span></button><ol class="solsteps" hidden>${steps.map(s=>`<li><span>${s[0]}</span><span class="ar">${s[1]}</span></li>`).join("")}</ol></div>`;}
+function solBind(root){root.querySelectorAll(".solbtn").forEach(b=>{if(b.dataset.b)return;b.dataset.b=1;b.onclick=e=>{e.stopPropagation();const ol=b.nextElementSibling,open=ol.hidden;ol.hidden=!open;b.classList.toggle("on",open);b.innerHTML=`${ICON.bulb} ${open?"Hide solution":"Show solution"} <span class="ar">${open?"إخفاء الحل":"طريقة الحل"}</span>`;};});}
+
+
+const SVGT=(x,y,t,o)=>`<text x="${x}" y="${y}" ${o||""}>${t}</text>`;
+const SANS='font-family="sans-serif"';
+const NN=v=>String(v).replace(/-/g,"−");
+const fx=(v,d)=>NN(+(+v).toFixed(d===undefined?2:d));
+const money=v=>"$"+(+v).toFixed(2);
+
+/* ---------- graph helpers (dark-friendly) ---------- */
+const GC={t:"#7cc2bd",g:"#f2c46d",c:"#ef9a83",ink:"#f1f6f5",mu:"#9fb3b5"};
+function G(o){const W=o.W||360,H=o.H||260,L=o.L||50,R=W-14,T=14,B=H-40;
+  const X=v=>L+(v-o.x0)/(o.x1-o.x0)*(R-L),Y=v=>B-(v-o.y0)/(o.y1-o.y0)*(B-T);
+  let s=`<rect x="${L}" y="${T}" width="${R-L}" height="${B-T}" fill="#7cc2bd" fill-opacity=".04"/>`;
+  let k=0;for(let v=o.x0;v<=o.x1+1e-9;v+=o.xs,k++){s+=`<line x1="${X(v)}" y1="${T}" x2="${X(v)}" y2="${B}" stroke="${GC.t}" stroke-opacity=".14"/>`;
+    if(k%(o.xl||1)===0)s+=SVGT(X(v),B+15,fx(v),`font-size="11" fill="${GC.mu}" text-anchor="middle" ${SANS}`);}
+  k=0;for(let v=o.y0;v<=o.y1+1e-9;v+=o.ys,k++){s+=`<line x1="${L}" y1="${Y(v)}" x2="${R}" y2="${Y(v)}" stroke="${GC.t}" stroke-opacity=".14"/>`;
+    if(k%(o.yl||1)===0)s+=SVGT(L-6,Y(v)+4,fx(v),`font-size="11" fill="${GC.mu}" text-anchor="end" ${SANS}`);}
+  s+=`<line x1="${L}" y1="${B}" x2="${R}" y2="${B}" stroke="${GC.mu}" stroke-width="1.6"/><line x1="${L}" y1="${T}" x2="${L}" y2="${B}" stroke="${GC.mu}" stroke-width="1.6"/>`;
+  if(o.xt)s+=SVGT((L+R)/2,H-6,o.xt,`font-size="12" font-weight="700" fill="${GC.ink}" text-anchor="middle" ${SANS}`);
+  if(o.yt)s+=`<text transform="translate(13 ${(T+B)/2}) rotate(-90)" font-size="12" font-weight="700" fill="${GC.ink}" text-anchor="middle" ${SANS}>${o.yt}</text>`;
+  return {X,Y,s,L,R,T,B,o};}
+const HALO='paint-order="stroke" stroke="#0c1620" stroke-width="4" stroke-linejoin="round"';
+function gLine(g,x1,y1,x2,y2,col,dash,w){return `<line x1="${g.X(x1)}" y1="${g.Y(y1)}" x2="${g.X(x2)}" y2="${g.Y(y2)}" stroke="${col}" stroke-width="${w||3.2}" stroke-linecap="round" ${dash?'stroke-dasharray="8 6"':""}/>`;}
+function gPt(g,x,y,col,lab,dx,dy,anc){return `<circle cx="${g.X(x)}" cy="${g.Y(y)}" r="5.5" fill="${col}" stroke="#0c1620" stroke-width="2"/>`+(lab?SVGT(g.X(x)+(dx===undefined?9:dx),g.Y(y)+(dy===undefined?4:dy),lab,`font-size="12" font-weight="700" fill="${GC.ink}" ${anc?`text-anchor="${anc}"`:""} ${HALO} ${SANS}`):"");}
+/* proportional line y = m x clipped to the grid */
+function gProp(g,m,col,dash){const o=g.o;let xe=o.x1;if(m*xe>o.y1)xe=o.y1/m;let xs=Math.max(o.x0,0);if(o.x0<0){xs=o.x0;if(m*xs<o.y0)xs=o.y0/m;}return gLine(g,xs,m*xs,xe,m*xe,col,dash);}
+/* step triangle: run (gold) then rise (coral) */
+function gStep(g,xa,ya,xb,yb,rl,ul){const X1=g.X(xa),Y1=g.Y(ya),X2=g.X(xb),Y2=g.Y(yb);
+  return `<line x1="${X1}" y1="${Y1}" x2="${X2}" y2="${Y1}" stroke="${GC.g}" stroke-width="3" stroke-dasharray="2 0"/><line x1="${X2}" y1="${Y1}" x2="${X2}" y2="${Y2}" stroke="${GC.c}" stroke-width="3"/>`+
+   SVGT((X1+X2)/2,Y1>g.B-18?Y1-7:Y1+16,rl,`font-size="12" font-weight="700" fill="${GC.g}" text-anchor="middle" ${HALO} ${SANS}`)+
+   SVGT(X2+7,(Y1+Y2)/2+4,ul,`font-size="12" font-weight="700" fill="${GC.c}" ${HALO} ${SANS}`);}
+
+
+/* ---------- coordinate plane + any line ---------- */
+function plane(o){const g=G(Object.assign({x0:-5,x1:5,xs:1,y0:-5,y1:5,ys:1,L:34,H:300},o));
+  g.s+=`<line x1="${g.X(0)}" y1="${g.T}" x2="${g.X(0)}" y2="${g.B}" stroke="${GC.mu}" stroke-width="1.7"/><line x1="${g.L}" y1="${g.Y(0)}" x2="${g.R}" y2="${g.Y(0)}" stroke="${GC.mu}" stroke-width="1.7"/>`+
+   SVGT(g.X(0)-6,g.Y(0)+14,"O",`font-size="12" font-style="italic" fill="${GC.mu}" text-anchor="end" font-family="Cambria,serif"`)+
+   SVGT(g.R-4,g.Y(0)-6,"x",`font-size="13" font-style="italic" fill="${GC.ink}" text-anchor="end" font-family="Cambria,serif"`)+SVGT(g.X(0)+6,g.T+12,"y",`font-size="13" font-style="italic" fill="${GC.ink}" font-family="Cambria,serif"`);return g;}
+function gThru(g,p,q,col,dash){const o=g.o;if(p[0]===q[0])return gLine(g,p[0],o.y0,p[0],o.y1,col,dash);
+  const m=(q[1]-p[1])/(q[0]-p[0]),f=x=>p[1]+m*(x-p[0]),fi=y=>p[0]+(y-p[1])/m;
+  const pts=[];[[o.x0,f(o.x0)],[o.x1,f(o.x1)]].forEach(t=>pts.push(t));
+  const cl=t=>{if(t[1]>o.y1)return [fi(o.y1),o.y1];if(t[1]<o.y0)return [fi(o.y0),o.y0];return t;};
+  const a=cl(pts[0]),b=cl(pts[1]);return gLine(g,a[0],a[1],b[0],b[1],col,dash);}
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+function frac(n,d){if(d===0)return "undefined";if(n===0)return "0";if(d<0){n=-n;d=-d;}const k=gcd(Math.abs(n),d);n/=k;d/=k;return d===1?NN(n):`${NN(n)}/${d}`;}
+
+
+function lab(x,y,t,col,anc,fs){return SVGT(x,y,t,`font-size="${fs||12}" font-weight="700" fill="${col||GC.ink}" ${anc?`text-anchor="${anc}"`:""} ${HALO} ${SANS}`);}
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function segOn(el,cb){if(!el)return;el.querySelectorAll("button").forEach(b=>b.onclick=()=>{el.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));cb(b.dataset.v);});}
+const sgn=v=>v>0?"+"+v:NN(v);
+function arrowHead(x,y,dir,col,s){s=s||8;const a=dir;const p1=[x-s*Math.cos(a-0.5),y-s*Math.sin(a-0.5)],p2=[x-s*Math.cos(a+0.5),y-s*Math.sin(a+0.5)];return `<path d="M${x} ${y}L${p1[0].toFixed(1)} ${p1[1].toFixed(1)}L${p2[0].toFixed(1)} ${p2[1].toFixed(1)}Z" fill="${col}"/>`;}
+function arrow(x1,y1,x2,y2,col,w,dash){const a=Math.atan2(y2-y1,x2-x1);return `<line x1="${x1}" y1="${y1}" x2="${(x2-6*Math.cos(a)).toFixed(1)}" y2="${(y2-6*Math.sin(a)).toFixed(1)}" stroke="${col}" stroke-width="${w||3}" stroke-linecap="round" ${dash?`stroke-dasharray="${dash}"`:""}/>`+arrowHead(x2,y2,a,col,10);}
+const BG='<rect width="100%" height="100%" rx="12" fill="#0f1d29"/>';
+function flag(x,y,col){return `<line x1="${x}" y1="${y}" x2="${x}" y2="${y-30}" stroke="${col}" stroke-width="2.5"/><path d="M${x} ${y-30}l16 5l-16 6z" fill="${col}"/>`;}
+
+
+const FD={sp:[
+ {q:"A truck driver makes a trip that covers 2,380 km in 28 hours. What is the driver's average speed in km/h?<br><span class=\"ar\">يقطع سائق شاحنة رحلة طولها 2,380 km في 28 ساعة. ما متوسط سرعته بوحدة km/h؟</span>",
+  s:[["d = 2,380 km, t = 28 h","Write what you know.","اكتب ما تعرفه."],["v̄ = d / t","Average speed equation.","معادلة متوسط السرعة."],["v̄ = 2,380 / 28","Substitute.","عوّض."],["v̄ = 85 km/h","Divide. Units: km ÷ h = km/h.","اقسم. الوحدة: km ÷ h = km/h."]],blank:0},
+ {q:"What is the average speed of a soccer ball that travels 34 m in 2.0 s?<br><span class=\"ar\">ما متوسط سرعة كرة قدم تقطع 34 m في 2.0 s؟</span>",
+  s:[["d = 34 m, t = 2.0 s","Write what you know.","اكتب ما تعرفه."],["v̄ = d / t","Average speed equation.","معادلة متوسط السرعة."],["v̄ = 34 / 2.0","Substitute.","عوّض."],["v̄ = 17 m/s","Divide. Units: m ÷ s = m/s.","اقسم. الوحدة: m ÷ s = m/s."]],blank:1,
+  o:[["v̄ = 68 m/s","v̄ = 17 m/s","v̄ = 17 m"]],h:[["Divide 34 by 2.0, and the unit is m ÷ s.","اقسم 34 على 2.0، والوحدة m ÷ s."]]},
+ {q:"How long would it take a bus traveling at 52 km/h to travel 130 km?<br><span class=\"ar\">كم يستغرق حافلة تسير بسرعة 52 km/h لتقطع 130 km؟</span>",
+  s:[["v̄ = 52 km/h, d = 130 km","Write what you know.","اكتب ما تعرفه."],["t = d / v̄","Rearrange v̄ = d / t for t.","أعد ترتيب v̄ = d / t لإيجاد t."],["t = 130 / 52","Substitute.","عوّض."],["t = 2.5 h","Divide. Units: km ÷ km/h = h.","اقسم. الوحدة: km ÷ km/h = h."]],blank:2,
+  o:[["t = 52 / 130","t = 130 / 52","t = 130 × 52"],["t = 0.4 h","t = 2.5 km","t = 2.5 h"]],h:[["Time = distance ÷ speed: the distance goes on top.","الزمن = المسافة ÷ السرعة: المسافة في الأعلى."],["130 ÷ 52 = 2.5, and the unit of time is h.","130 ÷ 52 = 2.5، ووحدة الزمن h."]]}
+]};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+
+/* ---------- practice cards with a solution button ---------- */
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}${n[1]&&n[1]!==n[0]?`<small>${n[1]}</small>`:""}</button>`).join("")}</div><div class="mwhy"></div>${solHTML(c.sol)}</div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll(".mb button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll(".mb button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});
+  solBind(box);}
+
+/* ---------- stepper: one or more methods shown line by line ---------- */
+function stepper(el,methods){let m=0,k=0;
+  el.innerHTML=`${methods.length>1?`<div class="seg needjs" data-r="mode">${methods.map((x,i)=>`<button data-v="${i}" class="${i?"":"on"}">${x.name}</button>`).join("")}</div>`:""}
+   <div class="card fcard"><div class="flines" data-r="l"></div></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  function draw(){const L=methods[m].lines;R("l").innerHTML=L.map((s,i)=>i<=k?`<div class="fline"><span class="fn">${i+1}</span>${M(s[0])}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`:"").join("");
+    R("n").disabled=k>=L.length-1;
+    if(k>=L.length-1)setMsg(R("m"),`${ICON.check} ${methods[m].end[0]}`,`${ICON.check} ${methods[m].end[1]}`);
+    else setMsg(R("m"),"Tap <b>Show me</b> for the next step.","اضغط <b>Show me</b> للخطوة التالية.");refreshAr(el);}
+  R("n").onclick=()=>{if(k<methods[m].lines.length-1){k++;draw();}};R("r").onclick=()=>{k=0;draw();};
+  if(R("mode"))R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));m=+b.dataset.v;k=0;draw();});
+  draw();}
+
+
+
+/* ---------- warm-up: Lesson 8 ---------- */
+cardsQ($("#wuBox"),[
+ {t:["Lesson 8: The reference point is at the 50-cm mark. An object is at the 70-cm mark (larger numbers are positive). What is its position?","الدرس 8: نقطة المرجع عند علامة 50 cm، والجسم عند علامة 70 cm (الأعداد الأكبر موجبة). ما موقعه؟"],o:[["70 cm"],["+20 cm"],["−20 cm"]],a:1,
+  w:["70 − 50 = 20 cm in the positive direction.","70 − 50 = 20 cm في الاتجاه الموجب."],h:["Measure from 50, not from 0.","قِس من 50 وليس من 0."],
+  sol:[["Reference: 50 cm.","نقطة المرجع: 50 cm."],["70 − 50 = 20 cm.","70 − 50 = 20 cm."],["70 > 50, so +20 cm.","70 > 50، إذن +20 cm."]]},
+ {t:["Lesson 8: You walk 40 m east, then 40 m west. What is your displacement?","الدرس 8: تمشي 40 m شرقًا ثم 40 m غربًا. ما إزاحتك؟"],o:[["80 m"],["40 m east","40 m شرقًا"],["0 m"]],a:2,
+  w:["You end where you started, so the displacement is 0 m (the distance is 80 m).","تنتهي حيث بدأت، إذن الإزاحة 0 m (والمسافة 80 m)."],h:["Displacement: from start to finish.","الإزاحة: من البداية إلى النهاية."],
+  sol:[["Distance: 40 + 40 = 80 m.","المسافة: 40 + 40 = 80 m."],["Final position = starting position.","الموقع النهائي = الموقع الابتدائي."],["Displacement: 0 m.","الإزاحة: 0 m."]]},
+ {t:["Lesson 8: What is motion?","الدرس 8: ما الحركة؟"],o:[["The process of changing position","عملية تغيّر الموقع"],["A reference point","نقطة مرجع"],["The total length of a path","الطول الكلي للمسار"]],a:0,
+  w:["Motion is the process of changing position.","الحركة هي عملية تغيّر الموقع."],h:["How do you know something moved?","كيف تعرف أن شيئًا تحرّك؟"],
+  sol:[["An object moves when its position changes.","يتحرك الجسم عندما يتغيّر موقعه."],["Relative to a reference point.","بالنسبة إلى نقطة مرجع."],["Motion = changing position.","الحركة = تغيّر الموقع."]]}
+]);
+
+/* ---------- Be the Fastest: toy race ---------- */
+(function(){const s=$("#tySvg");if(!s)return;
+  const TY=[["A",2.0,4.0,GC.t],["B",1.5,2.5,GC.g],["C",3.0,7.5,GC.c],["D",2.4,3.0,"#c79bff"]];
+  const pos=[0,0,0,0],done=[false,false,false,false];let clock=0,anim=null;
+  const X=m=>40+m*95,ROW=i=>66+i*44;
+  function toy(x,y,c){return `<rect x="${x-11}" y="${y-22}" width="22" height="18" rx="4" fill="${c}"/><rect x="${x-7}" y="${y-17}" width="14" height="6" rx="2" fill="#0c1620" fill-opacity=".5"/><circle cx="${x-6}" cy="${y-2}" r="3.2" fill="#1f2a37" stroke="${c}"/><circle cx="${x+6}" cy="${y-2}" r="3.2" fill="#1f2a37" stroke="${c}"/><path d="M${x-11} ${y-14}h-6m3 -4v8" stroke="${GC.mu}" stroke-width="2"/>`;}
+  function draw(){let o=BG;
+    for(let m=0;m<=3;m+=0.5){o+=`<line x1="${X(m)}" y1="40" x2="${X(m)}" y2="214" stroke="${GC.t}" stroke-opacity="${m%1?0.07:0.16}"/>`;if(m%1===0)o+=lab(X(m),232,m+" m",GC.mu,"middle",10.5);}
+    TY.forEach((t,i)=>{const y=ROW(i);o+=`<line x1="${X(0)}" y1="${y}" x2="${X(3)}" y2="${y}" stroke="${GC.mu}" stroke-opacity=".5" stroke-width="2"/>`+`<rect x="${X(t[1])-2}" y="${y-28}" width="4" height="32" fill="${t[3]}"/>`+lab(18,y-6,t[0],t[3],"middle",13)+toy(X(pos[i]),y,t[3]);});
+    o+=`<g transform="translate(250,24)"><circle r="13" fill="#0c1620" stroke="${GC.ink}" stroke-width="2"/><line x1="0" y1="0" x2="${(11*Math.sin(clock/5*2*Math.PI)).toFixed(1)}" y2="${(-11*Math.cos(clock/5*2*Math.PI)).toFixed(1)}" stroke="${GC.g}" stroke-width="2"/><rect x="-3" y="-21" width="6" height="5" fill="${GC.ink}"/></g>`+lab(270,29,clock.toFixed(1)+" s",GC.g,"start",12);
+    s.innerHTML=o;
+    $("#tyTab").innerHTML=`<tr><th>toy</th><th>d (m)</th><th>t (s)</th><th>speed</th></tr>`+TY.map((t,i)=>`<tr><td style="color:${t[3]}">${t[0]}</td><td>${done[i]?t[1].toFixed(1):"?"}</td><td>${done[i]?t[2].toFixed(1):"?"}</td><td>${done[i]?(t[1]/t[2]).toFixed(2)+" m/s":"?"}</td></tr>`).join("");}
+  function run(i){if(anim)cancelAnimationFrame(anim);const t=TY[i];pos[i]=0;clock=0;
+    const fin=()=>{pos[i]=t[1];clock=t[2];done[i]=true;draw();
+      setMsg($("#tyMsg"),`Toy ${t[0]}: ${t[1].toFixed(1)} m in ${t[2].toFixed(1)} s. Speed = ${t[1].toFixed(1)} ÷ ${t[2].toFixed(1)} = <b>${(t[1]/t[2]).toFixed(2)} m/s</b>.`,`اللعبة ${t[0]}: ‏${t[1].toFixed(1)} m في ${t[2].toFixed(1)} s. السرعة = ${t[1].toFixed(1)} ÷ ${t[2].toFixed(1)} = <b>${(t[1]/t[2]).toFixed(2)} m/s</b>.`);};
+    if(RM){fin();return;}const t0=performance.now();
+    const step=now=>{const el=Math.min((now-t0)/1000,t[2]);clock=el;pos[i]=t[1]*el/t[2];draw();if(el<t[2])anim=requestAnimationFrame(step);else fin();};anim=requestAnimationFrame(step);}
+  $$("#tyBtns button").forEach(b=>b.onclick=()=>{$$("#tyBtns button").forEach(x=>x.classList.toggle("on",x===b));run(+b.dataset.v);});
+  draw();setMsg($("#tyMsg"),"Run each toy. Each one travels a different distance.","شغّل كل لعبة. كل واحدة تقطع مسافة مختلفة.");})();
+cardsQ($("#tyBox"),[
+ {t:["Which toy is the fastest?","أي لعبة هي الأسرع؟"],o:[["A"],["B"],["C"],["D"]],a:3,cls:"two",
+  w:["D: 2.4 ÷ 3.0 = 0.80 m/s, the greatest speed.","D: ‏2.4 ÷ 3.0 = 0.80 m/s، وهي أكبر سرعة."],h:["Compare the speeds (distance ÷ time), not the distances.","قارن السرعات (المسافة ÷ الزمن)، لا المسافات."],
+  sol:[["A 0.50, B 0.60, C 0.40, D 0.80 m/s.","A ‏0.50، وB ‏0.60، وC ‏0.40، وD ‏0.80 m/s."],["The largest speed is 0.80 m/s.","أكبر سرعة 0.80 m/s."],["Toy D is the fastest.","اللعبة D هي الأسرع."]]},
+ {t:["Toy C went the farthest (3.0 m). Why is it NOT the fastest?","قطعت اللعبة C أبعد مسافة (3.0 m). لماذا ليست الأسرع؟"],o:[["It took the longest time, so its distance per second is the smallest","استغرقت أطول زمن، فالمسافة التي تقطعها كل ثانية هي الأصغر"],["Distance does not matter for speed","المسافة لا علاقة لها بالسرعة"],["It was wound up more","لُفّ زنبركها أكثر"]],a:0,cls:"stack",
+  w:["Speed depends on distance AND time: 3.0 ÷ 7.5 = 0.40 m/s.","السرعة تعتمد على المسافة والزمن معًا: 3.0 ÷ 7.5 = 0.40 m/s."],h:["Speed = distance ÷ time.","السرعة = المسافة ÷ الزمن."],
+  sol:[["Toy C: 3.0 m in 7.5 s.","اللعبة C: ‏3.0 m في 7.5 s."],["3.0 ÷ 7.5 = 0.40 m/s.","3.0 ÷ 7.5 = 0.40 m/s."],["That is the smallest speed.","وهذه أصغر سرعة."]]}
+]);
+
+/* ---------- constant or changing speed: the girl ---------- */
+(function(){const r=$("#grT");if(!r)return;const P=[0,3,6,9,13,18,25];const X=m=>32+m*11.8;
+  function girl(x,run){const c=GC.g;return `<circle cx="${x}" cy="96" r="7" fill="#d9a77a"/><path d="M${x-7} 104h14l-2 22h-10z" fill="#9b7ad8"/>`+(run?`<path d="M${x-3} 126l-9 20M${x+3} 126l12 16" stroke="#1f2a37" stroke-width="5" stroke-linecap="round"/><path d="M${x-6} 108l-10 10M${x+6} 108l10 -6" stroke="#d9a77a" stroke-width="4" stroke-linecap="round"/>`:`<path d="M${x-2} 126l-4 20M${x+2} 126l5 20" stroke="#1f2a37" stroke-width="5" stroke-linecap="round"/><path d="M${x-6} 108l-4 14M${x+6} 108l4 14" stroke="#d9a77a" stroke-width="4" stroke-linecap="round"/>`);}
+  const d=()=>{const t=+r.value;$("#grTv").textContent=t;let o=BG+`<rect x="14" y="150" width="332" height="10" rx="4" fill="#8c5a3c" fill-opacity=".7"/>`;
+    for(let m=0;m<=25;m+=5)o+=lab(X(m),180,m+" m",GC.mu,"middle",10);
+    for(let k=0;k<t;k++){o+=`<circle cx="${X(P[k])}" cy="155" r="5" fill="${k<4?GC.t:GC.c}" stroke="#0c1620" stroke-width="1.5"/>`+`<g transform="translate(${X(P[k])},30)"><circle r="10" fill="#0c1620" stroke="${GC.mu}" stroke-width="1.5"/>${SVGT(0,4,k+1,`font-size="10" font-weight="700" fill="${GC.ink}" text-anchor="middle" ${SANS}`)}</g>`;
+      if(k>0)o+=lab((X(P[k])+X(P[k-1]))/2,62,(P[k]-P[k-1])+" m",k<4?GC.t:GC.c,"middle",10.5);}
+    o+=girl(X(P[t-1]),t>4);$("#grSvg").innerHTML=o;
+    $("#grOut").textContent=`stopwatch: ${t}\nposition: ${P[t-1]} m\n`+(t>1?`last second: ${P[t-1]-P[t-2]} m`:"start")+(t===7?`\naverage: 25 m ÷ 6.0 s ≈ 4.2 m/s`:"");
+    if(t<=4)setMsg($("#grMsg"),"Each second she moves <b>3 m</b>: the same distance every second = <b>constant speed</b>.","تقطع كل ثانية <b>3 m</b>: المسافة نفسها كل ثانية = <b>سرعة ثابتة</b>.");
+    else setMsg($("#grMsg"),`She is running: ${P[t-1]-P[t-2]} m in the last second. A different distance each second = <b>changing speed</b>.`,`إنها تجري: ${P[t-1]-P[t-2]} m في الثانية الأخيرة. مسافة مختلفة كل ثانية = <b>سرعة متغيّرة</b>.`);};
+  r.oninput=d;d();})();
+whyBox($("#whyGr"),"The girl traveled 25 m from stopwatch 1 to stopwatch 7. Her average speed is 25 m ÷ 6.0 s ≈ 4.2 m/s, not 25 ÷ 7.","قطعت الفتاة 25 m من الساعة 1 إلى الساعة 7. متوسط سرعتها 25 m ÷ 6.0 s ≈ 4.2 m/s، وليس 25 ÷ 7.",
+ [["Because from second 1 to second 7, only 6 seconds pass.","لأن من الثانية 1 إلى الثانية 7 تمر 6 ثوانٍ فقط.",true,"7 − 1 = 6.0 s. Time is the difference between the end and the start.","7 − 1 = 6.0 s. الزمن هو الفرق بين النهاية والبداية."],
+  ["Because she was walking for part of the time.","لأنها كانت تمشي في جزء من الوقت.",false,"Walking or running, all of the time counts in the average.","سواء مشت أو جرت، كل الزمن يُحسب في المتوسط."],
+  ["Because the last second does not count.","لأن الثانية الأخيرة لا تُحسب.",false,"Every second counts; there are just 6 intervals between 7 stopwatches.","كل ثانية تُحسب، لكن بين 7 ساعات توجد 6 فترات فقط."]]);
+
+/* ---------- Isaiah ---------- */
+(function(){const r=$("#isV");if(!r)return;
+  const hm=h=>{const H=Math.floor(h),M=Math.round((h-H)*60);return M===60?`${H+1} h 0 min`:`${H} h ${M} min`;};
+  const clk=h=>{let H=12+Math.floor(h),M=Math.round((h-Math.floor(h))*60);if(M===60){H++;M=0;}const hh=H>12?H-12:H;return `${hh}:${String(M).padStart(2,"0")} PM`;};
+  const d=()=>{const v=+r.value;$("#isVv").textContent=v;const need=186/v,at3=Math.min(186,v*3);let o=BG;
+    o+=`<rect x="30" y="92" width="300" height="20" rx="8" fill="#2b3a46"/><line x1="36" y1="102" x2="324" y2="102" stroke="${GC.ink}" stroke-opacity=".45" stroke-dasharray="10 8" stroke-width="2"/>`;
+    [[30,"City 1"],[330,"City 2"]].forEach(c=>{o+=`<rect x="${c[0]-14}" y="60" width="12" height="28" fill="${GC.t}" fill-opacity=".6"/><rect x="${c[0]}" y="50" width="14" height="38" fill="${GC.t}" fill-opacity=".8"/>`+lab(c[0],134,c[1],GC.ink,"middle",11);});
+    const cx=30+at3/186*300;o+=`<rect x="${cx-12}" y="88" width="24" height="12" rx="4" fill="${v>65?GC.c:GC.g}"/><circle cx="${cx-6}" cy="101" r="3.5" fill="#0c1620"/><circle cx="${cx+6}" cy="101" r="3.5" fill="#0c1620"/>`;
+    o+=lab(180,30,`at 3:00 PM the car has gone ${Math.round(at3)} km of 186 km`,at3>=186?GC.t:GC.c,"middle",11);
+    o+=lab(180,160,"speed limit 65 km/h",GC.mu,"middle",10.5);$("#isSvg").innerHTML=o;
+    $("#isOut").textContent=`t = d / v̄ = 186 / ${v}\n  ≈ ${need.toFixed(2)} h ≈ ${hm(need)}\narrives at ≈ ${clk(need)}`;
+    if(v>65)setMsg($("#isMsg"),`He would arrive on time, but <b>${v} km/h is above the speed limit</b>. Not allowed!`,`سيصل في الموعد، لكن <b>${v} km/h أعلى من الحد الأقصى للسرعة</b>. غير مسموح!`,true);
+    else if(need<=3+1e-9)setMsg($("#isMsg"),`${ICON.check} At ${v} km/h he arrives at about <b>${clk(need)}</b>: on time and within the limit.`,`${ICON.check} بسرعة ${v} km/h يصل نحو <b>${clk(need)}</b>: في الموعد وضمن الحد المسموح.`);
+    else setMsg($("#isMsg"),`At ${v} km/h he needs ${hm(need)}: he arrives <b>late</b>.`,`بسرعة ${v} km/h يحتاج إلى ${hm(need)}: يصل <b>متأخرًا</b>.`,true);};
+  r.oninput=d;d();})();
+whyBox($("#whyIs"),"Isaiah CAN arrive on time without breaking the speed limit.","يستطيع إشعيا أن يصل في الموعد دون أن يتجاوز الحد الأقصى للسرعة.",
+ [["Because he needs only 186 ÷ 3 = 62 km/h, which is less than 65 km/h.","لأنه يحتاج فقط إلى 186 ÷ 3 = 62 km/h، وهذا أقل من 65 km/h.",true,"Mathematical evidence: needed speed 62 km/h ≤ limit 65 km/h. At 65 km/h he needs about 2 h 52 min.","الدليل الرياضي: السرعة المطلوبة 62 km/h ≤ الحد 65 km/h. وبسرعة 65 km/h يحتاج نحو 2 h و52 min."],
+  ["Because he must drive at exactly 65 km/h the whole way.","لأنه يجب أن يقود بسرعة 65 km/h بالضبط طوال الطريق.",false,"195 km is the most he can drive in 3 h; any average speed from 62 to 65 km/h works.","195 km أقصى ما يقطعه في 3 h؛ وأي متوسط سرعة من 62 إلى 65 km/h يكفي."],
+  ["Because he can drive faster than the limit for a short time.","لأنه يستطيع أن يقود أسرع من الحد لفترة قصيرة.",false,"No: the limit is 65 km/h the entire way.","لا: الحد 65 km/h طوال الطريق."]]);
+
+/* ---------- velocity: two planes ---------- */
+(function(){const s=$("#plSvg");if(!s)return;let m=1;
+  const d=()=>{let o=BG;o+=`<path d="M30 150C80 120 130 160 180 140S290 120 330 150" fill="none" stroke="${GC.mu}" stroke-opacity=".35" stroke-width="2"/>`;
+    o+=`<circle cx="40" cy="150" r="6" fill="${GC.ink}"/>`+lab(40,176,"San Francisco",GC.ink,"middle",10.5)+`<circle cx="320" cy="150" r="6" fill="${GC.ink}"/>`+lab(338,176,"Washington, D.C.",GC.ink,"end",10.5);
+    o+=lab(20,24,"← West",GC.c,"start",11)+lab(340,24,"East →",GC.t,"end",11);
+    const k=0.22;
+    if(m&1)o+=arrow(60,64,60+800*k,64,GC.t,6)+lab(60+400*k,52,"800 km/h east",GC.t,"middle",12);
+    if(m&2)o+=arrow(300,108,300-1000*k,108,GC.c,6)+lab(300-500*k,96,"1,000 km/h west",GC.c,"middle",12);
+    s.innerHTML=o;
+    $("#plOut").textContent=[m&1?"First plane:\nv̄ = 2,000 km ÷ 2.5 h\n  = 800 km/h, east":"",m&2?"Second plane:\nv̄ = 2,000 km ÷ 2 h\n  = 1,000 km/h, west":""].filter(Boolean).join("\n\n");
+    setMsg($("#plMsg"),m===3?"Same distance, but the second plane's arrow is <b>longer</b> (faster) and points the <b>other way</b>: different velocities.":"The arrow shows the velocity: its <b>length</b> is the speed and it <b>points</b> in the direction of motion.",m===3?"المسافة نفسها، لكن سهم الطائرة الثانية <b>أطول</b> (أسرع) ويشير إلى <b>الاتجاه الآخر</b>: سرعتان متجهتان مختلفتان.":"يُظهر السهم السرعة المتجهة: <b>طوله</b> هو السرعة، و<b>يشير</b> إلى اتجاه الحركة.");};
+  segOn($("#plSeg"),v=>{m=+v;d();});d();})();
+cardsQ($("#plBox"),[
+ {t:["A car drives at 60 km/h north. Another car drives at 60 km/h south. Which is true?","تسير سيارة بسرعة 60 km/h شمالًا، وأخرى بسرعة 60 km/h جنوبًا. أي عبارة صحيحة؟"],o:[["Same speed and same velocity","السرعة نفسها والسرعة المتجهة نفسها"],["Same speed, different velocities","السرعة نفسها، وسرعتان متجهتان مختلفتان"],["Different speeds","سرعتان مختلفتان"]],a:1,cls:"stack",
+  w:["Velocity includes direction: north ≠ south.","السرعة المتجهة تتضمن الاتجاه: الشمال ≠ الجنوب."],h:["Velocity = speed + direction.","السرعة المتجهة = السرعة + الاتجاه."],
+  sol:[["Both speeds: 60 km/h.","السرعتان: 60 km/h."],["Directions: north and south.","الاتجاهان: شمال وجنوب."],["Same speed, different velocities.","السرعة نفسها، وسرعتان متجهتان مختلفتان."]]}
+]);
+
+/* ---------- motion diagrams ---------- */
+(function(){const s=$("#mdSvg");if(!s)return;let m=0;
+  const MODES=[{p:[[30,140],[95,140],[160,140],[225,140],[290,140]],en:"Equal spaces and equal arrows, same direction: <b>constant velocity</b>.",ar:"مسافات متساوية وأسهم متساوية في الاتجاه نفسه: <b>سرعة متجهة ثابتة</b>.",out:"spaces: equal\narrows: same length\ndirection: same\n→ constant velocity"},
+    {p:[[24,140],[46,140],[86,140],[148,140],[236,140]],en:"The spaces and arrows get <b>longer</b>: the speed changes, so the <b>velocity changes</b>.",ar:"تصبح المسافات والأسهم <b>أطول</b>: السرعة تتغيّر، إذن <b>تتغيّر السرعة المتجهة</b>.",out:"spaces: growing\narrows: longer\ndirection: same\n→ changing velocity"},
+    {p:[[40,160],[110,155],[175,135],[228,98],[262,45]],en:"Same speed, but the arrows <b>turn</b>: the direction changes, so the <b>velocity changes</b>.",ar:"السرعة نفسها، لكن الأسهم <b>تنعطف</b>: الاتجاه يتغيّر، إذن <b>تتغيّر السرعة المتجهة</b>.",out:"spaces: equal\narrows: same length\ndirection: turning\n→ changing velocity"}];
+  const d=()=>{const M=MODES[m];let o=BG;
+    if(m<2)o+=`<rect x="14" y="128" width="332" height="24" rx="8" fill="#2b3a46"/>`;else o+=`<path d="M20 170C120 168 200 150 250 70S280 20 290 14" fill="none" stroke="#2b3a46" stroke-width="26" stroke-linecap="round"/>`;
+    M.p.forEach((q,i)=>{if(i<M.p.length-1){const n=M.p[i+1];const L=m===1?(n[0]-q[0])*0.75:52;const a=Math.atan2(n[1]-q[1],n[0]-q[0]);o+=arrow(q[0],q[1],q[0]+L*Math.cos(a),q[1]+L*Math.sin(a),"#ef6a5a",3);}
+      o+=`<circle cx="${q[0]}" cy="${q[1]}" r="6" fill="${GC.ink}" stroke="#0c1620" stroke-width="2"/>`+lab(q[0]+(m===2?-14:0),q[1]+(m===2?-12:30),i+" s",GC.g,"middle",11);});
+    if(m===2){const q=M.p[4];o+=arrow(q[0],q[1],q[0]+18,q[1]-48,"#ef6a5a",3);}
+    else{const q=M.p[4];o+=arrow(q[0],q[1],q[0]+(m===1?70:50),q[1],"#ef6a5a",3);}
+    s.innerHTML=o;$("#mdOut").textContent=M.out;setMsg($("#mdMsg"),M.en,M.ar);};
+  segOn($("#mdSeg"),v=>{m=+v;d();});d();})();
+
+/* ---------- Plot It: the train ---------- */
+(function(){const s=$("#ptSvg");if(!s)return;const D=[[0,0],[1,110],[2,220],[3,330],[4,400],[5,500]];let on=[false,false,false,false,false,false];
+  const d=()=>{const g=G({H:280,L:52,x0:0,x1:5,xs:1,y0:0,y1:500,ys:50,yl:2,xt:"Time (h)",yt:"Distance (km)"});let o=g.s;const all=on.every(Boolean);
+    if(all)for(let i=0;i<5;i++){const a=D[i],b=D[i+1];o+=gLine(g,a[0],a[1],b[0],b[1],i===3?GC.c:GC.t);o+=lab((g.X(a[0])+g.X(b[0]))/2+14,(g.Y(a[1])+g.Y(b[1]))/2+12,(b[1]-a[1])+"",i===3?GC.c:GC.g,"start",10.5);}
+    D.forEach((p,i)=>{if(on[i])o+=gPt(g,p[0],p[1],GC.g,"");});
+    s.innerHTML=o;
+    $("#ptTab").innerHTML=`<tr><th>t (h)</th><th>d (km)</th></tr>`+D.map((p,i)=>`<tr class="${on[i]?"now":""}"><td><button class="colb ${on[i]?"on":""}" data-i="${i}">${p[0]}</button></td><td>${p[1]}</td></tr>`).join("");
+    $$("#ptTab .colb").forEach(b=>b.onclick=()=>{on[+b.dataset.i]=true;d();});
+    const n=on.filter(Boolean).length;
+    if(!all)setMsg($("#ptMsg"),`Tap the time buttons to plot the points (${n} of 6).`,`اضغط على أزرار الزمن لتمثيل النقاط (${n} من 6).`);
+    else setMsg($("#ptMsg"),`${ICON.check} The line is <b>not completely straight</b>: 110, 110, 110, then <b>70</b>, then 100 km each hour. The train slowed down in hour 4. Average speed = 500 ÷ 5 = <b>100 km/h</b>.`,`${ICON.check} الخط <b>ليس مستقيمًا تمامًا</b>: ‏110 و110 و110، ثم <b>70</b>، ثم 100 km كل ساعة. أبطأ القطار في الساعة الرابعة. متوسط السرعة = 500 ÷ 5 = <b>100 km/h</b>.`);};
+  d();})();
+cardsQ($("#ptBox"),[
+ {t:["Choose two points: (1, 110) and (3, 330). Distance difference ÷ time difference = ?","اختر نقطتين: (1, 110) و(3, 330). فرق المسافة ÷ فرق الزمن = ؟"],o:[["110 km/h, the speed (slope)","110 km/h، السرعة (الميل)"],["220 km"],["2 h"]],a:0,cls:"stack",
+  w:["(330 − 110) ÷ (3 − 1) = 220 ÷ 2 = 110 km/h: the slope is the speed.","‏(330 − 110) ÷ (3 − 1) = 220 ÷ 2 = 110 km/h: الميل هو السرعة."],h:["Subtract the distances, subtract the times, then divide.","اطرح المسافتين، واطرح الزمنين، ثم اقسم."],
+  sol:[["Distance difference: 330 − 110 = 220 km.","فرق المسافة: 330 − 110 = 220 km."],["Time difference: 3 − 1 = 2 h.","فرق الزمن: 3 − 1 = 2 h."],["220 ÷ 2 = 110 km/h = slope = speed.","220 ÷ 2 = 110 km/h = الميل = السرعة."]]},
+ {t:["In which hour was the train slowest?","في أي ساعة كان القطار أبطأ؟"],o:[["hour 1 (0–1)","الساعة 1 (0–1)"],["hour 4 (3–4)","الساعة 4 (3–4)"],["hour 5 (4–5)","الساعة 5 (4–5)"]],a:1,
+  w:["From 3 h to 4 h it went only 400 − 330 = 70 km: the least steep part.","من 3 h إلى 4 h قطع فقط 400 − 330 = 70 km: الجزء الأقل انحدارًا."],h:["Find the least steep part of the line.","ابحث عن الجزء الأقل انحدارًا من الخط."],
+  sol:[["Each hour: 110, 110, 110, 70, 100 km.","كل ساعة: 110، 110، 110، 70، 100 km."],["The smallest is 70 km.","الأصغر 70 km."],["Hour 4 (3–4 h) is the slowest.","الساعة 4 (3–4 h) هي الأبطأ."]]}
+]);
+
+/* ---------- hawksbill sea turtle ---------- */
+(function(){const s=$("#ttSvg");if(!s)return;const D=[[0,0],[1,5],[2,10],[3,12],[4,12],[5,18],[6,24]];const IV=[[0,2],[2,3],[3,4],[4,6]];let k=-1;
+  const d=()=>{const g=G({H:280,L:44,x0:0,x1:6,xs:1,y0:0,y1:24,ys:2,yl:2,xt:"Time (days)",yt:"Distance (km)"});let o=g.s;
+    for(let i=0;i<6;i++)o+=gLine(g,D[i][0],D[i][1],D[i+1][0],D[i+1][1],"#c86b9a",false,3);
+    D.forEach(p=>o+=gPt(g,p[0],p[1],GC.ink,""));
+    if(k>=0){const [a,b]=IV[k],A=D[a],B=D[b];o+=gLine(g,A[0],A[1],B[0],B[1],GC.g,false,5);if(B[1]!==A[1])o+=gStep(g,A[0],A[1],B[0],B[1],`${b-a} d`,`${B[1]-A[1]} km`);else o+=lab((g.X(A[0])+g.X(B[0]))/2,g.Y(A[1])-10,"flat",GC.g,"middle",11);}
+    s.innerHTML=o;
+    if(k<0){$("#ttOut").textContent="Tap an interval.";setMsg($("#ttMsg"),"Speed = distance difference ÷ time difference.","السرعة = فرق المسافة ÷ فرق الزمن.");return;}
+    const [a,b]=IV[k],dd=D[b][1]-D[a][1],tt=b-a,v=dd/tt;
+    $("#ttOut").textContent=`day ${a} → day ${b}\ndistance: ${D[b][1]} − ${D[a][1]} = ${dd} km\ntime: ${b} − ${a} = ${tt} day${tt>1?"s":""}\nspeed: ${dd} ÷ ${tt} = ${v} km/day`;
+    if(v===0)setMsg($("#ttMsg"),"The line is <b>flat</b>: the distance did not change, so the speed is <b>0 km/day</b>. The turtle stayed in one place.","الخط <b>أفقي</b>: لم تتغيّر المسافة، إذن السرعة <b>0 km/day</b>. بقيت السلحفاة في مكانها.");
+    else setMsg($("#ttMsg"),`Speed = <b>${v} km/day</b>. ${k===3?"The steepest part: the fastest.":k===1?"Less steep: slower.":""}`,`السرعة = <b>${v} km/day</b>. ${k===3?"الجزء الأشد انحدارًا: الأسرع.":k===1?"أقل انحدارًا: أبطأ.":""}`);};
+  segOn($("#ttSeg"),v=>{k=+v;d();});d();})();
+whyBox($("#whyTt"),"From day 3 to day 4 the line is flat.","من اليوم 3 إلى اليوم 4 يكون الخط أفقيًا.",
+ [["So the turtle was not moving: speed 0 km/day.","إذن لم تكن السلحفاة تتحرك: السرعة 0 km/day.",true,"No change in distance → no motion during that time.","لا تغيّر في المسافة ← لا حركة في تلك الفترة."],
+  ["So the turtle was moving at a constant high speed.","إذن كانت السلحفاة تتحرك بسرعة كبيرة ثابتة.",false,"A constant speed gives a sloped straight line, not a flat one.","السرعة الثابتة تعطي خطًا مستقيمًا مائلًا، لا أفقيًا."],
+  ["So the turtle went back to the start.","إذن عادت السلحفاة إلى البداية.",false,"Going back would make the distance from the start smaller; here it stays 12 km.","العودة تجعل البُعد عن البداية أصغر، وهنا يبقى 12 km."]]);
+
+/* ---------- Apply: elevator + driver ---------- */
+(function(){const r=$("#elT");if(!r)return;const D=[[0,10],[1,6],[2,6],[3,2],[4,2],[5,0]];
+  const h=t=>{const i=Math.min(4,Math.floor(t));const a=D[i],b=D[i+1];return a[1]+(b[1]-a[1])*(t-a[0]);};
+  const d=()=>{const t=+r.value;$("#elTv").textContent=t;const g=G({W:280,H:260,L:44,x0:0,x1:5,xs:1,y0:0,y1:10,ys:2,xt:"Time (min)",yt:"Height (m)"});let o=g.s;
+    for(let i=0;i<5;i++)o+=gLine(g,D[i][0],D[i][1],D[i+1][0],D[i+1][1],"#7ee08a");
+    o+=gPt(g,t,h(t),GC.g,"");
+    o+=`<rect x="300" y="${g.T-10}" width="40" height="${g.B-g.T+20}" rx="4" fill="#0c1620" stroke="${GC.mu}" stroke-opacity=".5"/>`;
+    const yy=g.Y(h(t));o+=`<line x1="320" y1="${g.T-10}" x2="320" y2="${yy-10}" stroke="${GC.mu}"/><rect x="304" y="${yy-10}" width="32" height="20" rx="3" fill="${GC.t}"/>`+lab(320,g.B+26,"ground",GC.mu,"middle",10);
+    $("#elSvg").innerHTML=o;const i=Math.min(4,Math.floor(t)),sp=Math.abs(D[i+1][1]-D[i][1]);
+    $("#elOut").textContent=`time: ${t} min\nheight: ${+h(t).toFixed(1)} m\nminute ${i}–${i+1}: ${sp} m/min${sp?" down":" (stopped)"}`;
+    setMsg($("#elMsg"),sp===0?`Minute ${i}–${i+1}: the line is flat. The elevator is <b>stopped</b> at ${D[i][1]} m (a floor).`:`Minute ${i}–${i+1}: the elevator moves <b>down ${sp} m</b> in 1 min.`,sp===0?`الدقيقة ${i}–${i+1}: الخط أفقي. المصعد <b>متوقف</b> عند ${D[i][1]} m (طابق).`:`الدقيقة ${i}–${i+1}: ينزل المصعد <b>${sp} m</b> في دقيقة واحدة.`);};
+  r.oninput=d;d();})();
+stepper($("#drSt"),[{name:"Average speed",lines:[
+  ["part 2: 35 × 2 = 70 km","Distance = speed × time.","المسافة = السرعة × الزمن."],
+  ["d = 55 + 70 + 175 = 300 km","Total distance.","المسافة الكلية."],
+  ["t = 1 + 2 + 3 = 6 h","Total time.","الزمن الكلي."],
+  ["v̄ = 300 / 6 = 50 km/h","Total distance ÷ total time.","المسافة الكلية ÷ الزمن الكلي."]],
+  end:["His average speed was <b>50 km/h</b>.","كان متوسط سرعته <b>50 km/h</b>."]}]);
+whyBox($("#whyDr"),"We do NOT add the three speeds and divide by 3.","لا نجمع السرعات الثلاث ونقسم على 3.",
+ [["Because each part took a different time; average speed = total distance ÷ total time.","لأن كل جزء استغرق زمنًا مختلفًا؛ ومتوسط السرعة = المسافة الكلية ÷ الزمن الكلي.",true,"The 3-hour part counts more than the 1-hour part.","الجزء الذي استغرق 3 ساعات يؤثر أكثر من الجزء الذي استغرق ساعة."],
+  ["Because speeds cannot be added.","لأن السرعات لا تُجمع.",false,"The real reason: the times are different, so we use the totals.","السبب الحقيقي: الأزمنة مختلفة، لذلك نستخدم المجموع الكلي."],
+  ["Because the driver stopped.","لأن السائق توقف.",false,"The driver did not stop; the parts just have different times.","لم يتوقف السائق؛ الأجزاء فقط مختلفة الأزمنة."]]);
+
+/* ---------- check yourself ---------- */
+cardsQ($("#tryBox"),[
+ {t:["Faisal cycles 12 km in 0.5 h along the Abu Dhabi Corniche. What is his average speed?","يقود فيصل دراجته 12 km في 0.5 h على كورنيش أبوظبي. ما متوسط سرعته؟"],o:[["6 km/h"],["24 km/h"],["12.5 km/h"]],a:1,
+  w:["12 ÷ 0.5 = 24 km/h.","12 ÷ 0.5 = 24 km/h."],h:["v̄ = d / t.","v̄ = d / t."],
+  sol:[["d = 12 km, t = 0.5 h.","d = 12 km، وt = 0.5 h."],["v̄ = 12 ÷ 0.5.","v̄ = 12 ÷ 0.5."],["v̄ = 24 km/h.","v̄ = 24 km/h."]]},
+ {t:["Two riders travel the same distance. Rider #1's line on the distance-time graph is steeper. Who arrives first?","يقطع راكبا دراجة المسافة نفسها. خط الراكب 1 في تمثيل المسافة والزمن أشد انحدارًا. من يصل أولًا؟"],o:[["Rider #1","الراكب 1"],["Rider #2","الراكب 2"],["They arrive together","يصلان معًا"]],a:0,
+  w:["Steeper line = greater speed = less time for the same distance.","خط أشد انحدارًا = سرعة أكبر = زمن أقل للمسافة نفسها."],h:["What does a steeper line mean?","ماذا يعني الخط الأشد انحدارًا؟"],
+  sol:[["Steeper = greater slope.","أشد انحدارًا = ميل أكبر."],["Greater slope = greater speed.","ميل أكبر = سرعة أكبر."],["Rider #1 reaches the distance first.","الراكب 1 يصل إلى المسافة أولًا."]]},
+ {t:["A green sea turtle travels 0, 16, 32, 48, 64, 80, 96 km on days 0–6. What would its distance-time line look like?","تقطع سلحفاة خضراء 0، 16، 32، 48، 64، 80، 96 km في الأيام 0–6. كيف يبدو خطها في تمثيل المسافة والزمن؟"],o:[["It would curve upward","ينحني إلى أعلى"],["It would go up and down","يصعد وينزل"],["A straight line pointing upward to the right","خط مستقيم يتجه إلى أعلى نحو اليمين"],["Up, then down","يصعد ثم ينزل"]],a:2,cls:"stack",
+  w:["It adds 16 km every day: constant speed → straight line.","تضيف 16 km كل يوم: سرعة ثابتة ← خط مستقيم."],h:["Is the change each day the same?","هل التغيّر كل يوم متساوٍ؟"],
+  sol:[["Each day: +16 km.","كل يوم: ‏+16 km."],["Constant speed: 16 km/day.","سرعة ثابتة: 16 km/day."],["Constant speed → straight line up to the right.","سرعة ثابتة ← خط مستقيم إلى أعلى نحو اليمين."]]},
+ {t:["If the green sea turtle keeps the same motion, what is its distance at 10 days?","إذا استمرت السلحفاة الخضراء بالحركة نفسها، فكم تكون المسافة عند 10 أيام؟"],o:[["96 km"],["106 km"],["160 km"]],a:2,
+  w:["16 km/day × 10 days = 160 km.","16 km/day × 10 أيام = 160 km."],h:["Find the speed per day first.","أوجد السرعة كل يوم أولًا."],
+  sol:[["Speed: 16 km/day.","السرعة: 16 km/day."],["d = v̄ × t = 16 × 10.","d = v̄ × t = 16 × 10."],["d = 160 km.","d = 160 km."]]},
+ {t:["A car goes around a corner at a constant 40 km/h. Is its velocity constant?","تنعطف سيارة عند زاوية بسرعة ثابتة 40 km/h. هل سرعتها المتجهة ثابتة؟"],o:[["Yes, the speed is constant","نعم، السرعة ثابتة"],["No, the direction changes","لا، الاتجاه يتغيّر"],["No, the speed changes","لا، السرعة تتغيّر"]],a:1,
+  w:["Velocity = speed + direction; turning changes the direction.","السرعة المتجهة = السرعة + الاتجاه؛ والانعطاف يغيّر الاتجاه."],h:["Remember the cyclist on the curved road.","تذكّر راكب الدراجة على الطريق المنحني."],
+  sol:[["Speed: constant, 40 km/h.","السرعة: ثابتة 40 km/h."],["Direction: changes while turning.","الاتجاه: يتغيّر أثناء الانعطاف."],["So the velocity changes.","إذن تتغيّر السرعة المتجهة."]]},
+ {t:["A dhow sails 24 km at an average speed of 8 km/h. How long does it take?","يُبحر قارب شراعي (داو) 24 km بمتوسط سرعة 8 km/h. كم يستغرق؟"],o:[["3 h"],["192 h"],["0.33 h"]],a:0,
+  w:["t = d / v̄ = 24 ÷ 8 = 3 h.","t = d / v̄ = 24 ÷ 8 = 3 h."],h:["t = d / v̄.","t = d / v̄."],
+  sol:[["d = 24 km, v̄ = 8 km/h.","d = 24 km، وv̄ = 8 km/h."],["t = 24 ÷ 8.","t = 24 ÷ 8."],["t = 3 h.","t = 3 h."]]}
+]);
+
+/* ---------- summary cards ---------- */
+const FL=[["d in t","Speed","السرعة","The distance an object travels in a given amount of time.","المسافة التي يقطعها جسم في زمن معيّن."],
+ ["3 m, 3 m, 3 m","Constant speed","سرعة ثابتة","The same distance in every equal time interval.","المسافة نفسها في كل فترة زمنية متساوية."],
+ ["v̄ = d / t","Average speed","متوسط السرعة","Total distance ÷ total time (m/s or km/h).","المسافة الكلية ÷ الزمن الكلي (m/s أو km/h)."],
+ ["t = d / v̄","Find the time","إيجاد الزمن","130 km ÷ 52 km/h = 2.5 h.","130 km ÷ 52 km/h = 2.5 h."],
+ ["→ 800 km/h E","Velocity","السرعة المتجهة","Speed and direction of a moving object.","سرعة الجسم المتحرك واتجاهه."],
+ ["↗","Vector","المتجه","A quantity with magnitude and direction, drawn as an arrow.","كمية لها مقدار واتجاه، تُرسم سهمًا."],
+ ["slope = speed","Distance-time graph","تمثيل المسافة والزمن","Straight line = constant speed. Steeper = faster.","خط مستقيم = سرعة ثابتة. أشد انحدارًا = أسرع."],
+ ["—","Flat line","خط أفقي","No change in distance: the object is not moving.","لا تغيّر في المسافة: الجسم لا يتحرك."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+
+/* ---------- final quiz (8 on this lesson + 2 review of Lesson 8) ---------- */
+const Q=[
+ {q:"What is speed?",qa:"ما السرعة؟",o:[["The direction of motion","اتجاه الحركة"],["A measure of the distance an object travels in a given amount of time","مقياس للمسافة التي يقطعها جسم في زمن معيّن"],["The total length of a path","الطول الكلي للمسار"],["A change of direction","تغيّر في الاتجاه"]],a:1,ex:["Speed = distance traveled in a given time.","السرعة = المسافة المقطوعة في زمن معيّن."],
+  h:[["Think of the toy race.","فكّر في سباق الألعاب."],["It uses both distance and time.","تستخدم المسافة والزمن معًا."]],
+  sol:[["Speed tells how fast something moves.","تخبرنا السرعة بمدى سرعة حركة الشيء."],["It compares distance with time.","تقارن المسافة بالزمن."],["Speed = distance in a given time.","السرعة = المسافة في زمن معيّن."]]},
+ {q:"A car travels 150 km in 2 h. What is its average speed?",qa:"تقطع سيارة 150 km في 2 h. ما متوسط سرعتها؟",o:[["300 km/h",""],["148 km/h",""],["2 km/h",""],["75 km/h",""]],a:3,ex:["150 ÷ 2 = 75 km/h.","150 ÷ 2 = 75 km/h."],
+  h:[["v̄ = d / t.","v̄ = d / t."],["Divide 150 by 2.","اقسم 150 على 2."]],
+  sol:[["d = 150 km, t = 2 h.","d = 150 km، وt = 2 h."],["v̄ = 150 ÷ 2.","v̄ = 150 ÷ 2."],["v̄ = 75 km/h.","v̄ = 75 km/h."]]},
+ {q:"A runner covers 400 m in 50 s. What is her average speed?",qa:"تقطع عدّاءة 400 m في 50 s. ما متوسط سرعتها؟",o:[["8 m/s",""],["0.125 m/s",""],["450 m/s",""],["20,000 m/s",""]],a:0,ex:["400 ÷ 50 = 8 m/s.","400 ÷ 50 = 8 m/s."],
+  h:[["Distance goes on top.","المسافة في الأعلى."],["400 ÷ 50 = ?","400 ÷ 50 = ؟"]],
+  sol:[["d = 400 m, t = 50 s.","d = 400 m، وt = 50 s."],["v̄ = 400 ÷ 50.","v̄ = 400 ÷ 50."],["v̄ = 8 m/s.","v̄ = 8 m/s."]]},
+ {q:"A train travels 240 km at an average speed of 80 km/h. How long does the trip take?",qa:"يقطع قطار 240 km بمتوسط سرعة 80 km/h. كم تستغرق الرحلة؟",o:[["320 h",""],["0.33 h",""],["3 h",""],["19,200 h",""]],a:2,ex:["t = d / v̄ = 240 ÷ 80 = 3 h.","t = d / v̄ = 240 ÷ 80 = 3 h."],
+  h:[["Rearrange: t = d / v̄.","أعد الترتيب: t = d / v̄."],["240 ÷ 80 = ?","240 ÷ 80 = ؟"]],
+  sol:[["t = d / v̄.","t = d / v̄."],["t = 240 ÷ 80.","t = 240 ÷ 80."],["t = 3 h.","t = 3 h."]]},
+ {q:"Velocity is …",qa:"السرعة المتجهة هي …",o:[["the distance only","المسافة فقط"],["the speed and direction of a moving object","سرعة الجسم المتحرك واتجاهه"],["the time of a trip","زمن الرحلة"],["the same as distance","هي نفسها المسافة"]],a:1,ex:["Velocity = speed + direction.","السرعة المتجهة = السرعة + الاتجاه."],
+  h:[["Remember the two planes.","تذكّر الطائرتين."],["It has a size and a direction.","لها مقدار واتجاه."]],
+  sol:[["Speed: how fast.","السرعة: كم هو سريع."],["Direction: which way.","الاتجاه: إلى أين."],["Velocity = both.","السرعة المتجهة = كلاهما."]]},
+ {q:"Which of these is a vector (a velocity)?",qa:"أي مما يلي متجه (سرعة متجهة)؟",o:[["20 m/s",""],["20 m",""],["20 s",""],["20 m/s north","20 m/s شمالًا"]],a:3,ex:["A vector has magnitude AND direction: 20 m/s north.","للمتجه مقدار واتجاه: ‏20 m/s شمالًا."],
+  h:[["A vector needs a direction.","المتجه يحتاج إلى اتجاه."],["Which option says where it goes?","أي خيار يذكر إلى أين يتجه؟"]],
+  sol:[["20 m/s: speed only.","20 m/s: سرعة فقط."],["20 m and 20 s: no direction.","20 m و20 s: بلا اتجاه."],["20 m/s north: magnitude + direction.","20 m/s شمالًا: مقدار + اتجاه."]]},
+ {q:"On a distance-time graph, a flat (horizontal) line means the object is …",qa:"في تمثيل المسافة والزمن، الخط الأفقي يعني أن الجسم …",o:[["not moving","لا يتحرك"],["moving fast","يتحرك بسرعة"],["speeding up","يزيد سرعته"],["changing direction","يغيّر اتجاهه"]],a:0,ex:["No change in distance: speed 0, like the turtle on days 3–4.","لا تغيّر في المسافة: السرعة 0، مثل السلحفاة في الأيام 3–4."],
+  h:[["Does the distance change?","هل تتغيّر المسافة؟"],["Remember the turtle and the elevator.","تذكّر السلحفاة والمصعد."]],
+  sol:[["Flat line: distance stays the same.","خط أفقي: المسافة ثابتة."],["Slope = 0.","الميل = 0."],["Speed = 0: not moving.","السرعة = 0: لا يتحرك."]]},
+ {q:"Two lines on a distance-time graph: line P is steeper than line Q. Which is true?",qa:"خطان في تمثيل المسافة والزمن: الخط P أشد انحدارًا من الخط Q. أي عبارة صحيحة؟",o:[["Q is faster","Q أسرع"],["They have the same speed","لهما السرعة نفسها"],["P is faster","P أسرع"],["P is not moving","P لا يتحرك"]],a:2,ex:["Steeper = greater slope = greater speed.","أشد انحدارًا = ميل أكبر = سرعة أكبر."],
+  h:[["Slope = speed.","الميل = السرعة."],["Which line has the greater slope?","أي خط ميله أكبر؟"]],
+  sol:[["Slope on this graph = speed.","الميل في هذا التمثيل = السرعة."],["P is steeper: greater slope.","P أشد انحدارًا: ميل أكبر."],["So P is faster.","إذن P أسرع."]]},
+ {q:"From Lesson 8: Huda walks 50 m east, then 50 m west. What is her displacement?",qa:"من الدرس 8: تمشي هدى 50 m شرقًا ثم 50 m غربًا. ما إزاحتها؟",o:[["100 m",""],["50 m east","50 m شرقًا"],["0 m",""],["50 m west","50 m غربًا"]],a:2,ex:["She ends where she started: displacement 0 m (distance 100 m).","تنتهي حيث بدأت: الإزاحة 0 m (والمسافة 100 m)."],
+  h:[["Displacement: start to finish.","الإزاحة: من البداية إلى النهاية."],["Where does she finish?","أين تنتهي؟"]],
+  sol:[["Distance: 50 + 50 = 100 m.","المسافة: 50 + 50 = 100 m."],["Final position = start.","الموقع النهائي = البداية."],["Displacement: 0 m.","الإزاحة: 0 m."]]},
+ {q:"From Lesson 8: A complete description of position includes …",qa:"من الدرس 8: الوصف الكامل للموقع يتضمن …",o:[["a distance, a direction and a reference point","مسافة واتجاهًا ونقطة مرجع"],["a speed only","سرعة فقط"],["a time and a speed","زمنًا وسرعة"],["a direction only","اتجاهًا فقط"]],a:0,ex:["Position = distance + direction + reference point.","الموقع = مسافة + اتجاه + نقطة مرجع."],
+  h:[["Three parts.","ثلاثة أجزاء."],["How far, which way, from where?","كم يبعد، وفي أي اتجاه، ومن أين؟"]],
+  sol:[["How far: distance.","كم يبعد: المسافة."],["Which way: direction.","في أي اتجاه: الاتجاه."],["From where: reference point.","من أين: نقطة المرجع."]]}
+];
+Q.forEach(q=>q.o.forEach(o=>{if(o[1]===o[0])o[1]="";o[0]=`<span class="oe">${o[0]}</span>`;}));
+
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${ok?ICON.check+" Correct!":ICON.cross+" Not quite."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${ok?"إجابة صحيحة!":"ليست صحيحة."} ${q.ex[1]}</div>`+solHTML(q.sol);solBind(fb);
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Scientist";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You can measure speed and read motion graphs!","رائع! أنت تقيس السرعة وتقرأ تمثيلات الحركة!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the worked examples, then retry.","محاولة جيدة! أعد تشغيل الحلول خطوة بخطوة ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Science · Grade 8 · Unit 2 · Lesson 9 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
