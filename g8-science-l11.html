@@ -1,0 +1,1697 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c1620">
+<title>The Normal Force – Science G8 Lesson 15</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(12,22,32,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#132532;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#182c3a;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#3a2326;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#2e2a1c;border:1px solid #5a4a26;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#132532;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#132532;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #3a4a55}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#123a3a;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#182c3a;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#132532;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#123a3a}
+.opt.right{border-color:var(--teal);background:#123a3a}
+.opt.wrong{border-color:var(--terra);background:#3a2326}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#182c3a;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#132532;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#123a3a;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#3a2326;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#132532;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#132532}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#3a4a55}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #132532}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#132532;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#132532}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #132532;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#2e2a1c}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#132532;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#123a3a;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#123a3a}
+.pieces button.no{border-color:var(--terra);background:#3a2326;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#3a4a55}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#123a3a;border-left:5px solid var(--teal)}
+.feedback.no{background:#3a2326;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#132532;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#132532;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#132532;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#132532;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#123a3a}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#2e2a1c}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#132532;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#3a2326}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#2e2a1c;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#132532;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#123a3a}.sc.diff{border-color:var(--terra);background:#3a2326}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#123a3a}.rchips button.wrong{border-color:var(--terra);background:#3a2326}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#123a3a}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#123a3a}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#3a2326}
+.ml.done,.mr.done{border-color:var(--teal);background:#123a3a;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#123a3a}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#2e2a1c;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#2e2a1c;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#132532;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#123a3a}
+.eline.bad{border-color:var(--terra);background:#3a2326;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#132532;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#132532 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#123a3a}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#3a2326}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#2e2a1c}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#132532;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#2e2a1c;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#123a3a}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#3a2326}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#2e2a1c;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#123a3a}.mcard2.wrong{border-color:var(--terra);background:#3a2326}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #132532;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#123a3a}.idc.wrong{border-color:var(--terra);background:#3a2326}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#123a3a}.claim2.wrong{border-color:var(--terra);background:#3a2326}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#2e2a1c}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#123a3a}.ct.no{border-color:var(--terra);background:#3a2326}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#2e2a1c}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#2a2440;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#182c3a;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#132532;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#123a3a}.wuq .wo button.wrong{border-color:var(--terra);background:#3a2326}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#132532;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#182c3a;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#132532;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#3a2326}.pick button.right{border-color:var(--teal);background:#123a3a}
+.why{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#123a3a}.why .wb button.wrong{border-color:var(--terra);background:#3a2326}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#132532;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #132532;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#3a4a55;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#132532;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#132532}
+.tchip.lost{border-color:var(--terra);background:#3a2326}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#3a2326}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#123a3a}.pickph.wrong{border-color:var(--terra);background:#3a2326}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#123a3a}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#182c3a}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#123a3a;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#182c3a;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#132532;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#2e2a1c;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#182c3a;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#132532}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#123a3a;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#132532;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#132532;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#123a3a;border-color:var(--teal)}.tile.g1{background:#3a2326;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#182c3a;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#132532;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#132532;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#132532;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#132532;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#132532;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#132532;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#132532;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#182c3a}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#132532}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#182c3a}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#132532}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#182c3a;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+.ov{text-decoration:overline;text-decoration-thickness:2px;text-underline-offset:0}
+.solbox{margin-top:10px}
+.solbtn{display:inline-flex;align-items:center;gap:6px;border:2px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:6px 14px;font-weight:700;font-size:14px}
+.solbtn .ic{width:18px;height:18px}
+.solbtn .ar{display:inline;font-weight:600;font-size:13px}
+.solbtn.on{background:var(--clay);color:#fff;border-color:var(--clay)}
+.solsteps{margin:10px 0 0;padding:10px 12px 10px 34px;background:#132532;border:1px dashed #5a4a26;border-radius:12px;text-align:left;font-size:14.5px;line-height:1.45}
+.solsteps li{margin:6px 0;animation:fadein .3s}
+.solsteps li .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px;margin-top:2px}
+.solsteps[hidden]{display:none}
+.feedback .solbox{margin-top:12px}
+.nchips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.nchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 14px;font-family:Cambria,"Times New Roman",serif;font-size:18px;font-weight:700;color:var(--ink);min-width:58px}
+.nchips button.done{background:#123a3a;border-color:#BFE3E0}
+.nchips button.on{border-color:var(--terra);background:#3a2326}
+#setSvg ellipse,#setSvg rect{transition:filter .3s,stroke-width .3s}
+#setSvg .lit{stroke-width:6;filter:drop-shadow(0 0 8px rgba(242,196,109,.6))}
+#setDots text{font-weight:700;opacity:.75}
+#setDots text.now{fill:#f2c46d;opacity:1;font-size:20px}
+.dmq{font-size:20px;font-weight:800;margin-bottom:8px;overflow-x:auto}
+.dmq .fr{font-size:.8em}
+.dmlog{display:grid;gap:4px;font-size:14.5px;max-height:260px;overflow:auto}
+.dmlog>div{background:#182c3a;border-radius:10px;padding:5px 10px;animation:fadein .3s}
+.dmlog .ar{display:inline;color:var(--muted);font-size:13px;margin-left:6px}
+.tapes{display:grid;gap:8px;overflow-x:auto;padding:4px 0}
+.tape{display:flex;align-items:center;font-family:Consolas,"Courier New",monospace;font-size:20px;direction:ltr}
+.tape .tn{width:66px;font-weight:700;color:var(--clay);font-size:16px;text-align:right;padding-right:8px;flex:none}
+.tape .ti{width:44px;text-align:right;font-weight:700;flex:none}
+.tape .tp{width:12px;text-align:center;font-weight:700;flex:none}
+.tape .td{width:22px;text-align:center;border-radius:5px;flex:none}
+.tape .td.ok{background:rgba(124,194,189,.28);color:#c9f3ee}
+.tape .td.no{background:rgba(239,154,131,.32);color:#ffd9cf}
+.tape .te{padding-left:4px;color:var(--muted)}
+@media (max-width:420px){.tape{font-size:16px}.tape .td{width:16px}.tape .tn{width:56px;font-size:14px}.tape .ti{width:36px}}
+.solwrap{margin-top:6px}
+.idc .mb.two{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb button .fr,.opt .fr{font-size:.95em}
+.fbig .fr{font-size:.9em}
+.opt span.ov{display:inline!important;margin:0!important}
+.opt span.m{display:inline-block!important}
+.opt span.fr{display:inline-flex!important}
+.opt .fr>span{display:block!important}
+@media (max-width:420px){.tape .tn{width:64px;font-size:13px;white-space:nowrap}}
+@media (max-width:700px){.hero{background:#0f1e29}.hero .herotxt{position:relative;padding:4px 16px 14px;background:none}}
+
+.rad{border-top:2px solid currentColor;padding:0 2px;margin-left:1px;display:inline-block;line-height:1.15}
+.rad .fr{font-size:.9em}
+.rtab{display:grid;gap:6px;margin:10px 0;overflow-x:auto}
+.rrow{display:grid;grid-template-columns:72px repeat(8,1fr);gap:3px}
+.rrow .rh{font-size:12px;line-height:1.2;font-weight:700;color:var(--clay);align-self:center}
+.rrow .rv,.rrow button{border-radius:8px;padding:8px 0;text-align:center;font-weight:700;font-size:15px;font-family:Cambria,"Times New Roman",serif}
+.rrow .rv{background:rgba(124,194,189,.16);color:var(--ink)}
+.rrow button{border:2px dashed rgba(242,196,109,.5);background:none;color:#f2c46d}
+.rrow button.on{border-style:solid;background:rgba(242,196,109,.18)}
+.bigeq{font-size:24px;font-weight:800;text-align:center;margin:10px 0}
+.idc .mb.stack{display:grid;grid-template-columns:1fr;gap:6px}
+.idc .mb.stack button{text-align:left;padding:8px 10px}
+.digrace{display:grid;gap:10px;overflow-x:auto}
+.drrow{display:grid;grid-template-columns:44px 1fr;gap:4px 8px;align-items:center}
+.drn{font-family:Cambria,"Times New Roman",serif;font-size:20px;font-weight:700;color:#f2c46d;text-align:right}
+.drd{font-family:Consolas,"Courier New",monospace;font-size:17px;letter-spacing:1px;word-break:break-all;direction:ltr}
+.drd .c0{color:#7cc2bd}.drd .c1{color:#c9f3ee;text-decoration:underline;text-decoration-color:rgba(124,194,189,.6)}
+.drd .x{color:#f1d9a6}
+.drt{grid-column:2;font-size:12.5px;font-weight:700}
+.drt.q{color:#7cc2bd}.drt.i{color:#f2c46d}
+.clnum{font-size:30px;font-weight:800;text-align:center;margin:4px 0 10px;color:#f2c46d}
+.clline{background:rgba(124,194,189,.08);border-radius:12px;padding:8px 10px;margin:6px 0;font-size:14.5px}
+.clline .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px}
+.clline small{display:block;color:var(--muted);margin-top:4px}
+.clline.ok{border-left:4px solid #7cc2bd}
+.clline.now{border:1px dashed rgba(242,196,109,.6)}
+.clline .btnrow{margin-top:8px}
+.clsets{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.clsets span{border:1px solid var(--line);border-radius:10px;padding:5px 10px;font-weight:700;font-size:13.5px;color:var(--muted)}
+.clsets span small{display:block;font-weight:500;font-size:11.5px}
+.clsets span.on{background:rgba(124,194,189,.25);color:#f1f6f5;border-color:#7cc2bd}
+#vnSvg [data-s]{cursor:pointer}
+#vnSvg [data-s]:hover{filter:brightness(1.25)}
+.sqtab{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px;margin-bottom:8px;font-family:Cambria,"Times New Roman",serif;font-size:16px}
+.sqtab div{background:rgba(124,194,189,.10);border-radius:8px;padding:6px 8px;text-align:center}
+.nchips button.wrongb{border-color:#ef9a83;opacity:.6}
+.tcrow{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px;font-family:Consolas,"Courier New",monospace;font-size:26px;direction:ltr;margin:6px 0 12px}
+.tcn{font-family:Cambria,"Times New Roman",serif;color:#f2c46d;margin-right:6px}
+.tck{color:#f1f6f5;font-weight:700;border-right:3px dashed #f2c46d;padding-right:4px}
+.tcx{color:#ef9a83;text-decoration:line-through;opacity:.8}
+.tccmp{display:grid;gap:6px;font-size:15px}
+.tccmp>div{background:rgba(124,194,189,.08);border-radius:10px;padding:6px 10px}
+.tccmp .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px}
+.tccmp .same{border-left:4px solid #7cc2bd}.tccmp .diff{border-left:4px solid #f2c46d}
+.seg button small{display:block;font-weight:500;font-size:11.5px;opacity:.85}
+.rrow .rv.gold{background:rgba(242,196,109,.18);color:#f2c46d}
+.dcards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.dcards button{border:2px solid var(--line);background:rgba(19,37,50,.8);border-radius:14px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink)}
+.dcards .df{font-family:Cambria,"Times New Roman",serif;font-size:24px;font-weight:700;color:#f2c46d}
+.dcards .dd{font-size:18px;font-weight:700;color:var(--muted)}
+.dcards button.on{border-color:#7cc2bd}.dcards button.on .dd{color:#7cc2bd}
+.dtab{width:100%;border-collapse:collapse;font-size:15px}
+.dtab th,.dtab td{border-bottom:1px solid var(--line);padding:8px;text-align:center}
+.dtab th{color:#f2c46d;font-size:13px}
+.gsvg{display:block;width:100%;max-width:470px;margin:auto}
+.ptab{margin-top:10px}
+.ptpick{display:flex;align-items:center;gap:8px;margin:6px 0}.ptpick>b{color:#f2c46d;min-width:16px}.ptpick .seg{margin:0;flex-wrap:wrap}
+.ptpick .seg{flex-wrap:nowrap}.ptpick .seg button{font-size:.8rem!important;padding:6px 7px!important;white-space:nowrap}
+table.ctab tr.now td{background:rgba(242,196,109,.16)}
+.reps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.rep{border:1.5px solid rgba(124,194,189,.25);border-radius:14px;padding:10px;background:rgba(124,194,189,.05);transition:.2s}
+.rep>b{display:block;color:#7cc2bd;margin-bottom:6px;font-size:.9rem}
+.rep.on{border-color:#f2c46d;box-shadow:0 0 0 3px rgba(242,196,109,.18)}
+.rep .rhl{color:inherit;font-weight:700;border-radius:6px;padding:0 3px;transition:.2s}
+.rep.on .rhl{background:#f2c46d;color:#0c1620}
+.rep[data-k="3"]{grid-column:1/-1}
+.rep .bigeq{font-size:1.6rem;text-align:center;margin:8px 0}
+.mtab td,.mtab th{padding:5px 6px!important;text-align:center}
+.tnote{display:block;margin-top:6px;color:#9fb3b5}
+@media (max-width:520px){.reps{grid-template-columns:1fr}}
+.bars{margin-top:10px}.bar{display:grid;grid-template-columns:132px 1fr auto;align-items:center;gap:8px;margin:8px 0;font-size:.9rem}
+.bar .bt{height:20px;border-radius:10px;background:rgba(124,194,189,.1);overflow:hidden}.bar .bt i{display:block;height:100%;border-radius:10px;transition:width .25s}
+.bar b{font-variant-numeric:tabular-nums;min-width:64px;text-align:right}
+.bnote{margin-top:8px;color:#f2c46d;font-weight:600}.bnote .ar{display:block;color:#f2c46d}
+@media (prefers-reduced-motion:reduce){.bar .bt i,.rep{transition:none}}
+.slrow{display:grid;grid-template-columns:52px 1fr 34px;align-items:center;gap:8px;margin:6px 0}.slrow b{font-size:.9rem}.slrow span{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.cr{color:#ef9a83}.cg{color:#f2c46d}
+table.ptab2 td{padding:4px!important;text-align:center}table.ptab2 td.son{color:#f2c46d;font-weight:700}
+.colb{min-width:44px;padding:6px 4px!important;border-radius:9px!important;background:rgba(124,194,189,.1)!important;color:#f1f6f5!important;border:1.5px solid rgba(124,194,189,.35)!important;font-weight:700}
+.colb.on{background:#f2c46d!important;color:#0c1620!important;border-color:#f2c46d!important}
+.tcap{caption-side:top;text-align:left;color:#7cc2bd;font-weight:700;padding:8px 0 4px}
+.mtab th{white-space:nowrap}
+.gbuild,.tplot{margin:10px 0}.tpsvg .hit{cursor:pointer}.tpsvg .hit:hover{fill-opacity:.18}
+.slrow.wide{grid-template-columns:58px 1fr 44px}
+.mini{margin:8px 0 2px;font-size:.78rem;color:#9fb3b5}
+.seg{flex-wrap:wrap}
+#rdRef button,#rdDir button,#spRef button,#ddTrip button,#rtJump button,#msRef button,#boatRef button{font-size:.8rem!important;padding:6px 9px!important}
+.dpad{display:grid;grid-template-columns:repeat(3,1fr);grid-template-areas:". n ." "w . e" ". s .";gap:6px;max-width:260px;margin:4px auto 6px}
+.dpad button{padding:9px 4px!important;border-radius:10px!important;background:rgba(124,194,189,.12)!important;color:#f1f6f5!important;border:1.5px solid rgba(124,194,189,.4)!important;font-weight:700;font-size:.85rem!important}
+.dpad button:active{background:#f2c46d!important;color:#0c1620!important}
+.dpad [data-d=N]{grid-area:n}.dpad [data-d=W]{grid-area:w}.dpad [data-d=E]{grid-area:e}.dpad [data-d=S]{grid-area:s}
+#fairOut,#rtOut,#ddOut,#msOut,#rdOut,#boatOut,#spOut{white-space:pre-wrap;min-height:4.5em}
+.mb.stack button{height:auto!important;min-height:44px;padding:8px 10px!important;text-align:start;color:var(--ink)!important;text-shadow:none!important}
+#pbSeg button,#btSeg button{font-size:.8rem!important;padding:6px 9px!important}
+#pbOut,#nfOut,#btOut,#trOut{white-space:pre-wrap;min-height:4.5em}
+:root{--sand:#0c1620;--paper:#132532;--ink:#f1f6f5;--muted:#9fb3b5;--terra:#ef9a83;--teal:#7cc2bd;--teal-d:#4fa39c;
+--ochre:#f2c46d;--clay:#f2c46d;--stone:#6f8689;--line:rgba(124,194,189,.22);--sky:#123a3a;--cream:#1d2f3b;color-scheme:dark}
+body{font-family:'Readex Pro',system-ui,-apple-system,'Segoe UI',sans-serif;background:radial-gradient(1200px 600px at 50% -10%,rgba(79,163,156,.18),transparent 60%),#0c1620;background-attachment:fixed}
+h1,h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:.01em}
+.ar,[lang=ar]{font-family:'Readex Pro','Geeza Pro','Noto Naskh Arabic',Tahoma,sans-serif}
+.card,.bubble,.idc,.key,.msg,.cert{box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card{background:rgba(19,37,50,.72);border-color:var(--line);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.btn{background:linear-gradient(180deg,#8fd0ca,#6cb7b1);color:#08201f;box-shadow:0 3px 0 #3d8a84,0 8px 24px rgba(124,194,189,.25)}
+.btn.alt{background:rgba(19,37,50,.8);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn:disabled{opacity:.45}
+.nav{background:linear-gradient(rgba(12,22,32,0),rgba(12,22,32,.94) 40%)}
+.kicker{background:rgba(242,196,109,.14);color:#f2c46d}
+.kicker.light{background:rgba(12,22,32,.55);color:#f2c46d;border:1px solid rgba(242,196,109,.35)}
+.hsub{color:#f2c46d}
+.bubble{background:#132532;border-color:#4fa39c}
+.bubble .who{color:#7cc2bd}
+.key{border-left-color:#f2c46d}
+.msg{border-left-color:#7cc2bd}
+.msg.warn{border-left-color:#ef9a83}
+.face.back{background:linear-gradient(160deg,#2b7d77,#1d5c58);color:#f1f6f5}
+.seg button.on,.seg button[aria-pressed=true]{background:#7cc2bd;color:#08201f}
+.namebox{background:#0f1e29;color:var(--ink);border-color:var(--line)}
+.m,.mi{color:inherit}
+.fline .fn{background:#7cc2bd;color:#08201f}
+.solbtn.on{color:#08201f}
+.score{color:#f2c46d}
+.prog{background:rgba(124,194,189,.15)}
+.ibtn{background:rgba(19,37,50,.8);color:var(--ink);border-color:var(--line)}
+.hero{box-shadow:0 20px 50px rgba(0,0,0,.35);border:1px solid var(--line)}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Science · Grade 8 · Unit 2<small id="curLabel">The Normal Force</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="A tennis racket and ball with the normal force and the force pair"><defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c1620"/><stop offset="1" stop-color="#173041"/></linearGradient></defs><rect width="640" height="360" fill="url(#hb)"/><line x1="0" y1="0" x2="0" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="40" y1="0" x2="40" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="80" y1="0" x2="80" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="120" y1="0" x2="120" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="160" y1="0" x2="160" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="200" y1="0" x2="200" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="240" y1="0" x2="240" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="280" y1="0" x2="280" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="320" y1="0" x2="320" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="360" y1="0" x2="360" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="400" y1="0" x2="400" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="440" y1="0" x2="440" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="480" y1="0" x2="480" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="520" y1="0" x2="520" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="560" y1="0" x2="560" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="600" y1="0" x2="600" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="640" y1="0" x2="640" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="0" x2="640" y2="0" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="40" x2="640" y2="40" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="80" x2="640" y2="80" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="120" x2="640" y2="120" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="160" x2="640" y2="160" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="200" x2="640" y2="200" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="240" x2="640" y2="240" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="280" x2="640" y2="280" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="320" x2="640" y2="320" stroke="#7cc2bd" stroke-opacity=".07"/><line x1="0" y1="360" x2="640" y2="360" stroke="#7cc2bd" stroke-opacity=".07"/><g transform="translate(300,110) rotate(-20)"><ellipse cx="0" cy="0" rx="40" ry="62" fill="none" stroke="#f1f6f5" stroke-width="7"/><line x1="-30" y1="-58" x2="-30" y2="58" stroke="#f1f6f5" stroke-opacity=".35"/><line x1="-20" y1="-58" x2="-20" y2="58" stroke="#f1f6f5" stroke-opacity=".35"/><line x1="-10" y1="-58" x2="-10" y2="58" stroke="#f1f6f5" stroke-opacity=".35"/><line x1="0" y1="-58" x2="0" y2="58" stroke="#f1f6f5" stroke-opacity=".35"/><line x1="10" y1="-58" x2="10" y2="58" stroke="#f1f6f5" stroke-opacity=".35"/><line x1="20" y1="-58" x2="20" y2="58" stroke="#f1f6f5" stroke-opacity=".35"/><line x1="30" y1="-58" x2="30" y2="58" stroke="#f1f6f5" stroke-opacity=".35"/><line x1="0" y1="62" x2="0" y2="140" stroke="#8c5a3c" stroke-width="12" stroke-linecap="round"/></g><circle cx="360" cy="96" r="20" fill="#d7e85a" stroke="#0c1620" stroke-width="3"/><line x1="384" y1="88" x2="520" y2="50" stroke="#f2c46d" stroke-width="7" stroke-linecap="round"/><path d="M538 45l-20 -4l7 16z" fill="#f2c46d"/><line x1="268" y1="122" x2="150" y2="155" stroke="#ef9a83" stroke-width="7" stroke-linecap="round"/><path d="M132 160l20 4l-7 -16z" fill="#ef9a83"/></svg>
+    <div class="herotxt"><span class="kicker light">Science · Grade 8 · Unit 2 · Lesson 15</span><h1>The Normal Force</h1><p class="ar">القوة العمودية</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="happy"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Forces come in pairs: equal and opposite. So why don't they cancel? And why does a tennis ball fly off in the direction the racket faces? Today: <b>force pairs</b> and the <b>normal force</b>.</p><p class="ar">القوى تأتي في أزواج: متساوية ومتعاكسة. فلماذا لا تلغي بعضها؟ ولماذا تنطلق كرة التنس في الاتجاه الذي يواجهه المضرب؟ اليوم: <b>أزواج القوى</b> و<b>القوة العمودية</b>.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ tell a force pair from balanced forces<br>✔ explain why force pairs do not cancel<br>✔ describe the normal force (perpendicular to a surface)<br>✔ model a system with free-body diagrams (Back to Back, tug of war)</p><p class="ar"><b>سأتعلم اليوم أن:</b><br>✔ أميّز زوج القوى من القوى المتزنة<br>✔ أشرح لماذا لا يلغي زوجا القوى بعضهما<br>✔ أصف القوة العمودية (عمودية على السطح)<br>✔ أمثّل نظامًا بمخططات الجسم الحر (Back to Back، وشدّ الحبل)</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic. Every question has a <b>Show solution</b> button.</p><p class="ar"><b>نصيحة:</b> اضغط <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمة. ولكل سؤال زر <b>طريقة الحل</b>.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up · Lesson 14</span>
+  <h2>Newton's third law</h2>
+  <p class="hsub ar">قانون نيوتن الثالث</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Remember Lesson 14, then make a prediction about Paula's sailboat.</p><p class="ar">مجرد تسخين، لا شيء يُحسب! تذكّر الدرس 14، ثم توقّع ما يحدث لمركب باولا الشراعي.</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+  <div class="card"><svg id="saSvg" viewBox="0 0 360 170" class="gsvg" role="img" aria-label="A sailboat with wind pushing on the sail"></svg></div>
+  <div class="bi"><p class="en"><b>Science probe · Blowing in the Wind:</b> Paula is sailing across a lake. As the boat accelerates, the wind pushes on the sail. Which statement best represents what is happening between the sail and the air? (You will come back to this at the end.)</p><p class="ar"><b>سؤال استكشافي · Blowing in the Wind:</b> تُبحر باولا عبر بحيرة. وبينما يتسارع المركب تدفع الرياح الشراع. أي عبارة تمثّل أفضل ما يحدث بين الشراع والهواء؟ (ستعود إلى هذا السؤال في النهاية.)</p></div>
+  <div class="wu needjs" id="prBox"></div>
+</section>
+
+<section class="screen" data-title="Pair or balanced">
+  <span class="kicker">Learn · Force pairs</span>
+  <h2>Why don't force pairs cancel?</h2>
+  <p class="hsub ar">لماذا لا يلغي زوجا القوى بعضهما؟</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> A <b>force pair</b> is the forces two objects apply to each other. The two forces act on <b>different objects</b>, so they never cancel. <b>Balanced forces</b> act on the <b>same object</b> and add up to zero.</p><p class="ar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>زوج القوى</b> هو القوتان اللتان يؤثر بهما جسمان في بعضهما. تؤثر القوتان في <b>جسمين مختلفين</b>، لذلك لا تلغيان بعضهما أبدًا. أما <b>القوى المتزنة</b> فتؤثر في <b>الجسم نفسه</b> ومحصلتها صفر.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="pbSvg" viewBox="0 0 360 220" class="gsvg" role="img" aria-label="Force pair and balanced forces"></svg>
+      <div class="needjs"><div class="seg" id="pbSeg"><button data-v="0" class="on">Racket and ball</button><button data-v="1">Standing on the floor</button></div></div></div>
+    <div class="card"><div class="monoout" id="pbOut"></div><div class="msg bi" id="pbMsg"></div></div>
+  </div>
+  <div class="bi"><p class="en"><b>Sort it:</b> force pair or balanced forces?</p><p class="ar"><b>صنّف:</b> زوج قوى أم قوى متزنة؟</p></div>
+  <div class="wu needjs" id="pbBox"></div>
+</section>
+
+<section class="screen" data-title="Normal force">
+  <span class="kicker">Learn · Normal force</span>
+  <h2>A push straight out from the surface</h2>
+  <p class="hsub ar">دفع عمودي على السطح</p>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> The <b>normal force</b> is the force that pushes <b>perpendicular</b> (at 90°) to an object's surface. When you push a wall, the wall pushes straight out from its surface. A tennis racket pushes the ball perpendicular to its strings, so a player turns the racket to send the ball left or right.</p><p class="ar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>القوة العمودية</b> هي القوة التي تدفع <b>عموديًا</b> (بزاوية 90°) على سطح الجسم. عندما تدفع حائطًا، يدفعك الحائط عموديًا على سطحه. ويدفع مضرب التنس الكرة عموديًا على أوتاره، لذلك يدير اللاعب المضرب ليرسل الكرة يسارًا أو يمينًا.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="nfSvg" viewBox="0 0 360 240" class="gsvg" role="img" aria-label="A tilted racket and the normal force on the ball"></svg>
+      <div class="needjs"><div class="slrow wide"><b>tilt (°)</b><input type="range" id="nfA" min="-40" max="40" step="10" value="0" aria-label="racket tilt in degrees"><span id="nfAv"></span></div></div></div>
+    <div class="card"><div class="monoout" id="nfOut"></div><div class="msg bi" id="nfMsg"></div></div>
+  </div>
+</section>
+
+<section class="screen" data-title="Back to Back">
+  <span class="kicker">Investigation · Back to Back</span>
+  <h2>A fan that blows into its own sail</h2>
+  <p class="hsub ar">مروحة تنفخ في شراعها</p>
+  <div class="bi"><p class="en">A student has an idea for a new airboat: the fan on the boat faces a sail on the same boat. The student claims the sail will fill with air and the boat will sail away very quickly. Test both designs.</p><p class="ar">لدى طالب فكرة لقارب هوائي جديد: مروحة على القارب تواجه شراعًا على القارب نفسه. يقول الطالب إن الشراع سيمتلئ بالهواء وسيُبحر القارب بسرعة كبيرة. اختبر التصميمين.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="btSvg" viewBox="0 0 360 230" class="gsvg" role="img" aria-label="A boat with a fan blowing into a sail on the same boat"></svg>
+      <div class="needjs"><div class="seg" id="btSeg"><button data-v="0" class="on">Fan + sail</button><button data-v="1">Fan pointing back</button></div>
+      <div class="btnrow c"><button class="btn sm" id="btGo">Start fan ▶</button></div></div></div>
+    <div class="card"><div class="monoout" id="btOut"></div><div class="msg bi" id="btMsg"></div></div>
+  </div>
+  <div class="wu needjs" id="btBox"></div>
+</section>
+
+<section class="screen" data-title="Tug of war rope">
+  <span class="kicker">Three-dimensional thinking · Model the rope</span>
+  <h2>Forces along a rope</h2>
+  <p class="hsub ar">القوى على طول الحبل</p>
+  <div class="bi"><p class="en">Two students play tug of war; each pulls with 300 N and nobody moves. Move the point along the rope and look at the forces on that small piece.</p><p class="ar">يلعب طالبان شدّ الحبل؛ يسحب كل منهما بقوة 300 N ولا يتحرك أحد. حرّك النقطة على طول الحبل وانظر إلى القوى المؤثرة في هذه القطعة الصغيرة.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="trSvg" viewBox="0 0 360 200" class="gsvg" role="img" aria-label="Tug of war rope with forces on a small piece"></svg>
+      <div class="needjs"><div class="slrow wide"><b>point</b><input type="range" id="trP" min="0" max="100" step="10" value="50" aria-label="position along the rope"><span id="trPv"></span></div></div></div>
+    <div class="card"><div class="monoout" id="trOut"></div><div class="msg bi" id="trMsg"></div></div>
+  </div>
+</section>
+
+<section class="screen" data-title="Apply">
+  <span class="kicker">Apply · Lesson 3 review</span>
+  <h2>Force pairs everywhere</h2>
+  <p class="hsub ar">أزواج القوى في كل مكان</p>
+  <div class="card"><svg id="icSvg" viewBox="0 0 360 120" class="gsvg" role="img" aria-label="A person on ice pushing an object to the right"></svg></div>
+  <div class="wu needjs" id="apBox"></div>
+</section>
+
+<section class="screen" data-title="Revisit the probe">
+  <span class="kicker">Revisit · Blowing in the Wind</span>
+  <h2>The sail and the air</h2>
+  <p class="hsub ar">الشراع والهواء</p>
+  <div class="zrow"><div class="zav" data-zayed="think"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Now you know about force pairs. Do you still agree with your first answer about Paula's sail?</p><p class="ar">أنت الآن تعرف أزواج القوى. هل ما زلت توافق على إجابتك الأولى عن شراع باولا؟</p></div></div>
+  <div class="card why" id="whySail"></div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Check yourself</span>
+  <h2>Your turn: no score here</h2>
+  <p class="hsub ar">دورك: بدون درجات هنا</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Ask: <b>which object</b> does each force act on? Choose an answer, then open <b>Show solution</b>.</p><p class="ar">اسأل: <b>في أي جسم</b> تؤثر كل قوة؟ اختر إجابة، ثم افتح <b>طريقة الحل</b>.</p></div></div>
+  <div class="wu needjs" id="tryBox"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">This is the last lesson of the Motion module. Excellent work! Now the final quiz: 10 questions, and two of them review Lesson 14.</p><p class="ar">هذا آخر درس في وحدة الحركة. عمل ممتاز! والآن الاختبار النهائي: 10 أسئلة، اثنان منها مراجعة على الدرس 14.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+
+
+</main>
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="sci8_u2l15_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"UAE MOE · Grade 8"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛⅓⅔¼¾⅘](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛⅓⅔¼¾⅘ =+,./≠]*[0-9A-Za-z)\[\]½²³⁴¹√∛⅓⅔¼¾⅘])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t)||(inM&&/^<span/.test(t)))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+/* ---------- lesson helpers ---------- */
+const OV=d=>`<span class="ov">${d}</span>`;
+const OVN=(p,r)=>`<span class="m">${p}<span class="ov">${r}</span></span>`;
+/* solution box: steps = [[en, ar], ...] */
+function solHTML(steps){if(!steps||!steps.length)return "";
+  return `<div class="solbox"><button type="button" class="solbtn">${ICON.bulb} Show solution <span class="ar">طريقة الحل</span></button><ol class="solsteps" hidden>${steps.map(s=>`<li><span>${s[0]}</span><span class="ar">${s[1]}</span></li>`).join("")}</ol></div>`;}
+function solBind(root){root.querySelectorAll(".solbtn").forEach(b=>{if(b.dataset.b)return;b.dataset.b=1;b.onclick=e=>{e.stopPropagation();const ol=b.nextElementSibling,open=ol.hidden;ol.hidden=!open;b.classList.toggle("on",open);b.innerHTML=`${ICON.bulb} ${open?"Hide solution":"Show solution"} <span class="ar">${open?"إخفاء الحل":"طريقة الحل"}</span>`;};});}
+
+
+const SVGT=(x,y,t,o)=>`<text x="${x}" y="${y}" ${o||""}>${t}</text>`;
+const SANS='font-family="sans-serif"';
+const NN=v=>String(v).replace(/-/g,"−");
+const fx=(v,d)=>NN(+(+v).toFixed(d===undefined?2:d));
+const money=v=>"$"+(+v).toFixed(2);
+
+/* ---------- graph helpers (dark-friendly) ---------- */
+const GC={t:"#7cc2bd",g:"#f2c46d",c:"#ef9a83",ink:"#f1f6f5",mu:"#9fb3b5"};
+function G(o){const W=o.W||360,H=o.H||260,L=o.L||50,R=W-14,T=14,B=H-40;
+  const X=v=>L+(v-o.x0)/(o.x1-o.x0)*(R-L),Y=v=>B-(v-o.y0)/(o.y1-o.y0)*(B-T);
+  let s=`<rect x="${L}" y="${T}" width="${R-L}" height="${B-T}" fill="#7cc2bd" fill-opacity=".04"/>`;
+  let k=0;for(let v=o.x0;v<=o.x1+1e-9;v+=o.xs,k++){s+=`<line x1="${X(v)}" y1="${T}" x2="${X(v)}" y2="${B}" stroke="${GC.t}" stroke-opacity=".14"/>`;
+    if(k%(o.xl||1)===0)s+=SVGT(X(v),B+15,fx(v),`font-size="11" fill="${GC.mu}" text-anchor="middle" ${SANS}`);}
+  k=0;for(let v=o.y0;v<=o.y1+1e-9;v+=o.ys,k++){s+=`<line x1="${L}" y1="${Y(v)}" x2="${R}" y2="${Y(v)}" stroke="${GC.t}" stroke-opacity=".14"/>`;
+    if(k%(o.yl||1)===0)s+=SVGT(L-6,Y(v)+4,fx(v),`font-size="11" fill="${GC.mu}" text-anchor="end" ${SANS}`);}
+  s+=`<line x1="${L}" y1="${B}" x2="${R}" y2="${B}" stroke="${GC.mu}" stroke-width="1.6"/><line x1="${L}" y1="${T}" x2="${L}" y2="${B}" stroke="${GC.mu}" stroke-width="1.6"/>`;
+  if(o.xt)s+=SVGT((L+R)/2,H-6,o.xt,`font-size="12" font-weight="700" fill="${GC.ink}" text-anchor="middle" ${SANS}`);
+  if(o.yt)s+=`<text transform="translate(13 ${(T+B)/2}) rotate(-90)" font-size="12" font-weight="700" fill="${GC.ink}" text-anchor="middle" ${SANS}>${o.yt}</text>`;
+  return {X,Y,s,L,R,T,B,o};}
+const HALO='paint-order="stroke" stroke="#0c1620" stroke-width="4" stroke-linejoin="round"';
+function gLine(g,x1,y1,x2,y2,col,dash,w){return `<line x1="${g.X(x1)}" y1="${g.Y(y1)}" x2="${g.X(x2)}" y2="${g.Y(y2)}" stroke="${col}" stroke-width="${w||3.2}" stroke-linecap="round" ${dash?'stroke-dasharray="8 6"':""}/>`;}
+function gPt(g,x,y,col,lab,dx,dy,anc){return `<circle cx="${g.X(x)}" cy="${g.Y(y)}" r="5.5" fill="${col}" stroke="#0c1620" stroke-width="2"/>`+(lab?SVGT(g.X(x)+(dx===undefined?9:dx),g.Y(y)+(dy===undefined?4:dy),lab,`font-size="12" font-weight="700" fill="${GC.ink}" ${anc?`text-anchor="${anc}"`:""} ${HALO} ${SANS}`):"");}
+/* proportional line y = m x clipped to the grid */
+function gProp(g,m,col,dash){const o=g.o;let xe=o.x1;if(m*xe>o.y1)xe=o.y1/m;let xs=Math.max(o.x0,0);if(o.x0<0){xs=o.x0;if(m*xs<o.y0)xs=o.y0/m;}return gLine(g,xs,m*xs,xe,m*xe,col,dash);}
+/* step triangle: run (gold) then rise (coral) */
+function gStep(g,xa,ya,xb,yb,rl,ul){const X1=g.X(xa),Y1=g.Y(ya),X2=g.X(xb),Y2=g.Y(yb);
+  return `<line x1="${X1}" y1="${Y1}" x2="${X2}" y2="${Y1}" stroke="${GC.g}" stroke-width="3" stroke-dasharray="2 0"/><line x1="${X2}" y1="${Y1}" x2="${X2}" y2="${Y2}" stroke="${GC.c}" stroke-width="3"/>`+
+   SVGT((X1+X2)/2,Y1>g.B-18?Y1-7:Y1+16,rl,`font-size="12" font-weight="700" fill="${GC.g}" text-anchor="middle" ${HALO} ${SANS}`)+
+   SVGT(X2+7,(Y1+Y2)/2+4,ul,`font-size="12" font-weight="700" fill="${GC.c}" ${HALO} ${SANS}`);}
+
+
+/* ---------- coordinate plane + any line ---------- */
+function plane(o){const g=G(Object.assign({x0:-5,x1:5,xs:1,y0:-5,y1:5,ys:1,L:34,H:300},o));
+  g.s+=`<line x1="${g.X(0)}" y1="${g.T}" x2="${g.X(0)}" y2="${g.B}" stroke="${GC.mu}" stroke-width="1.7"/><line x1="${g.L}" y1="${g.Y(0)}" x2="${g.R}" y2="${g.Y(0)}" stroke="${GC.mu}" stroke-width="1.7"/>`+
+   SVGT(g.X(0)-6,g.Y(0)+14,"O",`font-size="12" font-style="italic" fill="${GC.mu}" text-anchor="end" font-family="Cambria,serif"`)+
+   SVGT(g.R-4,g.Y(0)-6,"x",`font-size="13" font-style="italic" fill="${GC.ink}" text-anchor="end" font-family="Cambria,serif"`)+SVGT(g.X(0)+6,g.T+12,"y",`font-size="13" font-style="italic" fill="${GC.ink}" font-family="Cambria,serif"`);return g;}
+function gThru(g,p,q,col,dash){const o=g.o;if(p[0]===q[0])return gLine(g,p[0],o.y0,p[0],o.y1,col,dash);
+  const m=(q[1]-p[1])/(q[0]-p[0]),f=x=>p[1]+m*(x-p[0]),fi=y=>p[0]+(y-p[1])/m;
+  const pts=[];[[o.x0,f(o.x0)],[o.x1,f(o.x1)]].forEach(t=>pts.push(t));
+  const cl=t=>{if(t[1]>o.y1)return [fi(o.y1),o.y1];if(t[1]<o.y0)return [fi(o.y0),o.y0];return t;};
+  const a=cl(pts[0]),b=cl(pts[1]);return gLine(g,a[0],a[1],b[0],b[1],col,dash);}
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+function frac(n,d){if(d===0)return "undefined";if(n===0)return "0";if(d<0){n=-n;d=-d;}const k=gcd(Math.abs(n),d);n/=k;d/=k;return d===1?NN(n):`${NN(n)}/${d}`;}
+
+
+function lab(x,y,t,col,anc,fs){return SVGT(x,y,t,`font-size="${fs||12}" font-weight="700" fill="${col||GC.ink}" ${anc?`text-anchor="${anc}"`:""} ${HALO} ${SANS}`);}
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function segOn(el,cb){if(!el)return;el.querySelectorAll("button").forEach(b=>b.onclick=()=>{el.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));cb(b.dataset.v);});}
+const sgn=v=>v>0?"+"+v:NN(v);
+function arrowHead(x,y,dir,col,s){s=s||8;const a=dir;const p1=[x-s*Math.cos(a-0.5),y-s*Math.sin(a-0.5)],p2=[x-s*Math.cos(a+0.5),y-s*Math.sin(a+0.5)];return `<path d="M${x} ${y}L${p1[0].toFixed(1)} ${p1[1].toFixed(1)}L${p2[0].toFixed(1)} ${p2[1].toFixed(1)}Z" fill="${col}"/>`;}
+function arrow(x1,y1,x2,y2,col,w,dash){const a=Math.atan2(y2-y1,x2-x1);return `<line x1="${x1}" y1="${y1}" x2="${(x2-6*Math.cos(a)).toFixed(1)}" y2="${(y2-6*Math.sin(a)).toFixed(1)}" stroke="${col}" stroke-width="${w||3}" stroke-linecap="round" ${dash?`stroke-dasharray="${dash}"`:""}/>`+arrowHead(x2,y2,a,col,10);}
+const BG='<rect width="100%" height="100%" rx="12" fill="#0f1d29"/>';
+function flag(x,y,col){return `<line x1="${x}" y1="${y}" x2="${x}" y2="${y-30}" stroke="${col}" stroke-width="2.5"/><path d="M${x} ${y-30}l16 5l-16 6z" fill="${col}"/>`;}
+
+
+const FD={};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+
+/* ---------- practice cards with a solution button ---------- */
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}${n[1]&&n[1]!==n[0]?`<small>${n[1]}</small>`:""}</button>`).join("")}</div><div class="mwhy"></div>${solHTML(c.sol)}</div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll(".mb button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll(".mb button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});
+  solBind(box);}
+
+/* ---------- stepper: one or more methods shown line by line ---------- */
+function stepper(el,methods){let m=0,k=0;
+  el.innerHTML=`${methods.length>1?`<div class="seg needjs" data-r="mode">${methods.map((x,i)=>`<button data-v="${i}" class="${i?"":"on"}">${x.name}</button>`).join("")}</div>`:""}
+   <div class="card fcard"><div class="flines" data-r="l"></div></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  function draw(){const L=methods[m].lines;R("l").innerHTML=L.map((s,i)=>i<=k?`<div class="fline"><span class="fn">${i+1}</span>${M(s[0])}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`:"").join("");
+    R("n").disabled=k>=L.length-1;
+    if(k>=L.length-1)setMsg(R("m"),`${ICON.check} ${methods[m].end[0]}`,`${ICON.check} ${methods[m].end[1]}`);
+    else setMsg(R("m"),"Tap <b>Show me</b> for the next step.","اضغط <b>Show me</b> للخطوة التالية.");refreshAr(el);}
+  R("n").onclick=()=>{if(k<methods[m].lines.length-1){k++;draw();}};R("r").onclick=()=>{k=0;draw();};
+  if(R("mode"))R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));m=+b.dataset.v;k=0;draw();});
+  draw();}
+
+
+let ANIMS={};
+function play(key,dur,frame,done){if(ANIMS[key])cancelAnimationFrame(ANIMS[key]);if(RM){frame(1);done&&done();return;}const t0=performance.now();
+  const st=now=>{const u=Math.min(1,(now-t0)/dur);frame(u);if(u<1)ANIMS[key]=requestAnimationFrame(st);else{ANIMS[key]=null;done&&done();}};ANIMS[key]=requestAnimationFrame(st);}
+function tball(x,y){return `<circle cx="${x}" cy="${y}" r="11" fill="#d7e85a" stroke="#0c1620" stroke-width="2"/><path d="M${x-7} ${y-7}q7 7 0 14M${x+7} ${y-7}q-7 7 0 14" fill="none" stroke="#f1f6f5" stroke-width="1.4" stroke-opacity=".8"/>`;}
+function person(x,y,c){return `<circle cx="${x}" cy="${y-48}" r="8" fill="#d9a77a"/><path d="M${x-8} ${y-39}h16l2 24h-20z" fill="${c}"/><path d="M${x-4} ${y-15}l-4 15M${x+4} ${y-15}l4 15" stroke="#1f2a37" stroke-width="5" stroke-linecap="round"/>`;}
+
+/* ---------- warm-up: Lesson 14 ---------- */
+cardsQ($("#wuBox"),[
+ {t:["Lesson 14: You push a friend on skates with 80 N. How hard does your friend push you?","الدرس 14: تدفع صديقك وهو يتزلج بقوة 80 N. بأي قوة يدفعك؟"],o:[["0 N"],["40 N"],["80 N"]],a:2,
+  w:["Third law: equal and opposite, 80 N.","القانون الثالث: مساوية ومعاكسة، 80 N."],h:["Action and reaction are …","الفعل وردّ الفعل …"],
+  sol:[["Action: 80 N on your friend.","الفعل: 80 N على صديقك."],["Reaction: same size.","ردّ الفعل: المقدار نفسه."],["80 N on you, opposite direction.","80 N عليك، في الاتجاه المعاكس."]]},
+ {t:["Lesson 14: Two balls collide and stick together. What type of collision is this?","الدرس 14: تصطدم كرتان وتلتصقان. ما نوع هذا التصادم؟"],o:[["Inelastic","غير مرن"],["Elastic","مرن"]],a:0,
+  w:["Sticking together = inelastic.","الالتصاق = غير مرن."],h:["Bounce or stick?","ارتداد أم التصاق؟"],
+  sol:[["Elastic: bounce.","مرن: ارتداد."],["Inelastic: stick.","غير مرن: التصاق."],["So: inelastic.","إذن: غير مرن."]]},
+ {t:["Lesson 14: An airboat's fan pushes air backward. What moves the boat forward?","الدرس 14: تدفع مروحة القارب الهوائي الهواء إلى الخلف. ما الذي يحرّك القارب إلى الأمام؟"],o:[["The water","الماء"],["The air pushing back on the fan","الهواء يدفع المروحة"],["Gravity","الجاذبية"]],a:1,
+  w:["Reaction: air pushes the fan (and boat) forward.","ردّ الفعل: الهواء يدفع المروحة (والقارب) إلى الأمام."],h:["Swap the objects.","بدّل الجسمين."],
+  sol:[["Action: fan → air, backward.","الفعل: المروحة ← الهواء، إلى الخلف."],["Reaction: air → fan, forward.","ردّ الفعل: الهواء ← المروحة، إلى الأمام."],["The boat moves forward.","يتحرك القارب إلى الأمام."]]}
+]);
+(function(){const s=$("#saSvg");if(!s)return;let o=BG+`<rect x="0" y="120" width="360" height="50" fill="#1d4f6b"/><path d="M130 118h120l-14 16h-92z" fill="#ef9a83"/><line x1="190" y1="118" x2="190" y2="20" stroke="${GC.ink}" stroke-width="3"/><path d="M192 24Q240 70 196 112L192 112Z" fill="#f1f6f5" fill-opacity=".9"/>`;
+  for(let k=0;k<4;k++)o+=`<path d="M${30+k*6} ${40+k*20}q20 -8 40 0t40 0" fill="none" stroke="#cfe9e6" stroke-opacity=".6" stroke-width="2"/>`;o+=lab(70,30,"wind",GC.t,"middle",11);s.innerHTML=o;})();
+const PROBE=[["The sail is pushing the wind back and slowing down the air.","الشراع يدفع الريح إلى الخلف ويبطّئ الهواء."],["The sail and air are not pushing each other; they are just moving together.","الشراع والهواء لا يدفعان بعضهما؛ هما يتحركان معًا فقط."],["The air is pushing on the sail, but the sail is not pushing the air.","الهواء يدفع الشراع، لكن الشراع لا يدفع الهواء."],["The sail is pushing the wind forward with the air.","الشراع يدفع الريح إلى الأمام مع الهواء."]];
+(function(){const box=$("#prBox");if(!box)return;box.innerHTML=`<div class="idc"><div class="mb stack">${PROBE.map((p,i)=>`<button data-i="${i}">${String.fromCharCode(65+i)}. ${p[0]}<small>${p[1]}</small></button>`).join("")}</div><div class="mwhy" id="prMsg"></div></div>`;
+  box.querySelectorAll("button").forEach(b=>b.onclick=()=>{box.querySelectorAll("button").forEach(x=>x.classList.toggle("pick",x===b));store.set("probe",+b.dataset.i);$("#prMsg").innerHTML=`Your prediction: <b>${String.fromCharCode(65+ +b.dataset.i)}</b>. Keep it in mind; we will check it at the end.<span class="ar">توقعك: <b>${String.fromCharCode(65+ +b.dataset.i)}</b>. احتفظ به؛ سنتحقق منه في النهاية.</span>`;});})();
+
+/* ---------- pair or balanced ---------- */
+(function(){const s=$("#pbSvg");if(!s)return;let m=0;
+  const d=()=>{let o=BG;
+    if(m===0){o+=`<g transform="translate(150,110) rotate(-10)"><ellipse cx="0" cy="0" rx="22" ry="34" fill="none" stroke="${GC.ink}" stroke-width="4"/><line x1="0" y1="34" x2="0" y2="80" stroke="#8c5a3c" stroke-width="7" stroke-linecap="round"/></g>`+tball(186,104);
+      o+=arrow(198,104,268,104,GC.g,5)+lab(232,92,"racket → ball",GC.g,"middle",11)+lab(232,124,"acts on the BALL",GC.g,"middle",10);
+      o+=arrow(126,74,62,74,GC.c,5)+lab(94,62,"ball → racket",GC.c,"middle",11)+lab(94,92,"acts on the RACKET",GC.c,"middle",10);
+      o+=lab(180,200,"force pair: different objects → do not cancel",GC.ink,"middle",11);}
+    else{o+=`<rect x="0" y="160" width="360" height="60" fill="#3b4a5a"/>`+person(180,160,GC.t);
+      o+=arrow(170,104,170,170,GC.c,5)+lab(160,150,"gravity on you",GC.c,"end",10.5)+arrow(190,158,190,84,GC.g,5)+lab(200,96,"floor on you",GC.g,"start",10.5);
+      o+=arrow(240,162,240,205,"#c79bff",4)+lab(250,196,"you push the floor",`#c79bff`,"start",10.5);
+      o+=lab(180,24,"gravity + floor on you: balanced (same object)",GC.ink,"middle",10.5)+lab(180,40,"you ↔ floor: a force pair (different objects)",`#c79bff`,"middle",10.5);}
+    s.innerHTML=o;
+    $("#pbOut").textContent=m===0?"racket → ball (on ball)\nball → racket (on racket)\n→ force pair":"gravity on you ↓ (on you)\nfloor on you ↑ (on you)\n→ balanced, net 0\nyou → floor ↓ (on floor)\n→ pairs with floor on you";
+    setMsg($("#pbMsg"),m===0?"The two forces act on <b>different objects</b>: the ball gets one, the racket gets the other. They cannot cancel.":"Gravity and the floor both push on <b>you</b>: balanced forces, net force 0. The force <b>you</b> put on the floor acts on the floor: it pairs with the floor's push on you.",m===0?"القوتان تؤثران في <b>جسمين مختلفين</b>: الكرة تتلقى واحدة والمضرب يتلقى الأخرى. لا يمكن أن تلغيا بعضهما.":"الجاذبية والأرض تؤثران كلتاهما فيك <b>أنت</b>: قوى متزنة، المحصلة 0. أما القوة التي <b>تؤثر</b> بها في الأرض فتؤثر في الأرض: وهي تشكّل زوجًا مع دفع الأرض لك.");};
+  segOn($("#pbSeg"),v=>{m=+v;d();});d();})();
+const PO=[["Force pair","زوج قوى"],["Balanced forces","قوى متزنة"]];
+cardsQ($("#pbBox"),[
+ {t:["A swimmer pushes the wall; the wall pushes the swimmer.","سبّاح يدفع الجدار؛ والجدار يدفع السبّاح."],o:PO,a:0,
+  w:["Two objects push each other: a force pair.","جسمان يدفعان بعضهما: زوج قوى."],h:["Which object gets each force?","أي جسم يتلقى كل قوة؟"],
+  sol:[["Swimmer → wall: on the wall.","السبّاح ← الجدار: على الجدار."],["Wall → swimmer: on the swimmer.","الجدار ← السبّاح: على السبّاح."],["Different objects: force pair.","جسمان مختلفان: زوج قوى."]]},
+ {t:["Two teams pull the same rope with 300 N each; it does not move.","فريقان يسحبان الحبل نفسه بقوة 300 N لكل منهما؛ ولا يتحرك."],o:PO,a:1,
+  w:["Both forces act on the rope: balanced, net force 0.","القوتان تؤثران في الحبل: متزنتان، والمحصلة 0."],h:["Both forces act on the same rope.","القوتان تؤثران في الحبل نفسه."],
+  sol:[["Left team → rope.","الفريق الأيسر ← الحبل."],["Right team → rope.","الفريق الأيمن ← الحبل."],["Same object, equal and opposite: balanced.","الجسم نفسه، متساويتان ومتعاكستان: متزنة."]]},
+ {t:["A book rests on a table: gravity pulls it down and the table pushes it up.","كتاب على طاولة: الجاذبية تسحبه إلى أسفل والطاولة تدفعه إلى أعلى."],o:PO,a:1,
+  w:["Both forces act on the book: balanced.","القوتان تؤثران في الكتاب: متزنتان."],h:["Do both forces act on the book?","هل تؤثر القوتان في الكتاب؟"],
+  sol:[["Gravity: on the book.","الجاذبية: على الكتاب."],["Table's push: on the book.","دفع الطاولة: على الكتاب."],["Same object: balanced forces.","الجسم نفسه: قوى متزنة."]]}
+]);
+
+/* ---------- normal force: tilted racket ---------- */
+(function(){const r=$("#nfA");if(!r)return;
+  const d=()=>{const A=+r.value;$("#nfAv").textContent=A;const th=A*Math.PI/180;const cx=230,cy=120;let o=BG;
+    // racket face line perpendicular normal n = (-cos th, sin th)? face rotated by A from vertical
+    const ux=Math.sin(th),uy=Math.cos(th);const nx=-Math.cos(th),ny=Math.sin(th);
+    o+=`<line x1="${cx-ux*60}" y1="${cy-uy*60}" x2="${cx+ux*60}" y2="${cy+uy*60}" stroke="${GC.ink}" stroke-width="6" stroke-linecap="round"/><line x1="${cx+ux*60}" y1="${cy+uy*60}" x2="${cx+ux*100}" y2="${cy+uy*100}" stroke="#8c5a3c" stroke-width="8" stroke-linecap="round"/>`;
+    o+=`<line x1="${cx}" y1="${cy}" x2="${cx+nx*18}" y2="${cy+ny*18}" stroke="${GC.mu}"/><path d="M${cx+nx*10+ux*8} ${cy+ny*10+uy*8}l${-ux*8} ${-uy*8}" stroke="${GC.mu}" fill="none"/>`;
+    o+=arrow(30,cy,cx-14,cy,"#cfe9e6",3,"6 5")+lab(40,cy+22,"ball comes in",GC.mu,"start",10.5);
+    o+=arrow(cx+nx*14,cy+ny*14,cx+nx*100,cy+ny*100,GC.g,5)+lab(cx+nx*104,cy+ny*104-14,"normal force",GC.g,"middle",11);
+    o+=tball(cx+nx*14,cy+ny*14);
+    $("#nfSvg").innerHTML=o;
+    $("#nfOut").textContent=`racket tilt: ${A}°\nnormal force: 90° to the strings\nball goes: ${A===0?"straight back":A>0?"back and down":"back and up"}`;
+    setMsg($("#nfMsg"),A===0?"The strings face the ball, so the normal force sends it straight back.":`Tilt the racket and the normal force tilts too: it always stays at <b>90°</b> to the strings, so the ball goes in a new direction.`,A===0?"الأوتار تواجه الكرة، فتعيدها القوة العمودية مباشرة إلى الخلف.":`أمِل المضرب فتميل القوة العمودية أيضًا: تبقى دائمًا بزاوية <b>90°</b> على الأوتار، فتذهب الكرة في اتجاه جديد.`);};
+  r.oninput=d;d();})();
+
+/* ---------- Back to Back ---------- */
+(function(){const s=$("#btSvg");if(!s)return;let m=0,x=0,on=false;
+  function draw(){let o=BG+`<rect x="0" y="150" width="360" height="80" fill="#1d4f6b"/>`;const bx=120+x;
+    o+=`<path d="M${bx} 148h140l-14 18h-112z" fill="#ef9a83"/>`;
+    if(m===0){o+=`<line x1="${bx+110}" y1="148" x2="${bx+110}" y2="60" stroke="${GC.ink}" stroke-width="3"/><path d="M${bx+112} 64Q${bx+150} 100 ${bx+114} 140L${bx+112} 140Z" fill="#f1f6f5" fill-opacity=".9"/>`;}
+    o+=`<circle cx="${bx+30}" cy="118" r="22" fill="none" stroke="${GC.g}" stroke-width="3"/><path d="M${bx+30} 96v44M${bx+8} 118h44" stroke="${GC.g}" stroke-width="2"/>`;
+    if(on){if(m===0){for(let k=0;k<3;k++)o+=`<path d="M${bx+58+k*14} ${106+k*10}q5 -4 10 0" fill="none" stroke="#cfe9e6" stroke-width="2"/>`;
+        o+=arrow(bx+30,74,bx+80,74,GC.t,4)+lab(bx+55,64,"air → sail",GC.t,"middle",10)+arrow(bx+30,90,bx-20,90,GC.c,4)+lab(bx-4,104,"air → fan",GC.c,"middle",10);}
+      else{for(let k=0;k<3;k++)o+=`<path d="M${bx-20-k*16} ${106+k*10}q5 -4 10 0" fill="none" stroke="#cfe9e6" stroke-width="2"/>`;o+=arrow(bx+30,74,bx+90,74,GC.g,5)+lab(bx+60,62,"air → fan (forward)",GC.g,"middle",10.5);}}
+    // free-body of whole boat
+    o+=`<circle cx="180" cy="204" r="14" fill="#0c1620" stroke="${GC.ink}"/>`+SVGT(180,208,"m",`font-size="12" font-style="italic" fill="${GC.ink}" text-anchor="middle" font-family="Cambria,serif"`);
+    if(on&&m===1)o+=arrow(194,204,250,204,GC.g,4)+lab(256,208,"net force forward","#f2c46d","start",10);
+    if(on&&m===0)o+=lab(200,208,"net force ≈ 0",GC.ink,"start",10.5);
+    s.innerHTML=o;}
+  function go(){on=true;x=0;const dist=m===0?4:150;play("bt",2200,u=>{x=dist*u*u;draw();},()=>{
+    if(m===0)setMsg($("#btMsg"),"The boat barely moves. The air pushes the sail forward, but the air also pushes the fan <b>backward</b> by the same amount: both are on the <b>same boat</b>, so they cancel. (In real life some air misses the sail, so it may creep a little.)","بالكاد يتحرك القارب. يدفع الهواء الشراع إلى الأمام، لكنه يدفع المروحة <b>إلى الخلف</b> بالمقدار نفسه: كلتاهما على <b>القارب نفسه</b>، فتلغيان بعضهما. (في الواقع يفلت بعض الهواء من الشراع، فقد يتحرك قليلًا.)");
+    else setMsg($("#btMsg"),"The fan pushes air backward and the air pushes the boat forward: a net force forward, so the boat accelerates. That is how a real airboat works.","تدفع المروحة الهواء إلى الخلف فيدفع الهواء القارب إلى الأمام: قوة محصلة إلى الأمام، فيتسارع القارب. هكذا يعمل القارب الهوائي الحقيقي.");});
+    $("#btOut").textContent=m===0?"fan pushes air → (forward)\nair pushes fan ← (backward)\nair pushes sail → (forward)\nall on one boat: net ≈ 0":"fan pushes air ← (backward)\nair pushes fan → (forward)\nnet force on boat: forward";}
+  segOn($("#btSeg"),v=>{m=+v;on=false;x=0;draw();$("#btOut").textContent="";setMsg($("#btMsg"),"Tap <b>Start fan</b>.","اضغط <b>Start fan</b>.");});$("#btGo").onclick=go;draw();setMsg($("#btMsg"),"Tap <b>Start fan</b>.","اضغط <b>Start fan</b>.");})();
+cardsQ($("#btBox"),[
+ {t:["Q2: Will the student's boat (fan blowing into its own sail) work as claimed?","س2: هل سيعمل قارب الطالب (مروحة تنفخ في شراعه) كما يقول؟"],o:[["Yes, it will go very fast","نعم، سيُبحر بسرعة كبيرة"],["No: the forces act on the same boat, so the net force is about zero","لا: القوى تؤثر في القارب نفسه، فالمحصلة نحو الصفر"],["Yes, but only backward","نعم، لكن إلى الخلف فقط"]],a:1,cls:"stack",
+  w:["Air pushes sail forward, air pushes fan backward: same system, they cancel.","الهواء يدفع الشراع إلى الأمام ويدفع المروحة إلى الخلف: النظام نفسه، فتلغيان بعضهما."],h:["Draw the free-body diagram of the whole boat.","ارسم مخطط الجسم الحر للقارب كله."],
+  sol:[["Fan → air forward; air → fan backward.","المروحة ← الهواء إلى الأمام؛ الهواء ← المروحة إلى الخلف."],["Air → sail forward.","الهواء ← الشراع إلى الأمام."],["All on one boat: net force ≈ 0, no speeding off.","كلها على قارب واحد: المحصلة ≈ 0، فلا ينطلق."]]},
+ {t:["Q3: How could the student improve the design?","س3: كيف يمكن للطالب تحسين التصميم؟"],o:[["Use a bigger sail","استخدام شراع أكبر"],["Remove the sail and point the fan backward","إزالة الشراع وتوجيه المروحة إلى الخلف"],["Add a second fan facing the sail","إضافة مروحة ثانية تواجه الشراع"]],a:1,cls:"stack",
+  w:["Then the air pushed out behind the boat pushes the boat forward.","عندها يدفع الهواء المندفع خلف القارب القاربَ إلى الأمام."],h:["How does a real airboat work?","كيف يعمل القارب الهوائي الحقيقي؟"],
+  sol:[["Push air out of the system (backward).","ادفع الهواء خارج النظام (إلى الخلف)."],["Reaction: air pushes the boat forward.","ردّ الفعل: الهواء يدفع القارب إلى الأمام."],["Net force forward: the boat moves.","المحصلة إلى الأمام: يتحرك القارب."]]}
+]);
+
+/* ---------- tug of war rope ---------- */
+(function(){const r=$("#trP");if(!r)return;
+  const d=()=>{const p=+r.value;$("#trPv").textContent=p+"%";const x=50+p*2.6;let o=BG+`<rect x="0" y="140" width="360" height="60" fill="#1f5a3d"/>`;
+    o+=person(30,140,"#ef9a83")+person(330,140,"#f2c46d")+`<line x1="40" y1="100" x2="320" y2="100" stroke="#e9c98a" stroke-width="4"/>`;
+    o+=`<rect x="${x-10}" y="92" width="20" height="16" rx="3" fill="none" stroke="${GC.t}" stroke-width="2"/>`;
+    o+=arrow(x-12,100,x-60,100,GC.c,4)+lab(x-36,88,"300 N",GC.c,"middle",11)+arrow(x+12,100,x+60,100,GC.g,4)+lab(x+36,124,"300 N",GC.g,"middle",11);
+    o+=lab(180,30,`net force on this piece: 0 N`,GC.t,"middle",12);
+    $("#trSvg").innerHTML=o;
+    $("#trOut").textContent=`point: ${p}% along the rope\npull to the left: 300 N\npull to the right: 300 N\nnet force: 0 N`;
+    setMsg($("#trMsg"),p===0||p===100?"At the end, the student pulls one way and the rest of the rope pulls the other way (third law): net 0.":"Each small piece is pulled left by the rope on one side and right by the rope on the other side, with the same 300 N: the net force is the same (0 N) everywhere along the rope.",p===0||p===100?"عند الطرف، يسحب الطالب في اتجاه وبقية الحبل في الاتجاه الآخر (القانون الثالث): المحصلة 0.":"كل قطعة صغيرة يسحبها الحبل يسارًا من جهة ويمينًا من الجهة الأخرى بالقوة نفسها 300 N: المحصلة واحدة (0 N) على طول الحبل.");};
+  r.oninput=d;d();})();
+
+/* ---------- apply ---------- */
+(function(){const s=$("#icSvg");if(!s)return;let o=BG+`<rect x="0" y="96" width="360" height="24" fill="#cfe9e6" fill-opacity=".35"/>`+person(140,96,GC.t)+`<rect x="160" y="62" width="44" height="34" rx="4" fill="#8c5a3c"/>`+arrow(150,70,158,70,GC.g,3)+arrow(206,78,270,78,GC.g,4)+lab(238,66,"F",GC.g,"middle",12)+lab(40,24,"ice: almost no friction",GC.mu,"start",10.5);s.innerHTML=o;})();
+cardsQ($("#apBox"),[
+ {t:["Q2: A person pushes an object to the right with force F. What force acts on the person?","س2: يدفع شخص جسمًا إلى اليمين بقوة F. أي قوة تؤثر في الشخص؟"],o:[["A slightly smaller force to the left","قوة أصغر قليلًا إلى اليسار"],["A force equal to F, to the left","قوة مساوية لـ F إلى اليسار"],["A force to the right","قوة إلى اليمين"],["A force to the right because the object accelerates","قوة إلى اليمين لأن الجسم يتسارع"]],a:1,cls:"two",
+  w:["Third law: equal size, opposite direction.","القانون الثالث: المقدار نفسه، والاتجاه معاكس."],h:["Force pairs are always equal.","زوجا القوى متساويان دائمًا."],
+  sol:[["Action: person → object, right.","الفعل: الشخص ← الجسم، يمينًا."],["Reaction: object → person.","ردّ الفعل: الجسم ← الشخص."],["Equal to F, to the left.","مساوية لـ F، يسارًا."]]},
+ {t:["Q3: The person stands on ice (almost no friction). What happens to the person?","س3: يقف الشخص على الجليد (احتكاك شبه معدوم). ماذا يحدث له؟"],o:[["Moves right with the push","يتحرك يمينًا مع الدفع"],["No change in motion","لا تغيّر في الحركة"],["Moves left: the object pushes on the person","يتحرك يسارًا: الجسم يدفع الشخص"],["Moves right with the object","يتحرك يمينًا مع الجسم"]],a:2,cls:"two",
+  w:["The reaction force pushes the person left, and nothing holds them.","قوة ردّ الفعل تدفع الشخص يسارًا، ولا شيء يمسكه."],h:["Like the skateboards in Lesson 14.","مثل لوحي التزلج في الدرس 14."],
+  sol:[["Reaction on the person: to the left.","ردّ الفعل على الشخص: يسارًا."],["No friction to balance it.","لا احتكاك يتزن معه."],["The person slides to the left.","ينزلق الشخص يسارًا."]]},
+ {t:["Q4: Which does NOT represent a force pair?","س4: أي مما يلي لا يمثل زوج قوى؟"],o:[["Pushing a bike's brakes makes friction between tires and road increase","الضغط على فرامل الدراجة يزيد الاحتكاك بين الإطارات والطريق"],["A diving board pushes a diver up when the diver jumps off","لوح الغطس يدفع الغطّاس إلى أعلى عندما يقفز"],["An ice skater pushes off a wall; the wall pushes the skater","متزلج يدفع حائطًا؛ والحائط يدفع المتزلج"],["A boy pulls a wagon; the wagon pulls back on the boy","ولد يسحب عربة؛ والعربة تسحب الولد"]],a:0,cls:"stack",
+  w:["It describes friction increasing, not two objects pushing each other.","تصف زيادة الاحتكاك، لا جسمين يدفعان بعضهما."],h:["Look for 'A pushes B, B pushes A'.","ابحث عن «A يدفع B، وB يدفع A»."],
+  sol:[["B, C and D: each has two objects pushing/pulling each other.","B وC وD: في كل منها جسمان يدفعان/يسحبان بعضهما."],["A only says friction increases.","A تقول فقط إن الاحتكاك يزداد."],["So A is not a force pair.","إذن A ليست زوج قوى."]]},
+ {t:["Q5: When you run, you push the ground backward. Why doesn't Earth change its motion?","س5: عندما تجري، تدفع الأرض إلى الخلف. لماذا لا تتغيّر حركة الأرض؟"],o:[["There is no reaction force","لا توجد قوة ردّ فعل"],["Earth's mass is huge, so its acceleration (a = F / m) is tiny","كتلة الأرض ضخمة، فتسارعها (a = F / m) صغير جدًا"],["The ground does not push back","الأرض لا تدفع"]],a:1,cls:"stack",
+  w:["Same force on a gigantic mass gives an acceleration far too small to notice.","القوة نفسها على كتلة هائلة تعطي تسارعًا أصغر بكثير من أن يُلاحظ."],h:["Use a = F / m.","استخدم a = F / m."],
+  sol:[["You push Earth; Earth pushes you (equal forces).","تدفع الأرض؛ وتدفعك الأرض (قوتان متساويتان)."],["Your mass is small → you accelerate.","كتلتك صغيرة ← تتسارع."],["Earth's mass is huge → tiny acceleration.","كتلة الأرض ضخمة ← تسارع ضئيل جدًا."]]},
+ {t:["Q6: How do the rudders behind an airboat's fan turn the boat?","س6: كيف تُدير الدفّات خلف مروحة القارب الهوائي القارب؟"],o:[["They push the air sideways, and the air pushes the rudders (and boat) the opposite way","تدفع الهواء جانبًا، فيدفع الهواء الدفّات (والقارب) في الاتجاه المعاكس"],["They stop the fan","توقف المروحة"],["They push the water","تدفع الماء"]],a:0,cls:"stack",
+  w:["Third law: air turned one way pushes the boat the other way.","القانون الثالث: الهواء المُوجَّه في اتجاه يدفع القارب في الاتجاه الآخر."],h:["Who pushes whom?","من يدفع من؟"],
+  sol:[["The turned rudders push the air to one side.","تدفع الدفّات المائلة الهواء إلى جانب."],["The air pushes the rudders to the other side.","يدفع الهواء الدفّات إلى الجانب الآخر."],["The back of the boat swings, so the boat turns.","يتحرك مؤخر القارب جانبًا، فينعطف القارب."]]}
+]);
+
+/* ---------- revisit the probe ---------- */
+whyBox($("#whySail"),"Blowing in the Wind: which statement best represents what is happening between the sail and the air?","Blowing in the Wind: أي عبارة تمثّل أفضل ما يحدث بين الشراع والهواء؟",
+ [[PROBE[0][0],PROBE[0][1],true,"The air pushes the sail forward, and the sail pushes the air back with an equal force: the air slows down. A force pair!","يدفع الهواء الشراع إلى الأمام، ويدفع الشراع الهواء إلى الخلف بقوة مساوية: فيتباطأ الهواء. زوج قوى!"],
+  [PROBE[1][0],PROBE[1][1],false,"They do push each other: the boat accelerates, so a force acts on it.","هما يدفعان بعضهما: المركب يتسارع، إذن تؤثر فيه قوة."],
+  [PROBE[2][0],PROBE[2][1],false,"Third law: if the air pushes the sail, the sail pushes the air too.","القانون الثالث: إذا دفع الهواء الشراع، فإن الشراع يدفع الهواء أيضًا."],
+  [PROBE[3][0],PROBE[3][1],false,"The sail's force on the air points backward, not forward.","قوة الشراع على الهواء تتجه إلى الخلف، لا إلى الأمام."]]);
+
+/* ---------- check yourself ---------- */
+cardsQ($("#tryBox"),[
+ {t:["What is the normal force?","ما القوة العمودية؟"],o:[["A force that pushes perpendicular to a surface","قوة تدفع عموديًا على السطح"],["Any force that is normal size","أي قوة بحجم عادي"],["The force of gravity","قوة الجاذبية"]],a:0,cls:"stack",
+  w:["Normal = perpendicular (90°) to the surface.","العمودية = بزاوية 90° على السطح."],h:["Think of the wall and the racket.","فكّر في الحائط والمضرب."],
+  sol:[["A surface pushes back on objects.","يدفع السطح الأجسام."],["The push is at 90° to the surface.","يكون الدفع بزاوية 90° على السطح."],["That is the normal force.","هذه هي القوة العمودية."]]},
+ {t:["A box rests on the floor. Which force balances gravity on the box?","صندوق على الأرض. أي قوة تتزن مع الجاذبية على الصندوق؟"],o:[["The box's push on the floor","دفع الصندوق للأرض"],["The floor's normal force on the box","القوة العمودية من الأرض على الصندوق"],["Friction","الاحتكاك"]],a:1,
+  w:["Both act on the box: gravity down, normal force up.","كلتاهما على الصندوق: الجاذبية إلى أسفل والقوة العمودية إلى أعلى."],h:["Balanced forces act on the same object.","القوى المتزنة تؤثر في الجسم نفسه."],
+  sol:[["Gravity: on the box, down.","الجاذبية: على الصندوق، إلى أسفل."],["Floor's normal force: on the box, up.","القوة العمودية من الأرض: على الصندوق، إلى أعلى."],["They balance.","تتزنان."]]},
+ {t:["A racket hits a ball with 40 N. How big is the ball's force on the racket?","يضرب مضرب كرة بقوة 40 N. ما قوة الكرة على المضرب؟"],o:[["40 N"],["0 N"],["20 N"]],a:0,
+  w:["Force pair: equal, 40 N.","زوج قوى: متساويتان، 40 N."],h:["Third law.","القانون الثالث."],
+  sol:[["Racket → ball: 40 N.","المضرب ← الكرة: 40 N."],["Ball → racket: same size.","الكرة ← المضرب: المقدار نفسه."],["40 N, opposite direction.","40 N في الاتجاه المعاكس."]]},
+ {t:["Why doesn't the racket–ball force pair have a net force of zero?","لماذا لا تكون محصلة زوج القوى بين المضرب والكرة صفرًا؟"],o:[["Because one force is bigger","لأن إحدى القوتين أكبر"],["Because the forces act on different objects","لأن القوتين تؤثران في جسمين مختلفين"],["Because they point the same way","لأنهما في الاتجاه نفسه"]],a:1,
+  w:["Forces add to zero only on the same object.","تكون المحصلة صفرًا فقط على الجسم نفسه."],h:["Which object gets each force?","أي جسم يتلقى كل قوة؟"],
+  sol:[["One force acts on the ball.","قوة تؤثر في الكرة."],["The other acts on the racket.","والأخرى تؤثر في المضرب."],["Different objects → no canceling.","جسمان مختلفان ← لا إلغاء."]]},
+ {t:["A player wants the ball to go to the right. What should she do with the racket?","تريد لاعبة أن تذهب الكرة إلى اليمين. ماذا تفعل بالمضرب؟"],o:[["Hit harder only","تضرب بقوة أكبر فقط"],["Turn the strings to face right, so the normal force points right","تدير الأوتار لتواجه اليمين، فتتجه القوة العمودية يمينًا"],["Hold it still","تثبته"]],a:1,cls:"stack",
+  w:["The normal force is perpendicular to the strings.","القوة العمودية عمودية على الأوتار."],h:["Remember the tilt slider.","تذكّر شريط الميل."],
+  sol:[["The racket pushes at 90° to its strings.","يدفع المضرب بزاوية 90° على أوتاره."],["Turn the strings toward the right.","أدر الأوتار نحو اليمين."],["The ball goes right.","تذهب الكرة يمينًا."]]},
+ {t:["A fan on a cart blows into a sail on the same cart. What happens?","مروحة على عربة تنفخ في شراع على العربة نفسها. ماذا يحدث؟"],o:[["The cart speeds forward","تنطلق العربة إلى الأمام"],["The cart hardly moves: the forces inside the system cancel","بالكاد تتحرك العربة: القوى داخل النظام تلغي بعضها"],["The cart flies up","تطير العربة إلى أعلى"]],a:1,cls:"stack",
+  w:["Fan pushed back by the air, sail pushed forward: same cart, net ≈ 0.","الهواء يدفع المروحة إلى الخلف والشراع إلى الأمام: العربة نفسها، والمحصلة ≈ 0."],h:["Remember Back to Back.","تذكّر Back to Back."],
+  sol:[["Air → sail: forward.","الهواء ← الشراع: إلى الأمام."],["Air → fan: backward.","الهواء ← المروحة: إلى الخلف."],["Both on one cart: they cancel.","كلتاهما على عربة واحدة: تلغيان بعضهما."]]}
+]);
+
+/* ---------- summary cards ---------- */
+const FL=[["A ⇄ B","Force pair","زوج القوى","The forces two objects apply to each other.","القوتان اللتان يؤثر بهما جسمان في بعضهما."],
+ ["2 objects","Pairs don't cancel","الأزواج لا تلغي بعضها","Each force acts on a different object.","كل قوة تؤثر في جسم مختلف."],
+ ["1 object","Balanced forces","قوى متزنة","Act on the same object and add to zero.","تؤثر في الجسم نفسه ومحصلتها صفر."],
+ ["⊥ 90°","Normal force","القوة العمودية","Pushes perpendicular to a surface.","تدفع عموديًا على السطح."],
+ ["◢ ⊥","Racket angle","زاوية المضرب","Turn the strings to aim the normal force.","أدر الأوتار لتوجّه القوة العمودية."],
+ ["fan + sail","Back to Back","Back to Back","Forces inside one system cancel: it won't go.","القوى داخل نظام واحد تلغي بعضها: لا يتحرك."],
+ ["300 N ⇄ 300 N","Rope","الحبل","Net force is the same along the whole rope.","المحصلة واحدة على طول الحبل كله."],
+ ["sail ← air","Blowing in the Wind","Blowing in the Wind","The sail pushes the air back and slows it.","الشراع يدفع الهواء إلى الخلف ويبطّئه."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+
+/* ---------- final quiz ---------- */
+const Q=[
+ {q:"What is a force pair?",qa:"ما زوج القوى؟",o:[["Two forces on the same object","قوتان على الجسم نفسه"],["The forces two objects apply to each other","القوتان اللتان يؤثر بهما جسمان في بعضهما"],["Two equal masses","كتلتان متساويتان"],["Gravity and friction","الجاذبية والاحتكاك"]],a:1,ex:["A force pair = A on B and B on A.","زوج القوى = A على B وB على A."],
+  h:[["Think of the racket and ball.","فكّر في المضرب والكرة."],["Two objects, each pushing the other.","جسمان، كل منهما يدفع الآخر."]],
+  sol:[["Object A pushes B.","الجسم A يدفع B."],["B pushes A back.","B يدفع A."],["Those two forces are a force pair.","هاتان القوتان زوج قوى."]]},
+ {q:"Why don't the forces in a force pair cancel?",qa:"لماذا لا تلغي قوتا الزوج بعضهما؟",o:[["They are different sizes","مختلفتان في المقدار"],["They point the same way","في الاتجاه نفسه"],["Only one is real","واحدة فقط حقيقية"],["They act on different objects","تؤثران في جسمين مختلفين"]],a:3,ex:["Forces only cancel when they act on the same object.","لا تلغي القوى بعضها إلا إذا أثّرت في الجسم نفسه."],
+  h:[["Which object gets each force?","أي جسم يتلقى كل قوة؟"],["Net force is found for ONE object.","المحصلة تُحسب لجسم واحد."]],
+  sol:[["One force acts on A.","قوة تؤثر في A."],["The other acts on B.","والأخرى في B."],["Different objects: no canceling.","جسمان مختلفان: لا إلغاء."]]},
+ {q:"Which pair of forces is BALANCED?",qa:"أي زوج من القوى متزن؟",o:[["Gravity on a book and the table's push on the book","الجاذبية على كتاب ودفع الطاولة للكتاب"],["A racket on a ball and the ball on the racket","المضرب على الكرة والكرة على المضرب"],["A foot on the ground and the ground on the foot","القدم على الأرض والأرض على القدم"],["A fan on the air and the air on the fan","المروحة على الهواء والهواء على المروحة"]],a:0,ex:["Both forces act on the book: balanced.","القوتان تؤثران في الكتاب: متزنتان."],
+  h:[["Balanced = same object.","متزنة = الجسم نفسه."],["Which option has both forces on one object?","أي خيار فيه القوتان على جسم واحد؟"]],
+  sol:[["B, C, D are force pairs (two objects).","B وC وD أزواج قوى (جسمان)."],["A: both forces act on the book.","A: القوتان على الكتاب."],["So A is balanced.","إذن A متزنة."]]},
+ {q:"The normal force is …",qa:"القوة العمودية هي …",o:[["always equal to friction","مساوية دائمًا للاحتكاك"],["a force that pulls objects together","قوة تجذب الأجسام"],["a push perpendicular to an object's surface","دفع عمودي على سطح الجسم"],["the force of the wind","قوة الريح"]],a:2,ex:["Normal force = perpendicular push from a surface.","القوة العمودية = دفع عمودي من السطح."],
+  h:[["'Normal' means perpendicular.","«عمودي» يعني بزاوية 90°."],["Think of the wall.","فكّر في الحائط."]],
+  sol:[["A surface pushes back.","يدفع السطح."],["At 90° to the surface.","بزاوية 90° على السطح."],["That is the normal force.","هذه هي القوة العمودية."]]},
+ {q:"A tennis player turns her racket. Why does the ball change direction?",qa:"تدير لاعبة تنس مضربها. لماذا يتغيّر اتجاه الكرة؟",o:[["The racket pushes perpendicular to its strings, so the push points a new way","يدفع المضرب عموديًا على أوتاره، فيتجه الدفع في اتجاه جديد"],["The ball loses mass","تفقد الكرة كتلتها"],["The air turns the ball","الهواء يدير الكرة"],["The racket stops pushing","يتوقف المضرب عن الدفع"]],a:0,ex:["The normal force follows the racket's angle.","القوة العمودية تتبع زاوية المضرب."],
+  h:[["Normal force is at 90° to the strings.","القوة العمودية بزاوية 90° على الأوتار."],["Turn the strings, turn the force.","أدر الأوتار، تدُر القوة."]],
+  sol:[["Normal force ⊥ strings.","القوة العمودية ⊥ الأوتار."],["Turning the racket turns the force.","إدارة المضرب تدير القوة."],["The ball goes the new way.","تذهب الكرة في الاتجاه الجديد."]]},
+ {q:"A fan on a boat blows into a sail on the same boat. What is the net force on the boat?",qa:"مروحة على قارب تنفخ في شراع على القارب نفسه. ما المحصلة على القارب؟",o:[["Large, forward","كبيرة إلى الأمام"],["Large, backward","كبيرة إلى الخلف"],["Upward","إلى أعلى"],["About zero","نحو الصفر"]],a:3,ex:["Air pushes the sail forward and the fan backward: they cancel on one boat.","يدفع الهواء الشراع إلى الأمام والمروحة إلى الخلف: تلغيان بعضهما على قارب واحد."],
+  h:[["Draw all forces on the whole boat.","ارسم كل القوى على القارب كله."],["Forces inside one system …","القوى داخل نظام واحد …"]],
+  sol:[["Air → sail: forward.","الهواء ← الشراع: إلى الأمام."],["Air → fan: backward.","الهواء ← المروحة: إلى الخلف."],["Net ≈ 0.","المحصلة ≈ 0."]]},
+ {q:"A person on ice pushes a box to the right. What happens to the person?",qa:"يدفع شخص على الجليد صندوقًا إلى اليمين. ماذا يحدث للشخص؟",o:[["Moves right","يتحرك يمينًا"],["Moves left","يتحرك يسارًا"],["Nothing","لا شيء"],["Moves up","يتحرك إلى أعلى"]],a:1,ex:["The box pushes the person left (third law), and the ice has little friction.","يدفع الصندوق الشخص يسارًا (القانون الثالث)، والجليد قليل الاحتكاك."],
+  h:[["What does the box do to the person?","ماذا يفعل الصندوق بالشخص؟"],["Ice: almost no friction.","الجليد: احتكاك شبه معدوم."]],
+  sol:[["Reaction: box → person, left.","ردّ الفعل: الصندوق ← الشخص، يسارًا."],["No friction to stop it.","لا احتكاك يوقفه."],["The person slides left.","ينزلق الشخص يسارًا."]]},
+ {q:"In tug of war, each team pulls with 250 N and nobody moves. What is the net force on the middle of the rope?",qa:"في شدّ الحبل، يسحب كل فريق بقوة 250 N ولا يتحرك أحد. ما المحصلة على منتصف الحبل؟",o:[["500 N",""],["250 N",""],["0 N",""],["125 N",""]],a:2,ex:["250 N left and 250 N right: net 0 N everywhere along the rope.","250 N يسارًا و250 N يمينًا: المحصلة 0 N على طول الحبل."],
+  h:[["Equal and opposite on the same piece.","متساويتان ومتعاكستان على القطعة نفسها."],["250 − 250 = ?","250 − 250 = ؟"]],
+  sol:[["Left: 250 N; right: 250 N.","يسارًا 250 N؛ يمينًا 250 N."],["Same piece of rope.","قطعة الحبل نفسها."],["Net 0 N.","المحصلة 0 N."]]},
+ {q:"From Lesson 14: You push a wall with 60 N. How hard does the wall push you?",qa:"من الدرس 14: تدفع حائطًا بقوة 60 N. بأي قوة يدفعك الحائط؟",o:[["0 N",""],["60 N",""],["30 N",""],["120 N",""]],a:1,ex:["Third law: 60 N back on you.","القانون الثالث: 60 N عليك."],
+  h:[["Action = reaction in size.","الفعل = ردّ الفعل في المقدار."],["Opposite direction.","في الاتجاه المعاكس."]],
+  sol:[["Action: 60 N on the wall.","الفعل: 60 N على الحائط."],["Reaction: same size.","ردّ الفعل: المقدار نفسه."],["60 N on you.","60 N عليك."]]},
+ {q:"From Lesson 14: Why do SAFER barriers make crashes safer?",qa:"من الدرس 14: لماذا تجعل حواجز SAFER التصادمات أكثر أمانًا؟",o:[["They make the contact time longer, so the force is smaller","تجعل زمن التلامس أطول، فتصغر القوة"],["They stop the reaction force","توقف قوة ردّ الفعل"],["They make cars heavier","تجعل السيارات أثقل"],["They make cars faster","تجعل السيارات أسرع"]],a:0,ex:["Longer stopping time → smaller acceleration → smaller force.","زمن توقف أطول ← تسارع أصغر ← قوة أصغر."],
+  h:[["Remember the contact-time slider.","تذكّر شريط زمن التلامس."],["F = m × a.","F = m × a."]],
+  sol:[["Same change in velocity.","التغيّر نفسه في السرعة."],["Longer time → smaller a.","زمن أطول ← a أصغر."],["Smaller force.","قوة أصغر."]]}
+];
+Q.forEach(q=>q.o.forEach(o=>{if(o[1]===o[0])o[1]="";o[0]=`<span class="oe">${o[0]}</span>`;}));
+
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${ok?ICON.check+" Correct!":ICON.cross+" Not quite."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${ok?"إجابة صحيحة!":"ليست صحيحة."} ${q.ex[1]}</div>`+solHTML(q.sol);solBind(fb);
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Scientist";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You can tell force pairs from balanced forces!","رائع! أنت تميّز أزواج القوى من القوى المتزنة!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the worked examples, then retry.","محاولة جيدة! أعد تشغيل الحلول خطوة بخطوة ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Science · Grade 8 · Unit 2 · Lesson 15 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
