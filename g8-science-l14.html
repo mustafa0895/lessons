@@ -1,0 +1,1754 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c1620">
+<title>Elastic Potential Energy – Science G8 Lesson 23</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(12,22,32,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#132532;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#182c3a;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#3a2326;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#2e2a1c;border:1px solid #5a4a26;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#132532;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#132532;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #3a4a55}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#123a3a;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#182c3a;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#132532;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#123a3a}
+.opt.right{border-color:var(--teal);background:#123a3a}
+.opt.wrong{border-color:var(--terra);background:#3a2326}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#182c3a;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#132532;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#123a3a;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#3a2326;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#132532;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#132532}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#3a4a55}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #132532}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#132532;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#132532}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #132532;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#2e2a1c}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#132532;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#123a3a;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#123a3a}
+.pieces button.no{border-color:var(--terra);background:#3a2326;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#3a4a55}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#123a3a;border-left:5px solid var(--teal)}
+.feedback.no{background:#3a2326;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#132532;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#132532;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#132532;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#132532;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#123a3a}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#2e2a1c}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#132532;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#3a2326}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#2e2a1c;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#132532;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#123a3a}.sc.diff{border-color:var(--terra);background:#3a2326}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#123a3a}.rchips button.wrong{border-color:var(--terra);background:#3a2326}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#123a3a}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#123a3a}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#3a2326}
+.ml.done,.mr.done{border-color:var(--teal);background:#123a3a;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#123a3a}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#2e2a1c;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#2e2a1c;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#132532;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#123a3a}
+.eline.bad{border-color:var(--terra);background:#3a2326;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#132532;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#132532 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#123a3a}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#3a2326}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#2e2a1c}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#132532;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#2e2a1c;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#123a3a}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#3a2326}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#2e2a1c;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#123a3a}.mcard2.wrong{border-color:var(--terra);background:#3a2326}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #132532;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#123a3a}.idc.wrong{border-color:var(--terra);background:#3a2326}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#123a3a}.claim2.wrong{border-color:var(--terra);background:#3a2326}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#2e2a1c}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#123a3a}.ct.no{border-color:var(--terra);background:#3a2326}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#2e2a1c}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#2a2440;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#182c3a;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#132532;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#123a3a}.wuq .wo button.wrong{border-color:var(--terra);background:#3a2326}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#132532;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#182c3a;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#132532;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#3a2326}.pick button.right{border-color:var(--teal);background:#123a3a}
+.why{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#123a3a}.why .wb button.wrong{border-color:var(--terra);background:#3a2326}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#132532;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #132532;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#3a4a55;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#132532;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#132532}
+.tchip.lost{border-color:var(--terra);background:#3a2326}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#3a2326}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#123a3a}.pickph.wrong{border-color:var(--terra);background:#3a2326}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#123a3a}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#182c3a}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#123a3a;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#182c3a;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#132532;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#2e2a1c;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#182c3a;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#132532}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#123a3a;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#132532;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#132532;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#123a3a;border-color:var(--teal)}.tile.g1{background:#3a2326;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#182c3a;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#132532;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#132532;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#132532;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#132532;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#132532;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#132532;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#132532;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#182c3a}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#132532}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#182c3a}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#132532}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#182c3a;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+.ov{text-decoration:overline;text-decoration-thickness:2px;text-underline-offset:0}
+.solbox{margin-top:10px}
+.solbtn{display:inline-flex;align-items:center;gap:6px;border:2px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:6px 14px;font-weight:700;font-size:14px}
+.solbtn .ic{width:18px;height:18px}
+.solbtn .ar{display:inline;font-weight:600;font-size:13px}
+.solbtn.on{background:var(--clay);color:#fff;border-color:var(--clay)}
+.solsteps{margin:10px 0 0;padding:10px 12px 10px 34px;background:#132532;border:1px dashed #5a4a26;border-radius:12px;text-align:left;font-size:14.5px;line-height:1.45}
+.solsteps li{margin:6px 0;animation:fadein .3s}
+.solsteps li .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px;margin-top:2px}
+.solsteps[hidden]{display:none}
+.feedback .solbox{margin-top:12px}
+.nchips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.nchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 14px;font-family:Cambria,"Times New Roman",serif;font-size:18px;font-weight:700;color:var(--ink);min-width:58px}
+.nchips button.done{background:#123a3a;border-color:#BFE3E0}
+.nchips button.on{border-color:var(--terra);background:#3a2326}
+#setSvg ellipse,#setSvg rect{transition:filter .3s,stroke-width .3s}
+#setSvg .lit{stroke-width:6;filter:drop-shadow(0 0 8px rgba(242,196,109,.6))}
+#setDots text{font-weight:700;opacity:.75}
+#setDots text.now{fill:#f2c46d;opacity:1;font-size:20px}
+.dmq{font-size:20px;font-weight:800;margin-bottom:8px;overflow-x:auto}
+.dmq .fr{font-size:.8em}
+.dmlog{display:grid;gap:4px;font-size:14.5px;max-height:260px;overflow:auto}
+.dmlog>div{background:#182c3a;border-radius:10px;padding:5px 10px;animation:fadein .3s}
+.dmlog .ar{display:inline;color:var(--muted);font-size:13px;margin-left:6px}
+.tapes{display:grid;gap:8px;overflow-x:auto;padding:4px 0}
+.tape{display:flex;align-items:center;font-family:Consolas,"Courier New",monospace;font-size:20px;direction:ltr}
+.tape .tn{width:66px;font-weight:700;color:var(--clay);font-size:16px;text-align:right;padding-right:8px;flex:none}
+.tape .ti{width:44px;text-align:right;font-weight:700;flex:none}
+.tape .tp{width:12px;text-align:center;font-weight:700;flex:none}
+.tape .td{width:22px;text-align:center;border-radius:5px;flex:none}
+.tape .td.ok{background:rgba(124,194,189,.28);color:#c9f3ee}
+.tape .td.no{background:rgba(239,154,131,.32);color:#ffd9cf}
+.tape .te{padding-left:4px;color:var(--muted)}
+@media (max-width:420px){.tape{font-size:16px}.tape .td{width:16px}.tape .tn{width:56px;font-size:14px}.tape .ti{width:36px}}
+.solwrap{margin-top:6px}
+.idc .mb.two{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb button .fr,.opt .fr{font-size:.95em}
+.fbig .fr{font-size:.9em}
+.opt span.ov{display:inline!important;margin:0!important}
+.opt span.m{display:inline-block!important}
+.opt span.fr{display:inline-flex!important}
+.opt .fr>span{display:block!important}
+@media (max-width:420px){.tape .tn{width:64px;font-size:13px;white-space:nowrap}}
+@media (max-width:700px){.hero{background:#0f1e29}.hero .herotxt{position:relative;padding:4px 16px 14px;background:none}}
+
+.rad{border-top:2px solid currentColor;padding:0 2px;margin-left:1px;display:inline-block;line-height:1.15}
+.rad .fr{font-size:.9em}
+.rtab{display:grid;gap:6px;margin:10px 0;overflow-x:auto}
+.rrow{display:grid;grid-template-columns:72px repeat(8,1fr);gap:3px}
+.rrow .rh{font-size:12px;line-height:1.2;font-weight:700;color:var(--clay);align-self:center}
+.rrow .rv,.rrow button{border-radius:8px;padding:8px 0;text-align:center;font-weight:700;font-size:15px;font-family:Cambria,"Times New Roman",serif}
+.rrow .rv{background:rgba(124,194,189,.16);color:var(--ink)}
+.rrow button{border:2px dashed rgba(242,196,109,.5);background:none;color:#f2c46d}
+.rrow button.on{border-style:solid;background:rgba(242,196,109,.18)}
+.bigeq{font-size:24px;font-weight:800;text-align:center;margin:10px 0}
+.idc .mb.stack{display:grid;grid-template-columns:1fr;gap:6px}
+.idc .mb.stack button{text-align:left;padding:8px 10px}
+.digrace{display:grid;gap:10px;overflow-x:auto}
+.drrow{display:grid;grid-template-columns:44px 1fr;gap:4px 8px;align-items:center}
+.drn{font-family:Cambria,"Times New Roman",serif;font-size:20px;font-weight:700;color:#f2c46d;text-align:right}
+.drd{font-family:Consolas,"Courier New",monospace;font-size:17px;letter-spacing:1px;word-break:break-all;direction:ltr}
+.drd .c0{color:#7cc2bd}.drd .c1{color:#c9f3ee;text-decoration:underline;text-decoration-color:rgba(124,194,189,.6)}
+.drd .x{color:#f1d9a6}
+.drt{grid-column:2;font-size:12.5px;font-weight:700}
+.drt.q{color:#7cc2bd}.drt.i{color:#f2c46d}
+.clnum{font-size:30px;font-weight:800;text-align:center;margin:4px 0 10px;color:#f2c46d}
+.clline{background:rgba(124,194,189,.08);border-radius:12px;padding:8px 10px;margin:6px 0;font-size:14.5px}
+.clline .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px}
+.clline small{display:block;color:var(--muted);margin-top:4px}
+.clline.ok{border-left:4px solid #7cc2bd}
+.clline.now{border:1px dashed rgba(242,196,109,.6)}
+.clline .btnrow{margin-top:8px}
+.clsets{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.clsets span{border:1px solid var(--line);border-radius:10px;padding:5px 10px;font-weight:700;font-size:13.5px;color:var(--muted)}
+.clsets span small{display:block;font-weight:500;font-size:11.5px}
+.clsets span.on{background:rgba(124,194,189,.25);color:#f1f6f5;border-color:#7cc2bd}
+#vnSvg [data-s]{cursor:pointer}
+#vnSvg [data-s]:hover{filter:brightness(1.25)}
+.sqtab{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px;margin-bottom:8px;font-family:Cambria,"Times New Roman",serif;font-size:16px}
+.sqtab div{background:rgba(124,194,189,.10);border-radius:8px;padding:6px 8px;text-align:center}
+.nchips button.wrongb{border-color:#ef9a83;opacity:.6}
+.tcrow{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px;font-family:Consolas,"Courier New",monospace;font-size:26px;direction:ltr;margin:6px 0 12px}
+.tcn{font-family:Cambria,"Times New Roman",serif;color:#f2c46d;margin-right:6px}
+.tck{color:#f1f6f5;font-weight:700;border-right:3px dashed #f2c46d;padding-right:4px}
+.tcx{color:#ef9a83;text-decoration:line-through;opacity:.8}
+.tccmp{display:grid;gap:6px;font-size:15px}
+.tccmp>div{background:rgba(124,194,189,.08);border-radius:10px;padding:6px 10px}
+.tccmp .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px}
+.tccmp .same{border-left:4px solid #7cc2bd}.tccmp .diff{border-left:4px solid #f2c46d}
+.seg button small{display:block;font-weight:500;font-size:11.5px;opacity:.85}
+.rrow .rv.gold{background:rgba(242,196,109,.18);color:#f2c46d}
+.dcards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.dcards button{border:2px solid var(--line);background:rgba(19,37,50,.8);border-radius:14px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink)}
+.dcards .df{font-family:Cambria,"Times New Roman",serif;font-size:24px;font-weight:700;color:#f2c46d}
+.dcards .dd{font-size:18px;font-weight:700;color:var(--muted)}
+.dcards button.on{border-color:#7cc2bd}.dcards button.on .dd{color:#7cc2bd}
+.dtab{width:100%;border-collapse:collapse;font-size:15px}
+.dtab th,.dtab td{border-bottom:1px solid var(--line);padding:8px;text-align:center}
+.dtab th{color:#f2c46d;font-size:13px}
+.gsvg{display:block;width:100%;max-width:470px;margin:auto}
+.ptab{margin-top:10px}
+.ptpick{display:flex;align-items:center;gap:8px;margin:6px 0}.ptpick>b{color:#f2c46d;min-width:16px}.ptpick .seg{margin:0;flex-wrap:wrap}
+.ptpick .seg{flex-wrap:nowrap}.ptpick .seg button{font-size:.8rem!important;padding:6px 7px!important;white-space:nowrap}
+table.ctab tr.now td{background:rgba(242,196,109,.16)}
+.reps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.rep{border:1.5px solid rgba(124,194,189,.25);border-radius:14px;padding:10px;background:rgba(124,194,189,.05);transition:.2s}
+.rep>b{display:block;color:#7cc2bd;margin-bottom:6px;font-size:.9rem}
+.rep.on{border-color:#f2c46d;box-shadow:0 0 0 3px rgba(242,196,109,.18)}
+.rep .rhl{color:inherit;font-weight:700;border-radius:6px;padding:0 3px;transition:.2s}
+.rep.on .rhl{background:#f2c46d;color:#0c1620}
+.rep[data-k="3"]{grid-column:1/-1}
+.rep .bigeq{font-size:1.6rem;text-align:center;margin:8px 0}
+.mtab td,.mtab th{padding:5px 6px!important;text-align:center}
+.tnote{display:block;margin-top:6px;color:#9fb3b5}
+@media (max-width:520px){.reps{grid-template-columns:1fr}}
+.bars{margin-top:10px}.bar{display:grid;grid-template-columns:132px 1fr auto;align-items:center;gap:8px;margin:8px 0;font-size:.9rem}
+.bar .bt{height:20px;border-radius:10px;background:rgba(124,194,189,.1);overflow:hidden}.bar .bt i{display:block;height:100%;border-radius:10px;transition:width .25s}
+.bar b{font-variant-numeric:tabular-nums;min-width:64px;text-align:right}
+.bnote{margin-top:8px;color:#f2c46d;font-weight:600}.bnote .ar{display:block;color:#f2c46d}
+@media (prefers-reduced-motion:reduce){.bar .bt i,.rep{transition:none}}
+.slrow{display:grid;grid-template-columns:52px 1fr 34px;align-items:center;gap:8px;margin:6px 0}.slrow b{font-size:.9rem}.slrow span{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.cr{color:#ef9a83}.cg{color:#f2c46d}
+table.ptab2 td{padding:4px!important;text-align:center}table.ptab2 td.son{color:#f2c46d;font-weight:700}
+.colb{min-width:44px;padding:6px 4px!important;border-radius:9px!important;background:rgba(124,194,189,.1)!important;color:#f1f6f5!important;border:1.5px solid rgba(124,194,189,.35)!important;font-weight:700}
+.colb.on{background:#f2c46d!important;color:#0c1620!important;border-color:#f2c46d!important}
+.tcap{caption-side:top;text-align:left;color:#7cc2bd;font-weight:700;padding:8px 0 4px}
+.mtab th{white-space:nowrap}
+.gbuild,.tplot{margin:10px 0}.tpsvg .hit{cursor:pointer}.tpsvg .hit:hover{fill-opacity:.18}
+.slrow.wide{grid-template-columns:58px 1fr 44px}
+.mini{margin:8px 0 2px;font-size:.78rem;color:#9fb3b5}
+.seg{flex-wrap:wrap}
+#rdRef button,#rdDir button,#spRef button,#ddTrip button,#rtJump button,#msRef button,#boatRef button{font-size:.8rem!important;padding:6px 9px!important}
+.dpad{display:grid;grid-template-columns:repeat(3,1fr);grid-template-areas:". n ." "w . e" ". s .";gap:6px;max-width:260px;margin:4px auto 6px}
+.dpad button{padding:9px 4px!important;border-radius:10px!important;background:rgba(124,194,189,.12)!important;color:#f1f6f5!important;border:1.5px solid rgba(124,194,189,.4)!important;font-weight:700;font-size:.85rem!important}
+.dpad button:active{background:#f2c46d!important;color:#0c1620!important}
+.dpad [data-d=N]{grid-area:n}.dpad [data-d=W]{grid-area:w}.dpad [data-d=E]{grid-area:e}.dpad [data-d=S]{grid-area:s}
+#fairOut,#rtOut,#ddOut,#msOut,#rdOut,#boatOut,#spOut{white-space:pre-wrap;min-height:4.5em}
+.mb.stack button{height:auto!important;min-height:44px;padding:8px 10px!important;text-align:start;color:var(--ink)!important;text-shadow:none!important}
+#slSeg button,#sySeg button,#tySeg button{font-size:.8rem!important;padding:6px 9px!important}
+#peOut,#spOut,#syOut,#tyOut,#trOut{white-space:pre-wrap;min-height:3.2em}
+.idc .mb:not(.stack):has(> button:nth-child(2):last-child){grid-template-columns:1fr 1fr}
+:root{--sand:#0c1620;--paper:#132532;--ink:#f1f6f5;--muted:#9fb3b5;--terra:#ef9a83;--teal:#7cc2bd;--teal-d:#4fa39c;
+--ochre:#f2c46d;--clay:#f2c46d;--stone:#6f8689;--line:rgba(124,194,189,.22);--sky:#123a3a;--cream:#1d2f3b;color-scheme:dark}
+body{font-family:'Readex Pro',system-ui,-apple-system,'Segoe UI',sans-serif;background:radial-gradient(1200px 600px at 50% -10%,rgba(79,163,156,.18),transparent 60%),#0c1620;background-attachment:fixed}
+h1,h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:.01em}
+.ar,[lang=ar]{font-family:'Readex Pro','Geeza Pro','Noto Naskh Arabic',Tahoma,sans-serif}
+.card,.bubble,.idc,.key,.msg,.cert{box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card{background:rgba(19,37,50,.72);border-color:var(--line);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.btn{background:linear-gradient(180deg,#8fd0ca,#6cb7b1);color:#08201f;box-shadow:0 3px 0 #3d8a84,0 8px 24px rgba(124,194,189,.25)}
+.btn.alt{background:rgba(19,37,50,.8);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn:disabled{opacity:.45}
+.nav{background:linear-gradient(rgba(12,22,32,0),rgba(12,22,32,.94) 40%)}
+.kicker{background:rgba(242,196,109,.14);color:#f2c46d}
+.kicker.light{background:rgba(12,22,32,.55);color:#f2c46d;border:1px solid rgba(242,196,109,.35)}
+.hsub{color:#f2c46d}
+.bubble{background:#132532;border-color:#4fa39c}
+.bubble .who{color:#7cc2bd}
+.key{border-left-color:#f2c46d}
+.msg{border-left-color:#7cc2bd}
+.msg.warn{border-left-color:#ef9a83}
+.face.back{background:linear-gradient(160deg,#2b7d77,#1d5c58);color:#f1f6f5}
+.seg button.on,.seg button[aria-pressed=true]{background:#7cc2bd;color:#08201f}
+.namebox{background:#0f1e29;color:var(--ink);border-color:var(--line)}
+.m,.mi{color:inherit}
+.fline .fn{background:#7cc2bd;color:#08201f}
+.solbtn.on{color:#08201f}
+.score{color:#f2c46d}
+.prog{background:rgba(124,194,189,.15)}
+.ibtn{background:rgba(19,37,50,.8);color:var(--ink);border-color:var(--line)}
+.hero{box-shadow:0 20px 50px rgba(0,0,0,.35);border:1px solid var(--line)}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Science · Grade 8 · Unit 2<small id="curLabel">Elastic Potential Energy</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="A stretched rubber band about to launch a coin, a compressed spring and a potential energy bar"><defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c1620"/><stop offset="1" stop-color="#173041"/></linearGradient><linearGradient id="pb" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#7cc2bd"/><stop offset="1" stop-color="#f2c46d"/></linearGradient></defs><rect width="640" height="360" fill="url(#hb)"/><line x1="0" y1="0" x2="0" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="32" y1="0" x2="32" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="64" y1="0" x2="64" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="96" y1="0" x2="96" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="128" y1="0" x2="128" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="160" y1="0" x2="160" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="192" y1="0" x2="192" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="224" y1="0" x2="224" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="256" y1="0" x2="256" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="288" y1="0" x2="288" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="320" y1="0" x2="320" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="352" y1="0" x2="352" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="384" y1="0" x2="384" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="416" y1="0" x2="416" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="448" y1="0" x2="448" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="480" y1="0" x2="480" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="512" y1="0" x2="512" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="544" y1="0" x2="544" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="576" y1="0" x2="576" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="608" y1="0" x2="608" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="0" x2="640" y2="0" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="32" x2="640" y2="32" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="64" x2="640" y2="64" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="96" x2="640" y2="96" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="128" x2="640" y2="128" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="160" x2="640" y2="160" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="192" x2="640" y2="192" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="224" x2="640" y2="224" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="256" x2="640" y2="256" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="288" x2="640" y2="288" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="320" x2="640" y2="320" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="352" x2="640" y2="352" stroke="#7cc2bd" stroke-opacity=".05"/><path d="M200 40L120 115L200 190" fill="none" stroke="#ef9a83" stroke-width="7" stroke-linejoin="round"/><ellipse cx="200" cy="40" rx="18" ry="14" fill="#d9a77a"/><ellipse cx="205" cy="37" rx="7" ry="5" fill="#f0c9a3"/><ellipse cx="200" cy="190" rx="18" ry="14" fill="#d9a77a"/><ellipse cx="205" cy="187" rx="7" ry="5" fill="#f0c9a3"/><circle cx="104" cy="115" r="18" fill="#b9c2c6" stroke="#8a969b" stroke-width="3"/><circle cx="104" cy="115" r="10" fill="none" stroke="#8a969b" stroke-width="1.5"/><path d="M230 115h120" stroke="#f2c46d" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"/><path d="M366 115l-16 -9v18z" fill="#f2c46d"/><rect x="400" y="46" width="14" height="140" fill="#5b6b74"/><path d="M414 116L423 94L432 138L441 94L450 138L459 94L468 138L477 94L486 138L495 94L504 116" fill="none" stroke="#9fb3b5" stroke-width="4" stroke-linejoin="round"/><rect x="504" y="88" width="40" height="56" rx="6" fill="#ef9a83"/><rect x="586" y="40" width="30" height="150" rx="6" fill="#0c1620" stroke="#9fb3b5" stroke-width="2"/><rect x="590" y="80" width="22" height="106" rx="3" fill="url(#pb)"/><text x="601" y="30" font-size="16" font-weight="700" fill="#f1f6f5" text-anchor="middle" font-family="sans-serif">PE</text></svg>
+    <div class="herotxt"><span class="kicker light">Science · Grade 8 · Unit 2 · Lesson 23</span><h1>Elastic Potential Energy</h1><p class="ar">طاقة الوضع المرونية</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="happy"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">A cup resting on a table is not moving. Does it have any energy? Today we discover energy that is <b>stored</b>, starting with a stretched rubber band: <b>elastic potential energy</b>.</p><p class="ar">كوب ساكن على طاولة لا يتحرك. هل له أي طاقة؟ اليوم نكتشف الطاقة <b>المخزّنة</b>، بدءًا بشريط مطاطي مشدود: <b>طاقة الوضع المرونية</b>.</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ explain what potential energy is<br>✔ describe elastic potential energy in stretched and compressed objects<br>✔ explain how stored energy can make an object move<br>✔ tell closed and open systems apart, and name types of potential energy</p><p class="ar"><b>سأتعلم اليوم أن:</b><br>✔ أشرح ما طاقة الوضع<br>✔ أصف طاقة الوضع المرونية في الأجسام المشدودة والمضغوطة<br>✔ أشرح كيف تجعل الطاقة المخزّنة جسمًا يتحرك<br>✔ أميّز بين النظام المغلق والمفتوح، وأسمّي أنواع طاقة الوضع</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic. Every question has a <b>Show solution</b> button.</p><p class="ar"><b>نصيحة:</b> اضغط <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمة. ولكل سؤال زر <b>طريقة الحل</b>.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up · Lesson 21</span>
+  <h2>Kinetic energy, quickly</h2>
+  <p class="hsub ar">الطاقة الحركية بسرعة</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Then make a prediction about the cup.</p><p class="ar">مجرد تسخين، لا شيء يُحسب! ثم توقّع ما يخص الكوب.</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+  <div class="bi"><p class="en"><b>Predict:</b> A cup rests on a table. It is not moving, so it has no kinetic energy. Does the cup have <b>any</b> energy? (We will come back to this.)</p><p class="ar"><b>توقّع:</b> كوب ساكن على طاولة. لا يتحرك، فليست له طاقة حركية. هل للكوب <b>أي</b> طاقة؟ (سنعود إلى هذا السؤال.)</p></div>
+  <div class="wu needjs" id="prBox"></div>
+</section>
+
+<section class="screen" data-title="Lab: Slingshot Physics">
+  <span class="kicker">Lab · Slingshot Physics</span>
+  <h2>A rubber band and a nickel</h2>
+  <p class="hsub ar">شريط مطاطي وقطعة نقود</p>
+  <div class="bi"><p class="en">Stretch a rubber band between two fingers. Put a nickel at its midpoint. Push the nickel back into the band and release it. Try <b>0.5 cm</b>, <b>1.0 cm</b> and <b>1.5 cm</b>.</p><p class="ar">اشدد شريطًا مطاطيًا بين إصبعين، وضع قطعة نقود (nickel) عند منتصفه. ادفع القطعة إلى الخلف داخل الشريط ثم اتركها. جرّب <b>0.5 cm</b> و<b>1.0 cm</b> و<b>1.5 cm</b>.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="slSvg" viewBox="0 0 360 200" class="gsvg" role="img" aria-label="A nickel pushed back into a stretched rubber band, then launched along a ruler"></svg>
+      <div class="needjs"><div class="seg" id="slSeg"><button data-v="0">0.5 cm</button><button data-v="1">1.0 cm</button><button data-v="2">1.5 cm</button></div></div>
+      <table class="dtab" id="slTab"></table></div>
+    <div class="card"><div class="msg bi" id="slMsg"></div></div>
+  </div>
+  <p class="mini">The distances are example values for this virtual lab. · المسافات قيم مثال لهذا المعمل الافتراضي.</p>
+  <div class="wu needjs" id="slBox"></div>
+</section>
+
+<section class="screen" data-title="Potential energy">
+  <span class="kicker">Learn · Stored energy</span>
+  <h2>Energy stored in a stretched band</h2>
+  <p class="hsub ar">طاقة مخزّنة في شريط مشدود</p>
+  <div class="bi"><p class="en">If the band was not stretched, the nickel would not move. So the stretched band <b>contained energy</b> and gave it to the nickel. Stretch the band and watch the energy bar.</p><p class="ar">لو لم يُشدّ الشريط لما تحركت القطعة. إذن كان الشريط المشدود <b>يحتوي طاقة</b> ونقلها إلى القطعة. اشدد الشريط وراقب عمود الطاقة.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="peSvg" viewBox="0 0 360 200" class="gsvg" role="img" aria-label="A model of the rubber band and nickel with a potential energy bar"></svg>
+      <div class="needjs"><div class="slrow wide"><b>stretch</b><input type="range" id="peX" min="0" max="15" step="1" value="0" aria-label="stretch in tenths of a centimetre"><span id="peXv"></span></div></div></div>
+    <div class="card"><div class="monoout" id="peOut"></div><div class="msg bi" id="peMsg"></div></div>
+  </div>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>Potential energy (PE)</b> is the energy due to interactions between objects or particles when distance changes. It depends on their <b>positions</b>. <b>Elastic potential energy</b> is energy stored in objects that are <b>compressed or stretched</b>, such as springs and rubber bands.</p><p class="ar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>طاقة الوضع (PE)</b> هي الطاقة الناتجة عن التفاعلات بين الأجسام أو الجسيمات عندما تتغير المسافة بينها، وتعتمد على <b>مواقعها</b>. و<b>طاقة الوضع المرونية</b> طاقة مخزّنة في الأجسام <b>المضغوطة أو المشدودة</b>، مثل النوابض والأشرطة المطاطية.</p></div>
+  <div class="bi"><p class="en">From stored energy to motion: Example 1 is complete; in Example 2 choose the last step; in Example 3, the last two steps.</p><p class="ar">من الطاقة المخزّنة إلى الحركة: المثال 1 كامل، وفي المثال 2 اختر الخطوة الأخيرة، وفي المثال 3 آخر خطوتين.</p></div>
+  <div class="fader" data-f="ch"></div>
+  <div class="card why" id="whyE"></div>
+</section>
+
+<section class="screen" data-title="Springs">
+  <span class="kicker">Learn · Springs</span>
+  <h2>Compressed, static, stretched</h2>
+  <p class="hsub ar">مضغوط، ساكن، مشدود</p>
+  <div class="bi"><p class="en">When you stretch or compress a spring, you change its shape. The spring always tries to return to its resting (<b>static</b>) shape. The more you change its shape, the more elastic potential energy it contains.</p><p class="ar">عندما تشدّ نابضًا أو تضغطه فإنك تغيّر شكله. ويحاول النابض دائمًا أن يعود إلى شكله الساكن (<b>static</b>). وكلما زاد تغيّر شكله زادت طاقة الوضع المرونية فيه.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="spSvg" viewBox="0 0 360 190" class="gsvg" role="img" aria-label="A spring between a wall and a block, with an energy bar"></svg>
+      <div class="needjs"><div class="slrow wide"><b>shape</b><input type="range" id="spX" min="-10" max="10" step="1" value="0" aria-label="compress or stretch the spring"><span id="spXv"></span></div>
+      <div class="btnrow c"><button class="btn sm" id="spGo">Let go ▶</button></div></div></div>
+    <div class="card"><div class="monoout" id="spOut"></div><div class="msg bi" id="spMsg"></div></div>
+  </div>
+  <div class="wu needjs" id="spBox"></div>
+</section>
+
+<section class="screen" data-title="Systems and energy">
+  <span class="kicker">Learn · Systems and energy</span>
+  <h2>Closed system or open system?</h2>
+  <p class="hsub ar">نظام مغلق أم نظام مفتوح؟</p>
+  <div class="bi"><p class="en">The rubber band and the nickel form a <b>system</b>. If we focus only on the band and the nickel, it is a <b>closed system</b>. When the surroundings (the table, the air) are involved, it is an <b>open system</b>.</p><p class="ar">يكوّن الشريط المطاطي والقطعة <b>نظامًا</b>. إذا ركّزنا على الشريط والقطعة فقط فهو <b>نظام مغلق</b>. وعندما يدخل المحيط (الطاولة والهواء) يصبح <b>نظامًا مفتوحًا</b>.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="syS" viewBox="0 0 360 200" class="gsvg" role="img" aria-label="The rubber band and nickel system with a dashed boundary"></svg>
+      <div class="needjs"><div class="seg" id="sySeg"><button data-v="0" class="on">Closed system</button><button data-v="1">Open system</button></div></div></div>
+    <div class="card"><div class="monoout" id="syOut"></div><div class="msg bi" id="syMsg"></div></div>
+  </div>
+  <div class="wu needjs" id="syBox"></div>
+</section>
+
+<section class="screen" data-title="Types of potential energy">
+  <span class="kicker">Learn · Types of potential energy</span>
+  <h2>Many kinds of stored energy</h2>
+  <p class="hsub ar">أنواع كثيرة من الطاقة المخزّنة</p>
+  <div class="bi"><p class="en">Different kinds of potential energy involve different forces and objects. Some are due to <b>fields</b>: invisible regions around objects. Tap each type.</p><p class="ar">تشمل أنواع طاقة الوضع المختلفة قوى وأجسامًا مختلفة. وبعضها ينتج عن <b>مجالات</b>: مناطق غير مرئية حول الأجسام. اضغط على كل نوع.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="tySvg" viewBox="0 0 360 200" class="gsvg" role="img" aria-label="Four types of potential energy"></svg>
+      <div class="needjs"><div class="seg" id="tySeg"><button data-v="0" class="on">Elastic</button><button data-v="1">Gravitational</button><button data-v="2">Electric</button><button data-v="3">Magnetic</button></div></div></div>
+    <div class="card"><div class="monoout" id="tyOut"></div><div class="msg bi" id="tyMsg"></div></div>
+  </div>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>Gravitational, electric and magnetic</b> potential energy are due to forces in <b>fields</b>. There are many equations for potential energy; what is usually important is the <b>change</b> in potential energy, not its value at one moment.</p><p class="ar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> طاقة الوضع <b>الجاذبية والكهربائية والمغناطيسية</b> ناتجة عن قوى في <b>مجالات</b>. وهناك معادلات كثيرة لطاقة الوضع؛ والمهم عادةً هو <b>التغيّر</b> في طاقة الوضع، لا قيمتها في لحظة واحدة.</p></div>
+  <div class="card why" id="whyC"></div>
+</section>
+
+<section class="screen" data-title="Apply: trampoline">
+  <span class="kicker">Apply · Elastic potential energy</span>
+  <h2>Bouncing on a trampoline</h2>
+  <p class="hsub ar">القفز على الترامبولين</p>
+  <div class="bi"><p class="en">When Hamad lands, the trampoline's mat and springs stretch and store elastic potential energy. Choose how far the mat is pushed down, then let him bounce.</p><p class="ar">عندما يهبط حمد يتمدد سطح الترامبولين ونوابضه ويخزّن طاقة وضع مرونية. اختر مقدار انخفاض السطح، ثم دعه يقفز.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="trSvg" viewBox="0 0 360 220" class="gsvg" role="img" aria-label="A boy on a trampoline with an elastic potential energy bar"></svg>
+      <div class="needjs"><div class="slrow wide"><b>push down</b><input type="range" id="trD" min="1" max="3" step="1" value="1" aria-label="how far the mat is pushed down"><span id="trDv"></span></div>
+      <div class="btnrow c"><button class="btn sm" id="trGo">Bounce ▶</button></div></div></div>
+    <div class="card"><div class="monoout" id="trOut"></div><div class="msg bi" id="trMsg"></div></div>
+  </div>
+  <div class="bi"><p class="en"><b>Sort:</b> does each object have elastic potential energy?</p><p class="ar"><b>صنّف:</b> هل لكل جسم طاقة وضع مرونية؟</p></div>
+  <div class="wu needjs" id="trBox"></div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Check yourself</span>
+  <h2>Your turn: no score here</h2>
+  <p class="hsub ar">دورك: بدون درجات هنا</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Stretch or compress → elastic PE is stored. More change in shape → more PE. Choose an answer, then open <b>Show solution</b>.</p><p class="ar">شدّ أو ضغط ← تُخزَّن طاقة وضع مرونية. تغيّر أكبر في الشكل ← PE أكبر. اختر إجابة، ثم افتح <b>طريقة الحل</b>.</p></div></div>
+  <div class="wu needjs" id="tryBox"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Now the final quiz: 10 questions. Two of them review Lesson 21.</p><p class="ar">والآن الاختبار النهائي: 10 أسئلة، اثنان منها مراجعة على الدرس 21.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+
+
+</main>
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="sci8_u2l23_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"UAE MOE · Grade 8"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛⅓⅔¼¾⅘](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛⅓⅔¼¾⅘ =+,./≠]*[0-9A-Za-z)\[\]½²³⁴¹√∛⅓⅔¼¾⅘])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t)||(inM&&/^<span/.test(t)))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+/* ---------- lesson helpers ---------- */
+const OV=d=>`<span class="ov">${d}</span>`;
+const OVN=(p,r)=>`<span class="m">${p}<span class="ov">${r}</span></span>`;
+/* solution box: steps = [[en, ar], ...] */
+function solHTML(steps){if(!steps||!steps.length)return "";
+  return `<div class="solbox"><button type="button" class="solbtn">${ICON.bulb} Show solution <span class="ar">طريقة الحل</span></button><ol class="solsteps" hidden>${steps.map(s=>`<li><span>${s[0]}</span><span class="ar">${s[1]}</span></li>`).join("")}</ol></div>`;}
+function solBind(root){root.querySelectorAll(".solbtn").forEach(b=>{if(b.dataset.b)return;b.dataset.b=1;b.onclick=e=>{e.stopPropagation();const ol=b.nextElementSibling,open=ol.hidden;ol.hidden=!open;b.classList.toggle("on",open);b.innerHTML=`${ICON.bulb} ${open?"Hide solution":"Show solution"} <span class="ar">${open?"إخفاء الحل":"طريقة الحل"}</span>`;};});}
+
+
+const SVGT=(x,y,t,o)=>`<text x="${x}" y="${y}" ${o||""}>${t}</text>`;
+const SANS='font-family="sans-serif"';
+const NN=v=>String(v).replace(/-/g,"−");
+const fx=(v,d)=>NN(+(+v).toFixed(d===undefined?2:d));
+const money=v=>"$"+(+v).toFixed(2);
+
+/* ---------- graph helpers (dark-friendly) ---------- */
+const GC={t:"#7cc2bd",g:"#f2c46d",c:"#ef9a83",ink:"#f1f6f5",mu:"#9fb3b5"};
+function G(o){const W=o.W||360,H=o.H||260,L=o.L||50,R=W-14,T=14,B=H-40;
+  const X=v=>L+(v-o.x0)/(o.x1-o.x0)*(R-L),Y=v=>B-(v-o.y0)/(o.y1-o.y0)*(B-T);
+  let s=`<rect x="${L}" y="${T}" width="${R-L}" height="${B-T}" fill="#7cc2bd" fill-opacity=".04"/>`;
+  let k=0;for(let v=o.x0;v<=o.x1+1e-9;v+=o.xs,k++){s+=`<line x1="${X(v)}" y1="${T}" x2="${X(v)}" y2="${B}" stroke="${GC.t}" stroke-opacity=".14"/>`;
+    if(k%(o.xl||1)===0)s+=SVGT(X(v),B+15,fx(v),`font-size="11" fill="${GC.mu}" text-anchor="middle" ${SANS}`);}
+  k=0;for(let v=o.y0;v<=o.y1+1e-9;v+=o.ys,k++){s+=`<line x1="${L}" y1="${Y(v)}" x2="${R}" y2="${Y(v)}" stroke="${GC.t}" stroke-opacity=".14"/>`;
+    if(k%(o.yl||1)===0)s+=SVGT(L-6,Y(v)+4,fx(v),`font-size="11" fill="${GC.mu}" text-anchor="end" ${SANS}`);}
+  s+=`<line x1="${L}" y1="${B}" x2="${R}" y2="${B}" stroke="${GC.mu}" stroke-width="1.6"/><line x1="${L}" y1="${T}" x2="${L}" y2="${B}" stroke="${GC.mu}" stroke-width="1.6"/>`;
+  if(o.xt)s+=SVGT((L+R)/2,H-6,o.xt,`font-size="12" font-weight="700" fill="${GC.ink}" text-anchor="middle" ${SANS}`);
+  if(o.yt)s+=`<text transform="translate(13 ${(T+B)/2}) rotate(-90)" font-size="12" font-weight="700" fill="${GC.ink}" text-anchor="middle" ${SANS}>${o.yt}</text>`;
+  return {X,Y,s,L,R,T,B,o};}
+const HALO='paint-order="stroke" stroke="#0c1620" stroke-width="4" stroke-linejoin="round"';
+function gLine(g,x1,y1,x2,y2,col,dash,w){return `<line x1="${g.X(x1)}" y1="${g.Y(y1)}" x2="${g.X(x2)}" y2="${g.Y(y2)}" stroke="${col}" stroke-width="${w||3.2}" stroke-linecap="round" ${dash?'stroke-dasharray="8 6"':""}/>`;}
+function gPt(g,x,y,col,lab,dx,dy,anc){return `<circle cx="${g.X(x)}" cy="${g.Y(y)}" r="5.5" fill="${col}" stroke="#0c1620" stroke-width="2"/>`+(lab?SVGT(g.X(x)+(dx===undefined?9:dx),g.Y(y)+(dy===undefined?4:dy),lab,`font-size="12" font-weight="700" fill="${GC.ink}" ${anc?`text-anchor="${anc}"`:""} ${HALO} ${SANS}`):"");}
+/* proportional line y = m x clipped to the grid */
+function gProp(g,m,col,dash){const o=g.o;let xe=o.x1;if(m*xe>o.y1)xe=o.y1/m;let xs=Math.max(o.x0,0);if(o.x0<0){xs=o.x0;if(m*xs<o.y0)xs=o.y0/m;}return gLine(g,xs,m*xs,xe,m*xe,col,dash);}
+/* step triangle: run (gold) then rise (coral) */
+function gStep(g,xa,ya,xb,yb,rl,ul){const X1=g.X(xa),Y1=g.Y(ya),X2=g.X(xb),Y2=g.Y(yb);
+  return `<line x1="${X1}" y1="${Y1}" x2="${X2}" y2="${Y1}" stroke="${GC.g}" stroke-width="3" stroke-dasharray="2 0"/><line x1="${X2}" y1="${Y1}" x2="${X2}" y2="${Y2}" stroke="${GC.c}" stroke-width="3"/>`+
+   SVGT((X1+X2)/2,Y1>g.B-18?Y1-7:Y1+16,rl,`font-size="12" font-weight="700" fill="${GC.g}" text-anchor="middle" ${HALO} ${SANS}`)+
+   SVGT(X2+7,(Y1+Y2)/2+4,ul,`font-size="12" font-weight="700" fill="${GC.c}" ${HALO} ${SANS}`);}
+
+
+/* ---------- coordinate plane + any line ---------- */
+function plane(o){const g=G(Object.assign({x0:-5,x1:5,xs:1,y0:-5,y1:5,ys:1,L:34,H:300},o));
+  g.s+=`<line x1="${g.X(0)}" y1="${g.T}" x2="${g.X(0)}" y2="${g.B}" stroke="${GC.mu}" stroke-width="1.7"/><line x1="${g.L}" y1="${g.Y(0)}" x2="${g.R}" y2="${g.Y(0)}" stroke="${GC.mu}" stroke-width="1.7"/>`+
+   SVGT(g.X(0)-6,g.Y(0)+14,"O",`font-size="12" font-style="italic" fill="${GC.mu}" text-anchor="end" font-family="Cambria,serif"`)+
+   SVGT(g.R-4,g.Y(0)-6,"x",`font-size="13" font-style="italic" fill="${GC.ink}" text-anchor="end" font-family="Cambria,serif"`)+SVGT(g.X(0)+6,g.T+12,"y",`font-size="13" font-style="italic" fill="${GC.ink}" font-family="Cambria,serif"`);return g;}
+function gThru(g,p,q,col,dash){const o=g.o;if(p[0]===q[0])return gLine(g,p[0],o.y0,p[0],o.y1,col,dash);
+  const m=(q[1]-p[1])/(q[0]-p[0]),f=x=>p[1]+m*(x-p[0]),fi=y=>p[0]+(y-p[1])/m;
+  const pts=[];[[o.x0,f(o.x0)],[o.x1,f(o.x1)]].forEach(t=>pts.push(t));
+  const cl=t=>{if(t[1]>o.y1)return [fi(o.y1),o.y1];if(t[1]<o.y0)return [fi(o.y0),o.y0];return t;};
+  const a=cl(pts[0]),b=cl(pts[1]);return gLine(g,a[0],a[1],b[0],b[1],col,dash);}
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+function frac(n,d){if(d===0)return "undefined";if(n===0)return "0";if(d<0){n=-n;d=-d;}const k=gcd(Math.abs(n),d);n/=k;d/=k;return d===1?NN(n):`${NN(n)}/${d}`;}
+
+
+function lab(x,y,t,col,anc,fs){return SVGT(x,y,t,`font-size="${fs||12}" font-weight="700" fill="${col||GC.ink}" ${anc?`text-anchor="${anc}"`:""} ${HALO} ${SANS}`);}
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function segOn(el,cb){if(!el)return;el.querySelectorAll("button").forEach(b=>b.onclick=()=>{el.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));cb(b.dataset.v);});}
+const sgn=v=>v>0?"+"+v:NN(v);
+function arrowHead(x,y,dir,col,s){s=s||8;const a=dir;const p1=[x-s*Math.cos(a-0.5),y-s*Math.sin(a-0.5)],p2=[x-s*Math.cos(a+0.5),y-s*Math.sin(a+0.5)];return `<path d="M${x} ${y}L${p1[0].toFixed(1)} ${p1[1].toFixed(1)}L${p2[0].toFixed(1)} ${p2[1].toFixed(1)}Z" fill="${col}"/>`;}
+function arrow(x1,y1,x2,y2,col,w,dash){const a=Math.atan2(y2-y1,x2-x1);return `<line x1="${x1}" y1="${y1}" x2="${(x2-6*Math.cos(a)).toFixed(1)}" y2="${(y2-6*Math.sin(a)).toFixed(1)}" stroke="${col}" stroke-width="${w||3}" stroke-linecap="round" ${dash?`stroke-dasharray="${dash}"`:""}/>`+arrowHead(x2,y2,a,col,10);}
+const BG='<rect width="100%" height="100%" rx="12" fill="#0f1d29"/>';
+function flag(x,y,col){return `<line x1="${x}" y1="${y}" x2="${x}" y2="${y-30}" stroke="${col}" stroke-width="2.5"/><path d="M${x} ${y-30}l16 5l-16 6z" fill="${col}"/>`;}
+
+
+const FD={ch:[
+ {q:"Slingshot Physics: what happens, step by step?<br><span class=\"ar\">Slingshot Physics: ماذا يحدث خطوة بخطوة؟</span>",
+  s:[["Stretch the band","Push the nickel back into it.","ادفع القطعة إلى الخلف داخله."],["Elastic PE is stored","The stretched band stores energy.","يخزّن الشريط المشدود طاقة."],["Release the band","Let go of the nickel.","اترك القطعة."],["Band pushes the nickel","The band returns to its shape.","يعود الشريط إلى شكله."],["Nickel gains KE and moves","Stored energy → energy of motion.","طاقة مخزّنة ← طاقة حركة."]],blank:0},
+ {q:"A spring toy: a compressed spring launches a ball.<br><span class=\"ar\">لعبة نابض: نابض مضغوط يُطلق كرة.</span>",
+  s:[["Compress the spring","Push the spring together.","اضغط النابض."],["Elastic PE is stored","The compressed spring stores energy.","يخزّن النابض المضغوط طاقة."],["Release the spring","Let it go.","اتركه."],["Spring pushes the ball","The spring returns to its shape.","يعود النابض إلى شكله."],["Ball gains KE and moves","Stored energy → energy of motion.","طاقة مخزّنة ← طاقة حركة."]],blank:1,
+  o:[["Ball gains PE and stops","Ball gains KE and moves","Spring gains more PE"]],h:[["After the push, the ball is moving.","بعد الدفع تصبح الكرة متحركة."]]},
+ {q:"A bow and arrow: the archer pulls back the string.<br><span class=\"ar\">قوس وسهم: يشدّ الرامي الوتر إلى الخلف.</span>",
+  s:[["Pull back the string","The bow bends and stretches.","ينحني القوس ويُشدّ الوتر."],["Elastic PE is stored","The bent bow stores energy.","يخزّن القوس المنحني طاقة."],["Release the string","Let go of the arrow.","اترك السهم."],["String pushes the arrow","The bow returns to its shape.","يعود القوس إلى شكله."],["Arrow gains KE and flies","Stored energy → energy of motion.","طاقة مخزّنة ← طاقة حركة."]],blank:2,
+  o:[["Arrow pushes the string","String stores more PE","String pushes the arrow"],["Arrow gains KE and flies","Arrow loses all its KE","Arrow gains mass and flies"]],h:[["Which object pushes which?","أي جسم يدفع الآخر؟"],["A flying arrow has energy of motion.","للسهم الطائر طاقة حركة."]]}
+]};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+
+/* ---------- practice cards with a solution button ---------- */
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}${n[1]&&n[1]!==n[0]?`<small>${n[1]}</small>`:""}</button>`).join("")}</div><div class="mwhy"></div>${solHTML(c.sol)}</div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll(".mb button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll(".mb button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});
+  solBind(box);}
+
+/* ---------- stepper: one or more methods shown line by line ---------- */
+function stepper(el,methods){let m=0,k=0;
+  el.innerHTML=`${methods.length>1?`<div class="seg needjs" data-r="mode">${methods.map((x,i)=>`<button data-v="${i}" class="${i?"":"on"}">${x.name}</button>`).join("")}</div>`:""}
+   <div class="card fcard"><div class="flines" data-r="l"></div></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  function draw(){const L=methods[m].lines;R("l").innerHTML=L.map((s,i)=>i<=k?`<div class="fline"><span class="fn">${i+1}</span>${M(s[0])}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`:"").join("");
+    R("n").disabled=k>=L.length-1;
+    if(k>=L.length-1)setMsg(R("m"),`${ICON.check} ${methods[m].end[0]}`,`${ICON.check} ${methods[m].end[1]}`);
+    else setMsg(R("m"),"Tap <b>Show me</b> for the next step.","اضغط <b>Show me</b> للخطوة التالية.");refreshAr(el);}
+  R("n").onclick=()=>{if(k<methods[m].lines.length-1){k++;draw();}};R("r").onclick=()=>{k=0;draw();};
+  if(R("mode"))R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));m=+b.dataset.v;k=0;draw();});
+  draw();}
+
+
+let ANIMS={};
+function play(key,dur,frame,done){if(ANIMS[key])cancelAnimationFrame(ANIMS[key]);if(RM){frame(1);done&&done();return;}const t0=performance.now();
+  const st=now=>{const u=Math.min(1,(now-t0)/dur);frame(u);if(u<1)ANIMS[key]=requestAnimationFrame(st);else{ANIMS[key]=null;done&&done();}};ANIMS[key]=requestAnimationFrame(st);}
+function ebar(x,yb,w,h,f,col,t){f=Math.max(0,Math.min(1,f));return `<rect x="${x}" y="${yb-h}" width="${w}" height="${h}" rx="4" fill="#0c1620" stroke="${GC.mu}" stroke-width="1.5"/><rect x="${x+3}" y="${(yb-3-(h-6)*f).toFixed(1)}" width="${w-6}" height="${((h-6)*f).toFixed(1)}" rx="2" fill="${col||GC.t}"/>`+(t?lab(x+w/2,yb+14,t,GC.mu,"middle",10):"");}
+const ease=u=>1-Math.pow(1-u,3);
+function nickel(x,y){return `<circle cx="${x}" cy="${y}" r="11" fill="#b9c2c6" stroke="#8a969b" stroke-width="2"/><circle cx="${x}" cy="${y}" r="6" fill="none" stroke="#8a969b"/>`;}
+function finger(x,y){return `<ellipse cx="${x}" cy="${y}" rx="11" ry="9" fill="#d9a77a"/><ellipse cx="${x+3}" cy="${y-2}" rx="4" ry="3" fill="#f0c9a3"/>`;}
+function band(fx,y1,y2,px,col){return `<path d="M${fx} ${y1}L${px} ${(y1+y2)/2}L${fx} ${y2}" fill="none" stroke="${col||GC.c}" stroke-width="4" stroke-linejoin="round"/>`;}
+
+/* ---------- warm-up ---------- */
+cardsQ($("#wuBox"),[
+ {t:["Lesson 21: Which object has kinetic energy?","الدرس 21: أي جسم له طاقة حركية؟"],o:[["A parked bus","حافلة متوقفة"],["A rolling ball","كرة تتدحرج"]],a:1,
+  w:["Only moving objects have kinetic energy.","الأجسام المتحركة وحدها لها طاقة حركية."],h:["KE is the energy due to motion.","KE هي الطاقة الناتجة عن الحركة."],
+  sol:[["KE needs motion.","KE تحتاج إلى حركة."],["The bus is not moving.","الحافلة لا تتحرك."],["The rolling ball has KE.","الكرة المتدحرجة لها KE."]]},
+ {t:["Lesson 21: Same speed, mass × 2. The kinetic energy …","الدرس 21: السرعة نفسها والكتلة × 2. الطاقة الحركية …"],o:[["× 2"],["× 4"],["stays the same","تبقى كما هي"]],a:0,
+  w:["KE ∝ m: the same factor.","KE ∝ m: العدد نفسه."],h:["Mass is linear.","الكتلة علاقة خطية."],
+  sol:[["mass × 2.","الكتلة × 2."],["KE ∝ m.","KE ∝ m."],["KE × 2.","KE × 2."]]},
+ {t:["Lesson 21: Same mass, speed × 3. The kinetic energy …","الدرس 21: الكتلة نفسها والسرعة × 3. الطاقة الحركية …"],o:[["× 3"],["× 6"],["× 9"]],a:2,
+  w:["KE ∝ v²: 3² = 9.","KE ∝ v²: 3² = 9."],h:["Square the speed factor.","ربّع مضاعف السرعة."],
+  sol:[["speed × 3.","السرعة × 3."],["3² = 9.","3² = 9."],["KE × 9.","KE × 9."]]}
+]);
+const PRED=[["Yes, it has some energy","نعم، له طاقة ما"],["No, it has no energy at all","لا، ليست له أي طاقة"]];
+(function(){const box=$("#prBox");if(!box)return;box.innerHTML=`<div class="idc"><div class="mb">${PRED.map((p,i)=>`<button data-i="${i}">${p[0]}<small>${p[1]}</small></button>`).join("")}</div><div class="mwhy" id="prMsg"></div></div>`;
+  box.querySelectorAll("button").forEach(b=>b.onclick=()=>{box.querySelectorAll("button").forEach(x=>x.classList.toggle("pick",x===b));store.set("cup",+b.dataset.i);$("#prMsg").innerHTML=`Your prediction is saved. We will check it in this lesson.<span class="ar">حُفظ توقعك. سنتحقق منه في هذا الدرس.</span>`;});})();
+
+/* ---------- Lab: Slingshot Physics ---------- */
+const SL={x:[0.5,1.0,1.5],d:[7,28,63]};
+(function(){const s=$("#slSvg");if(!s)return;const done=[0,0,0];const FX=70,Y1=50,Y2=140,K=3.6,R0=86;
+  function scene(px,nx){let o=BG+`<rect x="10" y="20" width="340" height="168" rx="10" fill="#3a2e24"/>`;
+    for(let k=0;k<=7;k++){const x=R0+k*10*K;o+=`<line x1="${x}" y1="160" x2="${x}" y2="168" stroke="${GC.mu}"/>`+lab(x,182,k<7?k*10:"70 cm",GC.mu,k<7?"middle":"end",9.5);}
+    o+=`<line x1="${R0}" y1="164" x2="${R0+70*K}" y2="164" stroke="${GC.mu}"/>`
+    o+=band(FX,Y1,Y2,px)+finger(FX,Y1)+finger(FX,Y2)+nickel(nx,(Y1+Y2)/2);s.innerHTML=o;}
+  function table(){let t=`<tr><th>pull back</th><th>distance</th></tr>`;SL.x.forEach((x,i)=>t+=`<tr><td>${x.toFixed(1)} cm</td><td>${done[i]?SL.d[i]+" cm":""}</td></tr>`);$("#slTab").innerHTML=t;}
+  function fire(i){done[i]=1;const back=SL.x[i]*24,p0=FX-back;
+    play("sl",1700,u=>{if(u<0.3){const k=u/0.3;scene(FX-back*k,FX-back*k-11);}
+      else if(u<0.38){const k=(u-0.3)/0.08;const p=p0+(FX+4-p0)*k;scene(p,p-11);}
+      else{const k=ease((u-0.38)/0.62);scene(FX,FX-11+(R0+SL.d[i]*K-(FX-11))*k);}},()=>{table();
+      const n=done.filter(Boolean).length;
+      if(n<3)setMsg($("#slMsg"),`Pulled back <b>${SL.x[i].toFixed(1)} cm</b> → the nickel slid <b>${SL.d[i]} cm</b>. Try another pull.`,`سُحبت <b>${SL.x[i].toFixed(1)} cm</b> ← انزلقت القطعة <b>${SL.d[i]} cm</b>. جرّب سحبًا آخر.`);
+      else setMsg($("#slMsg"),`${ICON.check} The farther you stretch the band, the farther (and faster) the nickel moves. The band gave the nickel more energy.`,`${ICON.check} كلما زاد شدّ الشريط تحركت القطعة أبعد (وأسرع). أعطى الشريط القطعة طاقة أكبر.`);});}
+  segOn($("#slSeg"),v=>fire(+v));scene(FX,FX-11);table();setMsg($("#slMsg"),"Tap a pull-back distance to launch the nickel.","اضغط على مسافة سحب لإطلاق القطعة.");})();
+cardsQ($("#slBox"),[
+ {t:["Q7: How did the distance the nickel travelled depend on the stretch?","س7: كيف اعتمدت المسافة التي قطعتها القطعة على مقدار الشد؟"],o:[["More stretch → shorter distance","شد أكبر ← مسافة أقصر"],["More stretch → longer distance","شد أكبر ← مسافة أطول"],["The stretch did not matter","الشد لم يؤثر"]],a:1,cls:"stack",
+  w:["0.5 cm → 7 cm, 1.5 cm → 63 cm.","0.5 cm ← 7 cm، و1.5 cm ← 63 cm."],h:["Look at the table.","انظر إلى الجدول."],
+  sol:[["0.5 cm: 7 cm.","0.5 cm: 7 cm."],["1.5 cm: 63 cm.","1.5 cm: 63 cm."],["More stretch → farther.","شد أكبر ← أبعد."]]},
+ {t:["Q8: How did the nickel's starting speed depend on the stretch?","س8: كيف اعتمدت السرعة الابتدائية للقطعة على مقدار الشد؟"],o:[["More stretch → faster start","شد أكبر ← بداية أسرع"],["More stretch → slower start","شد أكبر ← بداية أبطأ"]],a:0,
+  w:["A faster start carries the nickel farther.","البداية الأسرع تحمل القطعة أبعد."],h:["Which nickel went farthest?","أي قطعة ذهبت أبعد؟"],
+  sol:[["It went farther.","ذهبت أبعد."],["So it started faster.","إذن بدأت أسرع."],["More stretch → more speed.","شد أكبر ← سرعة أكبر."]]},
+ {t:["Q9: What happened to the energy in the band as you stretched it more?","س9: ماذا حدث للطاقة في الشريط كلما زاد الشد؟"],o:[["It decreased","قلّت"],["It stayed the same","بقيت كما هي"],["It increased","زادت"]],a:2,
+  w:["A more stretched band stores more energy, so it gives the nickel more KE.","الشريط الأكثر شدًا يخزّن طاقة أكبر، فيعطي القطعة KE أكبر."],h:["More energy → faster nickel.","طاقة أكبر ← قطعة أسرع."],
+  sol:[["More stretch → faster nickel.","شد أكبر ← قطعة أسرع."],["Faster → more KE given.","أسرع ← KE أكبر."],["So the band had more energy.","إذن كانت للشريط طاقة أكبر."]]}
+]);
+
+/* ---------- Potential energy model ---------- */
+(function(){const s=$("#peSvg");if(!s)return;const r=$("#peX"),FX=150,Y1=40,Y2=150;
+  function draw(){const x=+r.value/10,px=FX-x*50,f=(x/1.5)**2;$("#peXv").textContent=x.toFixed(1)+" cm";
+    let o=BG+band(FX,Y1,Y2,px)+finger(FX,Y1)+finger(FX,Y2)+nickel(px-11,(Y1+Y2)/2);
+    if(x>0)o+=`<line x1="${px-11}" y1="176" x2="${FX-11}" y2="176" stroke="${GC.g}" stroke-width="2"/>`+lab((px+FX)/2-11,192,x.toFixed(1)+" cm",GC.g,"middle",10);
+    o+=ebar(300,170,30,140,f,GC.g,"PE")+lab(220,30,x===0?"Before stretch":x>=1.5?"At maximum stretch":"Stretching…",GC.ink,"middle",12);s.innerHTML=o;
+    $("#peOut").textContent=`stretch: ${x.toFixed(1)} cm\nelastic PE: ${x===0?"none":x<0.8?"small":x<1.5?"bigger":"greatest"}`;
+    if(x===0)setMsg($("#peMsg"),"Not stretched: no elastic PE, and the nickel would not move.","غير مشدود: لا طاقة وضع مرونية، ولن تتحرك القطعة.");
+    else setMsg($("#peMsg"),`Stretched: the band stores elastic PE. ${x>=1.5?"Most stretch → <b>most</b> stored energy.":"Stretch more → more stored energy."}`,`مشدود: يخزّن الشريط طاقة وضع مرونية. ${x>=1.5?"أقصى شد ← <b>أكبر</b> طاقة مخزّنة.":"شد أكثر ← طاقة مخزّنة أكبر."}`);}
+  r.oninput=draw;draw();})();
+whyBox($("#whyE"),"The nickel was not moving, then it moved. Where did its kinetic energy come from?","كانت القطعة ساكنة ثم تحركت. من أين جاءت طاقتها الحركية؟",
+ [["From the elastic potential energy stored in the stretched band.","من طاقة الوضع المرونية المخزّنة في الشريط المشدود.",true,"The band stored energy when stretched and gave it to the nickel.","خزّن الشريط طاقة عندما شُدّ، ثم نقلها إلى القطعة."],
+  ["The nickel had kinetic energy all the time.","كانت للقطعة طاقة حركية طوال الوقت.",false,"At rest, the nickel had no kinetic energy.","وهي ساكنة لم تكن للقطعة طاقة حركية."],
+  ["From the table.","من الطاولة.",false,"The table does not push the nickel forward; the band does.","الطاولة لا تدفع القطعة إلى الأمام؛ الشريط هو الذي يدفعها."]]);
+
+/* ---------- Springs ---------- */
+(function(){const s=$("#spSvg");if(!s)return;const r=$("#spX"),WX=30,L0=150,Y=95;
+  function spring(len){let p=`M${WX} ${Y}`;const n=12,st=len/n;for(let k=1;k<n;k++)p+=`L${(WX+k*st).toFixed(1)} ${Y+(k%2?-18:18)}`;p+=`L${WX+len} ${Y}`;return `<path d="${p}" fill="none" stroke="#9fb3b5" stroke-width="3.5" stroke-linejoin="round"/>`;}
+  function scene(x){const len=L0+x*7,f=(Math.abs(x)/10)**2;let o=BG+`<rect x="${WX-14}" y="40" width="14" height="110" fill="#5b6b74"/><rect x="0" y="150" width="360" height="40" fill="#1f2a37"/>`;
+    o+=`<line x1="${WX+L0}" y1="44" x2="${WX+L0}" y2="150" stroke="${GC.t}" stroke-dasharray="4 4"/>`+lab(WX+L0,36,"static length",GC.t,"middle",10);
+    o+=spring(len)+`<rect x="${WX+len}" y="${Y-26}" width="44" height="52" rx="6" fill="${GC.c}"/>`;
+    o+=ebar(316,150,28,110,f,GC.g,"PE");s.innerHTML=o;}
+  function info(){const x=+r.value,st=x<0?"Compressed":x>0?"Stretched":"Static";$("#spXv").textContent=st.slice(0,4)+".";
+    $("#spOut").textContent=`shape: ${st.toLowerCase()}\nchange in length: ${Math.abs(x*0.5).toFixed(1)} cm\nelastic PE: ${x===0?"none":Math.abs(x)<5?"small":Math.abs(x)<10?"bigger":"greatest"}`;
+    if(x===0)setMsg($("#spMsg"),"Static: the spring is at its resting shape. No elastic PE.","ساكن: النابض في شكله الطبيعي. لا طاقة وضع مرونية.");
+    else setMsg($("#spMsg"),`${x<0?"Compressed":"Stretched"}: elastic PE is stored. Both compressing and stretching store energy. Tap <b>Let go</b>.`,`${x<0?"مضغوط":"مشدود"}: تُخزَّن طاقة وضع مرونية. الضغط والشد كلاهما يخزّن طاقة. اضغط <b>Let go</b>.`);}
+  r.oninput=()=>{scene(+r.value);info();};
+  $("#spGo").onclick=()=>{const x0=+r.value;if(!x0)return;play("sp",1600,u=>scene(x0*Math.cos(u*Math.PI*4)*(1-u)),()=>{r.value=0;scene(0);info();setMsg($("#spMsg"),"The spring returned to its static shape: the stored energy made it (and the block) move.","عاد النابض إلى شكله الساكن: الطاقة المخزّنة جعلته (والكتلة) يتحرك.");});};
+  scene(0);info();})();
+cardsQ($("#spBox"),[
+ {t:["Does a compressed spring have elastic potential energy?","هل للنابض المضغوط طاقة وضع مرونية؟"],o:[["No, only stretched springs do","لا، المشدود فقط"],["Yes, compressing also changes its shape","نعم، الضغط أيضًا يغيّر شكله"]],a:1,cls:"stack",
+  w:["Compressed or stretched: both store elastic PE.","مضغوط أو مشدود: كلاهما يخزّن طاقة وضع مرونية."],h:["What does the definition say?","ماذا يقول التعريف؟"],
+  sol:[["Elastic PE: compressed or stretched.","المرونية: مضغوط أو مشدود."],["Compressed = shape changed.","مضغوط = تغيّر الشكل."],["Yes, it has elastic PE.","نعم، له طاقة مرونية."]]},
+ {t:["Spring A is stretched 2 cm. Spring B (the same spring) is stretched 5 cm. Which has more elastic PE?","النابض A مشدود 2 cm، والنابض B (النابض نفسه) مشدود 5 cm. أيهما له طاقة وضع مرونية أكبر؟"],o:[["Spring A"],["Spring B"],["They are equal","متساويان"]],a:1,
+  w:["More change in shape → more elastic PE.","تغيّر أكبر في الشكل ← طاقة مرونية أكبر."],h:["Which shape changed more?","أي شكل تغيّر أكثر؟"],
+  sol:[["A: 2 cm, B: 5 cm.","A: 2 cm، وB: 5 cm."],["B changed more.","B تغيّر أكثر."],["B has more PE.","B له PE أكبر."]]}
+]);
+
+/* ---------- Systems ---------- */
+(function(){const s=$("#syS");if(!s)return;let m=0;
+  function draw(){let o=BG+`<rect x="30" y="120" width="300" height="40" rx="6" fill="#3a2e24"/>`+lab(180,178,"table",GC.mu,"middle",10);
+    for(let k=0;k<5;k++)o+=`<path d="M${50+k*60} ${40+(k%2)*14}q10 -8 20 0t20 0" fill="none" stroke="#cfe9e6" stroke-opacity=".35" stroke-width="2"/>`;o+=lab(300,36,"air",GC.mu,"middle",10);
+    o+=band(150,74,114,128)+finger(150,74)+finger(150,114)+nickel(117,94);
+    o+=m?`<rect x="18" y="18" width="324" height="172" rx="14" fill="none" stroke="${GC.g}" stroke-width="2.5" stroke-dasharray="7 5"/>`:`<rect x="96" y="60" width="74" height="70" rx="12" fill="none" stroke="${GC.g}" stroke-width="2.5" stroke-dasharray="7 5"/>`;
+    o+=lab(m?180:133,m?14:54,m?"open system":"closed system",GC.g,"middle",11);s.innerHTML=o;
+    $("#syOut").textContent=m?"inside: band, nickel,\n        table, air":"inside: band, nickel";
+    setMsg($("#syMsg"),m?"Open system: the surroundings are included. The table rubs on the nickel (friction) and the air is pushed, so energy can leave the band and the nickel.":"Closed system: we focus only on the rubber band and the nickel. We follow how their energy changes.",m?"نظام مفتوح: يدخل المحيط. تحتك الطاولة بالقطعة (احتكاك) ويُدفع الهواء، فيمكن أن تخرج طاقة من الشريط والقطعة.":"نظام مغلق: نركّز على الشريط المطاطي والقطعة فقط، ونتابع كيف تتغيّر طاقتهما.");}
+  segOn($("#sySeg"),v=>{m=+v;draw();});draw();})();
+cardsQ($("#syBox"),[
+ {t:["We study only the rubber band and the nickel. This is …","ندرس الشريط المطاطي والقطعة فقط. هذا …"],o:[["a closed system","نظام مغلق"],["an open system","نظام مفتوح"]],a:0,
+  w:["Only the objects, not the surroundings → closed.","الأجسام فقط دون المحيط ← مغلق."],h:["Is the environment included?","هل المحيط داخل النظام؟"],
+  sol:[["Band + nickel only.","الشريط + القطعة فقط."],["No surroundings.","بلا محيط."],["Closed system.","نظام مغلق."]]},
+ {t:["When looking at energy in a system, it is important to …","عند دراسة الطاقة في نظام، من المهم أن …"],o:[["only measure the colour of the objects","نقيس لون الأجسام فقط"],["identify its parts and how they change","نحدد أجزاءه وكيف تتغيّر"]],a:1,cls:"stack",
+  w:["Name the components, then follow how they change.","سمِّ المكوّنات، ثم تابع كيف تتغيّر."],h:["Think about what the book asks you to identify.","فكّر فيما يطلب الكتاب تحديده."],
+  sol:[["List the parts of the system.","اذكر أجزاء النظام."],["Follow how each part changes.","تابع كيف يتغيّر كل جزء."],["That shows where the energy goes.","هذا يبيّن أين تذهب الطاقة."]]}
+]);
+
+/* ---------- Types of potential energy ---------- */
+(function(){const s=$("#tySvg");if(!s)return;let m=0;
+  const T=[["elastic PE\ncause: stretched or\n       compressed shape","Elastic: a stretched or compressed object (spring, rubber band, trampoline). It comes from a change in shape, not from a field.","المرونية: جسم مشدود أو مضغوط (نابض، شريط مطاطي، ترامبولين). تنتج عن تغيّر الشكل لا عن مجال."],
+   ["gravitational PE\ncause: Earth's\n       gravitational field","Gravitational: an object and Earth interact through gravity. The <b>cup on the table</b> has gravitational PE because of its position above the floor: it can fall and start moving. More in Lesson 24!","الجاذبية: يتفاعل الجسم والأرض عبر الجاذبية. <b>للكوب على الطاولة</b> طاقة وضع جاذبية بسبب موقعه فوق الأرض: يمكن أن يسقط ويبدأ الحركة. المزيد في الدرس 24!"],
+   ["electric PE\ncause: electric field\n       of charges","Electric: charged objects (a rubbed balloon and bits of paper) interact through an electric field.","الكهربائية: تتفاعل الأجسام المشحونة (بالون مدلوك وقصاصات ورق) عبر مجال كهربائي."],
+   ["magnetic PE\ncause: magnetic field","Magnetic: magnets interact through a magnetic field. Hold two magnets apart and they have stored energy.","المغناطيسية: تتفاعل المغانط عبر مجال مغناطيسي. أمسك مغناطيسين متباعدين فتكون لهما طاقة مخزّنة."]];
+  function draw(){let o=BG;
+    if(m===0){let p="M40 100";for(let k=1;k<12;k++)p+=`L${40+k*16} ${100+(k%2?-20:20)}`;p+="L232 100";o+=`<rect x="26" y="60" width="14" height="80" fill="#5b6b74"/><path d="${p}" fill="none" stroke="#9fb3b5" stroke-width="3.5"/><rect x="232" y="76" width="44" height="48" rx="6" fill="${GC.c}"/>`+arrow(300,100,330,100,GC.g,3)+lab(180,170,"stretched spring",GC.mu,"middle",11);}
+    else if(m===1){o+=`<rect x="0" y="170" width="360" height="30" fill="#1f2a37"/><rect x="110" y="100" width="140" height="10" fill="#8c5a3c"/><rect x="120" y="110" width="8" height="60" fill="#8c5a3c"/><rect x="232" y="110" width="8" height="60" fill="#8c5a3c"/>`;
+      o+=`<path d="M168 70h26l-3 30h-20z" fill="#f1f6f5"/><path d="M194 76q12 0 10 10t-12 8" fill="none" stroke="#f1f6f5" stroke-width="3"/>`;
+      for(let k=0;k<4;k++)o+=`<line x1="${70+k*70}" y1="20" x2="${70+k*70}" y2="60" stroke="${GC.t}" stroke-opacity=".5" stroke-dasharray="4 4"/>`+arrowHead(70+k*70,62,Math.PI/2,GC.t,8);
+      o+=arrow(300,80,300,166,GC.g,2.5)+lab(306,130,"height",GC.g,"start",10);}
+    else if(m===2){o+=`<ellipse cx="150" cy="80" rx="40" ry="46" fill="${GC.c}"/><path d="M150 126l-5 12h10z" fill="${GC.c}"/>`;for(let k=0;k<6;k++)o+=lab(126+(k%3)*24,72+Math.floor(k/3)*22,"−",GC.ink,"middle",16);
+      for(let k=0;k<5;k++)o+=`<rect x="${226+k*20}" y="${150-(k%2)*8}" width="12" height="7" fill="#f1f6f5" transform="rotate(${k*20-30} ${232+k*20} ${153})"/>`;
+      for(let k=0;k<4;k++)o+=`<path d="M${196+k*4} ${70+k*16}q20 ${10+k*4} ${36} ${50-k*8}" fill="none" stroke="${GC.t}" stroke-opacity=".5" stroke-dasharray="4 4"/>`;}
+    else{o+=`<rect x="60" y="80" width="90" height="40" fill="${GC.c}"/><rect x="60" y="80" width="45" height="40" fill="#5b8ad1"/>`+lab(82,106,"S",GC.ink,"middle",14)+lab(128,106,"N",GC.ink,"middle",14);
+      o+=`<rect x="210" y="80" width="90" height="40" fill="#5b8ad1"/><rect x="255" y="80" width="45" height="40" fill="${GC.c}"/>`+lab(232,106,"S",GC.ink,"middle",14)+lab(278,106,"N",GC.ink,"middle",14);
+      for(let k=0;k<3;k++)o+=`<path d="M150 ${88+k*12}C175 ${70+k*20} 185 ${70+k*20} 210 ${88+k*12}" fill="none" stroke="${GC.t}" stroke-opacity=".6" stroke-dasharray="4 4"/>`;}
+    s.innerHTML=o;$("#tyOut").textContent=T[m][0];setMsg($("#tyMsg"),T[m][1],T[m][2]);}
+  segOn($("#tySeg"),v=>{m=+v;draw();});draw();})();
+whyBox($("#whyC"),"Back to your prediction: does the cup resting on the table have energy?","عودة إلى توقعك: هل للكوب الساكن على الطاولة طاقة؟",
+ [["Yes: gravitational potential energy, because of its position above the floor.","نعم: طاقة وضع جاذبية، بسبب موقعه فوق الأرض.",true,"It is not moving (no KE), but it has stored energy: it can fall and start moving.","لا يتحرك (لا KE)، لكن له طاقة مخزّنة: يمكن أن يسقط ويبدأ الحركة."],
+  ["No: an object that is not moving has no energy.","لا: الجسم الساكن ليست له طاقة.",false,"Not moving means no kinetic energy, but it can still have potential energy.","السكون يعني عدم وجود طاقة حركية، لكن قد تكون له طاقة وضع."],
+  ["Yes: kinetic energy, because it is on a table.","نعم: طاقة حركية لأنه على طاولة.",false,"Kinetic energy needs motion; the cup is at rest.","الطاقة الحركية تحتاج إلى حركة؛ والكوب ساكن."]]);
+
+/* ---------- Apply: trampoline ---------- */
+(function(){const s=$("#trSvg");if(!s)return;const r=$("#trD"),H=[0,40,80,120],D=[0,8,16,24];
+  function kid(x,y){return `<g transform="translate(${x},${y})"><path d="M-13 0l3 -34h20l3 34z" fill="#f1f6f5"/><circle cx="0" cy="-44" r="10" fill="#c98d63"/><path d="M-12 -46q12 -16 24 0l2 14l-4 -2l-2 -10h-16l-2 10l-4 2z" fill="#f1f6f5"/><rect x="-11" y="-52" width="22" height="3" rx="1.5" fill="#1f2a37"/><line x1="-6" y1="0" x2="-6" y2="8" stroke="#c98d63" stroke-width="4"/><line x1="6" y1="0" x2="6" y2="8" stroke="#c98d63" stroke-width="4"/></g>`;}
+  function scene(dip,ky,f){let o=BG+`<rect x="0" y="196" width="360" height="24" fill="#1f2a37"/>`;
+    o+=`<line x1="40" y1="160" x2="40" y2="196" stroke="${GC.mu}" stroke-width="5"/><line x1="240" y1="160" x2="240" y2="196" stroke="${GC.mu}" stroke-width="5"/>`;
+    o+=`<path d="M40 160Q140 ${160+dip*2} 240 160" fill="none" stroke="#1d2b36" stroke-width="7"/><path d="M40 160Q140 ${160+dip*2} 240 160" fill="none" stroke="${GC.t}" stroke-width="3"/>`;
+    for(let k=0;k<5;k++)o+=`<path d="M${44+k*48} 162l4 4l-4 4l4 4" fill="none" stroke="${GC.mu}" stroke-width="1.5"/>`;
+    o+=kid(140,ky)+ebar(300,190,28,150,f,GC.g,"elastic PE");s.innerHTML=o;}
+  function idle(){const d=+r.value;$("#trDv").textContent=["","small","medium","big"][d];scene(D[d],160+D[d]-8,(d/3)**2*0.95);
+    $("#trOut").textContent=`push down: ${["","small","medium","big"][d]}\nbounce height: ?`;setMsg($("#trMsg"),"Tap <b>Bounce</b>.","اضغط <b>Bounce</b>.");}
+  r.oninput=idle;
+  $("#trGo").onclick=()=>{const d=+r.value,h=H[d],dp=D[d];play("tr",1600,u=>{let dip,ky,f;
+      if(u<0.25){const k=u/0.25;dip=dp*(1-k);ky=160+dip-8;f=(d/3)**2*0.95*(1-k);}
+      else{const k=(u-0.25)/0.75;dip=0;ky=152-h*Math.sin(k*Math.PI);f=0;}scene(dip,ky,f);},()=>{scene(0,152,0);
+      $("#trOut").textContent=`push down: ${["","small","medium","big"][d]}\nbounce height: ${["","low","higher","highest"][d]}`;
+      setMsg($("#trMsg"),d===3?`${ICON.check} The biggest stretch stored the most elastic PE, so Hamad bounced the highest.`:"The stretched mat gave its stored energy to Hamad. Push it down more and compare.",d===3?`${ICON.check} أكبر شد خزّن أكبر طاقة وضع مرونية، فقفز حمد إلى أعلى ارتفاع.`:"أعطى السطح المشدود طاقته المخزّنة لحمد. اضغطه أكثر وقارن.");});};
+  idle();})();
+cardsQ($("#trBox"),[
+ {t:["A bowstring pulled back","وتر قوس مشدود إلى الخلف"],o:[["Elastic PE","طاقة مرونية"],["No elastic PE","لا طاقة مرونية"]],a:0,
+  w:["The bow is bent and the string is stretched.","القوس منحنٍ والوتر مشدود."],h:["Is its shape changed?","هل تغيّر شكله؟"],
+  sol:[["Pulled back → stretched.","مشدود إلى الخلف ← مشدود."],["Shape changed.","تغيّر الشكل."],["Elastic PE.","طاقة مرونية."]]},
+ {t:["A compressed spring inside a clicked pen","نابض مضغوط داخل قلم مضغوط زره"],o:[["Elastic PE","طاقة مرونية"],["No elastic PE","لا طاقة مرونية"]],a:0,
+  w:["Compressed springs store elastic PE.","النوابض المضغوطة تخزّن طاقة مرونية."],h:["Compressed counts too.","المضغوط يُحسب أيضًا."],
+  sol:[["The spring is compressed.","النابض مضغوط."],["Shape changed.","تغيّر الشكل."],["Elastic PE.","طاقة مرونية."]]},
+ {t:["A football resting on the grass (not squashed)","كرة قدم ساكنة على العشب (غير مضغوطة)"],o:[["Elastic PE","طاقة مرونية"],["No elastic PE","لا طاقة مرونية"]],a:1,
+  w:["Its shape is not stretched or compressed.","شكلها غير مشدود وغير مضغوط."],h:["Is it stretched or squashed?","هل هي مشدودة أو مضغوطة؟"],
+  sol:[["Resting, normal shape.","ساكنة بشكلها الطبيعي."],["No change in shape.","لا تغيّر في الشكل."],["No elastic PE.","لا طاقة مرونية."]]},
+ {t:["A book on a high shelf","كتاب على رف مرتفع"],o:[["Elastic PE","طاقة مرونية"],["No elastic PE (it has gravitational PE)","لا طاقة مرونية (له طاقة وضع جاذبية)"]],a:1,cls:"stack",
+  w:["Its stored energy comes from its height, not from a change in shape.","طاقته المخزّنة من ارتفاعه، لا من تغيّر في الشكل."],h:["Stretched, or high up?","مشدود، أم مرتفع؟"],
+  sol:[["The book is not stretched.","الكتاب غير مشدود."],["It is high above the floor.","هو مرتفع عن الأرض."],["Gravitational PE, not elastic.","طاقة جاذبية، لا مرونية."]]}
+]);
+
+/* ---------- check yourself ---------- */
+cardsQ($("#tryBox"),[
+ {t:["Elastic potential energy is stored in objects that are …","تُخزَّن طاقة الوضع المرونية في الأجسام …"],o:[["moving fast","المتحركة بسرعة"],["compressed or stretched","المضغوطة أو المشدودة"],["very hot","الساخنة جدًا"]],a:1,
+  w:["Springs, rubber bands, trampolines.","النوابض والأشرطة المطاطية والترامبولين."],h:["Think of the rubber band.","فكّر في الشريط المطاطي."],
+  sol:[["Change in shape.","تغيّر في الشكل."],["Compressed or stretched.","مضغوط أو مشدود."],["Elastic PE is stored.","تُخزَّن طاقة مرونية."]]},
+ {t:["You stretch a rubber band from 1 cm to 2 cm. Its elastic PE …","تشدّ شريطًا مطاطيًا من 1 cm إلى 2 cm. طاقته المرونية …"],o:[["decreases","تقل"],["stays the same","تبقى كما هي"],["increases","تزيد"]],a:2,
+  w:["More change in shape → more stored energy.","تغيّر أكبر في الشكل ← طاقة مخزّنة أكبر."],h:["More stretch → ?","شد أكبر ← ؟"],
+  sol:[["Stretch grows.","الشد يزيد."],["More shape change.","تغيّر أكبر في الشكل."],["PE increases.","PE تزيد."]]},
+ {t:["When the band is released, its stored energy becomes …","عند ترك الشريط، تتحول طاقته المخزّنة إلى …"],o:[["kinetic energy of the nickel","طاقة حركية للقطعة"],["mass of the nickel","كتلة للقطعة"],["nothing","لا شيء"]],a:0,
+  w:["The nickel starts moving: it gains KE.","تبدأ القطعة الحركة: تكتسب KE."],h:["What does the nickel do after release?","ماذا تفعل القطعة بعد الترك؟"],
+  sol:[["Stored PE in the band.","PE مخزّنة في الشريط."],["Band pushes the nickel.","الشريط يدفع القطعة."],["Nickel gains KE.","القطعة تكتسب KE."]]},
+ {t:["Which potential energy is NOT due to a field?","أي طاقة وضع لا تنتج عن مجال؟"],o:[["Magnetic","المغناطيسية"],["Gravitational","الجاذبية"],["Elastic","المرونية"]],a:2,
+  w:["Elastic PE comes from a change in shape.","تنتج المرونية عن تغيّر في الشكل."],h:["Which one needs stretching?","أيها يحتاج إلى شد؟"],
+  sol:[["Gravitational, electric, magnetic: fields.","الجاذبية والكهربائية والمغناطيسية: مجالات."],["Elastic: shape change.","المرونية: تغيّر الشكل."],["Answer: elastic.","الإجابة: المرونية."]]},
+ {t:["The band, the nickel, the table and the air are studied together. This is …","يُدرس الشريط والقطعة والطاولة والهواء معًا. هذا …"],o:[["a closed system","نظام مغلق"],["an open system","نظام مفتوح"]],a:1,
+  w:["The surroundings are included → open.","المحيط داخل ← مفتوح."],h:["Are the surroundings included?","هل المحيط داخل؟"],
+  sol:[["Table and air = surroundings.","الطاولة والهواء = المحيط."],["Surroundings included.","المحيط داخل."],["Open system.","نظام مفتوح."]]}
+]);
+
+/* ---------- summary cards ---------- */
+const FL=[["PE","Potential energy","طاقة الوضع","Energy due to interactions between objects when distance changes; depends on positions.","طاقة ناتجة عن التفاعلات بين الأجسام عندما تتغير المسافة؛ تعتمد على المواقع."],
+ ["⟷","Elastic potential energy","طاقة الوضع المرونية","Stored in objects that are compressed or stretched.","مخزّنة في الأجسام المضغوطة أو المشدودة."],
+ ["↔ ↑","More stretch, more PE","شد أكبر، طاقة أكبر","The more the shape changes, the more elastic PE is stored.","كلما زاد تغيّر الشكل زادت الطاقة المرونية المخزّنة."],
+ ["static","Springs","النوابض","A spring always tries to return to its static shape.","يحاول النابض دائمًا العودة إلى شكله الساكن."],
+ ["PE → KE","Stored energy to motion","من التخزين إلى الحركة","Released band pushes the nickel: PE becomes KE.","الشريط المتروك يدفع القطعة: تتحول PE إلى KE."],
+ ["[ ]","Closed system","نظام مغلق","Only the objects (band + nickel).","الأجسام فقط (الشريط + القطعة)."],
+ ["[ ⋯ ]","Open system","نظام مفتوح","The objects and their surroundings (table, air).","الأجسام ومحيطها (الطاولة والهواء)."],
+ ["field","PE due to fields","طاقة وضع بسبب مجالات","Gravitational, electric and magnetic PE.","طاقة الوضع الجاذبية والكهربائية والمغناطيسية."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+
+/* ---------- final quiz ---------- */
+const Q=[
+ {q:"What is potential energy?",qa:"ما طاقة الوضع؟",o:[["The energy due to motion","الطاقة الناتجة عن الحركة"],["The energy of light","طاقة الضوء"],["Energy due to interactions between objects when distance changes","طاقة ناتجة عن التفاعلات بين الأجسام عندما تتغير المسافة"],["A push or a pull","دفع أو سحب"]],a:2,ex:["Potential energy depends on the positions of objects or particles.","تعتمد طاقة الوضع على مواقع الأجسام أو الجسيمات."],
+  h:[["It is stored energy.","هي طاقة مخزّنة."],["It depends on position, not motion.","تعتمد على الموقع لا على الحركة."]],
+  sol:[["Motion → kinetic energy.","الحركة ← طاقة حركية."],["Position/distance → potential energy.","الموقع/المسافة ← طاقة وضع."],["Answer C.","الإجابة C."]]},
+ {q:"Elastic potential energy is stored in objects that are …",qa:"تُخزَّن طاقة الوضع المرونية في الأجسام …",o:[["compressed or stretched","المضغوطة أو المشدودة"],["moving quickly","المتحركة بسرعة"],["very cold","الباردة جدًا"],["falling","الساقطة"]],a:0,ex:["Springs and rubber bands store elastic PE.","النوابض والأشرطة المطاطية تخزّن طاقة مرونية."],
+  h:[["Think of a spring.","فكّر في نابض."],["Change in shape.","تغيّر في الشكل."]],
+  sol:[["Elastic = change in shape.","المرونية = تغيّر الشكل."],["Compressed or stretched.","مضغوط أو مشدود."],["Answer A.","الإجابة A."]]},
+ {q:"A rubber band is pulled back 1 cm, then 3 cm. When does it store more elastic PE?",qa:"يُسحب شريط مطاطي 1 cm ثم 3 cm. متى يخزّن طاقة مرونية أكبر؟",o:[["At 1 cm","عند 1 cm"],["The same at both","نفسها في الحالتين"],["It stores no energy","لا يخزّن طاقة"],["At 3 cm","عند 3 cm"]],a:3,ex:["More stretch → more stored energy.","شد أكبر ← طاقة مخزّنة أكبر."],
+  h:[["Remember Slingshot Physics.","تذكّر Slingshot Physics."],["Which pull sent the nickel farthest?","أي سحب أرسل القطعة أبعد؟"]],
+  sol:[["3 cm > 1 cm.","3 cm > 1 cm."],["More change in shape.","تغيّر أكبر في الشكل."],["More PE at 3 cm.","PE أكبر عند 3 cm."]]},
+ {q:"A spring is at its static (resting) shape. Its elastic potential energy is …",qa:"نابض في شكله الساكن (الطبيعي). طاقته المرونية …",o:[["the greatest","الأكبر"],["the least (none)","الأقل (لا شيء)"],["the same as when stretched","نفسها عند الشد"],["more than when compressed","أكبر منها عند الضغط"]],a:1,ex:["No change in shape → no elastic PE.","لا تغيّر في الشكل ← لا طاقة مرونية."],
+  h:[["Is its shape changed?","هل تغيّر شكله؟"],["Static = resting shape.","ساكن = الشكل الطبيعي."]],
+  sol:[["Static: not stretched or compressed.","ساكن: غير مشدود وغير مضغوط."],["No shape change.","لا تغيّر في الشكل."],["Least PE.","أقل PE."]]},
+ {q:"The stretched rubber band is released. Its stored energy becomes the nickel's …",qa:"يُترك الشريط المشدود. تتحول طاقته المخزّنة إلى … القطعة.",o:[["mass","كتلة"],["kinetic energy","طاقة حركية"],["weight","وزن"],["colour","لون"]],a:1,ex:["The nickel starts moving, so it gains kinetic energy.","تبدأ القطعة الحركة، فتكتسب طاقة حركية."],
+  h:[["What does the nickel do?","ماذا تفعل القطعة؟"],["Moving objects have …","الأجسام المتحركة لها …"]],
+  sol:[["Band stores PE.","الشريط يخزّن PE."],["Band pushes nickel.","الشريط يدفع القطعة."],["Nickel gains KE.","القطعة تكتسب KE."]]},
+ {q:"Which type of potential energy is NOT due to a field?",qa:"أي نوع من طاقة الوضع لا ينتج عن مجال؟",o:[["Gravitational","الجاذبية"],["Electric","الكهربائية"],["Magnetic","المغناطيسية"],["Elastic","المرونية"]],a:3,ex:["Elastic PE comes from stretching or compressing.","تنتج المرونية عن الشد أو الضغط."],
+  h:[["Three of them have invisible fields.","ثلاثة منها لها مجالات غير مرئية."],["Which one needs a change in shape?","أيها يحتاج إلى تغيّر في الشكل؟"]],
+  sol:[["Gravitational, electric, magnetic: fields.","الجاذبية والكهربائية والمغناطيسية: مجالات."],["Elastic: shape.","المرونية: الشكل."],["Answer D.","الإجابة D."]]},
+ {q:"Which is a closed system in Slingshot Physics?",qa:"أي مما يلي نظام مغلق في Slingshot Physics؟",o:[["The rubber band and the nickel only","الشريط المطاطي والقطعة فقط"],["The band, nickel, table and air","الشريط والقطعة والطاولة والهواء"],["The whole classroom","الفصل كله"],["The air only","الهواء فقط"]],a:0,ex:["Closed: only the objects we focus on.","المغلق: الأجسام التي نركّز عليها فقط."],
+  h:[["Closed = no surroundings.","مغلق = بلا محيط."],["Which option has only the two objects?","أي خيار فيه الجسمان فقط؟"]],
+  sol:[["Surroundings → open.","المحيط ← مفتوح."],["Only band + nickel → closed.","الشريط + القطعة فقط ← مغلق."],["Answer A.","الإجابة A."]]},
+ {q:"Which object has elastic potential energy?",qa:"أي جسم له طاقة وضع مرونية؟",o:[["A ball rolling on grass","كرة تتدحرج على العشب"],["A book on a desk","كتاب على مكتب"],["A trampoline pushed down","ترامبولين مضغوط إلى أسفل"],["A moving car","سيارة متحركة"]],a:2,ex:["The trampoline's mat and springs are stretched.","سطح الترامبولين ونوابضه مشدودة."],
+  h:[["Look for a change in shape.","ابحث عن تغيّر في الشكل."],["Which one is stretched?","أيها مشدود؟"]],
+  sol:[["Rolling ball, car: KE.","الكرة والسيارة: KE."],["Book: gravitational PE.","الكتاب: طاقة جاذبية."],["Trampoline: elastic PE.","الترامبولين: طاقة مرونية."]]},
+ {q:"From Lesson 21: A car's speed doubles (same mass). Its kinetic energy becomes …",qa:"من الدرس 21: تتضاعف سرعة سيارة (الكتلة نفسها). تصبح طاقتها الحركية …",o:[["2 times as much","ضعفين"],["half as much","النصف"],["4 times as much","4 أضعاف"],["the same","نفسها"]],a:2,ex:["KE ∝ v²: 2² = 4.","KE ∝ v²: 2² = 4."],
+  h:[["Speed factors are squared.","مضاعفات السرعة تُربَّع."],["2² = ?","2² = ؟"]],
+  sol:[["speed × 2.","السرعة × 2."],["2² = 4.","2² = 4."],["KE × 4.","KE × 4."]]},
+ {q:"From Lesson 21: A 3 kg cart and a 1 kg cart move at the same speed. The 3 kg cart has …",qa:"من الدرس 21: تتحرك عربة 3 kg وعربة 1 kg بالسرعة نفسها. للعربة 3 kg …",o:[["3 times the KE","3 أضعاف KE"],["9 times the KE","9 أضعاف KE"],["the same KE","KE نفسها"],["one third of the KE","ثلث KE"]],a:0,ex:["KE ∝ m: mass × 3 → KE × 3.","KE ∝ m: الكتلة × 3 ← KE × 3."],
+  h:[["Mass is linear.","الكتلة علاقة خطية."],["Don't square the mass factor.","لا تربّع مضاعف الكتلة."]],
+  sol:[["mass × 3.","الكتلة × 3."],["KE ∝ m.","KE ∝ m."],["KE × 3.","KE × 3."]]}
+];
+Q.forEach(q=>q.o.forEach(o=>{if(o[1]===o[0])o[1]="";o[0]=`<span class="oe">${o[0]}</span>`;}));
+
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${ok?ICON.check+" Correct!":ICON.cross+" Not quite."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${ok?"إجابة صحيحة!":"ليست صحيحة."} ${q.ex[1]}</div>`+solHTML(q.sol);solBind(fb);
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Scientist";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You can explain elastic potential energy!","رائع! أنت تشرح طاقة الوضع المرونية!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the worked examples, then retry.","محاولة جيدة! أعد تشغيل الحلول خطوة بخطوة ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Science · Grade 8 · Unit 2 · Lesson 23 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
