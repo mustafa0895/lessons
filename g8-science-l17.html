@@ -1,0 +1,1838 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c1620">
+<title>Energy Transformations – Science G8 Lesson 27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#F7F1E8;--paper:#FFFDF9;--ink:#1F2A37;--muted:#5B6675;
+  --terra:#C8553D;--teal:#2A9D8F;--teal-d:#1F7A6F;--ochre:#E9B44C;
+  --clay:#8C5A3C;--stone:#9AA5B1;--line:#E8DDCC;--sky:#DCEFF1;--cream:#FFF4E0;
+  --r:18px;--shadow:0 6px 20px rgba(31,42,55,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--sand);color:var(--ink)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body.teacher{font-size:19px}
+.ar,[lang=ar]{font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;direction:rtl;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+svg{display:block}
+.app{max-width:520px;margin:0 auto;min-height:100vh;min-height:100dvh;position:relative}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(12,22,32,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:calc(8px + env(safe-area-inset-top)) 16px 8px;border-bottom:1px solid var(--line)}
+.toprow{display:flex;align-items:center;gap:8px}
+.toptitle{flex:1;min-width:0;font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toptitle small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.ibtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#132532;display:grid;place-items:center;font-size:17px;font-weight:700;flex:none}
+.ibtn.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prog{height:6px;background:#182c3a;border-radius:6px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--ochre));border-radius:6px;transition:width .4s}
+
+/* screens */
+.screen{display:none;padding:18px 16px 120px}
+.screen.active{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kicker{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:#3a2326;padding:4px 10px;border-radius:99px}
+h1,h2{margin:10px 0 2px;line-height:1.2}
+h1{font-size:30px}
+h2{font-size:25px}
+.teacher h2{font-size:28px}
+.hsub{margin:0 0 14px;color:var(--clay);font-size:18px;font-weight:700}
+p{margin:0 0 10px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card.flat{box-shadow:none}
+.key{background:#2e2a1c;border:1px solid #5a4a26;border-left:6px solid var(--ochre);border-radius:14px;padding:12px 14px;margin:14px 0}
+.key b.term{color:var(--terra)}
+.key .ar{margin-top:4px}
+.hl{background:linear-gradient(transparent 55%,#F6D88E 55%);font-weight:700}
+.muted{color:var(--muted);font-size:14px}
+.center{text-align:center}
+
+/* bilingual */
+.bi{position:relative;margin-bottom:10px}
+.bi>.en{margin:0}
+.bi>.ar{display:none;margin:8px 0 0;background:var(--cream);border-radius:12px;padding:8px 12px;font-size:1.02em;line-height:1.8}
+.bi.show>.ar,body.arall .bi>.ar{display:block}
+.arbtn{display:inline-flex;align-items:center;gap:4px;margin-top:6px;border:1px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:2px 12px;font-size:13px;font-weight:700;font-family:"Geeza Pro","Segoe UI",Tahoma,sans-serif}
+body.arall .arbtn{display:none}
+.bi.show .arbtn{background:var(--clay);color:#fff;border-color:var(--clay)}
+
+/* Zayed */
+.zrow{display:flex;gap:10px;align-items:flex-end;margin:14px 0}
+.zav{width:96px;flex:none}
+.zav svg{width:100%;height:auto}
+.bubble{position:relative;flex:1;background:#132532;border:2px solid var(--teal);border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:.96em}
+.bubble .who{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:2px}
+.zbig{width:140px;margin:0 auto}
+.zav.bob svg{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+
+/* buttons */
+.btn{border:none;border-radius:14px;padding:12px 18px;font-weight:700;background:var(--teal);color:#fff;min-height:46px;box-shadow:0 3px 0 var(--teal-d)}
+.btn:active{transform:translateY(2px);box-shadow:none}
+.btn.alt{background:#132532;color:var(--ink);border:1px solid var(--line);box-shadow:0 3px 0 #3a4a55}
+.btn.terra{background:var(--terra);box-shadow:0 3px 0 #9E3F2C}
+.btn.ochre{background:var(--ochre);color:var(--ink);box-shadow:0 3px 0 #C29132}
+.btn.sm{padding:8px 12px;min-height:40px;font-size:15px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.btnrow.c{justify-content:center}
+
+/* nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--sand) 30%)}
+.navin{max-width:488px;margin:0 auto;display:flex;gap:10px}
+.nav .btn{flex:1}
+.nav .btn.back{flex:0 0 104px;white-space:nowrap}
+.count{font-size:12px;color:var(--muted);text-align:center;margin-top:4px}
+
+/* menu */
+.menu{position:fixed;inset:0;z-index:50;background:rgba(31,42,55,.45);display:none}
+.menu.open{display:block}
+.menupanel{position:absolute;top:0;bottom:0;left:0;width:min(86vw,360px);background:var(--paper);padding:calc(16px + env(safe-area-inset-top)) 12px 16px;overflow:auto;animation:slide .25s}
+@keyframes slide{from{transform:translateX(-100%)}}
+.menupanel button{display:flex;gap:10px;width:100%;text-align:left;border:none;background:none;padding:10px;border-radius:10px;font-size:15px;align-items:center}
+.menupanel button.cur{background:#123a3a;font-weight:700}
+.menupanel button span.n{width:26px;height:26px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:12px;flex:none}
+.menupanel button.seen span.n{background:var(--teal);color:#fff}
+
+/* teacher notes */
+.tnote{margin:16px 0;border:2px dashed var(--clay);border-radius:14px;background:#182c3a;padding:0}
+.tnote summary{padding:12px 14px;font-weight:800;color:var(--clay);cursor:pointer;list-style:none}
+.tnote summary::-webkit-details-marker{display:none}
+.tnote .tb{padding:0 14px 12px;font-size:.92em}
+.tnote ul{margin:4px 0 8px;padding-left:20px}
+.student .t-only,.teacher .s-only{display:none!important}
+
+/* figures */
+.fig{background:#132532;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:12px 0}
+.fig svg{width:100%;height:auto}
+.cap{font-size:14px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);background:var(--paper)}
+input[type=range]{width:100%;accent-color:var(--terra);height:34px}
+.rangelab{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px}
+
+/* story layers (hook) */
+.cliff{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.cliff button{border:none;min-height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);position:relative}
+.cliff button .tag{background:rgba(255,255,255,.9);color:var(--ink);text-shadow:none;border-radius:99px;padding:1px 10px;font-size:13px}
+.cliff button.done::after{content:"✓";position:absolute;right:10px}
+.cliff button.done .tag{margin-right:18px}
+.cliff button.next{outline:3px solid var(--ochre);outline-offset:-3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{outline-color:transparent}}
+.storybox{min-height:96px}
+
+/* options */
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:12px 14px;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.opt .ar{font-weight:500;font-size:.92em;color:var(--muted)}
+.opt.sel{border-color:var(--teal);background:#123a3a}
+.opt.right{border-color:var(--teal);background:#123a3a}
+.opt.wrong{border-color:var(--terra);background:#3a2326}
+.opt:disabled{cursor:default}
+
+/* comic */
+.comic{display:grid;gap:10px}
+.panel{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:16px;padding:10px}
+.panel svg{width:110px;height:auto;border-radius:12px}
+.panel .num{font-size:12px;font-weight:800;color:var(--terra)}
+
+/* toggle */
+.seg{display:flex;background:#182c3a;border-radius:14px;padding:4px;gap:4px;margin:10px 0}
+.seg button{flex:1;border:none;background:none;border-radius:10px;padding:10px 6px;font-weight:700;font-size:15px}
+.seg button.on{background:#132532;box-shadow:var(--shadow);color:var(--terra)}
+.family{display:flex;justify-content:space-around;align-items:flex-end;padding:14px 6px 6px}
+.person{text-align:center;font-weight:700;font-size:14px}
+.fig .family svg{margin:0 auto;width:auto;height:auto}
+.agebadge{display:inline-block;margin-top:4px;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:13px;min-width:70px;transition:all .3s}
+.agebadge.rel{background:var(--terra)}
+
+/* lab */
+.labbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.labbtns .btn{padding:10px 6px;font-size:14px}
+.msg{background:#123a3a;border-radius:14px;padding:10px 14px;margin:10px 0;border-left:5px solid var(--teal);min-height:48px}
+.msg.warn{background:#3a2326;border-left-color:var(--terra)}
+
+/* superposition stack */
+.stack{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:10px 0}
+.stack button{border:none;height:52px;position:relative;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.stack button .badge{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#132532;color:var(--ink);text-shadow:none;display:none;place-items:center;font-size:15px}
+.stack button.got .badge{display:grid;animation:pop .3s}
+.stack button.shake{animation:shake .4s}
+@keyframes pop{from{transform:translateY(-50%) scale(0)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flip{perspective:900px;height:210px;border:none;background:none;padding:0}
+.flip:last-child:nth-child(odd){grid-column:1/-1;height:170px}
+.flipin{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .flipin{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.face.front{background:#132532}
+.face.front svg{width:86px;height:auto;margin-bottom:6px}
+.face.front b{font-size:15px}
+.face.front .ar{font-size:13px;color:var(--clay);text-align:center}
+.face.back{background:var(--teal);color:#fff;transform:rotateY(180deg);font-size:13.5px;line-height:1.4;gap:6px}
+.face.back .ar{text-align:center;font-size:13px;opacity:.95}
+.tapme{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* steps */
+.steps{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.steps i{width:10px;height:10px;border-radius:50%;background:#3a4a55}
+.steps i.on{background:var(--terra);width:26px;border-radius:6px}
+
+/* elevator */
+.elev{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:start}
+.column{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.column div.ly{height:52px;border-bottom:1px solid rgba(0,0,0,.08);transition:filter .3s}
+.column div.ly.dim{filter:saturate(.35) brightness(1.15)}
+.column div.ly.cur{outline:3px solid var(--ink);outline-offset:-3px}
+.column .ev{position:absolute;left:0;right:0;height:0;border-top:3px dashed #132532}
+.column .ev span{position:absolute;right:4px;top:-11px;background:var(--terra);color:#fff;font-size:10px;padding:1px 5px;border-radius:6px;font-weight:700}
+.einfo{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:364px;box-shadow:var(--shadow)}
+.einfo svg{width:100%;height:auto;max-height:120px}
+.einfo h3{margin:6px 0 4px;font-size:17px}
+.etime{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.05em}
+.banner{background:var(--terra);color:#fff;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700;margin:6px 0}
+
+/* env cards */
+.envs{display:grid;gap:10px}
+.env{border:1px solid var(--line);background:#132532;border-radius:16px;padding:0;overflow:hidden;text-align:left}
+.env .row{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;padding:10px}
+.env svg{width:96px;height:auto}
+.env .reveal{display:none;border-top:1px solid var(--line)}
+.env.on .reveal{display:block;animation:fadein .4s}
+.env .reveal svg{width:100%}
+.env .reveal .t{padding:8px 12px 12px;font-size:15px}
+
+/* detective */
+.chips{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.chip{width:56px;height:56px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:24px;font-weight:800}
+.chip.used{opacity:.3}
+.slots{display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0}
+.slot{width:48px;height:48px;border-radius:12px;border:2px dashed var(--stone);display:grid;place-items:center;font-size:22px;font-weight:800;background:#132532}
+.slot.f{border-style:solid;border-color:var(--teal);color:var(--teal)}
+
+/* clock */
+.daybar{position:relative;height:56px;margin:26px 4px 8px;border-radius:12px;background:linear-gradient(90deg,#1F2A37 0%,#34495E 18%,#F6C177 30%,#BFE3EA 50%,#F6C177 75%,#34495E 88%,#1F2A37 100%)}
+.daybar i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:2px solid #132532;background:var(--terra);box-shadow:0 2px 6px rgba(0,0,0,.3);transition:transform .2s}
+.daybar i.on{background:var(--ochre);transform:scale(1.7);z-index:2}
+.dayev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.dayev button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 10px;text-align:left;font-size:14px;font-weight:700}
+.dayev button small{display:block;color:var(--terra);font-size:12px}
+.dayev button.on{border-color:var(--ochre);background:#2e2a1c}
+.hours{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 4px}
+
+/* claim builder */
+.claim{background:#132532;border:2px solid var(--ink);border-radius:16px;padding:14px;font-size:17px;min-height:90px}
+.claim .piece{display:inline-block;background:#123a3a;color:var(--teal-d);font-weight:700;border-radius:8px;padding:0 6px;margin:2px}
+.pieces{display:grid;gap:8px;margin:12px 0}
+.pieces button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;font-weight:600}
+.pieces button.ok{border-color:var(--teal);background:#123a3a}
+.pieces button.no{border-color:var(--terra);background:#3a2326;text-decoration:line-through;opacity:.7}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.check .bi{flex:1;margin:0}
+.check .bi>.ar{margin-top:4px}
+.check input{width:24px;height:24px;accent-color:var(--teal);flex:none;margin-top:2px}
+
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--muted);font-size:14px}
+.qdots{display:flex;gap:4px}
+.qdots i{width:14px;height:6px;border-radius:4px;background:#3a4a55}
+.qdots i.r{background:var(--teal)}.qdots i.w{background:var(--terra)}.qdots i.c{background:var(--ink)}
+.qtext{font-size:19px;font-weight:700;margin:12px 0 4px}
+.qtext+.ar{font-size:16px;color:var(--clay);margin-bottom:6px}
+.feedback{display:none;border-radius:14px;padding:12px 14px;margin:10px 0}
+.feedback.show{display:block;animation:fadein .3s}
+.feedback.ok{background:#123a3a;border-left:5px solid var(--teal)}
+.feedback.no{background:#3a2326;border-left:5px solid var(--terra)}
+
+/* result */
+.cert{background:#132532;border:3px solid var(--ochre);border-radius:22px;padding:20px 16px;text-align:center;position:relative;overflow:hidden}
+.cert .score{font-size:56px;font-weight:900;color:var(--terra);line-height:1}
+.stars{font-size:34px;letter-spacing:4px}
+.namebox{width:100%;font-size:19px;padding:14px;border-radius:14px;border:2px solid var(--line);background:#132532;margin:8px 0}
+.namebox:focus{outline:none;border-color:var(--teal)}
+.confetti{position:fixed;top:-20px;width:10px;height:14px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+.outcomes li{margin-bottom:6px}
+.pill{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+
+/* v2 photos & textures */
+.hero{position:relative;border-radius:22px;overflow:hidden;margin-bottom:6px;box-shadow:var(--shadow)}
+.hero .ph{border-radius:0}
+.herotxt{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 14px;background:linear-gradient(rgba(20,14,10,0),rgba(20,14,10,.82));color:#fff}
+.herotxt h1{color:#fff;font-size:27px;margin:8px 0 2px}
+.herotxt .ar{color:#F6D88E;font-weight:700;margin:0}
+.kicker.light{background:rgba(255,255,255,.92)}
+.ph{background-size:cover;background-position:center;background-color:#E8DDCC;width:100%;display:block}
+figure.photo{margin:12px 0;background:#132532;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+figure.photo figcaption{padding:8px 12px 10px;font-size:14.5px;line-height:1.45}
+figure.photo figcaption.bi{margin:0}
+.credit{display:block;font-size:10px;color:#98A0AB;margin-top:4px;line-height:1.3}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.duo figure.photo{margin:6px 0}
+.duo figcaption{font-size:13px!important}
+.duo figcaption .ar{display:block;text-align:left;color:var(--clay);font-size:13px}
+.profile{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:18px;padding:10px;margin:12px 0;box-shadow:var(--shadow)}
+.profile .ph{aspect-ratio:401/560;border-radius:12px}
+.profile .bi{margin:0}
+.rock{position:relative;background-color:var(--c)!important;background-image:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,rgba(0,0,0,.05) 3px 7px),linear-gradient(180deg,rgba(255,255,255,.2),rgba(0,0,0,.2))!important;overflow:hidden}
+.rock::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.4;mix-blend-mode:multiply;pointer-events:none}
+.rock.dark{color:#1F2A37!important;text-shadow:none!important}
+.einfo .ph{aspect-ratio:3/2;border-radius:10px;margin:6px 0}
+.einfo .zmini{width:90px;margin:4px auto}
+.env .row .ph{width:96px;height:80px;border-radius:12px}
+.env .reveal .ph{aspect-ratio:16/9}
+.face.front .ph{height:92px;border-radius:12px;margin-bottom:6px}
+.dayphoto{aspect-ratio:16/9;border-radius:12px;margin:8px 0}
+.credits{padding-left:18px;font-size:13px}
+.credits li{margin-bottom:6px}
+.nojsmsg{display:none;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:12px;margin:12px 0}
+.nojs .screen{display:block!important;padding-bottom:28px;border-bottom:6px solid var(--line)}
+.nojs .nav,.nojs .menu,.nojs #menuBtn,.nojs #arAll,.nojs .needjs,.nojs .arbtn,.nojs .zav,.nojs .prog,.nojs .s-only.needjs{display:none!important}
+.nojs .bi>.ar{display:block}
+.nojs .student .t-only,.nojs .teacher .s-only{display:none!important}
+.nojs .nojsmsg{display:block}
+.nojs .zrow{display:block}
+
+/* ecology lesson */
+.ptabs{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.ptabs button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:#132532;font-weight:800}
+.ptabs button.on{border-color:var(--terra);color:var(--terra)}
+.ptabs button.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.ptabs button.done.on{box-shadow:0 0 0 3px var(--terra)}
+.plevel{font-size:12px;font-weight:800;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.sitems{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.sitem{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center}
+.sitem .em{font-size:30px;display:block;line-height:1.2}
+.sitem .ar{display:block;text-align:center;font-size:13px;color:var(--clay)}
+.sitem em{display:block;font-style:normal;font-weight:800;font-size:13px;margin-top:4px}
+.sitem.bio{border-color:var(--teal);background:#123a3a}.sitem.bio em{color:var(--teal-d)}
+.sitem.abio{border-color:var(--ochre);background:#2e2a1c}.sitem.abio em{color:var(--clay)}
+.sbtns{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.sbtns button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-size:12.5px;font-weight:700;line-height:1.15}
+.sbtns small{font-family:"Geeza Pro",Tahoma,sans-serif;font-weight:500}
+.mrow{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.mrow:last-child{border-bottom:none}
+.ml b{display:block;font-size:14px}.ml .ar{display:block;font-size:12px;color:var(--clay);text-align:left}
+.mi{font-size:20px;letter-spacing:1px;line-height:1.3;word-break:break-all}
+.codes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.codes div{background:#132532;border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-weight:700;font-size:14px}
+.codes b{display:block;font-size:30px;line-height:1}
+.codes .ar{display:block;text-align:center;font-weight:500;font-size:12.5px;color:var(--muted)}
+.plus{color:var(--teal)}.zero{color:var(--stone)}.minus{color:var(--terra)}
+.sprow{border-top:1px dashed var(--line);padding:10px 0;display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}
+.sprow .ar{display:block;font-size:13px;color:var(--clay);text-align:left}
+.symbtns{display:flex;gap:6px}
+.symbtns button{width:46px;height:46px;border-radius:12px;border:2px solid var(--line);background:#132532;font-size:22px;font-weight:800}
+.symbtns button.right{border-color:var(--teal);background:var(--teal);color:#fff}
+.symbtns button.wrong{border-color:var(--terra);background:#3a2326}
+.symbtns button:disabled:not(.right){opacity:.35}
+.why{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink)}
+.why .ar{color:var(--muted);text-align:right}
+.relname{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#2e2a1c;border:2px solid var(--ochre);border-radius:16px;padding:12px;margin:10px 0;animation:fadein .4s}
+.rcode{font-size:24px;font-weight:900;color:var(--terra);background:#132532;border-radius:12px;padding:8px 10px}
+.relname b{font-size:19px}.relname .ar{display:block;color:var(--clay);font-weight:700}
+.relname p{margin:4px 0 0;font-size:14px}.relname p .ar{font-weight:500;color:var(--muted)}
+.bigcode{font-size:30px;font-weight:900;color:var(--terra);margin-bottom:6px}
+.sortcards{display:grid;gap:8px;margin:10px 0}
+.sc{text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px}
+.sc .ar{display:block;font-size:13px;color:var(--clay)}
+.sc em{display:block;font-style:normal;font-size:13.5px;margin-top:4px}
+.sc em .ar{color:var(--muted)}
+.sc.same{border-color:var(--teal);background:#123a3a}.sc.diff{border-color:var(--terra);background:#3a2326}
+.ppb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.ppb button{border:1px solid var(--line);background:var(--sand);border-radius:10px;padding:8px 4px;font-weight:700;font-size:13px}
+.uae{display:grid;gap:4px}
+.ucard .duo{margin-bottom:8px}.ucard>.ph{margin-bottom:8px}
+.bigemoji{font-size:54px;text-align:center;background:var(--sand);border-radius:12px;padding:10px;margin-bottom:8px}
+.rchips{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;font-weight:700;font-size:13.5px;text-align:left}
+.rchips button .ar{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.rchips button.right{border-color:var(--teal);background:#123a3a}.rchips button.wrong{border-color:var(--terra);background:#3a2326}
+
+.tabpane{display:none}.tabpane.on{display:block;animation:fadein .3s}
+.nojs .tabpane{display:block}
+#ecoTabs button{font-size:13px;padding:10px 2px}
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.chain button{position:relative;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center}
+.chain .em{font-size:30px;display:block}.chain .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.chain button.done{border-color:var(--teal);background:#123a3a}
+.chain em{position:absolute;top:6px;left:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:13px}
+.mcards{display:grid;gap:10px;margin:10px 0}
+.mcard{display:grid;grid-template-columns:110px 1fr;gap:10px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:8px;align-items:start}
+.mcard .ph{height:100px;border-radius:12px}
+.mcard .ar{display:block;color:var(--clay);font-size:13px}
+.mcard p{display:none;margin:4px 0 0;font-size:14px}.mcard p .ar{color:var(--muted)}
+.mcard.on{border-color:var(--teal)}.mcard.on p{display:block}.mcard.on .tapme{display:none}
+.ppb.three{grid-template-columns:1fr 1fr 1fr}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.zone{border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;text-align:center}
+.zone .ph{aspect-ratio:1/1;border-radius:10px;margin-bottom:4px}
+.zone .ar{display:block;text-align:center;font-size:12.5px;color:var(--clay)}
+.zone em{display:none;font-style:normal;font-size:12px;margin-top:4px;text-align:left}.zone em .ar{text-align:right;color:var(--muted)}
+.zone.on{border-color:var(--teal);background:#123a3a}.zone.on em{display:block}
+.plab svg{width:100%;height:auto;border-radius:12px}
+.sl{display:block;margin-top:8px;font-size:14px;font-weight:700}
+.sl input{display:block}
+.sitems{grid-template-columns:1fr 1fr 1fr!important}
+.sitem b{font-size:13.5px}.sbtns{grid-template-columns:1fr!important}
+#tolSvg{width:100%;height:auto}
+
+.nest{position:relative;height:200px;margin:10px 0;display:grid;place-items:center}
+.ring{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:calc(60px + var(--i)*54px);height:calc(30px + var(--i)*34px);border-radius:999px 999px 0 0;border:2px dashed var(--line);background:rgba(255,255,255,.4);display:flex;justify-content:center;transition:all .3s}
+.ring span{font-size:11px;font-weight:700;color:var(--muted);margin-top:4px;white-space:nowrap}
+.ring.on{border-style:solid;border-color:var(--teal);background:rgba(42,157,143,.08)}
+.ring.on span{color:var(--teal-d)}
+.ring.cur{border-color:var(--terra);background:rgba(200,85,61,.10)}.ring.cur span{color:var(--terra)}
+.slots.six{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots.six .slot{width:auto;height:54px;font-size:12px;font-weight:700;padding:2px;text-align:center;position:relative;line-height:1.15}
+.slots.six .slot small{position:absolute;top:2px;left:5px;font-size:10px;color:var(--muted)}
+.wrapchips{flex-wrap:wrap}
+.chip.wide{width:auto;height:auto;padding:8px 10px;font-size:14px;border-radius:12px}
+.chip.wide .ar{display:block;font-size:12px;font-weight:500;color:var(--clay)}
+.matcher{display:grid;grid-template-columns:1fr 1.3fr;gap:8px;margin:10px 0}
+.mcol{display:grid;gap:8px}
+.ml,.mr{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px;text-align:left;font-weight:700;font-size:13.5px}
+.ml .ar,.mr .ar{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ml.sel{border-color:var(--terra);background:#3a2326}
+.ml.done,.mr.done{border-color:var(--teal);background:#123a3a;opacity:.8}
+.zones.biomes{grid-template-columns:1fr 1fr}
+.ladder{display:grid;gap:8px;margin:10px 0}
+.rung{display:grid;grid-template-columns:28px 92px 1fr;gap:10px;align-items:center;background:#132532;border:1px solid var(--line);border-radius:14px;padding:8px}
+.rung .rn{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:grid;place-items:center}
+.rung .ph{height:70px;border-radius:10px}
+.rung .bi{margin:0;font-size:14px}
+.zoomcard .plevel{margin-bottom:6px}
+
+.m{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:"Cambria Math",Cambria,"Times New Roman",serif;font-size:1.08em;white-space:nowrap}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 2px;font-size:.88em;line-height:1.15}
+.fr>span:first-child{border-bottom:1.6px solid currentColor;padding:0 3px}
+.mhero{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#1F2A37 0%,#2A9D8F 120%)}
+.mhero span{position:absolute;color:rgba(255,255,255,.85);font:700 34px "Cambria Math",Cambria,serif}
+.mhero span:nth-child(2n){color:#E9B44C}
+.wcards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.wc{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:86px;font-size:15px}
+.wc .ar{display:block;font-size:13px;color:var(--clay)}
+.wc .sym{display:block;font:800 26px "Cambria Math",Cambria,serif;color:var(--terra);margin-top:4px}
+.wc .wex{display:none;font-size:12.5px;margin-top:6px;color:var(--ink);line-height:1.4}
+.wc.open{border-color:var(--teal);background:#123a3a}
+.wc.open .wex{display:block}
+.phrase{font-size:17px;line-height:1.6;font-style:italic}
+.phrase .hl{background:#2e2a1c;border-radius:6px;padding:1px 3px;font-weight:700;font-style:normal}
+.phrase .donec{color:var(--teal-d)}
+.expr{text-align:center;font-size:26px;margin:12px 0 4px;min-height:44px;overflow-x:auto}
+.expr.sm{font-size:21px}
+.expr mark{background:#2e2a1c;border-radius:6px;padding:0 3px;box-shadow:0 0 0 2px #E9B44C}
+.hist{text-align:center;font-size:15px;color:var(--muted);line-height:1.6}
+.oops{margin:10px 0;padding-left:0;list-style:none;counter-reset:o}
+.oops li{counter-increment:o;position:relative;background:#132532;border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 46px;margin-bottom:6px}
+.oops li::before{content:counter(o);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--terra);color:#fff;font-weight:800;display:grid;place-items:center}
+.oops li .en,.oops li .ar{margin:0}
+.eline{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 12px;margin-top:6px;font-size:19px}
+.eline.good{border-color:var(--teal);background:#123a3a}
+.eline.bad{border-color:var(--terra);background:#3a2326;text-decoration:line-through;text-decoration-color:var(--terra)}
+.eline.faded{opacity:.4}
+.nojsonly{display:none}.nojs .nojsonly{display:block}
+.nojs .expr:empty,.nojs .hist:empty{display:none}
+
+
+
+
+/* ---- v2 additions: powers lesson ---- */
+.mi{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:.95em}
+.ic{display:inline-block;width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:2px}
+.ic svg{width:100%;height:100%;display:block}
+.m sup,.mhero sup,.expr sup{font-size:.62em;vertical-align:.7em;line-height:0;margin-left:1px}
+.mhero span sup{vertical-align:.8em}
+.scene svg,.gp svg{width:100%;height:auto}
+.scene .pop{animation:popin .55s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes popin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.chartcard{margin:6px 0 4px;padding:10px 12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grow{animation:growbar .6s ease both;transform-origin:center bottom;transform-box:fill-box}
+@keyframes growbar{from{transform:scaleY(.1)}to{transform:none}}
+.gp{background-color:#132532;background-image:linear-gradient(rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.10) 1px,transparent 1px),linear-gradient(rgba(42,157,143,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(42,157,143,.05) 1px,transparent 1px);background-size:40px 40px,40px 40px,8px 8px,8px 8px}
+.gp .pop{animation:popin .45s ease both;transform-box:fill-box;transform-origin:center}
+.gp .blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{stroke-opacity:.25}}
+.cube3d{position:relative;width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,#132532 0%,#EAF4F2 70%,#DCEBE8 100%);margin:12px 0 0}
+.cube3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.cube3d canvas:active{cursor:grabbing}
+.formula{background:var(--ink);color:#fff;border-radius:0 0 var(--r) var(--r);padding:10px 14px;text-align:center;font-size:18px;margin:-4px 0 8px}
+.formula .muted{color:#C9D3DD}
+.formula b{color:var(--ochre)}
+.fchips{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:6px 0 4px}
+.fchip{position:relative;min-width:54px;min-height:54px;border-radius:14px;border:2px solid var(--ink);background:#132532;font-size:20px;padding:4px 8px;transition:transform .2s}
+.fchip:active{transform:scale(.94)}
+.fchip em{position:absolute;top:-9px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center}
+.fchips .dot{font-size:22px;color:var(--muted)}
+.fchip.g0{border-color:#2A9D8F;background:#123a3a}.fchip.g0 em{background:#2A9D8F}
+.fchip.g1{border-color:#C8553D;background:#3a2326}.fchip.g1 em{background:#C8553D}
+.fchip.g2{border-color:#C29132;background:#2e2a1c}.fchip.g2 em{background:#C29132}
+.g0t{color:#1F7A6F}.g1t{color:#C8553D}.g2t{color:#A8741C}
+.qm{display:inline-block;color:var(--stone);border:2px dashed var(--stone);border-radius:8px;padding:0 8px;margin:0 2px}
+.vtable{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px;background:#132532;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.vtable th{background:var(--ink);color:#fff;font-size:13px;padding:6px}
+.vtable td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:center;font-family:"Cambria Math",Cambria,serif}
+.vtable td small{color:var(--muted);font-family:inherit}
+.vtable tr.pos td:last-child{color:var(--teal-d);font-weight:700}
+.vtable tr.neg td:last-child{color:var(--terra);font-weight:700}
+.vtable tr.cur td{background:#2e2a1c;font-weight:800}
+.sorter{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.scard{border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px;text-align:center;min-height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.scard .sq{font-size:24px}
+.scard .rv{display:none;font-size:13px;line-height:1.35}
+.scard .rv .ar{display:block;color:var(--muted);text-align:center}
+.scard.open .rv{display:block;animation:fadein .3s}.scard.open .tapme{display:none}
+.scard.pos{border-color:var(--teal);background:#123a3a}.scard.pos .rv b{color:var(--teal-d)}
+.scard.neg{border-color:var(--terra);background:#3a2326}.scard.neg .rv b{color:var(--terra)}
+.calc{text-align:center;font-size:22px;min-height:34px;color:var(--teal-d);font-weight:700}
+.calc .cnt{display:inline-block;min-width:2.2em;background:#2e2a1c;border:2px solid var(--ochre);border-radius:10px;padding:0 8px;color:var(--ink)}
+.machine{padding:14px 18px}
+.sline{font-size:21px;padding:4px 0;border-bottom:1px dashed rgba(42,157,143,.25);animation:fadein .35s ease both;display:flex;gap:10px;align-items:baseline;overflow-x:auto}
+.sline:last-child{border-bottom:none;font-size:24px}
+.sline .sn{width:16px;flex:none;color:var(--muted);font-weight:700}
+.fbig{font-size:28px;margin-bottom:6px;color:var(--terra)}
+.face.back span{display:block}
+.face.back .ar{margin-top:6px}
+.msg svg{color:var(--teal-d)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* laptop & tablet: use the wider screen */
+@media (min-width:860px){
+  .app{max-width:960px}
+  .navin{max-width:928px}
+  body{font-size:18px}
+  .screen{padding:28px 32px 140px}
+  .top{padding-left:32px;padding-right:32px}
+  h1{font-size:38px}
+  h2{font-size:32px}
+  .mhero{aspect-ratio:21/9}
+  .flips{grid-template-columns:repeat(3,1fr)}
+  .flip:last-child:nth-child(odd){grid-column:auto;height:210px}
+  .sorter{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  .app{max-width:1180px}
+  .navin{max-width:1148px}
+  .bench{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+  .bench>.side{position:sticky;top:96px}
+  .bench .sorter{grid-template-columns:1fr 1fr}
+  .cube3d{aspect-ratio:16/11}
+}
+.nojs .nojsonly .m{white-space:normal}
+.nojs .fig,.nojs .cube3d,.nojs .formula{display:none!important}
+.mono{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.mcard2{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.mcard2 .mq{font-size:24px;min-height:44px;display:grid;place-items:center}
+.mcard2 .mb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.mcard2 .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13.5px;line-height:1.2}
+.mcard2 .mb button small{display:block;font-weight:500;font-size:11.5px;color:var(--clay)}
+.mcard2 .mb button.pick{border-color:var(--ink)}
+.mcard2 .mwhy{display:none;text-align:left;font-size:13.5px;margin-top:8px;line-height:1.4}
+.mcard2 .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.mcard2.right{border-color:var(--teal);background:#123a3a}.mcard2.wrong{border-color:var(--terra);background:#3a2326}
+.mcard2.right .mwhy,.mcard2.wrong .mwhy{display:block;animation:fadein .3s}
+.cfc,b.cf{color:#C8553D}.vrc,b.vr{color:#3A6EA5}
+.mmachine .hist div{margin:2px 0}
+@media (min-width:860px){.mono{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1100px){.mono{grid-template-columns:repeat(5,1fr)}}
+.duo2{display:grid;gap:12px;margin:12px 0}
+.duo2 svg{width:100%;height:auto}
+.duo2 .card{margin:0}
+.draw{stroke-dasharray:300;stroke-dashoffset:300;animation:drawln 1.2s .3s ease forwards}
+@keyframes drawln{to{stroke-dashoffset:0}}
+@media (min-width:860px){.duo2{grid-template-columns:1fr 1fr}}
+#dsSvg{max-width:640px;margin:0 auto}#sqSvg{max-height:420px}
+.mcard2 .mb.three{grid-template-columns:1fr 1fr 1fr}
+.mcard2 .mb.three button{font-size:12.5px;padding:6px 1px}
+.breathe{animation:breathe 2.4s ease-in-out infinite;transform-origin:center bottom;transform-box:fill-box}
+@keyframes breathe{50%{transform:scale(1.02,.985)}}
+@media (min-width:1100px){#nlCards{grid-template-columns:repeat(4,1fr)}}
+/* ---- science L3 ---- */
+.ph{background-size:cover;background-position:center;border-radius:14px;width:100%}
+.hot .ph{position:relative}
+.spot{position:absolute;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;border:3px solid #132532;background:var(--ochre);color:var(--ink);font-weight:800;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.35);animation:spotp 1.6s infinite}
+.spot.seen{background:var(--teal);color:#fff;animation:none}
+.spot.on{outline:3px solid var(--ink)}
+@keyframes spotp{0%{box-shadow:0 0 0 0 rgba(233,180,76,.8)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.idg{display:grid;grid-template-columns:1fr;gap:12px}
+.idc{background:#132532;border:2px solid var(--line);border-radius:16px;padding:10px}
+.idc .mb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+.idc .mb button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 2px;font-weight:700;font-size:13px;line-height:1.2}
+.idc .mb button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.idc .mb button.pick{border-color:var(--ink)}
+.idc .mwhy{display:none;font-size:13.5px;margin-top:8px;line-height:1.4}
+.idc .mwhy .ar{display:block;color:var(--muted);margin-top:2px}
+.idc.right{border-color:var(--teal);background:#123a3a}.idc.wrong{border-color:var(--terra);background:#3a2326}
+.idc.right .mwhy,.idc.wrong .mwhy{display:block;animation:fadein .3s}
+.claims2{display:grid;gap:10px}
+.claim2{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:10px 12px;font-size:15px;line-height:1.4}
+.claim2 b{display:block;color:var(--clay);margin-bottom:2px}
+.claim2 .ar{display:block;color:var(--muted);margin-top:4px;direction:rtl;text-align:right}
+.claim2.right{border-color:var(--teal);background:#123a3a}.claim2.wrong{border-color:var(--terra);background:#3a2326}
+.drop{animation:dropf 1s linear infinite}
+@keyframes dropf{from{transform:translateY(-10px);opacity:0}30%{opacity:1}to{transform:translateY(30px);opacity:0}}
+@media (min-width:900px){.idg{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.spot,.drop{animation:none}}
+/* ---- science L4 ---- */
+#crSvg .lay,#mlSvg .lay{cursor:pointer}
+.ftest{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.ftest button{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:8px;font-weight:700;font-size:14px;line-height:1.2}
+.ftest button svg{width:40px;height:40px;flex:none}
+.ftest button small{display:block;font-weight:500;font-size:12px;color:var(--clay)}
+.ftest button.on{border-color:var(--terra);background:#2e2a1c}
+.crit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+.ct{background:#132532;border:2px solid var(--line);border-radius:14px;padding:8px;text-align:center;font-size:13.5px}
+.ct .ci svg{width:40px;height:40px}
+.ct b{display:block}.ct small{display:block;color:var(--clay)}
+.ct .mk svg{width:16px;height:16px;vertical-align:-3px}
+.ct p{margin:6px 0 0;font-size:12.5px;line-height:1.35;text-align:left}
+.ct p .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.ct.ok{border-color:var(--teal);background:#123a3a}.ct.no{border-color:var(--terra);background:#3a2326}
+.seg.wrap{flex-wrap:wrap}.seg.wrap button{flex:1 1 40%}
+.kbcards{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.mtq{font-weight:600;font-size:15px;line-height:1.4;min-height:60px}
+.mtq .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;margin-top:4px;font-size:14px}
+.ashmove{animation:ashm 2.4s ease-in-out infinite alternate}
+@keyframes ashm{from{transform:translateX(-20px)}to{transform:translateX(30px)}}
+@media (min-width:700px){.kbcards{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.ashmove{animation:none}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}.ct{display:grid;grid-template-columns:44px 1fr;column-gap:8px;text-align:left;align-items:center}.ct .ci{grid-row:span 2}.ct p{grid-column:1/-1}}
+/* ---- science L5 ---- */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:5px 9px;font-weight:700;font-size:13px;line-height:1.15}
+.chips button small{display:block;font-weight:500;font-size:11px;color:var(--clay)}
+.chips button.on{border-color:var(--terra);background:#2e2a1c}
+.eras{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+.era figcaption{padding:4px 2px}
+.era .erad{display:inline-block;background:#2a2440;color:#4B3B5A;border-radius:10px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.era b{display:block;font-size:18px;margin-top:4px}.era .arn{display:block;color:var(--clay);font-size:14px;direction:rtl;text-align:left}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:8px 0;font-size:14px}
+.crumbs button{border:none;background:#182c3a;border-radius:10px;padding:5px 10px;font-weight:700}
+.crumbs button:last-of-type{background:var(--ink);color:#fff}
+.tx{display:grid;gap:6px}
+.tx button{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:10px;align-items:center;text-align:left;border:2px solid rgba(0,0,0,.08);background:var(--c);border-radius:12px;padding:9px 34px 9px 10px;font-size:15px}
+.tx .tu{grid-row:span 2;font-size:11px;font-weight:800;text-transform:uppercase;color:#5B4630;background:rgba(255,255,255,.6);border-radius:8px;padding:2px 6px}
+.tx b{font-size:16px}.tx small{grid-column:2;color:#5B4630}
+.tx .td{grid-row:1/span 2;grid-column:3;font-weight:700;font-size:13px;color:#1F2A37}
+.tx .go{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:800;color:#1F2A37}
+.tx .pin{grid-column:1/-1;margin-top:4px;font-size:12.5px;font-weight:800;color:var(--terra)}
+.tx button.here{border-color:var(--terra)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin:8px 0;font-size:13.5px;font-weight:700}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:5px;vertical-align:-2px}
+#eoSvg .eo{cursor:pointer}
+@media (min-width:700px){.eras{grid-template-columns:1fr 1fr 1fr}}
+/* ---- G9 L4 ---- */
+.feedback.hint{display:block;background:#2e2a1c;border:2px solid var(--ochre);border-radius:14px;padding:10px 12px}
+.wu{display:grid;gap:10px}
+.wuq{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.wuq .qq{font-weight:700}.wuq .qq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.wuq .wo{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wuq .wo button{border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:6px 10px;font-weight:700;font-size:14px}
+.wuq .wo button.show{background:#132532;border-style:dashed;color:var(--clay)}
+.wuq .wo button.right{border-color:var(--teal);background:#123a3a}.wuq .wo button.wrong{border-color:var(--terra);background:#3a2326}
+.wuq .wa{display:none;margin-top:8px;font-size:14px}.wuq .wa .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.wuq.done .wa{display:block;animation:fadein .3s}
+.chain{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:nowrap;margin:10px 0}
+.ccard{flex:1 1 0;min-width:0;max-width:150px;text-align:center;border-radius:12px;background:#132532;border:2px solid var(--line);padding:4px;position:relative;transition:opacity .3s,transform .3s}
+.ccard .ph{border-radius:9px;aspect-ratio:1/1}
+.ccard b{display:block;font-size:13px;margin-top:3px;line-height:1.15}.ccard small{display:block;font-size:11px;color:var(--clay)}
+.ccard.hide{opacity:0;transform:translateY(8px)}
+.ccard.blank{border-style:dashed;background:#182c3a;display:grid;place-items:center;min-height:90px;color:var(--muted);font-weight:800;font-size:22px}
+.ccard .lv{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:10px;font-size:11px;font-weight:800;padding:1px 7px;white-space:nowrap}
+.carr{flex:none;width:22px;color:var(--terra);transition:opacity .3s}.carr.hide{opacity:0}
+.carr svg{width:22px;height:22px;display:block}
+.pick{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.pick button{display:flex;align-items:center;gap:6px;border:2px solid var(--line);background:#132532;border-radius:12px;padding:4px 10px 4px 4px;font-weight:700;font-size:14px}
+.pick button .ph{width:36px;height:36px;border-radius:8px}
+.pick button.wrong{border-color:var(--terra);background:#3a2326}.pick button.right{border-color:var(--teal);background:#123a3a}
+.why{background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.why .wq{font-weight:700}.why .wq .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb{display:grid;gap:6px;margin-top:8px}
+.why .wb button{text-align:left;border:2px solid var(--line);background:var(--sand);border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600}
+.why .wb button .ar{display:block;font-weight:500;color:var(--muted);direction:rtl;text-align:right}
+.why .wb button.right{border-color:var(--teal);background:#123a3a}.why .wb button.wrong{border-color:var(--terra);background:#3a2326}
+.why .wr{margin-top:8px;font-size:14px}.why .wr .ar{display:block;color:var(--muted);direction:rtl;text-align:right}
+.web{position:relative;width:100%;aspect-ratio:16/11;background:#132532;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.web svg{position:absolute;inset:0;width:100%;height:100%}
+.wn{position:absolute;transform:translate(-50%,-50%);width:15%;aspect-ratio:1/1;border-radius:50%;border:3px solid #132532;box-shadow:0 2px 8px rgba(0,0,0,.25);padding:0;background:#3a4a55;transition:opacity .3s,box-shadow .3s}
+.wn .ph{width:100%;height:100%;border-radius:50%}
+.wn span{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:11px;font-weight:800;background:rgba(255,255,255,.92);border-radius:8px;padding:0 5px;white-space:nowrap;color:var(--ink)}
+.wn.on{box-shadow:0 0 0 4px var(--ochre),0 2px 8px rgba(0,0,0,.25)}.wn.dim{opacity:.3}.wn.gone{opacity:.12;filter:grayscale(1)}
+.eqn{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:10px 0;font-weight:700}
+.eqn span{background:#132532;border:2px solid var(--line);border-radius:10px;padding:4px 9px;font-size:14px}
+.eqn span.g{border-color:var(--teal)}.eqn i{font-style:normal;color:var(--terra);font-weight:800}
+.rc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc .ccard{max-width:none}.rc .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.4)}
+.readout{font-family:ui-monospace,Menlo,monospace;background:var(--ink);color:#F7F1E8;border-radius:12px;padding:8px 12px;font-size:13.5px;margin-top:8px;line-height:1.5}
+.credits{padding-left:18px;font-size:13px}.credits li{margin-bottom:6px}
+@media (max-width:420px){.ccard b{font-size:11.5px}.carr{width:16px}.carr svg{width:16px;height:16px}}
+/* ---- G9 L5 ---- */
+.tchip{display:grid;place-items:center;min-height:70px;padding:8px 4px;background:#132532}
+.tchip.lost{border-color:var(--terra);background:#3a2326}
+.loop{flex:none;font-size:26px;font-weight:800;color:var(--teal);margin-left:2px}
+.wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.wheel .ccard{max-width:none;cursor:pointer}
+.wheel .ccard.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.split{display:flex;border-radius:12px;overflow:hidden;margin-top:10px;font-size:13px;font-weight:800;color:#fff}
+.split .sp{padding:8px 6px;white-space:nowrap;overflow:hidden}.split .a{background:#5B8BB0}.split .b{background:#2A9D8F;text-align:center}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tg{display:flex;align-items:center;gap:8px;text-align:left;border:2px solid var(--line);background:#132532;border-radius:14px;padding:6px;font-size:13.5px;opacity:.6}
+.tg.on{opacity:1;border-color:var(--teal)}
+.tg .ph{width:44px;height:44px;flex:none;border-radius:10px;display:grid;place-items:center;background-color:#3a2326}
+.tg .ph svg{width:32px;height:32px}
+.tg small{display:block;color:var(--clay);font-weight:500}
+.tg i{margin-left:auto;font-style:normal;font-weight:800;font-size:11px;color:var(--muted)}.tg.on i{color:var(--teal)}
+.rc .ccard.faded{opacity:.35}
+@media (max-width:420px){.toggles{grid-template-columns:1fr}}
+/* ---- G9 L6 ---- */
+.pond{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10}
+.pond .ph{position:absolute;inset:0;border-radius:0;transition:opacity .4s}
+#ncRow{grid-template-columns:repeat(3,1fr)}
+#ncRow .ccard .ph{aspect-ratio:4/3}
+@media (min-width:700px){#ncRow{grid-template-columns:repeat(6,1fr)}}
+/* ---- G9 L7 ---- */
+.pickph{display:block;text-align:left;border:3px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:15px}
+.pickph .ph{border-radius:12px;margin-bottom:6px}.pickph small{display:block;color:var(--clay)}
+.pickph.right{border-color:var(--teal);background:#123a3a}.pickph.wrong{border-color:var(--terra);background:#3a2326}
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rvc{position:relative;text-align:left;border:2px solid var(--line);background:#132532;border-radius:16px;padding:6px;font-size:14px;overflow:hidden}
+.rvc .ph{aspect-ratio:4/3;border-radius:12px}
+.rvc b{display:block;margin-top:6px}.rvc small{display:block;color:var(--clay)}
+.rvc .rvt{display:none;margin-top:6px;font-size:13.5px;line-height:1.4}.rvc .rvt .ar{display:block;color:var(--muted);direction:rtl;text-align:right;margin-top:3px}
+.rvc.on{border-color:var(--teal);background:#123a3a}.rvc.on .rvt{display:block;animation:fadein .3s}
+.rvc::after{content:"tap · اضغط";position:absolute;top:12px;right:12px;background:rgba(31,42,55,.75);color:#fff;font-size:11px;border-radius:8px;padding:2px 7px}
+.rvc.on::after{display:none}
+@media (min-width:900px){.rv{grid-template-columns:repeat(4,1fr)}}
+.idc .mb.wrap5{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb.wrap5 button:last-child{grid-column:1/-1}
+@media (min-width:860px){.idc .mb.wrap5{grid-template-columns:1fr 1fr 1fr}.idc .mb.wrap5 button:last-child{grid-column:auto}}
+#rtSvg circle{transition:fill .2s}
+#thCards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.idc .mb.two{grid-template-columns:1fr 1fr}
+.idg.one{grid-template-columns:1fr}
+.rvc.noph{padding:14px 12px;background:#182c3a}
+.walkA{animation:walkA 4s ease-in-out infinite alternate}
+.walkB{animation:walkB 4.6s ease-in-out infinite alternate}
+@keyframes walkA{from{transform:translate(110px,140px)}to{transform:translate(520px,140px)}}
+@keyframes walkB{from{transform:translate(520px,152px) scaleX(-1)}to{transform:translate(110px,152px) scaleX(-1)}}
+@media (prefers-reduced-motion:reduce){.walkA,.walkB{animation:none;transform:translate(320px,146px)}}
+.stl{display:grid;gap:8px;margin:8px 0}
+.sti{display:flex;align-items:center;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:9px 12px;transition:opacity .3s,border-color .3s}
+.sti b{font-size:15px}.sti small{margin-left:auto;color:var(--clay);font-size:13px}
+.sti.on{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.35)}.sti.off{opacity:.35}
+.stn{flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.ordd{display:grid;gap:6px;margin:8px 0}
+.odi{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#123a3a;border:2px solid var(--teal);border-radius:12px;padding:8px 10px;font-size:14px;font-weight:600}
+.odi .ar{flex-basis:100%;display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500}
+.odi.empty{background:#182c3a;border-style:dashed;border-color:var(--line);color:var(--muted);justify-content:center}
+.ordp{display:grid;gap:8px;margin:10px 0}
+.ordp button{text-align:left;border:2px solid var(--line);background:#132532;border-radius:12px;padding:9px 12px;font-weight:700;font-size:14px}
+.ordp button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-weight:500;font-size:13px;margin-top:3px}
+.ordp button.wrong{border-color:var(--terra);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.orb{transform-box:view-box;transform-origin:320px 190px;animation:orb 9s linear infinite}
+@keyframes orb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orb{animation:none}.ordp button.wrong{animation:none}}
+.anat{font-family:var(--mono,ui-monospace),monospace;font-size:54px;font-weight:800;text-align:center;padding:26px 8px;background:#132532;border:2px solid var(--line);border-radius:18px;margin:10px 0;direction:ltr}
+.anat .ap{display:inline-block;padding:0 4px;border-radius:10px;transition:background .25s,color .25s}
+.anat sup.ap{font-size:.55em}
+.anat .ap.on{background:#2e2a1c;color:var(--terra);box-shadow:0 0 0 3px rgba(233,180,76,.5)}
+.fcard{min-height:120px}
+.fq{font-weight:800;font-size:17px;margin-bottom:8px}
+.flines{display:grid;gap:8px}
+.fline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#182c3a;border-radius:12px;padding:8px 10px;animation:fadein .3s}
+.fline small{flex-basis:100%;color:var(--muted);font-size:13px;line-height:1.35}
+.fline small .ar{display:block;direction:rtl;text-align:right}
+.fline.blank{border:2px dashed var(--line);background:#132532}
+.fn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.fline .qm{font-size:22px;font-weight:800;color:var(--muted)}
+.wtxt{font-weight:700;font-size:15px}
+.fline .m{font-size:19px}
+.fpick{display:grid;gap:8px;margin:10px 0}
+.fpick button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 12px;text-align:left;font-size:16px}
+.fpick button.wrong{border-color:var(--terra);opacity:.6}
+.board{background:#1F2A37;color:#fff;border-radius:18px;padding:14px;display:grid;gap:8px;margin:8px 0}
+.brow{display:grid;grid-template-columns:1fr 50px 60px 60px;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:16px}
+.brow b{font-size:22px;color:#E9B44C;text-align:center}.brow em{font-style:normal;font-weight:800;font-size:20px;text-align:right}
+.brow.zero em{color:#9AA5B1}
+.btot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:6px 4px 0;font-size:18px}
+.btot .m{color:#fff;font-size:20px}.btot span:last-child{color:#E9B44C;font-weight:800}
+.idc .mb button .m{font-size:17px}
+.idt{display:grid;gap:8px;margin:10px 0}
+.idr{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#132532;border:2px solid var(--line);border-radius:14px;padding:10px 12px}
+.idr b{display:block;font-size:14px}.idr small{display:block;color:var(--clay);font-size:12px}
+.idr .m{font-size:20px;white-space:nowrap}
+.pb{display:inline-flex;flex-direction:column;background:#123a3a;border:2px solid var(--teal);color:#1F6F66;border-radius:10px;padding:3px 9px;font-weight:800;font-size:13px;margin-left:auto}
+.pb .ar{font-weight:600;font-size:12px;direction:rtl}
+.pb.q{background:#132532;border-style:dashed;border-color:var(--line);color:var(--muted);font-size:18px}
+.fpick button .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.tile{font-family:ui-monospace,monospace;font-size:22px;font-weight:800;padding:16px 4px;border-radius:14px;border:2px solid var(--line);background:#132532;transition:transform .15s}
+.tile.sel{border-color:var(--ochre);box-shadow:0 0 0 3px rgba(233,180,76,.45);transform:translateY(-3px)}
+.tile.g0{background:#123a3a;border-color:var(--teal)}.tile.g1{background:#3a2326;border-color:var(--terra)}
+#mmExpr div{margin:4px 0}#mmExpr small{color:var(--muted);font-size:13px;margin-left:6px}
+.ltterms{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0;min-height:52px}
+.ltt{border:2px solid var(--line);background:#132532;border-radius:12px;padding:10px 14px;font-size:20px}
+.ltbins{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.bin{background:#182c3a;border:2px dashed var(--line);border-radius:14px;padding:8px;min-height:90px;text-align:center}
+.bin b{display:block;font-size:14px}.bin small{display:block;color:var(--clay);font-size:12px;margin-bottom:6px}
+.bin .m{display:inline-block;background:#132532;border-radius:8px;padding:3px 8px;margin:2px;font-size:18px;animation:fadein .3s}
+.anat.sm{font-size:30px;padding:16px 6px}
+.anat button.ap{font:inherit;border:2px dashed var(--line);background:#132532;border-radius:12px;padding:2px 8px;cursor:pointer}
+.idc .mb.stack{grid-template-columns:1fr}
+.anat.sm{font-size:24px;white-space:nowrap}
+@media (min-width:700px){.anat.sm{font-size:34px}}
+.idc .mb button,.mcard2 .mb button{color:var(--ink)}
+.sn .snl{margin:8px 0 2px;display:flex;flex-direction:column;gap:4px}
+.sn .snl div{background:#132532;border:1px dashed var(--line);border-radius:8px;padding:5px 10px;font-family:ui-monospace,monospace;font-weight:700;font-size:15px}
+.sn .snl div small{display:block;font-family:inherit;font-weight:500;font-size:12px;color:var(--clay)}
+.sn .snb{margin-top:6px}
+.sn .mb{grid-template-columns:1fr 1fr 1fr}
+.areafig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}
+.areafig svg{display:block;width:100%;height:auto}
+.rlab{font-weight:700;font-size:14px;margin-top:6px;color:var(--ink)}
+.eqb{background:#132532;border:1px solid var(--line);border-radius:14px;padding:22px 12px;text-align:center;font-size:26px;min-height:96px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px}
+.eqb .m{font-size:28px}
+.dac{background:#132532;border:1px solid var(--line);border-radius:14px;padding:18px 10px;text-align:center;font-size:22px;line-height:2.4;min-height:90px}
+.dac s{color:var(--terra);text-decoration-thickness:3px}
+.dac .res{display:inline-block;margin-left:6px;font-weight:800;color:var(--teal)}
+.dapick{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dapick button{background:var(--sand);border:2px solid var(--line);border-radius:12px;padding:6px 16px;font-size:20px;color:var(--ink)}
+.dapick button.wrong{border-color:var(--terra);opacity:.6}
+.trapfig{background:#132532;border-radius:14px;border:1px solid var(--line);margin:8px 0}.trapfig svg{display:block;width:100%;height:auto}
+.gfig{background:#132532;border:1px solid var(--line);border-radius:14px;margin:6px 0}
+.gfig svg{display:block;width:100%;height:auto;max-height:62vh}
+.xchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.xchips button{background:var(--sand);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:800;font-family:ui-monospace,monospace;font-size:16px;color:var(--ink)}
+.xchips button.on{background:#2A9D8F;color:#fff;border-color:#2A9D8F}
+.ttab{width:100%;border-collapse:collapse;font-family:ui-monospace,monospace;font-size:15px;background:#132532;border-radius:10px;overflow:hidden;margin:6px 0}
+.ttab th,.ttab td{border:1px solid var(--line);padding:5px 6px;text-align:center}
+.ttab th{background:#182c3a}
+.mtab{border-collapse:collapse;margin:6px 0;font-family:ui-monospace,monospace;font-size:14px;background:#132532}.mtab td,.mtab th{border:1px solid var(--line);padding:3px 7px;text-align:center}.mtab th{background:#182c3a}
+.simfig{background:#0E1A26;border-radius:14px;overflow:hidden;margin:6px 0;border:1px solid #2B3B4E}
+.simfig canvas,.simfig svg{display:block;width:100%;height:auto}
+.simfig svg{background:#132532}
+.meter{display:flex;align-items:center;gap:10px;margin:8px 0;font-weight:700;font-size:14px}
+.meter i{flex:1;height:14px;background:#182c3a;border-radius:8px;overflow:hidden;display:block}
+.meter i b{display:block;height:100%;width:0;background:linear-gradient(90deg,#2A9D8F,#E9B44C,#C8553D);border-radius:8px;transition:width .3s}
+.meter em{font-style:normal;min-width:48px;text-align:right;font-family:ui-monospace,monospace}
+.simfig svg{max-height:58vh}
+.ov{text-decoration:overline;text-decoration-thickness:2px;text-underline-offset:0}
+.solbox{margin-top:10px}
+.solbtn{display:inline-flex;align-items:center;gap:6px;border:2px solid #5a4a26;background:#2e2a1c;color:var(--clay);border-radius:99px;padding:6px 14px;font-weight:700;font-size:14px}
+.solbtn .ic{width:18px;height:18px}
+.solbtn .ar{display:inline;font-weight:600;font-size:13px}
+.solbtn.on{background:var(--clay);color:#fff;border-color:var(--clay)}
+.solsteps{margin:10px 0 0;padding:10px 12px 10px 34px;background:#132532;border:1px dashed #5a4a26;border-radius:12px;text-align:left;font-size:14.5px;line-height:1.45}
+.solsteps li{margin:6px 0;animation:fadein .3s}
+.solsteps li .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px;margin-top:2px}
+.solsteps[hidden]{display:none}
+.feedback .solbox{margin-top:12px}
+.nchips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.nchips button{border:2px solid var(--line);background:#132532;border-radius:12px;padding:8px 14px;font-family:Cambria,"Times New Roman",serif;font-size:18px;font-weight:700;color:var(--ink);min-width:58px}
+.nchips button.done{background:#123a3a;border-color:#BFE3E0}
+.nchips button.on{border-color:var(--terra);background:#3a2326}
+#setSvg ellipse,#setSvg rect{transition:filter .3s,stroke-width .3s}
+#setSvg .lit{stroke-width:6;filter:drop-shadow(0 0 8px rgba(242,196,109,.6))}
+#setDots text{font-weight:700;opacity:.75}
+#setDots text.now{fill:#f2c46d;opacity:1;font-size:20px}
+.dmq{font-size:20px;font-weight:800;margin-bottom:8px;overflow-x:auto}
+.dmq .fr{font-size:.8em}
+.dmlog{display:grid;gap:4px;font-size:14.5px;max-height:260px;overflow:auto}
+.dmlog>div{background:#182c3a;border-radius:10px;padding:5px 10px;animation:fadein .3s}
+.dmlog .ar{display:inline;color:var(--muted);font-size:13px;margin-left:6px}
+.tapes{display:grid;gap:8px;overflow-x:auto;padding:4px 0}
+.tape{display:flex;align-items:center;font-family:Consolas,"Courier New",monospace;font-size:20px;direction:ltr}
+.tape .tn{width:66px;font-weight:700;color:var(--clay);font-size:16px;text-align:right;padding-right:8px;flex:none}
+.tape .ti{width:44px;text-align:right;font-weight:700;flex:none}
+.tape .tp{width:12px;text-align:center;font-weight:700;flex:none}
+.tape .td{width:22px;text-align:center;border-radius:5px;flex:none}
+.tape .td.ok{background:rgba(124,194,189,.28);color:#c9f3ee}
+.tape .td.no{background:rgba(239,154,131,.32);color:#ffd9cf}
+.tape .te{padding-left:4px;color:var(--muted)}
+@media (max-width:420px){.tape{font-size:16px}.tape .td{width:16px}.tape .tn{width:56px;font-size:14px}.tape .ti{width:36px}}
+.solwrap{margin-top:6px}
+.idc .mb.two{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.idc .mb button .fr,.opt .fr{font-size:.95em}
+.fbig .fr{font-size:.9em}
+.opt span.ov{display:inline!important;margin:0!important}
+.opt span.m{display:inline-block!important}
+.opt span.fr{display:inline-flex!important}
+.opt .fr>span{display:block!important}
+@media (max-width:420px){.tape .tn{width:64px;font-size:13px;white-space:nowrap}}
+@media (max-width:700px){.hero{background:#0f1e29}.hero .herotxt{position:relative;padding:4px 16px 14px;background:none}}
+
+.rad{border-top:2px solid currentColor;padding:0 2px;margin-left:1px;display:inline-block;line-height:1.15}
+.rad .fr{font-size:.9em}
+.rtab{display:grid;gap:6px;margin:10px 0;overflow-x:auto}
+.rrow{display:grid;grid-template-columns:72px repeat(8,1fr);gap:3px}
+.rrow .rh{font-size:12px;line-height:1.2;font-weight:700;color:var(--clay);align-self:center}
+.rrow .rv,.rrow button{border-radius:8px;padding:8px 0;text-align:center;font-weight:700;font-size:15px;font-family:Cambria,"Times New Roman",serif}
+.rrow .rv{background:rgba(124,194,189,.16);color:var(--ink)}
+.rrow button{border:2px dashed rgba(242,196,109,.5);background:none;color:#f2c46d}
+.rrow button.on{border-style:solid;background:rgba(242,196,109,.18)}
+.bigeq{font-size:24px;font-weight:800;text-align:center;margin:10px 0}
+.idc .mb.stack{display:grid;grid-template-columns:1fr;gap:6px}
+.idc .mb.stack button{text-align:left;padding:8px 10px}
+.digrace{display:grid;gap:10px;overflow-x:auto}
+.drrow{display:grid;grid-template-columns:44px 1fr;gap:4px 8px;align-items:center}
+.drn{font-family:Cambria,"Times New Roman",serif;font-size:20px;font-weight:700;color:#f2c46d;text-align:right}
+.drd{font-family:Consolas,"Courier New",monospace;font-size:17px;letter-spacing:1px;word-break:break-all;direction:ltr}
+.drd .c0{color:#7cc2bd}.drd .c1{color:#c9f3ee;text-decoration:underline;text-decoration-color:rgba(124,194,189,.6)}
+.drd .x{color:#f1d9a6}
+.drt{grid-column:2;font-size:12.5px;font-weight:700}
+.drt.q{color:#7cc2bd}.drt.i{color:#f2c46d}
+.clnum{font-size:30px;font-weight:800;text-align:center;margin:4px 0 10px;color:#f2c46d}
+.clline{background:rgba(124,194,189,.08);border-radius:12px;padding:8px 10px;margin:6px 0;font-size:14.5px}
+.clline .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px}
+.clline small{display:block;color:var(--muted);margin-top:4px}
+.clline.ok{border-left:4px solid #7cc2bd}
+.clline.now{border:1px dashed rgba(242,196,109,.6)}
+.clline .btnrow{margin-top:8px}
+.clsets{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.clsets span{border:1px solid var(--line);border-radius:10px;padding:5px 10px;font-weight:700;font-size:13.5px;color:var(--muted)}
+.clsets span small{display:block;font-weight:500;font-size:11.5px}
+.clsets span.on{background:rgba(124,194,189,.25);color:#f1f6f5;border-color:#7cc2bd}
+#vnSvg [data-s]{cursor:pointer}
+#vnSvg [data-s]:hover{filter:brightness(1.25)}
+.sqtab{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px;margin-bottom:8px;font-family:Cambria,"Times New Roman",serif;font-size:16px}
+.sqtab div{background:rgba(124,194,189,.10);border-radius:8px;padding:6px 8px;text-align:center}
+.nchips button.wrongb{border-color:#ef9a83;opacity:.6}
+.tcrow{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px;font-family:Consolas,"Courier New",monospace;font-size:26px;direction:ltr;margin:6px 0 12px}
+.tcn{font-family:Cambria,"Times New Roman",serif;color:#f2c46d;margin-right:6px}
+.tck{color:#f1f6f5;font-weight:700;border-right:3px dashed #f2c46d;padding-right:4px}
+.tcx{color:#ef9a83;text-decoration:line-through;opacity:.8}
+.tccmp{display:grid;gap:6px;font-size:15px}
+.tccmp>div{background:rgba(124,194,189,.08);border-radius:10px;padding:6px 10px}
+.tccmp .ar{display:block;color:var(--muted);direction:rtl;text-align:right;font-size:13.5px}
+.tccmp .same{border-left:4px solid #7cc2bd}.tccmp .diff{border-left:4px solid #f2c46d}
+.seg button small{display:block;font-weight:500;font-size:11.5px;opacity:.85}
+.rrow .rv.gold{background:rgba(242,196,109,.18);color:#f2c46d}
+.dcards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.dcards button{border:2px solid var(--line);background:rgba(19,37,50,.8);border-radius:14px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--ink)}
+.dcards .df{font-family:Cambria,"Times New Roman",serif;font-size:24px;font-weight:700;color:#f2c46d}
+.dcards .dd{font-size:18px;font-weight:700;color:var(--muted)}
+.dcards button.on{border-color:#7cc2bd}.dcards button.on .dd{color:#7cc2bd}
+.dtab{width:100%;border-collapse:collapse;font-size:15px}
+.dtab th,.dtab td{border-bottom:1px solid var(--line);padding:8px;text-align:center}
+.dtab th{color:#f2c46d;font-size:13px}
+.gsvg{display:block;width:100%;max-width:470px;margin:auto}
+.ptab{margin-top:10px}
+.ptpick{display:flex;align-items:center;gap:8px;margin:6px 0}.ptpick>b{color:#f2c46d;min-width:16px}.ptpick .seg{margin:0;flex-wrap:wrap}
+.ptpick .seg{flex-wrap:nowrap}.ptpick .seg button{font-size:.8rem!important;padding:6px 7px!important;white-space:nowrap}
+table.ctab tr.now td{background:rgba(242,196,109,.16)}
+.reps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.rep{border:1.5px solid rgba(124,194,189,.25);border-radius:14px;padding:10px;background:rgba(124,194,189,.05);transition:.2s}
+.rep>b{display:block;color:#7cc2bd;margin-bottom:6px;font-size:.9rem}
+.rep.on{border-color:#f2c46d;box-shadow:0 0 0 3px rgba(242,196,109,.18)}
+.rep .rhl{color:inherit;font-weight:700;border-radius:6px;padding:0 3px;transition:.2s}
+.rep.on .rhl{background:#f2c46d;color:#0c1620}
+.rep[data-k="3"]{grid-column:1/-1}
+.rep .bigeq{font-size:1.6rem;text-align:center;margin:8px 0}
+.mtab td,.mtab th{padding:5px 6px!important;text-align:center}
+.tnote{display:block;margin-top:6px;color:#9fb3b5}
+@media (max-width:520px){.reps{grid-template-columns:1fr}}
+.bars{margin-top:10px}.bar{display:grid;grid-template-columns:132px 1fr auto;align-items:center;gap:8px;margin:8px 0;font-size:.9rem}
+.bar .bt{height:20px;border-radius:10px;background:rgba(124,194,189,.1);overflow:hidden}.bar .bt i{display:block;height:100%;border-radius:10px;transition:width .25s}
+.bar b{font-variant-numeric:tabular-nums;min-width:64px;text-align:right}
+.bnote{margin-top:8px;color:#f2c46d;font-weight:600}.bnote .ar{display:block;color:#f2c46d}
+@media (prefers-reduced-motion:reduce){.bar .bt i,.rep{transition:none}}
+.slrow{display:grid;grid-template-columns:52px 1fr 34px;align-items:center;gap:8px;margin:6px 0}.slrow b{font-size:.9rem}.slrow span{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.cr{color:#ef9a83}.cg{color:#f2c46d}
+table.ptab2 td{padding:4px!important;text-align:center}table.ptab2 td.son{color:#f2c46d;font-weight:700}
+.colb{min-width:44px;padding:6px 4px!important;border-radius:9px!important;background:rgba(124,194,189,.1)!important;color:#f1f6f5!important;border:1.5px solid rgba(124,194,189,.35)!important;font-weight:700}
+.colb.on{background:#f2c46d!important;color:#0c1620!important;border-color:#f2c46d!important}
+.tcap{caption-side:top;text-align:left;color:#7cc2bd;font-weight:700;padding:8px 0 4px}
+.mtab th{white-space:nowrap}
+.gbuild,.tplot{margin:10px 0}.tpsvg .hit{cursor:pointer}.tpsvg .hit:hover{fill-opacity:.18}
+.slrow.wide{grid-template-columns:58px 1fr 44px}
+.mini{margin:8px 0 2px;font-size:.78rem;color:#9fb3b5}
+.seg{flex-wrap:wrap}
+#rdRef button,#rdDir button,#spRef button,#ddTrip button,#rtJump button,#msRef button,#boatRef button{font-size:.8rem!important;padding:6px 9px!important}
+.dpad{display:grid;grid-template-columns:repeat(3,1fr);grid-template-areas:". n ." "w . e" ". s .";gap:6px;max-width:260px;margin:4px auto 6px}
+.dpad button{padding:9px 4px!important;border-radius:10px!important;background:rgba(124,194,189,.12)!important;color:#f1f6f5!important;border:1.5px solid rgba(124,194,189,.4)!important;font-weight:700;font-size:.85rem!important}
+.dpad button:active{background:#f2c46d!important;color:#0c1620!important}
+.dpad [data-d=N]{grid-area:n}.dpad [data-d=W]{grid-area:w}.dpad [data-d=E]{grid-area:e}.dpad [data-d=S]{grid-area:s}
+#fairOut,#rtOut,#ddOut,#msOut,#rdOut,#boatOut,#spOut{white-space:pre-wrap;min-height:4.5em}
+.mb.stack button{height:auto!important;min-height:44px;padding:8px 10px!important;text-align:start;color:var(--ink)!important;text-shadow:none!important}
+#wkSeg button,#lbSeg button,#thSeg button,#cfSeg button,#bkSeg button{font-size:.8rem!important;padding:6px 8px!important}
+#wkOut,#lbOut,#dpOut,#thOut,#cfOut,#dmOut,#grOut{white-space:pre-wrap;min-height:3.2em}
+#smTab td{font-variant-numeric:tabular-nums}
+.idc .mb:not(.stack):has(> button:nth-child(2):last-child){grid-template-columns:1fr 1fr}
+#hkBox .mb.stack button{text-align:left}
+:root{--sand:#0c1620;--paper:#132532;--ink:#f1f6f5;--muted:#9fb3b5;--terra:#ef9a83;--teal:#7cc2bd;--teal-d:#4fa39c;
+--ochre:#f2c46d;--clay:#f2c46d;--stone:#6f8689;--line:rgba(124,194,189,.22);--sky:#123a3a;--cream:#1d2f3b;color-scheme:dark}
+body{font-family:'Readex Pro',system-ui,-apple-system,'Segoe UI',sans-serif;background:radial-gradient(1200px 600px at 50% -10%,rgba(79,163,156,.18),transparent 60%),#0c1620;background-attachment:fixed}
+h1,h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:.01em}
+.ar,[lang=ar]{font-family:'Readex Pro','Geeza Pro','Noto Naskh Arabic',Tahoma,sans-serif}
+.card,.bubble,.idc,.key,.msg,.cert{box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card{background:rgba(19,37,50,.72);border-color:var(--line);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.btn{background:linear-gradient(180deg,#8fd0ca,#6cb7b1);color:#08201f;box-shadow:0 3px 0 #3d8a84,0 8px 24px rgba(124,194,189,.25)}
+.btn.alt{background:rgba(19,37,50,.8);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn:disabled{opacity:.45}
+.nav{background:linear-gradient(rgba(12,22,32,0),rgba(12,22,32,.94) 40%)}
+.kicker{background:rgba(242,196,109,.14);color:#f2c46d}
+.kicker.light{background:rgba(12,22,32,.55);color:#f2c46d;border:1px solid rgba(242,196,109,.35)}
+.hsub{color:#f2c46d}
+.bubble{background:#132532;border-color:#4fa39c}
+.bubble .who{color:#7cc2bd}
+.key{border-left-color:#f2c46d}
+.msg{border-left-color:#7cc2bd}
+.msg.warn{border-left-color:#ef9a83}
+.face.back{background:linear-gradient(160deg,#2b7d77,#1d5c58);color:#f1f6f5}
+.seg button.on,.seg button[aria-pressed=true]{background:#7cc2bd;color:#08201f}
+.namebox{background:#0f1e29;color:var(--ink);border-color:var(--line)}
+.m,.mi{color:inherit}
+.fline .fn{background:#7cc2bd;color:#08201f}
+.solbtn.on{color:#08201f}
+.score{color:#f2c46d}
+.prog{background:rgba(124,194,189,.15)}
+.ibtn{background:rgba(19,37,50,.8);color:var(--ink);border-color:var(--line)}
+.hero{box-shadow:0 20px 50px rgba(0,0,0,.35);border:1px solid var(--line)}
+</style>
+</head>
+<body class="student">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="t"/><feColorMatrix in="t" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.42" intercept="0.74"/><feFuncG type="linear" slope="0.42" intercept="0.74"/><feFuncB type="linear" slope="0.42" intercept="0.74"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer><feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/><feComposite in="b" in2="SourceGraphic" operator="in"/></filter>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FD6E3"/><stop offset="1" stop-color="#EEF7F3"/></linearGradient>
+<radialGradient id="gSun"><stop offset="0" stop-color="#FFE7A3"/><stop offset="1" stop-color="#FFE7A3" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5EC0D0"/><stop offset="1" stop-color="#1F6F8B"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+<pattern id="lam" width="44" height="7" patternUnits="userSpaceOnUse"><path d="M0,3.5 q11,-2.2 22,0 t22,0" stroke="#000" stroke-opacity=".09" fill="none"/></pattern>
+<linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".15" stop-color="#fff" stop-opacity=".05"/><stop offset=".85" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".35"/></linearGradient>
+</defs></svg>
+<div class="app">
+<header class="top">
+  <div class="toprow">
+    <button class="ibtn" id="menuBtn" aria-label="Lesson menu">☰</button>
+    <div class="toptitle">Science · Grade 8 · Unit 2<small id="curLabel">Energy Transformations</small></div>
+    <button class="ibtn" id="arAll" aria-label="Show all Arabic" title="Show all Arabic">ع</button>
+  </div>
+  <div class="prog"><i id="progBar"></i></div>
+</header>
+<div class="menu" id="menu"><div class="menupanel" id="menuPanel"></div></div>
+<main id="screens">
+<section class="screen s-only" data-title="Welcome">
+  <div class="hero">
+    <svg viewBox="0 0 640 360" style="display:block;width:100%;aspect-ratio:16/9" role="img" aria-label="A pendulum hitting a box, with sound waves and heat lines showing energy transfer"><defs><linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c1620"/><stop offset="1" stop-color="#173041"/></linearGradient></defs><rect width="640" height="360" fill="url(#hb)"/><line x1="0" y1="0" x2="0" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="32" y1="0" x2="32" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="64" y1="0" x2="64" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="96" y1="0" x2="96" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="128" y1="0" x2="128" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="160" y1="0" x2="160" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="192" y1="0" x2="192" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="224" y1="0" x2="224" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="256" y1="0" x2="256" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="288" y1="0" x2="288" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="320" y1="0" x2="320" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="352" y1="0" x2="352" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="384" y1="0" x2="384" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="416" y1="0" x2="416" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="448" y1="0" x2="448" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="480" y1="0" x2="480" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="512" y1="0" x2="512" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="544" y1="0" x2="544" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="576" y1="0" x2="576" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="608" y1="0" x2="608" y2="360" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="0" x2="640" y2="0" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="32" x2="640" y2="32" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="64" x2="640" y2="64" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="96" x2="640" y2="96" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="128" x2="640" y2="128" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="160" x2="640" y2="160" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="192" x2="640" y2="192" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="224" x2="640" y2="224" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="256" x2="640" y2="256" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="288" x2="640" y2="288" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="320" x2="640" y2="320" stroke="#7cc2bd" stroke-opacity=".05"/><line x1="0" y1="352" x2="640" y2="352" stroke="#7cc2bd" stroke-opacity=".05"/><rect x="0" y="200" width="640" height="160" fill="#1f2a37"/><line x1="0" y1="200" x2="640" y2="200" stroke="#9fb3b5" stroke-width="2"/><rect x="120" y="14" width="240" height="12" rx="3" fill="#5b6b74"/><line x1="240" y1="24" x2="137.2" y2="146.6" stroke="#cfe9e6" stroke-opacity="0.25" stroke-width="2"/><circle cx="137.2" cy="146.6" r="14" fill="#e9c27a" opacity="0.25"/><line x1="240" y1="24" x2="185.3" y2="174.4" stroke="#cfe9e6" stroke-opacity="0.45" stroke-width="2"/><circle cx="185.3" cy="174.4" r="14" fill="#e9c27a" opacity="0.45"/><line x1="240" y1="24" x2="240" y2="184" stroke="#cfe9e6" stroke-width="2.5"/><circle cx="240" cy="184" r="15" fill="#e9c27a"/><rect x="258" y="164" width="44" height="36" rx="3" fill="#c89b5e" stroke="#8c5a3c" stroke-width="2"/><path d="M312 182h70" stroke="#7cc2bd" stroke-width="4" stroke-dasharray="10 8"/><path d="M394 182l-14 -8v16z" fill="#7cc2bd"/><path d="M310 141q6 9 0 18" fill="none" stroke="#f2c46d" stroke-width="2.5" opacity="0.8"/><path d="M320 132q12 18 0 36" fill="none" stroke="#f2c46d" stroke-width="2.5" opacity="0.6"/><path d="M330 123q18 27 0 54" fill="none" stroke="#f2c46d" stroke-width="2.5" opacity="0.3999999999999999"/><path d="M440 190q-8 -12 0 -24t0 -24" fill="none" stroke="#e2574c" stroke-width="3" stroke-linecap="round"/><path d="M458 190q-8 -12 0 -24t0 -24" fill="none" stroke="#e2574c" stroke-width="3" stroke-linecap="round"/><path d="M476 190q-8 -12 0 -24t0 -24" fill="none" stroke="#e2574c" stroke-width="3" stroke-linecap="round"/><text x="458" y="120" font-size="16" font-weight="700" fill="#e2574c" text-anchor="middle" font-family="sans-serif">thermal</text></svg>
+    <div class="herotxt"><span class="kicker light">Science · Grade 8 · Unit 2 · Lesson 27</span><h1>Energy Transformations</h1><p class="ar">تحولات الطاقة</p></div>
+  </div>
+  <div class="nojsmsg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span> <b>This is only a preview.</b> To play the activities, open the lesson link your teacher sent, or open this file in Safari or Chrome.<p class="ar">هذه معاينة فقط. لتشغيل الأنشطة، افتح رابط الدرس الذي أرسله معلمك، أو افتح هذا الملف في Safari أو Chrome.</p></div>
+  <div class="zrow"><div class="zav bob" data-zayed="happy"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">A pendulum slows down and stops, but energy is never destroyed. So where does it go? Today we see how energy moves <b>into</b> a system (work) and <b>out of</b> it (thermal energy and sound).</p><p class="ar">يتباطأ البندول ثم يتوقف، لكن الطاقة لا تفنى أبدًا. فأين تذهب؟ اليوم نرى كيف تدخل الطاقة <b>إلى</b> النظام (الشغل) وكيف <b>تخرج</b> منه (طاقة حرارية وصوت).</p></div></div>
+  <div class="card"><div class="bi"><p class="en"><b>Today I will learn to:</b><br>✔ define work and tell when work is done<br>✔ model an energy transfer from a source object to a receiver object<br>✔ describe the signs of an energy transfer<br>✔ explain how friction changes mechanical energy into thermal energy</p><p class="ar"><b>سأتعلم اليوم أن:</b><br>✔ أعرّف الشغل وأحدد متى يُبذل<br>✔ أمثّل انتقال الطاقة من جسم مصدر إلى جسم مستقبِل<br>✔ أصف علامات انتقال الطاقة<br>✔ أشرح كيف يحوّل الاحتكاك الطاقة الميكانيكية إلى طاقة حرارية</p></div></div>
+  <div class="card needjs">
+    <div class="bi"><p class="en"><b>What is your name?</b> I will write it on your certificate at the end.</p><p class="ar"><b>ما اسمك؟</b> سأكتبه على شهادتك في نهاية الدرس.</p></div>
+    <input class="namebox" id="nameIn" placeholder="Type your name · اكتب اسمك" autocomplete="off">
+  </div>
+  <div class="key bi needjs"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span> <b>Tip:</b> Tap <b>عربي</b> under any paragraph to read it in Arabic. Tap <b>ع</b> at the top to show all Arabic. Every question has a <b>Show solution</b> button.</p><p class="ar"><b>نصيحة:</b> اضغط <b>عربي</b> تحت أي فقرة لقراءتها بالعربية، واضغط <b>ع</b> في الأعلى لإظهار كل الترجمة. ولكل سؤال زر <b>طريقة الحل</b>.</p></div>
+</section>
+
+<section class="screen" data-title="Warm-up">
+  <span class="kicker">Warm-up · Lesson 26</span>
+  <h2>Mechanical energy, quickly</h2>
+  <p class="hsub ar">الطاقة الميكانيكية بسرعة</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Just a warm-up, nothing is counted! Three questions from Lesson 26.</p><p class="ar">مجرد تسخين، لا شيء يُحسب! ثلاثة أسئلة من الدرس 26.</p></div></div>
+  <div class="wu needjs" id="wuBox"></div>
+</section>
+
+<section class="screen" data-title="Why does it slow down?">
+  <span class="kicker">Think · A pendulum slows down</span>
+  <h2>Where did the energy go?</h2>
+  <p class="hsub ar">أين ذهبت الطاقة؟</p>
+  <div class="bench">
+    <div class="card"><svg id="hkSvg" viewBox="0 0 360 200" class="gsvg" role="img" aria-label="A pendulum whose swings get smaller and smaller"></svg></div>
+    <div class="card"><div class="bi"><p class="en">In Lesson 26 the pendulum swung for a whole minute, but each swing was a little lower. If you wait long enough, it stops. Energy is not destroyed, so where did the energy go?</p><p class="ar">في الدرس 26 تأرجح البندول دقيقة كاملة، لكن كل تأرجح كان أخفض قليلًا. ولو انتظرت مدة كافية فإنه يتوقف. والطاقة لا تفنى، فأين ذهبت؟</p></div></div>
+  </div>
+  <div class="wu needjs" id="hkBox"></div>
+</section>
+
+<section class="screen" data-title="Lab: So Much Work">
+  <span class="kicker">Lab · So Much Work</span>
+  <h2>A pendulum hits a box</h2>
+  <p class="hsub ar">بندول يصطدم بصندوق</p>
+  <div class="bi"><p class="en">Five washers hang on a paper clip at the end of a 1 m string. A small box is placed where the swinging pendulum will hit it. Pull the pendulum back until the washers are 15 cm above the floor, then release it. Do three trials.</p><p class="ar">تتدلى خمس حلقات معدنية على مشبك ورق في طرف خيط طوله 1 m، ويوضع صندوق صغير حيث سيصطدم به البندول. اسحب البندول حتى تصبح الحلقات على ارتفاع 15 cm فوق الأرض، ثم اتركه. أجرِ ثلاث محاولات.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="smSvg" viewBox="0 0 360 230" class="gsvg" role="img" aria-label="A pendulum swinging down and hitting a small box"></svg>
+      <div class="needjs"><div class="btnrow c"><button class="btn sm" id="smGo">Release ▶</button><button class="btn alt sm" id="smR">↺ Reset</button></div></div>
+      <table class="dtab" id="smTab"></table></div>
+    <div class="card"><div class="msg bi" id="smMsg"></div><svg id="flSvg" viewBox="0 0 360 170" class="gsvg" role="img" aria-label="Energy flow diagram from the source object to the receiver object"></svg></div>
+  </div>
+  <p class="mini">The distances are example values for this virtual lab. · المسافات قيم مثال لهذا المعمل الافتراضي.</p>
+  <div class="wu needjs" id="smBox"></div>
+</section>
+
+<section class="screen" data-title="Work">
+  <span class="kicker">Learn · Doing work</span>
+  <h2>Pushing a bicycle into a bike rack</h2>
+  <p class="hsub ar">دفع دراجة إلى حامل الدراجات</p>
+  <div class="bi"><p class="en">The energy of a system changes only if energy is transferred into or out of it. One way to transfer energy to an object is to do <b>work</b> on it. Try the three cases.</p><p class="ar">لا تتغير طاقة نظام إلا إذا انتقلت طاقة إليه أو منه. ومن طرق نقل الطاقة إلى جسم أن نبذل عليه <b>شغلًا</b>. جرّب الحالات الثلاث.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="wkSvg" viewBox="0 0 360 200" class="gsvg" role="img" aria-label="A hand pushing a bicycle toward a bike rack"></svg>
+      <div class="needjs"><div class="seg" id="wkSeg"><button data-v="0" class="on">Push, it moves</button><button data-v="1">Push, it doesn't move</button><button data-v="2">Let go, it rolls</button></div></div></div>
+    <div class="card"><div class="monoout" id="wkOut"></div><div class="msg bi" id="wkMsg"></div></div>
+  </div>
+  <div class="key bi"><p class="en"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>Work</b> is the transfer of energy to an object by a force that makes the object move in the direction of the force. Work is only done <b>while the force is applied</b>.</p><p class="ar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></span> <b>الشغل</b> هو انتقال الطاقة إلى جسم بواسطة قوة تجعل الجسم يتحرك في اتجاه القوة. ولا يُبذل الشغل إلا <b>أثناء تأثير القوة</b>.</p></div>
+</section>
+
+<section class="screen" data-title="Lifting a box">
+  <span class="kicker">Learn · Work increases energy</span>
+  <h2>A box onto a shelf</h2>
+  <p class="hsub ar">صندوق إلى رف</p>
+  <div class="bi"><p class="en">A girl lifts a box from the floor and puts it on a high shelf. Follow the potential energy bar of the box–Earth system.</p><p class="ar">ترفع فتاة صندوقًا من الأرض وتضعه على رف مرتفع. تابع عمود طاقة الوضع لنظام الصندوق والأرض.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="lbSvg" viewBox="0 0 360 220" class="gsvg" role="img" aria-label="A box lifted from the floor to a shelf with a PE bar"></svg>
+      <div class="needjs"><div class="seg" id="lbSeg"><button data-v="0" class="on">On the floor</button><button data-v="1">Lifting</button><button data-v="2">On the shelf</button></div></div></div>
+    <div class="card"><div class="monoout" id="lbOut"></div><div class="msg bi" id="lbMsg"></div></div>
+  </div>
+  <div class="card why" id="whyL"></div>
+</section>
+
+<section class="screen" data-title="Lab: Double Pendulum">
+  <span class="kicker">Lab · Double Pendulum</span>
+  <h2>Two washers on one string</h2>
+  <p class="hsub ar">حلقتان على خيط واحد</p>
+  <div class="bi"><p class="en">A string is tied between two ring stands about 30 cm apart. Two washers of equal mass hang from it on 15 cm strings, about 5 cm apart. Pull <b>one</b> washer back, release it, and watch both washers for a minute.</p><p class="ar">يُربط خيط بين حاملين المسافة بينهما نحو 30 cm، وتتدلى منه حلقتان متساويتان في الكتلة على خيطين طول كل منهما 15 cm وبينهما نحو 5 cm. اسحب حلقة <b>واحدة</b> واتركها، وراقب الحلقتين دقيقة.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="dpSvg" viewBox="0 0 360 220" class="gsvg" role="img" aria-label="Two pendulums hanging from one horizontal string with energy bars"></svg>
+      <div class="needjs"><div class="btnrow c"><button class="btn sm" id="dpGo">Release washer 1 ▶</button></div></div></div>
+    <div class="card"><div class="monoout" id="dpOut"></div><div class="msg bi" id="dpMsg"></div></div>
+  </div>
+  <div class="wu needjs" id="dpBox"></div>
+</section>
+
+<section class="screen" data-title="Thermal energy">
+  <span class="kicker">Learn · Thermal energy transformations</span>
+  <h2>Friction makes thermal energy</h2>
+  <p class="hsub ar">الاحتكاك ينتج طاقة حرارية</p>
+  <div class="bi"><p class="en">There is always some friction between two surfaces that rub. Air resistance acted on the pendulums, so some mechanical energy was transferred to the air as <b>thermal energy</b>. Now follow a girl on a bicycle.</p><p class="ar">يوجد دائمًا بعض الاحتكاك بين سطحين متلامسين يحتك أحدهما بالآخر. وقد أثّرت مقاومة الهواء في البندولين، فانتقل جزء من الطاقة الميكانيكية إلى الهواء على شكل <b>طاقة حرارية</b>. تابع الآن فتاة على دراجة.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="thSvg" viewBox="0 0 360 220" class="gsvg" role="img" aria-label="A bicycle coasting, braking and stopped with kinetic, thermal and total energy bars"></svg>
+      <div class="needjs"><div class="seg" id="thSeg"><button data-v="0" class="on">Coasting</button><button data-v="1">Applying brakes</button><button data-v="2">Stopped</button></div></div></div>
+    <div class="card"><div class="monoout" id="thOut"></div><div class="msg bi" id="thMsg"></div></div>
+  </div>
+  <div class="wu needjs" id="thBox"></div>
+</section>
+
+<section class="screen" data-title="Running out of energy?">
+  <span class="kicker">Read a scientific text · Energy: conserved or not?</span>
+  <h2>A car without fuel</h2>
+  <p class="hsub ar">سيارة بلا وقود</p>
+  <div class="bi"><p class="en">People say a car has "run out of energy" when all its fuel has been burned. Did the energy really disappear? Tap each stage.</p><p class="ar">يقول الناس إن السيارة «نفدت طاقتها» عندما يحترق كل وقودها. فهل اختفت الطاقة حقًا؟ اضغط على كل مرحلة.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="cfSvg" viewBox="0 0 360 200" class="gsvg" role="img" aria-label="Energy chain from fuel to moving parts to thermal energy in the air"></svg>
+      <div class="needjs"><div class="seg" id="cfSeg"><button data-v="0" class="on">1 · Fuel</button><button data-v="1">2 · Moving parts</button><button data-v="2">3 · Air</button></div></div></div>
+    <div class="card"><div class="monoout" id="cfOut"></div><div class="msg bi" id="cfMsg"></div></div>
+  </div>
+  <div class="wu needjs" id="cfBox"></div>
+</section>
+
+<section class="screen" data-title="A Closer Look: the dam">
+  <span class="kicker">A Closer Look · Creating electrical energy</span>
+  <h2>Electricity from falling water</h2>
+  <p class="hsub ar">كهرباء من الماء الساقط</p>
+  <div class="bi"><p class="en">A dam is built across a river. The water behind the dam is higher than the water below it. Step through the energy changes in a hydroelectric power plant.</p><p class="ar">يُبنى سد عبر نهر، فيكون الماء خلف السد أعلى من الماء أسفله. تتبّع تحولات الطاقة في محطة كهرومائية خطوة بخطوة.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="dmSvg" viewBox="0 0 360 210" class="gsvg" role="img" aria-label="A dam, a tunnel, a turbine, a generator and wires to a house"></svg>
+      <div class="needjs"><div class="slrow wide"><b>step</b><input type="range" id="dmS" min="0" max="4" step="1" value="0" aria-label="step of the energy chain"><span id="dmSv"></span></div></div></div>
+    <div class="card"><div class="monoout" id="dmOut"></div><div class="msg bi" id="dmMsg"></div></div>
+  </div>
+  <div class="bi"><p class="en">Energy chains: Example 1 is complete; in Example 2 choose the last step; in Example 3, the last two steps.</p><p class="ar">سلاسل الطاقة: المثال 1 كامل، وفي المثال 2 اختر الخطوة الأخيرة، وفي المثال 3 آخر خطوتين.</p></div>
+  <div class="fader" data-f="ch"></div>
+</section>
+
+<section class="screen" data-title="Bouncing ball graph">
+  <span class="kicker">Review · Energy of a bouncing ball</span>
+  <h2>Reading an energy graph</h2>
+  <p class="hsub ar">قراءة تمثيل بياني للطاقة</p>
+  <div class="bi"><p class="en">The graph shows the kinetic energy (KE) and potential energy (PE) of a bouncing ball for 9 seconds. Move the time slider.</p><p class="ar">يبيّن التمثيل البياني الطاقة الحركية (KE) وطاقة الوضع (PE) لكرة ترتد خلال 9 ثوانٍ. حرّك منزلق الزمن.</p></div>
+  <div class="bench">
+    <div class="card"><svg id="grSvg" viewBox="0 0 360 230" class="gsvg" role="img" aria-label="A line graph of KE and PE of a bouncing ball over 9 seconds"></svg>
+      <div class="needjs"><div class="slrow wide"><b>time</b><input type="range" id="grT" min="0" max="9" step="1" value="0" aria-label="time in seconds"><span id="grTv"></span></div></div></div>
+    <div class="card"><div class="monoout" id="grOut"></div><div class="msg bi" id="grMsg"></div></div>
+  </div>
+  <p class="mini">Redrawn from the book's graph with simplified values. · أُعيد رسمه من تمثيل الكتاب بقيم مبسّطة.</p>
+  <div class="wu needjs" id="grBox"></div>
+</section>
+
+<section class="screen" data-title="Back to the pendulum">
+  <span class="kicker">Revisit · Why does it slow down?</span>
+  <h2>Where did the energy go?</h2>
+  <p class="hsub ar">أين ذهبت الطاقة؟</p>
+  <div class="bench">
+    <div class="card"><svg id="bkSvg" viewBox="0 0 360 200" class="gsvg" role="img" aria-label="A pendulum transferring energy to the air as thermal energy and sound"></svg></div>
+    <div class="card"><div class="msg bi" id="bkMine"></div><div class="bi"><p class="en">Tap each idea to check it.</p><p class="ar">اضغط على كل رأي لتتحقق منه.</p></div>
+      <div class="needjs"><div class="seg" id="bkSeg"><button data-v="0">Idea 1</button><button data-v="1">Idea 2</button><button data-v="2">Idea 3</button></div></div>
+      <div class="msg bi" id="bkMsg"></div></div>
+  </div>
+</section>
+
+<section class="screen" data-title="Check yourself">
+  <span class="kicker">Check yourself</span>
+  <h2>Your turn: no score here</h2>
+  <p class="hsub ar">دورك: بدون درجات هنا</p>
+  <div class="zrow"><div class="zav" data-zayed="point"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Work puts energy into a system. Friction turns mechanical energy into thermal energy. The total is never destroyed. Choose an answer, then open <b>Show solution</b>.</p><p class="ar">الشغل يُدخل الطاقة إلى النظام، والاحتكاك يحوّل الطاقة الميكانيكية إلى طاقة حرارية، والمجموع لا يفنى أبدًا. اختر إجابة، ثم افتح <b>طريقة الحل</b>.</p></div></div>
+  <div class="wu needjs" id="tryBox"></div>
+</section>
+
+<section class="screen" data-title="Summary">
+  <span class="kicker">Remember</span>
+  <h2>Tap to flip</h2>
+  <p class="hsub ar">اضغط لقلب البطاقة</p>
+  <div class="flips" id="flips"></div>
+  <div class="zrow"><div class="zav" data-zayed="wow"></div>
+    <div class="bubble bi"><span class="who">Zayed</span><p class="en">Now the final quiz: 10 questions. Two of them review Lessons 24 and 26.</p><p class="ar">والآن الاختبار النهائي: 10 أسئلة، اثنان منها مراجعة على الدرسين 24 و26.</p></div></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Final quiz">
+  <span class="kicker">Final quiz · 10 questions</span>
+  <div id="quiz"></div>
+</section>
+
+<section class="screen s-only needjs" data-title="Your result">
+  <div id="result"></div>
+</section>
+
+
+
+</main>
+<nav class="nav"><div class="navin">
+  <button class="btn alt back" id="backBtn">◀ Back</button>
+  <button class="btn" id="nextBtn">Next ▶</button>
+</div><div class="count" id="count"></div></nav>
+</div>
+<script>
+const ICON={"phone": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.5\"/><path d=\"M11 18h2\"/></svg></span>", "bulb": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 18h6M10 21h4\"/><path d=\"M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z\"/></svg></span>", "key": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"15\" r=\"4\"/><path d=\"M11 12l9-9M17 6l3 3M15 8l2 2\"/></svg></span>", "check": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M7.5 12.5l3 3 6-6.5\"/></svg></span>", "cross": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M9 9l6 6M15 9l-6 6\"/></svg></span>", "camera": "<span class=\"ic\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h3l2-3h6l2 3h3v11H4z\"/><circle cx=\"12\" cy=\"13\" r=\"3.5\"/></svg></span>"};
+const VERSION="student";
+const CURR="MOE";
+document.documentElement.classList.remove("nojs");
+function zayed(m,head){
+  head=head||"ghutra";
+  m=m||"happy";
+  const uid="z"+Math.random().toString(36).slice(2,7);
+  const skin="#C68A5C", skinD="#A86F45", hair="#1E1410";
+  // arms
+  const coatArm=(d)=>`<path d="${d}" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2" stroke-linejoin="round"/>`;
+  const hand=(x,y,r=9)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}"/><circle cx="${x-2}" cy="${y-2}" r="${r*0.45}" fill="#D9A074" opacity=".6"/>`;
+  let arms="", front="";
+  if(m==="happy"){ // waving right hand
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M142,168 q22,-10 34,-44 l-16,-8 q-10,26 -26,34z")+hand(170,112,10)+
+         `<path d="M181,100 q6,-6 4,-14 M188,110 q8,-4 8,-12" stroke="#E9B44C" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  } else if(m==="think"){ // hand on chin
+    arms=coatArm("M58,168 q-18,26 -14,62 l18,2 q2,-30 12,-50z")+hand(52,236)+
+         coatArm("M138,166 q20,10 16,40 l-18,0 q2,-20 -10,-28z");
+    front=`<path d="M146,204 Q150,170 124,150" stroke="#C9D3DD" stroke-width="21" fill="none" stroke-linecap="round"/><path d="M146,204 Q150,170 124,150" stroke="#F4F7FA" stroke-width="17" fill="none" stroke-linecap="round"/>`+hand(118,144,10)+
+         `<g transform="translate(150,30)"><circle r="14" fill="#fff" stroke="#2A9D8F" stroke-width="2.5"/><text y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#2A9D8F" font-family="Arial">?</text><circle cx="-14" cy="20" r="4" fill="#fff" stroke="#2A9D8F" stroke-width="2"/></g>`;
+  } else if(m==="wow"){ // both hands up
+    arms=coatArm("M60,168 q-26,-6 -34,-40 l16,-6 q8,24 24,28z")+hand(30,118,10)+
+         coatArm("M140,168 q26,-6 34,-40 l-16,-6 q-8,24 -24,28z")+hand(170,118,10)+
+         `<g fill="#E9B44C"><path d="M22,92 l3,8 8,3 -8,3 -3,8 -3,-8 -8,-3 8,-3z"/><path d="M178,88 l2.5,6 6,2.5 -6,2.5 -2.5,6 -2.5,-6 -6,-2.5 6,-2.5z"/></g>`;
+  } else { // point: holds magnifier, points right
+    arms=coatArm("M58,168 q-22,22 -18,56 l18,2 q0,-26 14,-44z")+
+         `<g><circle cx="44" cy="226" r="17" fill="rgba(160,220,214,.45)" stroke="#1F2A37" stroke-width="5"/><path d="M54,240 l12,16" stroke="#1F2A37" stroke-width="8" stroke-linecap="round"/><path d="M36,218 q4,-6 10,-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></g>`+hand(58,248,9)+
+         coatArm("M142,170 q24,4 44,-4 l-2,-16 q-22,6 -40,2z")+hand(190,158,9)+
+         `<path d="M196,156 l12,-2" stroke="${skin}" stroke-width="6" stroke-linecap="round"/>`;
+  }
+  const brows={happy:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2",think:"M74,82 q10,-3 20,1 M106,78 q10,-8 20,-3",wow:"M74,78 q10,-8 20,-3 M106,75 q10,-5 20,3",point:"M74,84 q10,-7 20,-2 M106,82 q10,-5 20,2"}[m];
+  const mouth={
+    happy:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    point:`<path d="M88,124 q12,14 24,0 q-12,4 -24,0z" fill="#7A2E1F"/><path d="M92,126 q8,3 16,0" stroke="#fff" stroke-width="3" stroke-linecap="round"/>`,
+    think:`<path d="M92,128 q8,-4 18,0" stroke="#7A2E1F" stroke-width="3.5" fill="none" stroke-linecap="round"/>`,
+    wow:`<ellipse cx="100" cy="128" rx="7" ry="9" fill="#7A2E1F"/><ellipse cx="100" cy="132" rx="4" ry="3" fill="#E58C7A"/>`}[m];
+  const look=m==="think"?-3:m==="point"?3:0;
+  const eye=(x)=>`<ellipse cx="${x}" cy="100" rx="9" ry="10.5" fill="#fff"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="6.5" fill="#4A2C1A"/><circle cx="${x+look}" cy="${m==="think"?98:101}" r="3.4" fill="#120B07"/><circle cx="${x+look+2.2}" cy="${m==="think"?95.5:98.5}" r="2" fill="#fff"/>`;
+  return `<svg viewBox="0 0 210 290" aria-label="Zayed" role="img"><defs>
+<linearGradient id="${uid}coat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E9EF"/></linearGradient>
+<radialGradient id="${uid}face" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#D9A074"/><stop offset=".7" stop-color="${skin}"/><stop offset="1" stop-color="${skinD}"/></radialGradient>
+<linearGradient id="${uid}lens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFF0E8"/><stop offset="1" stop-color="#4DB6A6"/></linearGradient>
+<linearGradient id="${uid}cloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
+<linearGradient id="${uid}hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A271D"/><stop offset="1" stop-color="${hair}"/></linearGradient></defs>
+<ellipse cx="105" cy="282" rx="58" ry="7" fill="#1F2A37" opacity=".12"/>
+<path d="M84,262 l-2,14 h20 l1,-14z M108,262 l1,14 h20 l-2,-14z" fill="${skin}"/>
+<path d="M76,274 h30 q3,7 -3,9 h-26 q-5,-3 -1,-9z M104,274 h30 q4,6 -1,9 h-26 q-6,-2 -3,-9z" fill="#8C5A3C"/>
+<path d="M58,166 q47,-22 94,0 l12,100 q-59,10 -118,0z" fill="url(#${uid}coat)" stroke="#C9D3DD" stroke-width="2"/>
+<path d="M105,176 v80" stroke="#E3E9EF" stroke-width="2"/>
+<path d="M90,158 q15,12 30,0" fill="none" stroke="#C9D3DD" stroke-width="2.5"/>
+<path d="M105,166 v34" stroke="#D5DCE3" stroke-width="2.5"/>
+<path d="M105,198 q-4,4 -3,14 q3,4 6,0 q1,-10 -3,-14z" fill="#E3E9EF" stroke="#C9D3DD" stroke-width="1.5"/>
+<path d="M102,212 q3,10 0,16 M106,212 q2,10 4,14 M104,212 v17" stroke="#C9D3DD" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+${head==="ghutra"?`<path d="M48,74 Q26,150 46,192 Q66,196 80,176 Q60,140 62,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M162,74 Q184,150 164,192 Q144,196 130,176 Q150,140 148,96z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M50,120 q-4,30 6,58 M160,120 q4,30 -6,58" stroke="#E3E9EF" stroke-width="2" fill="none"/>`:""}
+${arms}
+<path d="M93,138 h24 v24 q-12,6 -24,0z" fill="${skinD}"/>
+${head==="ghutra"?`<ellipse cx="105" cy="102" rx="54" ry="52" fill="url(#${uid}face)"/>
+<path d="M46,112 Q34,28 105,26 Q176,28 164,112 Q162,84 150,70 Q105,56 60,70 Q48,84 46,112z" fill="url(#${uid}cloth)" stroke="#D5DCE3" stroke-width="1.5"/>
+<path d="M70,40 q35,-10 70,0" stroke="#E3E9EF" stroke-width="2" fill="none"/>
+<path d="M52,58 Q105,30 158,58" stroke="#1F2A37" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M54,67 Q105,41 156,67" stroke="#1F2A37" stroke-width="5" fill="none" stroke-linecap="round"/>`:`<ellipse cx="46" cy="104" rx="10" ry="13" fill="${skin}"/><ellipse cx="164" cy="104" rx="10" ry="13" fill="${skin}"/>
+<ellipse cx="46" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/><ellipse cx="164" cy="104" rx="5" ry="7" fill="${skinD}" opacity=".5"/>
+<ellipse cx="105" cy="98" rx="58" ry="54" fill="url(#${uid}face)"/>
+<path d="M47,92 q-6,-52 46,-60 q40,-6 62,22 q10,14 8,38 q-6,-18 -18,-24 q-22,10 -52,6 q-26,-4 -36,8 q-6,4 -10,10z" fill="url(#${uid}hair)"/>
+<path d="M70,50 q22,-14 50,-8" stroke="#5A3D2E" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M50,66 h110" stroke="#1F2A37" stroke-width="7" stroke-linecap="round"/>
+<rect x="66" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<rect x="110" y="52" width="34" height="24" rx="11" fill="url(#${uid}lens)" stroke="#1F2A37" stroke-width="4"/>
+<path d="M100,63 h10" stroke="#1F2A37" stroke-width="4"/>
+<path d="M73,60 q4,-4 10,-3 M117,60 q4,-4 10,-3" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+`}
+<path d="${brows}" stroke="${hair}" stroke-width="5" fill="none" stroke-linecap="round"/>
+${eye(84)}${eye(116)}
+<path d="M101,108 q4,6 -1,9" stroke="${skinD}" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="70" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/><ellipse cx="140" cy="118" rx="9" ry="6" fill="#E5806E" opacity=".35"/>
+${mouth}
+${front}
+</svg>`;
+}
+
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="sci8_u2l27_";
+const store={get(k,d){try{const v=localStorage.getItem(KEY+VERSION+CURR+"_"+k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(KEY+VERSION+CURR+"_"+k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi=(en,ar)=>`<div class="bi"><p class="en">${en}</p><p class="ar">${ar}</p></div>`;
+const fmt=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
+
+/* ---------- version ---------- */
+document.body.className=VERSION;
+$$(VERSION==="teacher"?".s-only":".t-only").forEach(e=>e.remove());
+const C={name:"UAE MOE · Grade 8"};
+$("#curLabel").textContent=C.name+(VERSION==="teacher"?" · Teacher":" · Student");
+
+/* ---------- Zayed ---------- */
+$$("[data-zayed]").forEach(e=>e.innerHTML=zayed(e.dataset.zayed));
+
+/* ---------- Arabic buttons ---------- */
+function addArBtn(b){
+  if(b.querySelector(":scope>.arbtn")||b.closest(".opt,.flip"))return;
+  const en=b.querySelector(":scope>.en"); if(!en) return;
+  const btn=document.createElement("button"); btn.className="arbtn"; btn.type="button"; btn.textContent="عربي";
+  btn.onclick=e=>{e.stopPropagation();b.classList.toggle("show");btn.textContent=b.classList.contains("show")?"إخفاء":"عربي";};
+  en.after(btn);
+}
+function refreshAr(root){ if(root.classList&&root.classList.contains("bi"))addArBtn(root); $$(".bi",root).forEach(addArBtn); }
+$$(".bi").forEach(addArBtn);
+const arAll=$("#arAll");
+function setArAll(v){document.body.classList.toggle("arall",v);arAll.classList.toggle("on",v);store.set("arall",v);}
+arAll.onclick=()=>setArAll(!document.body.classList.contains("arall"));
+setArAll(store.get("arall",false));
+function setMsg(el,en,ar,warn){el.style.display="block";el.className="msg bi"+(warn?" warn":"");el.innerHTML=`<p class="en">${en}</p><p class="ar">${ar}</p>`;refreshAr(el);}
+
+/* ---------- navigation ---------- */
+const screens=$$(".screen"); let cur=0; const seen=new Set(store.get("seen",[]));
+const onShow={};
+function go(i){
+  i=Math.max(0,Math.min(screens.length-1,i));
+  screens[cur].classList.remove("active"); cur=i; screens[cur].classList.add("active");
+  seen.add(i); store.set("seen",[...seen]); store.set("cur",i);
+  $("#progBar").style.width=((i)/(screens.length-1)*100)+"%";
+  $("#count").textContent=(i+1)+" / "+screens.length+" · "+screens[i].dataset.title;
+  $("#backBtn").disabled=i===0;
+  const last=i===screens.length-1;
+  $("#nextBtn").textContent=(screens[i+1]&&screens[i+1].dataset.title==="Final quiz"?"Start quiz ▶":"Next ▶");
+  $("#nextBtn").style.display=last?"none":""; window.scrollTo(0,0);
+  (onShow[screens[i].dataset.title]||(()=>{}))();
+  buildMenu();
+}
+$("#nextBtn").onclick=()=>{ if(screens[cur].dataset.title==="Final quiz"&&!quizDone()){ quizNudge(); return;} go(cur+1)};
+$("#backBtn").onclick=()=>go(cur-1);
+function goTitle(t){const i=screens.findIndex(s=>s.dataset.title===t);if(i>=0)go(i);}
+function buildMenu(){ $("#menuPanel").innerHTML='<b style="display:block;padding:6px 10px 10px">Lesson map · خريطة الدرس</b>'+screens.map((s,i)=>`<button data-i="${i}" class="${i===cur?"cur":""} ${seen.has(i)?"seen":""}"><span class="n">${i+1}</span>${esc(s.dataset.title)}</button>`).join(""); }
+$("#menuBtn").onclick=()=>$("#menu").classList.add("open");
+$("#menu").onclick=e=>{const b=e.target.closest("button[data-i]"); if(b) go(+b.dataset.i); if(b||e.target.id==="menu") $("#menu").classList.remove("open");};
+
+/* ---------- name ---------- */
+const nameIn=$("#nameIn");
+if(nameIn){nameIn.value=store.get("name","");nameIn.oninput=()=>store.set("name",nameIn.value.trim());}
+
+/* ---------- helpers ---------- */
+const F=(a,b)=>`<span class="fr"><span>${a}</span><span>${b}</span></span>`;
+const M=x=>`<span class="m">${x}</span>`;
+
+
+/* ---------- shared math helpers ---------- */
+const REDUCED=(()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}})();
+const N=v=>v<0?"−"+fmt(-v):fmt(v);
+const P=v=>v<0?"(−"+fmt(-v)+")":fmt(v);
+const SUP=e=>`<sup>${e}</sup>`;
+function countUp(el,to,dur,suffix){suffix=suffix||"";if(!el)return;if(REDUCED){el.textContent=N(to)+suffix;return;}
+  const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/(dur||700)),e=1-Math.pow(1-p,3);el.textContent=N(Math.round(to*e))+suffix;if(p<1)requestAnimationFrame(f);})(t0);}
+
+/* ---------- keep math left-to-right inside Arabic text ---------- */
+const RUN=/[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛⅓⅔¼¾⅘](?:[0-9A-Za-z()\[\]−·×÷½²³⁴¹√∛⅓⅔¼¾⅘ =+,./≠]*[0-9A-Za-z)\[\]½²³⁴¹√∛⅓⅔¼¾⅘])?/g;
+function fixAr(h){
+  h=h.replace(/<sup>([^<]*)<\/sup>/g,"$1");
+  const parts=h.split(/(<[^>]+>)/);let inM=0;
+  for(let i=0;i<parts.length;i++){const t=parts[i];
+    if(t[0]==="<"){if(/^<span class="(m|mi)"/.test(t)||(inM&&/^<span/.test(t)))inM++;else if(t==="</span>"&&inM)inM--;continue;}
+    if(!inM)parts[i]=t.replace(RUN,m=>/[0-9=−·×()]/.test(m)&&m.length>1?`<span class="mi">${m}</span>`:m);}
+  return parts.join("").replace(//g,"<sup>").replace(//g,"</sup>");}
+function arFix(root){(root.matches&&root.matches(".ar")?[root]:[]).concat($$(".ar",root)).forEach(e=>{if(e.dataset.f===e.innerHTML.length+"")return;e.innerHTML=fixAr(e.innerHTML);e.dataset.f=e.innerHTML.length;});}
+const DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const DAYS_AR=["الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت","الأحد"];
+const ORD=n=>n+(n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th"));
+
+function whyBox(el,q,qa,opts){el.innerHTML=`<div class="wq">${ICON.bulb||""} Why? ${q}<span class="ar">لماذا؟ ${qa}</span></div><div class="wb">${opts.map((o,i)=>`<button data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div><div class="wr"></div>`;
+  el.querySelectorAll(".wb button").forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];b.classList.add(o[2]?"right":"wrong");if(o[2])el.querySelectorAll(".wb button").forEach(x=>x.disabled=true);
+    el.querySelector(".wr").innerHTML=`<b>${o[2]?ICON.check+" Yes.":"Not quite, try another reason."}</b> ${o[3]}<span class="ar">${o[4]}</span>`;});}
+
+/* ---------- lesson helpers ---------- */
+const OV=d=>`<span class="ov">${d}</span>`;
+const OVN=(p,r)=>`<span class="m">${p}<span class="ov">${r}</span></span>`;
+/* solution box: steps = [[en, ar], ...] */
+function solHTML(steps){if(!steps||!steps.length)return "";
+  return `<div class="solbox"><button type="button" class="solbtn">${ICON.bulb} Show solution <span class="ar">طريقة الحل</span></button><ol class="solsteps" hidden>${steps.map(s=>`<li><span>${s[0]}</span><span class="ar">${s[1]}</span></li>`).join("")}</ol></div>`;}
+function solBind(root){root.querySelectorAll(".solbtn").forEach(b=>{if(b.dataset.b)return;b.dataset.b=1;b.onclick=e=>{e.stopPropagation();const ol=b.nextElementSibling,open=ol.hidden;ol.hidden=!open;b.classList.toggle("on",open);b.innerHTML=`${ICON.bulb} ${open?"Hide solution":"Show solution"} <span class="ar">${open?"إخفاء الحل":"طريقة الحل"}</span>`;};});}
+
+
+const SVGT=(x,y,t,o)=>`<text x="${x}" y="${y}" ${o||""}>${t}</text>`;
+const SANS='font-family="sans-serif"';
+const NN=v=>String(v).replace(/-/g,"−");
+const fx=(v,d)=>NN(+(+v).toFixed(d===undefined?2:d));
+const money=v=>"$"+(+v).toFixed(2);
+
+/* ---------- graph helpers (dark-friendly) ---------- */
+const GC={t:"#7cc2bd",g:"#f2c46d",c:"#ef9a83",ink:"#f1f6f5",mu:"#9fb3b5"};
+function G(o){const W=o.W||360,H=o.H||260,L=o.L||50,R=W-14,T=14,B=H-40;
+  const X=v=>L+(v-o.x0)/(o.x1-o.x0)*(R-L),Y=v=>B-(v-o.y0)/(o.y1-o.y0)*(B-T);
+  let s=`<rect x="${L}" y="${T}" width="${R-L}" height="${B-T}" fill="#7cc2bd" fill-opacity=".04"/>`;
+  let k=0;for(let v=o.x0;v<=o.x1+1e-9;v+=o.xs,k++){s+=`<line x1="${X(v)}" y1="${T}" x2="${X(v)}" y2="${B}" stroke="${GC.t}" stroke-opacity=".14"/>`;
+    if(k%(o.xl||1)===0)s+=SVGT(X(v),B+15,fx(v),`font-size="11" fill="${GC.mu}" text-anchor="middle" ${SANS}`);}
+  k=0;for(let v=o.y0;v<=o.y1+1e-9;v+=o.ys,k++){s+=`<line x1="${L}" y1="${Y(v)}" x2="${R}" y2="${Y(v)}" stroke="${GC.t}" stroke-opacity=".14"/>`;
+    if(k%(o.yl||1)===0)s+=SVGT(L-6,Y(v)+4,fx(v),`font-size="11" fill="${GC.mu}" text-anchor="end" ${SANS}`);}
+  s+=`<line x1="${L}" y1="${B}" x2="${R}" y2="${B}" stroke="${GC.mu}" stroke-width="1.6"/><line x1="${L}" y1="${T}" x2="${L}" y2="${B}" stroke="${GC.mu}" stroke-width="1.6"/>`;
+  if(o.xt)s+=SVGT((L+R)/2,H-6,o.xt,`font-size="12" font-weight="700" fill="${GC.ink}" text-anchor="middle" ${SANS}`);
+  if(o.yt)s+=`<text transform="translate(13 ${(T+B)/2}) rotate(-90)" font-size="12" font-weight="700" fill="${GC.ink}" text-anchor="middle" ${SANS}>${o.yt}</text>`;
+  return {X,Y,s,L,R,T,B,o};}
+const HALO='paint-order="stroke" stroke="#0c1620" stroke-width="4" stroke-linejoin="round"';
+function gLine(g,x1,y1,x2,y2,col,dash,w){return `<line x1="${g.X(x1)}" y1="${g.Y(y1)}" x2="${g.X(x2)}" y2="${g.Y(y2)}" stroke="${col}" stroke-width="${w||3.2}" stroke-linecap="round" ${dash?'stroke-dasharray="8 6"':""}/>`;}
+function gPt(g,x,y,col,lab,dx,dy,anc){return `<circle cx="${g.X(x)}" cy="${g.Y(y)}" r="5.5" fill="${col}" stroke="#0c1620" stroke-width="2"/>`+(lab?SVGT(g.X(x)+(dx===undefined?9:dx),g.Y(y)+(dy===undefined?4:dy),lab,`font-size="12" font-weight="700" fill="${GC.ink}" ${anc?`text-anchor="${anc}"`:""} ${HALO} ${SANS}`):"");}
+/* proportional line y = m x clipped to the grid */
+function gProp(g,m,col,dash){const o=g.o;let xe=o.x1;if(m*xe>o.y1)xe=o.y1/m;let xs=Math.max(o.x0,0);if(o.x0<0){xs=o.x0;if(m*xs<o.y0)xs=o.y0/m;}return gLine(g,xs,m*xs,xe,m*xe,col,dash);}
+/* step triangle: run (gold) then rise (coral) */
+function gStep(g,xa,ya,xb,yb,rl,ul){const X1=g.X(xa),Y1=g.Y(ya),X2=g.X(xb),Y2=g.Y(yb);
+  return `<line x1="${X1}" y1="${Y1}" x2="${X2}" y2="${Y1}" stroke="${GC.g}" stroke-width="3" stroke-dasharray="2 0"/><line x1="${X2}" y1="${Y1}" x2="${X2}" y2="${Y2}" stroke="${GC.c}" stroke-width="3"/>`+
+   SVGT((X1+X2)/2,Y1>g.B-18?Y1-7:Y1+16,rl,`font-size="12" font-weight="700" fill="${GC.g}" text-anchor="middle" ${HALO} ${SANS}`)+
+   SVGT(X2+7,(Y1+Y2)/2+4,ul,`font-size="12" font-weight="700" fill="${GC.c}" ${HALO} ${SANS}`);}
+
+
+/* ---------- coordinate plane + any line ---------- */
+function plane(o){const g=G(Object.assign({x0:-5,x1:5,xs:1,y0:-5,y1:5,ys:1,L:34,H:300},o));
+  g.s+=`<line x1="${g.X(0)}" y1="${g.T}" x2="${g.X(0)}" y2="${g.B}" stroke="${GC.mu}" stroke-width="1.7"/><line x1="${g.L}" y1="${g.Y(0)}" x2="${g.R}" y2="${g.Y(0)}" stroke="${GC.mu}" stroke-width="1.7"/>`+
+   SVGT(g.X(0)-6,g.Y(0)+14,"O",`font-size="12" font-style="italic" fill="${GC.mu}" text-anchor="end" font-family="Cambria,serif"`)+
+   SVGT(g.R-4,g.Y(0)-6,"x",`font-size="13" font-style="italic" fill="${GC.ink}" text-anchor="end" font-family="Cambria,serif"`)+SVGT(g.X(0)+6,g.T+12,"y",`font-size="13" font-style="italic" fill="${GC.ink}" font-family="Cambria,serif"`);return g;}
+function gThru(g,p,q,col,dash){const o=g.o;if(p[0]===q[0])return gLine(g,p[0],o.y0,p[0],o.y1,col,dash);
+  const m=(q[1]-p[1])/(q[0]-p[0]),f=x=>p[1]+m*(x-p[0]),fi=y=>p[0]+(y-p[1])/m;
+  const pts=[];[[o.x0,f(o.x0)],[o.x1,f(o.x1)]].forEach(t=>pts.push(t));
+  const cl=t=>{if(t[1]>o.y1)return [fi(o.y1),o.y1];if(t[1]<o.y0)return [fi(o.y0),o.y0];return t;};
+  const a=cl(pts[0]),b=cl(pts[1]);return gLine(g,a[0],a[1],b[0],b[1],col,dash);}
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+function frac(n,d){if(d===0)return "undefined";if(n===0)return "0";if(d<0){n=-n;d=-d;}const k=gcd(Math.abs(n),d);n/=k;d/=k;return d===1?NN(n):`${NN(n)}/${d}`;}
+
+
+function lab(x,y,t,col,anc,fs){return SVGT(x,y,t,`font-size="${fs||12}" font-weight="700" fill="${col||GC.ink}" ${anc?`text-anchor="${anc}"`:""} ${HALO} ${SANS}`);}
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function segOn(el,cb){if(!el)return;el.querySelectorAll("button").forEach(b=>b.onclick=()=>{el.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));cb(b.dataset.v);});}
+const sgn=v=>v>0?"+"+v:NN(v);
+function arrowHead(x,y,dir,col,s){s=s||8;const a=dir;const p1=[x-s*Math.cos(a-0.5),y-s*Math.sin(a-0.5)],p2=[x-s*Math.cos(a+0.5),y-s*Math.sin(a+0.5)];return `<path d="M${x} ${y}L${p1[0].toFixed(1)} ${p1[1].toFixed(1)}L${p2[0].toFixed(1)} ${p2[1].toFixed(1)}Z" fill="${col}"/>`;}
+function arrow(x1,y1,x2,y2,col,w,dash){const a=Math.atan2(y2-y1,x2-x1);return `<line x1="${x1}" y1="${y1}" x2="${(x2-6*Math.cos(a)).toFixed(1)}" y2="${(y2-6*Math.sin(a)).toFixed(1)}" stroke="${col}" stroke-width="${w||3}" stroke-linecap="round" ${dash?`stroke-dasharray="${dash}"`:""}/>`+arrowHead(x2,y2,a,col,10);}
+const BG='<rect width="100%" height="100%" rx="12" fill="#0f1d29"/>';
+function flag(x,y,col){return `<line x1="${x}" y1="${y}" x2="${x}" y2="${y-30}" stroke="${col}" stroke-width="2.5"/><path d="M${x} ${y-30}l16 5l-16 6z" fill="${col}"/>`;}
+
+
+const FD={ch:[
+ {q:"A hydroelectric dam makes electricity.<br><span class=\"ar\">سد كهرومائي ينتج الكهرباء.</span>",
+  s:[["Water held behind the dam","High up: stored GPE.","مرتفع: طاقة وضع جاذبية مخزّنة."],["Water falls through tunnels","GPE → KE.","GPE تتحول إلى KE."],["Water spins the turbine","It does work on the blades.","يبذل شغلًا على الشفرات."],["Generator makes electricity","Mechanical → electrical.","ميكانيكية ← كهربائية."],["Wires carry it to homes","Electrical energy is used.","تُستخدم الطاقة الكهربائية."]],blank:0},
+ {q:"So Much Work: the pendulum hits the box.<br><span class=\"ar\">So Much Work: البندول يصطدم بالصندوق.</span>",
+  s:[["Pull back the pendulum","You do work: PE is stored.","تبذل شغلًا: تُخزَّن PE."],["Release it","PE → KE as it swings down.","PE تتحول إلى KE أثناء النزول."],["Pendulum hits the box","It pushes the box: work.","يدفع الصندوق: شغل."],["Box slides","Energy goes into the box: KE.","تنتقل الطاقة إلى الصندوق: KE."],["Box slows and stops","Friction: KE → thermal.","الاحتكاك: KE تتحول إلى حرارية."]],blank:1,
+  o:[["Box speeds up forever","Box slows and stops","Box rises into the air"]],h:[["Friction with the floor acts against the motion.","الاحتكاك مع الأرض يعاكس الحركة."]]},
+ {q:"A girl brakes her bicycle.<br><span class=\"ar\">فتاة تضغط فرامل دراجتها.</span>",
+  s:[["Riding along","The bike has KE.","للدراجة KE."],["Squeeze the brakes","Pads rub on the wheel.","تحتك الفرامل بالعجلة."],["Friction acts","A force against the motion.","قوة تعاكس الحركة."],["Wheel and pads warm up","KE → thermal energy.","KE تتحول إلى طاقة حرارية."],["The bike stops","Its KE is now thermal.","صارت KE طاقة حرارية."]],blank:2,
+  o:[["Wheel gains GPE","Wheel and pads warm up","Bike speeds up"],["Energy is destroyed","Bike speeds up","The bike stops"]],h:[["Rubbing surfaces get warm.","الأسطح المتحاكة تسخن."],["Energy is not destroyed: what happens to the motion?","الطاقة لا تفنى: ماذا يحدث للحركة؟"]]}
+]};
+$$(".fader").forEach(el=>{const EX=FD[el.dataset.f];let e=0,k=0,fill=[];
+  el.innerHTML=`<div class="seg needjs" data-r="mode">${EX.map((_,i)=>`<button data-v="${i}" class="${i?"":"on"}">Example ${i+1}</button>`).join("")}</div>
+   <div class="card fcard"><div class="fq" data-r="q"></div><div class="flines" data-r="l"></div></div><div class="fpick needjs" data-r="p"></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  const fmtS=(x,w)=>w?`<span class="wtxt">${x}</span>`:M(x);
+  function draw(){const X=EX[e],n=X.s.length,first=n-X.blank;let h="";
+    X.s.forEach((s,i)=>{let show,blank=false;if(X.blank===0)show=i<=k;else{show=i<first||i-first<fill.length;blank=!show&&i-first===fill.length;}
+      if(show)h+=`<div class="fline"><span class="fn">${i+1}</span>${fmtS(s[0],X.words)}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`;
+      else if(blank)h+=`<div class="fline blank"><span class="fn">${i+1}</span><span class="qm">?</span></div>`;});
+    R("q").innerHTML=(X.words&&!X.txt?"Write in words: ":"")+X.q;R("l").innerHTML=h;
+    const need=X.blank>0&&fill.length<X.blank;
+    R("p").innerHTML=need?X.o[fill.length].map((o,j)=>`<button data-j="${j}">${fmtS(o,X.words)}</button>`).join(""):"";
+    R("p").querySelectorAll("button").forEach(b=>b.onclick=()=>{const opt=X.o[fill.length][+b.dataset.j],want=X.s[first+fill.length][0];
+      if(opt===want){fill.push(opt);draw();setMsg(R("m"),fill.length<X.blank?`${ICON.check} Yes! Now the last step.`:`${ICON.check} <b>Complete!</b>`,fill.length<X.blank?`${ICON.check} نعم! والآن الخطوة الأخيرة.`:`${ICON.check} <b>اكتمل!</b>`);}
+      else{b.classList.add("wrong");const hh=X.h[fill.length];setMsg(R("m"),"Not quite. Hint: "+hh[0],"ليس تمامًا. تلميح: "+hh[1],true);}});
+    R("n").textContent=X.blank===0?"Show me ▶":"Show the answer ▶";R("n").disabled=X.blank===0?k>=n-1:!need;refreshAr(el);}
+  function start(){const X=EX[e];k=0;fill=[];draw();
+    if(X.blank===0)setMsg(R("m"),"<b>Worked example.</b> Tap <b>Show me</b> for the next step.","<b>مثال محلول.</b> اضغط <b>Show me</b> للخطوة التالية.");
+    else setMsg(R("m"),X.blank===1?"<b>Your turn:</b> choose the last step.":"<b>Your turn:</b> choose the last <b>two</b> steps, in order.",X.blank===1?"<b>دورك:</b> اختر الخطوة الأخيرة.":"<b>دورك:</b> اختر آخر <b>خطوتين</b> بالترتيب.");}
+  R("n").onclick=()=>{const X=EX[e];if(X.blank===0){if(k<X.s.length-1){k++;draw();}}else{const first=X.s.length-X.blank;fill.push(X.s[first+fill.length][0]);draw();setMsg(R("m"),"Here is the step. Read why, then try the next example.","هذه هي الخطوة. اقرأ السبب، ثم جرّب المثال التالي.");}};
+  R("r").onclick=start;
+  R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));e=+b.dataset.v;start();});
+  start();});
+
+
+
+/* ---------- practice cards with a solution button ---------- */
+function cardsQ(box,items){box.innerHTML=items.map((c,i)=>`<div class="idc" data-i="${i}"><div class="mtq">${c.t[0]}${c.t[1]!==c.t[0]?`<span class="ar">${c.t[1]}</span>`:""}</div><div class="mb ${c.cls||""}">${c.o.map((n,j)=>`<button data-a="${j}">${n[0]}${n[1]&&n[1]!==n[0]?`<small>${n[1]}</small>`:""}</button>`).join("")}</div><div class="mwhy"></div>${solHTML(c.sol)}</div>`).join("");
+  box.querySelectorAll(".idc").forEach(card=>{const c=items[+card.dataset.i];card.querySelectorAll(".mb button").forEach(b=>b.onclick=()=>{const a=+b.dataset.a,ok=a===c.a;
+    card.classList.remove("right","wrong");card.classList.add(ok?"right":"wrong");card.querySelectorAll(".mb button").forEach(x=>x.classList.toggle("pick",x===b));
+    card.querySelector(".mwhy").innerHTML=ok?`<b>${ICON.check} Yes!</b> ${c.w[0]}<span class="ar">${c.w[1]}</span>`:`<b>${ICON.cross} Not quite.</b> ${c.h[0]}<span class="ar">${c.h[1]}</span>`;});});
+  solBind(box);}
+
+/* ---------- stepper: one or more methods shown line by line ---------- */
+function stepper(el,methods){let m=0,k=0;
+  el.innerHTML=`${methods.length>1?`<div class="seg needjs" data-r="mode">${methods.map((x,i)=>`<button data-v="${i}" class="${i?"":"on"}">${x.name}</button>`).join("")}</div>`:""}
+   <div class="card fcard"><div class="flines" data-r="l"></div></div>
+   <div class="btnrow c needjs"><button class="btn sm" data-r="n">Show me ▶</button><button class="btn alt sm" data-r="r">↺ Start again</button></div><div class="msg bi needjs" data-r="m"></div>`;
+  const R=r=>el.querySelector(`[data-r="${r}"]`);
+  function draw(){const L=methods[m].lines;R("l").innerHTML=L.map((s,i)=>i<=k?`<div class="fline"><span class="fn">${i+1}</span>${M(s[0])}<small>${s[1]}<span class="ar">${s[2]}</span></small></div>`:"").join("");
+    R("n").disabled=k>=L.length-1;
+    if(k>=L.length-1)setMsg(R("m"),`${ICON.check} ${methods[m].end[0]}`,`${ICON.check} ${methods[m].end[1]}`);
+    else setMsg(R("m"),"Tap <b>Show me</b> for the next step.","اضغط <b>Show me</b> للخطوة التالية.");refreshAr(el);}
+  R("n").onclick=()=>{if(k<methods[m].lines.length-1){k++;draw();}};R("r").onclick=()=>{k=0;draw();};
+  if(R("mode"))R("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{R("mode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));m=+b.dataset.v;k=0;draw();});
+  draw();}
+
+
+let ANIMS={};
+function play(key,dur,frame,done){if(ANIMS[key])cancelAnimationFrame(ANIMS[key]);if(RM){frame(1);done&&done();return;}const t0=performance.now();
+  const st=now=>{const u=Math.min(1,(now-t0)/dur);frame(u);if(u<1)ANIMS[key]=requestAnimationFrame(st);else{ANIMS[key]=null;done&&done();}};ANIMS[key]=requestAnimationFrame(st);}
+function ebar(x,yb,w,h,f,col,t){f=Math.max(0,Math.min(1,f));return `<rect x="${x}" y="${yb-h}" width="${w}" height="${h}" rx="4" fill="#0c1620" stroke="${GC.mu}" stroke-width="1.5"/><rect x="${x+3}" y="${(yb-3-(h-6)*f).toFixed(1)}" width="${w-6}" height="${((h-6)*f).toFixed(1)}" rx="2" fill="${col||GC.t}"/>`+(t?lab(x+w/2,yb+14,t,GC.mu,"middle",10):"");}
+const ease=u=>1-Math.pow(1-u,3);
+const RAD=Math.PI/180,RED="#e2574c";
+function ground(y){return `<rect x="0" y="${y}" width="360" height="${260-y}" fill="#1f2a37"/><line x1="0" y1="${y}" x2="360" y2="${y}" stroke="${GC.mu}" stroke-width="1.5"/>`;}
+function hand(x,y){return `<ellipse cx="${x}" cy="${y}" rx="13" ry="10" fill="#c98d63"/><ellipse cx="${x+4}" cy="${y-3}" rx="5" ry="3.5" fill="#e3b08a"/>`;}
+function washers(x,y){let o="";for(let k=0;k<5;k++)o+=`<ellipse cx="${x.toFixed(1)}" cy="${(y+k*3).toFixed(1)}" rx="9" ry="2.6" fill="#b9c2c6" stroke="#6f7b80"/>`;return o;}
+function bike(x,y,col){col=col||"#5b8ad1";return `<circle cx="${x-34}" cy="${y}" r="20" fill="none" stroke="#cfe9e6" stroke-width="3"/><circle cx="${x+34}" cy="${y}" r="20" fill="none" stroke="#cfe9e6" stroke-width="3"/><path d="M${x-34} ${y}L${x-8} ${y-30}L${x+22} ${y-30}L${x+34} ${y}M${x-8} ${y-30}L${x} ${y}L${x+22} ${y-30}M${x+22} ${y-30}l-4 -14h12M${x-8} ${y-30}l-4 -10h-10" fill="none" stroke="${col}" stroke-width="4" stroke-linejoin="round"/>`;}
+function waves(x,y,n,col){let o="";for(let k=1;k<=n;k++)o+=`<path d="M${x+k*7} ${y-k*6}q${k*4} ${k*6} 0 ${k*12}" fill="none" stroke="${col||GC.mu}" stroke-width="1.8" opacity="${1-k*0.2}"/>`;return o;}
+function heat(x,y){let o="";for(let k=0;k<3;k++)o+=`<path d="M${x-10+k*10} ${y}q-5 -7 0 -14t0 -14" fill="none" stroke="${RED}" stroke-width="2.2" stroke-linecap="round" opacity=".9"/>`;return o;}
+
+/* ---------- warm-up ---------- */
+cardsQ($("#wuBox"),[
+ {t:["Lesson 26: Mechanical energy is …","الدرس 26: الطاقة الميكانيكية هي …"],o:[["KE + PE","KE + PE"],["KE − PE","KE − PE"]],a:0,
+  w:["ME is the sum of kinetic and potential energy.","ME مجموع الطاقة الحركية وطاقة الوضع."],h:["It is a sum.","إنها مجموع."],
+  sol:[["Two kinds of energy.","نوعان من الطاقة."],["Add them.","اجمعهما."],["ME = KE + PE.","ME = KE + PE."]]},
+ {t:["Lesson 26: Where does a pendulum move fastest?","الدرس 26: أين يتحرك البندول بأقصى سرعة؟"],o:[["At the bottom of the arc","في أسفل القوس"],["At the highest points","في أعلى النقاط"]],a:0,
+  w:["Fastest at the bottom: KE is greatest there.","الأسرع في الأسفل: KE أكبر ما تكون هناك."],h:["Where is PE least?","أين تكون PE أقل ما تكون؟"],
+  sol:[["Top: stops for a moment.","الأعلى: يتوقف لحظة."],["Bottom: fastest.","الأسفل: الأسرع."],["Most KE at the bottom.","أكبر KE في الأسفل."]]},
+ {t:["Lesson 26: The law of conservation of energy says energy …","الدرس 26: ينص قانون حفظ الطاقة على أن الطاقة …"],o:[["is used up","تُستهلك وتختفي"],["changes form but is not created or destroyed","تتغير من شكل إلى آخر لكنها لا تُستحدث ولا تفنى"]],a:1,cls:"stack",
+  w:["So if a pendulum stops, its energy must have gone somewhere!","فإذا توقف البندول، فلا بد أن طاقته ذهبت إلى مكان ما!"],h:["Is energy ever destroyed?","هل تفنى الطاقة أبدًا؟"],
+  sol:[["Energy changes form.","الطاقة تغيّر شكلها."],["The total stays.","المجموع يبقى."],["Not created or destroyed.","لا تُستحدث ولا تفنى."]]}
+]);
+
+/* ---------- hook ---------- */
+const HK=[["The energy was destroyed when the pendulum slowed down.","فنيت الطاقة عندما تباطأ البندول."],["The energy was transferred out of the pendulum, to the air, as thermal energy and sound.","انتقلت الطاقة من البندول إلى الهواء على شكل طاقة حرارية وصوت."],["Gravity used up the energy.","استهلكت الجاذبية الطاقة."]];
+(function(){const s=$("#hkSvg");if(s){let o=BG+`<rect x="80" y="14" width="200" height="10" rx="3" fill="#5b6b74"/>`;const PX=180,PY=22,L=140;
+  [[-40,.25],[-28,.4],[-16,.6],[0,1]].forEach(([d,op])=>{const x=PX+L*Math.sin(d*RAD),y=PY+L*Math.cos(d*RAD);o+=`<line x1="${PX}" y1="${PY}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#cfe9e6" stroke-opacity="${op}" stroke-width="2"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="12" fill="#5b8ad1" opacity="${op}"/>`;});
+  o+=lab(70,70,"swing 1",GC.mu,"middle",10)+lab(180,196,"…stops",GC.mu,"middle",10);s.innerHTML=o;}
+  const box=$("#hkBox");if(!box)return;
+  box.innerHTML=`<div class="idc"><div class="mtq">What do you think?<span class="ar">ما رأيك؟</span></div><div class="mb stack">${HK.map((p,i)=>`<button data-i="${i}"><b>Idea ${i+1}:</b> ${p[0]}<small>${p[1]}</small></button>`).join("")}</div><div class="mwhy" id="hkMsg"></div></div>`;
+  box.querySelectorAll("button").forEach(b=>b.onclick=()=>{box.querySelectorAll("button").forEach(x=>x.classList.toggle("pick",x===b));store.set("hk",+b.dataset.i);if(window.bkMine)bkMine();
+    $("#hkMsg").innerHTML=`You chose <b>Idea ${+b.dataset.i+1}</b>. Saved! We will check it at the end of the lesson.<span class="ar">اخترت <b>الرأي ${+b.dataset.i+1}</b>. حُفظ اختيارك! سنتحقق منه في نهاية الدرس.</span>`;});})();
+
+/* ---------- Lab: So Much Work ---------- */
+const SMD=[21,19,20];
+(function(){const s=$("#smSvg");if(!s)return;const PX=120,PY=14,L=176,FY=205,A=-38;let n=0,busy=false,bx0=136;
+  function scene(th,bx,snd){const x=PX+L*Math.sin(th*RAD),y=PY+L*Math.cos(th*RAD);let o=BG+ground(FY)+`<rect x="40" y="8" width="180" height="8" rx="3" fill="#5b6b74"/>`;
+    o+=`<line x1="${PX}" y1="${PY}" x2="${x.toFixed(1)}" y2="${(y-6).toFixed(1)}" stroke="#cfe9e6" stroke-width="1.6"/>`+washers(x,y-4);
+    o+=`<line x1="${bx0-2}" y1="${FY}" x2="${bx0-2}" y2="${FY-6}" stroke="${GC.g}" stroke-width="2"/>`;
+    o+=`<rect x="${bx.toFixed(1)}" y="${FY-18}" width="24" height="18" rx="2" fill="#c89b5e" stroke="#8c5a3c"/>`;
+    for(let c=0;c<=30;c+=10){const xx=bx0+c*5;o+=`<line x1="${xx}" y1="${FY+4}" x2="${xx}" y2="${FY+10}" stroke="${GC.mu}"/>`+lab(xx,FY+22,c+" cm",GC.mu,"middle",9);}
+    if(th<-1){const hy=PY+L*Math.cos(th*RAD);o+=`<line x1="20" y1="${hy+8}" x2="20" y2="${FY}" stroke="${GC.t}" stroke-dasharray="4 3"/>`+lab(26,(hy+FY)/2+8,"15 cm",GC.t,"start",10);}
+    if(snd)o+=waves(bx0+26,FY-12,3,GC.g)+lab(bx0+70,FY-34,"clack!",GC.g,"start",11);
+    s.innerHTML=o;}
+  function table(){$("#smTab").innerHTML=`<tr><th>trial</th><th>1</th><th>2</th><th>3</th></tr><tr><td>box moves</td>${SMD.map((d,i)=>`<td>${i<n?d+" cm":""}</td>`).join("")}</tr>`;}
+  function flow(full){const f=$("#flSvg");let o=BG;const B=(x,t,c)=>`<rect x="${x}" y="22" width="120" height="44" rx="8" fill="#0c1620" stroke="${GC.t}" stroke-width="2"/>`+lab(x+60,50,t,c||GC.ink,"middle",12);
+    o+=lab(90,14,"source object",GC.mu,"middle",10)+lab(270,14,"receiver object",GC.mu,"middle",10)+B(30,full?"pendulum":"?")+B(210,full?"box":"?")+arrow(152,44,206,44,GC.g,3);
+    o+=`<line x1="90" y1="66" x2="90" y2="96" stroke="${GC.g}" stroke-width="2"/><line x1="270" y1="66" x2="270" y2="96" stroke="${GC.g}" stroke-width="2"/>`;
+    o+=`<ellipse cx="90" cy="122" rx="62" ry="26" fill="#0c1620" stroke="${GC.t}" stroke-width="2"/><ellipse cx="270" cy="122" rx="62" ry="26" fill="#0c1620" stroke="${GC.t}" stroke-width="2"/>`;
+    o+=lab(90,126,full?"KE decreases":"?",full?GC.c:GC.ink,"middle",11)+lab(270,126,full?"KE increases":"?",full?GC.t:GC.ink,"middle",11)+lab(90,162,"energy",GC.mu,"middle",9.5)+lab(270,162,"energy",GC.mu,"middle",9.5);f.innerHTML=o;}
+  function reset(){if(busy)return;n=0;scene(0,bx0,false);table();flow(false);setMsg($("#smMsg"),"Tap <b>Release</b> to pull the pendulum back to 15 cm and let it go.","اضغط <b>Release</b> لسحب البندول إلى 15 cm ثم تركه.");}
+  $("#smGo").onclick=()=>{if(busy||n>=3)return;busy=true;const d=SMD[n];
+    play("sm",700,u=>scene(A*u,bx0,false),()=>play("sm",650,u=>scene(A*(1-u*u),bx0,false),()=>play("sm",1200,u=>{const k=ease(u);scene(-3*Math.sin(u*Math.PI),bx0+d*5*k,u<0.5);},()=>{busy=false;n++;table();scene(0,bx0+d*5,false);
+      if(n<3)setMsg($("#smMsg"),`Trial ${n}: the box moved <b>${d} cm</b> and you heard a "clack". Tap <b>Release</b> again.`,`المحاولة ${n}: تحرك الصندوق <b>${d} cm</b> وسمعت صوت ارتطام. اضغط <b>Release</b> مرة أخرى.`);
+      else{flow(true);setMsg($("#smMsg"),`${ICON.check} Three trials: 21, 19 and 20 cm. The pendulum gave energy to the box: the box <b>moved</b> and there was a <b>sound</b>. Both are signs of an energy transfer. See the energy flow diagram.`,`${ICON.check} ثلاث محاولات: 21 و19 و20 cm. أعطى البندول طاقة للصندوق: <b>تحرك</b> الصندوق وكان هناك <b>صوت</b>. وكلاهما علامة على انتقال الطاقة. انظر إلى مخطط تدفق الطاقة.`);}})));};
+  $("#smR").onclick=reset;reset();})();
+cardsQ($("#smBox"),[
+ {t:["Q5: What signs showed that energy was transferred?","س5: ما العلامات التي بيّنت أن الطاقة انتقلت؟"],o:[["The box moved and we heard a sound","تحرك الصندوق وسمعنا صوتًا"],["The pendulum changed colour","تغيّر لون البندول"]],a:0,cls:"stack",
+  w:["A change in motion and a sound are signs of an energy transfer.","التغير في الحركة والصوت علامتان على انتقال الطاقة."],h:["What changed when they hit?","ماذا تغيّر عند الاصطدام؟"],
+  sol:[["The box started moving.","بدأ الصندوق يتحرك."],["We heard a clack.","سمعنا صوت ارتطام."],["Motion + sound = transfer.","حركة + صوت = انتقال."]]},
+ {t:["Q6: In the energy flow diagram, the receiver object is …","س6: في مخطط تدفق الطاقة، الجسم المستقبِل هو …"],o:[["the box: its KE increased","الصندوق: زادت KE له"],["the pendulum: its KE increased","البندول: زادت KE له"]],a:0,cls:"stack",
+  w:["The pendulum (source) loses KE; the box (receiver) gains KE.","البندول (المصدر) يفقد KE، والصندوق (المستقبِل) يكسب KE."],h:["Which object started to move?","أي جسم بدأ يتحرك؟"],
+  sol:[["Source: the pendulum.","المصدر: البندول."],["Energy flows to the box.","تتدفق الطاقة إلى الصندوق."],["Receiver: the box.","المستقبِل: الصندوق."]]},
+ {t:["Q7: What caused the box to move?","س7: ما الذي جعل الصندوق يتحرك؟"],o:[["The pendulum applied a force to it","أثّر البندول فيه بقوة"],["The box moved by itself","تحرك الصندوق من تلقاء نفسه"],["The floor pushed it","دفعته الأرض"]],a:0,
+  w:["The pendulum pushed the box in the direction it moved: it did work on the box.","دفع البندول الصندوق في اتجاه حركته: بذل عليه شغلًا."],h:["Objects need a force to start moving.","تحتاج الأجسام إلى قوة لتبدأ الحركة."],
+  sol:[["The box was at rest.","كان الصندوق ساكنًا."],["The pendulum hit it with a force.","اصطدم به البندول بقوة."],["The force moved it.","القوة حرّكته."]]}
+]);
+
+/* ---------- Work ---------- */
+(function(){const s=$("#wkSvg");if(!s)return;let m=0;const FY=170;
+  function rack(){let o="";for(let k=0;k<4;k++)o+=`<path d="M${270+k*18} ${FY}v-34a9 9 0 0 1 18 0v34" fill="none" stroke="#9fb3b5" stroke-width="3"/>`;return o;}
+  function scene(bx,push,blocked){let o=BG+ground(FY+20)+(blocked?`<rect x="${bx+56}" y="${FY-10}" width="16" height="30" rx="3" fill="#8c5a3c"/>`+lab(bx+64,FY-16,"kerb",GC.mu,"middle",9):"")+rack()+bike(bx,FY);
+    if(push)o+=hand(bx-62,FY-34)+arrow(bx-86,FY-34,bx-50,FY-34,GC.g,4)+lab(bx-70,FY-48,"force",GC.g,"middle",10);s.innerHTML=o;}
+  const T=[["force: yes\nbike moves in the direction of the force: yes\nwork: YES","Your push (a force) makes the bicycle move in the direction of the push, so <b>work is done</b>: energy is transferred to the bike.","دفعك (قوة) يجعل الدراجة تتحرك في اتجاه الدفع، إذن <b>يُبذل شغل</b>: تنتقل الطاقة إلى الدراجة."],
+   ["force: yes\nbike moves: no\nwork: NO","You push, but the bike does not move (a kerb blocks it). A force that does not make the object move does <b>no work</b>.","تدفع لكن الدراجة لا تتحرك (حافة رصيف تمنعها). القوة التي لا تحرّك الجسم <b>لا تبذل شغلًا</b>."],
+   ["force: no (you let go)\nbike moves: yes, it keeps rolling\nwork: NO","You let go and the bike keeps rolling. It is moving, but <b>no work</b> is being done, because you are no longer applying a force.","تركتها فاستمرت الدراجة في التدحرج. هي تتحرك، لكن <b>لا يُبذل شغل</b> لأنك لم تعد تؤثر بقوة."]];
+  function show(v){m=+v;$("#wkOut").textContent=T[m][0];setMsg($("#wkMsg"),T[m][1],T[m][2]);
+    if(m===0)play("wk",1300,u=>scene(80+90*ease(u),true,false));else if(m===1)play("wk",1300,u=>scene(110+2*Math.sin(u*30),true,true));else play("wk",1300,u=>scene(120+70*u,false,false));}
+  segOn($("#wkSeg"),show);show(0);})();
+
+/* ---------- Lifting a box ---------- */
+(function(){const s=$("#lbSvg");if(!s)return;const FY=200;
+  const Y=[FY-22,FY-90,FY-152],X=[110,140,232];
+  function scene(k){let o=BG+ground(FY)+`<rect x="250" y="20" width="56" height="${FY-20}" fill="#2f5d86"/>`;for(let y=48;y<FY;y+=38)o+=`<rect x="250" y="${y}" width="56" height="5" fill="#5b8ad1"/>`;
+    o+=`<rect x="${X[k]-18}" y="${Y[k]}" width="36" height="${k===2?28:22}" rx="2" fill="#e8913c" stroke="#a65e1d"/>`;
+    if(k<2)o+=hand(X[k]-24,Y[k]+12)+hand(X[k]+24,Y[k]+12);if(k===1)o+=arrow(X[k],Y[k]-6,X[k],Y[k]-46,GC.g,3)+lab(X[k]+8,Y[k]-30,"lifting force",GC.g,"start",10);
+    o+=ebar(30,FY-10,30,150,[0,0.45,1][k],GC.g,"PE");s.innerHTML=o;}
+  const T=[["box on the floor\nPE (box–Earth): least","The box is on the floor. The box–Earth system has its least PE.","الصندوق على الأرض. لنظام الصندوق والأرض أقل طاقة وضع."],
+   ["lifting\nforce: up · box moves: up\nwork is done → PE increases","She exerts a force upward and the box moves upward: she is <b>doing work</b>. Energy is transferred into the box–Earth system.","تؤثر بقوة إلى أعلى فيتحرك الصندوق إلى أعلى: إنها <b>تبذل شغلًا</b>. تنتقل الطاقة إلى نظام الصندوق والأرض."],
+   ["box on the high shelf\nPE (box–Earth): greatest","The box is on the high shelf: the system has more PE than before. That energy came from the work she did.","الصندوق على الرف المرتفع: للنظام طاقة وضع أكبر من قبل، وقد جاءت هذه الطاقة من الشغل الذي بذلته."]];
+  segOn($("#lbSeg"),v=>{scene(+v);$("#lbOut").textContent=T[+v][0];setMsg($("#lbMsg"),T[+v][1],T[+v][2]);});scene(0);$("#lbOut").textContent=T[0][0];setMsg($("#lbMsg"),T[0][1],T[0][2]);})();
+whyBox($("#whyL"),"Why did the energy of the box–shelf system increase?","لماذا زادت طاقة نظام الصندوق والرف؟",
+ [["The girl did work on the box: she pushed it up and it moved up.","بذلت الفتاة شغلًا على الصندوق: دفعته إلى أعلى فتحرك إلى أعلى.",true,"Yes! Work transferred energy into the system, stored as GPE.","أحسنت! نقل الشغل الطاقة إلى النظام، فخُزّنت طاقة وضع جاذبية."],
+  ["The shelf created new energy.","صنع الرف طاقة جديدة.",false,"Energy is not created; it was transferred by the girl.","الطاقة لا تُستحدث؛ نقلتها الفتاة."],
+  ["Gravity pushed the box up.","دفعت الجاذبية الصندوق إلى أعلى.",false,"Gravity pulls down; the girl's force pushed up.","الجاذبية تسحب إلى أسفل؛ وقوة الفتاة دفعت إلى أعلى."]]);
+
+/* ---------- Double pendulum ---------- */
+(function(){const s=$("#dpSvg");if(!s)return;const Y0=40,L=110,X1=150,X2=210;
+  function scene(t1,t2,e1,e2,tt){let o=BG+`<rect x="40" y="18" width="6" height="190" fill="#9fb3b5"/><rect x="314" y="18" width="6" height="190" fill="#9fb3b5"/><rect x="20" y="206" width="320" height="8" rx="2" fill="#5b6b74"/>`;
+    o+=`<path d="M46 ${Y0}Q180 ${Y0+4+(t1-t2)*0.05} 314 ${Y0}" fill="none" stroke="#cfe9e6" stroke-width="2"/>`;
+    [[X1,t1],[X2,t2]].forEach(([x0,t],i)=>{const x=x0+L*Math.sin(t*RAD),y=Y0+2+L*Math.cos(t*RAD);o+=`<line x1="${x0}" y1="${Y0+2}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#cfe9e6" stroke-width="1.6"/><ellipse cx="${x.toFixed(1)}" cy="${(y+4).toFixed(1)}" rx="10" ry="4" fill="${i?"#b9c2c6":"#e9c27a"}" stroke="#6f7b80"/>`+lab(x0,Y0+L+34,"washer "+(i+1),GC.mu,"middle",10);});
+    o+=ebar(64,196,22,90,e1,"#e9c27a","")+lab(75,94,"E1",GC.mu,"middle",9.5)+ebar(272,196,22,90,e2,"#b9c2c6","")+lab(283,94,"E2",GC.mu,"middle",9.5);
+    if(tt!==undefined)o+=lab(180,16,`time: ${tt} s`,GC.ink,"middle",11);s.innerHTML=o;}
+  $("#dpGo").onclick=()=>{const A=32;play("dp",9000,u=>{const t=u*60,w=6,d=0.16,g=0.035,env=Math.exp(-g*t);
+      const t1=A*env*Math.cos(d*t)*Math.cos(w*t),t2=A*env*Math.sin(d*t)*Math.sin(w*t),e1=env*env*Math.cos(d*t)**2,e2=env*env*Math.sin(d*t)**2;scene(t1,t2,e1,e2,Math.round(t));
+      $("#dpOut").textContent=`time: ${Math.round(t)} s\nenergy of washer 1: ${Math.round(e1*100)} %\nenergy of washer 2: ${Math.round(e2*100)} %\ntotal of both: ${Math.round((e1+e2)*100)} %`;},()=>{
+      setMsg($("#dpMsg"),`${ICON.check} Washer 1 slowed down while washer 2 started swinging, then they swapped back. The pendulums exerted forces on each other through the string, so energy was <b>transferred</b> between them. And look: both swings got smaller and the total went down.`,`${ICON.check} تباطأت الحلقة 1 بينما بدأت الحلقة 2 تتأرجح، ثم تبادلتا. أثّر البندولان أحدهما في الآخر بقوى عبر الخيط، فـ<b>انتقلت</b> الطاقة بينهما. ولاحظ: صغر تأرجح الاثنين وقلّ المجموع.`);});};
+  scene(0,0,1,0);$("#dpOut").textContent="washer 1: pulled back\nwasher 2: at rest";setMsg($("#dpMsg"),"Only washer 1 will be pulled back. Predict: will washer 2 move?","ستُسحب الحلقة 1 فقط. توقّع: هل ستتحرك الحلقة 2؟");
+  scene(-32,0,1,0);})();
+cardsQ($("#dpBox"),[
+ {t:["Q6: What had to happen to get the first washer to move?","س6: ماذا كان يجب أن يحدث لكي تتحرك الحلقة الأولى؟"],o:[["We pulled it back with a force (we did work)","سحبناها بقوة (بذلنا شغلًا)"],["Nothing: it started moving by itself","لا شيء: بدأت تتحرك من تلقاء نفسها"]],a:0,cls:"stack",
+  w:["Our force moved it: work transferred energy into the pendulum.","قوتنا حرّكتها: نقل الشغل الطاقة إلى البندول."],h:["Did it move before you touched it?","هل تحركت قبل أن تلمسها؟"],
+  sol:[["It was at rest.","كانت ساكنة."],["We pulled it with a force.","سحبناها بقوة."],["Work gave it energy.","الشغل أعطاها طاقة."]]},
+ {t:["Q7: The pendulums slow down and stop. What energy transfer stops them?","س7: يتباطأ البندولان ويتوقفان. أي انتقال للطاقة يوقفهما؟"],o:[["Mechanical energy → thermal energy in the air (air resistance)","طاقة ميكانيكية ← طاقة حرارية في الهواء (مقاومة الهواء)"],["Thermal energy → mechanical energy","طاقة حرارية ← طاقة ميكانيكية"],["The energy is destroyed","الطاقة تفنى"]],a:0,cls:"stack",
+  w:["Air resistance (friction) transfers mechanical energy to the air as thermal energy.","تنقل مقاومة الهواء (احتكاك) الطاقة الميكانيكية إلى الهواء على شكل طاقة حرارية."],h:["What rubs against the moving washers?","ما الذي يحتك بالحلقات المتحركة؟"],
+  sol:[["Air rubs on the washers.","يحتك الهواء بالحلقات."],["Friction acts.","يؤثر الاحتكاك."],["ME → thermal energy.","ME ← طاقة حرارية."]]}
+]);
+
+/* ---------- Thermal energy: bicycle ---------- */
+(function(){const s=$("#thSvg");if(!s)return;const FY=150;
+  const K=[1,0.5,0],TT=[0,0.5,1];
+  function scene(m,bx){let o=BG+ground(FY+20)+bike(bx,FY,"#e08ab0");
+    if(m===0)for(let k=0;k<3;k++)o+=`<line x1="${bx-70-k*14}" y1="${FY-40+k*14}" x2="${bx-58-k*14}" y2="${FY-40+k*14}" stroke="${GC.mu}" stroke-width="2"/>`;
+    if(m>=1){o+=`<circle cx="${bx+34}" cy="${FY}" r="20" fill="none" stroke="${RED}" stroke-width="${m===1?4:2}" opacity="${m===1?1:0.5}"/>`+heat(bx+34,FY-26);if(m===1)o+=`<rect x="${bx-60}" y="${FY+20}" width="40" height="4" fill="#0c1620"/>`+lab(bx-40,FY+38,"tire mark",GC.mu,"middle",9);}
+    const X=232,YB=160,H=100;o+=ebar(X,YB,24,H,K[m],"#6cc04a","")+lab(X+12,YB+14,"kinetic",GC.mu,"middle",9)+lab(X+31,YB-40,"+",GC.ink,"middle",14)+ebar(X+38,YB,24,H,TT[m],RED,"")+lab(X+50,YB+14,"thermal",GC.mu,"middle",9)+lab(X+69,YB-40,"=",GC.ink,"middle",14);
+    o+=`<rect x="${X+76}" y="${YB-H}" width="24" height="${H}" rx="4" fill="#0c1620" stroke="${GC.mu}" stroke-width="1.5"/><rect x="${X+79}" y="${(YB-3-(H-6)*K[m]).toFixed(1)}" width="18" height="${((H-6)*K[m]).toFixed(1)}" fill="#6cc04a"/><rect x="${X+79}" y="${(YB-3-(H-6)).toFixed(1)}" width="18" height="${((H-6)*TT[m]).toFixed(1)}" fill="${RED}"/>`+lab(X+88,YB+14,"total",GC.mu,"middle",9);
+    s.innerHTML=o;}
+  const T=[["coasting\nkinetic: all · thermal: none","Coasting: the bike has kinetic energy. Almost no energy has become thermal energy yet.","تسير الدراجة بلا تبديل: لها طاقة حركية، ولم يتحول تقريبًا أي جزء منها إلى طاقة حرارية بعد."],
+   ["applying brakes\nkinetic: decreasing · thermal: increasing","Applying brakes: the brake pads rub on the wheel and the tire rubs on the road. Friction changes kinetic energy into <b>thermal energy</b>: the parts get warmer, and a hard stop can melt the tire a little and leave <b>tire marks</b>.","الضغط على الفرامل: تحتك الفرامل بالعجلة ويحتك الإطار بالطريق. يحوّل الاحتكاك الطاقة الحركية إلى <b>طاقة حرارية</b>: تسخن الأجزاء، وقد يذيب التوقف المفاجئ الإطار قليلًا فيترك <b>أثرًا على الطريق</b>."],
+   ["stopped\nkinetic: none · thermal: all","Stopped: all the kinetic energy has become thermal energy. The <b>total</b> energy is the same. A change in temperature is a sign that energy was transferred.","توقفت: تحولت كل الطاقة الحركية إلى طاقة حرارية، و<b>المجموع</b> لم يتغيّر. والتغيّر في درجة الحرارة علامة على انتقال الطاقة."]];
+  const BX=[140,140,140];
+  segOn($("#thSeg"),v=>{const m=+v;if(m===0)play("th",900,u=>scene(0,90+50*u));else scene(m,BX[m]);$("#thOut").textContent=T[m][0];setMsg($("#thMsg"),T[m][1],T[m][2]);});
+  scene(0,140);$("#thOut").textContent=T[0][0];setMsg($("#thMsg"),T[0][1],T[0][2]);})();
+cardsQ($("#thBox"),[
+ {t:["Which is a sign that an energy transfer happened?","أي مما يلي علامة على حدوث انتقال للطاقة؟"],o:[["A change in temperature","تغيّر في درجة الحرارة"],["The colour of the bike","لون الدراجة"]],a:0,
+  w:["Changes in motion, sound and temperature are signs of energy transfer.","التغيّر في الحركة والصوت ودرجة الحرارة علامات على انتقال الطاقة."],h:["Think about the warm brakes.","فكّر في الفرامل الساخنة."],
+  sol:[["Brakes got warm.","سخنت الفرامل."],["Temperature changed.","تغيّرت درجة الحرارة."],["Sign of transfer.","علامة على الانتقال."]]},
+ {t:["Why did you not notice the air getting warmer around the pendulums?","لماذا لم تلاحظ ارتفاع حرارة الهواء حول البندولين؟"],o:[["Only a small amount of energy was transferred over time","انتقلت كمية صغيرة فقط من الطاقة مع الوقت"],["No energy was transferred","لم تنتقل أي طاقة"]],a:0,cls:"stack",
+  w:["The energy spread into the air a little at a time, so the change was tiny.","انتشرت الطاقة في الهواء شيئًا فشيئًا، فكان التغيّر ضئيلًا جدًا."],h:["The pendulums slowed down slowly.","تباطأ البندولان ببطء."],
+  sol:[["They slowed slowly.","تباطآ ببطء."],["Small transfer each second.","انتقال صغير كل ثانية."],["Tiny temperature change.","تغيّر ضئيل في الحرارة."]]}
+]);
+
+/* ---------- Running out of energy ---------- */
+(function(){const s=$("#cfSvg");if(!s)return;
+  function draw(k){let o=BG;
+    const box=(x,t1,t2,on)=>`<rect x="${x}" y="60" width="96" height="70" rx="10" fill="${on?"#173041":"#0c1620"}" stroke="${on?GC.g:GC.mu}" stroke-width="${on?3:1.5}"/>`+lab(x+48,90,t1,on?GC.g:GC.ink,"middle",11)+lab(x+48,110,t2,GC.mu,"middle",9.5);
+    o+=box(10,"fuel","stored energy",k===0)+box(132,"moving parts","kinetic energy",k===1)+box(254,"air","thermal energy",k===2)+arrow(108,95,130,95,GC.g,3)+arrow(230,95,252,95,GC.g,3);
+    o+=lab(180,30,"car + air system: total energy stays the same",GC.ink,"middle",11);
+    for(let i=0;i<=k;i++)o+=`<rect x="${10+i*122}" y="150" width="96" height="10" rx="4" fill="${[GC.g,GC.t,RED][i]}" opacity="${i===k?1:0.3}"/>`;
+    o+=lab(180,182,k===0?"useful: very":k===1?"useful: still":"useful: hardly (spread out)",GC.mu,"middle",10);s.innerHTML=o;}
+  const T=[["stage 1: fuel\nenergy: stored in the fuel","When fuel burns, the energy stored in it changes to energy that moves parts of the car.","عندما يحترق الوقود تتحول الطاقة المخزّنة فيه إلى طاقة تحرّك أجزاء السيارة."],
+   ["stage 2: moving parts\nenergy: kinetic","As the parts move, <b>friction</b> changes the moving energy into thermal energy.","أثناء حركة الأجزاء يحوّل <b>الاحتكاك</b> طاقة الحركة إلى طاقة حرارية."],
+   ["stage 3: air\nenergy: thermal, spread out","The molecules of the air around the parts move faster: the air is warmer. The <b>amount</b> of energy did not change, but it is spread out and can no longer do useful work. The car did not destroy energy; it changed its form.","تتحرك جزيئات الهواء حول الأجزاء أسرع: يصبح الهواء أدفأ. لم تتغيّر <b>كمية</b> الطاقة، لكنها انتشرت ولم تعد قادرة على بذل شغل مفيد. السيارة لم تُفنِ الطاقة؛ بل غيّرت شكلها."]];
+  segOn($("#cfSeg"),v=>{draw(+v);$("#cfOut").textContent=T[+v][0];setMsg($("#cfMsg"),T[+v][1],T[+v][2]);});draw(0);$("#cfOut").textContent=T[0][0];setMsg($("#cfMsg"),T[0][1],T[0][2]);})();
+cardsQ($("#cfBox"),[
+ {t:["When a car's fuel is used up, did the car run out of energy?","عندما ينفد وقود السيارة، هل نفدت طاقتها؟"],o:[["Yes, the energy was destroyed","نعم، فنيت الطاقة"],["No, the energy changed into thermal energy","لا، تحولت الطاقة إلى طاقة حرارية"]],a:1,cls:"stack",
+  w:["The energy was conserved: it changed form, mostly to thermal energy in the air.","الطاقة محفوظة: غيّرت شكلها، وأغلبها صار طاقة حرارية في الهواء."],h:["Can energy be destroyed?","هل يمكن أن تفنى الطاقة؟"],
+  sol:[["Energy is conserved.","الطاقة محفوظة."],["Fuel → motion → thermal.","وقود ← حركة ← حرارة."],["It changed form.","غيّرت شكلها."]]},
+ {t:["After the energy spreads into the air as thermal energy, it is …","بعد أن تنتشر الطاقة في الهواء على شكل طاقة حرارية، فإنها …"],o:[["the same amount, but less useful","بالكمية نفسها، لكنها أقل فائدة"],["more useful than before","أكثر فائدة من قبل"]],a:0,
+  w:["The quantity doesn't change, but it can no longer do useful work.","الكمية لا تتغيّر، لكنها لم تعد تستطيع بذل شغل مفيد."],h:["Can warm air drive the car?","هل يستطيع الهواء الدافئ تحريك السيارة؟"],
+  sol:[["Same quantity.","الكمية نفسها."],["Spread out in the air.","منتشرة في الهواء."],["Less useful.","أقل فائدة."]]}
+]);
+
+/* ---------- Dam ---------- */
+(function(){const s=$("#dmSvg");if(!s)return;const r=$("#dmS");
+  function draw(){const k=+r.value;$("#dmSv").textContent=(k+1)+"/5";
+    let o=BG+`<path d="M0 60H120V200H0z" fill="#2c6d9e" opacity=".85"/><path d="M120 40L150 40L170 200L120 200z" fill="#7d8a90"/><path d="M170 160H360V200H170z" fill="#2c6d9e" opacity=".6"/>`;
+    o+=`<path d="M100 170L180 186" stroke="${k>=1?"#7cc2bd":"#3d5566"}" stroke-width="10" stroke-linecap="round"/>`;
+    o+=`<circle cx="196" cy="186" r="16" fill="#0c1620" stroke="${k>=2?GC.g:GC.mu}" stroke-width="3"/>`;for(let a=0;a<6;a++)o+=`<line x1="196" y1="186" x2="${(196+13*Math.cos(a*Math.PI/3+k)).toFixed(1)}" y2="${(186+13*Math.sin(a*Math.PI/3+k)).toFixed(1)}" stroke="${k>=2?GC.g:GC.mu}" stroke-width="2.5"/>`;
+    o+=`<rect x="220" y="118" width="44" height="34" rx="6" fill="#0c1620" stroke="${k>=3?GC.g:GC.mu}" stroke-width="2.5"/>`+lab(242,140,"G",k>=3?GC.g:GC.mu,"middle",14)+`<line x1="196" y1="170" x2="226" y2="150" stroke="${GC.mu}" stroke-width="3"/>`;
+    o+=`<path d="M264 128L300 70L340 70" fill="none" stroke="${k>=4?GC.g:GC.mu}" stroke-width="2" stroke-dasharray="5 4"/><path d="M318 64l14 -14l14 14v20h-28z" fill="${k>=4?"#f2c46d":"#3d5566"}"/>`;
+    o+=lab(60,52,"reservoir (high)",GC.ink,"middle",10)+lab(196,214-4,"turbine",GC.mu,"middle",9)+lab(242,112,"generator",GC.mu,"middle",9)+lab(332,98,"home",GC.mu,"middle",9);
+    if(k===1)o+=arrow(110,150,170,182,"#cfe9e6",2.5);
+    s.innerHTML=o;
+    const T=[["Water is held high behind the dam: it has stored gravitational potential energy.","يُحتجز الماء مرتفعًا خلف السد: له طاقة وضع جاذبية مخزّنة."],["The water falls through tunnels in the dam: its potential energy becomes kinetic energy.","يسقط الماء عبر أنفاق في السد: تتحول طاقة وضعه إلى طاقة حركية."],["The moving water pushes the turbine blades and makes them spin: it <b>does work</b> on the turbine.","يدفع الماء المتحرك شفرات التوربين فيجعلها تدور: <b>يبذل شغلًا</b> على التوربين."],["The spinning turbine turns a generator, which changes mechanical energy into electrical energy.","يدير التوربين الدوار مولّدًا يحوّل الطاقة الميكانيكية إلى طاقة كهربائية."],["Wires carry the electrical energy to transformers and then to homes.","تنقل الأسلاك الطاقة الكهربائية إلى المحولات ثم إلى البيوت."]];
+    $("#dmOut").textContent=["GPE of the water","GPE → KE","KE → work on the turbine","mechanical → electrical","electrical → homes"][k];setMsg($("#dmMsg"),T[k][0],T[k][1]);}
+  r.oninput=draw;draw();})();
+
+/* ---------- Bouncing ball graph ---------- */
+const GP=[4500,3050,700,1300,2000,1000,150,1000,100,600],GK=[0,1400,3700,1700,950,1900,2650,950,1800,850];
+(function(){const s=$("#grSvg");if(!s)return;const r=$("#grT"),X0=50,XS=30,Y0=195,YS=0.038;
+  function draw(){const t=+r.value;$("#grTv").textContent=t+" s";let o=BG;
+    for(let e=0;e<=4500;e+=1500){const y=Y0-e*YS;o+=`<line x1="${X0}" y1="${y}" x2="${X0+9*XS}" y2="${y}" stroke="${GC.mu}" stroke-opacity="${e?0.2:0.8}"/>`+lab(X0-4,y+4,e,GC.mu,"end",9);}
+    for(let k=0;k<=9;k++)o+=lab(X0+k*XS,Y0+14,k,GC.mu,"middle",9);o+=lab(X0+4.5*XS,Y0+28,"seconds",GC.mu,"middle",9.5)+lab(X0+4,12,"energy (J)",GC.mu,"start",9.5);
+    const pl=(A,c)=>`<polyline points="${A.map((v,k)=>`${X0+k*XS},${(Y0-v*YS).toFixed(1)}`).join(" ")}" fill="none" stroke="${c}" stroke-width="2.5"/>`+A.map((v,k)=>`<circle cx="${X0+k*XS}" cy="${(Y0-v*YS).toFixed(1)}" r="3" fill="${c}"/>`).join("");
+    o+=pl(GP,"#4a9fd8")+pl(GK,"#6cc04a")+`<line x1="${X0+t*XS}" y1="${Y0}" x2="${X0+t*XS}" y2="${Y0-4600*YS}" stroke="${GC.g}" stroke-dasharray="4 3"/>`;
+    o+=`<line x1="290" y1="30" x2="306" y2="30" stroke="#6cc04a" stroke-width="3"/>`+lab(310,34,"KE",GC.ink,"start",10)+`<line x1="290" y1="46" x2="306" y2="46" stroke="#4a9fd8" stroke-width="3"/>`+lab(310,50,"PE",GC.ink,"start",10);
+    s.innerHTML=o;const tot=GP[t]+GK[t];
+    $("#grOut").textContent=`t = ${t} s\nKE = ${GK[t]} J\nPE = ${GP[t]} J\ntotal = ${tot} J`;
+    setMsg($("#grMsg"),t===0?"At the start the ball is highest: PE = 4500 J, KE = 0. Move the slider.":t===2?"Second 2: the ball is moving fastest just before its first bounce: KE is the greatest on the whole graph (3700 J).":`Total at ${t} s: <b>${tot} J</b>. Compare it with 4500 J at the start: ${tot<4500?"the total has gone <b>down</b>.":"about the same."}`,
+      t===0?"في البداية تكون الكرة في أعلى موضع: PE = 4500 J، وKE = 0. حرّك المنزلق.":t===2?"الثانية 2: تتحرك الكرة بأقصى سرعة قبل ارتدادها الأول مباشرة: KE أكبر ما تكون في التمثيل كله (3700 J).":`المجموع عند ${t} s: <b>${tot} J</b>. قارنه بـ 4500 J في البداية: ${tot<4500?"لقد <b>قلّ</b> المجموع.":"تقريبًا كما هو."}`);}
+  r.oninput=draw;draw();})();
+cardsQ($("#grBox"),[
+ {t:["Book Q2: When does the ball have the most kinetic energy?","سؤال الكتاب 2: متى يكون للكرة أكبر طاقة حركية؟"],o:[["At the start, because it is the highest off the ground","في البداية، لأنها في أعلى موضع عن الأرض"],["At the end, because it is moving fastest for the final bounce","في النهاية، لأنها تتحرك بأقصى سرعة قبل الارتداد الأخير"],["At second 2, because it is moving fastest before the first bounce","عند الثانية 2، لأنها تتحرك بأقصى سرعة قبل الارتداد الأول"],["At second 4, because it reached its second highest bounce","عند الثانية 4، لأنها وصلت إلى ثاني أعلى ارتداد"]],a:2,cls:"stack",
+  w:["The KE line is highest at 2 s (3700 J).","خط KE في أعلى نقطة عند 2 s (3700 J)."],h:["Find the highest point of the green line.","ابحث عن أعلى نقطة في الخط الأخضر."],
+  sol:[["Look at the KE line.","انظر إلى خط KE."],["Highest at 2 s: 3700 J.","الأعلى عند 2 s: 3700 J."],["Answer C.","الإجابة C."]]},
+ {t:["Book Q3: What happens to the total mechanical energy of the ball as it bounces?","سؤال الكتاب 3: ماذا يحدث للطاقة الميكانيكية الكلية للكرة أثناء ارتدادها؟"],o:[["It stays the same, because energy is conserved","تبقى ثابتة، لأن الطاقة محفوظة"],["It goes down, because some energy becomes thermal energy due to friction","تقل، لأن جزءًا من الطاقة يتحول إلى طاقة حرارية بسبب الاحتكاك"],["It goes up, because gravity adds energy at each bounce","تزيد، لأن الجاذبية تضيف طاقة عند كل ارتداد"],["It stays the same, because gravity does work at each bounce","تبقى ثابتة، لأن الجاذبية تبذل شغلًا عند كل ارتداد"]],a:1,cls:"stack",
+  w:["The bounces get lower and KE + PE goes down: mechanical energy changes to thermal energy (and sound). The total of ALL energy is still conserved.","تنخفض الارتدادات ويقل KE + PE: تتحول الطاقة الميكانيكية إلى طاقة حرارية (وصوت). ومع ذلك يبقى مجموع كل أنواع الطاقة محفوظًا."],h:["Compare KE + PE at 0 s and at 9 s.","قارن KE + PE عند 0 s وعند 9 s."],
+  sol:[["Start: 4500 J. End: 1450 J.","البداية: 4500 J. النهاية: 1450 J."],["Mechanical energy went down.","قلّت الطاقة الميكانيكية."],["It became thermal: B.","صارت حرارية: B."]]}
+]);
+
+/* ---------- Back to the pendulum ---------- */
+(function(){const s=$("#bkSvg");if(!s)return;let o=BG+`<rect x="80" y="14" width="200" height="10" rx="3" fill="#5b6b74"/><line x1="180" y1="22" x2="140" y2="150" stroke="#cfe9e6" stroke-width="2"/><circle cx="140" cy="150" r="13" fill="#5b8ad1"/>`;
+  for(let k=0;k<10;k++)o+=`<circle cx="${70+(k*37)%110}" cy="${110+(k*23)%60}" r="3" fill="#ef9a83" opacity=".7"/>`;
+  o+=heat(110,100)+lab(60,70,"air warms a little",RED,"middle",10)+waves(156,150,3,GC.g)+lab(240,140,"sound",GC.g,"start",10)+lab(180,195,"mechanical energy → thermal energy + sound",GC.ink,"middle",10.5);s.innerHTML=o;
+  const V=[[false,"Energy is never destroyed. It left the pendulum, but it still exists.","الطاقة لا تفنى أبدًا. لقد غادرت البندول، لكنها ما زالت موجودة."],
+   [true,"Correct! Air resistance (friction) transferred the pendulum's mechanical energy to the air as thermal energy, plus a little sound. The total energy is conserved.","صحيح! نقلت مقاومة الهواء (الاحتكاك) الطاقة الميكانيكية للبندول إلى الهواء على شكل طاقة حرارية، ومعها قليل من الصوت. والطاقة الكلية محفوظة."],
+   [false,"Gravity does not use up energy. Gravity changes PE into KE and back; friction with the air is what takes energy out.","الجاذبية لا تستهلك الطاقة؛ بل تحوّل PE إلى KE والعكس. والاحتكاك مع الهواء هو الذي يُخرج الطاقة."]];
+  window.bkMine=()=>{const m=store.get("hk");
+    if(m!==null&&m!==undefined&&HK[m])setMsg($("#bkMine"),`At the start you chose <b>Idea ${m+1}</b>. ${V[m][0]?"Well done, you were right!":"Let's check why the answer is Idea 2."}`,`في البداية اخترت <b>الرأي ${m+1}</b>. ${V[m][0]?"أحسنت، كنت على حق!":"لنتحقق لماذا الإجابة هي الرأي 2."}`);
+    else setMsg($("#bkMine"),"You did not choose at the start. Check each idea now.","لم تختر في البداية. تحقّق من كل رأي الآن.");};bkMine();
+  segOn($("#bkSeg"),v=>{const k=+v;setMsg($("#bkMsg"),`${V[k][0]?ICON.check:ICON.cross} <b>Idea ${k+1}:</b> ${V[k][1]}`,`${V[k][0]?ICON.check:ICON.cross} <b>الرأي ${k+1}:</b> ${V[k][2]}`,!V[k][0]);});
+  setMsg($("#bkMsg"),"Tap an idea.","اضغط على رأي.");})();
+
+/* ---------- check yourself ---------- */
+cardsQ($("#tryBox"),[
+ {t:["You push hard on a wall, but it does not move. How much work do you do on the wall?","تدفع جدارًا بقوة لكنه لا يتحرك. ما مقدار الشغل الذي تبذله على الجدار؟"],o:[["A lot of work","شغل كبير"],["No work","لا شغل"]],a:1,
+  w:["The wall does not move, so no work is done on it.","الجدار لا يتحرك، إذن لا يُبذل عليه شغل."],h:["Work needs motion in the direction of the force.","الشغل يحتاج إلى حركة في اتجاه القوة."],
+  sol:[["Force: yes.","قوة: نعم."],["Motion: no.","حركة: لا."],["Work: none.","الشغل: لا شيء."]]},
+ {t:["A soccer ball rolls on grass and slowly stops. Its kinetic energy became mostly …","تتدحرج كرة قدم على العشب ثم تتوقف ببطء. تحولت طاقتها الحركية في الغالب إلى …"],o:[["thermal energy","طاقة حرارية"],["mass","كتلة"],["nothing","لا شيء"]],a:0,
+  w:["Friction with the grass and the air turned KE into thermal energy.","حوّل الاحتكاك مع العشب والهواء KE إلى طاقة حرارية."],h:["What slowed it down?","ما الذي أبطأها؟"],
+  sol:[["Friction acted.","أثّر الاحتكاك."],["KE decreased.","قلّت KE."],["→ thermal energy.","← طاقة حرارية."]]},
+ {t:["In a hydroelectric plant, what does the falling water do to the turbine?","في محطة كهرومائية، ماذا يفعل الماء الساقط بالتوربين؟"],o:[["It does work and makes it spin","يبذل شغلًا ويجعله يدور"],["It cools it down","يبرّده"],["Nothing","لا شيء"]],a:0,
+  w:["The moving water pushes the blades in the direction they move: work.","يدفع الماء المتحرك الشفرات في اتجاه حركتها: شغل."],h:["Force + motion = ?","قوة + حركة = ؟"],
+  sol:[["Water pushes the blades.","يدفع الماء الشفرات."],["Blades move.","تتحرك الشفرات."],["That is work.","هذا شغل."]]},
+ {t:["Which is NOT a sign of an energy transfer?","أي مما يلي ليس علامة على انتقال الطاقة؟"],o:[["A box starts to move","صندوق يبدأ الحركة"],["A sound is heard","يُسمع صوت"],["A ball stays still on a table","كرة تبقى ساكنة على طاولة"]],a:2,
+  w:["Nothing changes when the ball stays still.","لا شيء يتغيّر عندما تبقى الكرة ساكنة."],h:["Look for a change.","ابحث عن تغيّر."],
+  sol:[["Motion change: sign.","تغيّر الحركة: علامة."],["Sound: sign.","الصوت: علامة."],["No change: not a sign.","لا تغيّر: ليس علامة."]]},
+ {t:["The bounces of a ball get lower and lower. The total of ALL its energy (including thermal) …","تنخفض ارتدادات كرة أكثر فأكثر. مجموع كل طاقتها (ومنها الحرارية) …"],o:[["is destroyed","يفنى"],["stays the same","يبقى ثابتًا"]],a:1,
+  w:["Mechanical energy goes down, but it changes to thermal energy and sound: the total is conserved.","تقل الطاقة الميكانيكية، لكنها تتحول إلى طاقة حرارية وصوت: المجموع محفوظ."],h:["Law of conservation of energy.","قانون حفظ الطاقة."],
+  sol:[["ME goes down.","تقل ME."],["Thermal + sound go up.","تزيد الحرارية والصوت."],["Total is conserved.","المجموع محفوظ."]]}
+]);
+
+/* ---------- summary ---------- */
+const FL=[["W","Work","الشغل","The transfer of energy to an object by a force that makes it move in the direction of the force.","انتقال الطاقة إلى جسم بقوة تجعله يتحرك في اتجاه القوة."],
+ ["0","No work","لا شغل","No motion, or no force applied: no work is done.","لا حركة، أو لا قوة مؤثرة: لا يُبذل شغل."],
+ ["↑ PE","Work adds energy","الشغل يضيف طاقة","Lifting a box onto a shelf does work and increases the system's PE.","رفع صندوق إلى رف يبذل شغلًا ويزيد طاقة وضع النظام."],
+ ["→","Energy transfer","انتقال الطاقة","A pendulum hitting a box transfers energy: source → receiver.","البندول الذي يصطدم بصندوق ينقل الطاقة: من المصدر إلى المستقبِل."],
+ ["signs","Signs of transfer","علامات الانتقال","A change in motion, a sound, or a change in temperature.","تغيّر في الحركة، أو صوت، أو تغيّر في درجة الحرارة."],
+ ["heat","Friction → thermal","الاحتكاك ← حرارة","Friction and air resistance change mechanical energy into thermal energy.","يحوّل الاحتكاك ومقاومة الهواء الطاقة الميكانيكية إلى طاقة حرارية."],
+ ["=","Not 'used up'","لا «تُستهلك»","Energy that spreads out as heat is the same amount, but less useful.","الطاقة التي تنتشر حرارةً كميتها نفسها، لكنها أقل فائدة."],
+ ["dam","Hydroelectric power","الطاقة الكهرومائية","Water's GPE → KE → turbine (work) → generator → electricity.","GPE للماء ← KE ← التوربين (شغل) ← المولّد ← الكهرباء."]];
+$("#flips").innerHTML=FL.map(f=>`<button class="flip"><div class="flipin"><div class="face front"><div class="fbig">${f[0]}</div><b>${f[1]}</b><span class="ar">${f[2]}</span><span class="tapme">tap · اضغط</span></div><div class="face back"><span>${f[3]}</span><span class="ar">${f[4]}</span></div></div></button>`).join("");
+$$("#flips .flip").forEach(b=>b.onclick=()=>b.classList.toggle("on"));
+
+/* ---------- final quiz ---------- */
+const Q=[
+ {q:"Work is …",qa:"الشغل هو …",o:[["the transfer of energy to an object by a force that makes it move in the direction of the force","انتقال الطاقة إلى جسم بقوة تجعله يتحرك في اتجاه القوة"],["any force, even if nothing moves","أي قوة، حتى لو لم يتحرك شيء"],["the energy of a moving object","طاقة الجسم المتحرك"],["the energy stored in fuel","الطاقة المخزّنة في الوقود"]],a:0,ex:["Work needs a force AND motion in the direction of the force.","الشغل يحتاج إلى قوة وحركة في اتجاه القوة."],
+  h:[["Work transfers energy.","الشغل ينقل الطاقة."],["Does the object have to move?","هل يجب أن يتحرك الجسم؟"]],sol:[["Force + motion.","قوة + حركة."],["Energy is transferred.","تنتقل الطاقة."],["Answer A.","الإجابة A."]]},
+ {q:"In which case is work done on the object?",qa:"في أي حالة يُبذل شغل على الجسم؟",o:[["Pushing a wall that does not move","دفع جدار لا يتحرك"],["A bike rolling after you let go","دراجة تتدحرج بعد أن تتركها"],["Pushing a shopping cart and it moves forward","دفع عربة تسوق فتتحرك إلى الأمام"],["Holding a bag still","حمل حقيبة دون تحريكها"]],a:2,ex:["Only the cart moves in the direction of the applied force.","العربة وحدها تتحرك في اتجاه القوة المؤثرة."],
+  h:[["Force AND motion.","قوة وحركة."],["While the force is applied.","أثناء تأثير القوة."]],sol:[["Wall/bag: no motion.","الجدار/الحقيبة: لا حركة."],["Rolling bike: no force.","الدراجة المتدحرجة: لا قوة."],["Cart: work: C.","العربة: شغل: C."]]},
+ {q:"Which is a sign that energy was transferred?",qa:"أي مما يلي علامة على انتقال الطاقة؟",o:[["An object starts to move","جسم يبدأ الحركة"],["A sound is heard","يُسمع صوت"],["The temperature changes","تتغيّر درجة الحرارة"],["All of these","كل ما سبق"]],a:3,ex:["Changes in motion, sound and temperature are all signs.","التغيّر في الحركة والصوت ودرجة الحرارة كلها علامات."],
+  h:[["The book named more than one sign.","ذكر الكتاب أكثر من علامة."],["Think of the box, the clack and the warm brakes.","فكّر في الصندوق وصوت الارتطام والفرامل الساخنة."]],sol:[["Motion: sign.","الحركة: علامة."],["Sound, temperature: signs.","الصوت ودرجة الحرارة: علامتان."],["All of these: D.","كل ما سبق: D."]]},
+ {q:"Mariam brakes and her bicycle stops. Its kinetic energy changed mainly into …",qa:"تضغط مريم الفرامل فتتوقف دراجتها. تحولت طاقتها الحركية بشكل رئيسي إلى …",o:[["gravitational potential energy","طاقة وضع جاذبية"],["thermal energy","طاقة حرارية"],["elastic potential energy","طاقة وضع مرونية"],["nothing: it was destroyed","لا شيء: فنيت"]],a:1,ex:["Friction in the brakes and tires changes KE into thermal energy.","يحوّل الاحتكاك في الفرامل والإطارات KE إلى طاقة حرارية."],
+  h:[["The brakes get warm.","تسخن الفرامل."],["Energy is not destroyed.","الطاقة لا تفنى."]],sol:[["Brakes rub: friction.","تحتك الفرامل: احتكاك."],["Parts warm up.","تسخن الأجزاء."],["Thermal energy: B.","طاقة حرارية: B."]]},
+ {q:"A swinging pendulum slowly stops. Why?",qa:"يتوقف بندول متأرجح ببطء. لماذا؟",o:[["Gravity destroys its energy","الجاذبية تُفني طاقته"],["Its mass decreases","تقل كتلته"],["Air resistance transfers its energy to the air as thermal energy","تنقل مقاومة الهواء طاقته إلى الهواء على شكل طاقة حرارية"],["Energy is created in the string","تُستحدث طاقة في الخيط"]],a:2,ex:["Friction with the air takes mechanical energy out of the pendulum.","الاحتكاك مع الهواء يُخرج الطاقة الميكانيكية من البندول."],
+  h:[["Energy is not destroyed.","الطاقة لا تفنى."],["What rubs against the pendulum?","ما الذي يحتك بالبندول؟"]],sol:[["Air rubs on it.","يحتك به الهواء."],["ME → thermal.","ME ← حرارية."],["Answer C.","الإجابة C."]]},
+ {q:"A car's fuel runs out. What happened to the energy that was in the fuel?",qa:"نفد وقود سيارة. ماذا حدث للطاقة التي كانت في الوقود؟",o:[["It changed form, mostly to thermal energy that is less useful","غيّرت شكلها، وأغلبها صار طاقة حرارية أقل فائدة"],["It was destroyed","فنيت"],["It is still stored in the empty tank","ما زالت مخزّنة في الخزان الفارغ"],["It turned into new fuel","تحولت إلى وقود جديد"]],a:0,ex:["Energy is conserved; it spread out as thermal energy.","الطاقة محفوظة؛ انتشرت على شكل طاقة حرارية."],
+  h:[["Conservation of energy.","حفظ الطاقة."],["Where does friction send energy?","إلى أين يرسل الاحتكاك الطاقة؟"]],sol:[["Fuel → motion.","وقود ← حركة."],["Motion → thermal.","حركة ← حرارة."],["Answer A.","الإجابة A."]]},
+ {q:"In a hydroelectric power plant, what is the FIRST energy change of the water?",qa:"في محطة كهرومائية، ما أول تحوّل لطاقة الماء؟",o:[["Electrical → kinetic","كهربائية ← حركية"],["Potential → kinetic, as the water falls","وضع ← حركية، عندما يسقط الماء"],["Kinetic → potential","حركية ← وضع"],["Thermal → electrical","حرارية ← كهربائية"]],a:1,ex:["Water high behind the dam falls: GPE becomes KE.","الماء المرتفع خلف السد يسقط: تتحول GPE إلى KE."],
+  h:[["The water starts high up.","يبدأ الماء مرتفعًا."],["Then it falls.","ثم يسقط."]],sol:[["High water: GPE.","ماء مرتفع: GPE."],["Falls: speeds up.","يسقط: يتسارع."],["GPE → KE: B.","GPE ← KE: B."]]},
+ {q:"A swinging pendulum hits a box and the box slides. In the energy flow diagram, …",qa:"يصطدم بندول متأرجح بصندوق فينزلق الصندوق. في مخطط تدفق الطاقة …",o:[["the box is the source","الصندوق هو المصدر"],["the floor is the receiver","الأرض هي المستقبِل"],["no energy flows","لا تتدفق طاقة"],["the pendulum is the source and the box is the receiver","البندول هو المصدر والصندوق هو المستقبِل"]],a:3,ex:["Energy flows from the pendulum (KE decreases) to the box (KE increases).","تتدفق الطاقة من البندول (تقل KE) إلى الصندوق (تزيد KE)."],
+  h:[["Which object loses energy?","أي جسم يفقد طاقة؟"],["Which object starts moving?","أي جسم يبدأ الحركة؟"]],sol:[["Pendulum loses KE.","البندول يفقد KE."],["Box gains KE.","الصندوق يكسب KE."],["Answer D.","الإجابة D."]]},
+ {q:"From Lesson 26: A pendulum has 90 J of mechanical energy and 30 J of KE. Its PE is …",qa:"من الدرس 26: لبندول 90 J من الطاقة الميكانيكية و30 J من KE. طاقة وضعه …",o:[["120 J"],["30 J"],["60 J"],["90 J"]],a:2,ex:["PE = ME − KE = 90 − 30 = 60 J.","PE = ME − KE = 90 − 30 = 60 J."],
+  h:[["ME = KE + PE.","ME = KE + PE."],["Subtract the KE.","اطرح KE."]],sol:[["ME = 90 J.","ME = 90 J."],["PE = 90 − 30.","PE = 90 − 30."],["60 J: C.","60 J: C."]]},
+ {q:"From Lesson 24: The same box is moved from the floor to a high shelf. Its GPE …",qa:"من الدرس 24: نُقل الصندوق نفسه من الأرض إلى رف مرتفع. طاقة وضعه الجاذبية …",o:[["increases","تزيد"],["decreases","تقل"],["stays the same","تبقى كما هي"],["becomes zero","تصبح صفرًا"]],a:0,ex:["Higher → more GPE.","أعلى ← طاقة جاذبية أكبر."],
+  h:[["Same mass.","الكتلة نفسها."],["Farther from Earth.","أبعد عن الأرض."]],sol:[["Same mass.","الكتلة نفسها."],["Higher position.","موقع أعلى."],["GPE increases: A.","تزيد GPE: A."]]}
+];
+Q.forEach(q=>q.o.forEach(o=>{if(o[1]===o[0])o[1]="";o[0]=`<span class="oe">${o[0]}</span>`;}));
+
+/* ---------- apply the Arabic math fix everywhere, now and later ---------- */
+arFix(document.body);
+try{new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)arFix(n.closest&&n.closest(".ar")||n);}))).observe($("#screens"),{childList:true,subtree:true});}catch(e){}
+
+let ans=store.get("ans",[]);
+function quizDone(){return ans.length>=Q.length;}
+function quizNudge(){const q=$("#quiz .qtext");if(q){q.scrollIntoView({behavior:"smooth"});q.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"none"}],{duration:300});}}
+function quizRender(){
+  const box=$("#quiz"); if(!box)return;
+  if(quizDone()){box.innerHTML=`<h2>Quiz complete!</h2><p class="hsub ar">اكتمل الاختبار!</p><div class="btnrow"><button class="btn" id="seeRes">See my result ▶</button><button class="btn alt" id="redo">↺ Try again</button></div>`;$("#seeRes").onclick=()=>go(cur+1);$("#redo").onclick=()=>{ans=[];store.set("ans",ans);quizRender();};return;}
+  const qi=ans.length, q=Q[qi];
+  box.innerHTML=`<div class="qhead"><span>Question ${qi+1} / ${Q.length}</span><span class="qdots">${Q.map((_,i)=>`<i class="${i<ans.length?(ans[i]?"r":"w"):i===qi?"c":""}"></i>`).join("")}</span></div>
+  <div class="qtext">${q.q}</div><div class="ar">${q.qa}</div>
+  <div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}">${o[0]}<span class="ar">${o[1]}</span></button>`).join("")}</div>
+  <div class="feedback" id="fb"></div><div class="btnrow c"><button class="btn" id="qNext" style="display:none">Next question ▶</button></div>`;
+  let tries=0;$$("#quiz .opt").forEach(b=>b.onclick=()=>{const i=+b.dataset.i,ok=i===q.a,fb0=$("#fb");if(!ok&&q.h&&tries<q.h.length){const h=q.h[tries];tries++;b.classList.add("wrong");b.disabled=true;fb0.className="feedback show hint";fb0.innerHTML=`<b>Hint ${tries}:</b> ${h[0]}<div class="ar" style="margin-top:4px"><b>تلميح ${tries}:</b> ${h[1]}</div>`;return;}const first=ok&&tries===0;$$("#quiz .opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===q.a)x.classList.add("right");});if(!ok)b.classList.add("wrong");
+    const fb=$("#fb");fb.className="feedback show "+(ok?"ok":"no");fb.innerHTML=`<b>${ok?ICON.check+" Correct!":ICON.cross+" Not quite."}</b> ${q.ex[0]}<div class="ar" style="margin-top:4px">${ok?"إجابة صحيحة!":"ليست صحيحة."} ${q.ex[1]}</div>`+solHTML(q.sol);solBind(fb);
+    ans.push(first?1:0);store.set("ans",ans);const nb=$("#qNext");nb.style.display="";nb.textContent=ans.length===Q.length?"See my result ▶":"Next question ▶";nb.onclick=()=>{if(quizDone())go(cur+1);else{quizRender();window.scrollTo(0,0);}};});
+}
+onShow["Final quiz"]=quizRender;
+function confetti(){const cols=["#C8553D","#2A9D8F","#E9B44C","#8C5A3C"];for(let i=0;i<40;i++){const c=document.createElement("i");c.className="confetti";c.style.left=Math.random()*100+"vw";c.style.background=cols[i%4];c.style.animationDuration=(1.8+Math.random()*1.8)+"s";c.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+onShow["Your result"]=()=>{
+  const box=$("#result"); if(!box)return;
+  if(!quizDone()){box.innerHTML=`<h2>Finish the quiz first</h2><p class="ar hsub">أكمل الاختبار أولًا</p><button class="btn">◀ Back to quiz</button>`;box.querySelector("button").onclick=()=>go(cur-1);return;}
+  const sc=ans.reduce((a,b)=>a+b,0), st=sc>=9?3:sc>=7?2:sc>=5?1:0;
+  const nm=store.get("name","")||"Young Scientist";
+  const d=new Date(), ds=d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})+" · "+d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+  const mood=st>=2?"happy":st===1?"think":"wow";
+  const msg=st===3?["Outstanding! You can explain energy transformations!","رائع! أنت تشرح تحولات الطاقة!"]:st===2?["Great work! Review the questions you missed.","عمل رائع! راجع الأسئلة التي أخطأت فيها."]:st===1?["Good try! Replay the worked examples, then retry.","محاولة جيدة! أعد تشغيل الحلول خطوة بخطوة ثم حاول مجددًا."]:["Keep going! Go back through the lesson with Zayed and try again.","استمر! راجع الدرس مع زايد وحاول مجددًا."];
+  box.innerHTML=`<div class="cert"><div class="zbig zav bob">${zayed(mood)}</div>
+   <div class="muted" style="margin-top:6px">Science · Grade 8 · Unit 2 · Lesson 27 · ${C.name}</div>
+   <h2 style="margin:6px 0">${esc(nm)}</h2>
+   <div class="score">${sc}/10</div><div class="stars">${"★".repeat(st)}<span style="color:#E2D5C0">${"★".repeat(3-st)}</span></div>
+   <p style="margin-top:8px"><b>${msg[0]}</b></p><p class="ar" style="text-align:center">${msg[1]}</p>
+   <div class="muted">${ds}</div></div>
+   <div class="key bi"><p class="en">${ICON.camera} <b>Take a screenshot</b> of this card and send it to your teacher on WhatsApp.</p><p class="ar"><b>التقط صورة للشاشة</b> لهذه البطاقة وأرسلها إلى معلمك عبر واتساب.</p></div>
+   <div class="btnrow c"><button class="btn alt" id="retry">↺ Try the quiz again</button><button class="btn" id="restart">⟲ Lesson start</button></div>`;
+  refreshAr(box);
+  $("#retry").onclick=()=>{ans=[];store.set("ans",ans);go(cur-1);};$("#restart").onclick=()=>go(0);
+  if(st>=2)confetti();
+};
+
+/* ---------- start ---------- */
+screens[0].classList.add("active");
+const saved=store.get("cur",0); go(saved<screens.length?saved:0);
+})();
+
+</script>
+</body>
+</html>
